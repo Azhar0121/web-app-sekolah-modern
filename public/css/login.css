@@ -1,0 +1,1526 @@
+/* =========================================================
+   MODERN SCHOOL LOGIN
+   ========================================================= */
+
+
+/* =========================================================
+   VARIABLES
+   ========================================================= */
+
+:root {
+
+    --school-blue: #1268c9;
+    --school-blue-dark: #084b91;
+
+    --school-navy: #071d36;
+
+    --school-text: #172b45;
+    --school-muted: #7c8999;
+
+    --school-border: #dfe5ec;
+
+    --school-background: #f4f7fb;
+
+    --school-white: #ffffff;
+
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+.school-login-page,
+.school-login-page * {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MAIN PAGE
+   ========================================================= */
+
+.school-login-page {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    display: grid;
+
+    grid-template-columns: minmax(0, 1.08fr) minmax(420px, 0.92fr);
+
+    background:
+        var(--school-background);
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+}
+
+
+/* =========================================================
+   LEFT VISUAL
+   ========================================================= */
+
+.school-login-visual {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    background:
+        #0b315b;
+}
+
+
+/* =========================================================
+   SCHOOL IMAGE
+   ========================================================= */
+
+.school-login-image {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    transform:
+        scale(1.01);
+}
+
+
+/*
+   PENTING:
+   object-fit: cover membuat gambar tetap proporsional.
+   Gambar tidak akan gepeng walaupun ukuran layar berubah.
+*/
+
+
+/* =========================================================
+   IMAGE OVERLAY
+   ========================================================= */
+
+.school-image-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(4, 20, 39, 0.20) 0%,
+            rgba(4, 20, 39, 0.35) 45%,
+            rgba(3, 15, 30, 0.88) 100%
+        );
+
+}
+
+
+/* =========================================================
+   IMAGE DECORATION
+   ========================================================= */
+
+.school-login-visual::before {
+
+    content: "";
+
+    position: absolute;
+
+    z-index: 2;
+
+    width: 420px;
+
+    height: 420px;
+
+    top: -230px;
+
+    right: -180px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.18);
+
+    box-shadow:
+        0 0 0 45px
+        rgba(255, 255, 255, 0.025),
+
+        0 0 0 90px
+        rgba(255, 255, 255, 0.018);
+
+}
+
+
+/* =========================================================
+   VISUAL CONTENT
+   ========================================================= */
+
+.school-visual-content {
+
+    position: absolute;
+
+    z-index: 5;
+
+    left: 0;
+
+    right: 0;
+
+    bottom: 0;
+
+    padding:
+        70px 70px 60px;
+
+}
+
+
+/* =========================================================
+   VISUAL BADGE
+   ========================================================= */
+
+.visual-badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    min-height: 28px;
+
+    padding:
+        0 11px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.22);
+
+    border-radius: 100px;
+
+    background:
+        rgba(255, 255, 255, 0.09);
+
+    backdrop-filter:
+        blur(8px);
+
+    color:
+        #d8eaff;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+/* =========================================================
+   VISUAL TITLE
+   ========================================================= */
+
+.school-visual-content h1 {
+
+    max-width: 620px;
+
+    margin:
+        18px 0 0;
+
+    color:
+        #ffffff;
+
+    font-size:
+        clamp(40px, 4.2vw, 62px);
+
+    line-height:
+        1.03;
+
+    letter-spacing:
+        -2.5px;
+
+    font-weight:
+        800;
+
+}
+
+
+/* =========================================================
+   VISUAL DESCRIPTION
+   ========================================================= */
+
+.school-visual-content > p {
+
+    max-width: 500px;
+
+    margin:
+        20px 0 0;
+
+    color:
+        rgba(255, 255, 255, 0.70);
+
+    font-size:
+        13px;
+
+    line-height:
+        1.8;
+
+}
+
+
+/* =========================================================
+   VISUAL DIVIDER
+   ========================================================= */
+
+.visual-divider {
+
+    width: 48px;
+
+    height: 2px;
+
+    margin-top: 28px;
+
+    background:
+        #66adff;
+
+}
+
+
+/* =========================================================
+   VISUAL FOOTER
+   ========================================================= */
+
+.visual-footer {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 20px;
+
+}
+
+
+/* =========================================================
+   VISUAL LOGO
+   ========================================================= */
+
+.visual-logo {
+
+    width: 42px;
+
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.20);
+
+    border-radius: 10px;
+
+    background:
+        rgba(255, 255, 255, 0.12);
+
+    color:
+        #ffffff;
+
+    font-size:
+        16px;
+
+    font-weight:
+        800;
+
+}
+
+
+/* =========================================================
+   VISUAL SCHOOL INFO
+   ========================================================= */
+
+.visual-school-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+}
+
+
+.visual-school-info strong {
+
+    color:
+        #ffffff;
+
+    font-size:
+        11px;
+
+}
+
+
+.visual-school-info span {
+
+    color:
+        rgba(255, 255, 255, 0.48);
+
+    font-size:
+        8px;
+
+    letter-spacing:
+        0.7px;
+
+}
+
+
+/* =========================================================
+   CORNER DECORATION
+   ========================================================= */
+
+.visual-corner {
+
+    position: absolute;
+
+    z-index: 6;
+
+    right: 26px;
+
+    bottom: 27px;
+
+    display: flex;
+
+    gap: 5px;
+
+}
+
+
+.visual-corner span {
+
+    width: 4px;
+
+    height: 4px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.55);
+
+}
+
+
+/* =========================================================
+   RIGHT LOGIN AREA
+   ========================================================= */
+
+.school-login-form {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        50px 70px;
+
+    background:
+        #ffffff;
+
+}
+
+
+/* =========================================================
+   LOGIN WRAPPER
+   ========================================================= */
+
+.login-wrapper {
+
+    width: 100%;
+
+    max-width: 420px;
+
+}
+
+
+/* =========================================================
+   LOGIN HEADER
+   ========================================================= */
+
+.login-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 29px;
+
+}
+
+
+/* =========================================================
+   LOGIN LOGO
+   ========================================================= */
+
+.login-logo {
+
+    width: 52px;
+
+    height: 52px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1975da,
+            #0b56ad
+        );
+
+    color:
+        #ffffff;
+
+    font-size:
+        19px;
+
+    font-weight:
+        800;
+
+    box-shadow:
+        0 10px 25px
+        rgba(18, 104, 201, 0.18);
+
+}
+
+
+/* =========================================================
+   LOGIN LABEL
+   ========================================================= */
+
+.login-label {
+
+    display: block;
+
+    margin-bottom: 4px;
+
+    color:
+        var(--school-blue);
+
+    font-size:
+        8px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        1.8px;
+
+}
+
+
+/* =========================================================
+   LOGIN TITLE
+   ========================================================= */
+
+.login-header-text h2 {
+
+    margin: 0;
+
+    color:
+        var(--school-text);
+
+    font-size:
+        27px;
+
+    line-height:
+        1.1;
+
+    letter-spacing:
+        -1px;
+
+    font-weight:
+        800;
+
+}
+
+
+/* =========================================================
+   LOGIN SUBTITLE
+   ========================================================= */
+
+.login-header-text p {
+
+    margin:
+        5px 0 0;
+
+    color:
+        var(--school-muted);
+
+    font-size:
+        10px;
+
+}
+
+
+/* =========================================================
+   ALERT
+   ========================================================= */
+
+.login-alert {
+
+    margin-bottom:
+        19px;
+
+    padding:
+        11px 13px;
+
+    border:
+        1px solid
+        #f1cccc;
+
+    border-radius:
+        8px;
+
+    background:
+        #fff6f6;
+
+    color:
+        #b13d3d;
+
+    font-size:
+        10px;
+
+    line-height:
+        1.6;
+
+}
+
+
+.alert-title {
+
+    margin-bottom:
+        2px;
+
+    font-weight:
+        700;
+
+}
+
+
+/* =========================================================
+   FORM GROUP
+   ========================================================= */
+
+.form-group {
+
+    margin-bottom:
+        17px;
+
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.form-group label {
+
+    display:
+        block;
+
+    margin-bottom:
+        7px;
+
+    color:
+        var(--school-text);
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+
+}
+
+
+/* =========================================================
+   INPUT WRAPPER
+   ========================================================= */
+
+.input-wrapper {
+
+    position:
+        relative;
+
+}
+
+
+/* =========================================================
+   INPUT ICON
+   ========================================================= */
+
+.input-icon {
+
+    position:
+        absolute;
+
+    left:
+        14px;
+
+    top:
+        50%;
+
+    transform:
+        translateY(-50%);
+
+    width:
+        18px;
+
+    color:
+        #9ba7b6;
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+
+    text-align:
+        center;
+
+    pointer-events:
+        none;
+
+}
+
+
+.password-icon {
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        -1px;
+
+}
+
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.form-group input {
+
+    width:
+        100%;
+
+    height:
+        48px;
+
+    padding:
+        0 14px 0 42px;
+
+    border:
+        1px solid
+        var(--school-border);
+
+    border-radius:
+        8px;
+
+    outline:
+        none;
+
+    background:
+        #ffffff;
+
+    color:
+        var(--school-text);
+
+    font-family:
+        inherit;
+
+    font-size:
+        12px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+.form-group input::placeholder {
+
+    color:
+        #a7b0bc;
+
+}
+
+
+.form-group input:hover {
+
+    border-color:
+        #cbd5e1;
+
+}
+
+
+.form-group input:focus {
+
+    border-color:
+        var(--school-blue);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(18, 104, 201, 0.08);
+
+}
+
+
+.form-group input.input-error {
+
+    border-color:
+        #dc5555;
+
+}
+
+
+/* =========================================================
+   FIELD ERROR
+   ========================================================= */
+
+.field-error {
+
+    display:
+        block;
+
+    margin-top:
+        5px;
+
+    color:
+        #d04444;
+
+    font-size:
+        9px;
+
+}
+
+
+/* =========================================================
+   LOGIN OPTIONS
+   ========================================================= */
+
+.login-options {
+
+    margin-top:
+        1px;
+
+    margin-bottom:
+        19px;
+
+}
+
+
+.remember-label {
+
+    display:
+        inline-flex !important;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+    margin:
+        0 !important;
+
+    color:
+        #6f7d8e !important;
+
+    font-size:
+        10px !important;
+
+    font-weight:
+        400 !important;
+
+    cursor:
+        pointer;
+
+}
+
+
+.remember-label input {
+
+    width:
+        15px !important;
+
+    height:
+        15px !important;
+
+    padding:
+        0 !important;
+
+    accent-color:
+        var(--school-blue);
+
+    cursor:
+        pointer;
+
+}
+
+
+/* =========================================================
+   LOGIN BUTTON
+   ========================================================= */
+
+.login-button {
+
+    width:
+        100%;
+
+    height:
+        50px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    padding:
+        5px 7px 5px 19px;
+
+    border:
+        none;
+
+    border-radius:
+        8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1975da,
+            #0b58b3
+        );
+
+    color:
+        #ffffff;
+
+    font-family:
+        inherit;
+
+    font-size:
+        11px;
+
+    font-weight:
+        800;
+
+    cursor:
+        pointer;
+
+    box-shadow:
+        0 10px 24px
+        rgba(18, 104, 201, 0.19);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+.login-button:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 14px 28px
+        rgba(18, 104, 201, 0.25);
+
+}
+
+
+.login-button:active {
+
+    transform:
+        translateY(0);
+
+}
+
+
+/* =========================================================
+   BUTTON ARROW
+   ========================================================= */
+
+.button-arrow {
+
+    width:
+        38px;
+
+    height:
+        38px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        6px;
+
+    background:
+        rgba(255, 255, 255, 0.14);
+
+    font-size:
+        17px;
+
+}
+
+
+/* =========================================================
+   DEMO ACCOUNT
+   ========================================================= */
+
+.demo-account {
+
+    margin-top:
+        21px;
+
+    padding:
+        14px 15px;
+
+    border:
+        1px solid
+        #dfe8f3;
+
+    border-radius:
+        9px;
+
+    background:
+        #f8fbff;
+
+}
+
+
+/* =========================================================
+   DEMO HEADER
+   ========================================================= */
+
+.demo-header {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        9px;
+
+}
+
+
+.demo-icon {
+
+    width:
+        20px;
+
+    height:
+        20px;
+
+    flex-shrink:
+        0;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        50%;
+
+    background:
+        #e6f0fc;
+
+    color:
+        var(--school-blue);
+
+    font-size:
+        9px;
+
+    font-weight:
+        800;
+
+}
+
+
+.demo-header div:last-child {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        2px;
+
+}
+
+
+.demo-header strong {
+
+    color:
+        var(--school-text);
+
+    font-size:
+        10px;
+
+}
+
+
+.demo-header span {
+
+    color:
+        var(--school-muted);
+
+    font-size:
+        8px;
+
+}
+
+
+/* =========================================================
+   DEMO PASSWORD
+   ========================================================= */
+
+.demo-password {
+
+    margin-top:
+        11px;
+
+    color:
+        #6e7c8d;
+
+    font-size:
+        9px;
+
+}
+
+
+.demo-password code {
+
+    margin-left:
+        3px;
+
+    padding:
+        3px 6px;
+
+    border-radius:
+        4px;
+
+    background:
+        #ffffff;
+
+    color:
+        var(--school-blue);
+
+    font-family:
+        monospace;
+
+    font-size:
+        9px;
+
+}
+
+
+/* =========================================================
+   DEMO USERS
+   ========================================================= */
+
+.demo-users {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        5px;
+
+    margin-top:
+        10px;
+
+}
+
+
+.demo-users span {
+
+    padding:
+        4px 6px;
+
+    border:
+        1px solid
+        #e1e8f0;
+
+    border-radius:
+        4px;
+
+    background:
+        #ffffff;
+
+    color:
+        #6f7e91;
+
+    font-size:
+        8px;
+
+    line-height:
+        1.2;
+
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.login-footer {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        7px;
+
+    margin-top:
+        21px;
+
+    color:
+        #a0a9b5;
+
+    font-size:
+        8px;
+
+}
+
+
+.footer-dot {
+
+    color:
+        #ccd2d9;
+
+}
+
+
+/* =========================================================
+   LARGE SCREEN
+   ========================================================= */
+
+@media (min-width: 1400px) {
+
+    .school-login-form {
+
+        padding-left:
+            90px;
+
+        padding-right:
+            90px;
+
+    }
+
+    .school-visual-content {
+
+        padding-left:
+            85px;
+
+        padding-right:
+            85px;
+
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .school-login-page {
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(390px, 0.85fr);
+
+    }
+
+
+    .school-visual-content {
+
+        padding:
+            45px;
+
+    }
+
+
+    .school-login-form {
+
+        padding:
+            40px 35px;
+
+    }
+
+}
+
+
+/* =========================================================
+   TABLET KECIL
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .school-login-page {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .school-login-visual {
+
+        min-height:
+            390px;
+
+    }
+
+
+    .school-login-form {
+
+        min-height:
+            auto;
+
+        padding:
+            55px 30px;
+
+    }
+
+
+    .school-visual-content {
+
+        padding:
+            45px 40px;
+
+    }
+
+
+    .school-visual-content h1 {
+
+        font-size:
+            42px;
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .school-login-visual {
+
+        min-height:
+            340px;
+
+    }
+
+
+    .school-visual-content {
+
+        padding:
+            35px 25px;
+
+    }
+
+
+    .school-visual-content h1 {
+
+        margin-top:
+            14px;
+
+        font-size:
+            32px;
+
+        letter-spacing:
+            -1.3px;
+
+    }
+
+
+    .school-visual-content > p {
+
+        margin-top:
+            14px;
+
+        font-size:
+            11px;
+
+        line-height:
+            1.6;
+
+    }
+
+
+    .visual-divider {
+
+        margin-top:
+            20px;
+
+    }
+
+
+    .school-login-form {
+
+        padding:
+            35px 20px;
+
+    }
+
+
+    .login-wrapper {
+
+        max-width:
+            100%;
+
+    }
+
+
+    .login-header-text h2 {
+
+        font-size:
+            23px;
+
+    }
+
+
+    .demo-users span {
+
+        font-size:
+            7.5px;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .school-login-visual {
+
+        min-height:
+            300px;
+
+    }
+
+
+    .school-visual-content {
+
+        padding:
+            30px 20px;
+
+    }
+
+
+    .school-visual-content h1 {
+
+        font-size:
+            28px;
+
+    }
+
+
+    .school-visual-content > p {
+
+        display:
+            none;
+
+    }
+
+
+    .visual-footer {
+
+        margin-top:
+            15px;
+
+    }
+
+
+    .school-login-form {
+
+        padding:
+            30px 16px;
+
+    }
+
+}
