@@ -41,7 +41,7 @@
             </a>
 
 
-            <a href="http://localhost:8000/login"
+            <a href="{{ url('/login') }}"
                class="nav-login">
 
                 <span>Masuk ke Portal</span>
@@ -55,7 +55,6 @@
         </div>
 
     </nav>
-
 
     {{-- ================= HERO ================= --}}
     <main>
@@ -93,7 +92,7 @@
 
 
                     {{-- PRIMARY LOGIN --}}
-                    <a href="http://localhost:8000/login"
+                    <a href="{{url('/login')}}"
                        class="main-login-button">
 
                         <span class="login-icon">
@@ -334,7 +333,7 @@
                 </div>
 
 
-                <a href="http://localhost:8000/login"
+                <a href=""{{url('/login')}}""
                    class="portal-login-button">
 
                     <span>

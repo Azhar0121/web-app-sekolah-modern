@@ -44,12 +44,13 @@ class PermissionSeeder extends Seeder
 
         // Mapping permission -> role
         $map = [
-            'super-admin' => Permission::pluck('slug')->all(),
+            'super-admin' => Permission::pluck('slug')->all(), // semua permission
             'guru' => ['nilai.input', 'nilai.view', 'presensi.manage', 'presensi.view'],
             'siswa' => ['nilai.view', 'presensi.view'],
             'ortu' => ['nilai.view', 'presensi.view'],
-            'tu' => ['persuratan.manage', 'inventaris.manage'],
-            'kepsek' => ['dashboard.report.view', 'nilai.approve', 'audit.view'],
+            // TU menangani verifikasi & pengelolaan pendaftar PPDB
+            'tu' => ['persuratan.manage', 'inventaris.manage', 'ppdb.manage', 'ppdb.view'],
+            'kepsek' => ['dashboard.report.view', 'nilai.approve', 'audit.view', 'ppdb.view'],
         ];
 
         foreach ($map as $roleSlug => $permissionSlugs) {

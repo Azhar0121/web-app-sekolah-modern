@@ -26,26 +26,37 @@
     <div class="d-flex">
         <aside class="bg-white border-end vh-100 position-sticky top-0" style="width: 240px; flex-shrink: 0;">
             <div class="p-3">
-                <div class="text-uppercase text-muted small fw-bold mb-2 px-2">Menu Admin</div>
+                <div class="text-uppercase text-muted small fw-bold mb-2 px-2">Menu</div>
                 <ul class="nav nav-pills flex-column gap-1">
-                    <li class="nav-item">
-                        <a href="{{ route('admin.dashboard') }}"
-                           class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : 'text-dark' }}">
-                            Dashboard
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.users.index') }}"
-                           class="nav-link {{ request()->routeIs('admin.users.*') ? 'active' : 'text-dark' }}">
-                            Kelola User
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.roles.index') }}"
-                           class="nav-link {{ request()->routeIs('admin.roles.*') ? 'active' : 'text-dark' }}">
-                            Kelola Role & Permission
-                        </a>
-                    </li>
+                    @if (auth()->user()->hasRole('super-admin'))
+                        <li class="nav-item">
+                            <a href="{{ route('admin.dashboard') }}"
+                               class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : 'text-dark' }}">
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.users.index') }}"
+                               class="nav-link {{ request()->routeIs('admin.users.*') ? 'active' : 'text-dark' }}">
+                                Kelola User
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.roles.index') }}"
+                               class="nav-link {{ request()->routeIs('admin.roles.*') ? 'active' : 'text-dark' }}">
+                                Kelola Role & Permission
+                            </a>
+                        </li>
+                    @endif
+
+                    @if (auth()->user()->hasPermission('ppdb.manage'))
+                        <li class="nav-item">
+                            <a href="{{ route('admin.ppdb.index') }}"
+                               class="nav-link {{ request()->routeIs('admin.ppdb.*') ? 'active' : 'text-dark' }}">
+                                Kelola PPDB
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </aside>
