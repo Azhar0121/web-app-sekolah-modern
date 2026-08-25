@@ -7,11 +7,12 @@
 
 <div class="mb-3">
     <form method="GET" action="{{ route('admin.ppdb.index') }}" class="d-flex gap-2">
-        <select name="status" class="form-select" style="max-width: 240px;" onchange="this.form.submit()">
+        <select name="status" class="form-select" style="max-width: 260px;" onchange="this.form.submit()">
             <option value="">Semua Status</option>
             <option value="submitted" @selected($statusFilter === 'submitted')>Menunggu Verifikasi</option>
             <option value="verified" @selected($statusFilter === 'verified')>Terverifikasi</option>
-            <option value="accepted" @selected($statusFilter === 'accepted')>Diterima</option>
+            <option value="accepted" @selected($statusFilter === 'accepted')>Diterima — Menunggu Daftar Ulang</option>
+            <option value="registered_ulang" @selected($statusFilter === 'registered_ulang')>Daftar Ulang Selesai</option>
             <option value="rejected" @selected($statusFilter === 'rejected')>Ditolak</option>
         </select>
     </form>

@@ -42,13 +42,16 @@
     </div>
 
     <div class="col-md-5">
-        <div class="card border-0 shadow-sm">
+        @if (session('success'))
+            <div class="alert alert-success py-2 small">{{ session('success') }}</div>
+        @endif
+        @if (session('error'))
+            <div class="alert alert-danger py-2 small">{{ session('error') }}</div>
+        @endif
+
+        <div class="card border-0 shadow-sm mb-3">
             <div class="card-body">
                 <h6 class="fw-bold mb-3">Status & Verifikasi</h6>
-
-                @if (session('success'))
-                    <div class="alert alert-success py-2 small">{{ session('success') }}</div>
-                @endif
 
                 <p>Status saat ini: <span class="badge text-bg-secondary">{{ $registration->statusLabel() }}</span></p>
 
@@ -59,28 +62,81 @@
                     </p>
                 @endif
 
-                <form method="POST" action="{{ route('admin.ppdb.update-status', $registration) }}">
-                    @csrf
-                    @method('PUT')
+                {{-- Ubah status verifikasi/approval hanya relevan sebelum "accepted".
+                     Setelah accepted, alur berikutnya adalah daftar ulang (panel di bawah),
+                     bukan ubah status verifikasi lagi. --}}
+                @if (! in_array($registration->status, ['accepted', 'registered_ulang']))
+                    <form method="POST" action="{{ route('admin.ppdb.update-status', $registration) }}">
+                        @csrf
+                        @method('PUT')
 
-                    <div class="mb-2">
-                        <label class="form-label small">Ubah Status</label>
-                        <select name="status" class="form-select" required>
-                            <option value="verified" @selected($registration->status === 'verified')>Terverifikasi</option>
-                            <option value="accepted" @selected($registration->status === 'accepted')>Diterima</option>
-                            <option value="rejected" @selected($registration->status === 'rejected')>Ditolak</option>
-                        </select>
-                    </div>
+                        <div class="mb-2">
+                            <label class="form-label small">Ubah Status</label>
+                            <select name="status" class="form-select" required>
+                                <option value="verified" @selected($registration->status === 'verified')>Terverifikasi</option>
+                                <option value="accepted" @selected($registration->status === 'accepted')>Diterima</option>
+                                <option value="rejected" @selected($registration->status === 'rejected')>Ditolak</option>
+                            </select>
+                        </div>
 
-                    <div class="mb-3">
-                        <label class="form-label small">Catatan (opsional)</label>
-                        <textarea name="notes" class="form-control" rows="3">{{ $registration->notes }}</textarea>
-                    </div>
+                        <div class="mb-3">
+                            <label class="form-label small">Catatan (opsional)</label>
+                            <textarea name="notes" class="form-control" rows="3">{{ $registration->notes }}</textarea>
+                        </div>
 
-                    <button type="submit" class="btn btn-primary w-100">Simpan Perubahan Status</button>
-                </form>
+                        <button type="submit" class="btn btn-primary w-100">Simpan Perubahan Status</button>
+                    </form>
+                @elseif ($registration->notes)
+                    <p class="small text-muted mb-0"><strong>Catatan:</strong> {{ $registration->notes }}</p>
+                @endif
             </div>
         </div>
+
+        {{-- Panel Daftar Ulang & Pembayaran (OFFLINE) — cuma muncul kalau statusnya
+             "accepted" (menunggu daftar ulang) atau sudah "registered_ulang" (riwayat). --}}
+        @if ($registration->status === 'accepted' || $registration->status === 'registered_ulang')
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h6 class="fw-bold mb-1">Daftar Ulang & Pembayaran</h6>
+                    <p class="text-muted small mb-3">
+                        Pembayaran dilakukan siswa secara <strong>offline langsung ke sekolah</strong>.
+                        Form ini hanya untuk mencatat/mengonfirmasi bukti pembayaran yang sudah diterima.
+                    </p>
+
+                    @if ($registration->status === 'registered_ulang')
+                        <div class="alert alert-success py-2 small mb-0">
+                            <strong>Daftar ulang sudah dikonfirmasi.</strong><br>
+                            No. Bukti: {{ $registration->re_registration_reference }}<br>
+                            @if ($registration->re_registration_notes)
+                                Catatan: {{ $registration->re_registration_notes }}<br>
+                            @endif
+                            Dikonfirmasi oleh {{ $registration->reRegistrationConfirmedBy?->name }}
+                            pada {{ $registration->re_registration_confirmed_at?->format('d M Y H:i') }}
+                        </div>
+                    @else
+                        <form method="POST" action="{{ route('admin.ppdb.confirm-re-registration', $registration) }}">
+                            @csrf
+                            @method('PUT')
+
+                            <div class="mb-2">
+                                <label class="form-label small">No. Bukti Pembayaran / Kwitansi</label>
+                                <input type="text" name="re_registration_reference" class="form-control"
+                                       placeholder="Contoh: KW-2026-0142" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label small">Catatan (opsional)</label>
+                                <textarea name="re_registration_notes" class="form-control" rows="2"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-success w-100">
+                                Konfirmasi Daftar Ulang & Pembayaran
+                            </button>
+                        </form>
+                    @endif
+                </div>
+            </div>
+        @endif
     </div>
 </div>
 @endsection

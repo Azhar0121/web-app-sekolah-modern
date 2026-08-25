@@ -49,6 +49,7 @@ Route::middleware(['auth', 'permission:ppdb.manage'])->prefix('admin/ppdb')->nam
     Route::get('/', [AdminPpdbController::class, 'index'])->name('index');
     Route::get('/{ppdbRegistration}', [AdminPpdbController::class, 'show'])->name('show');
     Route::put('/{ppdbRegistration}/status', [AdminPpdbController::class, 'updateStatus'])->name('update-status');
+    Route::put('/{ppdbRegistration}/re-registration', [AdminPpdbController::class, 'confirmReRegistration'])->name('confirm-re-registration');
 });
 
 // ================= PORTAL GURU / WALI KELAS =================

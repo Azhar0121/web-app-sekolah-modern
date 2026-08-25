@@ -17,6 +17,8 @@ class PpdbRegistration extends Model
         'gender', 'birth_place', 'birth_date', 'address', 'phone',
         'parent_name', 'parent_phone', 'previous_school',
         'status', 'notes', 'verified_by', 'verified_at',
+        're_registration_reference', 're_registration_notes',
+        're_registration_confirmed_by', 're_registration_confirmed_at',
     ];
 
     protected function casts(): array
@@ -24,6 +26,7 @@ class PpdbRegistration extends Model
         return [
             'birth_date' => 'date',
             'verified_at' => 'datetime',
+            're_registration_confirmed_at' => 'datetime',
         ];
     }
 
@@ -69,15 +72,30 @@ class PpdbRegistration extends Model
         return $this->belongsTo(User::class, 'verified_by');
     }
 
+    public function reRegistrationConfirmedBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 're_registration_confirmed_by');
+    }
+
     public function statusLabel(): string
     {
         return match ($this->status) {
             'draft' => 'Draft',
             'submitted' => 'Menunggu Verifikasi',
             'verified' => 'Terverifikasi',
-            'accepted' => 'Diterima',
+            'accepted' => 'Diterima — Menunggu Daftar Ulang',
             'rejected' => 'Ditolak',
+            'registered_ulang' => 'Daftar Ulang Selesai',
             default => $this->status,
         };
+    }
+
+    /**
+     * Siswa yang statusnya "accepted" tapi belum konfirmasi daftar ulang —
+     * dipakai untuk menentukan kapan tombol "Konfirmasi Daftar Ulang" muncul di UI.
+     */
+    public function isAwaitingReRegistration(): bool
+    {
+        return $this->status === 'accepted';
     }
 }
