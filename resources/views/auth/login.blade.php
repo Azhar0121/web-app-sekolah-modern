@@ -3,51 +3,308 @@
 @section('title', 'Login - ' . config('app.name'))
 
 @section('content')
-<div class="card shadow-sm border-0">
-    <div class="card-body p-4">
-        <div class="text-center mb-4">
-            <h4 class="fw-bold mb-1">{{ config('app.name') }}</h4>
-            <p class="text-muted small mb-0">Masuk ke portal sekolah</p>
+
+<link rel="stylesheet" href="{{ asset('css/login.css') }}">
+
+<div class="login-page">
+
+    <div class="login-card">
+
+        {{-- =====================================================
+             BAGIAN KIRI - GAMBAR SEKOLAH
+             ===================================================== --}}
+        <div class="login-visual">
+
+            <div class="visual-overlay"></div>
+
+            <div class="visual-content">
+
+                <div class="school-badge">
+                    <span class="badge-dot"></span>
+                    PORTAL RESMI SEKOLAH
+                </div>
+
+                <h1>
+                    Selamat Datang
+                    <span>di Sekolah Modern</span>
+                </h1>
+
+                <div class="visual-line"></div>
+
+                <p>
+                    Sistem informasi sekolah modern yang terintegrasi
+                    untuk mendukung kegiatan akademik, administrasi,
+                    dan komunikasi sekolah.
+                </p>
+
+            </div>
+
         </div>
 
-        @if ($errors->any())
-            <div class="alert alert-danger py-2">
-                @foreach ($errors->all() as $error)
-                    <div class="small">{{ $error }}</div>
-                @endforeach
+
+        {{-- =====================================================
+             BAGIAN KANAN - LOGIN
+             ===================================================== --}}
+        <div class="login-panel">
+
+            <div class="login-content">
+
+                {{-- Logo --}}
+                <div class="school-logo">
+                    <span>{{ strtoupper(substr(config('app.name'), 0, 1)) }}</span>
+                </div>
+
+
+                {{-- Heading --}}
+                <div class="login-heading">
+
+                    <h2>Masuk ke Portal</h2>
+
+                    <p>
+                        Silakan masuk menggunakan akun Anda
+                        untuk mengakses layanan sekolah.
+                    </p>
+
+                </div>
+
+
+                {{-- Error --}}
+                @if ($errors->any())
+
+                    <div class="login-alert">
+
+                        <div class="alert-icon">!</div>
+
+                        <div>
+                            @foreach ($errors->all() as $error)
+                                <div>{{ $error }}</div>
+                            @endforeach
+                        </div>
+
+                    </div>
+
+                @endif
+
+
+                {{-- =================================================
+                     FORM LOGIN
+                     ================================================= --}}
+                <form method="POST" action="{{ url('/login') }}">
+
+                    @csrf
+
+
+                    {{-- EMAIL --}}
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+
+                                <svg
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <rect
+                                        x="3"
+                                        y="5"
+                                        width="18"
+                                        height="14"
+                                        rx="2"
+                                    ></rect>
+
+                                    <path d="m3 7 9 6 9-6"></path>
+                                </svg>
+
+                            </span>
+
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                value="{{ old('email') }}"
+                                class="@error('email') input-error @enderror"
+                                placeholder="Masukkan email Anda"
+                                required
+                                autofocus
+                            >
+
+                        </div>
+
+                        @error('email')
+
+                            <span class="field-error">
+                                {{ $message }}
+                            </span>
+
+                        @enderror
+
+                    </div>
+
+
+                    {{-- PASSWORD --}}
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+
+                                <svg
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <rect
+                                        x="5"
+                                        y="10"
+                                        width="14"
+                                        height="10"
+                                        rx="2"
+                                    ></rect>
+
+                                    <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+
+                                </svg>
+
+                            </span>
+
+                            <input
+                                type="password"
+                                name="password"
+                                id="password"
+                                placeholder="Masukkan password"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    {{-- INGAT SAYA --}}
+                    <div class="login-options">
+
+                        <label class="remember-me">
+
+                            <input
+                                type="checkbox"
+                                name="remember"
+                                id="remember"
+                            >
+
+                            <span class="custom-checkbox"></span>
+
+                            <span>Ingat saya</span>
+
+                        </label>
+
+                    </div>
+
+
+                    {{-- BUTTON --}}
+                    <button
+                        type="submit"
+                        class="login-button"
+                    >
+
+                        <span>Masuk ke Portal</span>
+
+                        <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path d="M5 12h14"></path>
+                            <path d="m13 6 6 6-6 6"></path>
+                        </svg>
+
+                    </button>
+
+                </form>
+
+
+                {{-- =================================================
+                     AKUN DEMO
+                     ================================================= --}}
+                <div class="demo-section">
+
+                    <div class="demo-title">
+
+                        <span></span>
+
+                        Akun Demo
+
+                        <span></span>
+
+                    </div>
+
+                    <p class="demo-password">
+                        Password:
+                        <code>password123</code>
+                    </p>
+
+                    <div class="demo-accounts">
+
+                        <span>admin@sekolah.test</span>
+
+                        <span>guru@sekolah.test</span>
+
+                        <span>siswa@sekolah.test</span>
+
+                        <span>ortu@sekolah.test</span>
+
+                        <span>tu@sekolah.test</span>
+
+                        <span>kepsek@sekolah.test</span>
+
+                    </div>
+
+                </div>
+
+
+                {{-- Footer --}}
+                <div class="login-footer">
+
+                    <span></span>
+
+                    <p>
+                        Sistem Informasi Sekolah Modern
+                    </p>
+
+                    <span></span>
+
+                </div>
+
             </div>
-        @endif
 
-        <form method="POST" action="{{ url('/login') }}">
-            @csrf
+        </div>
 
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" name="email" id="email"
-                       class="form-control @error('email') is-invalid @enderror"
-                       value="{{ old('email') }}" required autofocus>
-            </div>
-
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" name="password" id="password"
-                       class="form-control" required>
-            </div>
-
-            <div class="form-check mb-3">
-                <input type="checkbox" name="remember" id="remember" class="form-check-input">
-                <label for="remember" class="form-check-label small">Ingat saya</label>
-            </div>
-
-            <button type="submit" class="btn btn-primary w-100">Masuk</button>
-        </form>
-
-        <hr>
-        <p class="text-muted small mb-0 text-center">
-            Akun demo (password: <code>password123</code>):<br>
-            admin@sekolah.test &middot; guru@sekolah.test &middot; siswa@sekolah.test<br>
-            ortu@sekolah.test &middot; tu@sekolah.test &middot; kepsek@sekolah.test
-        </p>
     </div>
+
 </div>
+
 @endsection

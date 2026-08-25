@@ -1,0 +1,888 @@
+/* =========================================================
+   WEB SEKOLAH MODERN
+   FORM PENDAFTARAN PPDB
+   ========================================================= */
+
+:root {
+    --navy: #071b35;
+    --navy-2: #0b294d;
+    --blue: #1769d5;
+    --blue-dark: #0d4fa8;
+    --blue-light: #eaf3ff;
+
+    --white: #ffffff;
+    --background: #eef4fb;
+
+    --text: #10223d;
+    --muted: #62748a;
+
+    --border: #d8e2ee;
+
+    --danger: #d9363e;
+    --danger-bg: #fff1f2;
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
+    font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color: var(--text);
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(23, 105, 213, 0.12),
+            transparent 34%
+        ),
+        var(--background);
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.ppdb-form-page {
+    width: min(1050px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    padding: 28px 0 40px;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.form-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 22px;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 10px 17px;
+
+    border-radius: 9px;
+
+    background: var(--navy);
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    box-shadow:
+        0 6px 15px rgba(7, 27, 53, 0.15);
+
+    transition: 0.2s ease;
+}
+
+.back-button span {
+    font-size: 19px;
+}
+
+.back-button:hover {
+    background: var(--blue);
+
+    color: white;
+
+    transform: translateY(-1px);
+}
+
+.header-badge {
+    padding: 9px 15px;
+
+    border-radius: 30px;
+
+    background: var(--blue-light);
+    color: var(--blue);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.form-hero {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    overflow: hidden;
+
+    padding: 38px 45px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--navy) 0%,
+            var(--navy-2) 55%,
+            var(--blue) 100%
+        );
+
+    box-shadow:
+        0 17px 38px rgba(7, 27, 53, 0.20);
+}
+
+.form-hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    right: -80px;
+    top: -150px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.form-hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 170px;
+    height: 170px;
+
+    right: 180px;
+    bottom: -130px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.form-hero > div {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-label {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: #8fc3ff;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+}
+
+.form-hero h1 {
+    margin: 0 0 10px;
+
+    color: white;
+
+    font-size: 38px;
+    font-weight: 800;
+
+    letter-spacing: -0.8px;
+}
+
+.form-hero p {
+    max-width: 600px;
+
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.82);
+
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.hero-period {
+    min-width: 275px;
+
+    padding: 17px 19px;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.10);
+
+    backdrop-filter: blur(8px);
+}
+
+.hero-period span {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #9ecbff;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+}
+
+.hero-period strong {
+    display: block;
+
+    color: white;
+
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.error-box {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 13px;
+
+    margin-top: 20px;
+    padding: 17px 20px;
+
+    border: 1px solid #ffc8cc;
+
+    border-radius: 13px;
+
+    background: var(--danger-bg);
+
+    color: var(--danger);
+}
+
+.error-icon {
+    width: 29px;
+    height: 29px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: var(--danger);
+    color: white;
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.error-box strong {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 15px;
+}
+
+.error-box ul {
+    margin: 0;
+
+    padding-left: 18px;
+}
+
+.error-box li {
+    margin-bottom: 3px;
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   FORM CARD
+   ========================================================= */
+
+.form-card {
+    margin-top: 20px;
+
+    padding: 28px 30px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 17px;
+
+    background: white;
+
+    box-shadow:
+        0 10px 27px rgba(7, 27, 53, 0.07);
+}
+
+
+/* =========================================================
+   SECTION HEADING
+   ========================================================= */
+
+.section-heading {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 25px;
+
+    padding-bottom: 18px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.section-number {
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--navy),
+            var(--blue)
+        );
+
+    color: white;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    box-shadow:
+        0 7px 15px rgba(23, 105, 213, 0.18);
+}
+
+.section-heading span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: var(--blue);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 0.9px;
+}
+
+.section-heading h2 {
+    margin: 0;
+
+    color: var(--navy);
+
+    font-size: 21px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   FORM GRID
+   ========================================================= */
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 19px;
+}
+
+.form-field {
+    min-width: 0;
+}
+
+.form-field.full {
+    grid-column: 1 / -1;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.form-field label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--text);
+
+    font-size: 14px;
+    font-weight: 750;
+}
+
+.form-field label span {
+    color: var(--danger);
+}
+
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    width: 100%;
+
+    border: 1px solid #cfdbe8;
+
+    border-radius: 9px;
+
+    outline: none;
+
+    background: #fbfdff;
+
+    color: var(--text);
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.form-field input,
+.form-field select {
+    height: 46px;
+
+    padding: 0 13px;
+}
+
+.form-field textarea {
+    min-height: 105px;
+
+    padding: 12px 13px;
+
+    resize: vertical;
+
+    line-height: 1.5;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+    color: #94a4b7;
+}
+
+.form-field input:hover,
+.form-field select:hover,
+.form-field textarea:hover {
+    border-color: #b8c9dc;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    border-color: var(--blue);
+
+    background: white;
+
+    box-shadow:
+        0 0 0 3px rgba(23, 105, 213, 0.11);
+}
+
+
+/* =========================================================
+   DOCUMENT INFO
+   ========================================================= */
+
+.document-info {
+    margin-bottom: 18px;
+
+    padding: 14px 16px;
+
+    border-left: 4px solid var(--blue);
+
+    border-radius: 8px;
+
+    background: var(--blue-light);
+}
+
+.document-info strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: var(--navy);
+
+    font-size: 14px;
+}
+
+.document-info p {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   FILE FIELD
+   ========================================================= */
+
+.file-field {
+    display: grid;
+
+    grid-template-columns: 1fr 1.2fr;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 16px 0;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.file-field:last-child {
+    border-bottom: none;
+
+    padding-bottom: 0;
+}
+
+.file-info strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: var(--text);
+
+    font-size: 14px;
+}
+
+.file-info span {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+.file-field input[type="file"] {
+    width: 100%;
+
+    padding: 9px;
+
+    border: 1px solid #cfdbe8;
+
+    border-radius: 8px;
+
+    background: #fbfdff;
+
+    color: var(--muted);
+
+    font-family: inherit;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   SUBMIT AREA
+   ========================================================= */
+
+.form-submit {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-top: 22px;
+
+    padding: 22px 24px;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eaf3ff,
+            #f5f9ff
+        );
+
+    border: 1px solid #d4e4f6;
+}
+
+.submit-info strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: var(--navy);
+
+    font-size: 15px;
+}
+
+.submit-info span {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   SUBMIT BUTTON
+   ========================================================= */
+
+.submit-button {
+    min-width: 210px;
+    height: 49px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    padding: 0 20px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--navy-2),
+            var(--blue)
+        );
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 18px rgba(23, 105, 213, 0.22);
+
+    transition: 0.2s ease;
+}
+
+.submit-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px rgba(23, 105, 213, 0.30);
+}
+
+.submit-button svg {
+    transition: 0.2s ease;
+}
+
+.submit-button:hover svg {
+    transform: translateX(3px);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.form-footer {
+    margin-top: 28px;
+
+    text-align: center;
+}
+
+.form-footer div {
+    width: 100%;
+    height: 1px;
+
+    margin-bottom: 15px;
+
+    background: var(--border);
+}
+
+.form-footer p {
+    margin: 0;
+
+    color: #7b8da3;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 750px) {
+
+    .ppdb-form-page {
+        width: min(100% - 30px, 650px);
+    }
+
+    .form-hero {
+        flex-direction: column;
+        align-items: flex-start;
+
+        padding: 32px;
+    }
+
+    .hero-period {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .form-submit {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .submit-button {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 560px) {
+
+    .ppdb-form-page {
+        width: calc(100% - 24px);
+
+        padding-top: 14px;
+    }
+
+    .form-header {
+        margin-bottom: 15px;
+    }
+
+    .back-button {
+        padding: 9px 13px;
+
+        font-size: 13px;
+    }
+
+    .header-badge {
+        padding: 8px 10px;
+
+        font-size: 10px;
+    }
+
+    .form-hero {
+        padding: 27px 22px;
+
+        border-radius: 16px;
+    }
+
+    .form-hero h1 {
+        font-size: 31px;
+    }
+
+    .form-hero p {
+        font-size: 14px;
+    }
+
+    .hero-period strong {
+        font-size: 14px;
+    }
+
+    .form-card {
+        padding: 22px 18px;
+
+        border-radius: 14px;
+    }
+
+    .section-heading {
+        gap: 11px;
+
+        margin-bottom: 21px;
+    }
+
+    .section-number {
+        width: 39px;
+        height: 39px;
+    }
+
+    .section-heading h2 {
+        font-size: 19px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+
+        gap: 17px;
+    }
+
+    .form-field.full {
+        grid-column: auto;
+    }
+
+    .file-field {
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+    }
+
+    .form-submit {
+        padding: 19px;
+    }
+
+    .submit-info span {
+        font-size: 12px;
+    }
+
+}

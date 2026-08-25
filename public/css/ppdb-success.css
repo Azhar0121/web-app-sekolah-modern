@@ -1,0 +1,573 @@
+/* =========================================================
+   WEB SEKOLAH MODERN
+   PPDB - PENDAFTARAN BERHASIL
+   ========================================================= */
+
+:root {
+    --navy: #071b35;
+    --navy-2: #0b294d;
+
+    --blue: #1769d5;
+    --blue-dark: #0d4fa8;
+    --blue-light: #eaf3ff;
+
+    --green: #16a34a;
+    --green-light: #ecfdf3;
+
+    --white: #ffffff;
+
+    --background: #eef4fb;
+
+    --text: #10223d;
+    --muted: #66758a;
+
+    --border: #dce5f0;
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+
+body {
+    font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color: var(--text);
+    background: var(--background);
+}
+
+
+/* =========================================================
+   HALAMAN
+   ========================================================= */
+
+.success-page {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 45px 25px;
+
+    position: relative;
+
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(23, 105, 213, 0.14),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 90%,
+            rgba(7, 27, 53, 0.10),
+            transparent 30%
+        ),
+        var(--background);
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.success-card {
+    width: min(650px, 100%);
+
+    padding: 42px 45px 30px;
+
+    position: relative;
+
+    background: var(--white);
+
+    border: 1px solid rgba(220, 229, 240, 0.9);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 25px 60px rgba(7, 27, 53, 0.12),
+        0 8px 25px rgba(7, 27, 53, 0.06);
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   ICON SUCCESS
+   ========================================================= */
+
+.success-icon {
+    width: 70px;
+    height: 70px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #16a34a,
+            #22c55e
+        );
+
+    color: white;
+
+    box-shadow:
+        0 10px 25px rgba(22, 163, 74, 0.25);
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.success-header {
+    margin-bottom: 27px;
+}
+
+
+.success-label {
+    display: inline-block;
+
+    margin-bottom: 8px;
+
+    color: var(--blue);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+}
+
+
+.success-header h1 {
+    margin: 0 0 10px;
+
+    color: var(--navy);
+
+    font-size: 30px;
+    line-height: 1.2;
+
+    font-weight: 800;
+}
+
+
+.success-header p {
+    max-width: 500px;
+
+    margin: 0 auto;
+
+    color: var(--muted);
+
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   NOMOR PENDAFTARAN
+   ========================================================= */
+
+.registration-box {
+    padding: 22px 20px;
+
+    margin-bottom: 18px;
+
+    border: 1px solid #cfe0f5;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f4f9ff,
+            #eaf3ff
+        );
+}
+
+
+.registration-label {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: var(--blue);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 0.9px;
+}
+
+
+.registration-number {
+    color: var(--navy);
+
+    font-size: 27px;
+    line-height: 1.3;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    word-break: break-word;
+}
+
+
+.registration-box p {
+    margin: 9px 0 0;
+
+    color: var(--muted);
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.status-box {
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    margin-bottom: 25px;
+
+    padding: 14px 17px;
+
+    border: 1px solid #bbf7d0;
+
+    border-radius: 12px;
+
+    background: var(--green-light);
+
+    text-align: left;
+}
+
+
+.status-icon {
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: #dcfce7;
+
+    color: var(--green);
+}
+
+
+.status-box span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #587064;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+.status-box strong {
+    display: block;
+
+    color: #15803d;
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+.success-actions {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.btn {
+    min-height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    padding: 12px 20px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-family: inherit;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+/* =========================================================
+   PRIMARY BUTTON
+   ========================================================= */
+
+.btn-primary {
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--navy-2),
+            var(--blue)
+        );
+
+    box-shadow:
+        0 8px 18px rgba(23, 105, 213, 0.22);
+}
+
+
+.btn-primary:hover {
+    color: white;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px rgba(23, 105, 213, 0.30);
+}
+
+
+.btn-primary svg {
+    transition: transform 0.2s ease;
+}
+
+
+.btn-primary:hover svg {
+    transform: translateX(3px);
+}
+
+
+/* =========================================================
+   SECONDARY BUTTON
+   ========================================================= */
+
+.btn-secondary {
+    color: var(--navy);
+
+    background: #f5f8fc;
+
+    border: 1px solid var(--border);
+}
+
+
+.btn-secondary:hover {
+    color: var(--blue);
+
+    background: var(--blue-light);
+
+    border-color: #c7dcf6;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.success-footer {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 25px;
+}
+
+
+.success-footer span {
+    flex: 1;
+
+    height: 1px;
+
+    background: var(--border);
+}
+
+
+.success-footer p {
+    margin: 0;
+
+    color: #8998aa;
+
+    font-size: 11px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .success-page {
+        padding: 30px 18px;
+    }
+
+    .success-card {
+        padding: 35px 28px 25px;
+
+        border-radius: 20px;
+    }
+
+    .success-header h1 {
+        font-size: 27px;
+    }
+
+    .success-header p {
+        font-size: 14px;
+    }
+
+    .registration-number {
+        font-size: 24px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .success-page {
+        min-height: 100vh;
+
+        padding: 20px 12px;
+    }
+
+    .success-card {
+        padding: 30px 20px 22px;
+
+        border-radius: 18px;
+    }
+
+    .success-icon {
+        width: 62px;
+        height: 62px;
+
+        margin-bottom: 17px;
+    }
+
+    .success-header {
+        margin-bottom: 22px;
+    }
+
+    .success-label {
+        font-size: 11px;
+    }
+
+    .success-header h1 {
+        font-size: 24px;
+    }
+
+    .success-header p {
+        font-size: 13px;
+    }
+
+    .registration-box {
+        padding: 19px 14px;
+    }
+
+    .registration-label {
+        font-size: 10px;
+    }
+
+    .registration-number {
+        font-size: 21px;
+        letter-spacing: 0.5px;
+    }
+
+    .registration-box p {
+        font-size: 12px;
+    }
+
+    .status-box {
+        padding: 12px;
+
+        gap: 10px;
+    }
+
+    .status-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .status-box span {
+        font-size: 11px;
+    }
+
+    .status-box strong {
+        font-size: 14px;
+    }
+
+    .btn {
+        min-height: 46px;
+
+        font-size: 13px;
+    }
+
+    .success-footer {
+        margin-top: 20px;
+    }
+
+    .success-footer p {
+        font-size: 10px;
+    }
+}
