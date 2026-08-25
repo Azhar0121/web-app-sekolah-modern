@@ -12,9 +12,6 @@ use Illuminate\View\View;
 
 class PpdbController extends Controller
 {
-    /**
-     * Halaman info PPDB (menampilkan periode aktif saat ini).
-     */
     public function index(): View
     {
         $activePeriod = PpdbPeriod::where('is_active', true)
@@ -67,17 +64,13 @@ class PpdbController extends Controller
             'status' => 'submitted',
         ]);
 
-        // Upload dokumen (opsional di tahap ini, supaya form tetap bisa disubmit
-        // meski calon siswa belum siap semua berkasnya — bisa dilengkapi menyusul).
         foreach ($request->file('documents', []) as $index => $file) {
-            // Slot upload yang tidak diisi calon siswa akan tetap muncul di array
-            // tapi bukan file valid — dilewati saja, bukan bagian yang wajib.
             if (! $file || ! $file->isValid()) {
                 continue;
             }
 
             if ($file->getSize() > 2 * 1024 * 1024 || ! in_array($file->getClientOriginalExtension(), ['pdf', 'jpg', 'jpeg', 'png'])) {
-                continue; // silently skip file yang tidak sesuai (bisa diperketat lagi nanti jadi pesan error eksplisit)
+                continue;
             }
 
             $path = $file->store('ppdb-documents', 'public');

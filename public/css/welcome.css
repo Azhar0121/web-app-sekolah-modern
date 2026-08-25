@@ -1473,3 +1473,112 @@ a {
         height: 240px;
     }
 }
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+
+    list-style: none;
+}
+
+.nav-menu a {
+    color: rgba(255, 255, 255, 0.65);
+
+    font-size: 12px;
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+.nav-menu a:hover {
+    color: white;
+}
+
+.nav-menu a.active {
+    color: #69aaff;
+}
+
+.nav-menu a.nav-disabled {
+    color: rgba(255, 255, 255, 0.28);
+    cursor: not-allowed;
+}
+
+.nav-menu a.nav-disabled:hover {
+    color: rgba(255, 255, 255, 0.28);
+}
+
+@media (max-width: 950px) {
+    .nav-menu {
+        display: none;
+    }
+}
+
+.hero-cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+
+    margin-top: 32px;
+}
+
+.hero-cta-group .main-login-button,
+.hero-cta-group .main-ppdb-button {
+    margin-top: 0;
+}
+
+.main-ppdb-button {
+    width: 260px;
+
+    padding: 10px 12px;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    border-radius: 11px;
+
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    color: white;
+
+    transition: 0.3s ease;
+}
+
+.main-ppdb-button:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-3px);
+}
+
+.main-ppdb-button .login-icon {
+    background: #22a35b;
+}
+
+.main-ppdb-button .login-text small {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.main-ppdb-button .login-arrow {
+    color: #69aaff;
+}
+
+.portal-cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+
+    position: relative;
+    z-index: 5;
+}
+
+@media (max-width: 800px) {
+    .portal-cta-group {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .portal-cta-group .portal-login-button {
+        width: 100%;
+    }
+}

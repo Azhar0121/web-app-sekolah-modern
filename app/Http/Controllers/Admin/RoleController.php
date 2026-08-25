@@ -20,7 +20,6 @@ class RoleController extends Controller
 
     public function edit(Role $role): View
     {
-        // Semua permission dikelompokkan per modul, supaya checkbox-nya rapi di UI.
         $permissionsByModule = Permission::orderBy('module')->orderBy('name')->get()->groupBy('module');
         $assignedPermissionIds = $role->permissions()->pluck('permissions.id')->all();
 
