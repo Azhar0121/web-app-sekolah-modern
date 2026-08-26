@@ -29,6 +29,8 @@ Route::prefix('ppdb')->name('ppdb.')->group(function () {
     Route::get('/sukses/{registrationNumber}', [PpdbController::class, 'success'])->name('sukses');
     Route::get('/cek-status', [PpdbController::class, 'checkStatusForm'])->name('cek-status.form');
     Route::post('/cek-status', [PpdbController::class, 'checkStatus'])->name('cek-status');
+    Route::get('/lupa-nomor', [PpdbController::class, 'forgotNumberForm'])->name('lupa-nomor.form');
+    Route::post('/lupa-nomor', [PpdbController::class, 'forgotNumber'])->name('lupa-nomor');
 });
 
 // ================= PORTAL SUPER ADMIN =================

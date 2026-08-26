@@ -2,150 +2,30 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Pendaftaran Berhasil - {{ config('app.name') }}</title>
-
-    <link rel="stylesheet" href="{{ asset('css/base.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/ppdb-success.css') }}">
 </head>
+<body style="font-family: sans-serif; max-width: 700px; margin: 40px auto;">
+    <h2 style="color: green;">Pendaftaran Berhasil Dikirim</h2>
 
-<body>
+    <p>Nomor Pendaftaran Anda:</p>
+    <p style="font-size: 24px; font-weight: bold;">{{ $registration->registration_number }}</p>
 
-    <main class="success-page">
+    <p>
+        Nomor ini juga sudah kami kirimkan ke email
+        <strong>{{ $registration->email }}</strong>. Simpan email tersebut untuk
+        mengecek status pendaftaran Anda nanti.
+    </p>
+    <p>Status saat ini: <strong>{{ $registration->statusLabel() }}</strong></p>
 
-        <div class="success-card">
+    <p>
+        <a href="{{ route('ppdb.cek-status.form') }}">Cek Status Pendaftaran</a> |
+        <a href="{{ route('ppdb.lupa-nomor.form') }}">Lupa Nomor Pendaftaran?</a> |
+        <a href="{{ url('/') }}">Kembali ke Beranda</a>
+    </p>
 
-            {{-- ICON SUCCESS --}}
-            <div class="success-icon">
-                <svg
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <path d="M20 6 9 17l-5-5"></path>
-                </svg>
-            </div>
-
-
-            {{-- JUDUL --}}
-            <div class="success-header">
-                <span class="success-label">
-                    PENDAFTARAN PPDB
-                </span>
-
-                <h1>
-                    Pendaftaran Berhasil!
-                </h1>
-
-                <p>
-                    Data pendaftaran Anda telah berhasil dikirim.
-                    Silakan simpan nomor pendaftaran berikut untuk
-                    mengecek status pendaftaran Anda.
-                </p>
-            </div>
-
-
-            {{-- NOMOR PENDAFTARAN --}}
-            <div class="registration-box">
-
-                <span class="registration-label">
-                    NOMOR PENDAFTARAN ANDA
-                </span>
-
-                <div class="registration-number">
-                    {{ $registration->registration_number }}
-                </div>
-
-                <p>
-                    Simpan nomor ini dengan baik untuk keperluan
-                    pengecekan status pendaftaran.
-                </p>
-
-            </div>
-
-
-            {{-- STATUS --}}
-            <div class="status-box">
-
-                <div class="status-icon">
-                    <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    >
-                        <circle cx="12" cy="12" r="9"></circle>
-                        <path d="M12 7v5l3 2"></path>
-                    </svg>
-                </div>
-
-                <div>
-                    <span>Status Pendaftaran</span>
-                    <strong>
-                        {{ $registration->statusLabel() }}
-                    </strong>
-                </div>
-
-            </div>
-
-
-            {{-- ACTION --}}
-            <div class="success-actions">
-
-                <a
-                    href="{{ route('ppdb.cek-status.form') }}"
-                    class="btn btn-primary"
-                >
-                    Cek Status Pendaftaran
-                    <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    >
-                        <path d="M5 12h14"></path>
-                        <path d="m13 6 6 6-6 6"></path>
-                    </svg>
-                </a>
-
-                <a
-                    href="{{ url('/') }}"
-                    class="btn btn-secondary"
-                >
-                    &larr; Kembali ke Beranda
-                </a>
-
-            </div>
-
-
-            {{-- FOOTER --}}
-            <div class="success-footer">
-                <span></span>
-
-                <p>
-                    {{ config('app.name') }}
-                </p>
-
-                <span></span>
-            </div>
-
-        </div>
-
-    </main>
-
+    <hr>
+    <p style="color:#888; font-size: 13px;">
+        [Placeholder — tampilan akan dipercantik dengan Bootstrap di sesi styling berikutnya]
+    </p>
 </body>
 </html>

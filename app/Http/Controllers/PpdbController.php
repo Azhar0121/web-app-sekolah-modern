@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PpdbRegistrationSubmitted;
 use App\Models\PpdbDocument;
 use App\Models\PpdbPeriod;
 use App\Models\PpdbRegistration;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 
 class PpdbController extends Controller
@@ -51,6 +53,9 @@ class PpdbController extends Controller
             'birth_date' => ['required', 'date'],
             'address' => ['required', 'string'],
             'phone' => ['required', 'string', 'max:20'],
+            // Wajib diisi — dipakai untuk mengirim nomor pendaftaran & sebagai
+            // salah satu jalur pemulihan kalau nomor pendaftaran hilang/lupa.
+            'email' => ['required', 'email', 'max:255'],
             'parent_name' => ['required', 'string', 'max:255'],
             'parent_phone' => ['required', 'string', 'max:20'],
             'previous_school' => ['required', 'string', 'max:255'],
@@ -83,9 +88,11 @@ class PpdbController extends Controller
             ]);
         }
 
+        $this->sendRegistrationEmail($registration);
+
         return redirect()
             ->route('ppdb.sukses', $registration->registration_number)
-            ->with('success', 'Pendaftaran berhasil dikirim.');
+            ->with('success', 'Pendaftaran berhasil dikirim. Nomor pendaftaran juga sudah dikirim ke email Anda.');
     }
 
     public function success(string $registrationNumber): View
@@ -112,5 +119,36 @@ class PpdbController extends Controller
             ->first();
 
         return view('ppdb.cek-status', compact('registration'));
+    }
+
+    public function forgotNumberForm(): View
+    {
+        return view('ppdb.lupa-nomor');
+    }
+
+    public function forgotNumber(Request $request): View
+    {
+        $validated = $request->validate([
+            'full_name' => ['required', 'string', 'max:255'],
+            'birth_date' => ['required', 'date'],
+        ]);
+
+        $registrations = PpdbRegistration::whereRaw('LOWER(full_name) = ?', [strtolower(trim($validated['full_name']))])
+            ->whereDate('birth_date', $validated['birth_date'])
+            ->orderByDesc('created_at')
+            ->get();
+
+        return view('ppdb.lupa-nomor', compact('registrations'));
+    }
+
+    private function sendRegistrationEmail(PpdbRegistration $registration): void
+    {
+        try {
+            Mail::to($registration->email)->send(new PpdbRegistrationSubmitted($registration));
+        } catch (\Throwable $e) {
+            Log::warning('Gagal mengirim email nomor pendaftaran PPDB: ' . $e->getMessage(), [
+                'registration_id' => $registration->id,
+            ]);
+        }
     }
 }

@@ -246,47 +246,7 @@
                     </button>
 
                 </form>
-
-
-                {{-- =================================================
-                     AKUN DEMO
-                     ================================================= --}}
-                <div class="demo-section">
-
-                    <div class="demo-title">
-
-                        <span></span>
-
-                        Akun Demo
-
-                        <span></span>
-
-                    </div>
-
-                    <p class="demo-password">
-                        Password:
-                        <code>password123</code>
-                    </p>
-
-                    <div class="demo-accounts">
-
-                        <span>admin@sekolah.test</span>
-
-                        <span>guru@sekolah.test</span>
-
-                        <span>siswa@sekolah.test</span>
-
-                        <span>ortu@sekolah.test</span>
-
-                        <span>tu@sekolah.test</span>
-
-                        <span>kepsek@sekolah.test</span>
-
-                    </div>
-
-                </div>
-
-
+                
                 {{-- Footer --}}
                 <div class="login-footer">
 
