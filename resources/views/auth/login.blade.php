@@ -4,6 +4,7 @@
 
 @section('content')
 
+<link rel="stylesheet" href="{{ asset('css/base.css') }}">
 <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 
 <div class="login-page">

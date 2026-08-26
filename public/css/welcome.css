@@ -1,1584 +1,896 @@
-/* =========================================================
-   MODERN SCHOOL WELCOME PAGE
-   ========================================================= */
-
 :root {
-    --navy: #071b35;
-    --navy-2: #0b294d;
-    --blue: #1769d5;
-    --blue-light: #eaf3ff;
-
-    --white: #ffffff;
-    --background: #f7f9fc;
-
-    --text: #10223d;
-    --muted: #66758a;
-
-    --border: #e3e9f1;
+  --background: #f7f9fc;
+  --muted: #66758a;
+  --border: #e3e9f1
 }
-
-
-/* =========================================================
-   RESET
-   ========================================================= */
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0
 }
-
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth
 }
-
 body {
-    font-family:
-        Inter,
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-    color: var(--text);
-    background: white;
-
-    overflow-x: hidden;
+  color: var(--text);
+  background: #fff;
+  overflow-x: hidden
 }
-
 a {
-    text-decoration: none;
+  text-decoration: none
 }
-
-
-/* =========================================================
-   NAVBAR
-   ========================================================= */
-
 .school-navbar {
-    height: 76px;
-
-    background: var(--navy);
-
-    border-bottom:
-        1px solid rgba(255, 255, 255, 0.08);
+  height: 76px;
+  background: var(--navy);
+  border-bottom: 1px solid rgba(255,255,255,.08)
 }
-
 .navbar-container {
-    max-width: 1180px;
-
-    height: 100%;
-
-    margin: auto;
-
-    padding: 0 25px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  max-width: 1180px;
+  height: 100%;
+  margin: auto;
+  padding: 0 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between
 }
-
 .school-brand {
-    display: flex;
-    align-items: center;
-
-    gap: 12px;
-
-    color: white;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff
 }
-
 .brand-logo {
-    width: 42px;
-    height: 42px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 10px;
-
-    background: #1769d5;
-
-    font-size: 17px;
-    font-weight: 800;
-
-    box-shadow:
-        0 7px 20px rgba(0, 105, 230, 0.25);
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #1769d5;
+  font-size: 17px;
+  font-weight: 800;
+  box-shadow: 0 7px 20px rgba(0,105,230,.25)
 }
-
 .brand-info {
-    display: flex;
-    flex-direction: column;
-
-    gap: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px
 }
-
 .brand-info strong {
-    font-size: 14px;
-    font-weight: 800;
+  font-size: 14px;
+  font-weight: 800
 }
-
 .brand-info span {
-    color:
-        rgba(255, 255, 255, 0.45);
-
-    font-size: 9px;
-
-    letter-spacing: 0.9px;
-
-    text-transform: uppercase;
+  color: rgba(255,255,255,.45);
+  font-size: 9px;
+  letter-spacing: .9px;
+  text-transform: uppercase
 }
-
-
-/* NAV LOGIN */
-
 .nav-login {
-    display: flex;
-    align-items: center;
-
-    gap: 13px;
-
-    padding: 10px 15px;
-
-    border:
-        1px solid rgba(255, 255, 255, 0.18);
-
-    border-radius: 9px;
-
-    color: white;
-
-    font-size: 12px;
-    font-weight: 700;
-
-    transition: 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 10px 15px;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 9px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  transition: .25s ease
 }
-
 .nav-login:hover {
-    background: white;
-
-    color: var(--navy);
+  background: #fff;
+  color: var(--navy)
 }
-
 .nav-arrow {
-    font-size: 17px;
+  font-size: 17px
 }
-
-
-/* =========================================================
-   HERO
-   ========================================================= */
-
 .hero {
-    position: relative;
-
-    background:
-        linear-gradient(
-            115deg,
-            #071b35 0%,
-            #0a2749 58%,
-            #103c70 100%
-        );
-
-    overflow: hidden;
+  position: relative;
+  background: linear-gradient(115deg,#071b35 0,#0a2749 58%,#103c70 100%);
+  overflow: hidden
 }
-
 .hero::before {
-    content: "";
-
-    position: absolute;
-
-    width: 600px;
-    height: 600px;
-
-    right: -260px;
-    top: -250px;
-
-    border-radius: 50%;
-
-    border:
-        1px solid rgba(255, 255, 255, 0.08);
-
-    box-shadow:
-        0 0 0 55px rgba(255, 255, 255, 0.018),
-        0 0 0 110px rgba(255, 255, 255, 0.012);
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  right: -260px;
+  top: -250px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 0 0 55px rgba(255,255,255,.018),0 0 0 110px rgba(255,255,255,.012)
 }
-
 .hero-container {
-    max-width: 1180px;
-
-    min-height: 620px;
-
-    margin: auto;
-
-    padding: 70px 25px;
-
-    display: grid;
-
-    grid-template-columns:
-        0.9fr
-        1.1fr;
-
-    gap: 65px;
-
-    align-items: center;
-
-    position: relative;
-    z-index: 2;
+  max-width: 1180px;
+  min-height: 620px;
+  margin: auto;
+  padding: 70px 25px;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 65px;
+  align-items: center;
+  position: relative;
+  z-index: 2
 }
-
-
-/* HERO TEXT */
-
 .hero-content {
-    max-width: 570px;
+  max-width: 570px
 }
-
 .hero-eyebrow {
-    display: flex;
-    align-items: center;
-
-    gap: 9px;
-
-    margin-bottom: 22px;
-
-    color:
-        rgba(255, 255, 255, 0.62);
-
-    font-size: 9px;
-
-    font-weight: 800;
-
-    letter-spacing: 1.8px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 22px;
+  color: rgba(255,255,255,.62);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.8px
 }
-
 .hero-eyebrow span {
-    width: 25px;
-    height: 2px;
-
-    background: #4d9cff;
+  width: 25px;
+  height: 2px;
+  background: #4d9cff
 }
-
 .hero h1 {
-    color: white;
-
-    font-size:
-        clamp(43px, 5vw, 64px);
-
-    line-height: 1.06;
-
-    letter-spacing: -3px;
-
-    font-weight: 800;
+  color: #fff;
+  font-size: clamp(43px, 5vw, 64px);
+  line-height: 1.06;
+  letter-spacing: -3px;
+  font-weight: 800
 }
-
 .hero h1 span {
-    display: block;
-
-    color: #69aaff;
+  display: block;
+  color: #69aaff
 }
-
 .hero-description {
-    max-width: 520px;
-
-    margin-top: 22px;
-
-    color:
-        rgba(255, 255, 255, 0.63);
-
-    font-size: 14px;
-
-    line-height: 1.8;
+  max-width: 520px;
+  margin-top: 22px;
+  color: rgba(255,255,255,.63);
+  font-size: 14px;
+  line-height: 1.8
 }
-
 .hero-description strong {
-    color: white;
+  color: #fff
 }
-
-
-/* =========================================================
-   MAIN LOGIN BUTTON
-   ========================================================= */
-
 .main-login-button {
-    width: 260px;
-
-    margin-top: 32px;
-
-    padding: 10px 12px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 13px;
-
-    border-radius: 11px;
-
-    background: white;
-
-    color: var(--navy);
-
-    box-shadow:
-        0 18px 40px rgba(0, 0, 0, 0.22);
-
-    transition: 0.3s ease;
+  width: 260px;
+  margin-top: 32px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  border-radius: 11px;
+  background: #fff;
+  color: var(--navy);
+  box-shadow: 0 18px 40px rgba(0,0,0,.22);
+  transition: .3s ease
 }
-
 .main-login-button:hover {
-    width: 275px;
-
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 22px 45px rgba(0, 0, 0, 0.3);
+  width: 275px;
+  transform: translateY(-3px);
+  box-shadow: 0 22px 45px rgba(0,0,0,.3)
 }
-
 .login-icon {
-    width: 42px;
-    height: 42px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 9px;
-
-    background: var(--blue);
-
-    color: white;
-
-    font-size: 20px;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background: var(--blue);
+  color: #fff;
+  font-size: 20px
 }
-
 .login-text {
-    flex: 1;
-
-    display: flex;
-    flex-direction: column;
-
-    gap: 2px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px
 }
-
 .login-text small {
-    color: #8b98a9;
-
-    font-size: 8px;
-
-    letter-spacing: 0.8px;
-
-    text-transform: uppercase;
+  color: #8b98a9;
+  font-size: 8px;
+  letter-spacing: .8px;
+  text-transform: uppercase
 }
-
 .login-text strong {
-    font-size: 13px;
+  font-size: 13px
 }
-
 .login-arrow {
-    color: var(--blue);
-
-    font-size: 20px;
-
-    padding-right: 5px;
+  color: var(--blue);
+  font-size: 20px;
+  padding-right: 5px
 }
-
 .hero-note {
-    margin-top: 13px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 7px;
-
-    color:
-        rgba(255, 255, 255, 0.42);
-
-    font-size: 10px;
+  margin-top: 13px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: rgba(255,255,255,.42);
+  font-size: 10px
 }
-
 .check {
-    width: 17px;
-    height: 17px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background:
-        rgba(72, 202, 138, 0.13);
-
-    color: #62d99c;
-
-    font-size: 9px;
+  width: 17px;
+  height: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(72,202,138,.13);
+  color: #62d99c;
+  font-size: 9px
 }
-
-
-/* =========================================================
-   HERO IMAGE
-   ========================================================= */
-
 .hero-image-wrapper {
-    position: relative;
-
-    padding: 15px 15px 25px;
+  position: relative;
+  padding: 15px 15px 25px
 }
-
 .image-frame {
-    height: 435px;
-
-    position: relative;
-
-    overflow: hidden;
-
-    border-radius: 18px;
-
-    border:
-        7px solid rgba(255, 255, 255, 0.09);
-
-    box-shadow:
-        0 35px 70px rgba(0, 0, 0, 0.3);
+  height: 435px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 7px solid rgba(255,255,255,.09);
+  box-shadow: 0 35px 70px rgba(0,0,0,.3)
 }
-
 .image-frame img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    display: block;
-
-    transition: 0.5s ease;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: .5s ease
 }
-
 .image-frame:hover img {
-    transform: scale(1.035);
+  transform: scale(1.035)
 }
-
 .image-gradient {
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            to top,
-            rgba(3, 16, 32, 0.85),
-            transparent 65%
-        );
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,rgba(3,16,32,.85),transparent 65%)
 }
-
 .image-caption {
-    position: absolute;
-
-    left: 25px;
-    right: 25px;
-    bottom: 23px;
-
-    display: flex;
-    flex-direction: column;
-
-    gap: 5px;
-
-    color: white;
+  position: absolute;
+  left: 25px;
+  right: 25px;
+  bottom: 23px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: #fff
 }
-
 .image-caption span {
-    color: #76b3ff;
-
-    font-size: 8px;
-
-    font-weight: 800;
-
-    letter-spacing: 1.8px;
+  color: #76b3ff;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 1.8px
 }
-
 .image-caption strong {
-    max-width: 350px;
-
-    font-size: 16px;
-
-    line-height: 1.4;
+  max-width: 350px;
+  font-size: 16px;
+  line-height: 1.4
 }
-
-
-/* IMAGE BADGE */
-
 .image-badge {
-    position: absolute;
-
-    left: -8px;
-    bottom: 3px;
-
-    padding: 13px 16px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 11px;
-
-    border-radius: 11px;
-
-    background: white;
-
-    box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  left: -8px;
+  bottom: 3px;
+  padding: 13px 16px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  border-radius: 11px;
+  background: #fff;
+  box-shadow: 0 15px 35px rgba(0,0,0,.2)
 }
-
 .badge-number {
-    width: 35px;
-    height: 35px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 8px;
-
-    background: var(--blue-light);
-
-    color: var(--blue);
-
-    font-size: 10px;
-
-    font-weight: 800;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--blue-light);
+  color: var(--blue);
+  font-size: 10px;
+  font-weight: 800
 }
-
 .image-badge div:last-child {
-    display: flex;
-    flex-direction: column;
-
-    gap: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px
 }
-
 .image-badge small {
-    color: #9aa5b4;
-
-    font-size: 7px;
-
-    letter-spacing: 1px;
+  color: #9aa5b4;
+  font-size: 7px;
+  letter-spacing: 1px
 }
-
 .image-badge strong {
-    color: var(--navy);
-
-    font-size: 11px;
+  color: var(--navy);
+  font-size: 11px
 }
-
-
-/* =========================================================
-   QUICK INFORMATION
-   ========================================================= */
-
 .quick-section {
-    position: relative;
-
-    z-index: 5;
-
-    margin-top: -1px;
-
-    background: white;
-
-    border-bottom:
-        1px solid var(--border);
+  position: relative;
+  z-index: 5;
+  margin-top: -1px;
+  background: #fff;
+  border-bottom: 1px solid var(--border)
 }
-
 .quick-container {
-    max-width: 1180px;
-
-    margin: auto;
-
-    padding: 22px 25px;
-
-    display: grid;
-
-    grid-template-columns:
-        1.25fr
-        1fr
-        1fr
-        1fr;
-
-    align-items: center;
+  max-width: 1180px;
+  margin: auto;
+  padding: 22px 25px;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr 1fr 1fr;
+  align-items: center
 }
-
 .quick-intro {
-    display: flex;
-    flex-direction: column;
-
-    gap: 5px;
-
-    padding-right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-right: 30px
 }
-
 .quick-intro span {
-    color: var(--blue);
-
-    font-size: 8px;
-
-    font-weight: 800;
-
-    letter-spacing: 1.5px;
+  color: var(--blue);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 1.5px
 }
-
 .quick-intro strong {
-    max-width: 220px;
-
-    color: var(--navy);
-
-    font-size: 13px;
-
-    line-height: 1.4;
+  max-width: 220px;
+  color: var(--navy);
+  font-size: 13px;
+  line-height: 1.4
 }
-
 .quick-item {
-    min-height: 50px;
-
-    padding-left: 25px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 11px;
-
-    border-left:
-        1px solid var(--border);
+  min-height: 50px;
+  padding-left: 25px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  border-left: 1px solid var(--border)
 }
-
 .quick-icon {
-    width: 34px;
-    height: 34px;
-
-    flex-shrink: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 8px;
-
-    background: var(--blue-light);
-
-    color: var(--blue);
-
-    font-size: 13px;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--blue-light);
+  color: var(--blue);
+  font-size: 13px
 }
-
 .quick-item div:last-child {
-    display: flex;
-    flex-direction: column;
-
-    gap: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px
 }
-
 .quick-item strong {
-    color: var(--navy);
-
-    font-size: 11px;
+  color: var(--navy);
+  font-size: 11px
 }
-
 .quick-item span {
-    color: #8995a5;
-
-    font-size: 9px;
+  color: #8995a5;
+  font-size: 9px
 }
-
-
-/* =========================================================
-   ABOUT
-   ========================================================= */
-
 .about-section {
-    padding: 95px 25px;
-
-    background: var(--background);
+  padding: 95px 25px;
+  background: var(--background)
 }
-
 .about-container {
-    max-width: 1100px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns:
-        0.9fr
-        1.1fr;
-
-    gap: 80px;
-
-    align-items: center;
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 80px;
+  align-items: center
 }
-
 .about-image {
-    height: 340px;
-
-    position: relative;
-
-    overflow: visible;
+  height: 340px;
+  position: relative;
+  overflow: visible
 }
-
 .about-image::before {
-    content: "";
-
-    position: absolute;
-
-    width: 100%;
-    height: 100%;
-
-    left: -13px;
-    top: 13px;
-
-    border:
-        1px solid #dce6f2;
-
-    border-radius: 16px;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: -13px;
+  top: 13px;
+  border: 1px solid #dce6f2;
+  border-radius: 16px
 }
-
 .about-image img {
-    width: 100%;
-    height: 100%;
-
-    position: relative;
-
-    object-fit: cover;
-
-    border-radius: 16px;
-
-    display: block;
-
-    box-shadow:
-        0 20px 45px rgba(24, 45, 72, 0.12);
+  width: 100%;
+  height: 100%;
+  position: relative;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+  box-shadow: 0 20px 45px rgba(24,45,72,.12)
 }
-
 .about-number {
-    position: absolute;
-
-    right: -18px;
-    bottom: -18px;
-
-    padding: 15px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 10px;
-
-    background: var(--navy);
-
-    border-radius: 10px;
-
-    color: white;
-
-    box-shadow:
-        0 15px 30px rgba(4, 23, 48, 0.2);
+  position: absolute;
+  right: -18px;
+  bottom: -18px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--navy);
+  border-radius: 10px;
+  color: #fff;
+  box-shadow: 0 15px 30px rgba(4,23,48,.2)
 }
-
 .about-number strong {
-    font-size: 18px;
+  font-size: 18px
 }
-
 .about-number span {
-    color:
-        rgba(255, 255, 255, 0.55);
-
-    font-size: 8px;
-
-    line-height: 1.4;
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.8px;
+  color: rgba(255,255,255,.55);
+  font-size: 8px;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: .8px
 }
-
 .about-content {
-    max-width: 500px;
+  max-width: 500px
 }
-
 .section-label {
-    color: var(--blue);
-
-    font-size: 9px;
-
-    font-weight: 800;
-
-    letter-spacing: 1.8px;
+  color: var(--blue);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.8px
 }
-
 .about-content h2 {
-    margin-top: 13px;
-
-    font-size: 40px;
-
-    line-height: 1.15;
-
-    letter-spacing: -1.8px;
+  margin-top: 13px;
+  font-size: 40px;
+  line-height: 1.15;
+  letter-spacing: -1.8px
 }
-
 .about-content h2 span {
-    color: var(--blue);
+  color: var(--blue)
 }
-
 .about-content p {
-    margin-top: 17px;
-
-    color: var(--muted);
-
-    font-size: 13px;
-
-    line-height: 1.9;
+  margin-top: 17px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.9
 }
-
 .about-line {
-    width: 45px;
-    height: 2px;
-
-    margin-top: 25px;
-
-    background: var(--blue);
+  width: 45px;
+  height: 2px;
+  margin-top: 25px;
+  background: var(--blue)
 }
-
 .about-caption {
-    display: block;
-
-    margin-top: 10px;
-
-    color: #9aa5b4;
-
-    font-size: 9px;
-
-    letter-spacing: 1px;
-
-    text-transform: uppercase;
+  display: block;
+  margin-top: 10px;
+  color: #9aa5b4;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase
 }
-
-
-/* =========================================================
-   PORTAL CTA - PREMIUM SCHOOL STYLE
-   ========================================================= */
-
 .portal-section {
-    padding: 85px 25px;
-
-    background:
-        linear-gradient(
-            180deg,
-            #ffffff 0%,
-            #f7f9fc 100%
-        );
-
-    position: relative;
+  padding: 85px 25px;
+  background: linear-gradient(180deg,#fff 0,#f7f9fc 100%);
+  position: relative
 }
-
-
-/* MAIN CONTAINER */
-
 .portal-container {
-    max-width: 1120px;
-
-    min-height: 235px;
-
-    margin: auto;
-
-    padding: 48px 55px;
-
-    position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 50px;
-
-    overflow: hidden;
-
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            120deg,
-            #06182f 0%,
-            #0a294d 52%,
-            #0e3b70 100%
-        );
-
-    box-shadow:
-        0 25px 55px rgba(7, 27, 53, 0.16);
+  max-width: 1120px;
+  min-height: 235px;
+  margin: auto;
+  padding: 48px 55px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: linear-gradient(120deg,#06182f 0,#0a294d 52%,#0e3b70 100%);
+  box-shadow: 0 25px 55px rgba(7,27,53,.16)
 }
-
-
-/* BLUE LIGHT EFFECT */
-
 .portal-container::before {
-    content: "";
-
-    position: absolute;
-
-    width: 330px;
-    height: 330px;
-
-    right: 100px;
-    top: -170px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(42, 133, 255, 0.28),
-            rgba(42, 133, 255, 0) 70%
-        );
-
-    pointer-events: none;
+  content: "";
+  position: absolute;
+  width: 330px;
+  height: 330px;
+  right: 100px;
+  top: -170px;
+  border-radius: 50%;
+  background: radial-gradient(circle,rgba(42,133,255,.28),rgba(42,133,255,0) 70%);
+  pointer-events: none
 }
-
-
-/* LARGE DECORATIVE CIRCLE */
-
 .portal-container::after {
-    content: "";
-
-    position: absolute;
-
-    width: 230px;
-    height: 230px;
-
-    right: -95px;
-    bottom: -150px;
-
-    border-radius: 50%;
-
-    border:
-        1px solid rgba(255, 255, 255, 0.09);
-
-    box-shadow:
-        0 0 0 35px rgba(255, 255, 255, 0.025),
-        0 0 0 70px rgba(255, 255, 255, 0.018);
-
-    pointer-events: none;
+  content: "";
+  position: absolute;
+  width: 230px;
+  height: 230px;
+  right: -95px;
+  bottom: -150px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.09);
+  box-shadow: 0 0 0 35px rgba(255,255,255,.025),0 0 0 70px rgba(255,255,255,.018);
+  pointer-events: none
 }
-
-
-/* LEFT CONTENT */
-
 .portal-container > div {
-    position: relative;
-
-    z-index: 2;
+  position: relative;
+  z-index: 2
 }
-
-
-/* SMALL LABEL */
-
 .portal-label {
-    display: flex;
-
-    align-items: center;
-
-    gap: 9px;
-
-    color: #67aaff;
-
-    font-size: 9px;
-
-    font-weight: 800;
-
-    letter-spacing: 2px;
-
-    text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #67aaff;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase
 }
-
-
-/* SMALL LINE BEFORE LABEL */
-
 .portal-label::before {
-    content: "";
-
-    width: 25px;
-    height: 2px;
-
-    background: #4d9cff;
-
-    border-radius: 10px;
+  content: "";
+  width: 25px;
+  height: 2px;
+  background: #4d9cff;
+  border-radius: 10px
 }
-
-
-/* HEADING */
-
 .portal-container h2 {
-    max-width: 610px;
-
-    margin-top: 12px;
-
-    color: white;
-
-    font-size: clamp(30px, 4vw, 43px);
-
-    line-height: 1.08;
-
-    letter-spacing: -1.7px;
-
-    font-weight: 800;
+  max-width: 610px;
+  margin-top: 12px;
+  color: #fff;
+  font-size: clamp(30px, 4vw, 43px);
+  line-height: 1.08;
+  letter-spacing: -1.7px;
+  font-weight: 800
 }
-
-
-/* BLUE PART */
-
 .portal-container h2 span {
-    color: #67aaff;
+  color: #67aaff
 }
-
-
-/* DESCRIPTION */
-
 .portal-container p {
-    margin-top: 13px;
-
-    color:
-        rgba(255, 255, 255, 0.53);
-
-    font-size: 12px;
-
-    line-height: 1.7;
+  margin-top: 13px;
+  color: rgba(255,255,255,.53);
+  font-size: 12px;
+  line-height: 1.7
 }
-
-
-/* =========================================================
-   PORTAL BUTTON
-   ========================================================= */
-
 .portal-login-button {
-    min-width: 205px;
-
-    position: relative;
-
-    z-index: 5;
-
-    padding: 7px 8px 7px 20px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 18px;
-
-    border-radius: 11px;
-
-    background: white;
-
-    color: var(--navy);
-
-    font-size: 12px;
-
-    font-weight: 800;
-
-    box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.22);
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
+  min-width: 205px;
+  position: relative;
+  z-index: 5;
+  padding: 7px 8px 7px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  border-radius: 11px;
+  background: #fff;
+  color: var(--navy);
+  font-size: 12px;
+  font-weight: 800;
+  box-shadow: 0 15px 35px rgba(0,0,0,.22);
+  transition: transform .25s ease,box-shadow .25s ease
 }
-
-
-/* BUTTON HOVER */
-
 .portal-login-button:hover {
-    transform: translateY(-4px);
-
-    color: var(--navy);
-
-    box-shadow:
-        0 20px 42px rgba(0, 0, 0, 0.3);
+  transform: translateY(-4px);
+  color: var(--navy);
+  box-shadow: 0 20px 42px rgba(0,0,0,.3)
 }
-
-
-/* ARROW BOX */
-
 .portal-login-button strong {
-    width: 40px;
-    height: 40px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    flex-shrink: 0;
-
-    border-radius: 8px;
-
-    background: var(--blue);
-
-    color: white;
-
-    font-size: 20px;
-
-    font-weight: 400;
-
-    transition:
-        transform 0.25s ease,
-        background 0.25s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: var(--blue);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 400;
+  transition: transform .25s ease,background .25s ease
 }
-
-
-/* ARROW HOVER */
-
 .portal-login-button:hover strong {
-    transform: translateX(3px);
-
-    background: #0f5dc7;
+  transform: translateX(3px);
+  background: #0f5dc7
 }
-
-
-/* =========================================================
-   SUBTLE TOP LINE
-   ========================================================= */
-
 .portal-container {
-    isolation: isolate;
+  isolation: isolate
 }
-
 .portal-container .portal-label,
 .portal-container h2,
 .portal-container p {
-    position: relative;
-
-    z-index: 3;
+  position: relative;
+  z-index: 3
 }
-
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-
-@media (max-width: 800px) {
-
-    .portal-section {
-        padding: 65px 20px;
-    }
-
-    .portal-container {
-        min-height: auto;
-
-        padding: 40px 35px;
-
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        gap: 30px;
-    }
-
-    .portal-login-button {
-        width: 100%;
-
-        max-width: 280px;
-    }
-}
-
-
-@media (max-width: 500px) {
-
-    .portal-section {
-        padding: 50px 16px;
-    }
-
-    .portal-container {
-        padding: 32px 25px;
-
-        border-radius: 16px;
-    }
-
-    .portal-container h2 {
-        font-size: 29px;
-
-        letter-spacing: -1.2px;
-    }
-
-    .portal-container p {
-        font-size: 11px;
-    }
-
-    .portal-login-button {
-        max-width: none;
-
-        padding-left: 16px;
-    }
-}
-
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
-
-.school-footer {
-    background: #06162c;
-
-    color: white;
-}
-
-.footer-container {
-    max-width: 1180px;
-
-    margin: auto;
-
-    padding: 24px 25px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-}
-
-.footer-brand {
-    display: flex;
-    align-items: center;
-
-    gap: 10px;
-}
-
-.footer-logo {
-    width: 35px;
-    height: 35px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 8px;
-
-    background: var(--blue);
-
-    font-size: 12px;
-    font-weight: 800;
-}
-
-.footer-brand div:last-child {
-    display: flex;
+@media (max-width:800px) {
+  .portal-section {
+    padding: 65px 20px
+  }
+  .portal-container {
+    min-height: auto;
+    padding: 40px 35px;
     flex-direction: column;
-
-    gap: 3px;
+    align-items: flex-start;
+    gap: 30px
+  }
+  .portal-login-button {
+    width: 100%;
+    max-width: 280px
+  }
 }
-
+@media (max-width:500px) {
+  .portal-section {
+    padding: 50px 16px
+  }
+  .portal-container {
+    padding: 32px 25px;
+    border-radius: 16px
+  }
+  .portal-container h2 {
+    font-size: 29px;
+    letter-spacing: -1.2px
+  }
+  .portal-container p {
+    font-size: 11px
+  }
+  .portal-login-button {
+    max-width: none;
+    padding-left: 16px
+  }
+}
+.school-footer {
+  background: #06162c;
+  color: #fff
+}
+.footer-container {
+  max-width: 1180px;
+  margin: auto;
+  padding: 24px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px
+}
+.footer-logo {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--blue);
+  font-size: 12px;
+  font-weight: 800
+}
+.footer-brand div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 3px
+}
 .footer-brand strong {
-    font-size: 11px;
+  font-size: 11px
 }
-
 .footer-brand span {
-    color:
-        rgba(255, 255, 255, 0.35);
-
-    font-size: 8px;
-
-    letter-spacing: 0.7px;
-
-    text-transform: uppercase;
+  color: rgba(255,255,255,.35);
+  font-size: 8px;
+  letter-spacing: .7px;
+  text-transform: uppercase
 }
-
 .footer-copy {
-    color:
-        rgba(255, 255, 255, 0.35);
-
-    font-size: 9px;
+  color: rgba(255,255,255,.35);
+  font-size: 9px
 }
-
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-
-@media (max-width: 950px) {
-
-    .hero-container {
-        grid-template-columns: 1fr;
-
-        gap: 55px;
-
-        padding-top: 60px;
-        padding-bottom: 70px;
-    }
-
-    .hero-content {
-        max-width: 700px;
-    }
-
-    .hero-image-wrapper {
-        max-width: 700px;
-    }
-
-    .quick-container {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .quick-intro {
-        padding: 15px 0;
-    }
-
-    .quick-item {
-        padding: 15px 20px;
-    }
-
-    .about-container {
-        gap: 50px;
-    }
+@media (max-width:950px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 55px;
+    padding-top: 60px;
+    padding-bottom: 70px
+  }
+  .hero-content {
+    max-width: 700px
+  }
+  .hero-image-wrapper {
+    max-width: 700px
+  }
+  .quick-container {
+    grid-template-columns: 1fr 1fr
+  }
+  .quick-intro {
+    padding: 15px 0
+  }
+  .quick-item {
+    padding: 15px 20px
+  }
+  .about-container {
+    gap: 50px
+  }
 }
-
-
-@media (max-width: 700px) {
-
-    .school-navbar {
-        height: 68px;
-    }
-
-    .navbar-container {
-        padding: 0 17px;
-    }
-
-    .brand-info span {
-        display: none;
-    }
-
-    .brand-logo {
-        width: 39px;
-        height: 39px;
-    }
-
-    .nav-login {
-        padding: 9px 11px;
-    }
-
-    .nav-login span:first-child {
-        font-size: 10px;
-    }
-
-    .hero-container {
-        padding: 55px 18px 65px;
-    }
-
-    .hero h1 {
-        font-size: 40px;
-
-        letter-spacing: -2px;
-    }
-
-    .hero-description {
-        font-size: 13px;
-    }
-
-    .main-login-button {
-        width: 100%;
-        max-width: 280px;
-    }
-
-    .hero-image-wrapper {
-        padding: 5px 5px 20px;
-    }
-
-    .image-frame {
-        height: 320px;
-    }
-
-    .image-badge {
-        left: -4px;
-    }
-
-    .quick-container {
-        grid-template-columns: 1fr;
-
-        padding: 15px 18px;
-    }
-
-    .quick-intro {
-        padding: 12px 0 18px;
-    }
-
-    .quick-item {
-        border-left: none;
-
-        border-top:
-            1px solid var(--border);
-
-        padding: 14px 0;
-    }
-
-    .about-section {
-        padding: 70px 18px;
-    }
-
-    .about-container {
-        grid-template-columns: 1fr;
-
-        gap: 50px;
-    }
-
-    .about-image {
-        height: 280px;
-    }
-
-    .about-content h2 {
-        font-size: 32px;
-    }
-
-    .portal-section {
-        padding: 55px 18px;
-    }
-
-    .portal-container {
-        padding: 32px 24px;
-
-        flex-direction: column;
-
-        align-items: flex-start;
-    }
-
-    .portal-container h2 {
-        font-size: 27px;
-    }
-
-    .portal-login-button {
-        width: 100%;
-    }
-
-    .footer-container {
-        padding: 22px 18px;
-
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        gap: 15px;
-    }
+@media (max-width:700px) {
+  .school-navbar {
+    height: 68px
+  }
+  .navbar-container {
+    padding: 0 17px
+  }
+  .brand-info span {
+    display: none
+  }
+  .brand-logo {
+    width: 39px;
+    height: 39px
+  }
+  .nav-login {
+    padding: 9px 11px
+  }
+  .nav-login span:first-child {
+    font-size: 10px
+  }
+  .hero-container {
+    padding: 55px 18px 65px
+  }
+  .hero h1 {
+    font-size: 40px;
+    letter-spacing: -2px
+  }
+  .hero-description {
+    font-size: 13px
+  }
+  .main-login-button {
+    width: 100%;
+    max-width: 280px
+  }
+  .hero-image-wrapper {
+    padding: 5px 5px 20px
+  }
+  .image-frame {
+    height: 320px
+  }
+  .image-badge {
+    left: -4px
+  }
+  .quick-container {
+    grid-template-columns: 1fr;
+    padding: 15px 18px
+  }
+  .quick-intro {
+    padding: 12px 0 18px
+  }
+  .quick-item {
+    border-left: none;
+    border-top: 1px solid var(--border);
+    padding: 14px 0
+  }
+  .about-section {
+    padding: 70px 18px
+  }
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 50px
+  }
+  .about-image {
+    height: 280px
+  }
+  .about-content h2 {
+    font-size: 32px
+  }
+  .portal-section {
+    padding: 55px 18px
+  }
+  .portal-container {
+    padding: 32px 24px;
+    flex-direction: column;
+    align-items: flex-start
+  }
+  .portal-container h2 {
+    font-size: 27px
+  }
+  .portal-login-button {
+    width: 100%
+  }
+  .footer-container {
+    padding: 22px 18px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px
+  }
 }
-
-
-@media (max-width: 420px) {
-
-    .hero h1 {
-        font-size: 35px;
-    }
-
-    .hero-eyebrow {
-        font-size: 8px;
-    }
-
-    .image-frame {
-        height: 270px;
-    }
-
-    .image-caption strong {
-        font-size: 13px;
-    }
-
-    .about-image {
-        height: 240px;
-    }
+@media (max-width:420px) {
+  .hero h1 {
+    font-size: 35px
+  }
+  .hero-eyebrow {
+    font-size: 8px
+  }
+  .image-frame {
+    height: 270px
+  }
+  .image-caption strong {
+    font-size: 13px
+  }
+  .about-image {
+    height: 240px
+  }
 }
-
 .nav-menu {
-    display: flex;
-    align-items: center;
-    gap: 26px;
-
-    list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  list-style: none
 }
-
 .nav-menu a {
-    color: rgba(255, 255, 255, 0.65);
-
-    font-size: 12px;
-    font-weight: 600;
-
-    transition: 0.2s ease;
+  color: rgba(255,255,255,.65);
+  font-size: 12px;
+  font-weight: 600;
+  transition: .2s ease
 }
-
 .nav-menu a:hover {
-    color: white;
+  color: #fff
 }
-
 .nav-menu a.active {
-    color: #69aaff;
+  color: #69aaff
 }
-
 .nav-menu a.nav-disabled {
-    color: rgba(255, 255, 255, 0.28);
-    cursor: not-allowed;
+  color: rgba(255,255,255,.28);
+  cursor: not-allowed
 }
-
 .nav-menu a.nav-disabled:hover {
-    color: rgba(255, 255, 255, 0.28);
+  color: rgba(255,255,255,.28)
 }
-
-@media (max-width: 950px) {
-    .nav-menu {
-        display: none;
-    }
+@media (max-width:950px) {
+  .nav-menu {
+    display: none
+  }
 }
-
 .hero-cta-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-
-    margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 32px
 }
-
 .hero-cta-group .main-login-button,
 .hero-cta-group .main-ppdb-button {
-    margin-top: 0;
+  margin-top: 0
 }
-
 .main-ppdb-button {
-    width: 260px;
-
-    padding: 10px 12px;
-
-    display: flex;
-    align-items: center;
-    gap: 13px;
-
-    border-radius: 11px;
-
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-
-    color: white;
-
-    transition: 0.3s ease;
+  width: 260px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  border-radius: 11px;
+  background: 0 0;
+  border: 1px solid rgba(255,255,255,.25);
+  color: #fff;
+  transition: .3s ease
 }
-
 .main-ppdb-button:hover {
-    background: rgba(255, 255, 255, 0.08);
-    transform: translateY(-3px);
+  background: rgba(255,255,255,.08);
+  transform: translateY(-3px)
 }
-
 .main-ppdb-button .login-icon {
-    background: #22a35b;
+  background: #22a35b
 }
-
 .main-ppdb-button .login-text small {
-    color: rgba(255, 255, 255, 0.5);
+  color: rgba(255,255,255,.5)
 }
-
 .main-ppdb-button .login-arrow {
-    color: #69aaff;
+  color: #69aaff
 }
-
 .portal-cta-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-
-    position: relative;
-    z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  position: relative;
+  z-index: 5
 }
-
-@media (max-width: 800px) {
-    .portal-cta-group {
-        width: 100%;
-        flex-direction: column;
-    }
-
-    .portal-cta-group .portal-login-button {
-        width: 100%;
-    }
+@media (max-width:800px) {
+  .portal-cta-group {
+    width: 100%;
+    flex-direction: column
+  }
+  .portal-cta-group .portal-login-button {
+    width: 100%
+  }
 }

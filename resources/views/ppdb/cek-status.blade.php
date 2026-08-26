@@ -13,6 +13,7 @@
         Cek Status PPDB - {{ config('app.name') }}
     </title>
 
+    <link rel="stylesheet" href="{{ asset('css/base.css') }}">
     <link
         rel="stylesheet"
         href="{{ asset('css/ppdb-status.css') }}"
