@@ -10,7 +10,7 @@ class PpdbPeriod extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'start_date', 'end_date', 'quota', 'is_active'];
+    protected $fillable = ['name', 'start_date', 'end_date', 'quota', 're_registration_days', 'is_active'];
 
     protected function casts(): array
     {
@@ -26,10 +26,6 @@ class PpdbPeriod extends Model
         return $this->hasMany(PpdbRegistration::class);
     }
 
-    /**
-     * Apakah periode ini masih menerima pendaftaran (aktif + dalam rentang tanggal
-     * + kuota belum penuh, kalau kuota diset).
-     */
     public function isOpenForRegistration(): bool
     {
         if (! $this->is_active) {

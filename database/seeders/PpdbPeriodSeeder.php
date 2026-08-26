@@ -15,6 +15,7 @@ class PpdbPeriodSeeder extends Seeder
                 'start_date' => now()->subDays(10),
                 'end_date' => now()->addMonths(2),
                 'quota' => 100,
+                're_registration_days' => 7, // batas waktu daftar ulang: 7 hari kalender setelah diterima
                 'is_active' => true,
             ]
         );

@@ -14,9 +14,10 @@ class PpdbRegistration extends Model
 
     protected $fillable = [
         'ppdb_period_id', 'registration_number', 'full_name', 'nisn', 'nik',
-        'gender', 'birth_place', 'birth_date', 'address', 'phone',
+        'gender', 'birth_place', 'birth_date', 'address', 'phone', 'email',
         'parent_name', 'parent_phone', 'previous_school',
         'status', 'notes', 'verified_by', 'verified_at',
+        'accepted_at', 're_registration_deadline',
         're_registration_reference', 're_registration_notes',
         're_registration_confirmed_by', 're_registration_confirmed_at',
     ];
@@ -26,6 +27,8 @@ class PpdbRegistration extends Model
         return [
             'birth_date' => 'date',
             'verified_at' => 'datetime',
+            'accepted_at' => 'datetime',
+            're_registration_deadline' => 'date',
             're_registration_confirmed_at' => 'datetime',
         ];
     }
@@ -39,9 +42,6 @@ class PpdbRegistration extends Model
         });
     }
 
-    /**
-     * Format: PPDB-{tahun}-{nomor urut 5 digit}, contoh: PPDB-2026-00001
-     */
     public static function generateRegistrationNumber(): string
     {
         $year = now()->year;
@@ -90,12 +90,20 @@ class PpdbRegistration extends Model
         };
     }
 
-    /**
-     * Siswa yang statusnya "accepted" tapi belum konfirmasi daftar ulang —
-     * dipakai untuk menentukan kapan tombol "Konfirmasi Daftar Ulang" muncul di UI.
-     */
     public function isAwaitingReRegistration(): bool
     {
         return $this->status === 'accepted';
+    }
+
+    public function isReRegistrationOverdue(): bool
+    {
+        return $this->isAwaitingReRegistration()
+            && $this->re_registration_deadline !== null
+            && now()->toDateString() > $this->re_registration_deadline->toDateString();
+    }
+
+    public function reRegistrationDeadlineLabel(): ?string
+    {
+        return $this->re_registration_deadline?->translatedFormat('d F Y');
     }
 }

@@ -19,6 +19,7 @@
                     <tr><th>Tempat, Tanggal Lahir</th><td>{{ $registration->birth_place }}, {{ $registration->birth_date->format('d M Y') }}</td></tr>
                     <tr><th>Alamat</th><td>{{ $registration->address }}</td></tr>
                     <tr><th>No. HP</th><td>{{ $registration->phone }}</td></tr>
+                    <tr><th>Email</th><td>{{ $registration->email }}</td></tr>
                     <tr><th>Orang Tua/Wali</th><td>{{ $registration->parent_name }} ({{ $registration->parent_phone }})</td></tr>
                     <tr><th>Asal Sekolah</th><td>{{ $registration->previous_school }}</td></tr>
                 </table>
@@ -62,9 +63,6 @@
                     </p>
                 @endif
 
-                {{-- Ubah status verifikasi/approval hanya relevan sebelum "accepted".
-                     Setelah accepted, alur berikutnya adalah daftar ulang (panel di bawah),
-                     bukan ubah status verifikasi lagi. --}}
                 @if (! in_array($registration->status, ['accepted', 'registered_ulang']))
                     <form method="POST" action="{{ route('admin.ppdb.update-status', $registration) }}">
                         @csrf
@@ -77,6 +75,11 @@
                                 <option value="accepted" @selected($registration->status === 'accepted')>Diterima</option>
                                 <option value="rejected" @selected($registration->status === 'rejected')>Ditolak</option>
                             </select>
+                            <small class="text-muted">
+                                Kalau dipilih "Diterima", batas waktu daftar ulang akan otomatis
+                                dihitung ({{ $registration->period->re_registration_days ?? 7 }} hari
+                                dari hari ini) dan email notifikasi otomatis terkirim ke calon siswa.
+                            </small>
                         </div>
 
                         <div class="mb-3">
@@ -92,9 +95,27 @@
             </div>
         </div>
 
-        {{-- Panel Daftar Ulang & Pembayaran (OFFLINE) — cuma muncul kalau statusnya
-             "accepted" (menunggu daftar ulang) atau sudah "registered_ulang" (riwayat). --}}
         @if ($registration->status === 'accepted' || $registration->status === 'registered_ulang')
+            <div class="card border-0 shadow-sm mb-3">
+                <div class="card-body">
+                    <h6 class="fw-bold mb-2">Jadwal Daftar Ulang</h6>
+                    <p class="mb-1">
+                        Diterima pada: <strong>{{ $registration->accepted_at?->format('d M Y') }}</strong>
+                    </p>
+                    <p class="mb-0">
+                        Batas waktu daftar ulang:
+                        <strong>{{ $registration->reRegistrationDeadlineLabel() }}</strong>
+                    </p>
+
+                    @if ($registration->isReRegistrationOverdue())
+                        <div class="alert alert-warning py-2 small mt-2 mb-0">
+                            &#9888; Sudah melewati batas waktu daftar ulang, tapi konfirmasi tetap
+                            bisa dilakukan kalau sekolah memutuskan memberi kelonggaran.
+                        </div>
+                    @endif
+                </div>
+            </div>
+
             <div class="card border-0 shadow-sm">
                 <div class="card-body">
                     <h6 class="fw-bold mb-1">Daftar Ulang & Pembayaran</h6>

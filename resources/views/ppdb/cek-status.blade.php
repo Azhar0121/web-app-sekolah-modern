@@ -30,6 +30,20 @@
             <h3>Hasil Pencarian</h3>
             <p><strong>Nama:</strong> {{ $registration->full_name }}</p>
             <p><strong>Status:</strong> {{ $registration->statusLabel() }}</p>
+
+            @if ($registration->status === 'accepted')
+                <div style="background: #fff8e6; border: 1px solid #ffe6a8; border-radius: 8px; padding: 14px; margin: 12px 0;">
+                    <p style="margin: 0 0 4px;"><strong>Batas Waktu Daftar Ulang:</strong></p>
+                    <p style="font-size: 18px; font-weight: bold; margin: 0; color: #b8860b;">
+                        {{ $registration->reRegistrationDeadlineLabel() }}
+                    </p>
+                    <p style="margin: 8px 0 0; font-size: 13px; color: #555;">
+                        Silakan datang langsung ke sekolah sebelum tanggal tersebut untuk
+                        menyelesaikan daftar ulang & pembayaran.
+                    </p>
+                </div>
+            @endif
+
             @if ($registration->notes)
                 <p><strong>Catatan:</strong> {{ $registration->notes }}</p>
             @endif

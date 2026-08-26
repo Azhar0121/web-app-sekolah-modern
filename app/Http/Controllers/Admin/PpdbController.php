@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\PpdbAccepted;
 use App\Models\PpdbRegistration;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 
 class PpdbController extends Controller
@@ -30,11 +33,6 @@ class PpdbController extends Controller
         return view('admin.ppdb.show', ['registration' => $ppdbRegistration]);
     }
 
-    /**
-     * Approval workflow berlapis: submitted -> verified -> accepted/rejected.
-     * TU melakukan verifikasi data, keputusan akhir diterima/ditolak juga
-     * lewat aksi ini.
-     */
     public function updateStatus(Request $request, PpdbRegistration $ppdbRegistration): RedirectResponse
     {
         $validated = $request->validate([
@@ -42,24 +40,33 @@ class PpdbController extends Controller
             'notes' => ['nullable', 'string', 'max:1000'],
         ]);
 
-        $ppdbRegistration->update([
+        $updateData = [
             'status' => $validated['status'],
             'notes' => $validated['notes'] ?? $ppdbRegistration->notes,
             'verified_by' => auth()->id(),
             'verified_at' => now(),
-        ]);
+        ];
+
+        // Begitu status jadi "accepted", otomatis hitung batas waktu daftar ulang
+        // berdasarkan pengaturan hari di periode PPDB terkait (default 7 hari).
+        if ($validated['status'] === 'accepted') {
+            $reRegistrationDays = $ppdbRegistration->period->re_registration_days ?? 7;
+
+            $updateData['accepted_at'] = now();
+            $updateData['re_registration_deadline'] = now()->addDays($reRegistrationDays)->toDateString();
+        }
+
+        $ppdbRegistration->update($updateData);
+
+        if ($validated['status'] === 'accepted') {
+            $this->sendAcceptedEmail($ppdbRegistration);
+        }
 
         return redirect()
             ->route('admin.ppdb.show', $ppdbRegistration)
             ->with('success', 'Status pendaftaran berhasil diperbarui menjadi "' . $ppdbRegistration->statusLabel() . '".');
     }
 
-    /**
-     * Konfirmasi daftar ulang & pembayaran OFFLINE. Siswa datang langsung ke
-     * sekolah untuk bayar & daftar ulang; TU cuma mencatat nomor bukti bayar
-     * di sini sebagai validasi — tidak ada payment gateway online.
-     * Hanya bisa dipakai kalau status pendaftar sudah "accepted".
-     */
     public function confirmReRegistration(Request $request, PpdbRegistration $ppdbRegistration): RedirectResponse
     {
         if ($ppdbRegistration->status !== 'accepted') {
@@ -82,5 +89,16 @@ class PpdbController extends Controller
         return redirect()
             ->route('admin.ppdb.show', $ppdbRegistration)
             ->with('success', 'Daftar ulang & pembayaran berhasil dikonfirmasi.');
+    }
+
+    private function sendAcceptedEmail(PpdbRegistration $registration): void
+    {
+        try {
+            Mail::to($registration->email)->send(new PpdbAccepted($registration));
+        } catch (\Throwable $e) {
+            Log::warning('Gagal mengirim email notifikasi diterima PPDB: ' . $e->getMessage(), [
+                'registration_id' => $registration->id,
+            ]);
+        }
     }
 }
