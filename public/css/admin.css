@@ -1,0 +1,686 @@
+/* =========================================================
+   WEB SEKOLAH MODERN
+   ADMIN DASHBOARD
+   ========================================================= */
+
+:root {
+    --admin-navy: #071b35;
+    --admin-navy-2: #0b294d;
+
+    --admin-blue: #1769d5;
+    --admin-blue-dark: #0d4fa8;
+
+    --admin-cyan: #087ea4;
+
+    --admin-bg: #eef4fb;
+    --admin-white: #ffffff;
+
+    --admin-text: #10223d;
+    --admin-muted: #66758a;
+
+    --admin-border: #dbe5f0;
+}
+
+
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
+
+.admin-dashboard {
+    width: 100%;
+    padding: 4px 0 30px;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.dashboard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-bottom: 28px;
+    padding: 28px 30px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--admin-navy),
+            var(--admin-navy-2)
+        );
+
+    box-shadow:
+        0 12px 30px rgba(7, 27, 53, 0.16);
+
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Dekorasi header */
+
+.dashboard-header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    right: -70px;
+    top: -100px;
+
+    border-radius: 50%;
+
+    background: rgba(23, 105, 213, 0.28);
+}
+
+
+.dashboard-header-text {
+    position: relative;
+    z-index: 2;
+}
+
+
+.dashboard-eyebrow {
+    display: inline-block;
+
+    margin-bottom: 8px;
+
+    color: #75b5ff;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 1.4px;
+}
+
+
+.dashboard-header h1 {
+    margin: 0 0 8px;
+
+    color: white;
+
+    font-size: 28px;
+    line-height: 1.25;
+
+    font-weight: 800;
+}
+
+
+.dashboard-header p {
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.75);
+
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   USER WELCOME
+   ========================================================= */
+
+.dashboard-user {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    min-width: 190px;
+
+    padding: 11px 15px;
+
+    border: 1px solid rgba(255, 255, 255, 0.14);
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(8px);
+}
+
+
+.dashboard-user-avatar {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--admin-blue),
+            #3c8df2
+        );
+
+    color: white;
+
+    font-size: 17px;
+    font-weight: 800;
+}
+
+
+.dashboard-user-info span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: rgba(255, 255, 255, 0.62);
+
+    font-size: 11px;
+}
+
+
+.dashboard-user-info strong {
+    display: block;
+
+    max-width: 140px;
+
+    overflow: hidden;
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   STAT GRID
+   ========================================================= */
+
+.dashboard-stat-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 18px;
+
+    margin-bottom: 22px;
+}
+
+
+/* =========================================================
+   STAT CARD
+   ========================================================= */
+
+.dashboard-stat-card {
+    position: relative;
+
+    min-height: 120px;
+
+    padding: 20px 24px;
+
+    overflow: hidden;
+
+    border-radius: 16px;
+
+    color: white;
+
+    box-shadow:
+        0 10px 25px rgba(7, 27, 53, 0.12);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.dashboard-stat-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 30px rgba(7, 27, 53, 0.17);
+}
+
+
+/* =========================================================
+   WARNA STAT CARD
+   ========================================================= */
+
+.stat-blue {
+    background:
+        linear-gradient(
+            135deg,
+            #0d4fa8,
+            #1769d5
+        );
+}
+
+
+.stat-navy {
+    background:
+        linear-gradient(
+            135deg,
+            #071b35,
+            #12385f
+        );
+}
+
+
+.stat-cyan {
+    background:
+        linear-gradient(
+            135deg,
+            #05647f,
+            #0a91b8
+        );
+}
+
+
+/* =========================================================
+   DEKORASI LINGKARAN
+   ========================================================= */
+
+.dashboard-stat-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+    height: 150px;
+
+    right: -60px;
+    bottom: -65px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.09);
+}
+
+
+.dashboard-stat-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 80px;
+    height: 80px;
+
+    right: 35px;
+    top: -45px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.06);
+}
+
+
+/* =========================================================
+   STAT TOP
+   ========================================================= */
+
+.stat-card-top {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+
+/* =========================================================
+   STAT ICON
+   ========================================================= */
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.15);
+
+    color: white;
+}
+
+
+/* =========================================================
+   STAT CARD INFO
+   TOTAL + ANGKA
+   ========================================================= */
+
+.stat-card-info {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    min-width: 0;
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   STAT LABEL
+   ========================================================= */
+
+.stat-label {
+    display: block;
+
+    color: rgba(255, 255, 255, 0.78);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   STAT NUMBER
+   ========================================================= */
+
+.stat-number {
+    position: relative;
+    z-index: 2;
+
+    margin-top: 5px;
+
+    color: white;
+
+    font-size: 34px;
+    line-height: 1;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   STAT DESCRIPTION
+   ========================================================= */
+
+.stat-description {
+    position: absolute;
+
+    left: 24px;
+    bottom: 21px;
+
+    z-index: 2;
+
+    color: rgba(255, 255, 255, 0.72);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   WELCOME CARD
+   ========================================================= */
+
+.dashboard-welcome-card {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    min-height: 145px;
+
+    padding: 26px 30px;
+
+    overflow: hidden;
+
+    border-radius: 17px;
+
+    background: white;
+
+    border: 1px solid var(--admin-border);
+
+    box-shadow:
+        0 8px 22px rgba(7, 27, 53, 0.07);
+}
+
+
+/* =========================================================
+   AKSEN KIRI
+   ========================================================= */
+
+.welcome-accent {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    width: 6px;
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--admin-blue),
+            var(--admin-navy)
+        );
+}
+
+
+/* =========================================================
+   WELCOME ICON
+   ========================================================= */
+
+.welcome-icon {
+    width: 58px;
+    height: 58px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: var(--admin-blue);
+
+    color: white;
+
+    box-shadow:
+        0 8px 18px rgba(23, 105, 213, 0.22);
+}
+
+
+/* =========================================================
+   WELCOME CONTENT
+   ========================================================= */
+
+.welcome-content {
+    min-width: 0;
+}
+
+
+.welcome-content > span {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: var(--admin-blue);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1.1px;
+}
+
+
+.welcome-content h2 {
+    margin: 0 0 7px;
+
+    color: var(--admin-navy);
+
+    font-size: 21px;
+    line-height: 1.3;
+
+    font-weight: 800;
+}
+
+
+.welcome-content p {
+    max-width: 850px;
+
+    margin: 0;
+
+    color: var(--admin-muted);
+
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .dashboard-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .dashboard-user {
+        width: 100%;
+    }
+
+
+    .dashboard-stat-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .admin-dashboard {
+        padding-bottom: 20px;
+    }
+
+
+    .dashboard-header {
+        margin-bottom: 18px;
+
+        padding: 22px 20px;
+
+        border-radius: 15px;
+    }
+
+
+    .dashboard-header h1 {
+        font-size: 23px;
+    }
+
+
+    .dashboard-header p {
+        font-size: 13px;
+    }
+
+
+    .dashboard-eyebrow {
+        font-size: 10px;
+    }
+
+
+    .dashboard-user {
+        min-width: 0;
+
+        padding: 9px 12px;
+    }
+
+
+    .dashboard-stat-grid {
+        grid-template-columns: 1fr;
+
+        gap: 13px;
+
+        margin-bottom: 18px;
+    }
+
+
+    .dashboard-stat-card {
+        min-height: 135px;
+
+        padding: 19px 21px;
+    }
+
+
+    .stat-description {
+        left: 21px;
+        bottom: 19px;
+
+        font-size: 13px;
+    }
+
+
+    .stat-number {
+        font-size: 32px;
+    }
+
+
+    .dashboard-welcome-card {
+        align-items: flex-start;
+
+        padding: 22px 20px;
+
+        gap: 14px;
+    }
+
+
+    .welcome-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+
+    .welcome-content h2 {
+        font-size: 18px;
+    }
+
+
+    .welcome-content p {
+        font-size: 13px;
+    }
+
+}

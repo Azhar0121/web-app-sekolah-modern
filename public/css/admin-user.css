@@ -1,0 +1,1451 @@
+/* =========================================================
+   ADMIN USERS
+   MODERN SCHOOL ADMIN
+   ========================================================= */
+
+.users-page {
+    width: 100%;
+    padding: 8px 4px 40px;
+
+    color: #172033;
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.users-header {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+
+    margin-bottom: 23px;
+    padding: 31px 33px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            120deg,
+            #0b2855 0%,
+            #123b73 50%,
+            #1769b5 100%
+        );
+
+    overflow: hidden;
+
+    box-shadow:
+        0 12px 30px rgba(11, 40, 85, 0.25);
+}
+
+.users-header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    top: -135px;
+    right: 150px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.users-header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    right: -70px;
+    bottom: -115px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.users-header-content {
+    position: relative;
+    z-index: 2;
+}
+
+.users-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    margin-bottom: 9px;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    color: #bfdbfe;
+}
+
+.users-label::before {
+    content: "";
+
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #60a5fa;
+
+    box-shadow:
+        0 0 0 5px rgba(96, 165, 250, 0.15);
+}
+
+.users-header h1 {
+    margin: 0;
+
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.25;
+
+    color: #ffffff;
+}
+
+.users-header p {
+    margin: 9px 0 0;
+
+    font-size: 16px;
+    line-height: 1.65;
+
+    color: #dbeafe;
+}
+
+
+/* =========================================================
+   TAMBAH USER
+   ========================================================= */
+
+.add-user-button {
+    position: relative;
+    z-index: 3;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    min-height: 47px;
+
+    padding: 0 18px;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    color: #174ea6;
+
+    font-size: 15px;
+    font-weight: 800;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 7px 18px rgba(0, 0, 0, 0.15);
+
+    transition:
+        all 0.2s ease;
+}
+
+.add-user-button:hover {
+    background: #eaf3ff;
+
+    color: #0b2855;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+.add-user-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 25px;
+    height: 25px;
+
+    border-radius: 7px;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    font-size: 20px;
+    font-weight: 500;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   FILTER CARD
+   ========================================================= */
+
+.users-filter-card {
+    margin-bottom: 20px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border: 1px solid #d4e0ef;
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px rgba(11, 40, 85, 0.08);
+}
+
+.filter-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 20px 25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #e5f0ff,
+            #f3f8ff,
+            #ffffff
+        );
+
+    border-bottom: 1px solid #cfdef0;
+}
+
+.filter-icon {
+    width: 47px;
+    height: 47px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #174ea6
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 6px 14px rgba(37, 99, 235, 0.22);
+}
+
+.filter-header h2 {
+    margin: 0 0 3px;
+
+    font-size: 19px;
+    font-weight: 800;
+
+    color: #102a56;
+}
+
+.filter-header p {
+    margin: 0;
+
+    font-size: 14px;
+
+    color: #52677f;
+}
+
+
+/* =========================================================
+   FILTER FORM
+   ========================================================= */
+
+.users-filter-form {
+    display: grid;
+
+    grid-template-columns: 1.5fr 1fr 180px;
+
+    gap: 18px;
+
+    padding: 23px 25px;
+}
+
+.user-filter-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 15px;
+    font-weight: 750;
+
+    color: #243b5a;
+}
+
+.user-filter-group input,
+.user-filter-group select {
+    width: 100%;
+    height: 48px;
+
+    padding: 0 14px;
+
+    border: 1px solid #c3d2e5;
+    border-radius: 10px;
+
+    background: #f5f9fe;
+
+    font-family: inherit;
+    font-size: 15px;
+
+    color: #172033;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.user-filter-group input:focus,
+.user-filter-group select:focus {
+    background: #ffffff;
+
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 4px rgba(37, 99, 235, 0.10);
+}
+
+.user-filter-group input::placeholder {
+    color: #7c8da2;
+}
+
+.user-filter-action {
+    display: flex;
+    align-items: flex-end;
+}
+
+.user-filter-action button {
+    width: 100%;
+    height: 48px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    border: 1px solid #1d4ed8;
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #174ea6
+        );
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 750;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 14px rgba(37, 99, 235, 0.18);
+
+    transition:
+        all 0.2s ease;
+}
+
+.user-filter-action button:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #174ea6,
+            #0b2855
+        );
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 9px 18px rgba(11, 40, 85, 0.20);
+}
+
+
+/* =========================================================
+   TABLE CARD
+   ========================================================= */
+
+.users-table-card {
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border: 1px solid #d4e0ef;
+    border-radius: 18px;
+
+    box-shadow:
+        0 9px 28px rgba(11, 40, 85, 0.08);
+}
+
+
+/* =========================================================
+   TABLE HEADER
+   ========================================================= */
+
+.users-table-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    padding: 22px 26px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #e5f0ff,
+            #f3f8ff,
+            #ffffff
+        );
+
+    border-bottom: 1px solid #cfdef0;
+}
+
+.users-table-header h2 {
+    margin: 0 0 4px;
+
+    font-size: 20px;
+    font-weight: 800;
+
+    color: #102a56;
+}
+
+.users-table-header p {
+    margin: 0;
+
+    font-size: 14px;
+
+    color: #52677f;
+}
+
+.user-total {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 38px;
+
+    padding: 0 14px;
+
+    border: 1px solid #b9d3f1;
+    border-radius: 9px;
+
+    background: #dcecff;
+
+    color: #174ea6;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.users-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+.users-table {
+    width: 100%;
+    min-width: 900px;
+
+    border-collapse: collapse;
+}
+
+.users-table thead {
+    background:
+        linear-gradient(
+            90deg,
+            #123b73,
+            #174f91
+        );
+}
+
+.users-table thead th {
+    padding: 17px 23px;
+
+    border: none;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    color: #ffffff;
+
+    white-space: nowrap;
+}
+
+.users-table tbody tr {
+    background: #ffffff;
+
+    transition:
+        background 0.2s ease;
+}
+
+.users-table tbody tr:nth-child(even) {
+    background: #f5f9fe;
+}
+
+.users-table tbody tr:hover {
+    background: #e5f1ff;
+}
+
+.users-table tbody td {
+    padding: 18px 23px;
+
+    border-bottom: 1px solid #dfe7f1;
+
+    font-size: 15px;
+
+    color: #263b55;
+
+    vertical-align: middle;
+}
+
+.users-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* =========================================================
+   USER NAME
+   ========================================================= */
+
+.user-name {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.user-avatar {
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #174ea6
+        );
+
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 800;
+
+    box-shadow:
+        0 5px 12px rgba(37, 99, 235, 0.20);
+}
+
+.user-name strong {
+    font-size: 15px;
+    font-weight: 750;
+
+    color: #102a56;
+}
+
+
+/* =========================================================
+   EMAIL
+   ========================================================= */
+
+.user-email {
+    font-size: 15px;
+
+    color: #52677f;
+}
+
+
+/* =========================================================
+   ROLE
+   ========================================================= */
+
+.user-role-badge,
+.user-no-role {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 34px;
+
+    padding: 0 11px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+    font-weight: 750;
+}
+
+.user-role-badge {
+    background: #dcecff;
+
+    border: 1px solid #bad3f1;
+
+    color: #174ea6;
+}
+
+.user-no-role {
+    background: #edf1f6;
+
+    border: 1px solid #d5dce5;
+
+    color: #66768a;
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.user-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    min-height: 34px;
+
+    padding: 0 11px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.user-status span {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+}
+
+.user-status.active {
+    background: #dcfce7;
+
+    border: 1px solid #b7ebc8;
+
+    color: #166534;
+}
+
+.user-status.active span {
+    background: #16a34a;
+}
+
+.user-status.inactive {
+    background: #fee2e2;
+
+    border: 1px solid #fecaca;
+
+    color: #b91c1c;
+}
+
+.user-status.inactive span {
+    background: #dc2626;
+}
+
+
+/* =========================================================
+   ACTION
+   ========================================================= */
+
+.user-actions {
+    text-align: right;
+
+    white-space: nowrap;
+}
+
+.user-edit-button,
+.user-delete-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 38px;
+
+    padding: 0 14px;
+
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 750;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        all 0.2s ease;
+}
+
+.user-edit-button {
+    margin-right: 5px;
+
+    border: 1px solid #8db7e8;
+
+    background: #eaf3ff;
+
+    color: #174ea6;
+}
+
+.user-edit-button:hover {
+    background: #2563eb;
+
+    border-color: #2563eb;
+
+    color: #ffffff;
+
+    transform: translateY(-1px);
+}
+
+.user-delete-button {
+    border: 1px solid #f0a4aa;
+
+    background: #fff1f2;
+
+    color: #c62828;
+}
+
+.user-delete-button:hover:not(:disabled) {
+    background: #dc2626;
+
+    border-color: #dc2626;
+
+    color: #ffffff;
+
+    transform: translateY(-1px);
+}
+
+.user-delete-button:disabled {
+    opacity: 0.45;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   EMPTY
+   ========================================================= */
+
+.users-empty {
+    padding: 45px 20px !important;
+
+    text-align: center;
+
+    font-size: 15px !important;
+    font-weight: 600;
+
+    color: #65778c !important;
+}
+
+
+/* =========================================================
+   PAGINATION
+   ========================================================= */
+
+.users-pagination {
+    display: flex;
+    justify-content: center;
+
+    padding: 20px 25px;
+
+    border-top: 1px solid #dfe7f1;
+
+    background: #f7faff;
+}
+
+
+/* Bootstrap pagination */
+
+.users-pagination .pagination {
+    margin: 0;
+
+    gap: 5px;
+}
+
+.users-pagination .page-link {
+    min-width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #cbd9e9;
+    border-radius: 8px !important;
+
+    background: #ffffff;
+
+    color: #174ea6;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.users-pagination .page-link:hover {
+    background: #e5f1ff;
+
+    border-color: #8db7e8;
+
+    color: #123b73;
+}
+
+.users-pagination .page-item.active .page-link {
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #174ea6
+        );
+
+    border-color: #2563eb;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+
+    .users-header {
+        align-items: flex-start;
+    }
+
+    .users-header h1 {
+        font-size: 29px;
+    }
+
+    .users-filter-form {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .user-filter-action {
+        grid-column: 1 / -1;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767.98px) {
+
+    .users-page {
+        padding: 4px 0 30px;
+    }
+
+    .users-header {
+        flex-direction: column;
+        align-items: stretch;
+
+        padding: 25px 21px;
+
+        border-radius: 16px;
+    }
+
+    .users-label {
+        font-size: 12px;
+    }
+
+    .users-header h1 {
+        font-size: 25px;
+    }
+
+    .users-header p {
+        font-size: 14px;
+    }
+
+    .add-user-button {
+        width: 100%;
+    }
+
+    .filter-header {
+        padding: 19px 20px;
+    }
+
+    .filter-header h2 {
+        font-size: 18px;
+    }
+
+    .filter-header p {
+        font-size: 13px;
+    }
+
+    .users-filter-form {
+        grid-template-columns: 1fr;
+
+        padding: 20px;
+    }
+
+    .user-filter-action {
+        grid-column: auto;
+    }
+
+    .users-table-header {
+        align-items: flex-start;
+        flex-direction: column;
+
+        padding: 20px;
+    }
+
+    .users-table-header h2 {
+        font-size: 18px;
+    }
+
+    .users-table {
+        min-width: 850px;
+    }
+
+    .users-table thead th {
+        padding: 15px 18px;
+
+        font-size: 13px;
+    }
+
+    .users-table tbody td {
+        padding: 17px 18px;
+
+        font-size: 14px;
+    }
+
+    .users-pagination {
+        padding: 18px;
+    }
+
+}
+
+/* =========================================================
+   TAMBAH USER
+   MODERN SCHOOL ADMIN
+   ========================================================= */
+
+.add-user-page {
+    width: 100%;
+    padding: 8px 4px 40px;
+
+    color: #172033;
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.add-user-header {
+    position: relative;
+
+    margin-bottom: 23px;
+    padding: 31px 33px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            120deg,
+            #0b2855 0%,
+            #123b73 50%,
+            #1769b5 100%
+        );
+
+    overflow: hidden;
+
+    box-shadow:
+        0 12px 30px rgba(11, 40, 85, 0.25);
+}
+
+.add-user-header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    top: -135px;
+    right: 180px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.add-user-header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    right: -70px;
+    bottom: -115px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.add-user-header-content {
+    position: relative;
+    z-index: 2;
+}
+
+.add-user-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    margin-bottom: 9px;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    color: #bfdbfe;
+}
+
+.add-user-label::before {
+    content: "";
+
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #60a5fa;
+
+    box-shadow:
+        0 0 0 5px rgba(96, 165, 250, 0.15);
+}
+
+.add-user-header h1 {
+    margin: 0;
+
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.25;
+
+    color: #ffffff;
+}
+
+.add-user-header p {
+    margin: 9px 0 0;
+
+    font-size: 16px;
+    line-height: 1.65;
+
+    color: #dbeafe;
+}
+
+.add-user-header {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.add-user-card {
+    width: 100%;
+    max-width: 850px;
+
+    margin: 0 auto;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border: 1px solid #d4e0ef;
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 30px rgba(11, 40, 85, 0.10);
+}
+
+/* =========================================================
+   CARD HEADER
+   ========================================================= */
+
+.add-user-card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 22px 27px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #e5f0ff,
+            #f3f8ff,
+            #ffffff
+        );
+
+    border-bottom: 1px solid #cfdef0;
+}
+
+.add-user-card-icon {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #174ea6
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 7px 16px rgba(37, 99, 235, 0.23);
+}
+
+.add-user-card-header h2 {
+    margin: 0 0 4px;
+
+    font-size: 20px;
+    font-weight: 800;
+
+    color: #102a56;
+}
+
+.add-user-card-header p {
+    margin: 0;
+
+    font-size: 14px;
+
+    color: #52677f;
+}
+
+
+/* =========================================================
+   BODY
+   ========================================================= */
+
+.add-user-card-body {
+    padding: 28px;
+}
+
+
+/* =========================================================
+   FORM DARI _form
+   ========================================================= */
+
+.add-user-card-body .form-label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 15px !important;
+    font-weight: 750 !important;
+
+    color: #243b5a !important;
+}
+
+.add-user-card-body .form-control,
+.add-user-card-body .form-select {
+    min-height: 49px;
+
+    padding: 10px 14px;
+
+    border: 1px solid #c3d2e5;
+    border-radius: 10px;
+
+    background: #f5f9fe;
+
+    font-family: inherit;
+    font-size: 15px;
+
+    color: #172033;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.add-user-card-body .form-control:focus,
+.add-user-card-body .form-select:focus {
+    background: #ffffff;
+
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 4px rgba(37, 99, 235, 0.10);
+}
+
+.add-user-card-body .form-control::placeholder {
+    color: #7c8da2;
+}
+
+
+/* =========================================================
+   TEXT KECIL DARI FORM
+   ========================================================= */
+
+.add-user-card-body .form-text,
+.add-user-card-body .text-muted,
+.add-user-card-body small {
+    font-size: 13px !important;
+
+    color: #637890 !important;
+}
+
+
+/* =========================================================
+   ERROR VALIDATION
+   ========================================================= */
+
+.add-user-card-body .text-danger {
+    font-size: 13px !important;
+    font-weight: 600;
+
+    color: #c62828 !important;
+}
+
+
+/* =========================================================
+   ACTION
+   ========================================================= */
+
+.add-user-actions {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    margin-top: 27px;
+    padding-top: 22px;
+
+    border-top: 1px solid #dfe7f1;
+}
+
+.add-user-save,
+.add-user-cancel {
+    min-height: 46px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 0 19px;
+
+    border-radius: 9px;
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 750;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        all 0.2s ease;
+}
+
+
+/* SIMPAN */
+
+.add-user-save {
+    border: 1px solid #1d4ed8;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #174ea6
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 7px 15px rgba(37, 99, 235, 0.20);
+}
+
+.add-user-save:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #174ea6,
+            #0b2855
+        );
+
+    border-color: #0b2855;
+
+    color: #ffffff;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 9px 19px rgba(11, 40, 85, 0.22);
+}
+
+
+/* BATAL */
+
+.add-user-cancel {
+    border: 1px solid #bdcde0;
+
+    background: #edf4fc;
+
+    color: #264568;
+}
+
+.add-user-cancel:hover {
+    background: #dcecff;
+
+    border-color: #8db7e8;
+
+    color: #123b73;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   BOOTSTRAP ROW SPACING
+   ========================================================= */
+
+.add-user-card-body .row {
+    row-gap: 20px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 767.98px) {
+
+    .add-user-page {
+        padding: 4px 0 30px;
+    }
+
+    .add-user-header {
+        padding: 25px 21px;
+
+        border-radius: 16px;
+    }
+
+    .add-user-label {
+        font-size: 12px;
+    }
+
+    .add-user-header h1 {
+        font-size: 25px;
+    }
+
+    .add-user-header p {
+        font-size: 14px;
+    }
+
+    .add-user-card {
+        max-width: 100%;
+
+        border-radius: 16px;
+    }
+
+    .add-user-card-header {
+        padding: 19px 20px;
+    }
+
+    .add-user-card-icon {
+        width: 45px;
+        height: 45px;
+    }
+
+    .add-user-card-header h2 {
+        font-size: 18px;
+    }
+
+    .add-user-card-header p {
+        font-size: 13px;
+    }
+
+    .add-user-card-body {
+        padding: 20px;
+    }
+
+    .add-user-card-body .form-label {
+        font-size: 14px !important;
+    }
+
+    .add-user-card-body .form-control,
+    .add-user-card-body .form-select {
+        font-size: 14px;
+    }
+
+    .add-user-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .add-user-save,
+    .add-user-cancel {
+        width: 100%;
+    }
+}

@@ -1,0 +1,851 @@
+/* =========================================================
+   WEB SEKOLAH MODERN
+   ADMIN - KELOLA PPDB
+   ========================================================= */
+
+:root {
+    --ppdb-navy: #071b35;
+    --ppdb-navy-2: #0b294d;
+    --ppdb-blue: #1769d5;
+    --ppdb-blue-dark: #0d4fa8;
+    --ppdb-blue-light: #eef6ff;
+
+    --ppdb-text: #172033;
+    --ppdb-text-soft: #64748b;
+
+    --ppdb-border: #d8e2ee;
+    --ppdb-bg: #f5f8fc;
+    --ppdb-white: #ffffff;
+
+    --ppdb-radius: 15px;
+    --ppdb-shadow: 0 8px 25px rgba(15, 35, 65, 0.07);
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.ppdb-page {
+    width: 100%;
+    padding: 8px 18px 45px;
+    color: var(--ppdb-text);
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.ppdb-header {
+    position: relative;
+
+    width: 100%;
+    margin-bottom: 24px;
+    padding: 30px 34px;
+
+    border-radius: var(--ppdb-radius);
+
+    background:
+        linear-gradient(
+            135deg,
+            #071b35 0%,
+            #0b315d 55%,
+            #1769b8 100%
+        );
+
+    box-shadow:
+        0 10px 30px rgba(7, 27, 53, 0.16);
+
+    overflow: hidden;
+}
+
+
+.ppdb-header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    right: -85px;
+    top: -125px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.075);
+}
+
+
+.ppdb-header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 160px;
+    height: 160px;
+
+    right: 115px;
+    bottom: -115px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.045);
+}
+
+
+.ppdb-header-content {
+    position: relative;
+    z-index: 2;
+}
+
+
+.ppdb-label {
+    display: inline-flex;
+    align-items: center;
+
+    margin-bottom: 10px;
+    padding: 6px 11px;
+
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 7px;
+
+    background: rgba(255, 255, 255, 0.10);
+
+    color: #e1efff;
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
+
+
+.ppdb-header h1 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 27px;
+    font-weight: 750;
+    line-height: 1.25;
+    letter-spacing: -0.4px;
+}
+
+
+.ppdb-header p {
+    max-width: 720px;
+
+    margin: 9px 0 0;
+
+    color: rgba(255, 255, 255, 0.78);
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   FILTER CARD
+   ========================================================= */
+
+.ppdb-filter-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 18px 21px;
+
+    border: 1px solid var(--ppdb-border);
+    border-radius: 13px;
+
+    background: var(--ppdb-white);
+
+    box-shadow: var(--ppdb-shadow);
+}
+
+
+.ppdb-filter-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    min-width: 0;
+}
+
+
+.ppdb-filter-icon {
+    flex: 0 0 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 10px;
+
+    background: #e5f1ff;
+    color: var(--ppdb-blue);
+}
+
+
+.ppdb-filter-title {
+    margin: 0;
+
+    color: var(--ppdb-text);
+
+    font-size: 13px;
+    font-weight: 750;
+}
+
+
+.ppdb-filter-description {
+    margin: 3px 0 0;
+
+    color: var(--ppdb-text-soft);
+
+    font-size: 11.5px;
+}
+
+
+/* =========================================================
+   FILTER SELECT
+   ========================================================= */
+
+.ppdb-filter-form {
+    flex: 0 0 auto;
+}
+
+
+.ppdb-filter-form form {
+    margin: 0;
+}
+
+
+.ppdb-status-select {
+    width: 270px;
+    min-height: 44px;
+
+    padding: 0 38px 0 14px;
+
+    border: 1px solid #c6d4e4;
+    border-radius: 9px;
+
+    outline: none;
+
+    background-color: #ffffff;
+    color: #263449;
+
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.ppdb-status-select:hover {
+    border-color: #9fb6d0;
+    background: #fbfdff;
+}
+
+
+.ppdb-status-select:focus {
+    border-color: var(--ppdb-blue);
+
+    box-shadow:
+        0 0 0 3px rgba(23, 105, 213, 0.12);
+}
+
+
+/* =========================================================
+   TABLE CARD
+   ========================================================= */
+
+.ppdb-table-card {
+    width: 100%;
+
+    border: 1px solid #cfdbe8;
+    border-radius: var(--ppdb-radius);
+
+    background: var(--ppdb-white);
+
+    box-shadow: var(--ppdb-shadow);
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   TABLE WRAPPER
+   ========================================================= */
+
+.ppdb-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.ppdb-table {
+    width: 100%;
+    margin: 0;
+
+    border-collapse: separate;
+    border-spacing: 0;
+
+    table-layout: auto;
+}
+
+
+/* =========================================================
+   TABLE HEADER - BOLD
+   ========================================================= */
+
+.ppdb-table thead th {
+    padding: 16px 19px;
+
+    border-bottom: 2px solid #1769d5;
+
+    background: #0b294d;
+
+    color: #ffffff;
+
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+
+    white-space: nowrap;
+}
+
+
+/* Garis tipis antar header */
+
+.ppdb-table thead th + th {
+    border-left: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+
+/* =========================================================
+   TABLE BODY
+   ========================================================= */
+
+.ppdb-table tbody td {
+    padding: 16px 19px;
+
+    border-bottom: 1px solid #dce5ef;
+
+    background: #ffffff;
+
+    color: #344256;
+
+    font-size: 12.5px;
+
+    vertical-align: middle;
+
+    white-space: nowrap;
+}
+
+
+/* Zebra rows */
+
+.ppdb-table tbody tr:nth-child(even) td {
+    background: #f4f8fd;
+}
+
+
+/* Hover */
+
+.ppdb-table tbody tr:hover td {
+    background: #e7f2ff;
+}
+
+
+/* Last row */
+
+.ppdb-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* =========================================================
+   REGISTRATION NUMBER
+   ========================================================= */
+
+.ppdb-registration-code {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 6px 9px;
+
+    border: 1px solid #a9c9e9;
+    border-radius: 7px;
+
+    background: #e5f1ff;
+
+    color: #0d4f91;
+
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        "Liberation Mono",
+        monospace;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   NAME
+   ========================================================= */
+
+.ppdb-name {
+    color: #172b44;
+
+    font-size: 13px;
+    font-weight: 750;
+}
+
+
+/* =========================================================
+   SCHOOL
+   ========================================================= */
+
+.ppdb-school {
+    color: #526176;
+
+    font-size: 12.5px;
+}
+
+
+/* =========================================================
+   DATE
+   ========================================================= */
+
+.ppdb-date {
+    color: #526176;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   STATUS BADGE
+   ========================================================= */
+
+.ppdb-status-badge {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 28px;
+
+    padding: 5px 11px;
+
+    border: 1px solid #9fc3e8;
+    border-radius: 7px;
+
+    background: #e6f2ff;
+
+    color: #0d4f91;
+
+    font-size: 10.5px;
+    font-weight: 750;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   ACTION
+   ========================================================= */
+
+.ppdb-action-column {
+    width: 1%;
+
+    text-align: center !important;
+}
+
+
+.ppdb-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+}
+
+
+.ppdb-detail-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 70px;
+    min-height: 34px;
+
+    padding: 0 13px;
+
+    border: 1px solid #9bbce0;
+    border-radius: 8px;
+
+    background: #ffffff;
+    color: #14589b;
+
+    font-size: 11.5px;
+    font-weight: 750;
+
+    text-decoration: none;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.15s ease;
+}
+
+
+.ppdb-detail-button:hover {
+    border-color: #1769d5;
+
+    background: #1769d5;
+    color: #ffffff;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 4px 12px rgba(23, 105, 213, 0.23);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.ppdb-empty {
+    padding: 52px 20px !important;
+
+    color: #7c8a9d !important;
+
+    font-size: 13px !important;
+
+    text-align: center;
+}
+
+
+.ppdb-empty-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+
+    margin: 0 auto 11px;
+
+    border-radius: 12px;
+
+    background: #edf3f9;
+    color: #718198;
+}
+
+
+/* =========================================================
+   PAGINATION
+   ========================================================= */
+
+.ppdb-pagination {
+    padding: 18px 21px;
+
+    border-top: 1px solid #dce5ef;
+
+    background: #ffffff;
+}
+
+
+.ppdb-pagination nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.ppdb-pagination .pagination {
+    margin: 0;
+
+    gap: 5px;
+}
+
+
+.ppdb-pagination .page-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 34px;
+    height: 34px;
+
+    padding: 0 9px;
+
+    border: 1px solid #d1dce8;
+    border-radius: 7px !important;
+
+    background: #ffffff;
+    color: #526176;
+
+    font-size: 11.5px;
+    font-weight: 650;
+
+    box-shadow: none;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.ppdb-pagination .page-link:hover {
+    border-color: #9ebfe2;
+
+    background: #eaf4ff;
+    color: var(--ppdb-blue);
+}
+
+
+.ppdb-pagination .page-item.active .page-link {
+    border-color: var(--ppdb-blue);
+
+    background: var(--ppdb-blue);
+    color: #ffffff;
+}
+
+
+.ppdb-pagination .page-item.disabled .page-link {
+    background: #f5f8fb;
+    color: #a0acba;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .ppdb-page {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+
+    .ppdb-filter-card {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+
+    .ppdb-filter-form {
+        width: 100%;
+    }
+
+
+    .ppdb-status-select {
+        width: 100%;
+        max-width: 340px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - SMALL TABLET
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .ppdb-header {
+        padding: 26px 25px;
+    }
+
+
+    .ppdb-header h1 {
+        font-size: 24px;
+    }
+
+
+    .ppdb-table thead th,
+    .ppdb-table tbody td {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    .ppdb-page {
+        padding:
+            5px
+            8px
+            30px;
+    }
+
+
+    .ppdb-header {
+        margin-bottom: 18px;
+        padding: 23px 20px;
+
+        border-radius: 13px;
+    }
+
+
+    .ppdb-label {
+        font-size: 10px;
+    }
+
+
+    .ppdb-header h1 {
+        font-size: 21px;
+    }
+
+
+    .ppdb-header p {
+        margin-top: 8px;
+
+        font-size: 12px;
+    }
+
+
+    .ppdb-filter-card {
+        margin-bottom: 17px;
+        padding: 16px;
+    }
+
+
+    .ppdb-filter-info {
+        align-items: flex-start;
+    }
+
+
+    .ppdb-filter-icon {
+        flex-basis: 36px;
+
+        width: 36px;
+        height: 36px;
+    }
+
+
+    .ppdb-status-select {
+        width: 100%;
+        max-width: none;
+    }
+
+
+    .ppdb-table-card {
+        border-radius: 12px;
+    }
+
+
+    .ppdb-table thead th {
+        padding: 14px;
+
+        font-size: 10.5px;
+    }
+
+
+    .ppdb-table tbody td {
+        padding: 14px;
+
+        font-size: 11.5px;
+    }
+
+
+    .ppdb-registration-code {
+        font-size: 10px;
+    }
+
+
+    .ppdb-name {
+        font-size: 12px;
+    }
+
+
+    .ppdb-school {
+        font-size: 11.5px;
+    }
+
+
+    .ppdb-date {
+        font-size: 11px;
+    }
+
+
+    .ppdb-status-badge {
+        font-size: 10px;
+    }
+
+
+    .ppdb-pagination {
+        padding: 15px;
+    }
+
+
+    .ppdb-pagination nav {
+        justify-content: center;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - EXTRA SMALL
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .ppdb-header h1 {
+        font-size: 19px;
+    }
+
+
+    .ppdb-filter-title {
+        font-size: 12px;
+    }
+
+
+    .ppdb-filter-description {
+        font-size: 10.5px;
+    }
+
+
+    .ppdb-table thead th {
+        padding: 12px;
+    }
+
+
+    .ppdb-table tbody td {
+        padding: 12px;
+    }
+
+}
