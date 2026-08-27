@@ -27,6 +27,7 @@ Route::prefix('ppdb')->name('ppdb.')->group(function () {
     Route::get('/daftar', [PpdbController::class, 'create'])->name('create');
     Route::post('/daftar', [PpdbController::class, 'store'])->name('store');
     Route::get('/sukses/{registrationNumber}', [PpdbController::class, 'success'])->name('sukses');
+    Route::get('/cetak/{registrationNumber}', [PpdbController::class, 'print'])->name('cetak');
     Route::get('/cek-status', [PpdbController::class, 'checkStatusForm'])->name('cek-status.form');
     Route::post('/cek-status', [PpdbController::class, 'checkStatus'])->name('cek-status');
     Route::get('/lupa-nomor', [PpdbController::class, 'forgotNumberForm'])->name('lupa-nomor.form');

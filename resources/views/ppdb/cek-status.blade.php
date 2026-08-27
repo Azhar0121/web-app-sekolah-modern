@@ -162,6 +162,14 @@
 
                         </div>
 
+                        <div style="padding-top: 20px; display: flex; justify-content: flex-end;">
+                            <a href="{{ route('ppdb.cetak', $registration->registration_number) }}"
+                               class="check-button" style="width: auto; padding: 0 22px; text-decoration: none;"
+                               target="_blank" rel="noopener">
+                                <span>Cetak Bukti Pendaftaran</span>
+                            </a>
+                        </div>
+
                     </div>
 
                 @else

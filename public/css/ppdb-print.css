@@ -1,0 +1,247 @@
+:root {
+  --background: #eef4fb;
+  --muted: #62748a;
+  --border: #d8e2ee
+}
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--background)
+}
+.print-page {
+  min-height: 100vh;
+  padding: 30px 20px 50px
+}
+.print-toolbar {
+  width: min(820px,100%);
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px
+}
+.toolbar-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 9px;
+  background: #fff;
+  border: 1px solid var(--border);
+  color: var(--navy);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  transition: .2s ease
+}
+.toolbar-back:hover {
+  border-color: var(--blue);
+  color: var(--blue)
+}
+.toolbar-print {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 9px;
+  background: linear-gradient(135deg,var(--navy-2),var(--blue));
+  color: #fff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(23,105,213,.22);
+  transition: .2s ease
+}
+.toolbar-print:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 11px 24px rgba(23,105,213,.28)
+}
+.print-sheet {
+  width: min(820px,100%);
+  margin: 0 auto;
+  padding: 46px 52px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 10px 28px rgba(11,40,85,.08)
+}
+.kop-surat {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 18px;
+  border-bottom: 3px solid var(--navy)
+}
+.kop-logo {
+  width: 58px;
+  height: 58px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg,var(--navy),var(--blue));
+  color: #fff;
+  font-size: 24px;
+  font-weight: 800
+}
+.kop-text h1 {
+  margin: 0 0 3px;
+  color: var(--navy);
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: .2px
+}
+.kop-text p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px
+}
+.doc-title {
+  margin: 22px 0 4px;
+  text-align: center
+}
+.doc-title h2 {
+  margin: 0 0 4px;
+  color: var(--navy);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: .4px;
+  text-transform: uppercase
+}
+.doc-title span {
+  color: var(--muted);
+  font-size: 12px
+}
+.reg-summary {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 14px;
+  margin: 24px 0;
+  padding: 18px 20px;
+  border-radius: 12px;
+  background: var(--blue-light);
+  border: 1px solid #d4e4f6
+}
+.reg-summary div span {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--blue);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .6px;
+  text-transform: uppercase
+}
+.reg-summary div strong {
+  display: block;
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 800
+}
+.data-section {
+  margin-top: 22px
+}
+.data-section h3 {
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .5px
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse
+}
+.data-table td {
+  padding: 7px 0;
+  font-size: 13px;
+  vertical-align: top
+}
+.data-table td.label {
+  width: 34%;
+  color: var(--muted)
+}
+.data-table td.sep {
+  width: 14px;
+  color: var(--muted)
+}
+.data-table td.value {
+  color: var(--text);
+  font-weight: 650
+}
+.signature-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 46px
+}
+.signature-box {
+  text-align: center
+}
+.signature-box p.role {
+  margin: 0 0 70px;
+  color: var(--muted);
+  font-size: 12px
+}
+.signature-box p.name {
+  margin: 0;
+  padding-top: 6px;
+  border-top: 1px solid var(--text);
+  display: inline-block;
+  min-width: 200px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 700
+}
+.doc-footer {
+  margin-top: 34px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--border);
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+  text-align: center
+}
+@media print {
+  body {
+    background: #fff
+  }
+  .print-toolbar,
+  .no-print {
+    display: none !important
+  }
+  .print-page {
+    padding: 0
+  }
+  .print-sheet {
+    width: 100%;
+    margin: 0;
+    padding: 10mm 14mm;
+    border: none;
+    border-radius: 0;
+    box-shadow: none
+  }
+  .signature-area {
+    page-break-inside: avoid
+  }
+}
+@media (max-width:700px) {
+  .print-sheet {
+    padding: 30px 24px
+  }
+  .kop-text h1 {
+    font-size: 16px
+  }
+  .reg-summary {
+    grid-template-columns: 1fr
+  }
+  .signature-area {
+    grid-template-columns: 1fr;
+    gap: 40px
+  }
+}

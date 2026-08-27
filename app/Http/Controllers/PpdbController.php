@@ -103,6 +103,15 @@ class PpdbController extends Controller
         return view('ppdb.sukses', compact('registration'));
     }
 
+    public function print(string $registrationNumber): View
+    {
+        $registration = PpdbRegistration::with(['period', 'documents'])
+            ->where('registration_number', $registrationNumber)
+            ->firstOrFail();
+
+        return view('ppdb.cetak', compact('registration'));
+    }
+
     public function checkStatusForm(Request $request): View
     {
         $registration = null;
