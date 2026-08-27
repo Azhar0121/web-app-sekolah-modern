@@ -1,61 +1,196 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
-    <title>Cek Status PPDB - {{ config('app.name') }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cek Status Pendaftaran - {{ config('app.name') }}</title>
+
+    <link rel="stylesheet" href="{{ asset('css/base.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/ppdb-status.css') }}">
 </head>
-<body style="font-family: sans-serif; max-width: 700px; margin: 40px auto;">
-    <p><a href="{{ route('ppdb.index') }}">&larr; Kembali</a></p>
-    <h2>Cek Status Pendaftaran</h2>
 
-    <form method="POST" action="{{ route('ppdb.cek-status') }}">
-        @csrf
-        <p>
-            <label>Nomor Pendaftaran</label><br>
-            <input type="text" name="registration_number" placeholder="PPDB-2026-00001"
-                   value="{{ old('registration_number', $registration->registration_number ?? '') }}"
-                   style="width: 100%;" required>
-        </p>
-        <button type="submit">Cek Status</button>
-    </form>
+<body>
 
-    <p style="margin-top: 12px;">
-        Lupa nomor pendaftaran Anda?
-        <a href="{{ route('ppdb.lupa-nomor.form') }}">Cari di sini</a>
-    </p>
+    <div class="status-page">
 
-    @isset($registration)
-        <hr>
-        @if ($registration)
-            <h3>Hasil Pencarian</h3>
-            <p><strong>Nama:</strong> {{ $registration->full_name }}</p>
-            <p><strong>Status:</strong> {{ $registration->statusLabel() }}</p>
+        {{-- HEADER --}}
+        <header class="status-header">
 
-            @if ($registration->status === 'accepted')
-                <div style="background: #fff8e6; border: 1px solid #ffe6a8; border-radius: 8px; padding: 14px; margin: 12px 0;">
-                    <p style="margin: 0 0 4px;"><strong>Batas Waktu Daftar Ulang:</strong></p>
-                    <p style="font-size: 18px; font-weight: bold; margin: 0; color: #b8860b;">
-                        {{ $registration->reRegistrationDeadlineLabel() }}
-                    </p>
-                    <p style="margin: 8px 0 0; font-size: 13px; color: #555;">
-                        Silakan datang langsung ke sekolah sebelum tanggal tersebut untuk
-                        menyelesaikan daftar ulang & pembayaran.
+            <a href="{{ route('ppdb.index') }}" class="back-button">
+                <span>&larr;</span>
+                PPDB Online
+            </a>
+
+            <div class="header-badge">
+                CEK STATUS
+            </div>
+
+        </header>
+
+
+        <div class="status-container">
+
+            {{-- HERO --}}
+            <section class="status-hero">
+
+                <div class="hero-content">
+                    <span class="hero-label">
+                        PENERIMAAN PESERTA DIDIK BARU
+                    </span>
+
+                    <h1>
+                        Cek Status Pendaftaran
+                    </h1>
+
+                    <p>
+                        Masukkan nomor pendaftaran Anda untuk melihat status
+                        terkini dari proses seleksi PPDB.
                     </p>
                 </div>
+
+                <div class="hero-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+                    </svg>
+                </div>
+
+            </section>
+
+
+            {{-- FORM --}}
+            <div class="status-form-card">
+
+                <div class="section-heading">
+                    <div class="heading-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                             stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                    </div>
+
+                    <div>
+                        <span>PENCARIAN</span>
+                        <h2>Masukkan Nomor Pendaftaran</h2>
+                    </div>
+                </div>
+
+                <form method="POST" action="{{ route('ppdb.cek-status') }}">
+                    @csrf
+
+                    <div class="form-group">
+                        <label>Nomor Pendaftaran</label>
+
+                        <div class="input-wrapper">
+                            <span class="input-icon">#</span>
+                            <input type="text" name="registration_number" placeholder="PPDB-2026-00001"
+                                   value="{{ old('registration_number', $registration->registration_number ?? '') }}"
+                                   required>
+                        </div>
+
+                        <small>
+                            Lupa nomor pendaftaran?
+                            <a href="{{ route('ppdb.lupa-nomor.form') }}">Cari di sini</a>
+                        </small>
+                    </div>
+
+                    <button type="submit" class="check-button">
+                        <span>Cek Status</span>
+                        <span class="arrow">&rarr;</span>
+                    </button>
+                </form>
+
+            </div>
+
+
+            {{-- HASIL --}}
+            @if ($searched ?? false)
+
+                @if ($registration)
+
+                    <div class="result-card">
+
+                        <div class="result-header">
+                            <div class="result-success-icon">✓</div>
+
+                            <div>
+                                <span class="result-label">DITEMUKAN</span>
+                                <h2>{{ $registration->registration_number }}</h2>
+                            </div>
+                        </div>
+
+                        <div class="result-data">
+
+                            <div class="data-item">
+                                <span class="data-label">Nama Calon Siswa</span>
+                                <strong>{{ $registration->full_name }}</strong>
+                            </div>
+
+                            <div class="data-item">
+                                <span class="data-label">Status</span>
+                                <strong class="registration-status">{{ $registration->statusLabel() }}</strong>
+                            </div>
+
+                            @if ($registration->status === 'accepted')
+                                <div class="data-item full">
+                                    <span class="data-label">Batas Waktu Daftar Ulang</span>
+                                    <strong>{{ $registration->reRegistrationDeadlineLabel() }}</strong>
+                                    <p class="notes" style="margin-top: 8px;">
+                                        Silakan datang langsung ke sekolah sebelum tanggal tersebut
+                                        untuk menyelesaikan daftar ulang & pembayaran.
+                                    </p>
+                                </div>
+                            @endif
+
+                            @if ($registration->notes)
+                                <div class="data-item full">
+                                    <span class="data-label">Catatan</span>
+                                    <p class="notes">{{ $registration->notes }}</p>
+                                </div>
+                            @endif
+
+                            <div class="data-item full">
+                                <span class="data-label">Tanggal Daftar</span>
+                                <strong>{{ $registration->created_at->format('d M Y H:i') }}</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                @else
+
+                    <div class="result-card">
+                        <div class="not-found">
+                            <div class="not-found-icon">!</div>
+
+                            <div>
+                                <h2>Nomor Pendaftaran Tidak Ditemukan</h2>
+                                <p>Periksa kembali penulisan nomor pendaftaran Anda, atau gunakan fitur "Lupa Nomor Pendaftaran".</p>
+                            </div>
+                        </div>
+                    </div>
+
+                @endif
+
             @endif
 
-            @if ($registration->notes)
-                <p><strong>Catatan:</strong> {{ $registration->notes }}</p>
-            @endif
-            <p><strong>Tanggal Daftar:</strong> {{ $registration->created_at->format('d M Y H:i') }}</p>
-        @else
-            <p style="color: red;">Nomor pendaftaran tidak ditemukan. Periksa kembali penulisannya.</p>
-        @endif
-    @endisset
+            {{-- FOOTER --}}
+            <div class="status-footer">
+                <div class="footer-line"></div>
+                <p>&copy; {{ date('Y') }} {{ config('app.name') }} • Sistem PPDB Online</p>
+            </div>
 
-    <hr>
-    <p style="color:#888; font-size: 13px;">
-        [Placeholder — tampilan akan dipercantik dengan Bootstrap di sesi styling berikutnya]
-    </p>
+        </div>
+
+    </div>
+
 </body>
+
 </html>

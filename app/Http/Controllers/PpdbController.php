@@ -103,9 +103,19 @@ class PpdbController extends Controller
         return view('ppdb.sukses', compact('registration'));
     }
 
-    public function checkStatusForm(): View
+    public function checkStatusForm(Request $request): View
     {
-        return view('ppdb.cek-status');
+        $registration = null;
+        $searched = false;
+
+        if ($request->filled('registration_number')) {
+            $searched = true;
+            $registration = PpdbRegistration::with('documents')
+                ->where('registration_number', $request->query('registration_number'))
+                ->first();
+        }
+
+        return view('ppdb.cek-status', compact('registration', 'searched'));
     }
 
     public function checkStatus(Request $request): View
@@ -118,7 +128,9 @@ class PpdbController extends Controller
             ->where('registration_number', $request->registration_number)
             ->first();
 
-        return view('ppdb.cek-status', compact('registration'));
+        $searched = true;
+
+        return view('ppdb.cek-status', compact('registration', 'searched'));
     }
 
     public function forgotNumberForm(): View
