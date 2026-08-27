@@ -12,6 +12,9 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             PermissionSeeder::class,
             UserSeeder::class,
+            AcademicYearSeeder::class,
+            SubjectSeeder::class,
+            ClassroomSeeder::class,
             PpdbPeriodSeeder::class,
             PpdbRegistrationSeeder::class,
         ]);

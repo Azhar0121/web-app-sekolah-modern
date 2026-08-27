@@ -16,6 +16,9 @@ class PermissionSeeder extends Seeder
             ['name' => 'Kelola PPDB Online', 'slug' => 'ppdb.manage', 'module' => 'PPDB'],
             ['name' => 'Lihat Status PPDB', 'slug' => 'ppdb.view', 'module' => 'PPDB'],
 
+            // Master Data Akademik (Tahun Ajaran, Semester, Kelas, Mata Pelajaran)
+            ['name' => 'Kelola Master Data Akademik', 'slug' => 'akademik.manage', 'module' => 'Akademik'],
+
             // Akademik
             ['name' => 'Input Nilai', 'slug' => 'nilai.input', 'module' => 'Akademik'],
             ['name' => 'Approve Nilai', 'slug' => 'nilai.approve', 'module' => 'Akademik'],

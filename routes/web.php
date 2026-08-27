@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\AcademicYearController;
+use App\Http\Controllers\Admin\ClassroomController;
 use App\Http\Controllers\Admin\PpdbController as AdminPpdbController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\SemesterController;
+use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PpdbController;
@@ -45,6 +49,21 @@ Route::middleware(['auth', 'role:super-admin'])->prefix('admin')->name('admin.')
     Route::get('roles', [RoleController::class, 'index'])->name('roles.index');
     Route::get('roles/{role}/edit', [RoleController::class, 'edit'])->name('roles.edit');
     Route::put('roles/{role}', [RoleController::class, 'update'])->name('roles.update');
+
+    // Master Data Akademik: Tahun Ajaran & Semester
+    Route::resource('academic-years', AcademicYearController::class)->except(['show']);
+    Route::post('academic-years/{academicYear}/semesters', [SemesterController::class, 'store'])
+        ->name('academic-years.semesters.store');
+    Route::post('academic-years/{academicYear}/semesters/{semester}/activate', [SemesterController::class, 'activate'])
+        ->name('academic-years.semesters.activate');
+    Route::delete('academic-years/{academicYear}/semesters/{semester}', [SemesterController::class, 'destroy'])
+        ->name('academic-years.semesters.destroy');
+
+    // Master Data Akademik: Mata Pelajaran
+    Route::resource('subjects', SubjectController::class)->except(['show']);
+
+    // Master Data Akademik: Kelas
+    Route::resource('classrooms', ClassroomController::class)->except(['show']);
 });
 
 // ================= KELOLA PPDB (SUPER ADMIN & TU, by permission) =================

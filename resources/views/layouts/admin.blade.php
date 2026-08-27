@@ -47,6 +47,26 @@
                                 Kelola Role & Permission
                             </a>
                         </li>
+
+                        <li class="text-uppercase text-muted small fw-bold mt-3 mb-1 px-2">Master Data Akademik</li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.academic-years.index') }}"
+                               class="nav-link {{ request()->routeIs('admin.academic-years.*') ? 'active' : 'text-dark' }}">
+                                Tahun Ajaran & Semester
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.classrooms.index') }}"
+                               class="nav-link {{ request()->routeIs('admin.classrooms.*') ? 'active' : 'text-dark' }}">
+                                Kelas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.subjects.index') }}"
+                               class="nav-link {{ request()->routeIs('admin.subjects.*') ? 'active' : 'text-dark' }}">
+                                Mata Pelajaran
+                            </a>
+                        </li>
                     @endif
 
                     @if (auth()->user()->hasPermission('ppdb.manage'))
