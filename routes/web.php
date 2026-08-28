@@ -5,9 +5,12 @@ use App\Http\Controllers\Admin\ClassroomController;
 use App\Http\Controllers\Admin\PpdbController as AdminPpdbController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SemesterController;
+use App\Http\Controllers\Admin\StudentPlacementController;
 use App\Http\Controllers\Admin\SubjectController;
+use App\Http\Controllers\Admin\TeachingAssignmentController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Guru\DashboardController as GuruDashboardController;
 use App\Http\Controllers\PpdbController;
 use Illuminate\Support\Facades\Route;
 
@@ -64,6 +67,15 @@ Route::middleware(['auth', 'role:super-admin'])->prefix('admin')->name('admin.')
 
     // Master Data Akademik: Kelas
     Route::resource('classrooms', ClassroomController::class)->except(['show']);
+
+    // Penugasan Mengajar (guru-kelas-mapel per tahun ajaran)
+    Route::resource('teaching-assignments', TeachingAssignmentController::class)->except(['show']);
+
+    // Penempatan Siswa ke Kelas per tahun ajaran
+    Route::get('student-placements', [StudentPlacementController::class, 'index'])->name('student-placements.index');
+    Route::get('student-placements/{classroom}', [StudentPlacementController::class, 'manage'])->name('student-placements.manage');
+    Route::post('student-placements/{classroom}', [StudentPlacementController::class, 'store'])->name('student-placements.store');
+    Route::delete('student-placements/entry/{classroomStudent}', [StudentPlacementController::class, 'destroy'])->name('student-placements.destroy');
 });
 
 // ================= KELOLA PPDB (SUPER ADMIN & TU, by permission) =================
@@ -76,7 +88,7 @@ Route::middleware(['auth', 'permission:ppdb.manage'])->prefix('admin/ppdb')->nam
 
 // ================= PORTAL GURU / WALI KELAS =================
 Route::middleware(['auth', 'role:guru'])->prefix('guru')->group(function () {
-    Route::view('/dashboard', 'guru.dashboard')->name('guru.dashboard');
+    Route::get('/dashboard', [GuruDashboardController::class, 'index'])->name('guru.dashboard');
 });
 
 // ================= PORTAL SISWA =================

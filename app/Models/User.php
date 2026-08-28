@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -45,5 +46,26 @@ class User extends Authenticatable
     public function hasPermission(string $permissionSlug): bool
     {
         return $this->role && $this->role->hasPermission($permissionSlug);
+    }
+
+    public function teachingAssignments(): HasMany
+    {
+        return $this->hasMany(TeachingAssignment::class, 'teacher_id');
+    }
+
+    public function currentClassroom(): ?Classroom
+    {
+        $activeYear = AcademicYear::active();
+
+        if (! $activeYear) {
+            return null;
+        }
+
+        $enrollment = ClassroomStudent::with('classroom')
+            ->where('academic_year_id', $activeYear->id)
+            ->where('student_id', $this->id)
+            ->first();
+
+        return $enrollment?->classroom;
     }
 }

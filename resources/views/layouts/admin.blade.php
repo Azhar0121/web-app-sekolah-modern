@@ -67,6 +67,18 @@
                                 Mata Pelajaran
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.teaching-assignments.index') }}"
+                               class="nav-link {{ request()->routeIs('admin.teaching-assignments.*') ? 'active' : 'text-dark' }}">
+                                Penugasan Mengajar
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.student-placements.index') }}"
+                               class="nav-link {{ request()->routeIs('admin.student-placements.*') ? 'active' : 'text-dark' }}">
+                                Penempatan Siswa
+                            </a>
+                        </li>
                     @endif
 
                     @if (auth()->user()->hasPermission('ppdb.manage'))
