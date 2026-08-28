@@ -34,7 +34,12 @@
                         <td class="fw-semibold">{{ $assignment->classroom->name }}</td>
                         <td>{{ $assignment->subject->name }}</td>
                         <td class="text-end">
-                            <span class="text-muted small">Menyusul: kelola materi &amp; tugas</span>
+                            <a href="{{ route('guru.teaching-assignments.materials.index', $assignment) }}" class="btn btn-sm btn-outline-primary">
+                                Materi
+                            </a>
+                            <a href="{{ route('guru.teaching-assignments.tasks.index', $assignment) }}" class="btn btn-sm btn-outline-primary">
+                                Tugas
+                            </a>
                         </td>
                     </tr>
                 @empty

@@ -11,7 +11,11 @@ use App\Http\Controllers\Admin\TeachingAssignmentController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Guru\DashboardController as GuruDashboardController;
+use App\Http\Controllers\Guru\MaterialController as GuruMaterialController;
+use App\Http\Controllers\Guru\TaskController as GuruTaskController;
 use App\Http\Controllers\PpdbController;
+use App\Http\Controllers\Siswa\MaterialController as SiswaMaterialController;
+use App\Http\Controllers\Siswa\TaskController as SiswaTaskController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -87,13 +91,38 @@ Route::middleware(['auth', 'permission:ppdb.manage'])->prefix('admin/ppdb')->nam
 });
 
 // ================= PORTAL GURU / WALI KELAS =================
-Route::middleware(['auth', 'role:guru'])->prefix('guru')->group(function () {
-    Route::get('/dashboard', [GuruDashboardController::class, 'index'])->name('guru.dashboard');
+Route::middleware(['auth', 'role:guru'])->prefix('guru')->name('guru.')->group(function () {
+    Route::get('/dashboard', [GuruDashboardController::class, 'index'])->name('dashboard');
+
+    // Materi Pembelajaran (nested di bawah kelas+mapel yang diampu)
+    Route::resource('teaching-assignments.materials', GuruMaterialController::class)
+        ->parameters(['materials' => 'material'])
+        ->except(['show']);
+
+    // Tugas & Koreksi Pengumpulan
+    Route::resource('teaching-assignments.tasks', GuruTaskController::class)
+        ->parameters(['tasks' => 'task'])
+        ->except(['show']);
+    Route::get('teaching-assignments/{teachingAssignment}/tasks/{task}/submissions', [GuruTaskController::class, 'submissions'])
+        ->name('teaching-assignments.tasks.submissions');
+    Route::put('teaching-assignments/{teachingAssignment}/tasks/{task}/submissions/{submission}/grade', [GuruTaskController::class, 'grade'])
+        ->name('teaching-assignments.tasks.submissions.grade');
 });
 
 // ================= PORTAL SISWA =================
-Route::middleware(['auth', 'role:siswa'])->prefix('siswa')->group(function () {
-    Route::view('/dashboard', 'siswa.dashboard')->name('siswa.dashboard');
+Route::middleware(['auth', 'role:siswa'])->prefix('siswa')->name('siswa.')->group(function () {
+    Route::view('/dashboard', 'siswa.dashboard')->name('dashboard');
+
+    // Materi Pembelajaran
+    Route::get('/materi', [SiswaMaterialController::class, 'index'])->name('materials.index');
+    Route::get('/materi/{material}/unduh', [SiswaMaterialController::class, 'download'])->name('materials.download');
+
+    // Tugas & Pengumpulan
+    Route::get('/tugas', [SiswaTaskController::class, 'index'])->name('tasks.index');
+    Route::get('/tugas/{task}', [SiswaTaskController::class, 'show'])->name('tasks.show');
+    Route::post('/tugas/{task}', [SiswaTaskController::class, 'store'])->name('tasks.store');
+    Route::get('/tugas/{task}/lampiran', [SiswaTaskController::class, 'downloadAttachment'])->name('tasks.download-attachment');
+    Route::get('/pengumpulan/{submission}/unduh', [SiswaTaskController::class, 'downloadSubmission'])->name('tasks.download-submission');
 });
 
 // ================= PORTAL ORANG TUA / WALI =================

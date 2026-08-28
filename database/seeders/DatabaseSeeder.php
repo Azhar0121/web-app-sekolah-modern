@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
             ClassroomSeeder::class,
             TeachingAssignmentSeeder::class,
             ClassroomStudentSeeder::class,
+            MaterialSeeder::class,
+            TaskSeeder::class,
             PpdbPeriodSeeder::class,
             PpdbRegistrationSeeder::class,
         ]);
