@@ -22,7 +22,10 @@
     <input type="file" name="file" id="file" class="form-control">
     @if ($material?->hasFile())
         <div class="form-text">
-            File saat ini: <strong>{{ $material->file_original_name }}</strong>.
+            File saat ini:
+            <a href="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($material->file_path) }}" target="_blank">
+                <strong>{{ $material->file_original_name }}</strong>
+            </a>.
             Upload file baru untuk mengganti.
         </div>
         <div class="form-check mt-1">

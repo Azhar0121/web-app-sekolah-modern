@@ -28,7 +28,10 @@
     <input type="file" name="file" id="file" class="form-control">
     @if ($task?->hasFile())
         <div class="form-text">
-            File saat ini: <strong>{{ $task->file_original_name }}</strong>. Upload file baru untuk mengganti.
+            File saat ini:
+            <a href="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($task->file_path) }}" target="_blank">
+                <strong>{{ $task->file_original_name }}</strong>
+            </a>. Upload file baru untuk mengganti.
         </div>
         <div class="form-check mt-1">
             <input type="checkbox" name="remove_file" id="remove_file" class="form-check-input" value="1">

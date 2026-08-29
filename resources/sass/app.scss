@@ -1,2 +1,8 @@
-// Import Bootstrap 5 (semua komponen + grid + utilities)
+// Import variabel & override Bootstrap (tema navy/blue sekolah)
+@import "variables";
+
+// Import Bootstrap 5
 @import "bootstrap/scss/bootstrap";
+
+// Komponen tema admin (topbar, sidebar, kartu ringkasan)
+@import "admin";
