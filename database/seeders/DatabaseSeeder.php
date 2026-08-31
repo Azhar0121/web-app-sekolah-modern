@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             SubjectSeeder::class,
             ClassroomSeeder::class,
             TeachingAssignmentSeeder::class,
+            ScheduleSeeder::class,
             ClassroomStudentSeeder::class,
             MaterialSeeder::class,
             TaskSeeder::class,

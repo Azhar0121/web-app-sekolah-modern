@@ -14,6 +14,9 @@
                 Belum ada tahun ajaran aktif — hubungi Super Admin.
             @endif
         </p>
+        <a href="{{ route('guru.schedule.index') }}" class="btn btn-sm btn-outline-primary mt-3">
+            📅 Lihat Jadwal Mengajar Saya
+        </a>
     </div>
 </div>
 

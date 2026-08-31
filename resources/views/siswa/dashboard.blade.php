@@ -19,6 +19,16 @@
 
 <div class="row g-3">
     <div class="col-md-6">
+        <a href="{{ route('siswa.schedule.index') }}" class="text-decoration-none">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="fw-bold text-primary mb-1">📅 Jadwal Pelajaran</h5>
+                    <p class="text-muted small mb-0">Lihat jadwal pelajaran kelas Anda per hari.</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-6">
         <a href="{{ route('siswa.materials.index') }}" class="text-decoration-none">
             <div class="card border-0 shadow-sm h-100">
                 <div class="card-body">

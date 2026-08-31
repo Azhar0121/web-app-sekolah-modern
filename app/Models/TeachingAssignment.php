@@ -42,4 +42,9 @@ class TeachingAssignment extends Model
     {
         return $this->hasMany(Task::class);
     }
+
+    public function schedules(): HasMany
+    {
+        return $this->hasMany(Schedule::class);
+    }
 }
