@@ -33,7 +33,7 @@
             ],
         ],
     ];
-@endphp          
+@endphp
 
 <div class="sidebar-backdrop" data-sidebar-backdrop></div>
 

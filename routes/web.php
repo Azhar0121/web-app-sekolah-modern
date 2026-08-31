@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AcademicYearController;
 use App\Http\Controllers\Admin\ClassroomController;
 use App\Http\Controllers\Admin\PpdbController as AdminPpdbController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\ScheduleController as AdminScheduleController;
 use App\Http\Controllers\Admin\SemesterController;
 use App\Http\Controllers\Admin\StudentPlacementController;
 use App\Http\Controllers\Admin\SubjectController;
@@ -12,9 +13,11 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Guru\DashboardController as GuruDashboardController;
 use App\Http\Controllers\Guru\MaterialController as GuruMaterialController;
+use App\Http\Controllers\Guru\ScheduleController as GuruScheduleController;
 use App\Http\Controllers\Guru\TaskController as GuruTaskController;
 use App\Http\Controllers\PpdbController;
 use App\Http\Controllers\Siswa\MaterialController as SiswaMaterialController;
+use App\Http\Controllers\Siswa\ScheduleController as SiswaScheduleController;
 use App\Http\Controllers\Siswa\TaskController as SiswaTaskController;
 use Illuminate\Support\Facades\Route;
 
@@ -80,6 +83,9 @@ Route::middleware(['auth', 'role:super-admin'])->prefix('admin')->name('admin.')
     Route::get('student-placements/{classroom}', [StudentPlacementController::class, 'manage'])->name('student-placements.manage');
     Route::post('student-placements/{classroom}', [StudentPlacementController::class, 'store'])->name('student-placements.store');
     Route::delete('student-placements/entry/{classroomStudent}', [StudentPlacementController::class, 'destroy'])->name('student-placements.destroy');
+
+    // Jadwal Pelajaran
+    Route::resource('schedules', AdminScheduleController::class)->except(['show']);
 });
 
 // ================= KELOLA PPDB (SUPER ADMIN & TU, by permission) =================
@@ -107,11 +113,17 @@ Route::middleware(['auth', 'role:guru'])->prefix('guru')->name('guru.')->group(f
         ->name('teaching-assignments.tasks.submissions');
     Route::put('teaching-assignments/{teachingAssignment}/tasks/{task}/submissions/{submission}/grade', [GuruTaskController::class, 'grade'])
         ->name('teaching-assignments.tasks.submissions.grade');
+
+    // Jadwal Mengajar Pribadi
+    Route::get('/jadwal', [GuruScheduleController::class, 'index'])->name('schedule.index');
 });
 
 // ================= PORTAL SISWA =================
 Route::middleware(['auth', 'role:siswa'])->prefix('siswa')->name('siswa.')->group(function () {
     Route::view('/dashboard', 'siswa.dashboard')->name('dashboard');
+
+    // Jadwal Pelajaran
+    Route::get('/jadwal', [SiswaScheduleController::class, 'index'])->name('schedule.index');
 
     // Materi Pembelajaran
     Route::get('/materi', [SiswaMaterialController::class, 'index'])->name('materials.index');
