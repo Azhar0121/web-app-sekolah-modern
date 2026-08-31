@@ -1,0 +1,863 @@
+/* =========================================================
+WEB SEKOLAH MODERN
+ADMIN - KELOLA KELAS
+========================================================= */
+
+.classrooms-page {
+width: 100%;
+max-width: 100%;
+margin: 0;
+padding: 10px 8px 40px;
+box-sizing: border-box;
+}
+
+/* =========================================================
+HEADER
+========================================================= */
+
+.classrooms-header {
+position: relative;
+width: 100%;
+overflow: hidden;
+margin-bottom: 22px;
+padding: 28px 32px;
+border-radius: 18px;
+background:
+linear-gradient(
+135deg,
+#071b35 0%,
+#0a3768 60%,
+#0d5fb7 100%
+);
+box-shadow:
+0 10px 28px rgba(7, 27, 53, 0.12);
+box-sizing: border-box;
+}
+
+.classrooms-header::before {
+content: "";
+position: absolute;
+width: 220px;
+height: 220px;
+top: -120px;
+right: -75px;
+border-radius: 50%;
+background: rgba(255, 255, 255, 0.07);
+}
+
+.classrooms-header::after {
+content: "";
+position: absolute;
+width: 130px;
+height: 130px;
+right: 120px;
+bottom: -85px;
+border-radius: 50%;
+background: rgba(255, 255, 255, 0.045);
+}
+
+.classrooms-header-content {
+position: relative;
+z-index: 2;
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 25px;
+}
+
+.classrooms-title-area {
+min-width: 0;
+}
+
+.classrooms-label {
+display: inline-flex;
+align-items: center;
+margin-bottom: 9px;
+padding: 6px 12px;
+border: 1px solid rgba(255, 255, 255, 0.18);
+border-radius: 7px;
+background: rgba(255, 255, 255, 0.09);
+color: #dceeff;
+font-size: 10.5px;
+font-weight: 800;
+letter-spacing: 1.2px;
+}
+
+.classrooms-title-area h1 {
+margin: 0;
+color: #ffffff;
+font-size: 29px;
+font-weight: 800;
+line-height: 1.3;
+letter-spacing: -0.4px;
+}
+
+.classrooms-title-area p {
+max-width: 680px;
+margin: 8px 0 0;
+color: #c9def3;
+font-size: 13.5px;
+line-height: 1.65;
+}
+
+/* =========================================================
+ADD BUTTON
+========================================================= */
+
+.classrooms-add-button {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+flex-shrink: 0;
+min-height: 43px;
+padding: 10px 17px;
+border: 1px solid rgba(255, 255, 255, 0.22);
+border-radius: 9px;
+background: #ffffff;
+color: #0754b5;
+font-size: 12.5px;
+font-weight: 800;
+text-decoration: none;
+box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+transition:
+transform 0.2s ease,
+box-shadow 0.2s ease,
+background 0.2s ease;
+}
+
+.classrooms-add-button span {
+font-size: 18px;
+font-weight: 500;
+line-height: 1;
+}
+
+.classrooms-add-button:hover {
+color: #064ba8;
+background: #f5f9ff;
+transform: translateY(-1px);
+box-shadow: 0 9px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================================================
+SEARCH CARD
+========================================================= */
+
+.classrooms-search-card {
+width: 100%;
+margin-bottom: 20px;
+padding: 20px 24px;
+border: 1px solid #dbe7f2;
+border-radius: 16px;
+background: #ffffff;
+box-shadow: 0 8px 24px rgba(16, 42, 67, 0.055);
+box-sizing: border-box;
+}
+
+.classrooms-search-header {
+display: flex;
+align-items: center;
+gap: 13px;
+margin-bottom: 17px;
+}
+
+.classrooms-search-icon {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 43px;
+height: 43px;
+flex: 0 0 43px;
+border: 1px solid #c9e0f6;
+border-radius: 11px;
+background: #eaf4ff;
+color: #0866d8;
+}
+
+.classrooms-search-header h2 {
+margin: 0;
+color: #09284b;
+font-size: 16px;
+font-weight: 800;
+line-height: 1.35;
+}
+
+.classrooms-search-header p {
+margin: 3px 0 0;
+color: #6a8198;
+font-size: 12px;
+line-height: 1.45;
+}
+
+.classrooms-search-form {
+display: grid;
+grid-template-columns: 1fr 150px;
+gap: 12px;
+align-items: end;
+}
+
+.classrooms-search-field label {
+display: block;
+margin-bottom: 6px;
+color: #244563;
+font-size: 12px;
+font-weight: 700;
+}
+
+.classrooms-input-wrapper {
+position: relative;
+}
+
+.classrooms-input-wrapper svg {
+position: absolute;
+top: 50%;
+left: 14px;
+color: #8498ac;
+transform: translateY(-50%);
+pointer-events: none;
+}
+
+.classrooms-input-wrapper input {
+width: 100%;
+height: 43px;
+padding: 0 14px 0 41px;
+border: 1px solid #dbe7f2;
+border-radius: 8px;
+outline: none;
+background: #fbfdff;
+color: #102a43;
+font-family: inherit;
+font-size: 13px;
+box-sizing: border-box;
+transition:
+border-color 0.2s ease,
+box-shadow 0.2s ease,
+background 0.2s ease;
+}
+
+.classrooms-input-wrapper input::placeholder {
+color: #9aaabd;
+}
+
+.classrooms-input-wrapper input:hover {
+border-color: #bfd2e4;
+}
+
+.classrooms-input-wrapper input:focus {
+border-color: #0866d8;
+background: #ffffff;
+box-shadow: 0 0 0 3px rgba(8, 102, 216, 0.09);
+}
+
+.classrooms-search-button {
+width: 100%;
+height: 43px;
+border: 1px solid #0759c5;
+border-radius: 8px;
+background: linear-gradient(135deg, #0871e8, #0759c5);
+color: #ffffff;
+font-family: inherit;
+font-size: 12.5px;
+font-weight: 800;
+cursor: pointer;
+box-shadow: 0 5px 12px rgba(8, 102, 216, 0.16);
+transition:
+transform 0.2s ease,
+box-shadow 0.2s ease;
+}
+
+.classrooms-search-button:hover {
+transform: translateY(-1px);
+box-shadow: 0 8px 17px rgba(8, 102, 216, 0.23);
+}
+
+/* =========================================================
+TABLE CARD
+========================================================= */
+
+.classrooms-table-card {
+width: 100%;
+overflow: hidden;
+border: 1px solid #dbe7f2;
+border-radius: 17px;
+background: #ffffff;
+box-shadow: 0 8px 24px rgba(16, 42, 67, 0.06);
+}
+
+/* =========================================================
+CARD TOP
+========================================================= */
+
+.classrooms-card-top {
+position: relative;
+display: flex;
+align-items: center;
+min-height: 88px;
+padding: 17px 25px;
+overflow: hidden;
+border-bottom: 1px solid #c9dced;
+background:
+linear-gradient(
+90deg,
+#e8f3ff 0%,
+#edf6ff 55%,
+#e2f0ff 100%
+);
+box-sizing: border-box;
+}
+
+.classrooms-card-top::before {
+content: "";
+position: absolute;
+width: 145px;
+height: 145px;
+top: -82px;
+right: 35px;
+border-radius: 50%;
+background: rgba(8, 102, 216, 0.075);
+}
+
+.classrooms-card-top::after {
+content: "";
+position: absolute;
+width: 85px;
+height: 85px;
+right: 130px;
+bottom: -55px;
+border-radius: 50%;
+background: rgba(8, 102, 216, 0.055);
+}
+
+.classrooms-card-title {
+position: relative;
+z-index: 2;
+display: flex;
+align-items: center;
+gap: 13px;
+}
+
+.classrooms-title-icon {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 45px;
+height: 45px;
+flex: 0 0 45px;
+border: 1px solid #c3def7;
+border-radius: 12px;
+background: linear-gradient(145deg, #ffffff, #d4e5f7);
+color: #0866d8;
+box-shadow: 0 6px 14px rgba(8, 102, 216, 0.11);
+}
+
+.classrooms-card-title h2 {
+margin: 0;
+color: #09284b;
+font-size: 18px;
+font-weight: 800;
+line-height: 1.35;
+}
+
+.classrooms-card-title p {
+margin: 3px 0 0;
+color: #4f6f8e;
+font-size: 12px;
+}
+
+/* =========================================================
+TABLE
+========================================================= */
+
+.classrooms-table-wrapper {
+width: 100%;
+overflow-x: auto;
+}
+
+.classrooms-table {
+width: 100%;
+border-collapse: separate;
+border-spacing: 0;
+table-layout: fixed;
+}
+
+.classrooms-table thead th {
+padding: 15px 16px;
+border-bottom: 1px solid #d9e5f0;
+background: #0b294d;
+color: #f3f4f5;
+font-size: 11px;
+font-weight: 800;
+letter-spacing: 0.5px;
+text-align: left;
+white-space: nowrap;
+}
+
+.classrooms-table thead th:first-child {
+width: 23%;
+padding-left: 25px;
+}
+
+.classrooms-table thead th:nth-child(2) {
+width: 13%;
+}
+
+.classrooms-table thead th:nth-child(3) {
+width: 17%;
+}
+
+.classrooms-table thead th:nth-child(4) {
+width: 20%;
+}
+
+.classrooms-table thead th:nth-child(5) {
+width: 12%;
+}
+
+.classrooms-table thead th:nth-child(6) {
+width: 15%;
+text-align: center;
+}
+
+/* =========================================================
+TABLE BODY
+========================================================= */
+
+.classrooms-table tbody tr {
+background: #ffffff;
+transition: background-color 0.2s ease;
+}
+
+.classrooms-table tbody tr:nth-child(even) {
+background: #fbfdff;
+}
+
+.classrooms-table tbody tr:hover {
+background: #f2f8ff;
+}
+
+.classrooms-table tbody td {
+padding: 17px 16px;
+border-bottom: 1px solid #e4edf5;
+color: #102a43;
+font-size: 13px;
+line-height: 1.5;
+vertical-align: middle;
+box-sizing: border-box;
+}
+
+.classrooms-table tbody tr:last-child td {
+border-bottom: none;
+}
+
+.classrooms-table tbody td:first-child {
+padding-left: 25px;
+}
+
+/* =========================================================
+CLASS NAME
+========================================================= */
+
+.classroom-name {
+display: flex;
+align-items: center;
+gap: 11px;
+min-width: 0;
+}
+
+.classroom-avatar {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 42px;
+height: 42px;
+flex: 0 0 42px;
+border-radius: 11px;
+background: linear-gradient(145deg, #0874ed, #0754b5);
+color: #ffffff;
+font-size: 14px;
+font-weight: 800;
+box-shadow: 0 5px 12px rgba(8, 102, 216, 0.18);
+}
+
+.classroom-name strong {
+display: block;
+margin-bottom: 2px;
+color: #09284b;
+font-size: 14px;
+font-weight: 800;
+}
+
+.classroom-name span {
+display: block;
+color: #7a8ea2;
+font-size: 10.5px;
+}
+
+/* =========================================================
+TABLE TEXT
+========================================================= */
+
+.classroom-grade {
+display: inline-flex;
+align-items: center;
+padding: 5px 9px;
+border: 1px solid #d1e2f2;
+border-radius: 7px;
+background: #f2f8fd;
+color: #245a83;
+font-size: 11.5px;
+font-weight: 700;
+}
+
+.classroom-major {
+color: #476681;
+font-size: 12.5px;
+}
+
+.classroom-teacher {
+color: #385b77;
+font-size: 12.5px;
+}
+
+/* =========================================================
+STATUS
+========================================================= */
+
+.classroom-status {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 6px;
+min-width: 78px;
+padding: 6px 9px;
+border-radius: 7px;
+font-size: 11px;
+font-weight: 800;
+}
+
+.classroom-status .status-dot {
+width: 6px;
+height: 6px;
+border-radius: 50%;
+}
+
+.classroom-status.active {
+border: 1px solid #bde5cd;
+background: #effaf3;
+color: #168044;
+}
+
+.classroom-status.active .status-dot {
+background: #22a65a;
+}
+
+.classroom-status.inactive {
+border: 1px solid #dbe3ea;
+background: #f6f8fa;
+color: #7b8794;
+}
+
+.classroom-status.inactive .status-dot {
+background: #a5b0ba;
+}
+
+/* =========================================================
+ACTION
+========================================================= */
+
+.classroom-actions {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 6px;
+width: 100%;
+}
+
+.classroom-edit-button,
+.classroom-delete-button {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+width: 62px;
+min-height: 35px;
+padding: 7px 9px;
+border-radius: 7px;
+font-family: inherit;
+font-size: 11px;
+font-weight: 800;
+line-height: 1;
+box-sizing: border-box;
+transition:
+background 0.2s ease,
+color 0.2s ease,
+border-color 0.2s ease,
+transform 0.2s ease;
+}
+
+.classroom-edit-button {
+border: 1px solid #a9c8e5;
+background: #ffffff;
+color: #1765a3;
+text-decoration: none;
+}
+
+.classroom-edit-button:hover {
+border-color: #0866d8;
+background: #eaf4ff;
+color: #0754b5;
+transform: translateY(-1px);
+}
+
+.classroom-delete-form {
+display: inline-flex;
+margin: 0;
+padding: 0;
+}
+
+.classroom-delete-button {
+border: 1px solid #f1b9b9;
+background: #ffffff;
+color: #dc3545;
+cursor: pointer;
+}
+
+.classroom-delete-button:hover {
+border-color: #dc3545;
+background: #fff3f3;
+color: #c82333;
+transform: translateY(-1px);
+}
+
+/* =========================================================
+EMPTY STATE
+========================================================= */
+
+.classrooms-empty {
+padding: 45px 20px !important;
+text-align: center !important;
+}
+
+.classrooms-empty-icon {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 52px;
+height: 52px;
+margin: 0 auto 12px;
+border-radius: 13px;
+background: #edf5fc;
+color: #5b88b0;
+}
+
+.classrooms-empty strong {
+display: block;
+margin-bottom: 4px;
+color: #294b67;
+font-size: 13px;
+}
+
+.classrooms-empty span {
+color: #7b8fa2;
+font-size: 11.5px;
+}
+
+/* =========================================================
+PAGINATION
+========================================================= */
+
+.classrooms-pagination {
+padding: 15px 22px;
+border-top: 1px solid #e4edf5;
+background: #fbfdff;
+}
+
+.classrooms-pagination .pagination {
+margin: 0;
+justify-content: flex-end;
+}
+
+.classrooms-pagination .page-link {
+border-color: #dbe7f2;
+color: #1765a3;
+font-size: 12px;
+}
+
+.classrooms-pagination .page-item.active .page-link {
+border-color: #0866d8;
+background: #0866d8;
+}
+
+/* =========================================================
+TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+
+.classrooms-page {
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.classrooms-header {
+    padding: 25px 27px;
+}
+
+.classrooms-table thead th,
+.classrooms-table tbody td {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.classrooms-table thead th:first-child,
+.classrooms-table tbody td:first-child {
+    padding-left: 18px;
+}
+
+.classrooms-actions {
+    gap: 4px;
+}
+
+.classroom-edit-button,
+.classroom-delete-button {
+    width: 58px;
+}
+
+
+}
+
+/* =========================================================
+MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+
+.classrooms-header {
+    margin-bottom: 17px;
+    padding: 23px 20px;
+    border-radius: 14px;
+}
+
+.classrooms-header-content {
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.classrooms-title-area h1 {
+    font-size: 24px;
+}
+
+.classrooms-title-area p {
+    font-size: 12.5px;
+}
+
+.classrooms-add-button {
+    width: 100%;
+}
+
+.classrooms-search-card {
+    padding: 18px;
+}
+
+.classrooms-search-form {
+    grid-template-columns: 1fr;
+}
+
+.classrooms-table-card {
+    border-radius: 14px;
+}
+
+.classrooms-card-top {
+    padding: 16px 18px;
+}
+
+.classrooms-title-icon {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+}
+
+.classrooms-card-title h2 {
+    font-size: 16px;
+}
+
+.classrooms-card-title p {
+    font-size: 11px;
+}
+
+.classrooms-table {
+    min-width: 850px;
+}
+
+.classrooms-table-wrapper {
+    overflow-x: auto;
+}
+
+.classrooms-pagination {
+    padding: 13px 16px;
+}
+
+
+}
+
+/* =========================================================
+SMALL MOBILE
+========================================================= */
+
+@media (max-width: 576px) {
+
+
+.classrooms-page {
+    padding-top: 5px;
+    padding-bottom: 25px;
+}
+
+.classrooms-header {
+    padding: 20px 17px;
+}
+
+.classrooms-label {
+    font-size: 9.5px;
+}
+
+.classrooms-title-area h1 {
+    font-size: 22px;
+}
+
+.classrooms-title-area p {
+    font-size: 11.5px;
+}
+
+.classrooms-search-card {
+    padding: 16px;
+}
+
+.classrooms-search-header {
+    margin-bottom: 14px;
+}
+
+.classrooms-search-icon {
+    width: 39px;
+    height: 39px;
+    flex-basis: 39px;
+}
+
+.classrooms-search-header h2 {
+    font-size: 15px;
+}
+
+.classrooms-search-header p {
+    font-size: 10.5px;
+}
+
+.classrooms-card-top {
+    min-height: 78px;
+}
+
+.classrooms-pagination .pagination {
+    justify-content: center;
+}
+
+
+}

@@ -3,19 +3,146 @@
   --muted: #66758a;
   --border: #dce5ef
 }
+
+/* =========================================================
+   BACKGROUND LOGIN
+   MODERN + MOTIF BATIK SUBTLE
+========================================================= */
+
 .login-page {
   width: 100vw;
   min-height: 100vh;
   margin-left: calc(50% - 50vw);
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   padding: 20px;
-  background: var(--background);
-  font-family: Inter,"Segoe UI",Arial,sans-serif;
+
+  background:
+    /* Cahaya biru kiri bawah */
+    radial-gradient(
+      circle at 5% 90%,
+      rgba(37, 128, 235, 0.22),
+      transparent 30%
+    ),
+
+    radial-gradient(
+      circle at 95% 10%,
+      rgba(37, 128, 235, 0.18),
+      transparent 32%
+    ),
+
+    /* Cahaya biru kanan bawah */
+    radial-gradient(
+      circle at 85% 85%,
+      rgba(59, 130, 246, 0.12),
+      transparent 28%
+    ),
+
+    /* MOTIF BATIK KAWUNG */
+    radial-gradient(
+      ellipse at center,
+      transparent 0 18px,
+      rgba(23, 105, 213, 0.055) 19px 21px,
+      transparent 22px
+    ),
+    radial-gradient(
+      ellipse at center,
+      transparent 0 18px,
+      rgba(139, 92, 246, 0.045) 19px 21px,
+      transparent 22px
+    ),
+
+    /* Background utama */
+    linear-gradient(
+      135deg,
+      #dceeff 0%,
+      #e9e7ff 45%,
+      #f0f4ff 100%
+    );
+
+  background-size:
+    auto,
+    auto,
+    auto,
+    90px 90px,
+    90px 90px,
+    auto;
+
+  background-position:
+    center,
+    center,
+    center,
+    0 0,
+    45px 45px,
+    center;
+
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+
   overflow-x: hidden;
-  overflow-y: auto
+  overflow-y: auto;
+
+  position: relative;
 }
+
+
+/* =========================================================
+   DEKORASI LEMBUT
+========================================================= */
+
+.login-page::before {
+  content: "";
+
+  position: absolute;
+  width: 500px;
+  height: 500px;
+
+  left: -250px;
+  bottom: -250px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(37, 128, 235, 0.18),
+      rgba(37, 128, 235, 0.06) 50%,
+      transparent 72%
+    );
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+
+.login-page::after {
+  content: "";
+
+  position: absolute;
+  width: 430px;
+  height: 430px;
+
+  right: -190px;
+  top: -190px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(139, 92, 246, 0.16),
+      rgba(139, 92, 246, 0.05) 50%,
+      transparent 72%
+    );
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
 .login-card {
   width: min(1000px,100%);
   min-height: 570px;

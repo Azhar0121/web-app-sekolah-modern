@@ -1,0 +1,1351 @@
+css
+/* =========================================================
+   WEB SEKOLAH MODERN
+   ADMIN - KELOLA TAHUN AJARAN
+========================================================= */
+
+.academic-edit-page {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 10px 8px 40px;
+    box-sizing: border-box;
+    color: #102a43;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.academic-edit-header {
+    position: relative;
+    width: 100%;
+    margin-bottom: 22px;
+    padding: 30px 32px;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #071b35 0%,
+            #0a3768 60%,
+            #0d5fb7 100%
+        );
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 28px rgba(7, 27, 53, 0.12);
+
+    box-sizing: border-box;
+}
+
+
+.academic-edit-header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    top: -115px;
+    right: -80px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+}
+
+
+.academic-edit-header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 140px;
+    height: 140px;
+
+    right: 110px;
+    bottom: -90px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.045);
+}
+
+
+.academic-edit-header-content {
+    position: relative;
+    z-index: 2;
+}
+
+
+.academic-edit-label {
+    display: inline-flex;
+
+    align-items: center;
+
+    margin-bottom: 10px;
+
+    padding: 6px 12px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.18);
+
+    border-radius: 7px;
+
+    background:
+        rgba(255, 255, 255, 0.09);
+
+    color: #dceeff;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1.3px;
+}
+
+
+.academic-edit-header h1 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 29px;
+    font-weight: 800;
+
+    line-height: 1.3;
+}
+
+
+.academic-edit-header p {
+    max-width: 700px;
+
+    margin: 9px 0 0;
+
+    color: #c9def3;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   ALERT
+========================================================= */
+
+.academic-edit-alert {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 10px;
+
+    width: 100%;
+
+    margin-bottom: 20px;
+
+    padding: 12px 14px;
+
+    box-sizing: border-box;
+
+    border:
+        1px solid
+        #fecaca;
+
+    border-radius: 10px;
+
+    background: #fff5f5;
+
+    color: #b91c1c;
+
+    font-size: 12px;
+
+    line-height: 1.55;
+}
+
+
+.academic-edit-alert-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 21px;
+    height: 21px;
+
+    flex: 0 0 21px;
+
+    border-radius: 50%;
+
+    background: #dc2626;
+
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.academic-edit-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: 20px;
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.academic-edit-card {
+    width: 100%;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border:
+        1px solid
+        #dbe7f2;
+
+    border-radius: 17px;
+
+    box-shadow:
+        0 8px 24px
+        rgba(16, 42, 67, 0.06);
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CARD HEADER
+========================================================= */
+
+.academic-edit-card-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    min-height: 86px;
+
+    padding: 18px 22px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #e8f3ff 0%,
+            #edf6ff 55%,
+            #e2f0ff 100%
+        );
+
+    border-bottom:
+        1px solid
+        #c9dced;
+
+    box-sizing: border-box;
+}
+
+
+.academic-edit-card-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+
+    flex: 0 0 44px;
+
+    border:
+        1px solid
+        #c3def7;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #d4e5f7
+        );
+
+    color: #0866d8;
+
+    box-shadow:
+        0 6px 14px
+        rgba(8, 102, 216, 0.10);
+}
+
+
+.academic-edit-card-header h2 {
+    margin: 0;
+
+    color: #09284b;
+
+    font-size: 17px;
+    font-weight: 800;
+
+    line-height: 1.4;
+}
+
+
+.academic-edit-card-header p {
+    margin: 3px 0 0;
+
+    color: #4f6f8e;
+
+    font-size: 11.5px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   CARD BODY
+========================================================= */
+
+.academic-edit-card-body {
+    padding: 25px 24px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.academic-edit-form-group {
+    margin-bottom: 18px;
+}
+
+
+.academic-edit-form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #153858;
+
+    font-size: 12.5px;
+    font-weight: 800;
+}
+
+
+.academic-edit-form-group input {
+    display: block;
+
+    width: 100%;
+    height: 44px;
+
+    padding:
+        0 13px;
+
+    box-sizing: border-box;
+
+    border:
+        1px solid
+        #d5e2ed;
+
+    border-radius: 8px;
+
+    outline: none;
+
+    background: #fbfdff;
+
+    color: #102a43;
+
+    font-family: inherit;
+
+    font-size: 12.5px;
+
+    transition:
+        border-color .2s ease,
+        background .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.academic-edit-form-group input:hover {
+    border-color: #b8cada;
+
+    background: #ffffff;
+}
+
+
+.academic-edit-form-group input:focus {
+    border-color: #0866d8;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(8, 102, 216, 0.09);
+}
+
+
+/* =========================================================
+   DATE GRID
+========================================================= */
+
+.academic-edit-date-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: 14px;
+}
+
+
+/* =========================================================
+   ACTIVE BOX
+========================================================= */
+
+.academic-edit-active-box {
+    margin: 2px 0 20px;
+
+    padding: 13px 14px;
+
+    border:
+        1px solid
+        #dbe8f3;
+
+    border-radius: 10px;
+
+    background: #f5f9fd;
+}
+
+
+.academic-edit-checkbox {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    cursor: pointer;
+
+    user-select: none;
+}
+
+
+.academic-edit-checkbox input {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0;
+}
+
+
+.academic-edit-checkmark {
+    position: relative;
+
+    width: 18px;
+    height: 18px;
+
+    flex: 0 0 18px;
+
+    margin-top: 1px;
+
+    border:
+        1.5px solid
+        #bdccda;
+
+    border-radius: 5px;
+
+    background: #ffffff;
+}
+
+
+.academic-edit-checkbox
+input:checked
++ .academic-edit-checkmark {
+    border-color: #0866d8;
+
+    background: #0866d8;
+}
+
+
+.academic-edit-checkbox
+input:checked
++ .academic-edit-checkmark::after {
+    content: "";
+
+    position: absolute;
+
+    left: 5px;
+    top: 2px;
+
+    width: 5px;
+    height: 9px;
+
+    border-right:
+        2px solid
+        #ffffff;
+
+    border-bottom:
+        2px solid
+        #ffffff;
+
+    transform: rotate(45deg);
+}
+
+
+.academic-edit-checkbox-text {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.academic-edit-checkbox-text strong {
+    color: #153858;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+
+.academic-edit-checkbox-text small {
+    color: #71859a;
+
+    font-size: 10.5px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   ACTIVE STATUS
+========================================================= */
+
+.academic-edit-active-status {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin:
+        2px 0 20px;
+
+    padding:
+        12px 14px;
+
+    border:
+        1px solid
+        #cfe8d5;
+
+    border-radius: 10px;
+
+    background: #f3fbf5;
+}
+
+
+.academic-edit-status-dot {
+    width: 9px;
+    height: 9px;
+
+    flex: 0 0 9px;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(34, 197, 94, 0.12);
+}
+
+
+.academic-edit-active-status div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+
+.academic-edit-active-status strong {
+    color: #166534;
+
+    font-size: 12px;
+}
+
+
+.academic-edit-active-status span:not(.academic-edit-status-dot) {
+    color: #5f7e69;
+
+    font-size: 10.5px;
+}
+
+
+/* =========================================================
+   FORM ACTIONS
+========================================================= */
+
+.academic-edit-actions {
+    display: flex;
+
+    justify-content: flex-end;
+    align-items: center;
+
+    gap: 8px;
+
+    padding-top: 18px;
+
+    border-top:
+        1px solid
+        #e2ebf3;
+}
+
+
+.academic-edit-cancel,
+.academic-edit-save {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    height: 39px;
+
+    padding:
+        0 15px;
+
+    box-sizing: border-box;
+
+    border-radius: 8px;
+
+    font-family: inherit;
+
+    font-size: 11.5px;
+    font-weight: 800;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+}
+
+
+.academic-edit-cancel {
+    min-width: 78px;
+
+    border:
+        1px solid
+        #d1dce6;
+
+    background: #ffffff;
+
+    color: #58708a;
+}
+
+
+.academic-edit-cancel:hover {
+    background: #f5f8fc;
+
+    color: #405c75;
+
+    transform:
+        translateY(-1px);
+}
+
+
+.academic-edit-save {
+    min-width: 135px;
+
+    border:
+        1px solid
+        #0759c5;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0871e8,
+            #0759c5
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 5px 12px
+        rgba(8, 102, 216, 0.17);
+}
+
+
+.academic-edit-save:hover {
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 8px 17px
+        rgba(8, 102, 216, 0.24);
+}
+
+
+/* =========================================================
+   SEMESTER LIST
+========================================================= */
+
+.academic-edit-semester-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+
+    margin-bottom: 20px;
+}
+
+
+.academic-edit-semester-item {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    min-height: 66px;
+
+    padding: 10px 12px;
+
+    border:
+        1px solid
+        #dce7f0;
+
+    border-radius: 10px;
+
+    background: #fbfdff;
+
+    box-sizing: border-box;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease;
+}
+
+
+.academic-edit-semester-item:hover {
+    background: #f5f9fd;
+
+    border-color: #cbddea;
+}
+
+
+.academic-edit-semester-info {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-width: 0;
+}
+
+
+.academic-edit-semester-number {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    flex: 0 0 34px;
+
+    border-radius: 9px;
+
+    background: #eaf4ff;
+
+    color: #0866d8;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+
+.academic-edit-semester-info > div:last-child {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 2px;
+
+    min-width: 0;
+}
+
+
+.academic-edit-semester-info strong {
+    color: #09284b;
+
+    font-size: 12.5px;
+    font-weight: 800;
+}
+
+
+.academic-edit-semester-info small {
+    color: #8295a7;
+
+    font-size: 10px;
+}
+
+
+.academic-edit-active-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding:
+        3px 7px;
+
+    border-radius: 5px;
+
+    background: #e8f7ed;
+
+    color: #15803d;
+
+    font-size: 9.5px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   SEMESTER ACTIONS
+========================================================= */
+
+.academic-edit-semester-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    flex: 0 0 auto;
+}
+
+
+.academic-edit-semester-actions form {
+    margin: 0;
+}
+
+
+.academic-edit-semester-actions button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    height: 32px;
+
+    padding:
+        0 10px;
+
+    border-radius: 7px;
+
+    font-family: inherit;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+}
+
+
+.academic-edit-activate {
+    border:
+        1px solid
+        #b9dec4;
+
+    background: #f4fbf6;
+
+    color: #16803d;
+}
+
+
+.academic-edit-activate:hover {
+    background: #e8f7ed;
+
+    transform:
+        translateY(-1px);
+}
+
+
+.academic-edit-delete {
+    border:
+        1px solid
+        #f2c5c5;
+
+    background: #fff7f7;
+
+    color: #dc2626;
+}
+
+
+.academic-edit-delete:hover {
+    background: #fef0f0;
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.academic-edit-empty {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 145px;
+
+    padding: 20px;
+
+    border:
+        1px dashed
+        #cbdce9;
+
+    border-radius: 11px;
+
+    background: #fbfdff;
+
+    text-align: center;
+}
+
+
+.academic-edit-empty-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    margin-bottom: 9px;
+
+    border-radius: 10px;
+
+    background: #eaf4ff;
+
+    color: #0866d8;
+
+    font-size: 20px;
+}
+
+
+.academic-edit-empty strong {
+    color: #153858;
+
+    font-size: 12px;
+}
+
+
+.academic-edit-empty span {
+    margin-top: 3px;
+
+    color: #8093a5;
+
+    font-size: 10.5px;
+}
+
+
+/* =========================================================
+   ADD SEMESTER
+========================================================= */
+
+.academic-edit-add-section {
+    padding-top: 17px;
+
+    border-top:
+        1px solid
+        #e2ebf3;
+}
+
+
+.academic-edit-add-title {
+    margin-bottom: 8px;
+
+    color: #153858;
+
+    font-size: 11.5px;
+    font-weight: 800;
+}
+
+
+.academic-edit-add-form {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        auto;
+
+    gap: 7px;
+}
+
+
+.academic-edit-add-form select {
+    width: 100%;
+    height: 38px;
+
+    padding:
+        0 11px;
+
+    border:
+        1px solid
+        #d5e2ed;
+
+    border-radius: 8px;
+
+    outline: none;
+
+    background: #fbfdff;
+
+    color: #476681;
+
+    font-family: inherit;
+
+    font-size: 11.5px;
+}
+
+
+.academic-edit-add-form select:focus {
+    border-color: #0866d8;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(8, 102, 216, 0.08);
+}
+
+
+.academic-edit-add-form button {
+    height: 38px;
+
+    padding:
+        0 13px;
+
+    border:
+        1px solid
+        #0759c5;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #0866d8;
+
+    font-family: inherit;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        transform .2s ease;
+}
+
+
+.academic-edit-add-form button:hover {
+    background: #0866d8;
+
+    color: #ffffff;
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================================
+   INFORMATION
+========================================================= */
+
+.academic-edit-information {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 9px;
+
+    margin-top: 17px;
+
+    padding:
+        12px 13px;
+
+    border:
+        1px solid
+        #dbe8f3;
+
+    border-radius: 9px;
+
+    background: #f5f9fd;
+}
+
+
+.academic-edit-information-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 24px;
+    height: 24px;
+
+    flex: 0 0 24px;
+
+    border-radius: 7px;
+
+    background: #e7f2fd;
+
+    color: #1670c9;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+
+.academic-edit-information p {
+    margin: 1px 0 0;
+
+    color: #607b94;
+
+    font-size: 10.5px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 950px) {
+
+    .academic-edit-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .academic-edit-page {
+        padding:
+            7px
+            3px
+            30px;
+    }
+
+
+    .academic-edit-header {
+        padding:
+            24px
+            21px;
+
+        border-radius: 14px;
+    }
+
+
+    .academic-edit-header h1 {
+        font-size: 24px;
+    }
+
+
+    .academic-edit-header p {
+        font-size: 12.5px;
+    }
+
+
+    .academic-edit-card {
+        border-radius: 14px;
+    }
+
+
+    .academic-edit-card-header {
+        min-height: 80px;
+
+        padding:
+            17px
+            19px;
+    }
+
+
+    .academic-edit-card-body {
+        padding:
+            22px
+            19px;
+    }
+
+
+    .academic-edit-date-grid {
+        grid-template-columns: 1fr;
+
+        gap: 0;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 576px) {
+
+    .academic-edit-header {
+        padding:
+            21px
+            18px;
+    }
+
+
+    .academic-edit-label {
+        font-size: 10px;
+    }
+
+
+    .academic-edit-header h1 {
+        font-size: 22px;
+    }
+
+
+    .academic-edit-header p {
+        font-size: 12px;
+    }
+
+
+    .academic-edit-card-header {
+        gap: 10px;
+
+        padding:
+            16px;
+    }
+
+
+    .academic-edit-card-icon {
+        width: 40px;
+        height: 40px;
+
+        flex-basis: 40px;
+    }
+
+
+    .academic-edit-card-header h2 {
+        font-size: 15px;
+    }
+
+
+    .academic-edit-card-header p {
+        font-size: 10.5px;
+    }
+
+
+    .academic-edit-card-body {
+        padding:
+            20px
+            16px;
+    }
+
+
+    .academic-edit-semester-item {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .academic-edit-semester-actions {
+        width: 100%;
+    }
+
+
+    .academic-edit-semester-actions button {
+        flex: 1;
+
+        width: 100%;
+    }
+
+
+    .academic-edit-semester-actions form {
+        flex: 1;
+    }
+
+
+    .academic-edit-add-form {
+        grid-template-columns: 1fr;
+    }
+
+
+    .academic-edit-add-form button {
+        width: 100%;
+    }
+
+
+    .academic-edit-actions {
+        flex-direction: column-reverse;
+
+        align-items: stretch;
+    }
+
+
+    .academic-edit-cancel,
+    .academic-edit-save {
+        width: 100%;
+    }
+
+}
+

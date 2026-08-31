@@ -1,0 +1,1314 @@
+/* =========================================================
+   WEB SEKOLAH MODERN
+   ADMIN - PENEMPATAN SISWA
+   ========================================================= */
+
+:root {
+    --placement-navy: #071b35;
+    --placement-navy-2: #0b294d;
+
+    --placement-blue: #0866d8;
+    --placement-blue-dark: #0754b5;
+    --placement-blue-light: #eaf4ff;
+
+    --placement-text: #102a43;
+    --placement-text-soft: #58708a;
+
+    --placement-border: #dbe7f2;
+    --placement-white: #ffffff;
+    --placement-bg: #f5f8fc;
+
+    --placement-shadow:
+        0 8px 24px rgba(16, 42, 67, 0.06);
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.student-placement-page {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 10px 8px 40px;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.student-placement-header {
+    position: relative;
+    overflow: hidden;
+
+    width: 100%;
+
+    margin-bottom: 24px;
+    padding: 30px 32px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--placement-navy) 0%,
+            #0a3768 62%,
+            #0d5fb7 100%
+        );
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 28px rgba(7, 27, 53, 0.12);
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HEADER DECORATION
+   ========================================================= */
+
+.student-placement-header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 230px;
+    height: 230px;
+
+    top: -125px;
+    right: -75px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.07);
+}
+
+
+.student-placement-header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 140px;
+    height: 140px;
+
+    right: 120px;
+    bottom: -88px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.045);
+}
+
+
+/* =========================================================
+   HEADER CONTENT
+   ========================================================= */
+
+.student-placement-header-content {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+}
+
+
+.student-placement-title-area {
+    max-width: 800px;
+}
+
+
+/* =========================================================
+   HEADER LABEL
+   ========================================================= */
+
+.student-placement-label {
+    display: inline-flex;
+
+    align-items: center;
+
+    margin-bottom: 10px;
+
+    padding: 6px 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    border-radius: 7px;
+
+    background: rgba(255, 255, 255, 0.09);
+
+    color: #dceeff;
+
+    font-size: 10.5px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.3px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   HEADER TITLE
+   ========================================================= */
+
+.student-placement-title-area h1 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 29px;
+
+    font-weight: 800;
+
+    line-height: 1.3;
+
+    letter-spacing: -0.4px;
+}
+
+
+.student-placement-title-area p {
+    max-width: 700px;
+
+    margin: 9px 0 0;
+
+    color: #c9def3;
+
+    font-size: 13.5px;
+
+    font-weight: 400;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   FILTER CARD
+   ========================================================= */
+
+.student-placement-filter-card {
+    width: 100%;
+
+    margin-bottom: 20px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border: 1px solid var(--placement-border);
+
+    border-radius: 17px;
+
+    box-shadow: var(--placement-shadow);
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   FILTER HEADER
+   ========================================================= */
+
+.student-placement-filter-header {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    min-height: 88px;
+
+    padding: 18px 26px;
+
+    border-bottom: 1px solid #c9dced;
+
+    background:
+        linear-gradient(
+            90deg,
+            #e8f3ff 0%,
+            #edf6ff 55%,
+            #e2f0ff 100%
+        );
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+}
+
+
+.student-placement-filter-header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+    height: 150px;
+
+    top: -90px;
+    right: 35px;
+
+    border-radius: 50%;
+
+    background: rgba(8, 102, 216, 0.08);
+}
+
+
+.student-placement-filter-header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 90px;
+    height: 90px;
+
+    right: 135px;
+    bottom: -58px;
+
+    border-radius: 50%;
+
+    background: rgba(8, 102, 216, 0.06);
+}
+
+
+/* =========================================================
+   FILTER ICON
+   ========================================================= */
+
+.student-placement-filter-icon {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 46px;
+    height: 46px;
+
+    flex: 0 0 46px;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #d4e5f7
+        );
+
+    border: 1px solid #c3def7;
+
+    color: var(--placement-blue);
+
+    box-shadow:
+        0 6px 14px rgba(8, 102, 216, 0.12);
+}
+
+
+.student-placement-filter-header > div:last-child {
+    position: relative;
+    z-index: 2;
+}
+
+
+.student-placement-filter-header h2 {
+    margin: 0;
+
+    color: #09284b;
+
+    font-size: 17px;
+
+    font-weight: 800;
+
+    line-height: 1.35;
+}
+
+
+.student-placement-filter-header p {
+    margin: 4px 0 0;
+
+    color: #4f6f8e;
+
+    font-size: 12.5px;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   FILTER BODY
+   ========================================================= */
+
+.student-placement-filter-body {
+    padding: 22px 26px 24px;
+
+    background: #ffffff;
+
+    box-sizing: border-box;
+}
+
+
+.student-placement-form-group {
+    width: 100%;
+
+    max-width: 650px;
+}
+
+
+.student-placement-form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #173a5c;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+.student-placement-select {
+    display: block;
+
+    width: 100%;
+
+    min-height: 45px;
+
+    padding: 9px 40px 9px 13px;
+
+    border: 1px solid #d5e1ec;
+
+    border-radius: 9px;
+
+    background-color: #fbfdff;
+
+    color: #102a43;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    outline: none;
+
+    cursor: pointer;
+
+    box-shadow: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+
+    box-sizing: border-box;
+}
+
+
+.student-placement-select:hover {
+    border-color: #b9cfe2;
+}
+
+
+.student-placement-select:focus {
+    border-color: var(--placement-blue);
+
+    background-color: #ffffff;
+
+    box-shadow:
+        0 0 0 3px rgba(8, 102, 216, 0.10);
+}
+
+
+/* =========================================================
+   MAIN CARD
+   ========================================================= */
+
+.student-placement-main-card {
+    width: 100%;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border: 1px solid var(--placement-border);
+
+    border-radius: 17px;
+
+    box-shadow: var(--placement-shadow);
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CARD TOP
+   ========================================================= */
+
+.student-placement-card-top {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    width: 100%;
+
+    min-height: 92px;
+
+    padding: 18px 26px;
+
+    border-bottom: 1px solid #c9dced;
+
+    background:
+        linear-gradient(
+            90deg,
+            #e8f3ff 0%,
+            #edf6ff 55%,
+            #e2f0ff 100%
+        );
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+}
+
+
+.student-placement-card-top::before {
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+    height: 150px;
+
+    top: -88px;
+    right: 30px;
+
+    border-radius: 50%;
+
+    background: rgba(8, 102, 216, 0.08);
+}
+
+
+.student-placement-card-top::after {
+    content: "";
+
+    position: absolute;
+
+    width: 90px;
+    height: 90px;
+
+    right: 125px;
+    bottom: -58px;
+
+    border-radius: 50%;
+
+    background: rgba(8, 102, 216, 0.065);
+}
+
+
+/* =========================================================
+   CARD TITLE
+   ========================================================= */
+
+.student-placement-card-title {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    min-width: 0;
+}
+
+
+.student-placement-title-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 46px;
+    height: 46px;
+
+    flex: 0 0 46px;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #d4e5f7
+        );
+
+    border: 1px solid #c3def7;
+
+    color: var(--placement-blue);
+
+    box-shadow:
+        0 6px 14px rgba(8, 102, 216, 0.12);
+}
+
+
+.student-placement-card-title h2 {
+    margin: 0;
+
+    color: #09284b;
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+    line-height: 1.35;
+
+    letter-spacing: -0.2px;
+}
+
+
+.student-placement-card-title p {
+    margin: 4px 0 0;
+
+    color: #4f6f8e;
+
+    font-size: 12.5px;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   TABLE WRAPPER
+   ========================================================= */
+
+.student-placement-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.student-placement-table {
+    width: 100%;
+
+    min-width: 700px;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+
+    table-layout: fixed;
+}
+
+
+/* =========================================================
+   COLUMN WIDTH
+   ========================================================= */
+
+.student-placement-table th:nth-child(1),
+.student-placement-table td:nth-child(1) {
+    width: 32%;
+}
+
+
+.student-placement-table th:nth-child(2),
+.student-placement-table td:nth-child(2) {
+    width: 18%;
+}
+
+
+.student-placement-table th:nth-child(3),
+.student-placement-table td:nth-child(3) {
+    width: 20%;
+}
+
+
+.student-placement-table th:nth-child(4),
+.student-placement-table td:nth-child(4) {
+    width: 30%;
+}
+
+
+/* =========================================================
+   TABLE HEADER
+   ========================================================= */
+
+.student-placement-table thead th {
+    padding: 16px 18px;
+
+    background: #0b294d;
+
+    border-bottom: 1px solid #d9e5f0;
+
+    color: #f3f4f5;
+
+    font-size: 11.5px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.55px;
+
+    text-align: left;
+
+    white-space: nowrap;
+
+    box-sizing: border-box;
+}
+
+
+.student-placement-table thead th:first-child {
+    padding-left: 25px;
+}
+
+
+/* =========================================================
+   TABLE BODY
+   ========================================================= */
+
+.student-placement-table tbody tr {
+    background: #ffffff;
+
+    transition:
+        background-color 0.2s ease;
+}
+
+
+.student-placement-table tbody tr:nth-child(even) {
+    background: #fbfdff;
+}
+
+
+.student-placement-table tbody tr:hover {
+    background: #f2f8ff;
+}
+
+
+.student-placement-table tbody td {
+    padding: 18px;
+
+    border-bottom: 1px solid #e4edf5;
+
+    vertical-align: middle;
+
+    color: var(--placement-text);
+
+    font-size: 14px;
+
+    line-height: 1.55;
+
+    box-sizing: border-box;
+}
+
+
+.student-placement-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+.student-placement-table tbody td:first-child {
+    padding-left: 25px;
+}
+
+
+/* =========================================================
+   CLASSROOM NAME
+   ========================================================= */
+
+.classroom-name {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    min-width: 0;
+}
+
+
+.classroom-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+
+    flex: 0 0 44px;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0874ed,
+            #0754b5
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 6px 13px rgba(8, 102, 216, 0.18);
+}
+
+
+.classroom-name > div:last-child {
+    min-width: 0;
+}
+
+
+.classroom-name strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #09284b;
+
+    font-size: 14.5px;
+
+    font-weight: 800;
+
+    line-height: 1.4;
+}
+
+
+.classroom-name span {
+    display: block;
+
+    color: #71859a;
+
+    font-size: 11.5px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   GRADE BADGE
+   ========================================================= */
+
+.grade-badge {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 54px;
+
+    min-height: 32px;
+
+    padding: 5px 12px;
+
+    border: 1px solid #c7dff3;
+
+    border-radius: 8px;
+
+    background: #edf5fc;
+
+    color: #1e5b8d;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   STUDENT COUNT
+   ========================================================= */
+
+.student-count {
+    display: inline-flex;
+
+    align-items: baseline;
+
+    justify-content: center;
+
+    min-width: 80px;
+}
+
+
+.student-count-number {
+    color: #09284b;
+
+    font-size: 16px;
+
+    font-weight: 800;
+}
+
+
+.student-count-capacity {
+    margin-left: 3px;
+
+    color: #7890a5;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   MANAGE BUTTON
+   ========================================================= */
+
+.manage-student-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    width: 100%;
+
+    max-width: 190px;
+
+    min-height: 42px;
+
+    padding: 9px 13px;
+
+    border: 1px solid #0759c5;
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0871e8,
+            #0759c5
+        );
+
+    color: #ffffff;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    line-height: 1.3;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 5px 12px rgba(8, 102, 216, 0.18);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+
+    box-sizing: border-box;
+}
+
+
+.manage-student-button svg {
+    flex: 0 0 auto;
+}
+
+
+.manage-student-button .button-arrow {
+    margin-left: 2px;
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+.manage-student-button:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #075fcf,
+            #064ba8
+        );
+
+    color: #ffffff;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 17px rgba(8, 102, 216, 0.25);
+}
+
+
+.manage-student-button:hover .button-arrow {
+    transform: translateX(3px);
+}
+
+
+.manage-student-button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.student-placement-table .empty-state {
+    height: 190px;
+
+    padding: 30px !important;
+
+    text-align: center;
+
+    vertical-align: middle;
+
+    background: #ffffff;
+}
+
+
+.empty-state-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 50px;
+    height: 50px;
+
+    margin: 0 auto 12px;
+
+    border-radius: 12px;
+
+    background: #eaf4ff;
+
+    border: 1px solid #c9e1f7;
+
+    color: var(--placement-blue);
+}
+
+
+.student-placement-table .empty-state strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #173a5c;
+
+    font-size: 14px;
+
+    font-weight: 800;
+}
+
+
+.student-placement-table .empty-state span {
+    display: block;
+
+    color: #71859a;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   BOOTSTRAP ALIGNMENT
+   ========================================================= */
+
+.student-placement-table .text-center {
+    text-align: center !important;
+}
+
+
+.student-placement-table .text-end {
+    text-align: right !important;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .student-placement-page {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+
+    .student-placement-header {
+        padding: 27px 28px;
+    }
+
+
+    .student-placement-filter-header,
+    .student-placement-card-top {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+
+
+    .student-placement-filter-body {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+
+
+    .student-placement-table thead th {
+        padding: 15px 14px;
+    }
+
+
+    .student-placement-table tbody td {
+        padding: 17px 14px;
+    }
+
+
+    .student-placement-table tbody td:first-child {
+        padding-left: 20px;
+    }
+
+
+    .student-placement-table thead th:first-child {
+        padding-left: 20px;
+    }
+
+
+    .manage-student-button {
+        max-width: 175px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .student-placement-page {
+        padding-bottom: 28px;
+    }
+
+
+    .student-placement-header {
+        margin-bottom: 18px;
+
+        padding: 24px 21px;
+
+        border-radius: 14px;
+    }
+
+
+    .student-placement-title-area h1 {
+        font-size: 24px;
+    }
+
+
+    .student-placement-title-area p {
+        font-size: 13px;
+    }
+
+
+    .student-placement-filter-header {
+        min-height: 84px;
+
+        padding: 18px 19px;
+    }
+
+
+    .student-placement-filter-body {
+        padding: 20px 19px 22px;
+    }
+
+
+    .student-placement-filter-icon,
+    .student-placement-title-icon {
+        width: 42px;
+        height: 42px;
+
+        flex-basis: 42px;
+    }
+
+
+    .student-placement-filter-header h2,
+    .student-placement-card-title h2 {
+        font-size: 16px;
+    }
+
+
+    .student-placement-filter-header p,
+    .student-placement-card-title p {
+        font-size: 11.5px;
+    }
+
+
+    .student-placement-card-top {
+        min-height: 84px;
+
+        padding: 18px 19px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 576px) {
+
+    .student-placement-page {
+        padding: 5px 0 25px;
+    }
+
+
+    .student-placement-header {
+        padding: 21px 18px;
+
+        border-radius: 13px;
+    }
+
+
+    .student-placement-label {
+        font-size: 9.5px;
+    }
+
+
+    .student-placement-title-area h1 {
+        font-size: 22px;
+    }
+
+
+    .student-placement-title-area p {
+        font-size: 12px;
+    }
+
+
+    .student-placement-filter-header {
+        min-height: 80px;
+
+        padding: 16px;
+    }
+
+
+    .student-placement-filter-body {
+        padding: 18px 16px 20px;
+    }
+
+
+    .student-placement-filter-icon,
+    .student-placement-title-icon {
+        width: 40px;
+        height: 40px;
+
+        flex-basis: 40px;
+    }
+
+
+    .student-placement-card-top {
+        min-height: 78px;
+
+        padding: 16px;
+    }
+
+
+    .student-placement-table {
+        min-width: 650px;
+    }
+
+
+    .student-placement-table thead th {
+        padding: 14px 12px;
+
+        font-size: 11px;
+    }
+
+
+    .student-placement-table tbody td {
+        padding: 16px 12px;
+
+        font-size: 13px;
+    }
+
+
+    .student-placement-table tbody td:first-child {
+        padding-left: 16px;
+    }
+
+
+    .student-placement-table thead th:first-child {
+        padding-left: 16px;
+    }
+
+
+    .classroom-icon {
+        width: 40px;
+        height: 40px;
+
+        flex-basis: 40px;
+    }
+
+
+    .classroom-name {
+        gap: 10px;
+    }
+
+
+    .classroom-name strong {
+        font-size: 13.5px;
+    }
+
+
+    .classroom-name span {
+        font-size: 10.5px;
+    }
+
+
+    .grade-badge {
+        min-height: 30px;
+
+        padding: 5px 10px;
+
+        font-size: 11px;
+    }
+
+
+    .student-count-number {
+        font-size: 14px;
+    }
+
+
+    .student-count-capacity {
+        font-size: 11px;
+    }
+
+
+    .manage-student-button {
+        max-width: 175px;
+
+        min-height: 40px;
+
+        padding: 8px 11px;
+
+        font-size: 11.5px;
+    }
+}

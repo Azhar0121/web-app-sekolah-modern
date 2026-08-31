@@ -1,121 +1,410 @@
+blade
 @extends('layouts.admin')
 
 @section('title', 'Kelola Tahun Ajaran')
 
 @section('content')
-<h4 class="fw-bold mb-4">Kelola Tahun Ajaran: {{ $academicYear->name }}</h4>
 
-@if ($errors->any())
-    <div class="alert alert-danger py-2">
-        @foreach ($errors->all() as $error)
-            <div class="small">{{ $error }}</div>
-        @endforeach
+<link rel="stylesheet" href="{{ asset('css/academic-years-edit.css') }}">
+
+<div class="academic-edit-page">
+
+    {{-- HEADER --}}
+    <div class="academic-edit-header">
+        <div class="academic-edit-header-content">
+
+            <div class="academic-edit-label">
+                TAHUN AJARAN
+            </div>
+
+            <h1>
+                Kelola Tahun Ajaran
+            </h1>
+
+            <p>
+                Kelola informasi tahun ajaran dan semester yang digunakan
+                dalam sistem sekolah.
+            </p>
+
+        </div>
     </div>
-@endif
 
-<div class="row g-4">
-    <div class="col-md-6">
-        <div class="card border-0 shadow-sm">
-            <div class="card-header bg-white fw-semibold">Data Tahun Ajaran</div>
-            <div class="card-body">
+
+    {{-- ERROR --}}
+    @if ($errors->any())
+        <div class="academic-edit-alert">
+            <div class="academic-edit-alert-icon">!</div>
+
+            <div>
+                @foreach ($errors->all() as $error)
+                    <div>{{ $error }}</div>
+                @endforeach
+            </div>
+        </div>
+    @endif
+
+
+    {{-- MAIN GRID --}}
+    <div class="academic-edit-grid">
+
+
+        {{-- DATA TAHUN AJARAN --}}
+        <div class="academic-edit-card">
+
+            <div class="academic-edit-card-header">
+
+                <div class="academic-edit-card-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M7 3v4M17 3v4M4 9h16M5 5h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"
+                              stroke="currentColor"
+                              stroke-width="1.8"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"/>
+                    </svg>
+                </div>
+
+                <div>
+                    <h2>Data Tahun Ajaran</h2>
+                    <p>Perbarui informasi tahun ajaran sekolah.</p>
+                </div>
+
+            </div>
+
+
+            <div class="academic-edit-card-body">
+
                 <form method="POST" action="{{ route('admin.academic-years.update', $academicYear) }}">
                     @csrf
                     @method('PUT')
 
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Nama Tahun Ajaran</label>
-                        <input type="text" name="name" id="name" class="form-control"
-                               value="{{ old('name', $academicYear->name) }}" required>
+
+                    {{-- NAMA --}}
+                    <div class="academic-edit-form-group">
+
+                        <label for="name">
+                            Nama Tahun Ajaran
+                        </label>
+
+                        <input
+                            type="text"
+                            name="name"
+                            id="name"
+                            value="{{ old('name', $academicYear->name) }}"
+                            required
+                        >
+
                     </div>
 
-                    <div class="mb-3">
-                        <label for="start_date" class="form-label">Tanggal Mulai</label>
-                        <input type="date" name="start_date" id="start_date" class="form-control"
-                               value="{{ old('start_date', $academicYear->start_date->format('Y-m-d')) }}" required>
-                    </div>
 
-                    <div class="mb-3">
-                        <label for="end_date" class="form-label">Tanggal Selesai</label>
-                        <input type="date" name="end_date" id="end_date" class="form-control"
-                               value="{{ old('end_date', $academicYear->end_date->format('Y-m-d')) }}" required>
-                    </div>
+                    {{-- TANGGAL --}}
+                    <div class="academic-edit-date-grid">
 
-                    @unless ($academicYear->is_active)
-                        <div class="form-check mb-3">
-                            <input type="checkbox" name="is_active" id="is_active" class="form-check-input" value="1">
-                            <label for="is_active" class="form-check-label">
-                                Jadikan tahun ajaran aktif
+                        <div class="academic-edit-form-group">
+
+                            <label for="start_date">
+                                Tanggal Mulai
                             </label>
+
+                            <input
+                                type="date"
+                                name="start_date"
+                                id="start_date"
+                                value="{{ old('start_date', $academicYear->start_date->format('Y-m-d')) }}"
+                                required
+                            >
+
                         </div>
+
+
+                        <div class="academic-edit-form-group">
+
+                            <label for="end_date">
+                                Tanggal Selesai
+                            </label>
+
+                            <input
+                                type="date"
+                                name="end_date"
+                                id="end_date"
+                                value="{{ old('end_date', $academicYear->end_date->format('Y-m-d')) }}"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    {{-- STATUS --}}
+                    @unless ($academicYear->is_active)
+
+                        <div class="academic-edit-active-box">
+
+                            <label class="academic-edit-checkbox">
+
+                                <input
+                                    type="checkbox"
+                                    name="is_active"
+                                    id="is_active"
+                                    value="1"
+                                >
+
+                                <span class="academic-edit-checkmark"></span>
+
+                                <span class="academic-edit-checkbox-text">
+                                    <strong>Jadikan tahun ajaran aktif</strong>
+
+                                    <small>
+                                        Mengaktifkan tahun ajaran ini akan
+                                        menonaktifkan tahun ajaran lainnya.
+                                    </small>
+                                </span>
+
+                            </label>
+
+                        </div>
+
                     @else
-                        <p class="small text-success mb-3">
-                            <span class="badge text-bg-success">Aktif</span> Tahun ajaran ini sedang aktif.
-                        </p>
+
+                        <div class="academic-edit-active-status">
+
+                            <span class="academic-edit-status-dot"></span>
+
+                            <div>
+                                <strong>Tahun ajaran aktif</strong>
+                                <span>Tahun ajaran ini sedang digunakan dalam sistem.</span>
+                            </div>
+
+                        </div>
+
                     @endunless
 
-                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                    <a href="{{ route('admin.academic-years.index') }}" class="btn btn-outline-secondary">Kembali</a>
-                </form>
-            </div>
-        </div>
-    </div>
 
-    <div class="col-md-6">
-        <div class="card border-0 shadow-sm">
-            <div class="card-header bg-white fw-semibold">Semester</div>
-            <div class="card-body">
+                    {{-- ACTION --}}
+                    <div class="academic-edit-actions">
+
+                        <a
+                            href="{{ route('admin.academic-years.index') }}"
+                            class="academic-edit-cancel"
+                        >
+                            Kembali
+                        </a>
+
+                        <button
+                            type="submit"
+                            class="academic-edit-save"
+                        >
+                            Simpan Perubahan
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+
+        {{-- SEMESTER --}}
+        <div class="academic-edit-card">
+
+            <div class="academic-edit-card-header">
+
+                <div class="academic-edit-card-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22V5.5Z"
+                              stroke="currentColor"
+                              stroke-width="1.8"
+                              stroke-linejoin="round"/>
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"
+                              stroke="currentColor"
+                              stroke-width="1.8"
+                              stroke-linecap="round"/>
+                    </svg>
+                </div>
+
+                <div>
+                    <h2>Semester</h2>
+                    <p>Kelola semester pada tahun ajaran ini.</p>
+                </div>
+
+            </div>
+
+
+            <div class="academic-edit-card-body">
+
                 @if ($academicYear->semesters->isEmpty())
-                    <p class="text-muted small">Belum ada semester untuk tahun ajaran ini.</p>
+
+                    <div class="academic-edit-empty">
+
+                        <div class="academic-edit-empty-icon">
+                            +
+                        </div>
+
+                        <strong>Belum ada semester</strong>
+
+                        <span>
+                            Tambahkan semester untuk tahun ajaran ini.
+                        </span>
+
+                    </div>
+
                 @else
-                    <ul class="list-group mb-3">
+
+                    <div class="academic-edit-semester-list">
+
                         @foreach ($academicYear->semesters as $semester)
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>
-                                    Semester {{ $semester->name }}
-                                    @if ($semester->is_active)
-                                        <span class="badge text-bg-success ms-1">Aktif</span>
-                                    @endif
-                                </span>
-                                <span class="d-flex gap-1">
-                                    @unless ($semester->is_active)
-                                        <form method="POST" action="{{ route('admin.academic-years.semesters.activate', [$academicYear, $semester]) }}">
+
+                            <div class="academic-edit-semester-item">
+
+                                <div class="academic-edit-semester-info">
+
+                                    <div class="academic-edit-semester-number">
+                                        {{ $loop->iteration }}
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            Semester {{ $semester->name }}
+                                        </strong>
+
+                                        @if ($semester->is_active)
+                                            <span class="academic-edit-active-badge">
+                                                Aktif
+                                            </span>
+                                        @else
+                                            <small>
+                                                Belum aktif
+                                            </small>
+                                        @endif
+
+                                    </div>
+
+                                </div>
+
+
+                                @unless ($semester->is_active)
+
+                                    <div class="academic-edit-semester-actions">
+
+                                        <form
+                                            method="POST"
+                                            action="{{ route('admin.academic-years.semesters.activate', [$academicYear, $semester]) }}"
+                                        >
                                             @csrf
-                                            <button type="submit" class="btn btn-sm btn-outline-success">Aktifkan</button>
+
+                                            <button
+                                                type="submit"
+                                                class="academic-edit-activate"
+                                            >
+                                                Aktifkan
+                                            </button>
                                         </form>
-                                        <form method="POST" action="{{ route('admin.academic-years.semesters.destroy', [$academicYear, $semester]) }}"
-                                              onsubmit="return confirm('Hapus semester {{ $semester->name }}?');">
+
+
+                                        <form
+                                            method="POST"
+                                            action="{{ route('admin.academic-years.semesters.destroy', [$academicYear, $semester]) }}"
+                                            onsubmit="return confirm('Hapus semester {{ $semester->name }}?');"
+                                        >
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-outline-danger">Hapus</button>
+
+                                            <button
+                                                type="submit"
+                                                class="academic-edit-delete"
+                                            >
+                                                Hapus
+                                            </button>
                                         </form>
-                                    @endunless
-                                </span>
-                            </li>
-                        @endforeach
-                    </ul>
-                @endif
 
-                @if ($academicYear->semesters->count() < 2)
-                    <form method="POST" action="{{ route('admin.academic-years.semesters.store', $academicYear) }}" class="d-flex gap-2">
-                        @csrf
-                        <select name="name" class="form-select" required>
-                            <option value="">-- Pilih Semester --</option>
-                            @foreach (['Ganjil', 'Genap'] as $option)
-                                @unless ($academicYear->semesters->contains('name', $option))
-                                    <option value="{{ $option }}">{{ $option }}</option>
+                                    </div>
+
                                 @endunless
-                            @endforeach
-                        </select>
-                        <button type="submit" class="btn btn-outline-primary text-nowrap">+ Tambah</button>
-                    </form>
+
+                            </div>
+
+                        @endforeach
+
+                    </div>
+
                 @endif
 
-                <p class="text-muted small mt-3 mb-0">
-                    Mengaktifkan sebuah semester otomatis mengaktifkan tahun ajaran ini
-                    dan menonaktifkan tahun ajaran / semester lain di seluruh sistem.
-                </p>
+
+                {{-- TAMBAH SEMESTER --}}
+                @if ($academicYear->semesters->count() < 2)
+
+                    <div class="academic-edit-add-section">
+
+                        <div class="academic-edit-add-title">
+                            Tambahkan Semester
+                        </div>
+
+                        <form
+                            method="POST"
+                            action="{{ route('admin.academic-years.semesters.store', $academicYear) }}"
+                            class="academic-edit-add-form"
+                        >
+                            @csrf
+
+                            <select
+                                name="name"
+                                required
+                            >
+                                <option value="">
+                                    -- Pilih Semester --
+                                </option>
+
+                                @foreach (['Ganjil', 'Genap'] as $option)
+
+                                    @unless ($academicYear->semesters->contains('name', $option))
+
+                                        <option value="{{ $option }}">
+                                            {{ $option }}
+                                        </option>
+
+                                    @endunless
+
+                                @endforeach
+
+                            </select>
+
+                            <button type="submit">
+                                + Tambah
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                @endif
+
+
+                {{-- INFORMATION --}}
+                <div class="academic-edit-information">
+
+                    <div class="academic-edit-information-icon">
+                        i
+                    </div>
+
+                    <p>
+                        Mengaktifkan sebuah semester otomatis mengaktifkan
+                        tahun ajaran ini dan menonaktifkan tahun ajaran /
+                        semester lain di seluruh sistem.
+                    </p>
+
+                </div>
+
             </div>
+
         </div>
+
     </div>
+
 </div>
+
 @endsection
+
