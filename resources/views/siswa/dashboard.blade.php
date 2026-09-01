@@ -29,6 +29,26 @@
         </a>
     </div>
     <div class="col-md-6">
+        <a href="{{ route('siswa.qr-code.show') }}" class="text-decoration-none">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="fw-bold text-primary mb-1">🪪 Kartu Pelajar Digital</h5>
+                    <p class="text-muted small mb-0">Tunjukkan QR ini ke guru untuk presensi kelas.</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-6">
+        <a href="{{ route('siswa.attendance.index') }}" class="text-decoration-none">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="fw-bold text-primary mb-1">📷 Riwayat Presensi</h5>
+                    <p class="text-muted small mb-0">Lihat rekap kehadiran Anda per mata pelajaran.</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-6">
         <a href="{{ route('siswa.materials.index') }}" class="text-decoration-none">
             <div class="card border-0 shadow-sm h-100">
                 <div class="card-body">

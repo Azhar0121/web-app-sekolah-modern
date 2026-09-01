@@ -11,12 +11,15 @@ use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TeachingAssignmentController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Guru\AttendanceController as GuruAttendanceController;
 use App\Http\Controllers\Guru\DashboardController as GuruDashboardController;
 use App\Http\Controllers\Guru\MaterialController as GuruMaterialController;
 use App\Http\Controllers\Guru\ScheduleController as GuruScheduleController;
 use App\Http\Controllers\Guru\TaskController as GuruTaskController;
 use App\Http\Controllers\PpdbController;
+use App\Http\Controllers\Siswa\AttendanceController as SiswaAttendanceController;
 use App\Http\Controllers\Siswa\MaterialController as SiswaMaterialController;
+use App\Http\Controllers\Siswa\QrCodeController as SiswaQrCodeController;
 use App\Http\Controllers\Siswa\ScheduleController as SiswaScheduleController;
 use App\Http\Controllers\Siswa\TaskController as SiswaTaskController;
 use Illuminate\Support\Facades\Route;
@@ -116,6 +119,13 @@ Route::middleware(['auth', 'role:guru'])->prefix('guru')->name('guru.')->group(f
 
     // Jadwal Mengajar Pribadi
     Route::get('/jadwal', [GuruScheduleController::class, 'index'])->name('schedule.index');
+
+    // Presensi/Absensi QR Code
+    Route::get('/presensi', [GuruAttendanceController::class, 'index'])->name('attendance.index');
+    Route::get('/presensi/{schedule}/kelola', [GuruAttendanceController::class, 'session'])->name('attendance.session');
+    Route::post('/presensi/sesi/{attendanceSession}/scan', [GuruAttendanceController::class, 'scan'])->name('attendance.scan');
+    Route::put('/presensi/sesi/{attendanceSession}/siswa/{student}/status', [GuruAttendanceController::class, 'updateStatus'])->name('attendance.update-status');
+    Route::post('/presensi/sesi/{attendanceSession}/tutup', [GuruAttendanceController::class, 'close'])->name('attendance.close');
 });
 
 // ================= PORTAL SISWA =================
@@ -124,6 +134,10 @@ Route::middleware(['auth', 'role:siswa'])->prefix('siswa')->name('siswa.')->grou
 
     // Jadwal Pelajaran
     Route::get('/jadwal', [SiswaScheduleController::class, 'index'])->name('schedule.index');
+
+    // Presensi/Absensi QR Code
+    Route::get('/kartu-pelajar', [SiswaQrCodeController::class, 'show'])->name('qr-code.show');
+    Route::get('/presensi', [SiswaAttendanceController::class, 'index'])->name('attendance.index');
 
     // Materi Pembelajaran
     Route::get('/materi', [SiswaMaterialController::class, 'index'])->name('materials.index');

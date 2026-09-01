@@ -68,4 +68,19 @@ class User extends Authenticatable
 
         return $enrollment?->classroom;
     }
+
+    public function attendances(): HasMany
+    {
+        return $this->hasMany(Attendance::class, 'student_id');
+    }
+
+    public function ensureQrToken(): string
+    {
+        if (! $this->qr_token) {
+            $this->qr_token = bin2hex(random_bytes(20));
+            $this->save();
+        }
+
+        return $this->qr_token;
+    }
 }
