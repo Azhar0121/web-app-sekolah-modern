@@ -681,6 +681,39 @@
 
                             </div>
 
+                            <div class="ppdb-confirmed-box mt-2">
+
+                                <strong>Akun & Penempatan Kelas</strong>
+
+                                <br>
+
+                                @if ($registration->user)
+
+                                    Email login:
+                                    {{ $registration->user->email }}
+
+                                    <br>
+
+                                    @php($classroom = $registration->user->currentClassroom())
+
+                                    @if ($classroom)
+                                        Kelas: <strong>{{ $classroom->name }}</strong>
+                                    @else
+                                        <span class="text-warning">
+                                            Belum ditempatkan ke kelas manapun (kelas X penuh saat konfirmasi) —
+                                            silakan tempatkan manual lewat menu
+                                            <a href="{{ route('admin.student-placements.index') }}">Penempatan Siswa</a>.
+                                        </span>
+                                    @endif
+
+                                @else
+                                    <span class="text-danger">
+                                        Akun siswa belum berhasil dibuat. Coba periksa log aplikasi.
+                                    </span>
+                                @endif
+
+                            </div>
+
                         @else
 
                             <form

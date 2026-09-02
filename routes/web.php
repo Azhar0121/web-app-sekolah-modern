@@ -22,6 +22,7 @@ use App\Http\Controllers\Siswa\MaterialController as SiswaMaterialController;
 use App\Http\Controllers\Siswa\QrCodeController as SiswaQrCodeController;
 use App\Http\Controllers\Siswa\ScheduleController as SiswaScheduleController;
 use App\Http\Controllers\Siswa\TaskController as SiswaTaskController;
+use App\Http\Controllers\Tu\DashboardController as TuDashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -158,7 +159,7 @@ Route::middleware(['auth', 'role:ortu'])->prefix('ortu')->group(function () {
 
 // ================= PORTAL TATA USAHA =================
 Route::middleware(['auth', 'role:tu'])->prefix('tu')->group(function () {
-    Route::view('/dashboard', 'tu.dashboard')->name('tu.dashboard');
+    Route::get('/dashboard', [TuDashboardController::class, 'index'])->name('tu.dashboard');
 });
 
 // ================= PORTAL KEPALA SEKOLAH =================

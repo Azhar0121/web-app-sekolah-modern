@@ -21,6 +21,9 @@
             @if (session('error'))
                 <div class="alert alert-danger">{{ session('error') }}</div>
             @endif
+            @if (session('warning'))
+                <div class="alert alert-warning">{{ session('warning') }}</div>
+            @endif
 
             @yield('content')
         </main>
@@ -28,7 +31,6 @@
     </div>
 
     <script>
-        // Toggle sidebar di layar kecil (offcanvas sederhana tanpa dependensi JS tambahan)
         document.addEventListener('DOMContentLoaded', () => {
             const sidebar = document.querySelector('[data-sidebar]');
             const backdrop = document.querySelector('[data-sidebar-backdrop]');

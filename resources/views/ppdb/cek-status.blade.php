@@ -148,6 +148,27 @@
                                 </div>
                             @endif
 
+                            @if ($registration->status === 'registered_ulang')
+                                <div class="data-item full">
+                                    <span class="data-label">Akun Portal Siswa</span>
+                                    <p class="notes" style="margin-top: 8px;">
+                                        Selamat! Daftar ulang Anda sudah dikonfirmasi dan akun Portal Siswa
+                                        sudah aktif. Kredensial login (email &amp; password sementara) sudah
+                                        kami kirimkan ke email yang Anda daftarkan.
+                                    </p>
+                                    <div style="margin-top: 12px;">
+                                        <a href="{{ url('/login') }}" class="check-button"
+                                           style="width: auto; padding: 0 22px; text-decoration: none; display: inline-flex;">
+                                            <span>Login ke Portal Siswa</span>
+                                            <span class="arrow">&rarr;</span>
+                                        </a>
+                                    </div>
+                                    <p class="notes" style="margin-top: 10px; font-size: 13px;">
+                                        Belum menerima email atau lupa password? Hubungi Tata Usaha sekolah.
+                                    </p>
+                                </div>
+                            @endif
+
                             @if ($registration->notes)
                                 <div class="data-item full">
                                     <span class="data-label">Catatan</span>
