@@ -6,7 +6,9 @@
   --green: #159447;
   --green-light: #eaf8ef;
   --red: #dc2626;
-  --red-light: #fef2f2
+  --red-light: #fef2f2;
+  --amber: #b45309;
+  --amber-light: #fffbeb
 }
 body {
   margin: 0;
@@ -346,6 +348,36 @@ body {
   color: #b42318;
   font-size: 13px;
   line-height: 1.6
+}
+.overdue-warning {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: var(--amber-light);
+  border: 1px solid #fde68a;
+  margin-top: 12px
+}
+.overdue-warning-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--amber);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 900
+}
+.overdue-warning p {
+  margin: 0;
+  color: var(--amber);
+  font-size: 13px;
+  line-height: 1.6;
+  font-weight: 600
 }
 .status-footer {
   display: flex;

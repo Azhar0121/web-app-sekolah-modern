@@ -145,6 +145,17 @@
                                         Silakan datang langsung ke sekolah sebelum tanggal tersebut
                                         untuk menyelesaikan daftar ulang & pembayaran.
                                     </p>
+
+                                    @if ($registration->isReRegistrationOverdue())
+                                        <div class="overdue-warning">
+                                            <div class="overdue-warning-icon">!</div>
+                                            <p>
+                                                Batas waktu daftar ulang Anda sudah lewat. Segera hubungi
+                                                pihak sekolah (Tata Usaha) untuk menanyakan apakah daftar
+                                                ulang masih bisa diproses.
+                                            </p>
+                                        </div>
+                                    @endif
                                 </div>
                             @endif
 

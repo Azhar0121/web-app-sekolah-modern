@@ -1,132 +1,186 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Mail\PpdbAccepted;
-use App\Mail\StudentAccountCreated;
+use App\Mail\PpdbRegistrationSubmitted;
+use App\Models\PpdbDocument;
+use App\Models\PpdbPeriod;
 use App\Models\PpdbRegistration;
-use App\Services\StudentEnrollmentService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 class PpdbController extends Controller
 {
-    public function __construct(private StudentEnrollmentService $enrollmentService)
+    public function index(): View
     {
-        //
+        $activePeriod = PpdbPeriod::where('is_active', true)
+            ->orderByDesc('start_date')
+            ->first();
+
+        return view('ppdb.index', compact('activePeriod'));
     }
 
-    public function index(Request $request): View
+    public function create(): View|RedirectResponse
     {
-        $statusFilter = $request->string('status')->toString();
+        $activePeriod = PpdbPeriod::where('is_active', true)->orderByDesc('start_date')->first();
 
-        $registrations = PpdbRegistration::with('period')
-            ->when($statusFilter, fn ($query) => $query->where('status', $statusFilter))
-            ->orderByDesc('created_at')
-            ->paginate(15)
-            ->withQueryString();
-
-        return view('admin.ppdb.index', compact('registrations', 'statusFilter'));
-    }
-
-    public function show(PpdbRegistration $ppdbRegistration): View
-    {
-        $ppdbRegistration->load('documents', 'period', 'verifiedBy', 'reRegistrationConfirmedBy', 'user');
-
-        return view('admin.ppdb.show', ['registration' => $ppdbRegistration]);
-    }
-
-    public function updateStatus(Request $request, PpdbRegistration $ppdbRegistration): RedirectResponse
-    {
-        $validated = $request->validate([
-            'status' => ['required', 'in:verified,accepted,rejected'],
-            'notes' => ['nullable', 'string', 'max:1000'],
-        ]);
-
-        $updateData = [
-            'status' => $validated['status'],
-            'notes' => $validated['notes'] ?? $ppdbRegistration->notes,
-            'verified_by' => auth()->id(),
-            'verified_at' => now(),
-        ];
-
-        if ($validated['status'] === 'accepted') {
-            $reRegistrationDays = $ppdbRegistration->period->re_registration_days ?? 7;
-
-            $updateData['accepted_at'] = now();
-            $updateData['re_registration_deadline'] = now()->addDays($reRegistrationDays)->toDateString();
+        if (! $activePeriod || ! $activePeriod->isOpenForRegistration()) {
+            return redirect()
+                ->route('ppdb.index')
+                ->with('error', 'Saat ini tidak ada periode PPDB yang sedang dibuka.');
         }
 
-        $ppdbRegistration->update($updateData);
-
-        if ($validated['status'] === 'accepted') {
-            $this->sendAcceptedEmail($ppdbRegistration);
-        }
-
-        return redirect()
-            ->route('admin.ppdb.show', $ppdbRegistration)
-            ->with('success', 'Status pendaftaran berhasil diperbarui menjadi "' . $ppdbRegistration->statusLabel() . '".');
+        return view('ppdb.daftar', compact('activePeriod'));
     }
 
-    public function confirmReRegistration(Request $request, PpdbRegistration $ppdbRegistration): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
-        if ($ppdbRegistration->status !== 'accepted') {
-            return back()->with('error', 'Daftar ulang hanya bisa dikonfirmasi untuk pendaftar yang sudah berstatus "Diterima".');
+        $activePeriod = PpdbPeriod::where('is_active', true)->orderByDesc('start_date')->first();
+
+        if (! $activePeriod || ! $activePeriod->isOpenForRegistration()) {
+            return back()->with('error', 'Pendaftaran sedang tidak dibuka.');
         }
 
         $validated = $request->validate([
-            're_registration_reference' => ['required', 'string', 'max:255'],
-            're_registration_notes' => ['nullable', 'string', 'max:1000'],
+            'full_name' => ['required', 'string', 'max:255'],
+            'nisn' => ['nullable', 'string', 'max:20'],
+            'nik' => ['nullable', 'string', 'max:20'],
+            'gender' => ['required', 'in:L,P'],
+            'birth_place' => ['required', 'string', 'max:255'],
+            'birth_date' => ['required', 'date'],
+            'address' => ['required', 'string'],
+            'phone' => ['required', 'string', 'max:20'],
+            // Wajib diisi — dipakai untuk mengirim nomor pendaftaran & sebagai
+            // salah satu jalur pemulihan kalau nomor pendaftaran hilang/lupa.
+            // Di-scope per periode PPDB & mengecualikan yang berstatus "rejected",
+            // supaya pendaftar yang ditolak tetap bisa mendaftar ulang dengan email yang sama,
+            // tapi 1 email tidak bisa dipakai untuk 2 pendaftaran aktif sekaligus di periode ini.
+            'email' => [
+                'required', 'email', 'max:255',
+                Rule::unique('ppdb_registrations', 'email')
+                    ->where('ppdb_period_id', $activePeriod->id)
+                    ->where('status', '!=', 'rejected'),
+            ],
+            'parent_name' => ['required', 'string', 'max:255'],
+            'parent_phone' => ['required', 'string', 'max:20'],
+            'previous_school' => ['required', 'string', 'max:255'],
+            'documents' => ['nullable', 'array'],
+            'document_types' => ['nullable', 'array'],
+        ], [
+            'email.unique' => 'Email ini sudah terdaftar pada periode PPDB yang sedang berjalan. '
+                .'Jika Anda sebelumnya sudah mendaftar, gunakan menu "Cek Status" atau "Lupa Nomor Pendaftaran". '
+                .'Jika ini bukan pendaftaran Anda, gunakan email pribadi lain.',
         ]);
 
-        $ppdbRegistration->update([
-            'status' => 'registered_ulang',
-            're_registration_reference' => $validated['re_registration_reference'],
-            're_registration_notes' => $validated['re_registration_notes'] ?? null,
-            're_registration_confirmed_by' => auth()->id(),
-            're_registration_confirmed_at' => now(),
+        $registration = PpdbRegistration::create([
+            ...$validated,
+            'ppdb_period_id' => $activePeriod->id,
+            'status' => 'submitted',
         ]);
 
-        $enrollment = $this->enrollmentService->enroll($ppdbRegistration);
+        foreach ($request->file('documents', []) as $index => $file) {
+            if (! $file || ! $file->isValid()) {
+                continue;
+            }
 
-        $this->sendAccountCreatedEmail($ppdbRegistration, $enrollment);
+            if ($file->getSize() > 2 * 1024 * 1024 || ! in_array($file->getClientOriginalExtension(), ['pdf', 'jpg', 'jpeg', 'png'])) {
+                continue;
+            }
 
-        $message = 'Daftar ulang & pembayaran berhasil dikonfirmasi. Akun siswa telah dibuat';
-        $message .= $enrollment['placed']
-            ? " dan otomatis ditempatkan di kelas {$enrollment['classroom']->name}."
-            : ', namun kelas X sedang penuh — silakan tempatkan manual lewat menu Penempatan Siswa.';
+            $path = $file->store('ppdb-documents', 'public');
 
-        return redirect()
-            ->route('admin.ppdb.show', $ppdbRegistration)
-            ->with($enrollment['placed'] ? 'success' : 'warning', $message);
-    }
-
-    private function sendAccountCreatedEmail(PpdbRegistration $registration, array $enrollment): void
-    {
-        try {
-            Mail::to($registration->email)->send(new StudentAccountCreated(
-                registration: $registration,
-                email: $enrollment['user']->email,
-                password: $enrollment['password'],
-                classroom: $enrollment['classroom'],
-            ));
-        } catch (\Throwable $e) {
-            Log::warning('Gagal mengirim email akun siswa baru PPDB: ' . $e->getMessage(), [
-                'registration_id' => $registration->id,
+            PpdbDocument::create([
+                'ppdb_registration_id' => $registration->id,
+                'document_type' => $validated['document_types'][$index] ?? 'lainnya',
+                'original_name' => $file->getClientOriginalName(),
+                'file_path' => $path,
             ]);
         }
+
+        $this->sendRegistrationEmail($registration);
+
+        return redirect()
+            ->route('ppdb.sukses', $registration->registration_number)
+            ->with('success', 'Pendaftaran berhasil dikirim. Nomor pendaftaran juga sudah dikirim ke email Anda.');
     }
 
-    private function sendAcceptedEmail(PpdbRegistration $registration): void
+    public function success(string $registrationNumber): View
+    {
+        $registration = PpdbRegistration::where('registration_number', $registrationNumber)
+            ->firstOrFail();
+
+        return view('ppdb.sukses', compact('registration'));
+    }
+
+    public function print(string $registrationNumber): View
+    {
+        $registration = PpdbRegistration::with(['period', 'documents'])
+            ->where('registration_number', $registrationNumber)
+            ->firstOrFail();
+
+        return view('ppdb.cetak', compact('registration'));
+    }
+
+    public function checkStatusForm(Request $request): View
+    {
+        $registration = null;
+        $searched = false;
+
+        if ($request->filled('registration_number')) {
+            $searched = true;
+            $registration = PpdbRegistration::with('documents')
+                ->where('registration_number', $request->query('registration_number'))
+                ->first();
+        }
+
+        return view('ppdb.cek-status', compact('registration', 'searched'));
+    }
+
+    public function checkStatus(Request $request): View
+    {
+        $request->validate([
+            'registration_number' => ['required', 'string'],
+        ]);
+
+        $registration = PpdbRegistration::with('documents')
+            ->where('registration_number', $request->registration_number)
+            ->first();
+
+        $searched = true;
+
+        return view('ppdb.cek-status', compact('registration', 'searched'));
+    }
+
+    public function forgotNumberForm(): View
+    {
+        return view('ppdb.lupa-nomor');
+    }
+
+    public function forgotNumber(Request $request): View
+    {
+        $validated = $request->validate([
+            'full_name' => ['required', 'string', 'max:255'],
+            'birth_date' => ['required', 'date'],
+        ]);
+
+        $registrations = PpdbRegistration::whereRaw('LOWER(full_name) = ?', [strtolower(trim($validated['full_name']))])
+            ->whereDate('birth_date', $validated['birth_date'])
+            ->orderByDesc('created_at')
+            ->get();
+
+        return view('ppdb.lupa-nomor', compact('registrations'));
+    }
+
+    private function sendRegistrationEmail(PpdbRegistration $registration): void
     {
         try {
-            Mail::to($registration->email)->send(new PpdbAccepted($registration));
+            Mail::to($registration->email)->send(new PpdbRegistrationSubmitted($registration));
         } catch (\Throwable $e) {
-            Log::warning('Gagal mengirim email notifikasi diterima PPDB: ' . $e->getMessage(), [
+            Log::warning('Gagal mengirim email nomor pendaftaran PPDB: ' . $e->getMessage(), [
                 'registration_id' => $registration->id,
             ]);
         }
