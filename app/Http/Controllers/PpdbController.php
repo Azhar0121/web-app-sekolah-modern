@@ -10,6 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 class PpdbController extends Controller
@@ -53,14 +54,21 @@ class PpdbController extends Controller
             'birth_date' => ['required', 'date'],
             'address' => ['required', 'string'],
             'phone' => ['required', 'string', 'max:20'],
-            // Wajib diisi — dipakai untuk mengirim nomor pendaftaran & sebagai
-            // salah satu jalur pemulihan kalau nomor pendaftaran hilang/lupa.
-            'email' => ['required', 'email', 'max:255'],
+            'email' => [
+                'required', 'email', 'max:255',
+                Rule::unique('ppdb_registrations', 'email')
+                    ->where('ppdb_period_id', $activePeriod->id)
+                    ->where('status', '!=', 'rejected'),
+            ],
             'parent_name' => ['required', 'string', 'max:255'],
             'parent_phone' => ['required', 'string', 'max:20'],
             'previous_school' => ['required', 'string', 'max:255'],
             'documents' => ['nullable', 'array'],
             'document_types' => ['nullable', 'array'],
+        ], [
+            'email.unique' => 'Email ini sudah terdaftar pada periode PPDB yang sedang berjalan. '
+                .'Jika Anda sebelumnya sudah mendaftar, gunakan menu "Cek Status" atau "Lupa Nomor Pendaftaran". '
+                .'Jika ini bukan pendaftaran Anda, gunakan email pribadi lain.',
         ]);
 
         $registration = PpdbRegistration::create([
