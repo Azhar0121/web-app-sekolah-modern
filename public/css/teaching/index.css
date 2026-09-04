@@ -1,0 +1,1040 @@
+/* =========================================================
+   WEB SEKOLAH MODERN
+   ADMIN - PENUGASAN MENGAJAR
+   ========================================================= */
+
+.teaching-page {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 10px 8px 40px;
+    box-sizing: border-box;
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.teaching-header {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    margin-bottom: 22px;
+    padding: 28px 32px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #071b35 0%,
+            #0a3768 60%,
+            #0d5fb7 100%
+        );
+
+    box-shadow:
+        0 10px 28px rgba(7, 27, 53, 0.12);
+
+    box-sizing: border-box;
+}
+
+.teaching-header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    top: -120px;
+    right: -75px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.teaching-header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 130px;
+    height: 130px;
+
+    right: 120px;
+    bottom: -85px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.045);
+}
+
+.teaching-header-content {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+}
+
+.teaching-title-area {
+    min-width: 0;
+}
+
+.teaching-label {
+    display: inline-flex;
+    align-items: center;
+
+    margin-bottom: 9px;
+    padding: 6px 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 7px;
+
+    background: rgba(255, 255, 255, 0.09);
+
+    color: #dceeff;
+
+    font-size: 10.5px;
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+}
+
+.teaching-title-area h1 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 29px;
+    font-weight: 800;
+
+    line-height: 1.3;
+    letter-spacing: -0.4px;
+}
+
+.teaching-title-area p {
+    max-width: 680px;
+
+    margin: 8px 0 0;
+
+    color: #c9def3;
+
+    font-size: 13.5px;
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   ADD BUTTON
+   ========================================================= */
+
+.teaching-add-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    flex-shrink: 0;
+
+    min-height: 43px;
+
+    padding: 10px 17px;
+
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: #0754b5;
+
+    font-size: 12.5px;
+    font-weight: 800;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 6px 16px rgba(0, 0, 0, 0.12);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.teaching-add-button span {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.teaching-add-button:hover {
+    color: #064ba8;
+
+    background: #f5f9ff;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 9px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================================
+   FILTER CARD
+   ========================================================= */
+
+.teaching-filter-card {
+    width: 100%;
+
+    margin-bottom: 20px;
+    padding: 20px 24px;
+
+    border: 1px solid #dbe7f2;
+    border-radius: 16px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 24px rgba(16, 42, 67, 0.055);
+
+    box-sizing: border-box;
+}
+
+.teaching-filter-header {
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    margin-bottom: 17px;
+}
+
+.teaching-filter-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 43px;
+    height: 43px;
+
+    flex: 0 0 43px;
+
+    border: 1px solid #c9e0f6;
+    border-radius: 11px;
+
+    background: #eaf4ff;
+
+    color: #0866d8;
+}
+
+.teaching-filter-header h2 {
+    margin: 0;
+
+    color: #09284b;
+
+    font-size: 16px;
+    font-weight: 800;
+
+    line-height: 1.35;
+}
+
+.teaching-filter-header p {
+    margin: 3px 0 0;
+
+    color: #6a8198;
+
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.teaching-filter-form {
+    width: 100%;
+}
+
+.teaching-filter-field {
+    width: 100%;
+}
+
+.teaching-filter-field label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #244563;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.teaching-select {
+    width: 100%;
+    height: 43px;
+
+    padding: 0 14px;
+
+    border: 1px solid #dbe7f2;
+    border-radius: 8px;
+
+    outline: none;
+
+    background: #fbfdff;
+
+    color: #102a43;
+
+    font-family: inherit;
+    font-size: 13px;
+
+    box-sizing: border-box;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.teaching-select:hover {
+    border-color: #bfd2e4;
+}
+
+.teaching-select:focus {
+    border-color: #0866d8;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 3px rgba(8, 102, 216, 0.09);
+}
+
+
+/* =========================================================
+   TABLE CARD
+   ========================================================= */
+
+.teaching-table-card {
+    width: 100%;
+
+    overflow: hidden;
+
+    border: 1px solid #dbe7f2;
+    border-radius: 17px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 24px rgba(16, 42, 67, 0.06);
+}
+
+
+/* =========================================================
+   CARD TOP
+   ========================================================= */
+
+.teaching-card-top {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    min-height: 88px;
+
+    padding: 17px 25px;
+
+    overflow: hidden;
+
+    border-bottom: 1px solid #c9dced;
+
+    background:
+        linear-gradient(
+            90deg,
+            #e8f3ff 0%,
+            #edf6ff 55%,
+            #e2f0ff 100%
+        );
+
+    box-sizing: border-box;
+}
+
+.teaching-card-top::before {
+    content: "";
+
+    position: absolute;
+
+    width: 145px;
+    height: 145px;
+
+    top: -82px;
+    right: 35px;
+
+    border-radius: 50%;
+
+    background: rgba(8, 102, 216, 0.075);
+}
+
+.teaching-card-top::after {
+    content: "";
+
+    position: absolute;
+
+    width: 85px;
+    height: 85px;
+
+    right: 130px;
+    bottom: -55px;
+
+    border-radius: 50%;
+
+    background: rgba(8, 102, 216, 0.055);
+}
+
+.teaching-card-title {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+}
+
+.teaching-title-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 45px;
+    height: 45px;
+
+    flex: 0 0 45px;
+
+    border: 1px solid #c3def7;
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #d4e5f7
+        );
+
+    color: #0866d8;
+
+    box-shadow:
+        0 6px 14px rgba(8, 102, 216, 0.11);
+}
+
+.teaching-card-title h2 {
+    margin: 0;
+
+    color: #09284b;
+
+    font-size: 18px;
+    font-weight: 800;
+
+    line-height: 1.35;
+}
+
+.teaching-card-title p {
+    margin: 3px 0 0;
+
+    color: #4f6f8e;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.teaching-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+.teaching-table {
+    width: 100%;
+
+    border-collapse: separate;
+    border-spacing: 0;
+
+    table-layout: fixed;
+}
+
+.teaching-table thead th {
+    padding: 15px 16px;
+
+    border-bottom: 1px solid #d9e5f0;
+
+    background: #0b294d;
+
+    color: #f3f4f5;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+    text-align: left;
+
+    white-space: nowrap;
+}
+
+.teaching-table thead th:first-child {
+    width: 25%;
+    padding-left: 25px;
+}
+
+.teaching-table thead th:nth-child(2) {
+    width: 28%;
+}
+
+.teaching-table thead th:nth-child(3) {
+    width: 27%;
+}
+
+.teaching-table thead th:nth-child(4) {
+    width: 20%;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   TABLE BODY
+   ========================================================= */
+
+.teaching-table tbody tr {
+    background: #ffffff;
+
+    transition:
+        background-color 0.2s ease;
+}
+
+.teaching-table tbody tr:nth-child(even) {
+    background: #fbfdff;
+}
+
+.teaching-table tbody tr:hover {
+    background: #f2f8ff;
+}
+
+.teaching-table tbody td {
+    padding: 17px 16px;
+
+    border-bottom: 1px solid #e4edf5;
+
+    color: #102a43;
+
+    font-size: 13px;
+    line-height: 1.5;
+
+    vertical-align: middle;
+
+    box-sizing: border-box;
+}
+
+.teaching-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.teaching-table tbody td:first-child {
+    padding-left: 25px;
+}
+
+
+/* =========================================================
+   CLASS
+   ========================================================= */
+
+.teaching-class {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    min-width: 0;
+}
+
+.teaching-class-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    flex: 0 0 42px;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0874ed,
+            #0754b5
+        );
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    box-shadow:
+        0 5px 12px rgba(8, 102, 216, 0.18);
+}
+
+.teaching-class strong {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #09284b;
+
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.teaching-class span {
+    display: block;
+
+    color: #7a8ea2;
+
+    font-size: 10.5px;
+}
+
+
+/* =========================================================
+   SUBJECT
+   ========================================================= */
+
+.teaching-subject {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    min-width: 0;
+}
+
+.teaching-code {
+    display: inline-flex;
+    align-items: center;
+
+    flex-shrink: 0;
+
+    padding: 5px 9px;
+
+    border: 1px solid #d1e2f2;
+    border-radius: 7px;
+
+    background: #f2f8fd;
+
+    color: #245a83;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.teaching-subject-name {
+    color: #476681;
+
+    font-size: 12.5px;
+}
+
+
+/* =========================================================
+   TEACHER
+   ========================================================= */
+
+.teaching-teacher {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    color: #385b77;
+
+    font-size: 12.5px;
+}
+
+.teaching-teacher-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    flex: 0 0 32px;
+
+    border: 1px solid #d5e5f3;
+    border-radius: 9px;
+
+    background: #f3f8fd;
+
+    color: #1765a3;
+}
+
+
+/* =========================================================
+   ACTION
+   ========================================================= */
+
+.teaching-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    width: 100%;
+}
+
+.teaching-edit-button,
+.teaching-delete-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 62px;
+
+    min-height: 35px;
+
+    padding: 7px 9px;
+
+    border-radius: 7px;
+
+    font-family: inherit;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    line-height: 1;
+
+    box-sizing: border-box;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.teaching-edit-button {
+    border: 1px solid #a9c8e5;
+
+    background: #ffffff;
+
+    color: #1765a3;
+
+    text-decoration: none;
+}
+
+.teaching-edit-button:hover {
+    border-color: #0866d8;
+
+    background: #eaf4ff;
+
+    color: #0754b5;
+
+    transform: translateY(-1px);
+}
+
+.teaching-delete-form {
+    display: inline-flex;
+
+    margin: 0;
+    padding: 0;
+}
+
+.teaching-delete-button {
+    border: 1px solid #f1b9b9;
+
+    background: #ffffff;
+
+    color: #dc3545;
+
+    cursor: pointer;
+}
+
+.teaching-delete-button:hover {
+    border-color: #dc3545;
+
+    background: #fff3f3;
+
+    color: #c82333;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.teaching-empty {
+    padding: 45px 20px !important;
+
+    text-align: center !important;
+}
+
+.teaching-empty-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 52px;
+    height: 52px;
+
+    margin: 0 auto 12px;
+
+    border-radius: 13px;
+
+    background: #edf5fc;
+
+    color: #5b88b0;
+}
+
+.teaching-empty strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #294b67;
+
+    font-size: 13px;
+}
+
+.teaching-empty span {
+    color: #7b8fa2;
+
+    font-size: 11.5px;
+}
+
+
+/* =========================================================
+   INFORMATION
+   ========================================================= */
+
+.teaching-info {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin-top: 15px;
+
+    padding: 12px 15px;
+
+    border: 1px solid #dbe7f2;
+    border-radius: 10px;
+
+    background: #f7fbff;
+}
+
+.teaching-info-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 25px;
+    height: 25px;
+
+    flex: 0 0 25px;
+
+    border-radius: 7px;
+
+    background: #eaf4ff;
+
+    color: #0866d8;
+}
+
+.teaching-info p {
+    margin: 3px 0 0;
+
+    color: #617a91;
+
+    font-size: 11.5px;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .teaching-page {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+    .teaching-header {
+        padding: 25px 27px;
+    }
+
+    .teaching-table thead th,
+    .teaching-table tbody td {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .teaching-table thead th:first-child,
+    .teaching-table tbody td:first-child {
+        padding-left: 18px;
+    }
+
+    .teaching-actions {
+        gap: 4px;
+    }
+
+    .teaching-edit-button,
+    .teaching-delete-button {
+        width: 58px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .teaching-header {
+        margin-bottom: 17px;
+
+        padding: 23px 20px;
+
+        border-radius: 14px;
+    }
+
+    .teaching-header-content {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .teaching-title-area h1 {
+        font-size: 24px;
+    }
+
+    .teaching-title-area p {
+        font-size: 12.5px;
+    }
+
+    .teaching-add-button {
+        width: 100%;
+    }
+
+    .teaching-filter-card {
+        padding: 18px;
+    }
+
+    .teaching-card-top {
+        padding: 16px 18px;
+    }
+
+    .teaching-title-icon {
+        width: 40px;
+        height: 40px;
+
+        flex-basis: 40px;
+    }
+
+    .teaching-card-title h2 {
+        font-size: 16px;
+    }
+
+    .teaching-card-title p {
+        font-size: 11px;
+    }
+
+    .teaching-table {
+        min-width: 850px;
+    }
+
+    .teaching-table-wrapper {
+        overflow-x: auto;
+    }
+
+    .teaching-info {
+        padding: 11px 13px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 576px) {
+
+    .teaching-page {
+        padding-top: 5px;
+        padding-bottom: 25px;
+    }
+
+    .teaching-header {
+        padding: 20px 17px;
+    }
+
+    .teaching-label {
+        font-size: 9.5px;
+    }
+
+    .teaching-title-area h1 {
+        font-size: 22px;
+    }
+
+    .teaching-title-area p {
+        font-size: 11.5px;
+    }
+
+    .teaching-filter-card {
+        padding: 16px;
+    }
+
+    .teaching-filter-header {
+        margin-bottom: 14px;
+    }
+
+    .teaching-filter-icon {
+        width: 39px;
+        height: 39px;
+
+        flex-basis: 39px;
+    }
+
+    .teaching-filter-header h2 {
+        font-size: 15px;
+    }
+
+    .teaching-filter-header p {
+        font-size: 10.5px;
+    }
+
+    .teaching-card-top {
+        min-height: 78px;
+    }
+
+    .teaching-info p {
+        font-size: 10.5px;
+    }
+}
+
