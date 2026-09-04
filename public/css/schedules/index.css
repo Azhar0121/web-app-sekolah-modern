@@ -1,0 +1,1336 @@
+/* =========================================================
+   WEB SEKOLAH MODERN
+   ADMIN - JADWAL PELAJARAN
+   STYLE SAMA DENGAN PENUGASAN MENGAJAR
+   ========================================================= */
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.schedule-page {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 10px 8px 40px;
+    box-sizing: border-box;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.schedule-header {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 22px;
+    padding: 28px 32px;
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #071b35 0%,
+            #0a3768 60%,
+            #0d5fb7 100%
+        );
+
+    box-shadow:
+        0 10px 28px rgba(7, 27, 53, 0.12);
+
+    box-sizing: border-box;
+}
+
+.schedule-header::before {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    top: -120px;
+    right: -75px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.schedule-header::after {
+    content: "";
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    right: 120px;
+    bottom: -85px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.045);
+}
+
+.schedule-header-content {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+}
+
+.schedule-title-area {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+}
+
+.schedule-title-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 54px;
+    height: 54px;
+    flex: 0 0 54px;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 15px;
+
+    background: rgba(255, 255, 255, 0.10);
+    color: #ffffff;
+}
+
+.schedule-title-icon svg {
+    width: 26px;
+    height: 26px;
+}
+
+.schedule-label {
+    display: inline-flex;
+    align-items: center;
+
+    margin-bottom: 9px;
+    padding: 6px 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 7px;
+
+    background: rgba(255, 255, 255, 0.09);
+
+    color: #dceeff;
+
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
+
+.schedule-title-area h1 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 29px;
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: -0.4px;
+}
+
+.schedule-title-area p {
+    max-width: 680px;
+    margin: 8px 0 0;
+
+    color: #c9def3;
+
+    font-size: 13.5px;
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   ADD BUTTON
+   ========================================================= */
+
+.schedule-add-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+    flex-shrink: 0;
+
+    min-height: 43px;
+    padding: 10px 17px;
+
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 9px;
+
+    background: #ffffff;
+    color: #0754b5;
+
+    font-size: 12.5px;
+    font-weight: 800;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 6px 16px rgba(0, 0, 0, 0.12);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.schedule-add-button svg {
+    width: 17px;
+    height: 17px;
+}
+
+.schedule-add-button:hover {
+    color: #064ba8;
+    background: #f5f9ff;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 9px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================================
+   FILTER CARD
+   ========================================================= */
+
+.schedule-filter-card {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 20px 24px;
+
+    border: 1px solid #dbe7f2;
+    border-radius: 16px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 24px rgba(16, 42, 67, 0.055);
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   FILTER HEADER
+   ========================================================= */
+
+.schedule-filter-header {
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+    margin-bottom: 17px;
+}
+
+.schedule-filter-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 43px;
+    height: 43px;
+    flex: 0 0 43px;
+
+    border: 1px solid #c9e0f6;
+    border-radius: 11px;
+
+    background: #eaf4ff;
+    color: #0866d8;
+}
+
+.schedule-filter-icon svg {
+    width: 21px;
+    height: 21px;
+}
+
+.schedule-filter-header h2 {
+    margin: 0;
+
+    color: #09284b;
+
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.35;
+}
+
+.schedule-filter-header p {
+    margin: 3px 0 0;
+
+    color: #6a8198;
+
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   FILTER BODY
+   ========================================================= */
+
+.schedule-filter-body {
+    width: 100%;
+}
+
+.schedule-filter-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+
+    width: 100%;
+}
+
+.schedule-filter-field {
+    width: 100%;
+}
+
+.schedule-filter-field label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #244563;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.schedule-select {
+    width: 100%;
+    height: 43px;
+
+    padding: 0 14px;
+
+    border: 1px solid #dbe7f2;
+    border-radius: 8px;
+
+    outline: none;
+
+    background: #fbfdff;
+    color: #102a43;
+
+    font-family: inherit;
+    font-size: 13px;
+
+    box-sizing: border-box;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.schedule-select:hover {
+    border-color: #bfd2e4;
+}
+
+.schedule-select:focus {
+    border-color: #0866d8;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 3px rgba(8, 102, 216, 0.09);
+}
+
+
+/* =========================================================
+   TABLE CARD
+   ========================================================= */
+
+.schedule-table-card {
+    width: 100%;
+    overflow: hidden;
+
+    border: 1px solid #dbe7f2;
+    border-radius: 17px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 24px rgba(16, 42, 67, 0.06);
+}
+
+
+/* =========================================================
+   CARD TOP
+   ========================================================= */
+
+.schedule-card-top {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    min-height: 88px;
+
+    padding: 17px 25px;
+
+    overflow: hidden;
+
+    border-bottom: 1px solid #c9dced;
+
+    background:
+        linear-gradient(
+            90deg,
+            #e8f3ff 0%,
+            #edf6ff 55%,
+            #e2f0ff 100%
+        );
+
+    box-sizing: border-box;
+}
+
+.schedule-card-top::before {
+    content: "";
+
+    position: absolute;
+
+    width: 145px;
+    height: 145px;
+
+    top: -82px;
+    right: 35px;
+
+    border-radius: 50%;
+
+    background: rgba(8, 102, 216, 0.075);
+}
+
+.schedule-card-top::after {
+    content: "";
+
+    position: absolute;
+
+    width: 85px;
+    height: 85px;
+
+    right: 130px;
+    bottom: -55px;
+
+    border-radius: 50%;
+
+    background: rgba(8, 102, 216, 0.055);
+}
+
+
+/* =========================================================
+   CARD HEADING
+   ========================================================= */
+
+.schedule-card-heading {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+}
+
+.schedule-heading-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 45px;
+    height: 45px;
+    flex: 0 0 45px;
+
+    border: 1px solid #c3def7;
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #d4e5f7
+        );
+
+    color: #0866d8;
+
+    box-shadow:
+        0 6px 14px rgba(8, 102, 216, 0.11);
+}
+
+.schedule-heading-icon svg {
+    width: 23px;
+    height: 23px;
+}
+
+.schedule-card-heading h2 {
+    margin: 0;
+
+    color: #09284b;
+
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.35;
+}
+
+.schedule-card-heading span {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #4f6f8e;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   TABLE WRAPPER
+   ========================================================= */
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.schedule-table {
+    width: 100%;
+
+    border-collapse: separate;
+    border-spacing: 0;
+
+    table-layout: fixed;
+}
+
+.schedule-table thead th {
+    padding: 15px 16px;
+
+    border-bottom: 1px solid #d9e5f0;
+
+    background: #0b294d;
+    color: #f3f4f5;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+    text-align: left;
+
+    white-space: nowrap;
+}
+
+.schedule-day-column {
+    width: 14%;
+    padding-left: 25px !important;
+}
+
+.schedule-time-column {
+    width: 17%;
+}
+
+.schedule-table thead th:nth-child(3) {
+    width: 23%;
+}
+
+.schedule-table thead th:nth-child(4) {
+    width: 22%;
+}
+
+.schedule-table thead th:nth-child(5) {
+    width: 12%;
+}
+
+.schedule-action-column {
+    width: 12%;
+    text-align: center !important;
+}
+
+
+/* =========================================================
+   TABLE BODY
+   ========================================================= */
+
+.schedule-table tbody tr {
+    background: #ffffff;
+
+    transition:
+        background-color 0.2s ease;
+}
+
+.schedule-table tbody tr:nth-child(even) {
+    background: #fbfdff;
+}
+
+.schedule-table tbody tr:hover {
+    background: #f2f8ff;
+}
+
+.schedule-table tbody td {
+    padding: 17px 16px;
+
+    border-bottom: 1px solid #e4edf5;
+
+    color: #102a43;
+
+    font-size: 13px;
+    line-height: 1.5;
+
+    vertical-align: middle;
+
+    box-sizing: border-box;
+}
+
+.schedule-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.schedule-table tbody td:first-child {
+    padding-left: 25px;
+}
+
+
+/* =========================================================
+   DAY
+   ========================================================= */
+
+.schedule-day {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    color: #09284b;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.schedule-day-dot {
+    width: 8px;
+    height: 8px;
+    flex: 0 0 8px;
+
+    border-radius: 50%;
+
+    background: #0866d8;
+
+    box-shadow:
+        0 0 0 4px rgba(8, 102, 216, 0.09);
+}
+
+
+/* =========================================================
+   TIME
+   ========================================================= */
+
+.schedule-time {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    color: #385b77;
+
+    font-size: 12.5px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.schedule-time svg {
+    width: 18px;
+    height: 18px;
+
+    flex-shrink: 0;
+
+    color: #1765a3;
+}
+
+
+/* =========================================================
+   SUBJECT
+   ========================================================= */
+
+.schedule-subject {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    min-width: 0;
+}
+
+.schedule-code {
+    display: inline-flex;
+    align-items: center;
+
+    flex-shrink: 0;
+
+    padding: 5px 9px;
+
+    border: 1px solid #d1e2f2;
+    border-radius: 7px;
+
+    background: #f2f8fd;
+    color: #245a83;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.schedule-subject-name {
+    overflow: hidden;
+
+    color: #476681;
+
+    font-size: 12.5px;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   TEACHER
+   ========================================================= */
+
+.schedule-teacher {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    min-width: 0;
+
+    color: #385b77;
+
+    font-size: 12.5px;
+}
+
+.schedule-teacher-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
+
+    border: 1px solid #d5e5f3;
+    border-radius: 9px;
+
+    background: #f3f8fd;
+    color: #1765a3;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.schedule-teacher span {
+    overflow: hidden;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   ROOM
+   ========================================================= */
+
+.schedule-room {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    color: #476681;
+
+    font-size: 12.5px;
+    font-weight: 600;
+}
+
+.schedule-room svg {
+    width: 18px;
+    height: 18px;
+
+    flex-shrink: 0;
+
+    color: #1765a3;
+}
+
+
+/* =========================================================
+   ACTION
+   ========================================================= */
+
+.schedule-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    width: 100%;
+}
+
+.schedule-edit-button,
+.schedule-delete-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    width: 62px;
+    min-height: 35px;
+
+    padding: 7px 8px;
+
+    border-radius: 7px;
+
+    font-family: inherit;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    line-height: 1;
+
+    box-sizing: border-box;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.schedule-edit-button svg,
+.schedule-delete-button svg {
+    width: 14px;
+    height: 14px;
+
+    flex-shrink: 0;
+}
+
+.schedule-edit-button {
+    border: 1px solid #a9c8e5;
+
+    background: #ffffff;
+    color: #1765a3;
+
+    text-decoration: none;
+}
+
+.schedule-edit-button:hover {
+    border-color: #0866d8;
+
+    background: #eaf4ff;
+    color: #0754b5;
+
+    transform: translateY(-1px);
+}
+
+.schedule-delete-form {
+    display: inline-flex;
+
+    margin: 0;
+    padding: 0;
+}
+
+.schedule-delete-button {
+    border: 1px solid #f1b9b9;
+
+    background: #ffffff;
+    color: #dc3545;
+
+    cursor: pointer;
+}
+
+.schedule-delete-button:hover {
+    border-color: #dc3545;
+
+    background: #fff3f3;
+    color: #c82333;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.schedule-empty {
+    padding: 45px 20px;
+
+    text-align: center;
+}
+
+.schedule-empty-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 52px;
+    height: 52px;
+
+    margin: 0 auto 12px;
+
+    border-radius: 13px;
+
+    background: #edf5fc;
+    color: #5b88b0;
+}
+
+.schedule-empty-icon svg {
+    width: 25px;
+    height: 25px;
+}
+
+.schedule-empty h3 {
+    margin: 0 0 4px;
+
+    color: #294b67;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.schedule-empty p {
+    margin: 0;
+
+    color: #7b8fa2;
+
+    font-size: 11.5px;
+}
+
+
+/* =========================================================
+   INFORMATION
+   ========================================================= */
+
+.schedule-info {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin-top: 15px;
+    padding: 12px 15px;
+
+    border: 1px solid #dbe7f2;
+    border-radius: 10px;
+
+    background: #f7fbff;
+}
+
+.schedule-info-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 25px;
+    height: 25px;
+    flex: 0 0 25px;
+
+    border-radius: 7px;
+
+    background: #eaf4ff;
+    color: #0866d8;
+}
+
+.schedule-info-icon svg {
+    width: 15px;
+    height: 15px;
+}
+
+.schedule-info p {
+    margin: 3px 0 0;
+
+    color: #617a91;
+
+    font-size: 11.5px;
+    line-height: 1.55;
+}
+
+.schedule-info a {
+    color: #0866d8;
+
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+.schedule-info a:hover {
+    color: #0754b5;
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .schedule-page {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+    .schedule-header {
+        padding: 25px 27px;
+    }
+
+    .schedule-table thead th,
+    .schedule-table tbody td {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .schedule-table thead th:first-child,
+    .schedule-table tbody td:first-child {
+        padding-left: 18px;
+    }
+
+    .schedule-actions {
+        gap: 4px;
+    }
+
+    .schedule-edit-button,
+    .schedule-delete-button {
+        width: 58px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .schedule-header {
+        margin-bottom: 17px;
+        padding: 23px 20px;
+        border-radius: 14px;
+    }
+
+    .schedule-header-content {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .schedule-title-area {
+        align-items: flex-start;
+    }
+
+    .schedule-title-area h1 {
+        font-size: 24px;
+    }
+
+    .schedule-title-area p {
+        font-size: 12.5px;
+    }
+
+    .schedule-add-button {
+        width: 100%;
+    }
+
+    .schedule-filter-card {
+        padding: 18px;
+    }
+
+    .schedule-filter-form {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .schedule-card-top {
+        padding: 16px 18px;
+    }
+
+    .schedule-heading-icon {
+        width: 40px;
+        height: 40px;
+        flex-basis: 40px;
+    }
+
+    .schedule-card-heading h2 {
+        font-size: 16px;
+    }
+
+    .schedule-card-heading span {
+        font-size: 11px;
+    }
+
+    .schedule-table {
+        min-width: 950px;
+    }
+
+    .schedule-info {
+        padding: 11px 13px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 576px) {
+
+    .schedule-page {
+        padding-top: 5px;
+        padding-bottom: 25px;
+    }
+
+    .schedule-header {
+        padding: 20px 17px;
+    }
+
+    .schedule-title-area {
+        gap: 12px;
+    }
+
+    .schedule-title-icon {
+        width: 46px;
+        height: 46px;
+        flex-basis: 46px;
+    }
+
+    .schedule-title-icon svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .schedule-label {
+        font-size: 9.5px;
+    }
+
+    .schedule-title-area h1 {
+        font-size: 22px;
+    }
+
+    .schedule-title-area p {
+        font-size: 11.5px;
+    }
+
+    .schedule-filter-card {
+        padding: 16px;
+    }
+
+    .schedule-filter-header {
+        margin-bottom: 14px;
+    }
+
+    .schedule-filter-icon {
+        width: 39px;
+        height: 39px;
+        flex-basis: 39px;
+    }
+
+    .schedule-filter-header h2 {
+        font-size: 15px;
+    }
+
+    .schedule-filter-header p {
+        font-size: 10.5px;
+    }
+
+    .schedule-card-top {
+        min-height: 78px;
+    }
+
+    .schedule-info p {
+        font-size: 10.5px;
+    }
+}
+
+/* =========================================================
+   FILTER JADWAL - BACKGROUND
+   ========================================================= */
+
+.schedule-filter-card {
+    width: 100%;
+    margin-bottom: 20px;
+    overflow: hidden;
+
+    padding: 0;
+
+    border: 1px solid #c9dced;
+    border-radius: 16px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 24px rgba(16, 42, 67, 0.06);
+
+    box-sizing: border-box;
+}
+
+
+/* BACKGROUND HEADER FILTER */
+
+.schedule-filter-header {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    min-height: 88px;
+
+    margin: 0;
+    padding: 17px 25px;
+
+    overflow: hidden;
+
+    border-bottom: 1px solid #c9dced;
+
+    background:
+        linear-gradient(
+            90deg,
+            #e8f3ff 0%,
+            #edf6ff 55%,
+            #e2f0ff 100%
+        );
+
+    box-sizing: border-box;
+}
+
+
+/* DEKORASI BACKGROUND */
+
+.schedule-filter-header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 145px;
+    height: 145px;
+
+    top: -82px;
+    right: 35px;
+
+    border-radius: 50%;
+
+    background: rgba(8, 102, 216, 0.075);
+}
+
+.schedule-filter-header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 85px;
+    height: 85px;
+
+    right: 130px;
+    bottom: -55px;
+
+    border-radius: 50%;
+
+    background: rgba(8, 102, 216, 0.055);
+}
+
+
+/* ICON FILTER */
+
+.schedule-filter-icon {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 43px;
+    height: 43px;
+    flex: 0 0 43px;
+
+    border: 1px solid #c3def7;
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #d4e5f7
+        );
+
+    color: #0866d8;
+
+    box-shadow:
+        0 6px 14px rgba(8, 102, 216, 0.10);
+}
+
+.schedule-filter-icon svg {
+    width: 21px;
+    height: 21px;
+}
+
+
+/* JUDUL + DESKRIPSI */
+
+.schedule-filter-header > div:last-child {
+    position: relative;
+    z-index: 2;
+}
+
+.schedule-filter-header h2 {
+    margin: 0;
+
+    color: #09284b;
+
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.35;
+}
+
+.schedule-filter-header p {
+    margin: 3px 0 0;
+
+    color: #4f6f8e;
+
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   FILTER BODY
+   ========================================================= */
+
+.schedule-filter-body {
+    width: 100%;
+
+    padding: 20px 24px;
+
+    background: #ffffff;
+
+    box-sizing: border-box;
+}
+
+.schedule-filter-form {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+
+    width: 100%;
+}

@@ -1,0 +1,434 @@
+/* =========================================================
+   DASHBOARD SUPER ADMIN
+   MODERN INSTITUTIONAL STYLE
+   ========================================================= */
+
+.dashboard-page {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 10px 8px 40px;
+    box-sizing: border-box;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.dashboard-header {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 22px;
+    padding: 28px 32px;
+    border-radius: 18px;
+    background:
+        linear-gradient(
+            135deg,
+            #071b35 0%,
+            #0a3768 60%,
+            #0d5fb7 100%
+        );
+    box-shadow: 0 10px 28px rgba(7, 27, 53, 0.12);
+    box-sizing: border-box;
+}
+
+.dashboard-header::before {
+    content: "";
+    position: absolute;
+    width: 230px;
+    height: 230px;
+    top: -125px;
+    right: -70px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.dashboard-header::after {
+    content: "";
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    right: 150px;
+    bottom: -95px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.045);
+}
+
+.dashboard-header-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.dashboard-title-area {
+    min-width: 0;
+}
+
+.dashboard-label {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 9px;
+    padding: 6px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 7px;
+    background: rgba(255, 255, 255, 0.09);
+    color: #dceeff;
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
+
+.dashboard-title-area h1 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 29px;
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: -0.4px;
+}
+
+.dashboard-title-area p {
+    max-width: 680px;
+    margin: 8px 0 0;
+    color: #c9def3;
+    font-size: 13.5px;
+    line-height: 1.65;
+}
+
+.dashboard-header-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 58px;
+    flex: 0 0 58px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.09);
+    color: #ffffff;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   STATISTICS
+   ========================================================= */
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.dashboard-stat-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 105px;
+    overflow: hidden;
+    padding: 18px 20px;
+    border: 1px solid #dbe7f2;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 8px 24px rgba(16, 42, 67, 0.055);
+    box-sizing: border-box;
+}
+
+.dashboard-stat-card::before {
+    content: "";
+    position: absolute;
+    width: 105px;
+    height: 105px;
+    top: -65px;
+    right: -30px;
+    border-radius: 50%;
+    background: rgba(8, 102, 216, 0.055);
+}
+
+.dashboard-stat-icon {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 47px;
+    height: 47px;
+    flex: 0 0 47px;
+    border: 1px solid #c9e0f6;
+    border-radius: 12px;
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #dcecfb
+        );
+    color: #0866d8;
+    box-shadow: 0 6px 14px rgba(8, 102, 216, 0.10);
+}
+
+.dashboard-stat-content {
+    position: relative;
+    z-index: 2;
+    min-width: 0;
+}
+
+.dashboard-stat-value {
+    margin-bottom: 3px;
+    color: #09284b;
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+.dashboard-stat-label {
+    color: #607991;
+    font-size: 11.5px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.dashboard-stat-decoration {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    right: 18px;
+    bottom: -35px;
+    border-radius: 50%;
+    background: rgba(8, 102, 216, 0.035);
+}
+
+
+/* =========================================================
+   WELCOME CARD
+   ========================================================= */
+
+.dashboard-welcome-card {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 17px;
+    width: 100%;
+    min-height: 135px;
+    overflow: hidden;
+    padding: 24px 25px;
+    border: 1px solid #c9dced;
+    border-radius: 17px;
+    background:
+        linear-gradient(
+            90deg,
+            #e8f3ff 0%,
+            #edf6ff 55%,
+            #e2f0ff 100%
+        );
+    box-shadow: 0 8px 24px rgba(16, 42, 67, 0.06);
+    box-sizing: border-box;
+}
+
+.dashboard-welcome-card::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    top: -110px;
+    right: -30px;
+    border-radius: 50%;
+    background: rgba(8, 102, 216, 0.065);
+}
+
+.dashboard-welcome-card::after {
+    content: "";
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    right: 150px;
+    bottom: -55px;
+    border-radius: 50%;
+    background: rgba(8, 102, 216, 0.045);
+}
+
+.dashboard-welcome-decoration {
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    right: 45px;
+    bottom: -38px;
+    border-radius: 50%;
+    background: rgba(8, 102, 216, 0.035);
+}
+
+.dashboard-welcome-icon {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    flex: 0 0 50px;
+    border: 1px solid #c3def7;
+    border-radius: 13px;
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #d4e5f7
+        );
+    color: #0866d8;
+    box-shadow: 0 6px 14px rgba(8, 102, 216, 0.11);
+}
+
+.dashboard-welcome-content {
+    position: relative;
+    z-index: 2;
+    min-width: 0;
+}
+
+.dashboard-welcome-label {
+    display: inline-flex;
+    margin-bottom: 5px;
+    color: #0866d8;
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.dashboard-welcome-content h2 {
+    margin: 0 0 7px;
+    color: #09284b;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+.dashboard-welcome-content p {
+    max-width: 850px;
+    margin: 0;
+    color: #4f6f8e;
+    font-size: 12.5px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .dashboard-page {
+        padding: 8px 6px 30px;
+    }
+
+    .dashboard-header {
+        padding: 23px 20px;
+        border-radius: 15px;
+    }
+
+    .dashboard-title-area h1 {
+        font-size: 24px;
+    }
+
+    .dashboard-title-area p {
+        font-size: 12px;
+    }
+
+    .dashboard-header-icon {
+        width: 50px;
+        height: 50px;
+        flex-basis: 50px;
+    }
+
+    .dashboard-stats {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .dashboard-stat-card {
+        min-height: 92px;
+    }
+
+    .dashboard-welcome-card {
+        padding: 20px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 520px) {
+
+    .dashboard-header {
+        padding: 20px 17px;
+    }
+
+    .dashboard-header-icon {
+        display: none;
+    }
+
+    .dashboard-title-area h1 {
+        font-size: 21px;
+    }
+
+    .dashboard-title-area p {
+        font-size: 11.5px;
+        line-height: 1.55;
+    }
+
+    .dashboard-label {
+        font-size: 9.5px;
+    }
+
+    .dashboard-stat-card {
+        min-height: 88px;
+        padding: 15px 16px;
+    }
+
+    .dashboard-stat-icon {
+        width: 43px;
+        height: 43px;
+        flex-basis: 43px;
+    }
+
+    .dashboard-stat-value {
+        font-size: 23px;
+    }
+
+    .dashboard-stat-label {
+        font-size: 11px;
+    }
+
+    .dashboard-welcome-card {
+        gap: 13px;
+        padding: 18px;
+    }
+
+    .dashboard-welcome-icon {
+        width: 43px;
+        height: 43px;
+        flex-basis: 43px;
+    }
+
+    .dashboard-welcome-label {
+        font-size: 9.5px;
+    }
+
+    .dashboard-welcome-content h2 {
+        font-size: 16px;
+    }
+
+    .dashboard-welcome-content p {
+        font-size: 11.5px;
+        line-height: 1.6;
+    }
+}

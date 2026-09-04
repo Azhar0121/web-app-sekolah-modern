@@ -1,0 +1,466 @@
+/* =========================================================
+   TAMBAH PENUGASAN MENGAJAR
+   MODERN INSTITUTIONAL ADMIN STYLE
+   ========================================================= */
+
+.teaching-create-page {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.teaching-create-header {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 24px;
+    padding: 28px 30px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #071b35 0%, #0b294d 55%, #0d4f8b 100%);
+    box-shadow: 0 10px 30px rgba(7, 27, 53, 0.16);
+}
+
+.teaching-create-header::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    right: -55px;
+    top: -80px;
+}
+
+.teaching-create-header::after {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    right: 90px;
+    bottom: -80px;
+}
+
+.teaching-create-header-content {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.teaching-create-title {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.teaching-create-title-icon {
+    width: 54px;
+    height: 54px;
+    flex: 0 0 54px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.teaching-create-title-icon svg {
+    width: 25px;
+    height: 25px;
+}
+
+.teaching-create-label {
+    display: block;
+    margin-bottom: 5px;
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.teaching-create-title h1 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.teaching-create-title p {
+    margin: 7px 0 0;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+   ========================================================= */
+
+.teaching-back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 16px;
+    border-radius: 10px;
+
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+
+    background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+
+    transition: all 0.2s ease;
+}
+
+.teaching-back-button svg {
+    width: 16px;
+    height: 16px;
+}
+
+.teaching-back-button:hover {
+    color: #071b35;
+    background: #ffffff;
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   FORM CARD
+   ========================================================= */
+
+.teaching-create-card {
+    overflow: hidden;
+
+    background: #ffffff;
+    border: 1px solid #e7edf4;
+    border-radius: 18px;
+
+    box-shadow: 0 8px 25px rgba(15, 43, 70, 0.08);
+}
+
+
+/* =========================================================
+   CARD HEADER
+   ========================================================= */
+
+.teaching-create-card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 22px 26px;
+
+    background: linear-gradient(
+        180deg,
+        #f5f9fd 0%,
+        #eef5fb 100%
+    );
+
+    border-bottom: 1px solid #e2ebf3;
+}
+
+.teaching-create-card-icon {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+    background: #dceeff;
+    color: #0866d8;
+}
+
+.teaching-create-card-icon svg {
+    width: 21px;
+    height: 21px;
+}
+
+.teaching-create-card-header h2 {
+    margin: 0;
+
+    color: #102a43;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.teaching-create-card-header p {
+    margin: 4px 0 0;
+
+    color: #718096;
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   CARD BODY
+   ========================================================= */
+
+.teaching-create-card-body {
+    padding: 28px;
+}
+
+
+/* =========================================================
+   FORM ELEMENTS
+   Membantu form yang ada di partial .form
+   ========================================================= */
+
+.teaching-create-card-body .form-label {
+    margin-bottom: 7px;
+
+    color: #243b53;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.teaching-create-card-body .form-control,
+.teaching-create-card-body .form-select {
+    min-height: 44px;
+
+    border: 1px solid #d8e2ec;
+    border-radius: 10px;
+
+    color: #243b53;
+    background-color: #ffffff;
+
+    font-size: 13px;
+
+    box-shadow: none;
+    transition: all 0.2s ease;
+}
+
+.teaching-create-card-body .form-control:focus,
+.teaching-create-card-body .form-select:focus {
+    border-color: #4b9bea;
+    box-shadow: 0 0 0 3px rgba(8, 102, 216, 0.10);
+}
+
+.teaching-create-card-body .form-control::placeholder {
+    color: #a0aec0;
+}
+
+.teaching-create-card-body .text-danger {
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+   ========================================================= */
+
+.teaching-form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+
+    margin-top: 28px;
+    padding-top: 20px;
+
+    border-top: 1px solid #e8eef4;
+}
+
+.teaching-cancel-button,
+.teaching-save-button {
+    min-height: 42px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 0 18px;
+
+    border-radius: 10px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    text-decoration: none;
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.teaching-cancel-button {
+    color: #52606d;
+    background: #ffffff;
+    border: 1px solid #d8e2ec;
+}
+
+.teaching-cancel-button:hover {
+    color: #243b53;
+    background: #f5f8fb;
+    border-color: #c7d3df;
+}
+
+.teaching-save-button {
+    border: 1px solid #0866d8;
+    background: linear-gradient(135deg, #0866d8, #0754b5);
+    color: #ffffff;
+
+    box-shadow: 0 5px 14px rgba(8, 102, 216, 0.18);
+}
+
+.teaching-save-button svg {
+    width: 16px;
+    height: 16px;
+}
+
+.teaching-save-button:hover {
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 7px 18px rgba(8, 102, 216, 0.24);
+}
+
+.teaching-save-button:active,
+.teaching-cancel-button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .teaching-create-page {
+        padding-bottom: 25px;
+    }
+
+    .teaching-create-header {
+        padding: 22px;
+        border-radius: 15px;
+    }
+
+    .teaching-create-header-content {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .teaching-create-title {
+        align-items: flex-start;
+    }
+
+    .teaching-create-title h1 {
+        font-size: 21px;
+    }
+
+    .teaching-create-title p {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    .teaching-back-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .teaching-create-card {
+        border-radius: 15px;
+    }
+
+    .teaching-create-card-header {
+        padding: 19px;
+    }
+
+    .teaching-create-card-body {
+        padding: 20px;
+    }
+
+    .teaching-form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .teaching-cancel-button,
+    .teaching-save-button {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .teaching-create-header {
+        padding: 18px;
+    }
+
+    .teaching-create-title {
+        gap: 11px;
+    }
+
+    .teaching-create-title-icon {
+        width: 45px;
+        height: 45px;
+        flex-basis: 45px;
+    }
+
+    .teaching-create-title-icon svg {
+        width: 21px;
+        height: 21px;
+    }
+
+    .teaching-create-title h1 {
+        font-size: 19px;
+    }
+
+    .teaching-create-label {
+        font-size: 9px;
+    }
+
+    .teaching-create-title p {
+        font-size: 11px;
+    }
+
+    .teaching-create-card-header {
+        gap: 10px;
+        padding: 16px;
+    }
+
+    .teaching-create-card-icon {
+        width: 39px;
+        height: 39px;
+        flex-basis: 39px;
+    }
+
+    .teaching-create-card-header h2 {
+        font-size: 14px;
+    }
+
+    .teaching-create-card-header p {
+        font-size: 11px;
+    }
+
+    .teaching-create-card-body {
+        padding: 16px;
+    }
+}

@@ -1,0 +1,658 @@
+ /* =========================================================
+    WEB SEKOLAH MODERN
+    ADMIN - TAMBAH JADWAL PELAJARAN
+    STYLE SAMA DENGAN PENUGASAN MENGAJAR
+    ========================================================= */
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.schedule-create-page {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 10px 8px 40px;
+
+    box-sizing: border-box;
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.schedule-create-header {
+    position: relative;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    margin-bottom: 22px;
+    padding: 28px 32px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #071b35 0%,
+            #0a3768 60%,
+            #0d5fb7 100%
+        );
+
+    box-shadow:
+        0 10px 28px rgba(7, 27, 53, 0.12);
+
+    box-sizing: border-box;
+}
+
+.schedule-create-header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    top: -120px;
+    right: -75px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.schedule-create-header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 130px;
+    height: 130px;
+
+    right: 120px;
+    bottom: -85px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.045);
+}
+
+.schedule-create-header-content {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+
+    gap: 25px;
+}
+
+.schedule-create-title-area {
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+
+    min-width: 0;
+}
+
+.schedule-create-title-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 54px;
+    height: 54px;
+
+    flex: 0 0 54px;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    border-radius: 15px;
+
+    background: rgba(255, 255, 255, 0.10);
+
+    color: #ffffff;
+}
+
+.schedule-create-title-icon svg {
+    width: 26px;
+    height: 26px;
+}
+
+.schedule-create-label {
+    display: inline-flex;
+    align-items: center;
+
+    margin-bottom: 9px;
+
+    padding: 6px 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    border-radius: 7px;
+
+    background: rgba(255, 255, 255, 0.09);
+
+    color: #dceeff;
+
+    font-size: 10.5px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+}
+
+.schedule-create-title-area h1 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 29px;
+
+    font-weight: 800;
+
+    line-height: 1.3;
+
+    letter-spacing: -0.4px;
+}
+
+.schedule-create-title-area p {
+    max-width: 680px;
+
+    margin: 8px 0 0;
+
+    color: #c9def3;
+
+    font-size: 13.5px;
+
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   FORM CARD
+   ========================================================= */
+
+.schedule-create-card {
+    width: 100%;
+
+    overflow: hidden;
+
+    border: 1px solid #dbe7f2;
+
+    border-radius: 17px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 24px rgba(16, 42, 67, 0.06);
+}
+
+
+/* =========================================================
+   CARD HEADER
+   ========================================================= */
+
+.schedule-create-card-header {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    min-height: 88px;
+
+    gap: 13px;
+
+    padding: 17px 25px;
+
+    overflow: hidden;
+
+    border-bottom: 1px solid #c9dced;
+
+    background:
+        linear-gradient(
+            90deg,
+            #e8f3ff 0%,
+            #edf6ff 55%,
+            #e2f0ff 100%
+        );
+
+    box-sizing: border-box;
+}
+
+.schedule-create-card-header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 145px;
+    height: 145px;
+
+    top: -82px;
+    right: 35px;
+
+    border-radius: 50%;
+
+    background: rgba(8, 102, 216, 0.075);
+}
+
+.schedule-create-card-header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 85px;
+    height: 85px;
+
+    right: 130px;
+    bottom: -55px;
+
+    border-radius: 50%;
+
+    background: rgba(8, 102, 216, 0.055);
+}
+
+
+/* =========================================================
+   CARD ICON
+   ========================================================= */
+
+.schedule-create-card-icon {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 45px;
+    height: 45px;
+
+    flex: 0 0 45px;
+
+    border: 1px solid #c3def7;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #d4e5f7
+        );
+
+    color: #0866d8;
+
+    box-shadow:
+        0 6px 14px rgba(8, 102, 216, 0.11);
+}
+
+.schedule-create-card-icon svg {
+    width: 23px;
+    height: 23px;
+}
+
+
+/* =========================================================
+   CARD TITLE
+   ========================================================= */
+
+.schedule-create-card-header > div:last-child {
+    position: relative;
+
+    z-index: 2;
+}
+
+.schedule-create-card-header h2 {
+    margin: 0;
+
+    color: #09284b;
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+    line-height: 1.35;
+}
+
+.schedule-create-card-header p {
+    margin: 3px 0 0;
+
+    color: #4f6f8e;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   CARD BODY
+   ========================================================= */
+
+.schedule-create-card-body {
+    padding: 25px;
+
+    background: #ffffff;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   FORM ELEMENTS
+   ========================================================= */
+
+.schedule-create-card-body label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #244563;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+.schedule-create-card-body select,
+.schedule-create-card-body input,
+.schedule-create-card-body textarea {
+    width: 100%;
+
+    min-height: 43px;
+
+    padding: 9px 14px;
+
+    border: 1px solid #dbe7f2;
+
+    border-radius: 8px;
+
+    outline: none;
+
+    background: #fbfdff;
+
+    color: #102a43;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    box-sizing: border-box;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.schedule-create-card-body select:hover,
+.schedule-create-card-body input:hover,
+.schedule-create-card-body textarea:hover {
+    border-color: #bfd2e4;
+}
+
+.schedule-create-card-body select:focus,
+.schedule-create-card-body input:focus,
+.schedule-create-card-body textarea:focus {
+    border-color: #0866d8;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 3px rgba(8, 102, 216, 0.09);
+}
+
+
+/* =========================================================
+   ACTION
+   ========================================================= */
+
+.schedule-create-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 8px;
+
+    margin-top: 24px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #e4edf5;
+}
+
+.schedule-create-cancel,
+.schedule-create-save {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    min-height: 39px;
+
+    padding: 9px 16px;
+
+    border-radius: 8px;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    text-decoration: none;
+
+    box-sizing: border-box;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.schedule-create-cancel {
+    border: 1px solid #cbd9e6;
+
+    background: #ffffff;
+
+    color: #476681;
+}
+
+.schedule-create-cancel:hover {
+    border-color: #a9c8e5;
+
+    background: #f4f9fe;
+
+    color: #1765a3;
+}
+
+.schedule-create-save {
+    border: 1px solid #0754b5;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0874ed,
+            #0754b5
+        );
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 14px rgba(8, 102, 216, 0.16);
+}
+
+.schedule-create-save svg {
+    width: 15px;
+    height: 15px;
+}
+
+.schedule-create-save:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 18px rgba(8, 102, 216, 0.22);
+}
+
+
+/* =========================================================
+   ERROR / VALIDATION
+   ========================================================= */
+
+.schedule-create-card-body .text-danger {
+    color: #dc3545 !important;
+
+    font-size: 11px;
+}
+
+.schedule-create-card-body .is-invalid {
+    border-color: #dc3545 !important;
+}
+
+.schedule-create-card-body .is-invalid:focus {
+    box-shadow:
+        0 0 0 3px rgba(220, 53, 69, 0.09);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .schedule-create-page {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+    .schedule-create-header {
+        padding: 25px 27px;
+    }
+
+    .schedule-create-card-body {
+        padding: 22px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .schedule-create-header {
+        margin-bottom: 17px;
+
+        padding: 23px 20px;
+
+        border-radius: 14px;
+    }
+
+    .schedule-create-title-area {
+        align-items: flex-start;
+    }
+
+    .schedule-create-title-area h1 {
+        font-size: 24px;
+    }
+
+    .schedule-create-title-area p {
+        font-size: 12.5px;
+    }
+
+    .schedule-create-card-header {
+        padding: 16px 18px;
+    }
+
+    .schedule-create-card-body {
+        padding: 18px;
+    }
+
+    .schedule-create-actions {
+        flex-direction: column-reverse;
+
+        align-items: stretch;
+    }
+
+    .schedule-create-cancel,
+    .schedule-create-save {
+        width: 100%;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 576px) {
+
+    .schedule-create-page {
+        padding-top: 5px;
+
+        padding-bottom: 25px;
+    }
+
+    .schedule-create-header {
+        padding: 20px 17px;
+    }
+
+    .schedule-create-title-area {
+        gap: 12px;
+    }
+
+    .schedule-create-title-icon {
+        width: 46px;
+        height: 46px;
+
+        flex-basis: 46px;
+    }
+
+    .schedule-create-title-icon svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .schedule-create-label {
+        font-size: 9.5px;
+    }
+
+    .schedule-create-title-area h1 {
+        font-size: 22px;
+    }
+
+    .schedule-create-title-area p {
+        font-size: 11.5px;
+    }
+
+    .schedule-create-card-header {
+        min-height: 78px;
+    }
+
+    .schedule-create-card-body {
+        padding: 16px;
+    }
+
+    .schedule-create-card-header h2 {
+        font-size: 16px;
+    }
+
+    .schedule-create-card-header p {
+        font-size: 11px;
+    }
+}
