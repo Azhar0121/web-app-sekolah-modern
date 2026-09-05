@@ -30,6 +30,7 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'is_active' => 'boolean',
+            'qr_token_expires_at' => 'datetime',
         ];
     }
 
@@ -82,5 +83,22 @@ class User extends Authenticatable
         }
 
         return $this->qr_token;
+    }
+
+    public function rotateQrToken(int $ttlSeconds = 25): string
+    {
+        $this->qr_token = bin2hex(random_bytes(20));
+        $this->qr_token_expires_at = now()->addSeconds($ttlSeconds);
+        $this->save();
+
+        return $this->qr_token;
+    }
+
+    /** Cek apakah token QR yang tersimpan saat ini masih berlaku (belum kedaluwarsa). */
+    public function isQrTokenValid(): bool
+    {
+        return $this->qr_token
+            && $this->qr_token_expires_at
+            && now()->lessThan($this->qr_token_expires_at);
     }
 }

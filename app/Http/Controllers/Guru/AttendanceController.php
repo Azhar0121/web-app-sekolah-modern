@@ -88,6 +88,13 @@ class AttendanceController extends Controller
             return response()->json(['success' => false, 'message' => 'QR tidak dikenali / bukan kartu pelajar yang valid.'], 404);
         }
 
+        if (! $student->isQrTokenValid()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'QR sudah kedaluwarsa. Minta siswa membuka ulang halaman Kartu Pelajar lalu scan lagi.',
+            ], 422);
+        }
+
         $enrolled = ClassroomStudent::where('classroom_id', $attendanceSession->schedule->teachingAssignment->classroom_id)
             ->where('student_id', $student->id)
             ->exists();

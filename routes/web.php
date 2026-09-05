@@ -138,6 +138,7 @@ Route::middleware(['auth', 'role:siswa'])->prefix('siswa')->name('siswa.')->grou
 
     // Presensi/Absensi QR Code
     Route::get('/kartu-pelajar', [SiswaQrCodeController::class, 'show'])->name('qr-code.show');
+    Route::post('/kartu-pelajar/refresh', [SiswaQrCodeController::class, 'refresh'])->name('qr-code.refresh');
     Route::get('/presensi', [SiswaAttendanceController::class, 'index'])->name('attendance.index');
 
     // Materi Pembelajaran

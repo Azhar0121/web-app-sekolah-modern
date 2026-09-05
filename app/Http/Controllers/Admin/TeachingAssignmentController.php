@@ -31,9 +31,9 @@ class TeachingAssignmentController extends Controller
         return view('admin.teaching-assignments.index', compact('assignments', 'academicYears', 'selectedYearId'));
     }
 
-    public function create(): View
+    public function create(Request $request): View
     {
-        return view('admin.teaching-assignments.create', $this->formOptions());
+        return view('admin.teaching-assignments.create', $this->formOptions($request));
     }
 
     public function store(Request $request): RedirectResponse
@@ -51,7 +51,7 @@ class TeachingAssignmentController extends Controller
     {
         return view('admin.teaching-assignments.edit', array_merge(
             ['assignment' => $teachingAssignment],
-            $this->formOptions()
+            $this->formOptions(null, $teachingAssignment)
         ));
     }
 
@@ -76,11 +76,16 @@ class TeachingAssignmentController extends Controller
             ->with('success', 'Penugasan mengajar berhasil dihapus.');
     }
 
-    private function formOptions(): array
+    private function formOptions(?Request $request = null, ?TeachingAssignment $current = null): array
     {
+        $selectedYearId = (int) ($request?->integer('academic_year_id') ?: ($current?->academic_year_id ?? AcademicYear::active()?->id ?? 0));
+        $selectedClassroomId = (int) ($request?->integer('classroom_id') ?: ($current?->classroom_id ?? 0));
+
         return [
             'academicYears' => AcademicYear::orderByDesc('start_date')->get(),
+            'selectedYearId' => $selectedYearId,
             'classrooms' => Classroom::orderBy('grade_level')->orderBy('name')->get(),
+            'selectedClassroomId' => $selectedClassroomId,
             'subjects' => Subject::where('is_active', true)->orderBy('name')->get(),
             'teachers' => User::whereHas('role', fn ($q) => $q->where('slug', 'guru'))->orderBy('name')->get(),
         ];

@@ -11,7 +11,7 @@
     <select name="academic_year_id" id="academic_year_id" class="form-select" required>
         <option value="">-- Pilih Tahun Ajaran --</option>
         @foreach ($academicYears as $year)
-            <option value="{{ $year->id }}" @selected(old('academic_year_id', $assignment?->academic_year_id) == $year->id)>
+            <option value="{{ $year->id }}" @selected(old('academic_year_id', $assignment?->academic_year_id ?? $selectedYearId) == $year->id)>
                 {{ $year->name }} @if ($year->is_active) (Aktif) @endif
             </option>
         @endforeach
@@ -23,7 +23,7 @@
     <select name="classroom_id" id="classroom_id" class="form-select" required>
         <option value="">-- Pilih Kelas --</option>
         @foreach ($classrooms as $classroom)
-            <option value="{{ $classroom->id }}" @selected(old('classroom_id', $assignment?->classroom_id) == $classroom->id)>
+            <option value="{{ $classroom->id }}" @selected(old('classroom_id', $assignment?->classroom_id ?? $selectedClassroomId) == $classroom->id)>
                 {{ $classroom->name }}
             </option>
         @endforeach
