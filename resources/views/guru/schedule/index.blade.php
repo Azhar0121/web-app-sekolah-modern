@@ -8,13 +8,9 @@
 
 <div class="guru-schedule-page">
 
-<a href="{{ route('guru.dashboard') }}" class="schedule-back-button">
-    <span class="schedule-back-icon">←</span>
-    <span>Kembali ke Dashboard</span>
-</a>
 
 {{-- =========================
-     PAGE HEADER
+     PAGE HEADER / HERO
      ========================= --}}
 <section class="schedule-hero">
 
@@ -51,20 +47,41 @@
 
     </div>
 
-    <div class="schedule-hero-decoration">
-        <span class="schedule-circle schedule-circle-one"></span>
-        <span class="schedule-circle schedule-circle-two"></span>
-        <span class="schedule-circle schedule-circle-three"></span>
-        <span class="schedule-dot schedule-dot-one"></span>
-        <span class="schedule-dot schedule-dot-two"></span>
-        <span class="schedule-dot schedule-dot-three"></span>
+
+    {{-- =========================
+         HERO RIGHT SIDE
+         ========================= --}}
+    <div class="schedule-hero-side">
+
+        <a href="{{ route('guru.dashboard') }}" class="schedule-back-button">
+            <span class="schedule-back-icon">←</span>
+            <span>Dashboard</span>
+        </a>
+
+        <div class="schedule-hero-decoration">
+            <span class="schedule-circle schedule-circle-one"></span>
+            <span class="schedule-circle schedule-circle-two"></span>
+            <span class="schedule-circle schedule-circle-three"></span>
+            <span class="schedule-dot schedule-dot-one"></span>
+            <span class="schedule-dot schedule-dot-two"></span>
+            <span class="schedule-dot schedule-dot-three"></span>
+        </div>
+
     </div>
 
 </section>
 
 
 @php
-    $today = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'][now()->dayOfWeek];
+    $today = [
+        'Minggu',
+        'Senin',
+        'Selasa',
+        'Rabu',
+        'Kamis',
+        'Jumat',
+        'Sabtu'
+    ][now()->dayOfWeek];
 @endphp
 
 
@@ -79,7 +96,9 @@
 
         <section class="schedule-day-card {{ $day === $today ? 'is-today' : '' }}">
 
-            {{-- Day Header --}}
+            {{-- =========================
+                 DAY HEADER
+                 ========================= --}}
             <div class="schedule-day-header">
 
                 <div class="schedule-day-title">
@@ -110,7 +129,9 @@
             </div>
 
 
-            {{-- Schedule Table --}}
+            {{-- =========================
+                 SCHEDULE TABLE
+                 ========================= --}}
             <div class="schedule-table-wrapper">
 
                 <table class="schedule-table">
@@ -121,11 +142,11 @@
                                 Jam
                             </th>
 
-                            <th>
+                            <th class="schedule-subject-column">
                                 Mata Pelajaran
                             </th>
 
-                            <th>
+                            <th class="schedule-class-column">
                                 Kelas
                             </th>
 
@@ -141,26 +162,37 @@
 
                             <tr>
 
-                                {{-- Time --}}
+                                {{-- =========================
+                                     TIME
+                                     ========================= --}}
                                 <td class="schedule-time">
 
-                                    <strong>
-                                        {{ $schedule->start_time->format('H:i') }}
-                                    </strong>
+                                    <div class="schedule-time-main">
+                                        <strong>
+                                            {{ $schedule->start_time->format('H:i') }}
+                                        </strong>
 
-                                    <span>
-                                        sampai {{ $schedule->end_time->format('H:i') }}
-                                    </span>
+                                        <span>
+                                            -
+                                        </span>
+
+                                        <strong>
+                                            {{ $schedule->end_time->format('H:i') }}
+                                        </strong>
+                                    </div>
 
                                 </td>
 
 
-                                {{-- Subject --}}
+                                {{-- =========================
+                                     SUBJECT
+                                     ========================= --}}
                                 <td class="schedule-subject">
 
                                     <div class="schedule-subject-mark"></div>
 
-                                    <div>
+                                    <div class="schedule-subject-content">
+
                                         <strong>
                                             {{ $schedule->teachingAssignment->subject->name }}
                                         </strong>
@@ -168,36 +200,52 @@
                                         <small>
                                             Mata pelajaran
                                         </small>
+
                                     </div>
 
                                 </td>
 
 
-                                {{-- Class --}}
+                                {{-- =========================
+                                     CLASS
+                                     ========================= --}}
                                 <td class="schedule-class">
 
                                     <div class="schedule-class-badge">
                                         {{ strtoupper(substr($schedule->teachingAssignment->classroom->name, 0, 1)) }}
                                     </div>
 
-                                    <strong>
-                                        {{ $schedule->teachingAssignment->classroom->name }}
-                                    </strong>
+                                    <div class="schedule-class-content">
+                                        <strong>
+                                            {{ $schedule->teachingAssignment->classroom->name }}
+                                        </strong>
+
+                                        <small>
+                                            Kelas
+                                        </small>
+                                    </div>
 
                                 </td>
 
 
-                                {{-- Room --}}
+                                {{-- =========================
+                                     ROOM
+                                     ========================= --}}
                                 <td class="schedule-room">
 
                                     @if ($schedule->room)
+
                                         <span class="room-badge">
+                                            <span class="room-icon">⌂</span>
                                             {{ $schedule->room }}
                                         </span>
+
                                     @else
+
                                         <span class="room-empty">
-                                            -
+                                            Belum ditentukan
                                         </span>
+
                                     @endif
 
                                 </td>
@@ -248,6 +296,7 @@
     @endif
 
 </div>
+
 
 </div>
 
