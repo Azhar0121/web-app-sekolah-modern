@@ -1,0 +1,906 @@
+/* =========================================================
+DAFTAR TUGAS GURU
+Modern Institutional Blue
+========================================================= */
+
+.tasks-page {
+--blue: #1769d5;
+--blue-dark: #0d47a1;
+--blue-light: #eaf3ff;
+--navy: #102a43;
+--text: #243b53;
+--muted: #718096;
+--white: #ffffff;
+--border: #d5e3f2;
+--border-soft: #e4edf7;
+--cyan: #0794b8;
+
+
+min-height: calc(100vh - 80px);
+
+padding: 28px 30px 50px;
+
+/* Background paling belakang solid */
+background: #eef4fb;
+
+color: var(--text);
+
+
+}
+
+/* =========================================================
+HEADER
+========================================================= */
+
+.tasks-header {
+position: relative;
+overflow: hidden;
+
+
+max-width: 1100px;
+
+margin: 0 auto 24px;
+
+padding: 28px 32px;
+
+border-radius: 20px;
+
+background: linear-gradient(
+    135deg,
+    #1769d5 0%,
+    #0d55b8 55%,
+    #0794b8 100%
+);
+
+box-shadow: 0 14px 32px rgba(23, 105, 213, 0.18);
+
+
+}
+
+.tasks-header-content {
+position: relative;
+z-index: 2;
+}
+
+.tasks-label {
+display: inline-block;
+
+
+margin-bottom: 7px;
+
+color: #d9efff;
+
+font-size: 11px;
+font-weight: 800;
+
+letter-spacing: 1.4px;
+
+
+}
+
+.tasks-header h1 {
+margin: 0 0 7px;
+
+
+color: #ffffff;
+
+font-size: 30px;
+line-height: 1.2;
+
+font-weight: 800;
+
+
+}
+
+.tasks-header p {
+margin: 0;
+
+
+color: #e7f3ff;
+
+font-size: 14px;
+line-height: 1.6;
+
+
+}
+
+/* =========================================================
+HEADER ACTIONS
+========================================================= */
+
+.tasks-header-actions {
+position: relative;
+z-index: 3;
+
+
+display: flex;
+justify-content: flex-end;
+
+gap: 9px;
+
+margin-top: 20px;
+
+
+}
+
+.tasks-dashboard-button,
+.tasks-create-button {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
+
+min-height: 38px;
+
+padding: 0 16px;
+
+border-radius: 9px;
+
+font-size: 12px;
+font-weight: 700;
+
+text-decoration: none;
+
+transition: all 0.2s ease;
+
+
+}
+
+/* DASHBOARD */
+
+.tasks-dashboard-button {
+border: 1px solid #ffffff;
+
+
+background: #ffffff;
+
+color: var(--blue);
+
+
+}
+
+.tasks-dashboard-button:hover {
+background: #eaf3ff;
+
+
+color: var(--blue-dark);
+
+transform: translateY(-1px);
+
+
+}
+
+/* BUAT TUGAS */
+
+.tasks-create-button {
+border: 1px solid #ffffff;
+
+
+background: #0d47a1;
+
+color: #ffffff;
+
+
+}
+
+.tasks-create-button:hover {
+background: #083778;
+
+
+color: #ffffff;
+
+transform: translateY(-1px);
+
+
+}
+
+/* =========================================================
+HEADER DECORATION
+========================================================= */
+
+.tasks-decoration {
+position: absolute;
+
+
+border-radius: 50%;
+
+pointer-events: none;
+
+
+}
+
+.tasks-decoration-one {
+width: 180px;
+height: 180px;
+
+
+top: -85px;
+right: -60px;
+
+background: #2780df;
+
+
+}
+
+.tasks-decoration-two {
+width: 115px;
+height: 115px;
+
+
+right: 170px;
+bottom: -75px;
+
+background: #0a83a8;
+
+
+}
+
+/* =========================================================
+MAIN CARD
+========================================================= */
+
+.tasks-card {
+max-width: 1100px;
+
+
+margin: 0 auto;
+
+overflow: hidden;
+
+border: 1px solid var(--border);
+
+border-radius: 18px;
+
+background: #ffffff;
+
+box-shadow: 0 10px 28px rgba(16, 42, 67, 0.08);
+
+
+}
+
+/* =========================================================
+CARD HEADER
+========================================================= */
+
+.tasks-card-header {
+position: relative;
+overflow: hidden;
+
+
+display: flex;
+align-items: center;
+
+gap: 15px;
+
+padding: 20px 25px;
+
+border-bottom: 1px solid var(--border);
+
+background: linear-gradient(
+    135deg,
+    #dcecff 0%,
+    #eaf4ff 48%,
+    #e0f5f7 100%
+);
+
+
+}
+
+.tasks-card-header::after {
+content: "";
+
+
+position: absolute;
+
+width: 110px;
+height: 110px;
+
+top: -55px;
+right: -35px;
+
+border-radius: 50%;
+
+background: #c7e0f7;
+
+
+}
+
+.tasks-card-icon {
+position: relative;
+z-index: 2;
+
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+width: 43px;
+height: 43px;
+
+flex-shrink: 0;
+
+border-radius: 12px;
+
+background: #1769d5;
+
+color: #ffffff;
+
+font-size: 19px;
+font-weight: 800;
+
+box-shadow: 0 6px 14px rgba(23, 105, 213, 0.2);
+
+
+}
+
+.tasks-card-header h2 {
+position: relative;
+z-index: 2;
+
+
+margin: 0 0 3px;
+
+color: var(--navy);
+
+font-size: 17px;
+font-weight: 800;
+
+
+}
+
+.tasks-card-header p {
+position: relative;
+z-index: 2;
+
+
+margin: 0;
+
+color: var(--muted);
+
+font-size: 13px;
+
+
+}
+
+/* =========================================================
+TABLE
+========================================================= */
+
+.tasks-table-wrapper {
+width: 100%;
+
+
+overflow-x: auto;
+
+
+}
+
+.tasks-table {
+width: 100%;
+
+
+min-width: 850px;
+
+margin: 0;
+
+border-collapse: separate;
+border-spacing: 0;
+
+color: var(--text);
+
+font-size: 15px;
+
+
+}
+
+.tasks-table thead th {
+padding: 14px 18px;
+
+
+border-bottom: 1px solid #c9dced;
+
+background: linear-gradient(
+    135deg,
+    #1769d5,
+    #0d55b8
+);
+
+color: #ffffff;
+
+font-size: 13px;
+font-weight: 700;
+
+white-space: nowrap;
+
+
+}
+
+.tasks-table tbody td {
+padding: 17px 18px;
+
+
+border-bottom: 1px solid var(--border-soft);
+
+background: #ffffff;
+
+vertical-align: middle;
+
+
+}
+
+.tasks-table tbody tr:nth-child(even) td {
+background: #f4f8fc;
+}
+
+.tasks-table tbody tr:hover td {
+background: #eaf3ff;
+}
+
+.tasks-table tbody tr:last-child td {
+border-bottom: 0;
+}
+
+/* =========================================================
+TASK TITLE
+========================================================= */
+
+.task-title {
+color: var(--navy);
+
+
+font-size: 15px;
+font-weight: 700;
+
+
+}
+
+/* =========================================================
+DEADLINE
+========================================================= */
+
+.task-deadline {
+display: flex;
+align-items: center;
+
+
+gap: 7px;
+
+color: var(--text);
+
+font-size: 13px;
+font-weight: 600;
+
+white-space: nowrap;
+
+
+}
+
+.task-deadline-badge {
+display: inline-flex;
+align-items: center;
+
+
+padding: 4px 8px;
+
+border: 1px solid #f0bcbc;
+border-radius: 7px;
+
+background: #fff0f0;
+
+color: #c0392b;
+
+font-size: 11px;
+font-weight: 700;
+
+
+}
+
+/* =========================================================
+SUBMISSION
+========================================================= */
+
+.submission-link {
+display: inline-flex;
+align-items: center;
+
+
+min-height: 30px;
+
+padding: 5px 11px;
+
+border: 1px solid #cfe0f2;
+border-radius: 8px;
+
+background: #eaf3ff;
+
+color: var(--blue-dark);
+
+font-size: 13px;
+font-weight: 700;
+
+text-decoration: none;
+
+transition: all 0.2s ease;
+
+
+}
+
+.submission-link:hover {
+border-color: #1769d5;
+
+
+background: #dcecff;
+
+color: #0d47a1;
+
+
+}
+
+/* =========================================================
+STATUS
+========================================================= */
+
+.task-status {
+display: inline-flex;
+align-items: center;
+
+
+gap: 7px;
+
+min-height: 30px;
+
+padding: 5px 10px;
+
+border-radius: 8px;
+
+font-size: 12px;
+font-weight: 700;
+
+
+}
+
+.status-dot {
+width: 7px;
+height: 7px;
+
+
+flex-shrink: 0;
+
+border-radius: 50%;
+
+
+}
+
+.status-published {
+border: 1px solid #bde5d0;
+
+
+background: #e7f7ee;
+
+color: #16804a;
+
+
+}
+
+.status-published .status-dot {
+background: #20a464;
+}
+
+.status-draft {
+border: 1px solid #d5e3f2;
+
+
+background: #f1f5f9;
+
+color: #64748b;
+
+
+}
+
+.status-draft .status-dot {
+background: #94a3b8;
+}
+
+/* =========================================================
+ACTION BUTTONS
+========================================================= */
+
+.task-actions {
+text-align: right;
+
+
+white-space: nowrap;
+
+
+}
+
+.task-action {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
+
+min-height: 34px;
+
+margin-left: 4px;
+
+padding: 0 11px;
+
+border-radius: 8px;
+
+font-size: 12px;
+font-weight: 700;
+
+text-decoration: none;
+
+transition: all 0.2s ease;
+
+
+}
+
+/* KOREKSI - BIRU */
+
+.task-correct {
+border: 1px solid #1769d5;
+
+
+background: #1769d5;
+
+color: #ffffff;
+
+box-shadow: 0 4px 10px rgba(23, 105, 213, 0.12);
+
+
+}
+
+.task-correct:hover {
+border-color: #0d47a1;
+
+
+background: #0d47a1;
+
+color: #ffffff;
+
+transform: translateY(-1px);
+
+
+}
+
+/* EDIT - BIRU MUDA */
+
+.task-edit {
+border: 1px solid #8bb9ed;
+
+
+background: #eaf3ff;
+
+color: #1769d5;
+
+
+}
+
+.task-edit:hover {
+border-color: #1769d5;
+
+
+background: #dcecff;
+
+color: #0d47a1;
+
+transform: translateY(-1px);
+
+
+}
+
+/* HAPUS - MERAH */
+
+.task-delete {
+border: 1px solid #e26a6a;
+
+
+background: #fff0f0;
+
+color: #c0392b;
+
+cursor: pointer;
+
+
+}
+
+.task-delete:hover {
+border-color: #d9534f;
+
+
+background: #d9534f;
+
+color: #ffffff;
+
+transform: translateY(-1px);
+
+
+}
+
+/* =========================================================
+EMPTY STATE
+========================================================= */
+
+.tasks-empty {
+padding: 55px 20px;
+
+
+text-align: center;
+
+
+}
+
+.tasks-empty-icon {
+display: flex;
+align-items: center;
+justify-content: center;
+
+
+width: 55px;
+height: 55px;
+
+margin: 0 auto 15px;
+
+border-radius: 15px;
+
+background: #eaf3ff;
+
+color: var(--blue);
+
+font-size: 25px;
+font-weight: 400;
+
+
+}
+
+.tasks-empty h3 {
+margin: 0 0 6px;
+
+
+color: var(--navy);
+
+font-size: 18px;
+font-weight: 800;
+
+
+}
+
+.tasks-empty p {
+margin: 0;
+
+
+color: var(--muted);
+
+font-size: 13px;
+
+
+}
+
+/* =========================================================
+RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+
+
+.tasks-page {
+    padding: 20px 16px 35px;
+}
+
+
+.tasks-header {
+    padding: 24px 21px;
+
+    border-radius: 16px;
+}
+
+
+.tasks-header h1 {
+    font-size: 25px;
+}
+
+
+.tasks-header p {
+    font-size: 13px;
+}
+
+
+.tasks-header-actions {
+    justify-content: flex-start;
+
+    flex-wrap: wrap;
+}
+
+
+.tasks-card {
+    border-radius: 15px;
+}
+
+
+.tasks-card-header {
+    padding: 18px 20px;
+}
+
+
+.tasks-table thead th {
+    padding: 13px 15px;
+}
+
+
+.tasks-table tbody td {
+    padding: 15px;
+}
+
+
+}
+
+@media (max-width: 480px) {
+
+
+.tasks-page {
+    padding: 15px 12px 30px;
+}
+
+
+.tasks-header {
+    padding: 21px 17px;
+}
+
+
+.tasks-header h1 {
+    font-size: 22px;
+}
+
+
+.tasks-label {
+    font-size: 10px;
+}
+
+
+.tasks-header-actions {
+    flex-direction: column;
+
+    align-items: stretch;
+}
+
+
+.tasks-dashboard-button,
+.tasks-create-button {
+    width: 100%;
+}
+
+
+.tasks-card-header {
+    gap: 11px;
+
+    padding: 16px;
+}
+
+
+.tasks-card-icon {
+    width: 38px;
+    height: 38px;
+
+    font-size: 17px;
+}
+
+
+.tasks-card-header h2 {
+    font-size: 15px;
+}
+
+
+.tasks-card-header p {
+    font-size: 12px;
+}
+
+
+.task-actions {
+    text-align: left;
+}
+
+
+}

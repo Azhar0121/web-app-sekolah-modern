@@ -3,23 +3,82 @@
 @section('title', 'Koreksi Tugas - ' . $task->title)
 
 @section('content')
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <div>
-        <h4 class="fw-bold mb-1">Koreksi Tugas: {{ $task->title }}</h4>
-        <p class="text-muted mb-0">
-            {{ $teachingAssignment->classroom->name }} &middot; {{ $teachingAssignment->subject->name }}
-            &middot; Batas waktu {{ $task->deadline->format('d M Y, H:i') }}
-        </p>
+
+<link rel="stylesheet" href="{{ asset('css/guru/tasks/submissions.css') }}">
+
+<div class="task-submissions-page">
+
+
+{{-- =========================
+    HEADER
+========================== --}}
+<div class="task-submissions-header">
+
+    <div class="task-submissions-decoration decoration-one"></div>
+    <div class="task-submissions-decoration decoration-two"></div>
+
+    <div class="task-submissions-header-content">
+
+        <div>
+            <span class="task-submissions-label">
+                PENILAIAN TUGAS
+            </span>
+
+            <h1>
+                Koreksi Tugas
+            </h1>
+
+            <div class="task-name">
+                {{ $task->title }}
+            </div>
+
+            <p>
+                {{ $teachingAssignment->classroom->name }}
+                &middot;
+                {{ $teachingAssignment->subject->name }}
+                &middot;
+                Batas waktu
+                <strong>{{ $task->deadline->format('d M Y, H:i') }}</strong>
+            </p>
+        </div>
+
+        <a href="{{ route('guru.teaching-assignments.tasks.index', $teachingAssignment) }}"
+           class="task-submissions-back-button">
+            ← Kembali
+        </a>
+
     </div>
-    <a href="{{ route('guru.teaching-assignments.tasks.index', $teachingAssignment) }}" class="btn btn-outline-secondary btn-sm">
-        &larr; Kembali
-    </a>
+
 </div>
 
-<div class="card border-0 shadow-sm">
-    <div class="table-responsive">
-        <table class="table table-hover align-middle mb-0">
-            <thead class="table-light">
+
+{{-- =========================
+    TABLE CARD
+========================== --}}
+<div class="task-submissions-card">
+
+    <div class="task-submissions-card-header">
+
+        <div class="task-submissions-icon">
+            ✓
+        </div>
+
+        <div>
+            <h2>Daftar Pengumpulan Siswa</h2>
+
+            <p>
+                Periksa jawaban dan berikan nilai serta feedback kepada siswa.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="task-submissions-table-wrapper">
+
+        <table class="task-submissions-table">
+
+            <thead>
                 <tr>
                     <th>Nama Siswa</th>
                     <th>Status</th>
@@ -29,80 +88,271 @@
                     <th class="text-end">Aksi</th>
                 </tr>
             </thead>
+
             <tbody>
+
                 @forelse ($studentIds as $student)
+
                     @php($submission = $submissionsByStudent->get($student->id))
+
                     <tr>
-                        <td class="fw-semibold">{{ $student->name }}</td>
+
+                        {{-- NAMA --}}
                         <td>
+                            <div class="student-name">
+                                {{ $student->name }}
+                            </div>
+                        </td>
+
+
+                        {{-- STATUS --}}
+                        <td>
+
                             @if (! $submission)
-                                <span class="badge text-bg-light text-muted">Belum Mengumpulkan</span>
+
+                                <span class="submission-status status-not-submitted">
+                                    <span class="status-dot"></span>
+                                    Belum Mengumpulkan
+                                </span>
+
                             @elseif ($submission->isLate())
-                                <span class="badge text-bg-warning">Terlambat</span>
+
+                                <span class="submission-status status-late">
+                                    <span class="status-dot"></span>
+                                    Terlambat
+                                </span>
+
                             @else
-                                <span class="badge text-bg-success">Tepat Waktu</span>
+
+                                <span class="submission-status status-on-time">
+                                    <span class="status-dot"></span>
+                                    Tepat Waktu
+                                </span>
+
                             @endif
+
                         </td>
-                        <td class="small">
-                            @if ($submission?->file_path)
-                                <a href="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($submission->file_path) }}" target="_blank">
-                                    📎 {{ $submission->file_original_name }}
-                                </a><br>
-                            @endif
-                            @if ($submission?->note)
-                                <span class="text-muted">{{ \Illuminate\Support\Str::limit($submission->note, 60) }}</span>
-                            @endif
-                            @if (! $submission)
-                                <span class="text-muted">-</span>
-                            @endif
+
+
+                        {{-- JAWABAN --}}
+                        <td>
+
+                            <div class="submission-answer">
+
+                                @if ($submission?->file_path)
+
+                                    <a href="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($submission->file_path) }}"
+                                       target="_blank"
+                                       class="submission-file">
+
+                                        <span class="file-icon">📎</span>
+
+                                        {{ $submission->file_original_name }}
+
+                                    </a>
+
+                                @endif
+
+
+                                @if ($submission?->note)
+
+                                    <div class="submission-note">
+                                        {{ \Illuminate\Support\Str::limit($submission->note, 60) }}
+                                    </div>
+
+                                @endif
+
+
+                                @if (! $submission)
+
+                                    <span class="submission-empty">
+                                        -
+                                    </span>
+
+                                @endif
+
+                            </div>
+
                         </td>
+
+
+                        {{-- NILAI --}}
                         <td class="text-center">
-                            {{ $submission?->grade ?? '-' }}
-                        </td>
-                        <td class="small text-muted">{{ $submission?->feedback ?? '-' }}</td>
-                        <td class="text-end">
-                            @if ($submission)
-                                <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"
-                                        data-bs-target="#grade-form-{{ $submission->id }}">
-                                    {{ $submission->isGraded() ? 'Ubah Nilai' : 'Beri Nilai' }}
-                                </button>
+
+                            @if ($submission?->grade !== null)
+
+                                <span class="grade-value">
+                                    {{ $submission->grade }}
+                                </span>
+
                             @else
-                                <span class="text-muted small">-</span>
+
+                                <span class="grade-empty">
+                                    -
+                                </span>
+
                             @endif
+
                         </td>
+
+
+                        {{-- FEEDBACK --}}
+                        <td>
+
+                            <div class="feedback-text">
+                                {{ $submission?->feedback ?? '-' }}
+                            </div>
+
+                        </td>
+
+
+                        {{-- AKSI --}}
+                        <td class="task-submissions-actions">
+
+                            @if ($submission)
+
+                                <button type="button"
+                                        class="grade-button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#grade-form-{{ $submission->id }}">
+
+                                    {{ $submission->isGraded() ? 'Ubah Nilai' : 'Beri Nilai' }}
+
+                                </button>
+
+                            @else
+
+                                <span class="action-empty">
+                                    -
+                                </span>
+
+                            @endif
+
+                        </td>
+
                     </tr>
+
+
+                    {{-- =========================
+                        FORM NILAI
+                    ========================== --}}
                     @if ($submission)
-                        <tr class="collapse" id="grade-form-{{ $submission->id }}">
-                            <td colspan="6" class="bg-light">
-                                <form method="POST"
-                                      action="{{ route('guru.teaching-assignments.tasks.submissions.grade', [$teachingAssignment, $task, $submission]) }}"
-                                      class="row g-2 align-items-end py-2">
-                                    @csrf
-                                    @method('PUT')
-                                    <div class="col-md-2">
-                                        <label class="form-label small">Nilai (0-100)</label>
-                                        <input type="number" name="grade" class="form-control form-control-sm" min="0" max="100"
-                                               value="{{ $submission->grade }}" required>
+
+                        <tr class="collapse grade-row"
+                            id="grade-form-{{ $submission->id }}">
+
+                            <td colspan="6">
+
+                                <div class="grade-form-container">
+
+                                    <div class="grade-form-title">
+                                        <span class="grade-form-icon">
+                                            ✎
+                                        </span>
+
+                                        <div>
+                                            <strong>
+                                                {{ $submission->isGraded() ? 'Perbarui Nilai' : 'Beri Nilai' }}
+                                            </strong>
+
+                                            <small>
+                                                Penilaian untuk {{ $student->name }}
+                                            </small>
+                                        </div>
                                     </div>
-                                    <div class="col-md-7">
-                                        <label class="form-label small">Feedback (opsional)</label>
-                                        <input type="text" name="feedback" class="form-control form-control-sm"
-                                               value="{{ $submission->feedback }}">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button type="submit" class="btn btn-sm btn-primary w-100">Simpan Nilai</button>
-                                    </div>
-                                </form>
+
+
+                                    <form method="POST"
+                                          action="{{ route('guru.teaching-assignments.tasks.submissions.grade', [$teachingAssignment, $task, $submission]) }}"
+                                          class="grade-form">
+
+                                        @csrf
+                                        @method('PUT')
+
+
+                                        <div class="grade-field grade-field-small">
+
+                                            <label>
+                                                Nilai
+                                                <span>(0-100)</span>
+                                            </label>
+
+                                            <input type="number"
+                                                   name="grade"
+                                                   min="0"
+                                                   max="100"
+                                                   value="{{ $submission->grade }}"
+                                                   required>
+
+                                        </div>
+
+
+                                        <div class="grade-field grade-field-large">
+
+                                            <label>
+                                                Feedback
+                                                <span>(opsional)</span>
+                                            </label>
+
+                                            <input type="text"
+                                                   name="feedback"
+                                                   value="{{ $submission->feedback }}"
+                                                   placeholder="Tulis feedback untuk siswa...">
+
+                                        </div>
+
+
+                                        <button type="submit"
+                                                class="save-grade-button">
+                                            Simpan Nilai
+                                        </button>
+
+                                    </form>
+
+                                </div>
+
                             </td>
+
                         </tr>
+
                     @endif
+
+
                 @empty
+
                     <tr>
-                        <td colspan="6" class="text-center text-muted py-4">Belum ada siswa di kelas ini.</td>
+
+                        <td colspan="6">
+
+                            <div class="submissions-empty">
+
+                                <div class="submissions-empty-icon">
+                                    ✓
+                                </div>
+
+                                <h3>Belum Ada Siswa</h3>
+
+                                <p>
+                                    Belum ada siswa di kelas ini.
+                                </p>
+
+                            </div>
+
+                        </td>
+
                     </tr>
+
                 @endforelse
+
             </tbody>
+
         </table>
+
     </div>
+
 </div>
+
+
+</div>
+
 @endsection

@@ -1,0 +1,1063 @@
+    /* =========================================================
+KOREKSI TUGAS GURU
+Modern Institutional Blue
+========================================================= */
+
+.task-submissions-page {
+--blue: #1769d5;
+--blue-dark: #0d47a1;
+--blue-light: #eaf3ff;
+--navy: #102a43;
+--text: #243b53;
+--muted: #718096;
+--white: #ffffff;
+--border: #d5e3f2;
+--border-soft: #e4edf7;
+--cyan: #0794b8;
+
+
+min-height: calc(100vh - 80px);
+
+padding: 28px 30px 50px;
+
+/* Background paling belakang solid */
+background: #eef4fb;
+
+color: var(--text);
+
+
+}
+
+/* =========================================================
+HEADER
+========================================================= */
+
+.task-submissions-header {
+position: relative;
+overflow: hidden;
+
+
+max-width: 1200px;
+
+margin: 0 auto 24px;
+
+padding: 28px 32px;
+
+border-radius: 20px;
+
+background: linear-gradient(
+    135deg,
+    #1769d5 0%,
+    #0d55b8 55%,
+    #0794b8 100%
+);
+
+box-shadow: 0 14px 32px rgba(23, 105, 213, 0.18);
+
+
+}
+
+.task-submissions-header-content {
+position: relative;
+z-index: 2;
+}
+
+.task-submissions-label {
+display: inline-block;
+
+
+margin-bottom: 7px;
+
+color: #d9efff;
+
+font-size: 11px;
+font-weight: 800;
+
+letter-spacing: 1.4px;
+
+
+}
+
+.task-submissions-header h1 {
+margin: 0 0 3px;
+
+
+color: #ffffff;
+
+font-size: 29px;
+line-height: 1.2;
+
+font-weight: 800;
+
+
+}
+
+.task-name {
+margin-bottom: 7px;
+
+
+color: #ffffff;
+
+font-size: 17px;
+font-weight: 700;
+
+
+}
+
+.task-submissions-header p {
+margin: 0;
+
+
+color: #e7f3ff;
+
+font-size: 13px;
+
+line-height: 1.6;
+
+
+}
+
+.task-submissions-header p strong {
+color: #ffffff;
+}
+
+/* =========================================================
+KEMBALI
+========================================================= */
+
+.task-submissions-back-button {
+position: relative;
+z-index: 3;
+
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+width: fit-content;
+
+min-height: 38px;
+
+margin: 20px 0 0 auto;
+
+padding: 0 16px;
+
+border: 1px solid #ffffff;
+border-radius: 9px;
+
+background: #ffffff;
+
+color: var(--blue);
+
+font-size: 12px;
+font-weight: 700;
+
+text-decoration: none;
+
+transition: all 0.2s ease;
+
+
+}
+
+.task-submissions-back-button:hover {
+background: #eaf3ff;
+
+
+color: var(--blue-dark);
+
+transform: translateY(-1px);
+
+
+}
+
+/* =========================================================
+DECORATION
+========================================================= */
+
+.task-submissions-decoration {
+position: absolute;
+
+
+border-radius: 50%;
+
+pointer-events: none;
+
+
+}
+
+.task-submissions-decoration.decoration-one {
+width: 190px;
+height: 190px;
+
+
+top: -90px;
+right: -60px;
+
+background: #2780df;
+
+
+}
+
+.task-submissions-decoration.decoration-two {
+width: 120px;
+height: 120px;
+
+
+right: 210px;
+bottom: -80px;
+
+background: #0a83a8;
+
+
+}
+
+/* =========================================================
+MAIN CARD
+========================================================= */
+
+.task-submissions-card {
+max-width: 1200px;
+
+
+margin: 0 auto;
+
+overflow: hidden;
+
+border: 1px solid var(--border);
+
+border-radius: 18px;
+
+background: #ffffff;
+
+box-shadow: 0 10px 28px rgba(16, 42, 67, 0.08);
+
+
+}
+
+/* =========================================================
+CARD HEADER
+========================================================= */
+
+.task-submissions-card-header {
+position: relative;
+overflow: hidden;
+
+
+display: flex;
+align-items: center;
+
+gap: 15px;
+
+padding: 20px 25px;
+
+border-bottom: 1px solid var(--border);
+
+background: linear-gradient(
+    135deg,
+    #dcecff 0%,
+    #eaf4ff 48%,
+    #e0f5f7 100%
+);
+
+
+}
+
+.task-submissions-card-header::after {
+content: "";
+
+
+position: absolute;
+
+width: 120px;
+height: 120px;
+
+top: -60px;
+right: -40px;
+
+border-radius: 50%;
+
+background: #c7e0f7;
+
+
+}
+
+.task-submissions-icon {
+position: relative;
+z-index: 2;
+
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+width: 43px;
+height: 43px;
+
+flex-shrink: 0;
+
+border-radius: 12px;
+
+background: #1769d5;
+
+color: #ffffff;
+
+font-size: 19px;
+font-weight: 800;
+
+box-shadow: 0 6px 14px rgba(23, 105, 213, 0.20);
+
+
+}
+
+.task-submissions-card-header h2 {
+position: relative;
+z-index: 2;
+
+
+margin: 0 0 3px;
+
+color: var(--navy);
+
+font-size: 17px;
+
+font-weight: 800;
+
+
+}
+
+.task-submissions-card-header p {
+position: relative;
+z-index: 2;
+
+
+margin: 0;
+
+color: var(--muted);
+
+font-size: 13px;
+
+
+}
+
+/* =========================================================
+TABLE
+========================================================= */
+
+.task-submissions-table-wrapper {
+width: 100%;
+
+
+overflow-x: auto;
+
+
+}
+
+.task-submissions-table {
+width: 100%;
+
+
+min-width: 1050px;
+
+margin: 0;
+
+border-collapse: separate;
+border-spacing: 0;
+
+color: var(--text);
+
+font-size: 14px;
+
+
+}
+
+.task-submissions-table thead th {
+padding: 14px 17px;
+
+
+border-bottom: 1px solid #c9dced;
+
+background: linear-gradient(
+    135deg,
+    #1769d5,
+    #0d55b8
+);
+
+color: #ffffff;
+
+font-size: 12px;
+font-weight: 700;
+
+white-space: nowrap;
+
+
+}
+
+.task-submissions-table tbody td {
+padding: 16px 17px;
+
+
+border-bottom: 1px solid var(--border-soft);
+
+background: #ffffff;
+
+vertical-align: middle;
+
+
+}
+
+.task-submissions-table tbody tr:not(.grade-row):nth-child(4n + 3) td {
+background: #f4f8fc;
+}
+
+.task-submissions-table tbody tr:not(.grade-row):hover td {
+background: #eaf3ff;
+}
+
+.task-submissions-table tbody tr:last-child td {
+border-bottom: 0;
+}
+
+/* =========================================================
+STUDENT
+========================================================= */
+
+.student-name {
+color: var(--navy);
+
+
+font-size: 14px;
+font-weight: 700;
+
+
+}
+
+/* =========================================================
+STATUS
+========================================================= */
+
+.submission-status {
+display: inline-flex;
+align-items: center;
+
+
+gap: 7px;
+
+min-height: 30px;
+
+padding: 5px 10px;
+
+border-radius: 8px;
+
+font-size: 11px;
+font-weight: 700;
+
+white-space: nowrap;
+
+
+}
+
+.status-dot {
+width: 7px;
+height: 7px;
+
+
+flex-shrink: 0;
+
+border-radius: 50%;
+
+
+}
+
+.status-not-submitted {
+border: 1px solid #d5e3f2;
+
+
+background: #f1f5f9;
+
+color: #64748b;
+
+
+}
+
+.status-not-submitted .status-dot {
+background: #94a3b8;
+}
+
+.status-late {
+border: 1px solid #f0c98d;
+
+
+background: #fff6e6;
+
+color: #b66a00;
+
+
+}
+
+.status-late .status-dot {
+background: #e49a20;
+}
+
+.status-on-time {
+border: 1px solid #bde5d0;
+
+
+background: #e7f7ee;
+
+color: #16804a;
+
+
+}
+
+.status-on-time .status-dot {
+background: #20a464;
+}
+
+/* =========================================================
+JAWABAN
+========================================================= */
+
+.submission-answer {
+max-width: 245px;
+}
+
+.submission-file {
+display: inline-flex;
+align-items: center;
+
+
+gap: 5px;
+
+max-width: 100%;
+
+color: var(--blue);
+
+font-size: 12px;
+font-weight: 700;
+
+text-decoration: none;
+
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+
+
+}
+
+.submission-file:hover {
+color: var(--blue-dark);
+
+
+text-decoration: underline;
+
+
+}
+
+.file-icon {
+flex-shrink: 0;
+}
+
+.submission-note {
+margin-top: 5px;
+
+
+color: var(--muted);
+
+font-size: 11px;
+
+line-height: 1.5;
+
+
+}
+
+.submission-empty {
+color: #9aa9b8;
+
+
+font-size: 13px;
+
+
+}
+
+/* =========================================================
+NILAI
+========================================================= */
+
+.grade-value {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
+
+min-width: 42px;
+min-height: 34px;
+
+padding: 0 9px;
+
+border: 1px solid #9fc5ec;
+border-radius: 8px;
+
+background: #eaf3ff;
+
+color: var(--blue-dark);
+
+font-size: 14px;
+font-weight: 800;
+
+
+}
+
+.grade-empty {
+color: #9aa9b8;
+
+
+font-size: 13px;
+
+
+}
+
+/* =========================================================
+FEEDBACK
+========================================================= */
+
+.feedback-text {
+max-width: 230px;
+
+
+color: var(--muted);
+
+font-size: 12px;
+
+line-height: 1.5;
+
+overflow: hidden;
+text-overflow: ellipsis;
+
+
+}
+
+/* =========================================================
+ACTION
+========================================================= */
+
+.task-submissions-actions {
+text-align: right;
+
+
+white-space: nowrap;
+
+
+}
+
+.grade-button {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
+
+min-height: 34px;
+
+padding: 0 12px;
+
+border: 1px solid #1769d5;
+border-radius: 8px;
+
+background: #1769d5;
+
+color: #ffffff;
+
+font-size: 11px;
+font-weight: 700;
+
+cursor: pointer;
+
+transition: all 0.2s ease;
+
+
+}
+
+.grade-button:hover {
+border-color: #0d47a1;
+
+
+background: #0d47a1;
+
+transform: translateY(-1px);
+
+
+}
+
+.action-empty {
+color: #9aa9b8;
+
+
+font-size: 13px;
+
+
+}
+
+/* =========================================================
+GRADE ROW
+========================================================= */
+
+.grade-row td {
+padding: 0 !important;
+
+
+background: #edf5fd !important;
+
+border-bottom: 1px solid #cddfee !important;
+
+
+}
+
+.grade-form-container {
+padding: 18px 20px;
+
+
+border-left: 4px solid #1769d5;
+
+background: #f4f9ff;
+
+
+}
+
+.grade-form-title {
+display: flex;
+align-items: center;
+
+
+gap: 10px;
+
+margin-bottom: 14px;
+
+
+}
+
+.grade-form-icon {
+display: flex;
+align-items: center;
+justify-content: center;
+
+
+width: 34px;
+height: 34px;
+
+border-radius: 9px;
+
+background: #dcecff;
+
+color: #1769d5;
+
+font-size: 15px;
+font-weight: 800;
+
+
+}
+
+.grade-form-title strong {
+display: block;
+
+
+color: var(--navy);
+
+font-size: 13px;
+
+
+}
+
+.grade-form-title small {
+display: block;
+
+
+margin-top: 2px;
+
+color: var(--muted);
+
+font-size: 11px;
+
+
+}
+
+/* =========================================================
+GRADE FORM
+========================================================= */
+
+.grade-form {
+display: grid;
+
+
+grid-template-columns: 160px minmax(250px, 1fr) 170px;
+
+align-items: end;
+
+gap: 12px;
+
+
+}
+
+.grade-field label {
+display: block;
+
+
+margin-bottom: 6px;
+
+color: var(--navy);
+
+font-size: 11px;
+font-weight: 700;
+
+
+}
+
+.grade-field label span {
+color: var(--muted);
+
+
+font-weight: 500;
+
+
+}
+
+.grade-field input {
+width: 100%;
+
+
+height: 38px;
+
+padding: 0 11px;
+
+border: 1px solid #cbdbea;
+border-radius: 8px;
+
+background: #ffffff;
+
+color: var(--text);
+
+font-size: 13px;
+
+outline: none;
+
+transition: all 0.2s ease;
+
+
+}
+
+.grade-field input:focus {
+border-color: #1769d5;
+
+
+box-shadow: 0 0 0 3px rgba(23, 105, 213, 0.10);
+
+
+}
+
+/* =========================================================
+SAVE BUTTON
+========================================================= */
+
+.save-grade-button {
+height: 38px;
+
+
+padding: 0 15px;
+
+border: 1px solid #1769d5;
+border-radius: 8px;
+
+background: #1769d5;
+
+color: #ffffff;
+
+font-size: 12px;
+font-weight: 700;
+
+cursor: pointer;
+
+transition: all 0.2s ease;
+
+
+}
+
+.save-grade-button:hover {
+border-color: #0d47a1;
+
+
+background: #0d47a1;
+
+transform: translateY(-1px);
+
+
+}
+
+/* =========================================================
+EMPTY STATE
+========================================================= */
+
+.submissions-empty {
+padding: 55px 20px;
+
+
+text-align: center;
+
+
+}
+
+.submissions-empty-icon {
+display: flex;
+align-items: center;
+justify-content: center;
+
+
+width: 55px;
+height: 55px;
+
+margin: 0 auto 15px;
+
+border-radius: 15px;
+
+background: #eaf3ff;
+
+color: var(--blue);
+
+font-size: 22px;
+font-weight: 800;
+
+
+}
+
+.submissions-empty h3 {
+margin: 0 0 6px;
+
+
+color: var(--navy);
+
+font-size: 18px;
+font-weight: 800;
+
+
+}
+
+.submissions-empty p {
+margin: 0;
+
+
+color: var(--muted);
+
+font-size: 13px;
+
+
+}
+
+/* =========================================================
+RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+
+.task-submissions-page {
+    padding: 20px 16px 35px;
+}
+
+
+.task-submissions-header {
+    padding: 24px 21px;
+
+    border-radius: 16px;
+}
+
+
+.task-submissions-header h1 {
+    font-size: 25px;
+}
+
+
+.task-name {
+    font-size: 15px;
+}
+
+
+.grade-form {
+    grid-template-columns: 1fr 1fr;
+}
+
+
+.save-grade-button {
+    width: 100%;
+}
+
+
+}
+
+@media (max-width: 600px) {
+
+
+.task-submissions-page {
+    padding: 15px 12px 30px;
+}
+
+
+.task-submissions-header {
+    padding: 21px 17px;
+}
+
+
+.task-submissions-header h1 {
+    font-size: 22px;
+}
+
+
+.task-submissions-label {
+    font-size: 10px;
+}
+
+
+.task-submissions-back-button {
+    margin-left: auto;
+
+    font-size: 11px;
+}
+
+
+.task-submissions-card {
+    border-radius: 15px;
+}
+
+
+.task-submissions-card-header {
+    gap: 11px;
+
+    padding: 16px;
+}
+
+
+.task-submissions-icon {
+    width: 38px;
+    height: 38px;
+
+    font-size: 17px;
+}
+
+
+.task-submissions-card-header h2 {
+    font-size: 15px;
+}
+
+
+.task-submissions-card-header p {
+    font-size: 12px;
+}
+
+
+.grade-form {
+    grid-template-columns: 1fr;
+}
+
+
+.grade-form-container {
+    padding: 16px;
+}
+
+
+}

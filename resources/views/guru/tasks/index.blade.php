@@ -3,25 +3,76 @@
 @section('title', 'Tugas - ' . $teachingAssignment->subject->name)
 
 @section('content')
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <div>
-        <h4 class="fw-bold mb-1">Tugas</h4>
-        <p class="text-muted mb-0">
-            {{ $teachingAssignment->classroom->name }} &middot; {{ $teachingAssignment->subject->name }}
-        </p>
+
+<link rel="stylesheet" href="{{ asset('css/guru/tasks/index.css') }}">
+
+<div class="tasks-page">
+
+
+{{-- Header --}}
+<div class="tasks-header">
+
+    <div class="tasks-decoration tasks-decoration-one"></div>
+    <div class="tasks-decoration tasks-decoration-two"></div>
+
+    <div class="tasks-header-content">
+
+        <div>
+            <span class="tasks-label">TUGAS PEMBELAJARAN</span>
+
+            <h1>Tugas</h1>
+
+            <p>
+                {{ $teachingAssignment->classroom->name }}
+                &middot;
+                {{ $teachingAssignment->subject->name }}
+            </p>
+        </div>
+
     </div>
-    <div>
-        <a href="{{ route('guru.dashboard') }}" class="btn btn-outline-secondary btn-sm">&larr; Dashboard</a>
-        <a href="{{ route('guru.teaching-assignments.tasks.create', $teachingAssignment) }}" class="btn btn-primary btn-sm">
+
+    <div class="tasks-header-actions">
+
+        <a href="{{ route('guru.dashboard') }}"
+           class="tasks-dashboard-button">
+            ← Dashboard
+        </a>
+
+        <a href="{{ route('guru.teaching-assignments.tasks.create', $teachingAssignment) }}"
+           class="tasks-create-button">
             + Buat Tugas
         </a>
+
     </div>
+
 </div>
 
-<div class="card border-0 shadow-sm">
-    <div class="table-responsive">
-        <table class="table table-hover align-middle mb-0">
-            <thead class="table-light">
+
+{{-- Daftar Tugas --}}
+<div class="tasks-card">
+
+    <div class="tasks-card-header">
+
+        <div class="tasks-card-icon">
+            ✓
+        </div>
+
+        <div>
+            <h2>Daftar Tugas</h2>
+
+            <p>
+                Kelola tugas dan pengumpulan siswa untuk kelas ini.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="tasks-table-wrapper">
+
+        <table class="tasks-table">
+
+            <thead>
                 <tr>
                     <th>Judul</th>
                     <th>Batas Waktu</th>
@@ -30,48 +81,132 @@
                     <th class="text-end">Aksi</th>
                 </tr>
             </thead>
+
             <tbody>
+
                 @forelse ($tasks as $task)
+
                     <tr>
-                        <td class="fw-semibold">{{ $task->title }}</td>
-                        <td class="small">
-                            {{ $task->deadline->format('d M Y, H:i') }}
-                            @if ($task->isPastDeadline())
-                                <span class="badge text-bg-danger ms-1">Lewat</span>
-                            @endif
+
+                        <td>
+                            <div class="task-title">
+                                {{ $task->title }}
+                            </div>
                         </td>
+
+
+                        <td>
+
+                            <div class="task-deadline">
+                                {{ $task->deadline->format('d M Y, H:i') }}
+
+                                @if ($task->isPastDeadline())
+                                    <span class="task-deadline-badge">
+                                        Lewat
+                                    </span>
+                                @endif
+                            </div>
+
+                        </td>
+
+
                         <td class="text-center">
-                            <a href="{{ route('guru.teaching-assignments.tasks.submissions', [$teachingAssignment, $task]) }}">
+
+                            <a href="{{ route('guru.teaching-assignments.tasks.submissions', [$teachingAssignment, $task]) }}"
+                               class="submission-link">
                                 {{ $task->submissions_count }} siswa
                             </a>
+
                         </td>
+
+
                         <td class="text-center">
+
                             @if ($task->is_published)
-                                <span class="badge text-bg-success">Terbit</span>
+
+                                <span class="task-status status-published">
+                                    <span class="status-dot"></span>
+                                    Terbit
+                                </span>
+
                             @else
-                                <span class="badge text-bg-light text-muted">Draft</span>
+
+                                <span class="task-status status-draft">
+                                    <span class="status-dot"></span>
+                                    Draft
+                                </span>
+
                             @endif
+
                         </td>
-                        <td class="text-end">
+
+
+                        <td class="task-actions">
+
                             <a href="{{ route('guru.teaching-assignments.tasks.submissions', [$teachingAssignment, $task]) }}"
-                               class="btn btn-sm btn-outline-primary">Koreksi</a>
+                               class="task-action task-correct">
+                                Koreksi
+                            </a>
+
                             <a href="{{ route('guru.teaching-assignments.tasks.edit', [$teachingAssignment, $task]) }}"
-                               class="btn btn-sm btn-outline-secondary">Edit</a>
-                            <form method="POST" action="{{ route('guru.teaching-assignments.tasks.destroy', [$teachingAssignment, $task]) }}"
-                                  class="d-inline" onsubmit="return confirm('Hapus tugas {{ $task->title }}? Semua pengumpulan siswa ikut terhapus.');">
+                               class="task-action task-edit">
+                                Edit
+                            </a>
+
+                            <form method="POST"
+                                  action="{{ route('guru.teaching-assignments.tasks.destroy', [$teachingAssignment, $task]) }}"
+                                  class="d-inline"
+                                  onsubmit="return confirm('Hapus tugas {{ $task->title }}? Semua pengumpulan siswa ikut terhapus.');">
+
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-outline-danger">Hapus</button>
+
+                                <button type="submit"
+                                        class="task-action task-delete">
+                                    Hapus
+                                </button>
+
                             </form>
+
                         </td>
+
                     </tr>
+
                 @empty
+
                     <tr>
-                        <td colspan="5" class="text-center text-muted py-4">Belum ada tugas yang dibuat.</td>
+
+                        <td colspan="5">
+
+                            <div class="tasks-empty">
+
+                                <div class="tasks-empty-icon">
+                                    +
+                                </div>
+
+                                <h3>Belum Ada Tugas</h3>
+
+                                <p>
+                                    Belum ada tugas yang dibuat untuk kelas ini.
+                                </p>
+
+                            </div>
+
+                        </td>
+
                     </tr>
+
                 @endforelse
+
             </tbody>
+
         </table>
+
     </div>
+
 </div>
+
+
+</div>
+
 @endsection

@@ -1,0 +1,993 @@
+/* =========================================================
+WEB SEKOLAH MODERN
+GURU / WALI KELAS DASHBOARD
+========================================================= */
+
+:root {
+--guru-blue: #1769d5;
+--guru-blue-dark: #0d4fa8;
+--guru-blue-soft: #eaf3ff;
+--guru-cyan: #087ea4;
+
+
+--guru-bg: #f5f8fd;
+--guru-white: #ffffff;
+
+--guru-text: #152b46;
+--guru-muted: #718198;
+
+--guru-border: #e2eaf3;
+
+}
+
+/* =========================================================
+MAIN
+========================================================= */
+
+.guru-dashboard {
+width: 100%;
+min-height: 100%;
+padding-bottom: 30px;
+color: var(--guru-text);
+}
+
+/* =========================================================
+HERO
+========================================================= */
+
+.guru-hero {
+position: relative;
+overflow: hidden;
+margin-bottom: 30px;
+border-radius: 22px;
+background: var(--guru-white);
+box-shadow: 0 10px 30px rgba(36, 91, 145, 0.08);
+}
+
+/* =========================================================
+HERO MAIN
+========================================================= */
+
+.guru-hero-main {
+    position: relative;
+    display: flex;
+    min-height: 270px;
+    overflow: hidden;
+    background: linear-gradient(
+        120deg,
+        #125bbd 0%,
+        #1769d5 58%,
+        #1188a5 100%
+    );
+}
+
+.guru-hero-main::after {
+content: "";
+position: absolute;
+width: 420px;
+height: 420px;
+right: -150px;
+top: -220px;
+border-radius: 50%;
+background: rgba(255, 255, 255, 0.10);
+}
+
+.guru-hero-main::before {
+content: "";
+position: absolute;
+width: 280px;
+height: 280px;
+right: 210px;
+bottom: -210px;
+border-radius: 50%;
+background: rgba(255, 255, 255, 0.07);
+}
+
+/* =========================================================
+HERO CONTENT
+========================================================= */
+
+.guru-hero-content {
+position: relative;
+z-index: 3;
+width: 64%;
+padding: 36px 38px 35px;
+}
+
+.guru-hero-label {
+display: inline-block;
+margin-bottom: 10px;
+color: rgba(255, 255, 255, 0.78);
+font-size: 10px;
+font-weight: 800;
+letter-spacing: 1.5px;
+}
+
+.guru-hero-content h1 {
+max-width: 650px;
+margin: 0;
+color: #ffffff;
+font-size: 29px;
+font-weight: 800;
+line-height: 1.25;
+letter-spacing: -0.4px;
+}
+
+.guru-hero-content h1 span {
+color: #ffffff;
+}
+
+.guru-hero-content > p {
+max-width: 570px;
+margin: 11px 0 0;
+color: rgba(255, 255, 255, 0.83);
+font-size: 13px;
+line-height: 1.7;
+}
+
+/* =========================================================
+YEAR INFO
+========================================================= */
+
+.guru-year-info {
+display: inline-flex;
+align-items: center;
+gap: 11px;
+margin-top: 22px;
+padding: 9px 14px 9px 9px;
+border: 1px solid rgba(255, 255, 255, 0.16);
+border-radius: 11px;
+background: rgba(255, 255, 255, 0.12);
+backdrop-filter: blur(5px);
+}
+
+.guru-year-icon {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 34px;
+height: 34px;
+border-radius: 8px;
+color: var(--guru-blue);
+background: #ffffff;
+font-size: 12px;
+font-weight: 800;
+}
+
+.guru-year-info div:last-child {
+display: flex;
+flex-direction: column;
+gap: 2px;
+}
+
+.guru-year-info small {
+color: rgba(255, 255, 255, 0.67);
+font-size: 8px;
+font-weight: 800;
+letter-spacing: 1px;
+}
+
+.guru-year-info strong {
+color: #ffffff;
+font-size: 12px;
+}
+
+/* =========================================================
+YEAR WARNING
+========================================================= */
+
+.guru-year-warning {
+display: flex;
+flex-direction: column;
+gap: 3px;
+margin-top: 21px;
+padding: 10px 13px;
+border-left: 3px solid #ffd166;
+}
+
+.guru-year-warning strong {
+color: #ffffff;
+font-size: 12px;
+}
+
+.guru-year-warning span {
+color: rgba(255, 255, 255, 0.70);
+font-size: 10px;
+}
+
+/* =========================================================
+HERO ILLUSTRATION
+========================================================= */
+
+.guru-hero-illustration {
+position: absolute;
+z-index: 2;
+right: 30px;
+top: 0;
+width: 32%;
+height: 100%;
+}
+
+/* =========================================================
+   HERO CIRCLE DECORATION
+   ========================================================= */
+
+.guru-teacher-shape {
+    position: absolute;
+    right: 90px;
+    top: 63px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 125px;
+    height: 125px;
+    border: 8px solid rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+    background: var(--guru-navy);
+    box-shadow: 0 20px 40px rgba(7, 27, 53, 0.22);
+}
+
+.guru-circle-decoration {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+}
+
+.guru-circle-decoration span {
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+}
+
+.guru-circle-decoration span:nth-child(1) {
+    width: 58px;
+    height: 58px;
+    border: 2px solid rgba(255, 255, 255, 0.75);
+}
+
+.guru-circle-decoration span:nth-child(2) {
+    width: 34px;
+    height: 34px;
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.guru-circle-decoration span:nth-child(3) {
+    width: 12px;
+    height: 12px;
+    background: #ffffff;
+}
+
+.guru-teacher-shape span {
+color: #ffffff;
+font-size: 42px;
+font-weight: 800;
+}
+
+/* =========================================================
+   SMALL DECORATIVE DOTS
+   ========================================================= */
+
+.guru-dot {
+    position: absolute;
+    z-index: 3;
+    display: block;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.55);
+}
+
+.guru-dot-one {
+    width: 8px;
+    height: 8px;
+    right: 235px;
+    top: 54px;
+}
+
+.guru-dot-two {
+    width: 13px;
+    height: 13px;
+    right: 55px;
+    top: 158px;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.guru-dot-three {
+    width: 6px;
+    height: 6px;
+    right: 190px;
+    bottom: 35px;
+}
+
+.guru-dot-four {
+    width: 18px;
+    height: 18px;
+    right: 20px;
+    bottom: 55px;
+    background: rgba(255, 255, 255, 0.16);
+}
+
+/* =========================================================
+ORBITS
+========================================================= */
+
+.guru-orbit {
+position: absolute;
+border: 1px solid rgba(255, 255, 255, 0.15);
+border-radius: 50%;
+}
+
+.guru-orbit-one {
+width: 250px;
+height: 250px;
+right: 18px;
+top: 10px;
+}
+
+.guru-orbit-two {
+width: 185px;
+height: 185px;
+right: 50px;
+top: 42px;
+}
+
+/* =========================================================
+FLOATING CARDS
+========================================================= */
+
+.guru-floating-card {
+position: absolute;
+z-index: 5;
+display: flex;
+align-items: center;
+gap: 8px;
+padding: 9px 12px;
+border: 1px solid rgba(255, 255, 255, 0.18);
+border-radius: 10px;
+background: rgba(255, 255, 255, 0.14);
+backdrop-filter: blur(8px);
+box-shadow: 0 12px 25px rgba(0, 45, 100, 0.10);
+}
+
+.guru-floating-top {
+right: 0;
+top: 43px;
+}
+
+.guru-floating-bottom {
+right: 25px;
+bottom: 32px;
+}
+
+.floating-icon {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 28px;
+height: 28px;
+border-radius: 7px;
+color: var(--guru-blue);
+background: #ffffff;
+font-size: 12px;
+font-weight: 800;
+}
+
+.guru-floating-card div {
+display: flex;
+flex-direction: column;
+gap: 1px;
+}
+
+.guru-floating-card small {
+color: rgba(255, 255, 255, 0.62);
+font-size: 7px;
+font-weight: 800;
+letter-spacing: 0.8px;
+}
+
+.guru-floating-card strong {
+color: #ffffff;
+font-size: 10px;
+}
+
+/* =========================================================
+QUICK ACTIONS
+========================================================= */
+
+.guru-quick-actions {
+position: relative;
+z-index: 5;
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 15px;
+padding: 18px 22px 22px;
+background: #ffffff;
+}
+
+.guru-quick-card {
+display: flex;
+align-items: center;
+gap: 13px;
+min-height: 70px;
+padding: 11px 14px;
+border: 1px solid var(--guru-border);
+border-radius: 13px;
+background: #ffffff;
+text-decoration: none;
+transition: all 0.2s ease;
+}
+
+.guru-quick-card:hover {
+border-color: #b9d5f7;
+box-shadow: 0 8px 20px rgba(23, 105, 213, 0.10);
+transform: translateY(-2px);
+}
+
+.guru-quick-icon {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 43px;
+height: 43px;
+flex-shrink: 0;
+border-radius: 10px;
+font-size: 17px;
+font-weight: 700;
+}
+
+.schedule-icon {
+color: var(--guru-blue);
+background: #eaf3ff;
+}
+
+.attendance-icon {
+color: var(--guru-cyan);
+background: #e8f7fa;
+}
+
+.guru-quick-text {
+display: flex;
+flex: 1;
+flex-direction: column;
+gap: 1px;
+}
+
+.guru-quick-text small {
+color: var(--guru-muted);
+font-size: 8px;
+font-weight: 800;
+letter-spacing: 1px;
+}
+
+.guru-quick-text strong {
+color: var(--guru-text);
+font-size: 13px;
+font-weight: 800;
+}
+
+.guru-quick-text span {
+color: #91a0b2;
+font-size: 10px;
+}
+
+.guru-quick-arrow {
+color: var(--guru-blue);
+font-size: 19px;
+font-weight: 600;
+}
+
+/* =========================================================
+   ASSIGNMENT SECTION
+   ========================================================= */
+
+.guru-assignment-section {
+    width: 100%;
+}
+
+/* =========================================================
+   ACTIVITY SECTION HEADER
+   ========================================================= */
+
+.guru-section-heading {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    min-height: 118px;
+    margin-bottom: 14px;
+    padding: 24px 28px;
+    overflow: hidden;
+
+    border: 1px solid #dce6f1;
+    border-radius: 16px;
+
+    background: #ffffff;
+
+    box-shadow: 0 6px 20px rgba(36, 91, 145, 0.055);
+}
+
+.guru-section-heading::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 6px;
+    height: 100%;
+    background: var(--guru-blue);
+}
+
+.guru-section-heading::after {
+    content: "";
+    position: absolute;
+    right: -35px;
+    bottom: -80px;
+    width: 190px;
+    height: 190px;
+
+    border: 22px solid #f0f5fb;
+    border-radius: 50%;
+}
+
+.guru-section-heading > div:first-child {
+    position: relative;
+    z-index: 2;
+}
+
+.guru-section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 7px;
+
+    color: var(--guru-blue);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+}
+
+.guru-section-label::before {
+    content: "";
+    width: 18px;
+    height: 3px;
+    border-radius: 10px;
+    background: var(--guru-blue);
+}
+
+.guru-section-heading h2 {
+    margin: 0;
+
+    color: var(--guru-navy);
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: -0.2px;
+}
+
+.guru-section-heading p {
+    margin: 5px 0 0;
+
+    color: var(--guru-muted);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* =========================================================
+COUNT
+========================================================= */
+
+.guru-assignment-count {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 9px 14px;
+
+    border: 1px solid #d7e5f5;
+    border-radius: 10px;
+
+    background: #f5f9ff;
+}
+
+.guru-assignment-count strong {
+    color: var(--guru-blue-dark);
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.guru-assignment-count span {
+    color: var(--guru-muted);
+    font-size: 10px;
+    font-weight: 600;
+}
+
+/* =========================================================
+ASSIGNMENT CARD
+========================================================= */
+
+.guru-assignment-card {
+overflow: hidden;
+border: 1px solid var(--guru-border);
+border-radius: 16px;
+background: #ffffff;
+box-shadow: 0 7px 24px rgba(36, 91, 145, 0.06);
+}
+
+/* =========================================================
+TABLE HEADER
+========================================================= */
+
+.guru-table-header {
+display: grid;
+grid-template-columns: 1.1fr 1fr 230px;
+align-items: center;
+padding: 13px 23px;
+color: #ffffff;
+background: var(--guru-blue);
+}
+
+.guru-table-header > div {
+font-size: 9px;
+font-weight: 800;
+letter-spacing: 0.8px;
+text-transform: uppercase;
+}
+
+.guru-table-action-title {
+text-align: center;
+}
+
+/* =========================================================
+ASSIGNMENT ROW
+========================================================= */
+
+.guru-assignment-row {
+display: grid;
+grid-template-columns: 1.1fr 1fr 230px;
+align-items: center;
+min-height: 75px;
+padding: 11px 23px;
+border-bottom: 1px solid var(--guru-border);
+transition: background 0.18s ease;
+}
+
+.guru-assignment-row:last-child {
+border-bottom: 0;
+}
+
+.guru-assignment-row:hover {
+background: #f8fbff;
+}
+
+/* =========================================================
+CLASS CELL
+========================================================= */
+
+.guru-class-cell {
+display: flex;
+align-items: center;
+gap: 11px;
+}
+
+.guru-class-avatar {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 38px;
+height: 38px;
+flex-shrink: 0;
+border-radius: 10px;
+color: #ffffff;
+background: var(--guru-blue);
+font-size: 13px;
+font-weight: 800;
+}
+
+.guru-class-cell strong {
+display: block;
+color: var(--guru-text);
+font-size: 12px;
+font-weight: 800;
+}
+
+.guru-class-cell small {
+display: block;
+margin-top: 2px;
+color: #91a0b2;
+font-size: 9px;
+}
+
+/* =========================================================
+SUBJECT
+========================================================= */
+
+.guru-subject-cell {
+display: flex;
+align-items: center;
+gap: 9px;
+color: #3d5067;
+font-size: 12px;
+font-weight: 600;
+}
+
+.guru-subject-dot {
+width: 7px;
+height: 7px;
+flex-shrink: 0;
+border-radius: 50%;
+background: var(--guru-cyan);
+}
+
+/* =========================================================
+ROW ACTIONS
+========================================================= */
+
+.guru-row-actions {
+display: flex;
+justify-content: center;
+gap: 7px;
+}
+
+.guru-material-btn,
+.guru-task-btn {
+display: inline-flex;
+align-items: center;
+justify-content: space-between;
+gap: 11px;
+min-width: 78px;
+padding: 7px 10px;
+border-radius: 7px;
+font-size: 10px;
+font-weight: 700;
+text-decoration: none;
+transition: all 0.18s ease;
+}
+
+.guru-material-btn {
+border: 1px solid #c5dcf8;
+color: var(--guru-blue);
+background: #f1f7ff;
+}
+
+.guru-task-btn {
+border: 1px solid #bfe2e8;
+color: var(--guru-cyan);
+background: #f0fafb;
+}
+
+.guru-material-btn b,
+.guru-task-btn b {
+font-size: 13px;
+font-weight: 500;
+}
+
+.guru-material-btn:hover {
+color: #ffffff;
+border-color: var(--guru-blue);
+background: var(--guru-blue);
+}
+
+.guru-task-btn:hover {
+color: #ffffff;
+border-color: var(--guru-cyan);
+background: var(--guru-cyan);
+}
+
+/* =========================================================
+EMPTY STATE
+========================================================= */
+
+.guru-empty-state {
+display: flex;
+align-items: center;
+flex-direction: column;
+padding: 48px 25px;
+text-align: center;
+}
+
+.guru-empty-icon {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 45px;
+height: 45px;
+margin-bottom: 12px;
+border-radius: 50%;
+color: var(--guru-blue);
+background: var(--guru-blue-soft);
+font-size: 18px;
+font-weight: 800;
+}
+
+.guru-empty-state h3 {
+margin: 0 0 6px;
+color: var(--guru-text);
+font-size: 14px;
+font-weight: 800;
+}
+
+.guru-empty-state p {
+max-width: 540px;
+margin: 0 0 4px;
+color: var(--guru-muted);
+font-size: 11px;
+line-height: 1.6;
+}
+
+.guru-empty-state span {
+color: #91a0b2;
+font-size: 10px;
+}
+
+/* =========================================================
+RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+.guru-hero-content {
+    width: 70%;
+}
+
+.guru-hero-illustration {
+    width: 30%;
+    opacity: 0.75;
+}
+
+.guru-teacher-shape {
+    position: absolute;
+    right: 90px;
+    top: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 125px;
+    height: 125px;
+    border: 9px solid rgba(255, 255, 255, 0.16);
+    border-radius: 50%;
+    background: var(--guru-navy);
+    box-shadow: 0 20px 40px rgba(7, 27, 53, 0.22);
+}
+
+.guru-book-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 76px;
+    height: 76px;
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.guru-book-icon span {
+    color: #ffffff;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.guru-table-header,
+.guru-assignment-row {
+    grid-template-columns: 1fr 1fr 200px;
+}
+
+.guru-row-actions {
+    gap: 5px;
+}
+
+.guru-material-btn,
+.guru-task-btn {
+    min-width: 70px;
+}
+
+
+}
+
+@media (max-width: 768px) {
+
+
+.guru-hero-main {
+    min-height: auto;
+}
+
+.guru-hero-content {
+    width: 100%;
+    padding: 28px 24px 25px;
+}
+
+.guru-hero-content h1 {
+    font-size: 24px;
+}
+
+.guru-hero-illustration {
+    display: none;
+}
+
+.guru-quick-actions {
+    grid-template-columns: 1fr;
+}
+
+.guru-section-heading {
+    align-items: flex-start;
+}
+
+.guru-assignment-count {
+    display: none;
+}
+
+.guru-table-header {
+    display: none;
+}
+
+.guru-assignment-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 13px;
+    padding: 17px 19px;
+}
+
+.guru-subject-cell {
+    padding-left: 49px;
+}
+
+.guru-row-actions {
+    width: 100%;
+    justify-content: flex-start;
+    padding-left: 49px;
+}
+
+}
+
+@media (max-width: 480px) {
+
+
+.guru-hero {
+    border-radius: 16px;
+}
+
+.guru-hero-content {
+    padding: 24px 19px;
+}
+
+.guru-hero-content h1 {
+    font-size: 21px;
+}
+
+.guru-hero-content > p {
+    font-size: 11px;
+}
+
+.guru-year-info {
+    max-width: 100%;
+}
+
+.guru-quick-actions {
+    padding: 14px;
+}
+
+.guru-section-heading h2 {
+    font-size: 17px;
+}
+
+.guru-section-heading p {
+    font-size: 10px;
+}
+
+.guru-assignment-card {
+    border-radius: 13px;
+}
+
+.guru-row-actions {
+    padding-left: 0;
+}
+
+.guru-material-btn,
+.guru-task-btn {
+    flex: 1;
+}
+
+}

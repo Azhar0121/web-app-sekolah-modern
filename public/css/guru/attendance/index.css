@@ -1,0 +1,858 @@
+/* =========================================================
+PRESENSI KELAS GURU
+Modern Institutional Blue
+========================================================= */
+
+.attendance-page {
+--blue: #1769d5;
+--blue-dark: #0d47a1;
+--blue-light: #eaf3ff;
+--blue-soft: #f3f8ff;
+--navy: #102a43;
+--text: #243b53;
+--muted: #718096;
+--white: #ffffff;
+--border: #d5e3f2;
+--border-soft: #e4edf7;
+--cyan: #0794b8;
+
+
+min-height: calc(100vh - 80px);
+
+padding: 28px 30px 50px;
+
+/* Background luar SOLID */
+background: #eef4fb;
+
+color: var(--text);
+
+
+}
+
+/* =========================================================
+HEADER
+========================================================= */
+
+.attendance-header {
+position: relative;
+overflow: hidden;
+
+
+max-width: 1100px;
+
+margin: 0 auto 24px;
+
+padding: 28px 32px;
+
+border-radius: 20px;
+
+background: linear-gradient(
+    135deg,
+    #1769d5 0%,
+    #0d55b8 55%,
+    #0794b8 100%
+);
+
+box-shadow: 0 14px 32px rgba(23, 105, 213, 0.18);
+
+
+}
+
+.attendance-header-content {
+position: relative;
+z-index: 2;
+
+
+display: flex;
+align-items: center;
+
+
+}
+
+.attendance-label {
+display: inline-block;
+
+
+margin-bottom: 7px;
+
+color: #d9efff;
+
+font-size: 11px;
+font-weight: 800;
+
+letter-spacing: 1.4px;
+
+
+}
+
+.attendance-header h1 {
+margin: 0 0 7px;
+
+
+color: #ffffff;
+
+font-size: 30px;
+line-height: 1.2;
+
+font-weight: 800;
+
+
+}
+
+.attendance-header p {
+margin: 0;
+
+
+color: #e7f3ff;
+
+font-size: 14px;
+line-height: 1.6;
+
+
+}
+
+.attendance-header p strong {
+color: #ffffff;
+}
+
+/* =========================================================
+HEADER DECORATION
+========================================================= */
+
+.attendance-decoration {
+position: absolute;
+
+
+border-radius: 50%;
+
+pointer-events: none;
+
+
+}
+
+.attendance-decoration-one {
+width: 180px;
+height: 180px;
+
+
+top: -85px;
+right: -60px;
+
+background: #2780df;
+
+
+}
+
+.attendance-decoration-two {
+width: 115px;
+height: 115px;
+
+
+right: 170px;
+bottom: -75px;
+
+background: #0a83a8;
+
+
+}
+
+/* =========================================================
+MAIN CARD
+========================================================= */
+
+.attendance-card {
+max-width: 1100px;
+
+
+margin: 0 auto;
+
+overflow: hidden;
+
+border: 1px solid var(--border);
+
+border-radius: 18px;
+
+background: #ffffff;
+
+box-shadow: 0 10px 28px rgba(16, 42, 67, 0.08);
+
+
+}
+
+/* =========================================================
+CARD HEADER
+========================================================= */
+
+.attendance-card-header {
+position: relative;
+overflow: hidden;
+
+
+display: flex;
+align-items: center;
+
+gap: 15px;
+
+padding: 20px 25px;
+
+border-bottom: 1px solid var(--border);
+
+background: linear-gradient(
+    135deg,
+    #dcecff 0%,
+    #eaf4ff 48%,
+    #e0f5f7 100%
+);
+
+
+}
+
+.attendance-card-header::after {
+content: "";
+
+
+position: absolute;
+
+width: 110px;
+height: 110px;
+
+top: -55px;
+right: -35px;
+
+border-radius: 50%;
+
+background: #c7e0f7;
+
+
+}
+
+.attendance-card-icon {
+position: relative;
+z-index: 2;
+
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+width: 43px;
+height: 43px;
+
+flex-shrink: 0;
+
+border-radius: 12px;
+
+background: #1769d5;
+
+color: #ffffff;
+
+font-size: 20px;
+font-weight: 800;
+
+box-shadow: 0 6px 14px rgba(23, 105, 213, 0.2);
+
+
+}
+
+.attendance-card-header h2 {
+position: relative;
+z-index: 2;
+
+
+margin: 0 0 3px;
+
+color: var(--navy);
+
+font-size: 17px;
+font-weight: 800;
+
+
+}
+
+.attendance-card-header p {
+position: relative;
+z-index: 2;
+
+
+margin: 0;
+
+color: var(--muted);
+
+font-size: 13px;
+
+
+}
+
+/* =========================================================
+TABLE WRAPPER
+========================================================= */
+
+.attendance-table-wrapper {
+width: 100%;
+
+
+overflow-x: auto;
+
+
+}
+
+/* =========================================================
+TABLE
+========================================================= */
+
+.attendance-table {
+width: 100%;
+
+
+min-width: 760px;
+
+margin: 0;
+
+border-collapse: separate;
+border-spacing: 0;
+
+color: var(--text);
+
+font-size: 15px;
+
+
+}
+
+.attendance-table thead th {
+padding: 14px 18px;
+
+
+border-bottom: 1px solid #c9dced;
+
+background: linear-gradient(
+    135deg,
+    #1769d5,
+    #0d55b8
+);
+
+color: #ffffff;
+
+font-size: 13px;
+font-weight: 700;
+
+white-space: nowrap;
+
+
+}
+
+.attendance-table thead th:first-child {
+padding-left: 22px;
+}
+
+.attendance-table tbody td {
+padding: 17px 18px;
+
+
+border-bottom: 1px solid var(--border-soft);
+
+background: #ffffff;
+
+vertical-align: middle;
+
+
+}
+
+.attendance-table tbody tr:nth-child(even) td {
+background: #f4f8fc;
+}
+
+.attendance-table tbody tr:hover td {
+background: #eaf3ff;
+}
+
+.attendance-table tbody tr:last-child td {
+border-bottom: 0;
+}
+
+/* =========================================================
+COLUMN WIDTH
+========================================================= */
+
+.attendance-table .col-time {
+width: 150px;
+}
+
+.attendance-table .col-status {
+width: 190px;
+}
+
+.attendance-table .col-action {
+width: 145px;
+}
+
+/* =========================================================
+TIME
+========================================================= */
+
+.attendance-time {
+color: var(--blue-dark);
+
+
+font-size: 14px;
+font-weight: 800;
+
+white-space: nowrap;
+
+
+}
+
+.attendance-time span {
+margin: 0 3px;
+
+
+color: #8ba1b8;
+
+font-weight: 500;
+
+
+}
+
+/* =========================================================
+SUBJECT
+========================================================= */
+
+.attendance-subject {
+color: var(--navy);
+
+
+font-size: 15px;
+font-weight: 700;
+
+
+}
+
+/* =========================================================
+CLASS
+========================================================= */
+
+.attendance-class {
+display: inline-flex;
+align-items: center;
+
+
+min-height: 30px;
+
+padding: 5px 11px;
+
+border: 1px solid #cfe0f2;
+
+border-radius: 8px;
+
+background: #eaf3ff;
+
+color: var(--blue-dark);
+
+font-size: 13px;
+font-weight: 700;
+
+white-space: nowrap;
+
+
+}
+
+/* =========================================================
+STATUS
+========================================================= */
+
+.attendance-status {
+display: inline-flex;
+align-items: center;
+
+
+gap: 7px;
+
+min-height: 30px;
+
+padding: 5px 10px;
+
+border-radius: 8px;
+
+font-size: 12px;
+font-weight: 700;
+
+white-space: nowrap;
+
+
+}
+
+.status-dot {
+width: 7px;
+height: 7px;
+
+
+flex-shrink: 0;
+
+border-radius: 50%;
+
+
+}
+
+/* BELUM DIBUKA */
+
+.status-pending {
+border: 1px solid #d5e3f2;
+
+
+background: #f1f5f9;
+
+color: #64748b;
+
+
+}
+
+.status-pending .status-dot {
+background: #94a3b8;
+}
+
+/* SEDANG BERLANGSUNG */
+
+.status-active {
+border: 1px solid #bde5d0;
+
+
+background: #e7f7ee;
+
+color: #16804a;
+
+
+}
+
+.status-active .status-dot {
+background: #20a464;
+}
+
+/* SELESAI */
+
+.status-finished {
+border: 1px solid #d5dce5;
+
+
+background: #edf0f3;
+
+color: #475569;
+
+
+}
+
+.status-finished .status-dot {
+background: #64748b;
+}
+
+/* =========================================================
+ACTION
+========================================================= */
+
+.attendance-action-cell {
+text-align: right;
+}
+
+.attendance-action-button {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
+
+min-width: 105px;
+min-height: 37px;
+
+padding: 0 14px;
+
+border: 1px solid #1769d5;
+
+border-radius: 8px;
+
+background: #1769d5;
+
+color: #ffffff;
+
+font-size: 12px;
+font-weight: 700;
+
+text-decoration: none;
+
+box-shadow: 0 5px 12px rgba(23, 105, 213, 0.14);
+
+transition: all 0.2s ease;
+
+
+}
+
+.attendance-action-button:hover {
+border-color: #0d47a1;
+
+
+background: #0d47a1;
+
+color: #ffffff;
+
+transform: translateY(-1px);
+
+
+}
+
+/* =========================================================
+EMPTY STATE
+========================================================= */
+
+.attendance-empty-card {
+max-width: 1100px;
+
+
+margin: 0 auto;
+
+padding: 55px 25px;
+
+border: 1px solid var(--border);
+
+border-radius: 18px;
+
+background: #ffffff;
+
+text-align: center;
+
+box-shadow: 0 10px 28px rgba(16, 42, 67, 0.08);
+
+
+}
+
+.attendance-empty-icon {
+display: flex;
+align-items: center;
+justify-content: center;
+
+
+width: 58px;
+height: 58px;
+
+margin: 0 auto 16px;
+
+border-radius: 16px;
+
+background: #eaf3ff;
+
+color: var(--blue);
+
+font-size: 25px;
+font-weight: 800;
+
+
+}
+
+.attendance-empty-card h2 {
+margin: 0 0 7px;
+
+
+color: var(--navy);
+
+font-size: 18px;
+font-weight: 800;
+
+
+}
+
+.attendance-empty-card p {
+margin: 0;
+
+
+color: var(--muted);
+
+font-size: 14px;
+
+
+}
+
+/* =========================================================
+RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+
+
+.attendance-page {
+    padding: 20px 16px 35px;
+}
+
+
+.attendance-header {
+    padding: 24px 21px;
+
+    border-radius: 16px;
+}
+
+
+.attendance-header h1 {
+    font-size: 25px;
+}
+
+
+.attendance-header p {
+    font-size: 13px;
+}
+
+
+.attendance-card {
+    border-radius: 15px;
+}
+
+
+.attendance-card-header {
+    padding: 18px 20px;
+}
+
+
+.attendance-table thead th {
+    padding: 13px 15px;
+}
+
+
+.attendance-table tbody td {
+    padding: 15px;
+}
+
+
+}
+
+@media (max-width: 480px) {
+
+
+.attendance-page {
+    padding: 15px 12px 30px;
+}
+
+
+.attendance-header {
+    padding: 21px 17px;
+}
+
+
+.attendance-header h1 {
+    font-size: 22px;
+}
+
+
+.attendance-label {
+    font-size: 10px;
+}
+
+
+.attendance-card-header {
+    gap: 11px;
+
+    padding: 16px;
+}
+
+
+.attendance-card-icon {
+    width: 38px;
+    height: 38px;
+
+    font-size: 18px;
+}
+
+
+.attendance-card-header h2 {
+    font-size: 15px;
+}
+
+
+.attendance-card-header p {
+    font-size: 12px;
+}
+
+
+.attendance-empty-card {
+    padding: 45px 20px;
+}
+
+
+}
+
+/* =========================================================
+TOMBOL KEMBALI DASHBOARD
+POSISI: KANAN BAWAH HEADER
+========================================================= */
+
+.attendance-header {
+position: relative;
+overflow: hidden;
+}
+
+.attendance-dashboard-button {
+position: relative;
+z-index: 3;
+
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+width: fit-content;
+
+min-height: 38px;
+
+margin: 20px 0 0 auto;
+
+padding: 0 16px;
+
+border: 1px solid #ffffff;
+border-radius: 9px;
+
+background: #ffffff;
+
+color: #1769d5;
+
+font-size: 12px;
+font-weight: 700;
+
+text-decoration: none;
+
+transition: all 0.2s ease;
+
+
+}
+
+.attendance-dashboard-button:hover {
+background: #eaf3ff;
+
+
+color: #0d47a1;
+
+transform: translateY(-1px);
+
+
+}
+
+/* =========================================================
+MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+
+.attendance-dashboard-button {
+    margin: 18px 0 0 auto;
+
+    width: fit-content;
+}
+
+
+}
+
+@media (max-width: 480px) {
+
+
+.attendance-dashboard-button {
+    min-height: 36px;
+
+    padding: 0 14px;
+
+    font-size: 11px;
+}
+
+
+}

@@ -1,0 +1,722 @@
+/* =========================================================
+EDIT MATERI GURU
+Modern Institutional Blue
+========================================================= */
+
+.materials-edit-page {
+--blue: #1769d5;
+--blue-dark: #0d47a1;
+--blue-light: #eaf3ff;
+--navy: #102a43;
+--text: #243b53;
+--muted: #718096;
+--white: #ffffff;
+--border: #d5e3f2;
+
+
+min-height: calc(100vh - 80px);
+padding: 28px 30px 50px;
+
+/* BACKGROUND PALING BELAKANG SOLID */
+background: #eef4fb;
+
+color: var(--text);
+
+
+}
+
+/* =========================================================
+HEADER
+========================================================= */
+
+.materials-edit-header {
+position: relative;
+overflow: hidden;
+
+
+max-width: 1000px;
+margin: 0 auto 24px;
+
+padding: 28px 32px;
+
+border-radius: 20px;
+
+background: linear-gradient(
+    135deg,
+    #1769d5 0%,
+    #0d55b8 55%,
+    #0794b8 100%
+);
+
+box-shadow: 0 14px 32px rgba(23, 105, 213, 0.18);
+
+
+}
+
+.materials-edit-header-content {
+position: relative;
+z-index: 2;
+
+
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+gap: 25px;
+
+
+}
+
+.materials-edit-label {
+display: inline-block;
+
+
+margin-bottom: 7px;
+
+color: #d9efff;
+
+font-size: 11px;
+font-weight: 800;
+letter-spacing: 1.4px;
+
+
+}
+
+.materials-edit-header h1 {
+margin: 0 0 7px;
+
+
+color: #ffffff;
+
+font-size: 30px;
+line-height: 1.2;
+font-weight: 800;
+
+
+}
+
+.materials-edit-header p {
+margin: 0;
+
+
+color: #e7f3ff;
+
+font-size: 14px;
+line-height: 1.6;
+
+
+}
+
+.materials-edit-header p strong {
+color: #ffffff;
+}
+
+/* =========================================================
+HEADER DECORATION
+========================================================= */
+
+.materials-edit-decoration {
+position: absolute;
+
+
+border-radius: 50%;
+
+pointer-events: none;
+
+
+}
+
+.decoration-one {
+width: 180px;
+height: 180px;
+
+
+top: -85px;
+right: -65px;
+
+background: #2780df;
+
+
+}
+
+.decoration-two {
+width: 115px;
+height: 115px;
+
+
+right: 150px;
+bottom: -75px;
+
+background: #0a83a8;
+
+
+}
+
+/* =========================================================
+BACK BUTTON
+========================================================= */
+
+.materials-back-button {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
+
+flex-shrink: 0;
+
+min-height: 42px;
+
+padding: 0 18px;
+
+border: 1px solid #ffffff;
+border-radius: 10px;
+
+background: #ffffff;
+
+color: var(--blue);
+
+font-size: 13px;
+font-weight: 700;
+
+text-decoration: none;
+
+transition: all 0.2s ease;
+
+
+}
+
+.materials-back-button:hover {
+background: #eaf3ff;
+
+
+color: var(--blue-dark);
+
+transform: translateY(-1px);
+
+
+}
+
+/* =========================================================
+FORM CARD
+========================================================= */
+
+.materials-edit-card {
+max-width: 1000px;
+margin: 0 auto;
+
+
+overflow: hidden;
+
+border: 1px solid var(--border);
+border-radius: 18px;
+
+background: #ffffff;
+
+box-shadow: 0 10px 28px rgba(16, 42, 67, 0.08);
+
+
+}
+
+/* =========================================================
+CARD HEADER
+========================================================= */
+
+.materials-edit-card-header {
+position: relative;
+overflow: hidden;
+
+
+display: flex;
+align-items: center;
+
+gap: 15px;
+
+padding: 20px 25px;
+
+border-bottom: 1px solid var(--border);
+
+background: linear-gradient(
+    135deg,
+    #dcecff 0%,
+    #eaf4ff 48%,
+    #e0f5f7 100%
+);
+
+
+}
+
+.materials-edit-card-header::after {
+content: "";
+
+
+position: absolute;
+
+width: 105px;
+height: 105px;
+
+top: -50px;
+right: -35px;
+
+border-radius: 50%;
+
+background: #c7e0f7;
+
+
+}
+
+.materials-edit-icon {
+position: relative;
+z-index: 2;
+
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+width: 43px;
+height: 43px;
+
+flex-shrink: 0;
+
+border-radius: 12px;
+
+background: #1769d5;
+
+color: #ffffff;
+
+font-size: 21px;
+font-weight: 700;
+
+box-shadow: 0 6px 14px rgba(23, 105, 213, 0.2);
+
+
+}
+
+.materials-edit-card-header h2 {
+position: relative;
+z-index: 2;
+
+
+margin: 0 0 3px;
+
+color: var(--navy);
+
+font-size: 17px;
+font-weight: 800;
+
+
+}
+
+.materials-edit-card-header p {
+position: relative;
+z-index: 2;
+
+
+margin: 0;
+
+color: var(--muted);
+
+font-size: 13px;
+
+
+}
+
+/* =========================================================
+CARD BODY
+========================================================= */
+
+.materials-edit-card-body {
+padding: 28px 30px;
+}
+
+/* =========================================================
+FORM ELEMENT
+========================================================= */
+
+.materials-edit-card-body label {
+display: block;
+
+
+margin-bottom: 7px;
+
+color: var(--navy);
+
+font-size: 13px;
+font-weight: 700;
+
+
+}
+
+.materials-edit-card-body input[type="text"],
+.materials-edit-card-body input[type="url"],
+.materials-edit-card-body input[type="file"],
+.materials-edit-card-body textarea,
+.materials-edit-card-body select {
+width: 100%;
+
+
+padding: 10px 13px;
+
+border: 1px solid #cdddec;
+border-radius: 9px;
+
+background: #ffffff;
+
+color: var(--text);
+
+font-size: 14px;
+
+transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+
+
+}
+
+.materials-edit-card-body textarea {
+min-height: 120px;
+
+
+resize: vertical;
+
+
+}
+
+.materials-edit-card-body input:focus,
+.materials-edit-card-body textarea:focus,
+.materials-edit-card-body select:focus {
+border-color: var(--blue);
+
+
+background: #ffffff;
+
+outline: none;
+
+box-shadow: 0 0 0 3px #dcecff;
+
+
+}
+
+.materials-edit-card-body input[type="file"] {
+padding: 8px 10px;
+
+
+background: #f7faff;
+
+cursor: pointer;
+
+
+}
+
+.materials-edit-card-body input[type="file"]::file-selector-button {
+margin-right: 10px;
+
+
+padding: 7px 12px;
+
+border: 0;
+border-radius: 7px;
+
+background: #e2efff;
+
+color: var(--blue);
+
+font-size: 12px;
+font-weight: 700;
+
+cursor: pointer;
+
+
+}
+
+.materials-edit-card-body .form-text,
+.materials-edit-card-body small {
+color: var(--muted);
+
+
+font-size: 12px;
+
+
+}
+
+/* =========================================================
+CHECKBOX
+========================================================= */
+
+.materials-edit-card-body input[type="checkbox"] {
+width: 17px;
+height: 17px;
+
+
+accent-color: var(--blue);
+
+cursor: pointer;
+
+
+}
+
+.materials-edit-card-body .form-check {
+display: flex;
+align-items: center;
+
+
+gap: 9px;
+
+margin-top: 15px;
+
+
+}
+
+.materials-edit-card-body .form-check label {
+margin: 0;
+
+
+font-size: 13px;
+font-weight: 600;
+
+cursor: pointer;
+
+
+}
+
+/* =========================================================
+ERROR
+========================================================= */
+
+.materials-edit-card-body .text-danger {
+display: block;
+
+
+margin-top: 5px;
+
+color: #c0392b !important;
+
+font-size: 12px;
+font-weight: 600;
+
+
+}
+
+/* =========================================================
+ACTION BUTTON
+========================================================= */
+
+.materials-form-actions {
+display: flex;
+align-items: center;
+justify-content: flex-end;
+
+
+gap: 10px;
+
+margin-top: 26px;
+padding-top: 20px;
+
+border-top: 1px solid #e4edf7;
+
+
+}
+
+.materials-cancel-button,
+.materials-submit-button {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
+
+min-height: 40px;
+
+padding: 0 17px;
+
+border-radius: 9px;
+
+font-size: 13px;
+font-weight: 700;
+
+text-decoration: none;
+
+transition: all 0.2s ease;
+
+
+}
+
+/* BATAL */
+
+.materials-cancel-button {
+border: 1px solid #c9d7e6;
+
+
+background: #f5f8fc;
+
+color: #526579;
+
+
+}
+
+.materials-cancel-button:hover {
+border-color: #aebfd2;
+
+
+background: #eaf0f7;
+
+color: #34495e;
+
+
+}
+
+/* SIMPAN */
+
+.materials-submit-button {
+border: 1px solid #1769d5;
+
+
+background: #1769d5;
+
+color: #ffffff;
+
+cursor: pointer;
+
+box-shadow: 0 6px 14px rgba(23, 105, 213, 0.16);
+
+
+}
+
+.materials-submit-button:hover {
+border-color: #0d47a1;
+
+
+background: #0d47a1;
+
+color: #ffffff;
+
+transform: translateY(-1px);
+
+
+}
+
+/* =========================================================
+RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+
+
+.materials-edit-page {
+    padding: 20px 16px 35px;
+}
+
+
+.materials-edit-header {
+    padding: 24px 21px;
+
+    border-radius: 16px;
+}
+
+
+.materials-edit-header-content {
+    align-items: flex-start;
+
+    flex-direction: column;
+}
+
+
+.materials-edit-header h1 {
+    font-size: 25px;
+}
+
+
+.materials-edit-header p {
+    font-size: 13px;
+}
+
+
+.materials-back-button {
+    width: 100%;
+}
+
+
+.materials-edit-card {
+    border-radius: 15px;
+}
+
+
+.materials-edit-card-header {
+    padding: 18px 20px;
+}
+
+
+.materials-edit-card-body {
+    padding: 22px 20px;
+}
+
+
+.materials-form-actions {
+    flex-direction: column-reverse;
+
+    align-items: stretch;
+}
+
+
+.materials-cancel-button,
+.materials-submit-button {
+    width: 100%;
+}
+
+
+}
+
+@media (max-width: 480px) {
+
+
+.materials-edit-page {
+    padding: 15px 12px 30px;
+}
+
+
+.materials-edit-header {
+    padding: 21px 17px;
+}
+
+
+.materials-edit-header h1 {
+    font-size: 22px;
+}
+
+
+.materials-edit-label {
+    font-size: 10px;
+}
+
+
+.materials-edit-card-header {
+    gap: 11px;
+
+    padding: 16px;
+}
+
+
+.materials-edit-icon {
+    width: 38px;
+    height: 38px;
+
+    font-size: 19px;
+}
+
+
+.materials-edit-card-header h2 {
+    font-size: 15px;
+}
+
+
+.materials-edit-card-header p {
+    font-size: 12px;
+}
+
+
+.materials-edit-card-body {
+    padding: 20px 16px;
+}
+
+
+}

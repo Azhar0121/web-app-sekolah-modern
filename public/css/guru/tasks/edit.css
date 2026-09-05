@@ -1,0 +1,676 @@
+/* =========================================================
+EDIT TUGAS GURU
+Modern Institutional Blue
+========================================================= */
+
+.tasks-edit-page {
+--blue: #1769d5;
+--blue-dark: #0d47a1;
+--blue-light: #eaf3ff;
+--navy: #102a43;
+--text: #243b53;
+--muted: #718096;
+--white: #ffffff;
+--border: #d5e3f2;
+--border-soft: #e4edf7;
+--cyan: #0794b8;
+
+
+min-height: calc(100vh - 80px);
+
+padding: 28px 30px 50px;
+
+/* Background paling belakang solid */
+background: #eef4fb;
+
+color: var(--text);
+
+
+}
+
+/* =========================================================
+HEADER
+========================================================= */
+
+.tasks-edit-header {
+position: relative;
+overflow: hidden;
+
+
+max-width: 900px;
+
+margin: 0 auto 24px;
+
+padding: 28px 32px;
+
+border-radius: 20px;
+
+background: linear-gradient(
+    135deg,
+    #1769d5 0%,
+    #0d55b8 55%,
+    #0794b8 100%
+);
+
+box-shadow: 0 14px 32px rgba(23, 105, 213, 0.18);
+
+
+}
+
+.tasks-edit-header-content {
+position: relative;
+z-index: 2;
+}
+
+.tasks-edit-label {
+display: inline-block;
+
+
+margin-bottom: 7px;
+
+color: #d9efff;
+
+font-size: 11px;
+font-weight: 800;
+
+letter-spacing: 1.4px;
+
+
+}
+
+.tasks-edit-header h1 {
+margin: 0 0 7px;
+
+
+color: #ffffff;
+
+font-size: 30px;
+line-height: 1.2;
+
+font-weight: 800;
+
+
+}
+
+.tasks-edit-header p {
+margin: 0;
+
+
+color: #e7f3ff;
+
+font-size: 14px;
+
+line-height: 1.6;
+
+
+}
+
+.tasks-edit-header p strong {
+color: #ffffff;
+}
+
+/* =========================================================
+KEMBALI
+========================================================= */
+
+.tasks-edit-back-button {
+position: relative;
+z-index: 3;
+
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+width: fit-content;
+
+min-height: 38px;
+
+margin: 20px 0 0 auto;
+
+padding: 0 16px;
+
+border: 1px solid #ffffff;
+border-radius: 9px;
+
+background: #ffffff;
+
+color: var(--blue);
+
+font-size: 12px;
+font-weight: 700;
+
+text-decoration: none;
+
+transition: all 0.2s ease;
+
+
+}
+
+.tasks-edit-back-button:hover {
+background: #eaf3ff;
+
+
+color: var(--blue-dark);
+
+transform: translateY(-1px);
+
+
+}
+
+/* =========================================================
+HEADER DECORATION
+========================================================= */
+
+.tasks-edit-decoration {
+position: absolute;
+
+
+border-radius: 50%;
+
+pointer-events: none;
+
+
+}
+
+.tasks-edit-decoration.decoration-one {
+width: 180px;
+height: 180px;
+
+
+top: -85px;
+right: -60px;
+
+background: #2780df;
+
+
+}
+
+.tasks-edit-decoration.decoration-two {
+width: 115px;
+height: 115px;
+
+
+right: 160px;
+bottom: -75px;
+
+background: #0a83a8;
+
+
+}
+
+/* =========================================================
+MAIN CARD
+========================================================= */
+
+.tasks-edit-card {
+max-width: 900px;
+
+
+margin: 0 auto;
+
+overflow: hidden;
+
+border: 1px solid var(--border);
+
+border-radius: 18px;
+
+background: #ffffff;
+
+box-shadow: 0 10px 28px rgba(16, 42, 67, 0.08);
+
+
+}
+
+/* =========================================================
+CARD HEADER
+========================================================= */
+
+.tasks-edit-card-header {
+position: relative;
+overflow: hidden;
+
+
+display: flex;
+align-items: center;
+
+gap: 15px;
+
+padding: 20px 25px;
+
+border-bottom: 1px solid var(--border);
+
+background: linear-gradient(
+    135deg,
+    #dcecff 0%,
+    #eaf4ff 48%,
+    #e0f5f7 100%
+);
+
+
+}
+
+.tasks-edit-card-header::after {
+content: "";
+
+
+position: absolute;
+
+width: 120px;
+height: 120px;
+
+top: -60px;
+right: -40px;
+
+border-radius: 50%;
+
+background: #c7e0f7;
+
+
+}
+
+.tasks-edit-icon {
+position: relative;
+z-index: 2;
+
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+width: 43px;
+height: 43px;
+
+flex-shrink: 0;
+
+border-radius: 12px;
+
+background: #1769d5;
+
+color: #ffffff;
+
+font-size: 19px;
+font-weight: 700;
+
+box-shadow: 0 6px 14px rgba(23, 105, 213, 0.20);
+
+
+}
+
+.tasks-edit-card-header h2 {
+position: relative;
+z-index: 2;
+
+
+margin: 0 0 3px;
+
+color: var(--navy);
+
+font-size: 17px;
+
+font-weight: 800;
+
+
+}
+
+.tasks-edit-card-header p {
+position: relative;
+z-index: 2;
+
+
+margin: 0;
+
+color: var(--muted);
+
+font-size: 13px;
+
+
+}
+
+/* =========================================================
+CARD BODY
+========================================================= */
+
+.tasks-edit-card-body {
+padding: 28px;
+}
+
+/* =========================================================
+FORM ELEMENTS
+========================================================= */
+
+.tasks-edit-card-body label {
+display: block;
+
+
+margin-bottom: 7px;
+
+color: var(--navy);
+
+font-size: 13px;
+font-weight: 700;
+
+
+}
+
+.tasks-edit-card-body input:not([type="checkbox"]):not([type="radio"]),
+.tasks-edit-card-body textarea,
+.tasks-edit-card-body select {
+width: 100%;
+
+
+min-height: 42px;
+
+padding: 9px 12px;
+
+border: 1px solid #cbdbea;
+border-radius: 9px;
+
+background: #ffffff;
+
+color: var(--text);
+
+font-size: 14px;
+
+outline: none;
+
+transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+
+}
+
+.tasks-edit-card-body textarea {
+min-height: 120px;
+
+
+resize: vertical;
+
+
+}
+
+.tasks-edit-card-body input:not([type="checkbox"]):not([type="radio"]):focus,
+.tasks-edit-card-body textarea:focus,
+.tasks-edit-card-body select:focus {
+border-color: #1769d5;
+
+
+box-shadow: 0 0 0 3px rgba(23, 105, 213, 0.10);
+
+
+}
+
+.tasks-edit-card-body input[type="file"] {
+width: 100%;
+
+
+padding: 9px 11px;
+
+border: 1px dashed #9fc2e8;
+border-radius: 9px;
+
+background: #f4f8fc;
+
+color: var(--text);
+
+font-size: 13px;
+
+
+}
+
+.tasks-edit-card-body input[type="checkbox"],
+.tasks-edit-card-body input[type="radio"] {
+accent-color: #1769d5;
+}
+
+.tasks-edit-card-body .text-muted {
+color: var(--muted) !important;
+
+
+font-size: 12px;
+
+
+}
+
+/* =========================================================
+ERROR
+========================================================= */
+
+.tasks-edit-card-body .text-danger,
+.tasks-edit-card-body .invalid-feedback {
+color: #c0392b !important;
+
+
+font-size: 12px;
+font-weight: 600;
+
+
+}
+
+/* =========================================================
+FORM ACTIONS
+========================================================= */
+
+.tasks-edit-form-actions {
+display: flex;
+
+
+align-items: center;
+justify-content: flex-end;
+
+gap: 10px;
+
+margin-top: 25px;
+
+padding-top: 20px;
+
+border-top: 1px solid var(--border-soft);
+
+
+}
+
+.tasks-edit-cancel-button,
+.tasks-edit-submit-button {
+display: inline-flex;
+
+
+align-items: center;
+justify-content: center;
+
+min-height: 40px;
+
+padding: 0 17px;
+
+border-radius: 9px;
+
+font-size: 13px;
+font-weight: 700;
+
+text-decoration: none;
+
+transition: all 0.2s ease;
+
+
+}
+
+/* =========================================================
+BATAL
+========================================================= */
+
+.tasks-edit-cancel-button {
+border: 1px solid #cbdbea;
+
+
+background: #f4f7fa;
+
+color: #536b82;
+
+
+}
+
+.tasks-edit-cancel-button:hover {
+border-color: #aebfd1;
+
+
+background: #e9f0f6;
+
+color: #34495e;
+
+
+}
+
+/* =========================================================
+SIMPAN PERUBAHAN
+========================================================= */
+
+.tasks-edit-submit-button {
+border: 1px solid #1769d5;
+
+
+background: #1769d5;
+
+color: #ffffff;
+
+cursor: pointer;
+
+box-shadow: 0 5px 12px rgba(23, 105, 213, 0.15);
+
+
+}
+
+.tasks-edit-submit-button:hover {
+border-color: #0d47a1;
+
+
+background: #0d47a1;
+
+color: #ffffff;
+
+transform: translateY(-1px);
+
+
+}
+
+/* =========================================================
+RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+
+
+.tasks-edit-page {
+    padding: 20px 16px 35px;
+}
+
+
+.tasks-edit-header {
+    padding: 24px 21px;
+
+    border-radius: 16px;
+}
+
+
+.tasks-edit-header h1 {
+    font-size: 25px;
+}
+
+
+.tasks-edit-header p {
+    font-size: 13px;
+}
+
+
+.tasks-edit-card {
+    border-radius: 15px;
+}
+
+
+.tasks-edit-card-header {
+    padding: 18px 20px;
+}
+
+
+.tasks-edit-card-body {
+    padding: 22px 20px;
+}
+
+
+}
+
+@media (max-width: 480px) {
+
+
+.tasks-edit-page {
+    padding: 15px 12px 30px;
+}
+
+
+.tasks-edit-header {
+    padding: 21px 17px;
+}
+
+
+.tasks-edit-header h1 {
+    font-size: 22px;
+}
+
+
+.tasks-edit-label {
+    font-size: 10px;
+}
+
+
+.tasks-edit-back-button {
+    width: fit-content;
+
+    margin-left: auto;
+
+    font-size: 11px;
+}
+
+
+.tasks-edit-card-header {
+    gap: 11px;
+
+    padding: 16px;
+}
+
+
+.tasks-edit-icon {
+    width: 38px;
+    height: 38px;
+
+    font-size: 17px;
+}
+
+
+.tasks-edit-card-header h2 {
+    font-size: 15px;
+}
+
+
+.tasks-edit-card-header p {
+    font-size: 12px;
+}
+
+
+.tasks-edit-card-body {
+    padding: 18px 16px;
+}
+
+
+.tasks-edit-form-actions {
+    flex-direction: column-reverse;
+
+    align-items: stretch;
+}
+
+
+.tasks-edit-cancel-button,
+.tasks-edit-submit-button {
+    width: 100%;
+}
+
+
+}

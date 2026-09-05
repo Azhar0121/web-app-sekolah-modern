@@ -1,0 +1,1049 @@
+/* =========================================================
+   MATERI PEMBELAJARAN GURU
+   MODERN BLUE — STYLE SAMA DENGAN JADWAL MENGAJAR
+   ========================================================= */
+
+
+/* =========================================================
+   VARIABLES & PAGE BACKGROUND
+   ========================================================= */
+
+.materials-page {
+    --blue: #1769d5;
+    --blue-dark: #0d47a1;
+    --blue-light: #eaf3ff;
+    --blue-soft: #f3f8ff;
+
+    --navy: #102a43;
+    --text: #243b53;
+    --muted: #718096;
+
+    --bg: #eef4fb;
+    --white: #ffffff;
+
+    --border: #d5e3f2;
+    --border-soft: #e4edf7;
+
+    --cyan: #0794b8;
+
+    min-height: 100vh;
+    padding-bottom: 45px;
+
+    background:
+        radial-gradient(
+            circle at 5% 8%,
+            rgba(23, 105, 213, .14),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 95% 15%,
+            rgba(7, 148, 184, .13),
+            transparent 24%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(23, 105, 213, .07),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #eef4fb 0%,
+            #e8f2fc 50%,
+            #edf8fa 100%
+        );
+
+    color: var(--text);
+}
+
+
+/* =========================================================
+   HERO / HEADER ATAS
+   ========================================================= */
+
+.materials-header {
+    position: relative;
+    overflow: hidden;
+
+    min-height: 225px;
+    margin-bottom: 25px;
+    padding: 34px 37px;
+
+    border-radius: 20px;
+
+    background:
+        radial-gradient(
+            circle at 82% 18%,
+            rgba(255, 255, 255, .23),
+            transparent 23%
+        ),
+        radial-gradient(
+            circle at 105% 105%,
+            rgba(7, 148, 184, .35),
+            transparent 34%
+        ),
+        linear-gradient(
+            135deg,
+            #0d47a1 0%,
+            #1769d5 55%,
+            #058ba8 100%
+        );
+
+    box-shadow:
+        0 16px 35px rgba(13, 71, 161, .20);
+}
+
+
+/* Dekorasi lingkaran hero */
+
+.materials-header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 230px;
+    height: 230px;
+
+    right: -70px;
+    top: -95px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, .09);
+
+    pointer-events: none;
+}
+
+.materials-header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 145px;
+    height: 145px;
+
+    left: 45%;
+    bottom: -100px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, .07);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
+
+.materials-header-info {
+    position: relative;
+    z-index: 2;
+
+    max-width: 700px;
+}
+
+.materials-label {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 7px 13px;
+    margin-bottom: 12px;
+
+    border: 1px solid rgba(255, 255, 255, .28);
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, .12);
+
+    color: #ffffff !important;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: .8px;
+    text-transform: uppercase;
+}
+
+.materials-title {
+    margin: 0 0 8px;
+
+    color: #ffffff !important;
+
+    font-size: 29px;
+    font-weight: 800;
+
+    line-height: 1.2;
+}
+
+.materials-subtitle {
+    margin: 0;
+
+    color: rgba(255, 255, 255, .90) !important;
+
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   HERO BUTTONS
+   ========================================================= */
+
+.materials-header-actions {
+    position: absolute;
+
+    right: 32px;
+    bottom: 30px;
+
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+}
+
+.materials-header-actions .btn {
+    padding: 9px 15px;
+
+    border-radius: 10px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    transition: all .2s ease;
+}
+
+
+/* Dashboard */
+
+.materials-header-actions .btn-outline-secondary {
+    border: 1px solid rgba(255, 255, 255, .42) !important;
+
+    background: rgba(255, 255, 255, .10) !important;
+
+    color: #ffffff !important;
+
+    backdrop-filter: none !important;
+}
+
+.materials-header-actions .btn-outline-secondary:hover {
+    border-color: #ffffff !important;
+
+    background: #ffffff !important;
+
+    color: var(--blue-dark) !important;
+
+    transform: translateY(-1px);
+}
+
+
+/* Tambah Materi */
+
+.materials-header-actions .btn-primary {
+    border: 1px solid #ffffff !important;
+
+    background: #ffffff !important;
+
+    color: var(--blue-dark) !important;
+
+    box-shadow: 0 5px 14px rgba(0, 0, 0, .12);
+}
+
+.materials-header-actions .btn-primary:hover {
+    background: #f2f8ff !important;
+
+    color: var(--blue-dark) !important;
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 7px 18px rgba(0, 0, 0, .16);
+}
+
+
+/* =========================================================
+   CARD UTAMA
+   ========================================================= */
+
+.materials-card {
+    position: relative;
+    overflow: hidden;
+
+    border: 1px solid var(--border) !important;
+
+    border-radius: 18px !important;
+
+    background: #ffffff !important;
+
+    box-shadow:
+        0 10px 28px rgba(16, 42, 67, .09) !important;
+}
+
+
+/* =========================================================
+   HEADER "DAFTAR MATERI"
+   BAGIAN TEPAT DI ATAS TABEL
+   ========================================================= */
+
+.materials-card-header {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 22px 24px;
+
+    border-bottom: 1px solid #cbddec !important;
+
+    /*
+       BACKGROUND SOLID / TIDAK TRANSPARAN
+       Biru muda + cyan lembut
+    */
+    background:
+        linear-gradient(
+            135deg,
+            #dcecff 0%,
+            #eaf4ff 48%,
+            #e0f5f7 100%
+        ) !important;
+}
+
+
+/* =========================================================
+   DEKORASI HEADER DAFTAR MATERI
+   ========================================================= */
+
+/* Lingkaran kanan atas */
+
+.materials-card-header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 125px;
+    height: 125px;
+
+    right: -35px;
+    top: -65px;
+
+    border-radius: 50%;
+
+    background: #c9e0f7;
+
+    opacity: .85;
+
+    pointer-events: none;
+}
+
+
+/* Lingkaran kanan bawah */
+
+.materials-card-header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 65px;
+    height: 65px;
+
+    right: 105px;
+    bottom: -35px;
+
+    border-radius: 50%;
+
+    background: #c9ebef;
+
+    opacity: .95;
+
+    pointer-events: none;
+}
+
+
+/* Semua isi header berada di atas dekorasi */
+
+.materials-card-header > * {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   JUDUL "DAFTAR MATERI"
+   ========================================================= */
+
+.materials-card-header h4,
+.materials-card-header h5,
+.materials-card-header .fw-bold {
+    margin-bottom: 5px !important;
+
+    color: #102a43 !important;
+
+    font-size: 19px !important;
+
+    font-weight: 800 !important;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   DESKRIPSI
+   "Kelola materi pembelajaran untuk kelas ini."
+   ========================================================= */
+
+.materials-card-header p,
+.materials-card-header .text-muted {
+    margin-bottom: 0 !important;
+
+    color: #60758a !important;
+
+    font-size: 14px !important;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   TABLE WRAPPER
+   ========================================================= */
+
+.materials-card .table-responsive {
+    overflow-x: auto;
+
+    background: #ffffff !important;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.materials-page .materials-table {
+    width: 100%;
+
+    margin: 0 !important;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+
+    background: #ffffff !important;
+
+    font-size: 15px !important;
+}
+
+
+/* =========================================================
+   TABLE HEADER
+   ========================================================= */
+
+.materials-page .materials-table thead,
+.materials-page .materials-table thead.table-light {
+    background:
+        linear-gradient(
+            135deg,
+            #0d47a1 0%,
+            #1769d5 55%,
+            #078ba8 100%
+        ) !important;
+}
+
+.materials-page .materials-table thead tr {
+    background: transparent !important;
+}
+
+.materials-page .materials-table thead th {
+    padding: 15px 17px !important;
+
+    border: none !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0d47a1 0%,
+            #1769d5 55%,
+            #078ba8 100%
+        ) !important;
+
+    color: #ffffff !important;
+
+    font-size: 14px !important;
+
+    font-weight: 750 !important;
+
+    letter-spacing: .2px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   TABLE BODY
+   ========================================================= */
+
+.materials-page .materials-table tbody tr {
+    background: #ffffff !important;
+
+    transition:
+        background .2s ease,
+        box-shadow .2s ease;
+}
+
+
+/* Baris selang-seling */
+
+.materials-page .materials-table tbody tr:nth-child(even) {
+    background: #f4f8fc !important;
+}
+
+
+/* Hover */
+
+.materials-page .materials-table tbody tr:hover {
+    background: #e8f3ff !important;
+
+    box-shadow:
+        inset 4px 0 0 #1769d5;
+}
+
+
+/* =========================================================
+   CELL TABEL
+   ========================================================= */
+
+.materials-page .materials-table tbody td {
+    padding: 17px !important;
+
+    border-top: 1px solid var(--border-soft) !important;
+
+    border-bottom: none !important;
+
+    background: inherit !important;
+
+    color: var(--text) !important;
+
+    font-size: 15px !important;
+
+    line-height: 1.5;
+
+    vertical-align: middle;
+}
+
+
+/* =========================================================
+   JUDUL MATERI
+   ========================================================= */
+
+.material-title,
+.materials-page .material-title {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: var(--navy) !important;
+
+    font-size: 16px !important;
+
+    font-weight: 750 !important;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   DESKRIPSI MATERI
+   ========================================================= */
+
+.material-description,
+.materials-page .material-description {
+    margin-top: 4px;
+
+    color: var(--muted) !important;
+
+    font-size: 14px !important;
+
+    line-height: 1.5;
+}
+
+
+/* Bootstrap text-muted */
+
+.materials-page .materials-table .text-muted {
+    color: var(--muted) !important;
+}
+
+
+/* =========================================================
+   BADGE LAMPIRAN
+   ========================================================= */
+
+.material-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 7px 11px !important;
+
+    margin: 2px 3px 2px 0;
+
+    border: 1px solid #c9def2 !important;
+
+    border-radius: 8px !important;
+
+    background: #eaf3ff !important;
+
+    color: #1769d5 !important;
+
+    font-size: 13px !important;
+
+    font-weight: 650 !important;
+
+    line-height: 1.3;
+
+    text-decoration: none;
+}
+
+
+/* File */
+
+.materials-page .badge.text-bg-secondary {
+    padding: 7px 11px !important;
+
+    border: 1px solid #c5daf0 !important;
+
+    border-radius: 8px !important;
+
+    background: #e5f1ff !important;
+
+    color: #1769d5 !important;
+
+    font-size: 13px !important;
+
+    font-weight: 650 !important;
+}
+
+
+/* Link */
+
+.materials-page .badge.text-bg-info {
+    padding: 7px 11px !important;
+
+    border: 1px solid #b8dfe9 !important;
+
+    border-radius: 8px !important;
+
+    background: #e3f7fa !important;
+
+    color: #07809e !important;
+
+    font-size: 13px !important;
+
+    font-weight: 650 !important;
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.status-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 66px;
+
+    padding: 7px 12px !important;
+
+    border-radius: 999px !important;
+
+    font-size: 13px !important;
+
+    font-weight: 700 !important;
+}
+
+
+/* Terbit */
+
+.materials-page .badge.text-bg-success {
+    padding: 7px 12px !important;
+
+    border: 1px solid #bde5cf !important;
+
+    border-radius: 999px !important;
+
+    background: #dff6ea !important;
+
+    color: #18794e !important;
+
+    font-size: 13px !important;
+
+    font-weight: 700 !important;
+}
+
+
+/* Draft */
+
+.materials-page .badge.text-bg-light {
+    padding: 7px 12px !important;
+
+    border: 1px solid #d5e1ed !important;
+
+    border-radius: 999px !important;
+
+    background: #edf3f8 !important;
+
+    color: #718096 !important;
+
+    font-size: 13px !important;
+
+    font-weight: 700 !important;
+}
+
+
+/* =========================================================
+   TANGGAL
+   ========================================================= */
+
+.material-date {
+    color: var(--muted) !important;
+
+    font-size: 14px !important;
+
+    font-weight: 500;
+}
+
+.materials-page .materials-table .text-muted.small {
+    color: var(--muted) !important;
+
+    font-size: 14px !important;
+}
+
+
+/* =========================================================
+   TOMBOL AKSI
+   EDIT & HAPUS
+   ========================================================= */
+
+.materials-page .materials-table td:last-child {
+    white-space: nowrap;
+}
+
+
+/* Jarak antar tombol */
+
+.materials-page .materials-table td:last-child .btn {
+    margin-left: 4px;
+}
+
+
+/* =========================================================
+   TOMBOL EDIT — BIRU
+   ========================================================= */
+
+.materials-page .btn-edit,
+.materials-page .materials-table .btn-outline-secondary {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 58px;
+
+    padding: 7px 13px !important;
+
+    border: 1px solid #1769d5 !important;
+
+    border-radius: 8px !important;
+
+    background: #e5f0ff !important;
+
+    color: #1769d5 !important;
+
+    font-size: 13px !important;
+
+    font-weight: 700 !important;
+
+    box-shadow: none !important;
+
+    transition: all .2s ease;
+}
+
+
+/* Hover Edit */
+
+.materials-page .btn-edit:hover,
+.materials-page .materials-table .btn-outline-secondary:hover {
+    border-color: #0d47a1 !important;
+
+    background: #1769d5 !important;
+
+    color: #ffffff !important;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 5px 12px rgba(23, 105, 213, .20) !important;
+}
+
+
+/* =========================================================
+   TOMBOL HAPUS — MERAH
+   ========================================================= */
+
+.materials-page .btn-delete,
+.materials-page .materials-table .btn-outline-danger {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 65px;
+
+    padding: 7px 13px !important;
+
+    border: 1px solid #e26a6a !important;
+
+    border-radius: 8px !important;
+
+    background: #fff0f0 !important;
+
+    color: #c0392b !important;
+
+    font-size: 13px !important;
+
+    font-weight: 700 !important;
+
+    box-shadow: none !important;
+
+    transition: all .2s ease;
+}
+
+
+/* Hover Hapus */
+
+.materials-page .btn-delete:hover,
+.materials-page .materials-table .btn-outline-danger:hover {
+    border-color: #c0392b !important;
+
+    background: #d9534f !important;
+
+    color: #ffffff !important;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 5px 12px rgba(192, 57, 43, .18) !important;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.materials-empty {
+    min-height: 190px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 45px 20px !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #edf6ff 0%,
+            #eef9fb 100%
+        ) !important;
+
+    color: var(--muted);
+
+    font-size: 15px;
+
+    font-weight: 600;
+}
+
+
+/* Empty state dari Blade lama */
+
+.materials-page .materials-table tbody td.text-center.text-muted.py-4 {
+    padding: 55px 20px !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #edf6ff 0%,
+            #eef9fb 100%
+        ) !important;
+
+    color: var(--muted) !important;
+
+    font-size: 15px !important;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   HILANGKAN EFEK TRANSPARAN
+   ========================================================= */
+
+.materials-page .materials-card,
+.materials-page .materials-card-header,
+.materials-page .materials-table,
+.materials-page .materials-table tbody,
+.materials-page .materials-table tbody tr,
+.materials-page .materials-table tbody td {
+    backdrop-filter: none !important;
+}
+
+
+/* =========================================================
+   OVERRIDE BOOTSTRAP TABLE HOVER
+   ========================================================= */
+
+.materials-page .table-hover > tbody > tr:hover > * {
+    --bs-table-accent-bg: transparent !important;
+
+    background-color: transparent !important;
+
+    color: inherit !important;
+}
+
+
+/* Kembalikan warna hover custom */
+
+.materials-page .materials-table tbody tr:hover td {
+    background: #e8f3ff !important;
+
+    color: var(--text) !important;
+}
+
+
+/* =========================================================
+   LINK
+   ========================================================= */
+
+.materials-page a {
+    transition: all .2s ease;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 992px) {
+
+    .materials-header {
+        min-height: auto;
+
+        padding: 30px;
+    }
+
+    .materials-header-actions {
+        position: relative;
+
+        right: auto;
+        bottom: auto;
+
+        margin-top: 24px;
+    }
+
+    .materials-card-header {
+        padding: 20px 22px;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .materials-page {
+        padding-bottom: 25px;
+    }
+
+    .materials-header {
+        padding: 27px 24px;
+
+        border-radius: 17px;
+    }
+
+    .materials-title {
+        font-size: 24px;
+    }
+
+    .materials-subtitle {
+        font-size: 14px;
+    }
+
+    .materials-header-actions {
+        display: flex;
+
+        flex-wrap: wrap;
+
+        gap: 8px;
+
+        margin-top: 20px;
+    }
+
+    .materials-header-actions .btn {
+        font-size: 12px;
+
+        padding: 8px 12px;
+    }
+
+    .materials-card-header {
+        padding: 19px 18px;
+    }
+
+    .materials-card-header h4,
+    .materials-card-header h5,
+    .materials-card-header .fw-bold {
+        font-size: 17px !important;
+    }
+
+    .materials-card-header p,
+    .materials-card-header .text-muted {
+        font-size: 13px !important;
+    }
+
+    .materials-page .materials-table {
+        min-width: 760px;
+    }
+
+    .materials-page .materials-table tbody td {
+        padding: 15px !important;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .materials-header {
+        padding: 23px 19px;
+    }
+
+    .materials-title {
+        font-size: 22px;
+    }
+
+    .materials-label {
+        font-size: 10px;
+    }
+
+    .materials-header-actions .btn {
+        width: 100%;
+    }
+
+    .materials-card-header {
+        padding: 18px 16px;
+    }
+}
+
