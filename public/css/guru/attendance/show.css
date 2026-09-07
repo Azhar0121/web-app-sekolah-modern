@@ -1,0 +1,1387 @@
+/* =========================================================
+   GURU ATTENDANCE
+   MODERN • COLORFUL • COMPACT • CLEAN
+========================================================= */
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.attendance-page {
+    width: 100%;
+    max-width: 1450px;
+    margin: 0 auto;
+    padding: 5px 0 25px;
+    color: #172033;
+
+    background:
+        radial-gradient(
+            circle at 0% 0%,
+            rgba(59, 130, 246, 0.08),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 100% 80%,
+            rgba(14, 165, 233, 0.07),
+            transparent 28%
+        );
+}
+
+
+/* =========================================================
+   HEADER PRESENSI
+========================================================= */
+
+.attendance-header {
+    position: relative;
+    overflow: hidden;
+
+    margin-bottom: 16px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            120deg,
+            #1745a5 0%,
+            #2563eb 45%,
+            #0284c7 100%
+        );
+
+    box-shadow:
+        0 10px 25px rgba(37, 99, 235, 0.20);
+}
+
+
+/* dekorasi */
+
+.attendance-header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 270px;
+    height: 270px;
+
+    right: -80px;
+    top: -150px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.attendance-header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    right: 220px;
+    bottom: -125px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.07);
+}
+
+
+/* =========================================================
+   HEADER CONTENT
+========================================================= */
+
+.attendance-header-content {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 20px 24px;
+}
+
+
+/* =========================================================
+   HEADER TEXT
+========================================================= */
+
+.attendance-label {
+    display: inline-block;
+
+    margin-bottom: 5px;
+
+    color: rgba(255, 255, 255, 0.72);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.attendance-title h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.attendance-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 9px;
+
+    color: rgba(255, 255, 255, 0.88);
+
+    font-size: 12px;
+}
+
+.attendance-meta span {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 5px;
+}
+
+.attendance-meta i {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
+}
+
+.meta-divider {
+    opacity: 0.45;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.attendance-status {
+    flex-shrink: 0;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 9px 14px;
+
+    border-radius: 12px;
+
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 750;
+
+    background: rgba(255, 255, 255, 0.13);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.08);
+
+    backdrop-filter: blur(10px);
+}
+
+.status-open {
+    background: rgba(16, 185, 129, 0.22);
+}
+
+.status-closed {
+    background: rgba(15, 23, 42, 0.25);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 4px rgba(255, 255, 255, 0.10);
+}
+
+
+/* =========================================================
+   MAIN GRID
+========================================================= */
+
+.attendance-grid {
+    display: grid;
+
+    grid-template-columns:
+        400px
+        minmax(0, 1fr);
+
+    gap: 16px;
+
+    align-items: start;
+}
+
+
+/* =========================================================
+   SCANNER CARD
+========================================================= */
+
+.scanner-card {
+    position: relative;
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    border: 1px solid #bfdbfe;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 22px rgba(37, 99, 235, 0.09);
+}
+
+.scanner-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 120px;
+    height: 120px;
+
+    right: -50px;
+    bottom: -50px;
+
+    border-radius: 50%;
+
+    background: rgba(59, 130, 246, 0.07);
+}
+
+
+/* =========================================================
+   SCANNER HEADER
+========================================================= */
+
+.card-heading {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 15px 17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eff6ff 0%,
+            #dbeafe 55%,
+            #e0f2fe 100%
+        );
+
+    border-bottom: 1px solid #bfdbfe;
+}
+
+
+/* =========================================================
+   HEADING ICON
+========================================================= */
+
+.heading-icon {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #0284c7
+        );
+
+    box-shadow:
+        0 5px 12px rgba(37, 99, 235, 0.22);
+}
+
+.heading-icon i {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 19px;
+    line-height: 1;
+}
+
+
+.card-heading h5 {
+    margin: 0 0 2px;
+
+    color: #174ea6;
+
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.card-heading p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 10.5px;
+}
+
+
+/* =========================================================
+   SCANNER BODY
+========================================================= */
+
+.scanner-wrapper {
+    position: relative;
+    z-index: 2;
+
+    padding: 13px 15px 15px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f7fbff 0%,
+            #ffffff 100%
+        );
+}
+
+
+/* =========================================================
+   CAMERA FRAME
+========================================================= */
+
+.scanner-frame {
+    position: relative;
+
+    width: 100%;
+    height: 280px;
+
+    overflow: hidden;
+
+    display: block;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0f2d6b,
+            #164e9e 55%,
+            #075985
+        );
+
+    border: 3px solid #dbeafe;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.10),
+        0 8px 20px rgba(15, 54, 110, 0.15);
+}
+
+
+/* =========================================================
+   HTML5 QR CODE CONTAINER
+========================================================= */
+
+#reader {
+    position: absolute !important;
+
+    inset: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    border: 0 !important;
+
+    overflow: hidden !important;
+}
+
+
+/* wrapper bawaan html5-qrcode */
+
+#reader > div {
+    width: 100% !important;
+    max-width: none !important;
+
+    height: 100% !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    border: 0 !important;
+}
+
+
+/* area scan */
+
+#reader__scan_region {
+    position: absolute !important;
+
+    inset: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    max-width: none !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    overflow: hidden !important;
+
+    background: transparent !important;
+}
+
+
+/* =========================================================
+   VIDEO — FULL FRAME
+========================================================= */
+
+#reader video {
+    position: absolute !important;
+
+    inset: 0 !important;
+
+    display: block !important;
+
+    width: 100% !important;
+    min-width: 100% !important;
+
+    height: 100% !important;
+    min-height: 100% !important;
+
+    max-width: none !important;
+    max-height: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    object-fit: cover !important;
+
+    border-radius: 11px !important;
+
+    background: #0f172a !important;
+}
+
+
+/* hilangkan area kontrol bawaan */
+
+#reader__dashboard {
+    display: none !important;
+}
+
+#reader__dashboard_section {
+    display: none !important;
+}
+
+#reader__status_span {
+    display: none !important;
+}
+
+
+/* =========================================================
+   SCAN FRAME OVERLAY
+========================================================= */
+
+.scanner-frame::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 25px;
+
+    z-index: 5;
+
+    pointer-events: none;
+
+    border: 2px solid rgba(255, 255, 255, 0.72);
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 0 0 999px rgba(5, 28, 72, 0.10);
+}
+
+.scanner-corners {
+    position: absolute;
+
+    z-index: 6;
+
+    inset: 25px;
+
+    pointer-events: none;
+
+    border-radius: 14px;
+
+    border: 2px solid transparent;
+}
+
+
+/* =========================================================
+   SCAN FEEDBACK
+========================================================= */
+
+#scan-feedback {
+    margin-top: 10px;
+}
+
+.scan-alert {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 9px 11px;
+
+    border-radius: 10px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.04);
+}
+
+.scan-alert i {
+    font-size: 14px;
+}
+
+.scan-success {
+    color: #047857;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ecfdf5,
+            #d1fae5
+        );
+
+    border: 1px solid #a7f3d0;
+}
+
+.scan-error {
+    color: #be123c;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff1f2,
+            #ffe4e6
+        );
+
+    border: 1px solid #fecdd3;
+}
+
+
+/* =========================================================
+   INFO PANEL
+========================================================= */
+
+.scanner-info {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 10px;
+    padding: 11px 12px;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eff6ff,
+            #e0f2fe
+        );
+
+    border: 1px solid #bfdbfe;
+
+    color: #475569;
+
+    font-size: 10.5px;
+    line-height: 1.45;
+
+    box-shadow:
+        0 3px 10px rgba(37, 99, 235, 0.05);
+}
+
+.scanner-info i {
+    width: 28px;
+    height: 28px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    color: #2563eb;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 2px 6px rgba(37, 99, 235, 0.08);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   CAMERA ERROR
+========================================================= */
+
+.camera-error {
+    min-height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    color: rgba(255, 255, 255, 0.80);
+}
+
+.camera-error i {
+    margin-bottom: 4px;
+
+    color: #ffffff;
+
+    font-size: 30px;
+}
+
+.camera-error strong {
+    color: #ffffff;
+
+    font-size: 13px;
+}
+
+.camera-error span {
+    font-size: 10.5px;
+}
+
+
+/* =========================================================
+   ROSTER CARD
+========================================================= */
+
+.roster-card {
+    min-width: 0;
+
+    align-self: start;
+
+    overflow: hidden;
+
+    border: 1px solid #bfdbfe !important;
+
+    border-radius: 18px !important;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 22px rgba(37, 99, 235, 0.09) !important;
+}
+
+
+/* =========================================================
+   RESET PARTIAL ROSTER
+========================================================= */
+
+.roster-card .card {
+    margin: 0 !important;
+
+    border: 0 !important;
+
+    border-radius: 0 !important;
+
+    box-shadow: none !important;
+
+    background: transparent !important;
+}
+
+
+/* =========================================================
+   ROSTER HEADER
+========================================================= */
+
+.roster-card .card-header {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 52px;
+
+    padding: 14px 17px !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eff6ff 0%,
+            #dbeafe 55%,
+            #e0f2fe 100%
+        ) !important;
+
+    border: 0 !important;
+
+    border-bottom: 1px solid #bfdbfe !important;
+
+    color: #174ea6 !important;
+
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.roster-card .card-header::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #0ea5e9,
+            #06b6d4
+        );
+}
+
+.roster-card .card-header .text-muted,
+.roster-card .card-header small {
+    color: #2563eb !important;
+
+    font-size: 11px !important;
+    font-weight: 750;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.roster-card .table-responsive {
+    margin: 0;
+
+    border: 0;
+
+    overflow-x: auto;
+}
+
+.roster-card table {
+    width: 100%;
+
+    margin: 0 !important;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+
+    background: #ffffff;
+}
+
+
+/* header */
+
+.roster-card thead th {
+    padding: 10px 13px !important;
+
+    color: #475569 !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f8fafc,
+            #f1f5f9
+        ) !important;
+
+    border: 0 !important;
+
+    border-bottom: 1px solid #dbe4ef !important;
+
+    font-size: 10px !important;
+    font-weight: 800 !important;
+
+    letter-spacing: 0.45px;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+}
+
+.roster-card thead th:first-child {
+    padding-left: 17px !important;
+}
+
+
+/* body */
+
+.roster-card tbody td {
+    padding: 11px 13px !important;
+
+    color: #334155 !important;
+
+    background: #ffffff;
+
+    border: 0 !important;
+
+    border-bottom: 1px solid #edf2f7 !important;
+
+    font-size: 12px !important;
+
+    vertical-align: middle !important;
+}
+
+.roster-card tbody td:first-child {
+    padding-left: 17px !important;
+
+    color: #1e3a8a !important;
+
+    font-weight: 650 !important;
+}
+
+
+/* zebra */
+
+.roster-card tbody tr:nth-child(even) td {
+    background: #f8fbff;
+}
+
+
+/* hover */
+
+.roster-card tbody tr {
+    transition:
+        background 0.18s ease,
+        transform 0.18s ease;
+}
+
+.roster-card tbody tr:hover td {
+    background: #eff6ff !important;
+}
+
+.roster-card tbody tr:hover {
+    transform: translateX(1px);
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.roster-card .status-cell {
+    white-space: nowrap;
+}
+
+.roster-card .badge {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 78px;
+
+    padding: 6px 9px !important;
+
+    border-radius: 8px !important;
+
+    font-size: 10px !important;
+    font-weight: 750 !important;
+
+    border: 1px solid transparent;
+}
+
+
+/* HADIR */
+
+.roster-card .text-bg-success {
+    color: #047857 !important;
+
+    background: #d1fae5 !important;
+
+    border-color: #a7f3d0 !important;
+}
+
+
+/* BELUM ABSEN */
+
+.roster-card .text-bg-secondary,
+.roster-card .text-bg-dark {
+    color: #64748b !important;
+
+    background: #f1f5f9 !important;
+
+    border-color: #cbd5e1 !important;
+}
+
+
+/* IZIN */
+
+.roster-card .text-bg-warning {
+    color: #b45309 !important;
+
+    background: #fef3c7 !important;
+
+    border-color: #fde68a !important;
+}
+
+
+/* SAKIT */
+
+.roster-card .text-bg-info {
+    color: #0369a1 !important;
+
+    background: #e0f2fe !important;
+
+    border-color: #bae6fd !important;
+}
+
+
+/* ALPHA */
+
+.roster-card .text-bg-danger {
+    color: #be123c !important;
+
+    background: #ffe4e6 !important;
+
+    border-color: #fecdd3 !important;
+}
+
+
+/* =========================================================
+   SELECT MANUAL
+========================================================= */
+
+.roster-card select.form-select,
+.roster-card select {
+    min-width: 135px;
+
+    height: 35px;
+
+    padding: 5px 30px 5px 10px !important;
+
+    border: 1px solid #cbd5e1 !important;
+
+    border-radius: 9px !important;
+
+    background-color: #f8fafc !important;
+
+    color: #475569 !important;
+
+    font-size: 11px !important;
+    font-weight: 600;
+
+    box-shadow: none !important;
+
+    transition: 0.2s ease;
+}
+
+.roster-card select:hover {
+    border-color: #93c5fd !important;
+
+    background-color: #eff6ff !important;
+}
+
+.roster-card select:focus {
+    border-color: #3b82f6 !important;
+
+    background-color: #ffffff !important;
+
+    box-shadow:
+        0 0 0 3px rgba(59, 130, 246, 0.10) !important;
+
+    outline: none !important;
+}
+
+
+/* =========================================================
+   TABLE WIDTH
+========================================================= */
+
+.roster-card th:nth-child(1),
+.roster-card td:nth-child(1) {
+    width: 45%;
+}
+
+.roster-card th:nth-child(2),
+.roster-card td:nth-child(2) {
+    width: 18%;
+}
+
+.roster-card th:nth-child(3),
+.roster-card td:nth-child(3) {
+    width: 37%;
+}
+
+
+/* =========================================================
+   LAST ROW
+========================================================= */
+
+.roster-card tbody tr:last-child td {
+    border-bottom: 0 !important;
+}
+
+
+/* =========================================================
+   ACTION BAR
+========================================================= */
+
+.attendance-actions {
+    display: flex;
+    align-items: center;
+
+    margin-top: 14px;
+
+    padding: 11px 14px;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff7f7,
+            #fff1f2
+        );
+
+    border: 1px solid #fecdd3;
+
+    box-shadow:
+        0 5px 15px rgba(190, 24, 93, 0.05);
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+.btn-close-session {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 9px 16px;
+
+    border: 0;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ef4444,
+            #dc2626
+        );
+
+    color: #ffffff !important;
+
+    font-size: 12px;
+    font-weight: 750;
+
+    box-shadow:
+        0 5px 12px rgba(220, 38, 38, 0.20);
+
+    transition: 0.2s ease;
+}
+
+.btn-close-session:hover {
+    color: #ffffff !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dc2626,
+            #b91c1c
+        );
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(220, 38, 38, 0.25);
+}
+
+.btn-close-session i {
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.attendance-back {
+    display: flex;
+
+    align-items: center;
+
+    margin-top: 12px;
+}
+
+
+.btn-attendance-back {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 9px 15px;
+
+    border-radius: 10px;
+
+    border: 1px solid #bfdbfe;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eff6ff,
+            #dbeafe
+        );
+
+    color: #1d4ed8 !important;
+
+    font-size: 11.5px;
+
+    font-weight: 750;
+
+    text-decoration: none !important;
+
+    box-shadow:
+        0 4px 10px rgba(37, 99, 235, 0.08);
+
+    transition:
+        0.2s ease;
+}
+
+
+.btn-attendance-back i {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 14px;
+
+    line-height: 1;
+}
+
+
+.btn-attendance-back:hover {
+    color: #ffffff !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #0284c7
+        );
+
+    border-color: #2563eb;
+
+    transform: translateX(-2px);
+
+    box-shadow:
+        0 7px 16px rgba(37, 99, 235, 0.18);
+}
+
+
+/* =========================================================
+   CLOSED ROSTER
+========================================================= */
+
+.roster-closed {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 1150px) {
+
+    .attendance-grid {
+        grid-template-columns:
+            350px
+            minmax(0, 1fr);
+    }
+
+    .scanner-frame {
+        height: 270px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — SMALL LAPTOP
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .attendance-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .scanner-frame {
+        height: 320px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .attendance-header-content {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        padding: 18px;
+    }
+
+    .attendance-title h2 {
+        font-size: 20px;
+    }
+
+    .attendance-meta {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 4px;
+    }
+
+    .meta-divider {
+        display: none !important;
+    }
+
+    .attendance-status {
+        width: 100%;
+    }
+
+    .status-badge {
+        width: 100%;
+
+        justify-content: center;
+    }
+
+    .scanner-frame {
+        height: 300px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — PHONE
+========================================================= */
+
+@media (max-width: 450px) {
+
+    .attendance-page {
+        padding-top: 0;
+    }
+
+    .attendance-header {
+        border-radius: 15px;
+    }
+
+    .attendance-header-content {
+        padding: 16px;
+    }
+
+    .attendance-title h2 {
+        font-size: 18px;
+    }
+
+    .attendance-meta {
+        font-size: 11px;
+    }
+
+    .card-heading {
+        padding: 13px;
+    }
+
+    .scanner-wrapper {
+        padding: 11px;
+    }
+
+    .scanner-frame {
+        height: 250px;
+    }
+
+    .attendance-actions {
+        padding: 9px;
+    }
+
+    .btn-close-session {
+        width: 100%;
+    }
+
+    .btn-attendance-back {
+        width: 100%;
+    }
+
+    .roster-card select.form-select,
+    .roster-card select {
+        min-width: 115px;
+    }
+}
