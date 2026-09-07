@@ -192,6 +192,12 @@
                             <b>→</b>
                         </a>
 
+                        <a href="{{ route('guru.teaching-assignments.grades.index', $assignment) }}"
+                           class="guru-grade-btn">
+                            <span>Nilai</span>
+                            <b>→</b>
+                        </a>
+
                     </div>
 
                 </div>

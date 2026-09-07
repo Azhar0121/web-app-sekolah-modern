@@ -68,5 +68,15 @@
             </div>
         </a>
     </div>
+    <div class="col-md-6">
+        <a href="{{ route('siswa.grades.index') }}" class="text-decoration-none">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="fw-bold text-primary mb-1">📊 Nilai Rapor</h5>
+                    <p class="text-muted small mb-0">Lihat rekap nilai & grafik performa akademik Anda.</p>
+                </div>
+            </div>
+        </a>
+    </div>
 </div>
 @endsection

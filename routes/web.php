@@ -13,11 +13,13 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Guru\AttendanceController as GuruAttendanceController;
 use App\Http\Controllers\Guru\DashboardController as GuruDashboardController;
+use App\Http\Controllers\Guru\GradeController as GuruGradeController;
 use App\Http\Controllers\Guru\MaterialController as GuruMaterialController;
 use App\Http\Controllers\Guru\ScheduleController as GuruScheduleController;
 use App\Http\Controllers\Guru\TaskController as GuruTaskController;
 use App\Http\Controllers\PpdbController;
 use App\Http\Controllers\Siswa\AttendanceController as SiswaAttendanceController;
+use App\Http\Controllers\Siswa\GradeController as SiswaGradeController;
 use App\Http\Controllers\Siswa\MaterialController as SiswaMaterialController;
 use App\Http\Controllers\Siswa\QrCodeController as SiswaQrCodeController;
 use App\Http\Controllers\Siswa\ScheduleController as SiswaScheduleController;
@@ -118,6 +120,16 @@ Route::middleware(['auth', 'role:guru'])->prefix('guru')->name('guru.')->group(f
     Route::put('teaching-assignments/{teachingAssignment}/tasks/{task}/submissions/{submission}/grade', [GuruTaskController::class, 'grade'])
         ->name('teaching-assignments.tasks.submissions.grade');
 
+    // Nilai (input & bobot penilaian)
+    Route::get('teaching-assignments/{teachingAssignment}/nilai', [GuruGradeController::class, 'index'])
+        ->name('teaching-assignments.grades.index');
+    Route::put('teaching-assignments/{teachingAssignment}/nilai/bobot', [GuruGradeController::class, 'updateWeight'])
+        ->name('teaching-assignments.grades.update-weight');
+    Route::post('teaching-assignments/{teachingAssignment}/nilai', [GuruGradeController::class, 'storeBatch'])
+        ->name('teaching-assignments.grades.store-batch');
+    Route::delete('teaching-assignments/{teachingAssignment}/nilai/{grade}', [GuruGradeController::class, 'destroy'])
+        ->name('teaching-assignments.grades.destroy');
+
     // Jadwal Mengajar Pribadi
     Route::get('/jadwal', [GuruScheduleController::class, 'index'])->name('schedule.index');
 
@@ -135,6 +147,9 @@ Route::middleware(['auth', 'role:siswa'])->prefix('siswa')->name('siswa.')->grou
 
     // Jadwal Pelajaran
     Route::get('/jadwal', [SiswaScheduleController::class, 'index'])->name('schedule.index');
+
+    // Nilai Rapor & Grafik
+    Route::get('/nilai', [SiswaGradeController::class, 'index'])->name('grades.index');
 
     // Presensi/Absensi QR Code
     Route::get('/kartu-pelajar', [SiswaQrCodeController::class, 'show'])->name('qr-code.show');

@@ -47,4 +47,14 @@ class TeachingAssignment extends Model
     {
         return $this->hasMany(Schedule::class);
     }
+
+    public function grades(): HasMany
+    {
+        return $this->hasMany(Grade::class);
+    }
+
+    public function gradeWeights(): HasMany
+    {
+        return $this->hasMany(GradeWeight::class);
+    }
 }

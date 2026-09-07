@@ -731,7 +731,8 @@ gap: 7px;
 }
 
 .guru-material-btn,
-.guru-task-btn {
+.guru-task-btn,
+.guru-grade-btn {
 display: inline-flex;
 align-items: center;
 justify-content: space-between;
@@ -757,8 +758,15 @@ color: var(--guru-cyan);
 background: #f0fafb;
 }
 
+.guru-grade-btn {
+border: 1px solid #f5d9a8;
+color: #b8860b;
+background: #fdf7ec;
+}
+
 .guru-material-btn b,
-.guru-task-btn b {
+.guru-task-btn b,
+.guru-grade-btn b {
 font-size: 13px;
 font-weight: 500;
 }
@@ -773,6 +781,12 @@ background: var(--guru-blue);
 color: #ffffff;
 border-color: var(--guru-cyan);
 background: var(--guru-cyan);
+}
+
+.guru-grade-btn:hover {
+color: #ffffff;
+border-color: #b8860b;
+background: #b8860b;
 }
 
 /* =========================================================
@@ -879,7 +893,8 @@ RESPONSIVE
 }
 
 .guru-material-btn,
-.guru-task-btn {
+.guru-task-btn,
+.guru-grade-btn {
     min-width: 70px;
 }
 
@@ -986,7 +1001,8 @@ RESPONSIVE
 }
 
 .guru-material-btn,
-.guru-task-btn {
+.guru-task-btn,
+.guru-grade-btn {
     flex: 1;
 }
 
