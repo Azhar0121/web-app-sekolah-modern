@@ -8,14 +8,27 @@ use Illuminate\Support\Collection;
 
 class GradeCalculator
 {
+    public static function taskAverage(int $teachingAssignmentId, int $semesterId, int $studentId): ?float
+    {
+        $average = \App\Models\TaskSubmission::whereHas('task', function ($q) use ($teachingAssignmentId, $semesterId) {
+            $q->where('teaching_assignment_id', $teachingAssignmentId)
+                ->where('semester_id', $semesterId);
+        })
+            ->where('student_id', $studentId)
+            ->whereNotNull('grade')
+            ->avg('grade');
+
+        return $average !== null ? round((float) $average, 2) : null;
+    }
+
     /**
      * @return array{final: ?float, categoryAverages: array<string, ?float>, isComplete: bool}
      */
-    public static function calculate(Collection $grades, ?GradeWeight $weight): array
+    public static function calculate(Collection $grades, ?GradeWeight $weight, ?float $taskAverage = null): array
     {
-        $categoryAverages = [];
+        $categoryAverages = ['tugas' => $taskAverage];
 
-        foreach (Grade::CATEGORIES as $category) {
+        foreach (array_diff(Grade::CATEGORIES, ['tugas']) as $category) {
             $scores = $grades->where('category', $category)->pluck('score');
             $categoryAverages[$category] = $scores->isNotEmpty()
                 ? round((float) $scores->avg(), 2)

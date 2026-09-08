@@ -12,7 +12,7 @@ class Task extends Model
     use HasFactory;
 
     protected $fillable = [
-        'teaching_assignment_id', 'title', 'description',
+        'teaching_assignment_id', 'semester_id', 'title', 'description',
         'deadline', 'file_path', 'file_original_name', 'is_published',
     ];
 
@@ -27,6 +27,11 @@ class Task extends Model
     public function teachingAssignment(): BelongsTo
     {
         return $this->belongsTo(TeachingAssignment::class);
+    }
+
+    public function semester(): BelongsTo
+    {
+        return $this->belongsTo(Semester::class);
     }
 
     public function submissions(): HasMany

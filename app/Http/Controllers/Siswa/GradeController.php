@@ -48,9 +48,13 @@ class GradeController extends Controller
                     ->get()
                 : collect();
 
+            $taskAverage = $semester
+                ? GradeCalculator::taskAverage($assignment->id, $semester->id, $student->id)
+                : null;
+
             return [
                 'subject' => $assignment->subject,
-                'calc' => GradeCalculator::calculate($grades, $weight),
+                'calc' => GradeCalculator::calculate($grades, $weight, $taskAverage),
             ];
         });
 

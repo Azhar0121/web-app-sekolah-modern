@@ -7,6 +7,19 @@
 @endif
 
 <div class="mb-3">
+    <label for="semester_id" class="form-label">Semester</label>
+    <select name="semester_id" id="semester_id" class="form-select" required>
+        <option value="">-- Pilih Semester --</option>
+        @foreach ($semesters as $s)
+            <option value="{{ $s->id }}" @selected(old('semester_id', $task?->semester_id) == $s->id)>
+                Semester {{ $s->name }} @if ($s->is_active) (Aktif) @endif
+            </option>
+        @endforeach
+    </select>
+    <div class="form-text">Menentukan nilai Tugas ini masuk ke rekap Nilai semester yang mana.</div>
+</div>
+
+<div class="mb-3">
     <label for="title" class="form-label">Judul Tugas</label>
     <input type="text" name="title" id="title" class="form-control"
            value="{{ old('title', $task?->title) }}" required autofocus>

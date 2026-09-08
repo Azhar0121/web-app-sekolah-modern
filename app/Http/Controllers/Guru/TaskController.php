@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Guru;
 
 use App\Http\Controllers\Controller;
 use App\Models\ClassroomStudent;
+use App\Models\Semester;
 use App\Models\Task;
 use App\Models\TaskSubmission;
 use App\Models\TeachingAssignment;
@@ -30,7 +31,9 @@ class TaskController extends Controller
     {
         $this->authorizeAssignment($teachingAssignment);
 
-        return view('guru.tasks.create', compact('teachingAssignment'));
+        $semesters = Semester::where('academic_year_id', $teachingAssignment->academic_year_id)->get();
+
+        return view('guru.tasks.create', compact('teachingAssignment', 'semesters'));
     }
 
     public function store(Request $request, TeachingAssignment $teachingAssignment): RedirectResponse
@@ -61,7 +64,9 @@ class TaskController extends Controller
         $this->authorizeAssignment($teachingAssignment);
         $this->authorizeTask($teachingAssignment, $task);
 
-        return view('guru.tasks.edit', compact('teachingAssignment', 'task'));
+        $semesters = Semester::where('academic_year_id', $teachingAssignment->academic_year_id)->get();
+
+        return view('guru.tasks.edit', compact('teachingAssignment', 'task', 'semesters'));
     }
 
     public function update(Request $request, TeachingAssignment $teachingAssignment, Task $task): RedirectResponse
@@ -166,6 +171,7 @@ class TaskController extends Controller
     private function validateTask(Request $request): array
     {
         $validated = $request->validate([
+            'semester_id' => ['required', 'exists:semesters,id'],
             'title' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string', 'max:2000'],
             'deadline' => ['required', 'date'],
