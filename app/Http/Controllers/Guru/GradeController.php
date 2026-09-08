@@ -37,7 +37,6 @@ class GradeController extends Controller
         $grades = $semester
             ? Grade::where('teaching_assignment_id', $teachingAssignment->id)
                 ->where('semester_id', $semester->id)
-                ->where('category', '!=', 'tugas') // nilai Tugas sekarang otomatis dari modul Tugas, entri lama diabaikan
                 ->orderByDesc('created_at')
                 ->get()
                 ->groupBy('student_id')
@@ -45,11 +44,11 @@ class GradeController extends Controller
 
         $recaps = $students->mapWithKeys(function ($student) use ($grades, $weight, $teachingAssignment, $semester) {
             $studentGrades = $grades->get($student->id, collect());
-            $taskAverage = $semester
-                ? GradeCalculator::taskAverage($teachingAssignment->id, $semester->id, $student->id)
-                : null;
+            $taskScores = $semester
+                ? GradeCalculator::taskSubmissionScores($teachingAssignment->id, $semester->id, $student->id)
+                : [];
 
-            return [$student->id => GradeCalculator::calculate($studentGrades, $weight, $taskAverage)];
+            return [$student->id => GradeCalculator::calculate($studentGrades, $weight, $taskScores)];
         });
 
         return view('guru.grades.index', compact(
@@ -92,7 +91,7 @@ class GradeController extends Controller
 
         $validated = $request->validate([
             'semester_id' => ['required', 'exists:semesters,id'],
-            'category' => ['required', 'in:uh,uts,uas'],
+            'category' => ['required', 'in:tugas,uh,uts,uas'],
             'label' => ['required', 'string', 'max:100'],
             'scores' => ['required', 'array'],
             'scores.*' => ['nullable', 'numeric', 'min:0', 'max:100'],

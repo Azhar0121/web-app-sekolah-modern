@@ -91,20 +91,24 @@
                             <div class="col-md-5">
                                 <label class="form-label small">Kategori</label>
                                 <select name="category" class="form-select" required>
+                                    <option value="tugas">Tugas</option>
                                     <option value="uh">Ulangan Harian</option>
                                     <option value="uts">UTS/PTS</option>
                                     <option value="uas">UAS/PAS</option>
                                 </select>
                             </div>
                             <div class="col-md-7">
-                                <label class="form-label small">Label (mis. "UH Bab 3", "UAS Semester Ganjil")</label>
+                                <label class="form-label small">Label (mis. "Tugas Susulan", "UH Bab 3")</label>
                                 <input type="text" name="label" class="form-control" required placeholder="UH Bab 3">
                             </div>
                         </div>
 
                         <div class="alert alert-info py-2 small mb-3">
-                            Nilai <strong>Tugas</strong> tidak diinput di sini — otomatis diambil dari nilai
-                            tugas yang sudah Anda koreksi di menu <a href="{{ route('guru.teaching-assignments.tasks.index', $teachingAssignment) }}">Tugas</a>.
+                            Nilai tugas yang dikumpulkan &amp; dikoreksi lewat menu
+                            <a href="{{ route('guru.teaching-assignments.tasks.index', $teachingAssignment) }}">Tugas</a>
+                            sudah otomatis masuk ke kategori Tugas.
+                            Gunakan kategori <strong>Tugas</strong> di form ini hanya untuk kasus khusus:
+                            tugas susulan dengan toleransi guru, atau tugas yang diberikan di luar sistem.
                         </div>
 
                         <div class="table-responsive" style="max-height: 260px;">
@@ -144,7 +148,7 @@
                 <thead class="table-light">
                     <tr>
                         <th>Nama Siswa</th>
-                        <th class="text-center">Tugas <span class="text-muted small">(otomatis)</span></th>
+                        <th class="text-center">Tugas</th>
                         <th class="text-center">UH</th>
                         <th class="text-center">UTS</th>
                         <th class="text-center">UAS</th>
