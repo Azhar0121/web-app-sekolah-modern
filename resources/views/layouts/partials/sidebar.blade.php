@@ -6,6 +6,14 @@
             'label' => null,
             'items' => [
                 ['label' => 'Dashboard', 'route' => 'admin.dashboard', 'pattern' => 'admin.dashboard', 'icon' => 'dashboard', 'show' => $user->hasRole('super-admin')],
+                ['label' => 'Dashboard', 'route' => 'guru.dashboard', 'pattern' => 'guru.dashboard', 'icon' => 'dashboard', 'show' => $user->hasRole('guru')],
+            ],
+        ],
+        [
+            'label' => 'Portal Guru',
+            'items' => [
+                ['label' => 'Jadwal Mengajar', 'route' => 'guru.schedule.index', 'pattern' => 'guru.schedule.*', 'icon' => 'calendar', 'show' => $user->hasRole('guru')],
+                ['label' => 'Presensi Kelas', 'route' => 'guru.attendance.index', 'pattern' => 'guru.attendance.*', 'icon' => 'user-check', 'show' => $user->hasRole('guru')],
             ],
         ],
         [

@@ -96,7 +96,7 @@
 
                 <select name="role">
 
-                    <option value="">
+                    <option value="all" @selected($roleFilter === 'all')>
                         Semua Role
                     </option>
 
@@ -142,6 +142,22 @@
 
         </form>
 
+    </div>
+
+
+    {{-- ROLE QUICK TABS --}}
+    <div class="user-role-tabs">
+        <a href="{{ route('admin.users.index', array_filter(['search' => $search, 'role' => 'all'])) }}"
+           class="role-tab-btn {{ $roleFilter === 'all' ? 'active' : '' }}">
+            Semua Role
+        </a>
+
+        @foreach ($roles as $role)
+            <a href="{{ route('admin.users.index', array_filter(['search' => $search, 'role' => $role->slug])) }}"
+               class="role-tab-btn {{ $roleFilter === $role->slug ? 'active' : '' }}">
+                {{ $role->name }}
+            </a>
+        @endforeach
     </div>
 
 
@@ -327,7 +343,7 @@
         @if ($users->hasPages())
 
             <div class="users-pagination">
-                {{ $users->links() }}
+                {{ $users->links('pagination::bootstrap-5') }}
             </div>
 
         @endif

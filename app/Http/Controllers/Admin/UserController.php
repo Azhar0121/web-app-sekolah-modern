@@ -15,20 +15,24 @@ class UserController extends Controller
 {
     public function index(Request $request): View
     {
+        $roles = Role::orderBy('name')->get();
         $search = $request->string('search')->trim()->toString();
-        $roleFilter = $request->string('role')->toString();
+
+        if (! $request->has('role')) {
+            $roleFilter = $roles->first()?->slug ?? 'all';
+        } else {
+            $roleFilter = $request->string('role')->toString();
+        }
 
         $users = User::with('role')
             ->when($search, fn ($query) => $query->where(function ($q) use ($search) {
                 $q->where('name', 'like', "%{$search}%")
                     ->orWhere('email', 'like', "%{$search}%");
             }))
-            ->when($roleFilter, fn ($query) => $query->whereHas('role', fn ($q) => $q->where('slug', $roleFilter)))
+            ->when($roleFilter && $roleFilter !== 'all', fn ($query) => $query->whereHas('role', fn ($q) => $q->where('slug', $roleFilter)))
             ->orderBy('name')
             ->paginate(10)
             ->withQueryString();
-
-        $roles = Role::orderBy('name')->get();
 
         return view('admin.users.index', compact('users', 'roles', 'search', 'roleFilter'));
     }
