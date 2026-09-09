@@ -1,231 +1,271 @@
 /* =========================================================
    MATERI PEMBELAJARAN GURU
-   MODERN BLUE — STYLE SAMA DENGAN JADWAL MENGAJAR
+   MODERN BLUE — CLEAN & NEAT
    ========================================================= */
 
 
 /* =========================================================
-   VARIABLES & PAGE BACKGROUND
+   VARIABLES & PAGE
    ========================================================= */
 
 .materials-page {
     --blue: #1769d5;
     --blue-dark: #0d47a1;
     --blue-light: #eaf3ff;
-    --blue-soft: #f3f8ff;
+    --blue-soft: #f4f8fd;
+
+    --cyan: #078ba8;
+    --cyan-light: #e8f8fb;
 
     --navy: #102a43;
     --text: #243b53;
     --muted: #718096;
 
-    --bg: #eef4fb;
+    --bg: #f4f8fc;
     --white: #ffffff;
 
-    --border: #d5e3f2;
-    --border-soft: #e4edf7;
-
-    --cyan: #0794b8;
+    --border: #dbe6f1;
+    --border-soft: #e8eef5;
 
     min-height: 100vh;
     padding-bottom: 45px;
 
+    color: var(--text);
+
     background:
         radial-gradient(
-            circle at 5% 8%,
-            rgba(23, 105, 213, .14),
-            transparent 25%
+            circle at 4% 8%,
+            rgba(23, 105, 213, .08),
+            transparent 23%
         ),
         radial-gradient(
-            circle at 95% 15%,
-            rgba(7, 148, 184, .13),
-            transparent 24%
-        ),
-        radial-gradient(
-            circle at 50% 100%,
-            rgba(23, 105, 213, .07),
-            transparent 30%
+            circle at 96% 12%,
+            rgba(7, 139, 168, .07),
+            transparent 22%
         ),
         linear-gradient(
             135deg,
-            #eef4fb 0%,
-            #e8f2fc 50%,
-            #edf8fa 100%
+            #f5f8fc 0%,
+            #eef5fb 52%,
+            #f1f9fa 100%
         );
-
-    color: var(--text);
 }
 
 
 /* =========================================================
-   HERO / HEADER ATAS
+   HEADER / HERO
    ========================================================= */
 
 .materials-header {
     position: relative;
-    overflow: hidden;
 
-    min-height: 225px;
-    margin-bottom: 25px;
-    padding: 34px 37px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 205px;
+
+    margin-bottom: 22px;
+    padding: 30px 34px;
+
+    overflow: hidden;
 
     border-radius: 20px;
 
     background:
         radial-gradient(
-            circle at 82% 18%,
-            rgba(255, 255, 255, .23),
-            transparent 23%
+            circle at 88% 20%,
+            rgba(255, 255, 255, .20),
+            transparent 22%
         ),
         radial-gradient(
-            circle at 105% 105%,
-            rgba(7, 148, 184, .35),
-            transparent 34%
+            circle at 105% 110%,
+            rgba(7, 148, 184, .32),
+            transparent 35%
         ),
         linear-gradient(
             135deg,
             #0d47a1 0%,
-            #1769d5 55%,
-            #058ba8 100%
+            #1769d5 57%,
+            #078ba8 100%
         );
 
     box-shadow:
-        0 16px 35px rgba(13, 71, 161, .20);
+        0 14px 32px rgba(13, 71, 161, .18);
 }
 
 
-/* Dekorasi lingkaran hero */
+/* dekorasi hero kanan */
 
 .materials-header::before {
     content: "";
 
     position: absolute;
 
-    width: 230px;
-    height: 230px;
+    width: 250px;
+    height: 250px;
 
-    right: -70px;
-    top: -95px;
+    right: -80px;
+    top: -120px;
 
     border-radius: 50%;
 
-    background: rgba(255, 255, 255, .09);
+    border: 35px solid rgba(255, 255, 255, .07);
 
     pointer-events: none;
 }
+
 
 .materials-header::after {
     content: "";
 
     position: absolute;
 
-    width: 145px;
-    height: 145px;
+    width: 115px;
+    height: 115px;
 
-    left: 45%;
-    bottom: -100px;
+    right: 210px;
+    bottom: -70px;
 
     border-radius: 50%;
 
-    background: rgba(255, 255, 255, .07);
+    background: rgba(255, 255, 255, .06);
 
     pointer-events: none;
 }
 
 
 /* =========================================================
-   HERO CONTENT
+   HEADER CONTENT
    ========================================================= */
 
 .materials-header-info {
     position: relative;
     z-index: 2;
 
-    max-width: 700px;
+    max-width: 650px;
 }
+
+
+/* label */
 
 .materials-label {
     display: inline-flex;
     align-items: center;
 
-    padding: 7px 13px;
-    margin-bottom: 12px;
+    margin-bottom: 11px;
+    padding: 6px 12px;
 
-    border: 1px solid rgba(255, 255, 255, .28);
+    border: 1px solid rgba(255, 255, 255, .25);
     border-radius: 999px;
 
-    background: rgba(255, 255, 255, .12);
+    background: rgba(255, 255, 255, .10);
 
     color: #ffffff !important;
 
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 10px;
+    font-weight: 800;
 
-    letter-spacing: .8px;
+    letter-spacing: 1px;
     text-transform: uppercase;
 }
 
+
+/* judul */
+
 .materials-title {
-    margin: 0 0 8px;
+    margin: 0 0 7px;
 
     color: #ffffff !important;
 
-    font-size: 29px;
-    font-weight: 800;
+    font-size: 28px;
+    font-weight: 850;
 
     line-height: 1.2;
+    letter-spacing: -.5px;
 }
 
+
+/* subtitle */
+
 .materials-subtitle {
-    margin: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 
-    color: rgba(255, 255, 255, .90) !important;
+    gap: 9px;
 
-    font-size: 15px;
-    line-height: 1.6;
+    color: rgba(255, 255, 255, .86) !important;
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+.materials-subtitle span {
+    color: inherit !important;
+}
+
+
+.materials-subtitle .separator {
+    opacity: .55;
 }
 
 
 /* =========================================================
-   HERO BUTTONS
+   HEADER ACTIONS
    ========================================================= */
 
 .materials-header-actions {
-    position: absolute;
-
-    right: 32px;
-    bottom: 30px;
-
+    position: relative;
     z-index: 5;
 
     display: flex;
     align-items: center;
 
-    gap: 9px;
+    gap: 8px;
+
+    margin-left: 25px;
 }
 
+
+/* tombol */
+
 .materials-header-actions .btn {
-    padding: 9px 15px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-    border-radius: 10px;
+    min-height: 38px;
 
-    font-size: 13px;
-    font-weight: 700;
+    padding: 8px 13px;
 
-    transition: all .2s ease;
+    border-radius: 9px;
+
+    font-size: 11px;
+    font-weight: 750;
+
+    white-space: nowrap;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
 }
 
 
 /* Dashboard */
 
 .materials-header-actions .btn-outline-secondary {
-    border: 1px solid rgba(255, 255, 255, .42) !important;
+    border: 1px solid rgba(255, 255, 255, .35) !important;
 
     background: rgba(255, 255, 255, .10) !important;
 
     color: #ffffff !important;
 
-    backdrop-filter: none !important;
+    box-shadow: none !important;
 }
+
 
 .materials-header-actions .btn-outline-secondary:hover {
     border-color: #ffffff !important;
@@ -234,11 +274,14 @@
 
     color: var(--blue-dark) !important;
 
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 15px rgba(0, 0, 0, .12) !important;
 }
 
 
-/* Tambah Materi */
+/* Tambah */
 
 .materials-header-actions .btn-primary {
     border: 1px solid #ffffff !important;
@@ -247,26 +290,32 @@
 
     color: var(--blue-dark) !important;
 
-    box-shadow: 0 5px 14px rgba(0, 0, 0, .12);
+    box-shadow:
+        0 6px 15px rgba(0, 0, 0, .12) !important;
 }
 
+
 .materials-header-actions .btn-primary:hover {
-    background: #f2f8ff !important;
+    border-color: #f4f8ff !important;
+
+    background: #f4f8ff !important;
 
     color: var(--blue-dark) !important;
 
-    transform: translateY(-1px);
+    transform: translateY(-2px);
 
-    box-shadow: 0 7px 18px rgba(0, 0, 0, .16);
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, .16) !important;
 }
 
 
 /* =========================================================
-   CARD UTAMA
+   MAIN CARD
    ========================================================= */
 
 .materials-card {
     position: relative;
+
     overflow: hidden;
 
     border: 1px solid var(--border) !important;
@@ -276,45 +325,65 @@
     background: #ffffff !important;
 
     box-shadow:
-        0 10px 28px rgba(16, 42, 67, .09) !important;
+        0 8px 25px rgba(16, 42, 67, .07) !important;
 }
 
 
 /* =========================================================
-   HEADER "DAFTAR MATERI"
-   BAGIAN TEPAT DI ATAS TABEL
+   CARD HEADER
    ========================================================= */
 
 .materials-card-header {
     position: relative;
 
+    display: flex;
+    align-items: center;
+
+    min-height: 82px;
+
+    padding: 17px 23px;
+
     overflow: hidden;
 
-    padding: 22px 24px;
+    border-bottom: 1px solid #d7e4f0 !important;
 
-    border-bottom: 1px solid #cbddec !important;
-
-    /*
-       BACKGROUND SOLID / TIDAK TRANSPARAN
-       Biru muda + cyan lembut
-    */
     background:
         linear-gradient(
             135deg,
-            #dcecff 0%,
-            #eaf4ff 48%,
-            #e0f5f7 100%
+            #edf5ff 0%,
+            #f4f8ff 52%,
+            #eef9fa 100%
         ) !important;
 }
 
 
-/* =========================================================
-   DEKORASI HEADER DAFTAR MATERI
-   ========================================================= */
-
-/* Lingkaran kanan atas */
+/* aksen kiri */
 
 .materials-card-header::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 5px;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            180deg,
+            #1769d5,
+            #078ba8
+        );
+
+    pointer-events: none;
+}
+
+
+/* dekorasi */
+
+.materials-card-header::after {
     content: "";
 
     position: absolute;
@@ -322,82 +391,50 @@
     width: 125px;
     height: 125px;
 
-    right: -35px;
-    top: -65px;
+    right: -48px;
+    top: -70px;
 
     border-radius: 50%;
 
-    background: #c9e0f7;
-
-    opacity: .85;
+    border: 20px solid rgba(23, 105, 213, .06);
 
     pointer-events: none;
 }
 
 
-/* Lingkaran kanan bawah */
-
-.materials-card-header::after {
-    content: "";
-
-    position: absolute;
-
-    width: 65px;
-    height: 65px;
-
-    right: 105px;
-    bottom: -35px;
-
-    border-radius: 50%;
-
-    background: #c9ebef;
-
-    opacity: .95;
-
-    pointer-events: none;
-}
-
-
-/* Semua isi header berada di atas dekorasi */
+/* isi header */
 
 .materials-card-header > * {
     position: relative;
-
     z-index: 2;
 }
 
 
 /* =========================================================
-   JUDUL "DAFTAR MATERI"
+   CARD HEADER TITLE
    ========================================================= */
 
 .materials-card-header h4,
 .materials-card-header h5,
 .materials-card-header .fw-bold {
-    margin-bottom: 5px !important;
+    margin: 0 0 4px !important;
 
-    color: #102a43 !important;
+    color: var(--navy) !important;
 
-    font-size: 19px !important;
-
+    font-size: 17px !important;
     font-weight: 800 !important;
 
     line-height: 1.3;
 }
 
 
-/* =========================================================
-   DESKRIPSI
-   "Kelola materi pembelajaran untuk kelas ini."
-   ========================================================= */
-
 .materials-card-header p,
 .materials-card-header .text-muted {
-    margin-bottom: 0 !important;
+    margin: 0 !important;
 
-    color: #60758a !important;
+    color: #6b7f93 !important;
 
-    font-size: 14px !important;
+    font-size: 11px !important;
 
     line-height: 1.5;
 }
@@ -408,9 +445,32 @@
    ========================================================= */
 
 .materials-card .table-responsive {
+    width: 100%;
+
     overflow-x: auto;
 
     background: #ffffff !important;
+
+    scrollbar-width: thin;
+}
+
+
+/* scrollbar */
+
+.materials-card .table-responsive::-webkit-scrollbar {
+    height: 7px;
+}
+
+
+.materials-card .table-responsive::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+
+.materials-card .table-responsive::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+
+    background: #c5d5e6;
 }
 
 
@@ -421,15 +481,52 @@
 .materials-page .materials-table {
     width: 100%;
 
+    min-width: 900px;
+
     margin: 0 !important;
 
     border-collapse: separate;
-
     border-spacing: 0;
+
+    table-layout: fixed;
 
     background: #ffffff !important;
 
-    font-size: 15px !important;
+    font-size: 13px !important;
+}
+
+
+/* =========================================================
+   COLUMN WIDTH
+   ========================================================= */
+
+.materials-page .materials-table th:nth-child(1),
+.materials-page .materials-table td:nth-child(1) {
+    width: 31%;
+}
+
+
+.materials-page .materials-table th:nth-child(2),
+.materials-page .materials-table td:nth-child(2) {
+    width: 24%;
+}
+
+
+.materials-page .materials-table th:nth-child(3),
+.materials-page .materials-table td:nth-child(3) {
+    width: 13%;
+}
+
+
+.materials-page .materials-table th:nth-child(4),
+.materials-page .materials-table td:nth-child(4) {
+    width: 14%;
+}
+
+
+.materials-page .materials-table th:nth-child(5),
+.materials-page .materials-table td:nth-child(5) {
+    width: 18%;
 }
 
 
@@ -437,43 +534,57 @@
    TABLE HEADER
    ========================================================= */
 
-.materials-page .materials-table thead,
-.materials-page .materials-table thead.table-light {
+.materials-page .materials-table thead {
     background:
         linear-gradient(
-            135deg,
+            100deg,
             #0d47a1 0%,
             #1769d5 55%,
             #078ba8 100%
         ) !important;
 }
+
 
 .materials-page .materials-table thead tr {
     background: transparent !important;
 }
 
+
 .materials-page .materials-table thead th {
-    padding: 15px 17px !important;
+    height: 48px;
+
+    padding: 0 15px !important;
 
     border: none !important;
 
-    background:
-        linear-gradient(
-            135deg,
-            #0d47a1 0%,
-            #1769d5 55%,
-            #078ba8 100%
-        ) !important;
+    background: transparent !important;
 
     color: #ffffff !important;
 
-    font-size: 14px !important;
+    font-size: 10px !important;
+    font-weight: 800 !important;
 
-    font-weight: 750 !important;
+    letter-spacing: .7px;
 
-    letter-spacing: .2px;
+    text-transform: uppercase;
+
+    vertical-align: middle;
 
     white-space: nowrap;
+}
+
+
+/* header center */
+
+.materials-page .materials-table thead th.text-center {
+    text-align: center !important;
+}
+
+
+/* header action */
+
+.materials-page .materials-table thead th.text-end {
+    text-align: right !important;
 }
 
 
@@ -482,6 +593,8 @@
    ========================================================= */
 
 .materials-page .materials-table tbody tr {
+    position: relative;
+
     background: #ffffff !important;
 
     transition:
@@ -490,29 +603,31 @@
 }
 
 
-/* Baris selang-seling */
+/* zebra */
 
 .materials-page .materials-table tbody tr:nth-child(even) {
-    background: #f4f8fc !important;
+    background: #f8fbfe !important;
 }
 
 
-/* Hover */
+/* hover */
 
 .materials-page .materials-table tbody tr:hover {
-    background: #e8f3ff !important;
+    background: #eef6ff !important;
 
     box-shadow:
-        inset 4px 0 0 #1769d5;
+        inset 4px 0 0 var(--blue);
 }
 
 
 /* =========================================================
-   CELL TABEL
+   TABLE CELL
    ========================================================= */
 
 .materials-page .materials-table tbody td {
-    padding: 17px !important;
+    height: 76px;
+
+    padding: 12px 15px !important;
 
     border-top: 1px solid var(--border-soft) !important;
 
@@ -522,123 +637,139 @@
 
     color: var(--text) !important;
 
-    font-size: 15px !important;
+    font-size: 12px !important;
 
-    line-height: 1.5;
+    line-height: 1.45;
 
     vertical-align: middle;
 }
 
 
 /* =========================================================
-   JUDUL MATERI
+   MATERIAL TITLE
    ========================================================= */
 
 .material-title,
 .materials-page .material-title {
     display: block;
 
-    margin-bottom: 3px;
+    max-width: 100%;
+
+    margin: 0 0 4px;
+
+    overflow: hidden;
 
     color: var(--navy) !important;
 
-    font-size: 16px !important;
-
-    font-weight: 750 !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
 
     line-height: 1.4;
+
+    text-overflow: ellipsis;
 }
 
 
-/* =========================================================
-   DESKRIPSI MATERI
-   ========================================================= */
+/* description */
 
 .material-description,
 .materials-page .material-description {
-    margin-top: 4px;
+    display: -webkit-box;
+
+    max-width: 100%;
+
+    margin: 0;
+
+    overflow: hidden;
 
     color: var(--muted) !important;
 
-    font-size: 14px !important;
+    font-size: 10px !important;
 
     line-height: 1.5;
-}
 
-
-/* Bootstrap text-muted */
-
-.materials-page .materials-table .text-muted {
-    color: var(--muted) !important;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 
 /* =========================================================
-   BADGE LAMPIRAN
+   ATTACHMENTS
    ========================================================= */
+
+.material-attachments {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 5px;
+
+    max-width: 100%;
+}
+
+
+/* badge */
 
 .material-badge {
     display: inline-flex;
-
     align-items: center;
 
-    padding: 7px 11px !important;
+    max-width: 100%;
 
-    margin: 2px 3px 2px 0;
+    padding: 6px 9px !important;
 
-    border: 1px solid #c9def2 !important;
+    margin: 0 !important;
 
-    border-radius: 8px !important;
+    overflow: hidden;
 
-    background: #eaf3ff !important;
+    border: 1px solid #cfe0f2 !important;
+
+    border-radius: 7px !important;
+
+    background: #edf5ff !important;
 
     color: #1769d5 !important;
 
-    font-size: 13px !important;
-
-    font-weight: 650 !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
 
     line-height: 1.3;
 
     text-decoration: none;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
 }
 
 
-/* File */
+/* file */
 
-.materials-page .badge.text-bg-secondary {
-    padding: 7px 11px !important;
+.material-badge.file-badge {
+    border-color: #cbdff4 !important;
 
-    border: 1px solid #c5daf0 !important;
-
-    border-radius: 8px !important;
-
-    background: #e5f1ff !important;
+    background: #edf5ff !important;
 
     color: #1769d5 !important;
-
-    font-size: 13px !important;
-
-    font-weight: 650 !important;
 }
 
 
-/* Link */
+/* link */
 
-.materials-page .badge.text-bg-info {
-    padding: 7px 11px !important;
+.material-badge.link-badge {
+    border-color: #c5e4ea !important;
 
-    border: 1px solid #b8dfe9 !important;
+    background: #edf9fa !important;
 
-    border-radius: 8px !important;
+    color: #087d98 !important;
+}
 
-    background: #e3f7fa !important;
 
-    color: #07809e !important;
+.material-badge:hover {
+    transform: translateY(-1px);
 
-    font-size: 13px !important;
-
-    font-weight: 650 !important;
+    box-shadow:
+        0 4px 10px rgba(23, 105, 213, .08);
 }
 
 
@@ -648,136 +779,129 @@
 
 .status-badge {
     display: inline-flex;
-
     align-items: center;
-
-    justify-content: center;
-
-    min-width: 66px;
-
-    padding: 7px 12px !important;
-
-    border-radius: 999px !important;
-
-    font-size: 13px !important;
-
-    font-weight: 700 !important;
-}
-
-
-/* Terbit */
-
-.materials-page .badge.text-bg-success {
-    padding: 7px 12px !important;
-
-    border: 1px solid #bde5cf !important;
-
-    border-radius: 999px !important;
-
-    background: #dff6ea !important;
-
-    color: #18794e !important;
-
-    font-size: 13px !important;
-
-    font-weight: 700 !important;
-}
-
-
-/* Draft */
-
-.materials-page .badge.text-bg-light {
-    padding: 7px 12px !important;
-
-    border: 1px solid #d5e1ed !important;
-
-    border-radius: 999px !important;
-
-    background: #edf3f8 !important;
-
-    color: #718096 !important;
-
-    font-size: 13px !important;
-
-    font-weight: 700 !important;
-}
-
-
-/* =========================================================
-   TANGGAL
-   ========================================================= */
-
-.material-date {
-    color: var(--muted) !important;
-
-    font-size: 14px !important;
-
-    font-weight: 500;
-}
-
-.materials-page .materials-table .text-muted.small {
-    color: var(--muted) !important;
-
-    font-size: 14px !important;
-}
-
-
-/* =========================================================
-   TOMBOL AKSI
-   EDIT & HAPUS
-   ========================================================= */
-
-.materials-page .materials-table td:last-child {
-    white-space: nowrap;
-}
-
-
-/* Jarak antar tombol */
-
-.materials-page .materials-table td:last-child .btn {
-    margin-left: 4px;
-}
-
-
-/* =========================================================
-   TOMBOL EDIT — BIRU
-   ========================================================= */
-
-.materials-page .btn-edit,
-.materials-page .materials-table .btn-outline-secondary {
-    display: inline-flex;
-
-    align-items: center;
-
     justify-content: center;
 
     min-width: 58px;
 
-    padding: 7px 13px !important;
+    padding: 6px 10px !important;
 
-    border: 1px solid #1769d5 !important;
+    border-radius: 999px !important;
 
-    border-radius: 8px !important;
+    font-size: 10px !important;
+    font-weight: 800 !important;
 
-    background: #e5f0ff !important;
-
-    color: #1769d5 !important;
-
-    font-size: 13px !important;
-
-    font-weight: 700 !important;
-
-    box-shadow: none !important;
-
-    transition: all .2s ease;
+    line-height: 1.3;
 }
 
 
-/* Hover Edit */
+/* published */
 
-.materials-page .btn-edit:hover,
-.materials-page .materials-table .btn-outline-secondary:hover {
-    border-color: #0d47a1 !important;
+.materials-page .status-published {
+    border: 1px solid #bce3cd !important;
+
+    background: #e3f7eb !important;
+
+    color: #18794e !important;
+}
+
+
+/* draft */
+
+.materials-page .status-draft {
+    border: 1px solid #d7e1ea !important;
+
+    background: #f0f4f8 !important;
+
+    color: #718096 !important;
+}
+
+
+/* =========================================================
+   DATE
+   ========================================================= */
+
+.material-date {
+    display: inline-flex;
+    align-items: center;
+
+    color: #718096 !important;
+
+    font-size: 11px !important;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+.materials-page .materials-table .text-muted.small {
+    color: var(--muted) !important;
+
+    font-size: 11px !important;
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.materials-page .materials-table td:last-child {
+    white-space: nowrap;
+
+    text-align: right;
+}
+
+
+.material-actions {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 5px;
+}
+
+
+/* tombol aksi */
+
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 48px;
+    min-height: 30px;
+
+    padding: 5px 9px !important;
+
+    border-radius: 7px !important;
+
+    font-size: 10px !important;
+    font-weight: 750 !important;
+
+    text-decoration: none;
+
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        background .18s ease;
+}
+
+
+/* =========================================================
+   EDIT
+   ========================================================= */
+
+.materials-page .btn-edit {
+    border: 1px solid #c6dcf5 !important;
+
+    background: #edf5ff !important;
+
+    color: #1769d5 !important;
+}
+
+
+.materials-page .btn-edit:hover {
+    border-color: #1769d5 !important;
 
     background: #1769d5 !important;
 
@@ -786,48 +910,24 @@
     transform: translateY(-1px);
 
     box-shadow:
-        0 5px 12px rgba(23, 105, 213, .20) !important;
+        0 5px 12px rgba(23, 105, 213, .18);
 }
 
 
 /* =========================================================
-   TOMBOL HAPUS — MERAH
+   DELETE
    ========================================================= */
 
-.materials-page .btn-delete,
-.materials-page .materials-table .btn-outline-danger {
-    display: inline-flex;
+.materials-page .btn-delete {
+    border: 1px solid #f0caca !important;
 
-    align-items: center;
-
-    justify-content: center;
-
-    min-width: 65px;
-
-    padding: 7px 13px !important;
-
-    border: 1px solid #e26a6a !important;
-
-    border-radius: 8px !important;
-
-    background: #fff0f0 !important;
+    background: #fff3f3 !important;
 
     color: #c0392b !important;
-
-    font-size: 13px !important;
-
-    font-weight: 700 !important;
-
-    box-shadow: none !important;
-
-    transition: all .2s ease;
 }
 
 
-/* Hover Hapus */
-
-.materials-page .btn-delete:hover,
-.materials-page .materials-table .btn-outline-danger:hover {
+.materials-page .btn-delete:hover {
     border-color: #c0392b !important;
 
     background: #d9534f !important;
@@ -837,7 +937,7 @@
     transform: translateY(-1px);
 
     box-shadow:
-        0 5px 12px rgba(192, 57, 43, .18) !important;
+        0 5px 12px rgba(192, 57, 43, .16);
 }
 
 
@@ -846,53 +946,80 @@
    ========================================================= */
 
 .materials-empty {
-    min-height: 190px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
+    flex-direction: column;
+
+    min-height: 230px;
 
     padding: 45px 20px !important;
 
+    text-align: center;
+
     background:
         linear-gradient(
             135deg,
-            #edf6ff 0%,
-            #eef9fb 100%
+            #f1f7ff 0%,
+            #f2fafb 100%
         ) !important;
 
     color: var(--muted);
-
-    font-size: 15px;
-
-    font-weight: 600;
 }
 
 
-/* Empty state dari Blade lama */
+/* icon */
 
-.materials-page .materials-table tbody td.text-center.text-muted.py-4 {
-    padding: 55px 20px !important;
+.materials-empty .empty-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    background:
-        linear-gradient(
-            135deg,
-            #edf6ff 0%,
-            #eef9fb 100%
-        ) !important;
+    width: 52px;
+    height: 52px;
 
-    color: var(--muted) !important;
+    margin-bottom: 13px;
 
-    font-size: 15px !important;
+    border: 1px solid #d5e5f5;
 
-    font-weight: 600;
+    border-radius: 15px;
+
+    background: #ffffff;
+
+    font-size: 22px;
+
+    box-shadow:
+        0 7px 18px rgba(23, 105, 213, .08);
+}
+
+
+/* title */
+
+.materials-empty .empty-title {
+    margin-bottom: 5px;
+
+    color: var(--navy);
+
+    font-size: 14px;
+    font-weight: 800;
+}
+
+
+/* text */
+
+.materials-empty .empty-text {
+    max-width: 400px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    line-height: 1.5;
 }
 
 
 /* =========================================================
-   HILANGKAN EFEK TRANSPARAN
+   REMOVE TRANSPARENCY
    ========================================================= */
 
 .materials-page .materials-card,
@@ -906,7 +1033,7 @@
 
 
 /* =========================================================
-   OVERRIDE BOOTSTRAP TABLE HOVER
+   BOOTSTRAP OVERRIDE
    ========================================================= */
 
 .materials-page .table-hover > tbody > tr:hover > * {
@@ -918,26 +1045,30 @@
 }
 
 
-/* Kembalikan warna hover custom */
+/* custom hover */
 
 .materials-page .materials-table tbody tr:hover td {
-    background: #e8f3ff !important;
+    background: #eef6ff !important;
 
     color: var(--text) !important;
 }
 
 
 /* =========================================================
-   LINK
+   GENERAL LINK
    ========================================================= */
 
 .materials-page a {
-    transition: all .2s ease;
+    transition:
+        color .2s ease,
+        background .2s ease,
+        transform .2s ease,
+        box-shadow .2s ease;
 }
 
 
 /* =========================================================
-   RESPONSIVE
+   RESPONSIVE — 992px
    ========================================================= */
 
 @media (max-width: 992px) {
@@ -945,23 +1076,31 @@
     .materials-header {
         min-height: auto;
 
-        padding: 30px;
+        padding: 28px 30px;
     }
 
     .materials-header-actions {
-        position: relative;
+        margin-top: 20px;
+    }
 
-        right: auto;
-        bottom: auto;
+    .materials-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
 
-        margin-top: 24px;
+    .materials-header-actions {
+        margin-left: 0;
     }
 
     .materials-card-header {
-        padding: 20px 22px;
+        padding: 18px 21px;
     }
 }
 
+
+/* =========================================================
+   RESPONSIVE — 768px
+   ========================================================= */
 
 @media (max-width: 768px) {
 
@@ -969,81 +1108,167 @@
         padding-bottom: 25px;
     }
 
+
+    /* hero */
+
     .materials-header {
-        padding: 27px 24px;
+        padding: 25px 23px;
 
         border-radius: 17px;
     }
+
 
     .materials-title {
         font-size: 24px;
     }
 
+
     .materials-subtitle {
-        font-size: 14px;
+        font-size: 12px;
     }
+
+
+    /* actions */
 
     .materials-header-actions {
         display: flex;
 
-        flex-wrap: wrap;
+        width: 100%;
 
-        gap: 8px;
+        gap: 7px;
 
-        margin-top: 20px;
+        margin-top: 19px;
     }
+
 
     .materials-header-actions .btn {
-        font-size: 12px;
+        min-height: 36px;
 
-        padding: 8px 12px;
+        padding: 7px 11px;
+
+        font-size: 10px;
     }
+
+
+    /* card */
+
+    .materials-card {
+        border-radius: 15px !important;
+    }
+
 
     .materials-card-header {
-        padding: 19px 18px;
+        min-height: 74px;
+
+        padding: 17px 18px;
     }
+
 
     .materials-card-header h4,
     .materials-card-header h5,
     .materials-card-header .fw-bold {
-        font-size: 17px !important;
+        font-size: 16px !important;
     }
+
 
     .materials-card-header p,
     .materials-card-header .text-muted {
-        font-size: 13px !important;
+        font-size: 10px !important;
     }
+
+
+    /* table */
 
     .materials-page .materials-table {
-        min-width: 760px;
+        min-width: 850px;
     }
 
+
     .materials-page .materials-table tbody td {
-        padding: 15px !important;
+        height: 72px;
+
+        padding: 11px 13px !important;
+    }
+
+
+    .material-title,
+    .materials-page .material-title {
+        font-size: 12px !important;
+    }
+
+
+    .material-description,
+    .materials-page .material-description {
+        font-size: 9px !important;
     }
 }
 
+
+/* =========================================================
+   RESPONSIVE — 480px
+   ========================================================= */
 
 @media (max-width: 480px) {
 
     .materials-header {
-        padding: 23px 19px;
+        padding: 22px 18px;
+
+        border-radius: 15px;
     }
 
-    .materials-title {
-        font-size: 22px;
-    }
 
     .materials-label {
-        font-size: 10px;
+        padding: 5px 10px;
+
+        font-size: 9px;
     }
 
-    .materials-header-actions .btn {
+
+    .materials-title {
+        font-size: 21px;
+    }
+
+
+    .materials-subtitle {
+        gap: 6px;
+
+        font-size: 11px;
+    }
+
+
+    .materials-header-actions {
+        flex-direction: column;
+
         width: 100%;
     }
 
+
+    .materials-header-actions .btn {
+        width: 100%;
+
+        min-height: 37px;
+    }
+
+
     .materials-card-header {
-        padding: 18px 16px;
+        padding: 16px;
+    }
+
+
+    .materials-card-header h4,
+    .materials-card-header h5,
+    .materials-card-header .fw-bold {
+        font-size: 15px !important;
+    }
+
+
+    .materials-card-header p,
+    .materials-card-header .text-muted {
+        font-size: 10px !important;
+    }
+
+
+    .materials-page .materials-table {
+        min-width: 820px;
     }
 }
-

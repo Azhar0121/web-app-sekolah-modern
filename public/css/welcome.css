@@ -832,10 +832,9 @@
     background:
         linear-gradient(
             145deg,
-            #0756a6,
-            #0a68c7
+            #071b35,
+            #0b4f8a
         );
-
     border-color: transparent;
 }
 
@@ -2881,21 +2880,33 @@
    NAVBAR — MODERN SCHOOL
    ========================================================= */
 
+/* =========================================================
+   SCHOOL NAVBAR
+========================================================= */
+
 .school-navbar {
-    position: relative;
+    position: sticky;
+    top: 0;
+
     z-index: 1000;
 
     width: 100%;
 
-    background: rgba(255, 255, 255, 0.96);
+    /* SAMA DENGAN FOOTER */
+    background: #0f2747;
 
-    border-bottom: 1px solid rgba(7, 27, 53, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
     box-shadow:
-        0 8px 30px rgba(7, 27, 53, 0.06);
+        0 8px 30px rgba(7, 27, 53, 0.16);
 
     font-family: "Plus Jakarta Sans", sans-serif;
 }
+
+
+/* =========================================================
+   NAVBAR CONTAINER
+========================================================= */
 
 .navbar-container {
     width: min(1180px, calc(100% - 48px));
@@ -2905,55 +2916,76 @@
     margin: 0 auto;
 
     display: flex;
+
     align-items: center;
 
     gap: 30px;
 }
 
 
-/* BRAND */
+/* =========================================================
+   BRAND
+========================================================= */
 
 .school-brand {
     display: flex;
+
     align-items: center;
 
     gap: 11px;
 
     flex-shrink: 0;
 
-    color: #071b35;
+    color: #ffffff;
 
     text-decoration: none;
 }
+
+
+/* BRAND LOGO */
+
+/* =========================================================
+   SCHOOL LOGO
+========================================================= */
 
 .brand-logo {
     width: 42px;
     height: 42px;
 
+    flex-shrink: 0;
+
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     border-radius: 12px;
 
-    background:
-        linear-gradient(
-            135deg,
-            #071b35,
-            #0b4f8a
-        );
+    background: #ffffff;
 
-    color: #ffffff;
-
-    font-size: 17px;
-    font-weight: 800;
+    color: #0f2747;
 
     box-shadow:
-        0 8px 20px rgba(7, 27, 53, 0.18);
+        0 8px 20px rgba(0, 0, 0, 0.18);
+
+    overflow: hidden;
 }
+
+.brand-logo svg {
+    width: 34px;
+    height: 34px;
+
+    display: block;
+}
+
+
+/* =========================================================
+   BRAND NAME
+========================================================= */
 
 .brand-info {
     display: flex;
+
     flex-direction: column;
 
     gap: 2px;
@@ -2962,9 +2994,10 @@
 }
 
 .brand-info strong {
-    color: #071b35;
+    color: #ffffff;
 
     font-size: 13px;
+
     font-weight: 800;
 
     line-height: 1.2;
@@ -2973,9 +3006,45 @@
 }
 
 .brand-info span {
-    color: #728096;
+    color: rgba(255, 255, 255, 0.58);
 
     font-size: 9px;
+
+    font-weight: 500;
+
+    line-height: 1.3;
+}
+
+
+/* BRAND INFO */
+
+.brand-info {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+
+    white-space: nowrap;
+}
+
+.brand-info strong {
+    color: #ffffff;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.02em;
+}
+
+.brand-info span {
+    color: rgba(255, 255, 255, 0.58);
+
+    font-size: 9px;
+
     font-weight: 500;
 
     line-height: 1.3;
@@ -2984,16 +3053,17 @@
 
 /* =========================================================
    MENU
-   ========================================================= */
+========================================================= */
 
 .nav-menu {
     display: flex;
+
     align-items: center;
 
-    /* sedikit lebih renggang */
     gap: 10px;
 
     margin: 0;
+
     padding: 0;
 
     list-style: none;
@@ -3003,6 +3073,7 @@
 
 .nav-menu li {
     margin: 0;
+
     padding: 0;
 }
 
@@ -3010,19 +3081,19 @@
     position: relative;
 
     display: flex;
+
     align-items: center;
 
     min-height: 40px;
 
-    /* sedikit lebih lega */
     padding: 0 12px;
 
-    color: #526176;
+    color: rgba(255, 255, 255, 0.68);
 
     text-decoration: none;
 
-    /* sedikit diperbesar */
     font-size: 11px;
+
     font-weight: 600;
 
     white-space: nowrap;
@@ -3032,6 +3103,9 @@
         background .25s ease;
 }
 
+
+/* MENU UNDERLINE */
+
 .nav-menu a::after {
     content: "";
 
@@ -3039,23 +3113,28 @@
 
     left: 12px;
     right: 12px;
+
     bottom: 3px;
 
     height: 2px;
 
     border-radius: 999px;
 
-    background: #0866d8;
+    background: #ffffff;
 
     transform: scaleX(0);
 
     transform-origin: center;
 
-    transition: transform .25s ease;
+    transition:
+        transform .25s ease;
 }
 
+
+/* MENU HOVER */
+
 .nav-menu a:hover {
-    color: #071b35;
+    color: #ffffff;
 }
 
 .nav-menu a:hover::after,
@@ -3063,18 +3142,24 @@
     transform: scaleX(1);
 }
 
+
+/* ACTIVE MENU */
+
 .nav-menu a.active {
-    color: #0866d8;
+    color: #ffffff;
 
     font-weight: 800;
 }
+
+
+/* DISABLED MENU */
 
 .nav-menu a.nav-disabled {
     cursor: default;
 }
 
 .nav-menu a.nav-disabled:hover {
-    color: #526176;
+    color: rgba(255, 255, 255, 0.68);
 }
 
 .nav-menu a.nav-disabled::after {
@@ -3082,7 +3167,9 @@
 }
 
 
-/* LOGIN */
+/* =========================================================
+   LOGIN
+========================================================= */
 
 .nav-login {
     min-height: 42px;
@@ -3090,6 +3177,7 @@
     padding: 0 16px;
 
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
 
@@ -3099,17 +3187,19 @@
 
     border-radius: 11px;
 
-    background: #071b35;
+    /* PUTIH AGAR KONTRAS DENGAN NAVBAR */
+    background: #ffffff;
 
-    color: #ffffff;
+    color: #0f2747;
 
     text-decoration: none;
 
     font-size: 10px;
+
     font-weight: 700;
 
     box-shadow:
-        0 8px 18px rgba(7, 27, 53, 0.15);
+        0 8px 18px rgba(0, 0, 0, 0.16);
 
     transition:
         transform .25s ease,
@@ -3117,28 +3207,146 @@
         box-shadow .25s ease;
 }
 
-.nav-login:hover {
-    background: #0866d8;
 
-    color: #ffffff;
+/* LOGIN HOVER */
+
+.nav-login:hover {
+    background: #e8f1fb;
+
+    color: #0f2747;
 
     transform: translateY(-2px);
 
     box-shadow:
-        0 12px 24px rgba(8, 102, 216, 0.20);
+        0 12px 24px rgba(0, 0, 0, 0.20);
 }
+
+
+/* =========================================================
+   NAV ARROW
+========================================================= */
 
 .nav-arrow {
     font-size: 14px;
 
     line-height: 1;
 
-    transition: transform .25s ease;
+    transition:
+        transform .25s ease;
 }
 
 .nav-login:hover .nav-arrow {
     transform: translateX(3px);
 }
+
+
+/* =========================================================
+   MOBILE / TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .navbar-container {
+        width: min(100% - 32px, 1180px);
+
+        min-height: 72px;
+
+        gap: 18px;
+    }
+
+    .nav-menu {
+        gap: 5px;
+    }
+
+    .nav-menu a {
+        padding: 0 8px;
+
+        font-size: 10px;
+    }
+
+    .nav-menu a::after {
+        left: 8px;
+        right: 8px;
+    }
+
+    .nav-login {
+        padding: 0 13px;
+
+        min-height: 40px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .school-navbar {
+        box-shadow:
+            0 6px 20px rgba(7, 27, 53, 0.15);
+    }
+
+    .navbar-container {
+        width: calc(100% - 24px);
+
+        min-height: 68px;
+
+        gap: 12px;
+    }
+
+    .brand-logo {
+        width: 38px;
+        height: 38px;
+
+        border-radius: 10px;
+
+        font-size: 15px;
+    }
+
+    .brand-info strong {
+        font-size: 12px;
+    }
+
+    .brand-info span {
+        font-size: 8px;
+    }
+
+    .nav-menu {
+        gap: 2px;
+    }
+
+    .nav-menu a {
+        min-height: 36px;
+
+        padding: 0 6px;
+
+        font-size: 9px;
+    }
+
+    .nav-menu a::after {
+        left: 6px;
+        right: 6px;
+    }
+
+    .nav-login {
+        min-height: 38px;
+
+        padding: 0 11px;
+
+        border-radius: 10px;
+
+        font-size: 9px;
+
+        gap: 6px;
+    }
+
+    .nav-arrow {
+        font-size: 12px;
+    }
+}
+
 
 
 /* =========================================================
@@ -3397,5 +3605,36 @@
 
         font-size: 8px;
     }
+}
+
+/* =========================================================
+   REMOVE SECTION COLOR SEPARATOR
+   BACKGROUND CLEAN & WHITE
+   ========================================================= */
+
+.service-section,
+.about-section,
+.information-section,
+.vision-section,
+.extracurricular-section,
+.contact-section {
+    background: #ffffff !important;
+}
+
+/* Hilangkan dekorasi background yang membuat
+   section terlihat memiliki bidang/sekat */
+.service-section::before,
+.service-section::after,
+.about-section::before,
+.about-section::after,
+.information-section::before,
+.information-section::after,
+.vision-section::before,
+.vision-section::after,
+.extracurricular-section::before,
+.extracurricular-section::after,
+.contact-section::before,
+.contact-section::after {
+    display: none !important;
 }
 

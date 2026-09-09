@@ -1,0 +1,636 @@
+/* =========================================================
+   SCHOOL FOOTER
+========================================================= */
+
+.school-footer {
+    position: relative;
+    overflow: hidden;
+    background: #0f2747;
+    color: #ffffff;
+
+    /* Footer dibuat menyatu dengan section sebelumnya */
+    margin-top: 0;
+    padding-bottom: 20px;
+}
+
+
+/* =========================================================
+   DECORATION
+========================================================= */
+
+.footer-decoration {
+    position: absolute;
+    pointer-events: none;
+    border-radius: 50%;
+    opacity: 0.07;
+}
+
+.footer-decoration-1 {
+    width: 260px;
+    height: 260px;
+    background: #ffffff;
+    top: -150px;
+    right: -80px;
+}
+
+.footer-decoration-2 {
+    width: 200px;
+    height: 200px;
+    border: 35px solid #ffffff;
+    bottom: -150px;
+    left: -100px;
+    background: transparent;
+    opacity: 0.04;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.footer-container {
+    position: relative;
+    z-index: 2;
+
+    max-width: 1080px;
+    margin: 0 auto;
+
+    /* Area footer dibuat sedikit lebih tinggi */
+    padding: 85px 28px 60px;
+
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1.1fr)
+        minmax(360px, 0.9fr);
+
+    gap: 48px;
+    align-items: center;
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.footer-brand-column {
+    max-width: 500px;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 13px;
+}
+
+
+/* =========================================================
+   FOOTER LOGO SEKOLAH
+========================================================= */
+
+.footer-logo {
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+    background: #ffffff;
+    color: #0f2747;
+
+    box-shadow:
+        0 7px 18px rgba(0, 0, 0, 0.14);
+
+    overflow: hidden;
+}
+
+.footer-logo svg {
+    width: 38px;
+    height: 38px;
+    display: block;
+}
+
+
+/* =========================================================
+   BRAND TEXT
+========================================================= */
+
+.footer-brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.footer-brand-text strong {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.footer-brand-text span {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.62);
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.footer-description {
+    max-width: 480px;
+
+    margin: 0 0 18px;
+
+    color: rgba(255, 255, 255, 0.68);
+
+    font-size: 12px;
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   SOCIAL MEDIA
+========================================================= */
+
+.footer-social-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.footer-social-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.68);
+}
+
+.footer-social {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.footer-social a {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+
+    color: #ffffff;
+    text-decoration: none;
+
+    font-size: 12px;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.footer-social a:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.17);
+}
+
+
+/* =========================================================
+   CONTACT CARD
+========================================================= */
+
+.footer-contact-column {
+    position: relative;
+
+    padding: 19px;
+
+    border-radius: 17px;
+
+    background: rgba(255, 255, 255, 0.065);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   CONTACT HEADING
+========================================================= */
+
+.footer-section-heading {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    margin-bottom: 14px;
+}
+
+.footer-heading-line {
+    width: 3px;
+    height: 30px;
+
+    border-radius: 20px;
+    background: #ffffff;
+}
+
+.footer-heading-label {
+    display: block;
+
+    margin-bottom: 1px;
+
+    font-size: 8px;
+    font-weight: 800;
+
+    letter-spacing: 1.3px;
+
+    color: rgba(255, 255, 255, 0.48);
+}
+
+.footer-section-heading h3 {
+    margin: 0;
+
+    font-size: 17px;
+    line-height: 1.2;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   CONTACT GRID
+========================================================= */
+
+.footer-contact-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 7px;
+}
+
+.footer-contact-item {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 9px;
+
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.065);
+}
+
+.footer-contact-address {
+    grid-column: 1 / -1;
+}
+
+
+/* =========================================================
+   CONTACT ICON
+========================================================= */
+
+.footer-contact-icon {
+    width: 31px;
+    height: 31px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.10);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   CONTACT CONTENT
+========================================================= */
+
+.footer-contact-content {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+.footer-contact-content span {
+    font-size: 8px;
+
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.footer-contact-content strong {
+    overflow: hidden;
+
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   MAP BUTTON
+========================================================= */
+
+.footer-map-button {
+    margin-top: 8px;
+
+    min-height: 43px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 7px 9px;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+    color: #0f2747;
+
+    text-decoration: none;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.footer-map-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 18px rgba(0, 0, 0, 0.15);
+
+    color: #0f2747;
+}
+
+
+/* =========================================================
+   MAP ICON
+========================================================= */
+
+.footer-map-icon {
+    width: 29px;
+    height: 29px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: #0f2747;
+    color: #ffffff;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   MAP TEXT
+========================================================= */
+
+.footer-map-text {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 1px;
+}
+
+.footer-map-text strong {
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.footer-map-text small {
+    font-size: 8px;
+    color: #64748b;
+}
+
+
+/* =========================================================
+   MAP ARROW
+========================================================= */
+
+.footer-map-arrow {
+    margin-left: auto;
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   FOOTER BOTTOM
+========================================================= */
+
+.footer-bottom {
+    position: relative;
+    z-index: 2;
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    /* Pastikan bagian bawah tetap warna yang sama */
+    background: #0f2747;
+}
+
+.footer-bottom-container {
+    max-width: 1080px;
+
+    margin: 0 auto;
+
+    min-height: 45px;
+
+    padding: 0 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+.footer-bottom p {
+    margin: 0;
+
+    font-size: 9px;
+
+    color: rgba(255, 255, 255, 0.48);
+}
+
+.footer-bottom p strong {
+    color: rgba(255, 255, 255, 0.76);
+}
+
+.footer-bottom span {
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.38);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .footer-brand-column {
+        max-width: none;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .school-footer {
+        margin-top: 0;
+        padding-bottom: 15px;
+    }
+
+    .footer-container {
+        /* Tetap dibuat lebih tinggi di mobile */
+        padding: 65px 18px 45px;
+        gap: 22px;
+    }
+
+
+    /* BRAND */
+
+    .footer-brand {
+        gap: 10px;
+        margin-bottom: 11px;
+    }
+
+    .footer-logo {
+        width: 43px;
+        height: 43px;
+        border-radius: 11px;
+    }
+
+    .footer-logo svg {
+        width: 34px;
+        height: 34px;
+    }
+
+    .footer-brand-text strong {
+        font-size: 16px;
+    }
+
+    .footer-brand-text span {
+        font-size: 10px;
+    }
+
+
+    /* DESCRIPTION */
+
+    .footer-description {
+        margin-bottom: 16px;
+
+        font-size: 11px;
+        line-height: 1.6;
+    }
+
+
+    /* SOCIAL */
+
+    .footer-social-wrapper {
+        gap: 9px;
+    }
+
+    .footer-social-label {
+        font-size: 10px;
+    }
+
+    .footer-social a {
+        width: 31px;
+        height: 31px;
+        font-size: 11px;
+    }
+
+
+    /* CONTACT */
+
+    .footer-contact-column {
+        padding: 15px;
+        border-radius: 14px;
+    }
+
+    .footer-section-heading {
+        margin-bottom: 11px;
+    }
+
+    .footer-heading-line {
+        height: 27px;
+    }
+
+    .footer-section-heading h3 {
+        font-size: 15px;
+    }
+
+
+    /* CONTACT GRID */
+
+    .footer-contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-contact-address {
+        grid-column: auto;
+    }
+
+
+    /* FOOTER BOTTOM */
+
+    .footer-bottom-container {
+        min-height: auto;
+
+        padding: 12px 18px;
+
+        align-items: flex-start;
+        flex-direction: column;
+
+        gap: 3px;
+    }
+}
