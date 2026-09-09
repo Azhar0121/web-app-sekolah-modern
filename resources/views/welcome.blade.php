@@ -48,7 +48,7 @@
 
                     <h1>
                         Selamat Datang di
-                        <strong>{{ config('app.name') }}</strong>
+                        <strong>Sekolah Modern</strong>
                     </h1>
 
                     <p>
@@ -418,7 +418,7 @@
                 <div class="section-line"></div>
 
                 <p>
-                    {{ config('app.name') }} merupakan lingkungan
+                    Sekolah Modern merupakan lingkungan
                     pendidikan yang memberikan ruang bagi peserta
                     didik untuk belajar, mengembangkan potensi,
                     membangun karakter, dan mempersiapkan diri
@@ -1091,176 +1091,6 @@
                 </article>
 
             </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-{{-- =========================================================
-   KONTAK
-   ========================================================= --}}
-<section
-    class="contact-section"
-    id="kontak"
->
-
-    <div class="container">
-
-        <div class="contact-header">
-
-            <div>
-
-                <span class="section-kicker">
-                    HUBUNGI KAMI
-                </span>
-
-                <h2>
-                    Informasi dan
-                    <strong>kontak sekolah.</strong>
-                </h2>
-
-            </div>
-
-            <p>
-                Silakan hubungi sekolah untuk mendapatkan
-                informasi mengenai layanan, kegiatan,
-                pendaftaran, maupun informasi pendidikan lainnya.
-            </p>
-
-        </div>
-
-
-        <div class="contact-grid">
-
-            {{-- TELEPON --}}
-            <div class="contact-card">
-
-                <div class="contact-card-top">
-
-                    <div class="contact-icon">
-                        <i class="bi bi-telephone-fill"></i>
-                    </div>
-
-                    <span>
-                        01
-                    </span>
-
-                </div>
-
-                <small>
-                    TELEPON
-                </small>
-
-                <h3>
-                    08XX-XXXX-XXXX
-                </h3>
-
-                <p>
-                    Hubungi sekolah untuk mendapatkan
-                    informasi secara langsung.
-                </p>
-
-            </div>
-
-
-            {{-- EMAIL --}}
-            <div class="contact-card">
-
-                <div class="contact-card-top">
-
-                    <div class="contact-icon">
-                        <i class="bi bi-envelope-fill"></i>
-                    </div>
-
-                    <span>
-                        02
-                    </span>
-
-                </div>
-
-                <small>
-                    EMAIL
-                </small>
-
-                <h3>
-                    info@sekolah.sch.id
-                </h3>
-
-                <p>
-                    Kirim pertanyaan atau informasi
-                    melalui email sekolah.
-                </p>
-
-            </div>
-
-
-            {{-- ALAMAT --}}
-            <div class="contact-card">
-
-                <div class="contact-card-top">
-
-                    <div class="contact-icon">
-                        <i class="bi bi-geo-alt-fill"></i>
-                    </div>
-
-                    <span>
-                        03
-                    </span>
-
-                </div>
-
-                <small>
-                    ALAMAT
-                </small>
-
-                <h3>
-                    Alamat Sekolah
-                </h3>
-
-                <p>
-                    Kunjungi lokasi sekolah untuk mendapatkan
-                    informasi secara langsung.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        {{-- MAP --}}
-        <div class="map-wrapper">
-
-            <div class="map-frame">
-
-                <iframe
-                    src="https://www.google.com/maps?q=Indonesia&output=embed"
-                    width="100%"
-                    height="100%"
-                    style="border:0;"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-
-            </div>
-
-            <a
-                href="https://www.google.com/maps"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="map-button"
-            >
-                <span>
-                    <i class="bi bi-map-fill"></i>
-                    Lihat Lokasi di Google Maps
-                </span>
-
-                <i class="bi bi-arrow-right"></i>
-            </a>
 
         </div>
 

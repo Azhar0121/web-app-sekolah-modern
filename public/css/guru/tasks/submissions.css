@@ -1,1063 +1,1302 @@
-    /* =========================================================
-KOREKSI TUGAS GURU
-Modern Institutional Blue
+/* =========================================================
+   KOREKSI TUGAS / SUBMISSIONS
+   CLEAN + COMPACT + RAPIH
+========================================================= */
+
+:root {
+    --submission-primary: #1769d5;
+    --submission-primary-dark: #0d47a1;
+    --submission-cyan: #078ba8;
+    --submission-navy: #102a43;
+
+    --submission-success: #16a34a;
+    --submission-success-bg: #ecfdf3;
+
+    --submission-danger: #dc2626;
+    --submission-danger-bg: #fef2f2;
+
+    --submission-muted: #64748b;
+    --submission-border: #d9e4ef;
+    --submission-white: #ffffff;
+
+    --submission-shadow: 0 8px 24px rgba(15, 23, 42, .07);
+
+    --submission-radius: 15px;
+}
+
+
+/* =========================================================
+   PAGE
 ========================================================= */
 
 .task-submissions-page {
---blue: #1769d5;
---blue-dark: #0d47a1;
---blue-light: #eaf3ff;
---navy: #102a43;
---text: #243b53;
---muted: #718096;
---white: #ffffff;
---border: #d5e3f2;
---border-soft: #e4edf7;
---cyan: #0794b8;
+    width: 100%;
+    max-width: 1100px;
 
+    margin: 0 auto;
 
-min-height: calc(100vh - 80px);
+    /*
+     * Penting:
+     * memberi jarak dari navbar agar header tidak ketutup
+     */
+    padding: 28px 20px 40px;
 
-padding: 28px 30px 50px;
-
-/* Background paling belakang solid */
-background: #eef4fb;
-
-color: var(--text);
-
-
+    box-sizing: border-box;
 }
 
+
 /* =========================================================
-HEADER
+   HEADER
 ========================================================= */
 
 .task-submissions-header {
-position: relative;
-overflow: hidden;
+    position: relative;
+    overflow: hidden;
 
+    min-height: 155px;
 
-max-width: 1200px;
+    margin-bottom: 20px;
+    padding: 25px 28px;
 
-margin: 0 auto 24px;
+    border-radius: 17px;
 
-padding: 28px 32px;
+    background:
+        linear-gradient(
+            135deg,
+            #0d47a1 0%,
+            #1769d5 55%,
+            #078ba8 100%
+        );
 
-border-radius: 20px;
+    color: #ffffff;
 
-background: linear-gradient(
-    135deg,
-    #1769d5 0%,
-    #0d55b8 55%,
-    #0794b8 100%
-);
+    box-shadow:
+        0 10px 26px rgba(23, 105, 213, .16);
 
-box-shadow: 0 14px 32px rgba(23, 105, 213, 0.18);
-
-
+    box-sizing: border-box;
 }
 
-.task-submissions-header-content {
-position: relative;
-z-index: 2;
-}
-
-.task-submissions-label {
-display: inline-block;
-
-
-margin-bottom: 7px;
-
-color: #d9efff;
-
-font-size: 11px;
-font-weight: 800;
-
-letter-spacing: 1.4px;
-
-
-}
-
-.task-submissions-header h1 {
-margin: 0 0 3px;
-
-
-color: #ffffff;
-
-font-size: 29px;
-line-height: 1.2;
-
-font-weight: 800;
-
-
-}
-
-.task-name {
-margin-bottom: 7px;
-
-
-color: #ffffff;
-
-font-size: 17px;
-font-weight: 700;
-
-
-}
-
-.task-submissions-header p {
-margin: 0;
-
-
-color: #e7f3ff;
-
-font-size: 13px;
-
-line-height: 1.6;
-
-
-}
-
-.task-submissions-header p strong {
-color: #ffffff;
-}
 
 /* =========================================================
-KEMBALI
-========================================================= */
-
-.task-submissions-back-button {
-position: relative;
-z-index: 3;
-
-
-display: flex;
-align-items: center;
-justify-content: center;
-
-width: fit-content;
-
-min-height: 38px;
-
-margin: 20px 0 0 auto;
-
-padding: 0 16px;
-
-border: 1px solid #ffffff;
-border-radius: 9px;
-
-background: #ffffff;
-
-color: var(--blue);
-
-font-size: 12px;
-font-weight: 700;
-
-text-decoration: none;
-
-transition: all 0.2s ease;
-
-
-}
-
-.task-submissions-back-button:hover {
-background: #eaf3ff;
-
-
-color: var(--blue-dark);
-
-transform: translateY(-1px);
-
-
-}
-
-/* =========================================================
-DECORATION
+   HEADER DECORATION
 ========================================================= */
 
 .task-submissions-decoration {
-position: absolute;
+    position: absolute;
 
+    border-radius: 50%;
 
-border-radius: 50%;
-
-pointer-events: none;
-
-
+    pointer-events: none;
 }
 
-.task-submissions-decoration.decoration-one {
-width: 190px;
-height: 190px;
+.decoration-one {
+    width: 190px;
+    height: 190px;
 
+    top: -105px;
+    right: 70px;
 
-top: -90px;
-right: -60px;
-
-background: #2780df;
-
-
+    background: rgba(255, 255, 255, .07);
 }
 
-.task-submissions-decoration.decoration-two {
-width: 120px;
-height: 120px;
+.decoration-two {
+    width: 130px;
+    height: 130px;
 
+    right: -40px;
+    bottom: -70px;
 
-right: 210px;
-bottom: -80px;
-
-background: #0a83a8;
-
-
+    background: rgba(255, 255, 255, .08);
 }
+
 
 /* =========================================================
-MAIN CARD
+   HEADER CONTENT
+========================================================= */
+
+.task-submissions-header-content {
+    position: relative;
+    z-index: 2;
+
+    width: calc(100% - 150px);
+    max-width: 700px;
+
+    display: flex;
+    align-items: flex-start;
+}
+
+.task-submissions-header-content > div {
+    min-width: 0;
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.task-submissions-label {
+    display: inline-flex;
+    align-items: center;
+
+    margin-bottom: 7px;
+    padding: 5px 10px;
+
+    border: 1px solid rgba(255, 255, 255, .25);
+    border-radius: 6px;
+
+    background: rgba(255, 255, 255, .12);
+
+    color: rgba(255, 255, 255, .94);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: .8px;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   HEADER TITLE
+========================================================= */
+
+.task-submissions-header h1 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 28px;
+    line-height: 1.15;
+    font-weight: 800;
+
+    letter-spacing: -.4px;
+}
+
+
+/* =========================================================
+   TASK NAME
+========================================================= */
+
+.task-submissions-header .task-name {
+    display: block;
+
+    margin-top: 6px;
+
+    color: #ffffff;
+
+    font-size: 15px;
+    line-height: 1.35;
+    font-weight: 700;
+
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   HEADER DESCRIPTION
+========================================================= */
+
+.task-submissions-header p {
+    margin: 7px 0 0;
+
+    color: rgba(255, 255, 255, .84);
+
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.task-submissions-header p strong {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.task-submissions-back-button {
+    position: absolute;
+
+    top: 45px;
+    left: 850px;
+
+    z-index: 10;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 38px;
+
+    padding: 0 16px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #1769d5;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    text-decoration: none;
+    white-space: nowrap;
+
+    box-shadow:
+        0 5px 13px rgba(0, 0, 0, .12);
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.task-submissions-back-button:hover {
+    background: #eef6ff;
+
+    color: #0d47a1;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 7px 16px rgba(0, 0, 0, .14);
+}
+
+
+/* =========================================================
+   MAIN CARD
 ========================================================= */
 
 .task-submissions-card {
-max-width: 1200px;
+    width: 100%;
 
+    overflow: hidden;
 
-margin: 0 auto;
+    background: #ffffff;
 
-overflow: hidden;
+    border: 1px solid var(--submission-border);
+    border-radius: var(--submission-radius);
 
-border: 1px solid var(--border);
-
-border-radius: 18px;
-
-background: #ffffff;
-
-box-shadow: 0 10px 28px rgba(16, 42, 67, 0.08);
-
-
+    box-shadow: var(--submission-shadow);
 }
 
+
 /* =========================================================
-CARD HEADER
+   CARD HEADER
 ========================================================= */
 
 .task-submissions-card-header {
-position: relative;
-overflow: hidden;
+    display: flex;
+    align-items: center;
 
+    gap: 13px;
 
-display: flex;
-align-items: center;
+    padding: 18px 22px;
 
-gap: 15px;
+    border-bottom: 1px solid var(--submission-border);
 
-padding: 20px 25px;
-
-border-bottom: 1px solid var(--border);
-
-background: linear-gradient(
-    135deg,
-    #dcecff 0%,
-    #eaf4ff 48%,
-    #e0f5f7 100%
-);
-
-
+    background: #ffffff;
 }
 
-.task-submissions-card-header::after {
-content: "";
 
-
-position: absolute;
-
-width: 120px;
-height: 120px;
-
-top: -60px;
-right: -40px;
-
-border-radius: 50%;
-
-background: #c7e0f7;
-
-
-}
+/* =========================================================
+   CARD ICON
+========================================================= */
 
 .task-submissions-icon {
-position: relative;
-z-index: 2;
+    flex: 0 0 40px;
 
+    width: 40px;
+    height: 40px;
 
-display: flex;
-align-items: center;
-justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-width: 43px;
-height: 43px;
+    border-radius: 10px;
 
-flex-shrink: 0;
+    background: #1769d5;
 
-border-radius: 12px;
+    color: #ffffff;
 
-background: #1769d5;
+    font-size: 19px;
+    font-weight: 800;
 
-color: #ffffff;
-
-font-size: 19px;
-font-weight: 800;
-
-box-shadow: 0 6px 14px rgba(23, 105, 213, 0.20);
-
-
+    box-shadow:
+        0 5px 12px rgba(23, 105, 213, .16);
 }
 
+
+/* =========================================================
+   CARD TITLE
+========================================================= */
+
 .task-submissions-card-header h2 {
-position: relative;
-z-index: 2;
+    margin: 0;
 
+    color: #102a43;
 
-margin: 0 0 3px;
-
-color: var(--navy);
-
-font-size: 17px;
-
-font-weight: 800;
-
-
+    font-size: 16px;
+    line-height: 1.3;
+    font-weight: 800;
 }
 
 .task-submissions-card-header p {
-position: relative;
-z-index: 2;
+    margin: 3px 0 0;
 
+    color: #64748b;
 
-margin: 0;
-
-color: var(--muted);
-
-font-size: 13px;
-
-
+    font-size: 10px;
+    line-height: 1.45;
 }
 
+
 /* =========================================================
-TABLE
+   TABLE WRAPPER
 ========================================================= */
 
 .task-submissions-table-wrapper {
-width: 100%;
+    width: 100%;
 
+    overflow-x: auto;
 
-overflow-x: auto;
-
-
+    scrollbar-width: thin;
+    scrollbar-color: #a9bfd5 transparent;
 }
+
+
+/* =========================================================
+   TABLE
+========================================================= */
 
 .task-submissions-table {
-width: 100%;
+    width: 100%;
 
+    /*
+     * Jangan terlalu besar.
+     * Biarkan tabel mengikuti ukuran card.
+     */
+    min-width: 850px;
 
-min-width: 1050px;
+    border-collapse: collapse;
 
-margin: 0;
+    color: #334155;
 
-border-collapse: separate;
-border-spacing: 0;
+    font-size: 11px;
 
-color: var(--text);
-
-font-size: 14px;
-
-
+    table-layout: fixed;
 }
+
+
+/* =========================================================
+   COLUMN WIDTH
+========================================================= */
+
+.task-submissions-table th:nth-child(1) {
+    width: 17%;
+}
+
+.task-submissions-table th:nth-child(2) {
+    width: 18%;
+}
+
+.task-submissions-table th:nth-child(3) {
+    width: 30%;
+}
+
+.task-submissions-table th:nth-child(4) {
+    width: 10%;
+}
+
+.task-submissions-table th:nth-child(5) {
+    width: 15%;
+}
+
+.task-submissions-table th:nth-child(6) {
+    width: 10%;
+}
+
+
+/* =========================================================
+   TABLE HEADER
+========================================================= */
 
 .task-submissions-table thead th {
-padding: 14px 17px;
+    padding: 12px 14px;
 
+    background: #1769d5;
 
-border-bottom: 1px solid #c9dced;
+    color: #ffffff;
 
-background: linear-gradient(
-    135deg,
-    #1769d5,
-    #0d55b8
-);
+    border: none;
 
-color: #ffffff;
+    font-size: 9px;
+    font-weight: 800;
 
-font-size: 12px;
-font-weight: 700;
+    letter-spacing: .35px;
+    text-transform: uppercase;
 
-white-space: nowrap;
+    white-space: nowrap;
 
-
+    text-align: left;
 }
+
+.task-submissions-table thead th:first-child {
+    padding-left: 18px;
+}
+
+.task-submissions-table thead th:nth-child(4),
+.task-submissions-table thead th:nth-child(6) {
+    text-align: center;
+}
+
+
+/* =========================================================
+   TABLE BODY
+========================================================= */
 
 .task-submissions-table tbody td {
-padding: 16px 17px;
+    padding: 13px 14px;
 
+    border-bottom: 1px solid #e6edf4;
 
-border-bottom: 1px solid var(--border-soft);
+    vertical-align: middle;
 
-background: #ffffff;
+    background: #ffffff;
 
-vertical-align: middle;
-
-
-}
-
-.task-submissions-table tbody tr:not(.grade-row):nth-child(4n + 3) td {
-background: #f4f8fc;
-}
-
-.task-submissions-table tbody tr:not(.grade-row):hover td {
-background: #eaf3ff;
+    overflow: hidden;
 }
 
 .task-submissions-table tbody tr:last-child td {
-border-bottom: 0;
+    border-bottom: none;
 }
 
+
 /* =========================================================
-STUDENT
+   ZEBRA
+========================================================= */
+
+.task-submissions-table tbody tr:nth-child(even):not(.grade-row) td {
+    background: #f7faff;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.task-submissions-table tbody tr:not(.grade-row) {
+    transition: background .2s ease;
+}
+
+.task-submissions-table tbody tr:not(.grade-row):hover td {
+    background: #edf6ff;
+}
+
+.task-submissions-table tbody tr:not(.grade-row):hover td:first-child {
+    box-shadow: inset 3px 0 0 #1769d5;
+}
+
+
+/* =========================================================
+   STUDENT NAME
 ========================================================= */
 
 .student-name {
-color: var(--navy);
+    max-width: 100%;
 
+    color: #102a43;
 
-font-size: 14px;
-font-weight: 700;
+    font-size: 11px;
+    line-height: 1.4;
+    font-weight: 750;
 
-
+    word-break: break-word;
 }
 
+
 /* =========================================================
-STATUS
+   STATUS
 ========================================================= */
 
 .submission-status {
-display: inline-flex;
-align-items: center;
+    display: inline-flex;
+    align-items: center;
 
+    gap: 6px;
 
-gap: 7px;
+    padding: 5px 8px;
 
-min-height: 30px;
+    border-radius: 7px;
 
-padding: 5px 10px;
+    font-size: 9px;
+    line-height: 1.2;
+    font-weight: 750;
 
-border-radius: 8px;
-
-font-size: 11px;
-font-weight: 700;
-
-white-space: nowrap;
-
-
+    white-space: nowrap;
 }
 
 .status-dot {
-width: 7px;
-height: 7px;
+    width: 6px;
+    height: 6px;
 
+    flex: 0 0 6px;
 
-flex-shrink: 0;
-
-border-radius: 50%;
-
-
+    border-radius: 50%;
 }
 
+
+/* =========================================================
+   STATUS
+========================================================= */
+
 .status-not-submitted {
-border: 1px solid #d5e3f2;
-
-
-background: #f1f5f9;
-
-color: #64748b;
-
-
+    background: #f1f5f9;
+    color: #64748b;
 }
 
 .status-not-submitted .status-dot {
-background: #94a3b8;
+    background: #94a3b8;
 }
 
 .status-late {
-border: 1px solid #f0c98d;
-
-
-background: #fff6e6;
-
-color: #b66a00;
-
-
+    background: #fef2f2;
+    color: #dc2626;
 }
 
 .status-late .status-dot {
-background: #e49a20;
+    background: #dc2626;
 }
 
 .status-on-time {
-border: 1px solid #bde5d0;
-
-
-background: #e7f7ee;
-
-color: #16804a;
-
-
+    background: #ecfdf3;
+    color: #16a34a;
 }
 
 .status-on-time .status-dot {
-background: #20a464;
+    background: #16a34a;
 }
 
+
 /* =========================================================
-JAWABAN
+   SUBMISSION ANSWER
 ========================================================= */
 
 .submission-answer {
-max-width: 245px;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
 }
 
+
+/* =========================================================
+   FILE
+========================================================= */
+
 .submission-file {
-display: inline-flex;
-align-items: center;
+    display: inline-flex;
+    align-items: center;
 
+    gap: 5px;
 
-gap: 5px;
+    max-width: 100%;
 
-max-width: 100%;
+    color: #1769d5;
 
-color: var(--blue);
+    font-size: 10px;
+    line-height: 1.35;
+    font-weight: 700;
 
-font-size: 12px;
-font-weight: 700;
+    text-decoration: none;
 
-text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
-overflow: hidden;
-text-overflow: ellipsis;
-white-space: nowrap;
-
-
+    transition: color .2s ease;
 }
 
 .submission-file:hover {
-color: var(--blue-dark);
-
-
-text-decoration: underline;
-
-
+    color: #0d47a1;
+    text-decoration: underline;
 }
 
 .file-icon {
-flex-shrink: 0;
+    flex: 0 0 auto;
+
+    font-size: 12px;
 }
 
+
+/* =========================================================
+   NOTE
+========================================================= */
+
 .submission-note {
-margin-top: 5px;
+    max-width: 100%;
 
+    color: #64748b;
 
-color: var(--muted);
+    font-size: 9px;
+    line-height: 1.45;
 
-font-size: 11px;
-
-line-height: 1.5;
-
-
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .submission-empty {
-color: #9aa9b8;
-
-
-font-size: 13px;
-
-
-}
-
-/* =========================================================
-NILAI
-========================================================= */
-
-.grade-value {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-
-
-min-width: 42px;
-min-height: 34px;
-
-padding: 0 9px;
-
-border: 1px solid #9fc5ec;
-border-radius: 8px;
-
-background: #eaf3ff;
-
-color: var(--blue-dark);
-
-font-size: 14px;
-font-weight: 800;
-
-
-}
-
-.grade-empty {
-color: #9aa9b8;
-
-
-font-size: 13px;
-
-
-}
-
-/* =========================================================
-FEEDBACK
-========================================================= */
-
-.feedback-text {
-max-width: 230px;
-
-
-color: var(--muted);
-
-font-size: 12px;
-
-line-height: 1.5;
-
-overflow: hidden;
-text-overflow: ellipsis;
-
-
-}
-
-/* =========================================================
-ACTION
-========================================================= */
-
-.task-submissions-actions {
-text-align: right;
-
-
-white-space: nowrap;
-
-
-}
-
-.grade-button {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-
-
-min-height: 34px;
-
-padding: 0 12px;
-
-border: 1px solid #1769d5;
-border-radius: 8px;
-
-background: #1769d5;
-
-color: #ffffff;
-
-font-size: 11px;
-font-weight: 700;
-
-cursor: pointer;
-
-transition: all 0.2s ease;
-
-
-}
-
-.grade-button:hover {
-border-color: #0d47a1;
-
-
-background: #0d47a1;
-
-transform: translateY(-1px);
-
-
-}
-
-.action-empty {
-color: #9aa9b8;
-
-
-font-size: 13px;
-
-
-}
-
-/* =========================================================
-GRADE ROW
-========================================================= */
-
-.grade-row td {
-padding: 0 !important;
-
-
-background: #edf5fd !important;
-
-border-bottom: 1px solid #cddfee !important;
-
-
-}
-
-.grade-form-container {
-padding: 18px 20px;
-
-
-border-left: 4px solid #1769d5;
-
-background: #f4f9ff;
-
-
-}
-
-.grade-form-title {
-display: flex;
-align-items: center;
-
-
-gap: 10px;
-
-margin-bottom: 14px;
-
-
-}
-
-.grade-form-icon {
-display: flex;
-align-items: center;
-justify-content: center;
-
-
-width: 34px;
-height: 34px;
-
-border-radius: 9px;
-
-background: #dcecff;
-
-color: #1769d5;
-
-font-size: 15px;
-font-weight: 800;
-
-
-}
-
-.grade-form-title strong {
-display: block;
-
-
-color: var(--navy);
-
-font-size: 13px;
-
-
-}
-
-.grade-form-title small {
-display: block;
-
-
-margin-top: 2px;
-
-color: var(--muted);
-
-font-size: 11px;
-
-
-}
-
-/* =========================================================
-GRADE FORM
-========================================================= */
-
-.grade-form {
-display: grid;
-
-
-grid-template-columns: 160px minmax(250px, 1fr) 170px;
-
-align-items: end;
-
-gap: 12px;
-
-
-}
-
-.grade-field label {
-display: block;
-
-
-margin-bottom: 6px;
-
-color: var(--navy);
-
-font-size: 11px;
-font-weight: 700;
-
-
-}
-
-.grade-field label span {
-color: var(--muted);
-
-
-font-weight: 500;
-
-
-}
-
-.grade-field input {
-width: 100%;
-
-
-height: 38px;
-
-padding: 0 11px;
-
-border: 1px solid #cbdbea;
-border-radius: 8px;
-
-background: #ffffff;
-
-color: var(--text);
-
-font-size: 13px;
-
-outline: none;
-
-transition: all 0.2s ease;
-
-
-}
-
-.grade-field input:focus {
-border-color: #1769d5;
-
-
-box-shadow: 0 0 0 3px rgba(23, 105, 213, 0.10);
-
-
-}
-
-/* =========================================================
-SAVE BUTTON
-========================================================= */
-
-.save-grade-button {
-height: 38px;
-
-
-padding: 0 15px;
-
-border: 1px solid #1769d5;
-border-radius: 8px;
-
-background: #1769d5;
-
-color: #ffffff;
-
-font-size: 12px;
-font-weight: 700;
-
-cursor: pointer;
-
-transition: all 0.2s ease;
-
-
-}
-
-.save-grade-button:hover {
-border-color: #0d47a1;
-
-
-background: #0d47a1;
-
-transform: translateY(-1px);
-
-
-}
-
-/* =========================================================
-EMPTY STATE
-========================================================= */
-
-.submissions-empty {
-padding: 55px 20px;
-
-
-text-align: center;
-
-
-}
-
-.submissions-empty-icon {
-display: flex;
-align-items: center;
-justify-content: center;
-
-
-width: 55px;
-height: 55px;
-
-margin: 0 auto 15px;
-
-border-radius: 15px;
-
-background: #eaf3ff;
-
-color: var(--blue);
-
-font-size: 22px;
-font-weight: 800;
-
-
-}
-
-.submissions-empty h3 {
-margin: 0 0 6px;
-
-
-color: var(--navy);
-
-font-size: 18px;
-font-weight: 800;
-
-
-}
-
-.submissions-empty p {
-margin: 0;
-
-
-color: var(--muted);
-
-font-size: 13px;
-
-
-}
-
-/* =========================================================
-RESPONSIVE
-========================================================= */
-
-@media (max-width: 900px) {
-
-
-.task-submissions-page {
-    padding: 20px 16px 35px;
-}
-
-
-.task-submissions-header {
-    padding: 24px 21px;
-
-    border-radius: 16px;
-}
-
-
-.task-submissions-header h1 {
-    font-size: 25px;
-}
-
-
-.task-name {
-    font-size: 15px;
-}
-
-
-.grade-form {
-    grid-template-columns: 1fr 1fr;
-}
-
-
-.save-grade-button {
-    width: 100%;
-}
-
-
-}
-
-@media (max-width: 600px) {
-
-
-.task-submissions-page {
-    padding: 15px 12px 30px;
-}
-
-
-.task-submissions-header {
-    padding: 21px 17px;
-}
-
-
-.task-submissions-header h1 {
-    font-size: 22px;
-}
-
-
-.task-submissions-label {
-    font-size: 10px;
-}
-
-
-.task-submissions-back-button {
-    margin-left: auto;
+    color: #94a3b8;
 
     font-size: 11px;
 }
 
 
-.task-submissions-card {
-    border-radius: 15px;
+/* =========================================================
+   GRADE
+========================================================= */
+
+.grade-value {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 36px;
+    height: 28px;
+
+    padding: 0 8px;
+
+    border-radius: 7px;
+
+    background: #e8f2ff;
+
+    color: #1769d5;
+
+    font-size: 11px;
+    font-weight: 850;
+}
+
+.grade-empty {
+    color: #94a3b8;
+
+    font-size: 11px;
 }
 
 
-.task-submissions-card-header {
-    gap: 11px;
+/* =========================================================
+   FEEDBACK
+========================================================= */
 
-    padding: 16px;
+.feedback-text {
+    max-width: 100%;
+
+    color: #64748b;
+
+    font-size: 9px;
+    line-height: 1.45;
+
+    word-break: break-word;
 }
 
 
-.task-submissions-icon {
-    width: 38px;
-    height: 38px;
+/* =========================================================
+   ACTION
+========================================================= */
 
-    font-size: 17px;
+.task-submissions-actions {
+    text-align: center;
+
+    white-space: nowrap;
 }
 
 
-.task-submissions-card-header h2 {
-    font-size: 15px;
+/* =========================================================
+   GRADE BUTTON
+========================================================= */
+
+.grade-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 30px;
+
+    padding: 0 11px;
+
+    border: 1px solid #c8ddf5;
+    border-radius: 7px;
+
+    background: #eef6ff;
+
+    color: #1769d5;
+
+    font-family: inherit;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        color .2s ease,
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.grade-button:hover {
+    border-color: #1769d5;
+
+    background: #1769d5;
+
+    color: #ffffff;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 5px 11px rgba(23, 105, 213, .17);
+}
+
+.grade-button:active {
+    transform: translateY(0);
+}
+
+.action-empty {
+    color: #cbd5e1;
+
+    font-size: 11px;
 }
 
 
-.task-submissions-card-header p {
-    font-size: 12px;
+/* =========================================================
+   GRADE ROW
+========================================================= */
+
+.grade-row > td {
+    padding: 0 !important;
+
+    border-bottom: 1px solid #d7e5f3 !important;
+
+    background: #f5f9fd !important;
 }
 
 
-.grade-form {
-    grid-template-columns: 1fr;
-}
-
+/* =========================================================
+   GRADE FORM CONTAINER
+========================================================= */
 
 .grade-form-container {
-    padding: 16px;
+    padding: 17px 20px;
+
+    border-top: 3px solid #1769d5;
+
+    background: #f5f9fd;
 }
 
 
+/* =========================================================
+   GRADE FORM TITLE
+========================================================= */
+
+.grade-form-title {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 13px;
+}
+
+.grade-form-icon {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: #dcecff;
+
+    color: #1769d5;
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.grade-form-title strong {
+    display: block;
+
+    color: #102a43;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.grade-form-title small {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #64748b;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   GRADE FORM
+========================================================= */
+
+.grade-form {
+    display: grid;
+
+    grid-template-columns: 120px minmax(0, 1fr) auto;
+
+    align-items: end;
+
+    gap: 12px;
+}
+
+
+/* =========================================================
+   GRADE FIELD
+========================================================= */
+
+.grade-field {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.grade-field-small {
+    width: 120px;
+}
+
+.grade-field-large {
+    min-width: 0;
+}
+
+.grade-field label {
+    color: #475569;
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.grade-field label span {
+    color: #94a3b8;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+.grade-field input {
+    width: 100%;
+    height: 36px;
+
+    box-sizing: border-box;
+
+    padding: 0 10px;
+
+    border: 1px solid #d5e1ed;
+    border-radius: 7px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: #334155;
+
+    font-family: inherit;
+    font-size: 10px;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+.grade-field input::placeholder {
+    color: #a3afbd;
+}
+
+.grade-field input:focus {
+    border-color: #1769d5;
+
+    box-shadow:
+        0 0 0 3px rgba(23, 105, 213, .09);
+}
+
+
+/* =========================================================
+   SAVE GRADE
+========================================================= */
+
+.save-grade-button {
+    height: 36px;
+
+    padding: 0 16px;
+
+    border: none;
+    border-radius: 7px;
+
+    background: #1769d5;
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    box-shadow:
+        0 5px 11px rgba(23, 105, 213, .17);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+}
+
+.save-grade-button:hover {
+    background: #0d47a1;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 7px 15px rgba(23, 105, 213, .20);
+}
+
+.save-grade-button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.submissions-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 220px;
+
+    padding: 28px;
+
+    text-align: center;
+}
+
+.submissions-empty-icon {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 11px;
+
+    border-radius: 13px;
+
+    background: #e8f2ff;
+
+    color: #1769d5;
+
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.submissions-empty h3 {
+    margin: 0;
+
+    color: #102a43;
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.submissions-empty p {
+    margin: 5px 0 0;
+
+    color: #94a3b8;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   BOOTSTRAP COLLAPSE
+========================================================= */
+
+.grade-row.collapse:not(.show) {
+    display: none;
+}
+
+.grade-row.collapsing {
+    height: 0;
+
+    overflow: hidden;
+
+    transition: height .25s ease;
+}
+
+
+/* =========================================================
+   TEXT UTILITIES
+========================================================= */
+
+.task-submissions-table .text-center {
+    text-align: center;
+}
+
+.task-submissions-table .text-end {
+    text-align: right;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 992px) {
+
+    .task-submissions-page {
+        max-width: 100%;
+
+        padding: 22px 16px 35px;
+    }
+
+    .task-submissions-header {
+        padding: 24px;
+    }
+
+    .task-submissions-header-content {
+        width: calc(100% - 135px);
+    }
+
+    .task-submissions-header h1 {
+        font-size: 26px;
+    }
+
+    .task-submissions-card-header {
+        padding: 17px 20px;
+    }
+
+    .grade-form {
+        grid-template-columns: 110px minmax(0, 1fr);
+    }
+
+    .grade-field-small {
+        width: 110px;
+    }
+
+    .save-grade-button {
+        grid-column: 1 / -1;
+
+        width: fit-content;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .task-submissions-page {
+        padding: 16px 12px 30px;
+    }
+
+    .task-submissions-header {
+        min-height: auto;
+
+        padding: 20px;
+
+        border-radius: 14px;
+    }
+
+    .task-submissions-header-content {
+        width: 100%;
+
+        display: block;
+    }
+
+    .task-submissions-header h1 {
+        font-size: 23px;
+    }
+
+    .task-submissions-header .task-name {
+        font-size: 14px;
+    }
+
+    .task-submissions-header p {
+        font-size: 10px;
+    }
+
+
+    /* Tombol kembali */
+    .task-submissions-back-button {
+        position: relative;
+
+        top: auto;
+        right: auto;
+
+        margin-top: 15px;
+
+        min-height: 36px;
+
+        padding: 0 13px;
+
+        border-radius: 8px;
+    }
+
+
+    /* Card */
+    .task-submissions-card {
+        border-radius: 13px;
+    }
+
+    .task-submissions-card-header {
+        align-items: flex-start;
+
+        padding: 16px;
+    }
+
+    .task-submissions-icon {
+        width: 37px;
+        height: 37px;
+
+        flex-basis: 37px;
+
+        font-size: 17px;
+    }
+
+    .task-submissions-card-header h2 {
+        font-size: 15px;
+    }
+
+    .task-submissions-card-header p {
+        font-size: 9px;
+    }
+
+
+    /* Form */
+    .grade-form-container {
+        padding: 15px;
+    }
+
+    .grade-form {
+        grid-template-columns: 1fr;
+    }
+
+    .grade-field-small {
+        width: 100%;
+    }
+
+    .save-grade-button {
+        width: 100%;
+
+        grid-column: auto;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .task-submissions-page {
+        padding: 12px 9px 25px;
+    }
+
+    .task-submissions-header {
+        padding: 18px 16px;
+    }
+
+    .task-submissions-header h1 {
+        font-size: 21px;
+    }
+
+    .task-submissions-header .task-name {
+        font-size: 13px;
+    }
+
+    .task-submissions-label {
+        font-size: 9px;
+    }
+
+    .task-submissions-card-header {
+        gap: 10px;
+
+        padding: 14px;
+    }
+
+    .task-submissions-card-header h2 {
+        font-size: 14px;
+    }
+
+    .task-submissions-icon {
+        width: 35px;
+        height: 35px;
+
+        flex-basis: 35px;
+
+        border-radius: 9px;
+    }
+
+    .grade-form-title {
+        align-items: flex-start;
+    }
+
+    .grade-form-icon {
+        width: 29px;
+        height: 29px;
+
+        flex-basis: 29px;
+    }
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+.task-submissions-table-wrapper::-webkit-scrollbar {
+    height: 6px;
+}
+
+.task-submissions-table-wrapper::-webkit-scrollbar-track {
+    background: #eef3f8;
+}
+
+.task-submissions-table-wrapper::-webkit-scrollbar-thumb {
+    background: #9fb9d5;
+
+    border-radius: 10px;
+}
+
+.task-submissions-table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #7198bd;
 }
