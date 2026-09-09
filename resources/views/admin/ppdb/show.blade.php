@@ -155,6 +155,18 @@
                             <th>Asal Sekolah</th>
                             <td>{{ $registration->previous_school }}</td>
                         </tr>
+                        <tr>
+                            <th>Nilai Rata-rata Rapor</th>
+                            <td>{{ $registration->nilai_rapor ?? '-' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nilai Ijazah</th>
+                            <td>{{ $registration->nilai_ijazah ?? '-' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Skor Akademik (Gabungan)</th>
+                            <td><strong>{{ $registration->academicScore() ?? '-' }}</strong></td>
+                        </tr>
 
                     </table>
 

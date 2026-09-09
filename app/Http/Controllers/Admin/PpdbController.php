@@ -122,7 +122,7 @@ class PpdbController extends Controller
 
             // Coba tempatkan ke kelas X yang masih tersedia
             $activeYear = AcademicYear::active();
-            $classroom  = $activeYear ? $this->findAvailableClassroom($activeYear) : null;
+            $classroom  = $activeYear ? $this->findAvailableClassroom($activeYear, $ppdbRegistration) : null;
 
             if ($classroom && $activeYear) {
                 ClassroomStudent::create([
@@ -153,16 +153,52 @@ class PpdbController extends Controller
         return "{$localPart}+{$suffix}@{$domain}";
     }
 
-    private function findAvailableClassroom(AcademicYear $academicYear): ?Classroom
+    private function findAvailableClassroom(AcademicYear $academicYear, PpdbRegistration $registration): ?Classroom
     {
         try {
-            return Classroom::where('grade_level', 'X')
+            $candidates = Classroom::where('grade_level', 'X')
                 ->where('is_active', true)
                 ->withCount(['enrollments' => fn ($q) => $q->where('academic_year_id', $academicYear->id)])
                 ->get()
-                ->filter(fn (Classroom $c) => $c->capacity === null || $c->enrollments_count < $c->capacity)
-                ->sortBy('enrollments_count')
-                ->first();
+                ->filter(fn (Classroom $c) => $c->capacity === null || $c->enrollments_count < $c->capacity);
+
+            if ($candidates->isEmpty()) {
+                return null;
+            }
+
+            $profiles = $candidates->map(function (Classroom $c) use ($academicYear) {
+                $studentIds = ClassroomStudent::where('classroom_id', $c->id)
+                    ->where('academic_year_id', $academicYear->id)
+                    ->pluck('student_id');
+
+                $regs = $studentIds->isNotEmpty()
+                    ? PpdbRegistration::whereIn('user_id', $studentIds)->get()
+                    : collect();
+
+                $scores = $regs->map->academicScore()->filter();
+
+                return [
+                    'classroom' => $c,
+                    'registrations' => $regs,
+                    'averageScore' => $scores->isNotEmpty() ? $scores->avg() : 0,
+                ];
+            });
+
+            // TIER 1: jumlah siswa gender yang sama, paling sedikit
+            $targetGender = $registration->gender;
+            $minGenderCount = $profiles->min(fn ($p) => $p['registrations']->where('gender', $targetGender)->count());
+            $tiedByGender = $profiles->filter(
+                fn ($p) => $p['registrations']->where('gender', $targetGender)->count() === $minGenderCount
+            );
+
+            // TIER 2: di antara yang seri gender, rata-rata skor akademik paling rendah
+            $minAverage = $tiedByGender->min('averageScore');
+            $tiedByScore = $tiedByGender->filter(fn ($p) => $p['averageScore'] == $minAverage);
+
+            // TIER 3: kalau masih seri, jumlah siswa total paling sedikit
+            $chosen = $tiedByScore->sortBy(fn ($p) => $p['registrations']->count())->first();
+
+            return $chosen['classroom'] ?? null;
         } catch (\Throwable) {
             return null;
         }

@@ -16,6 +16,7 @@ class PpdbRegistration extends Model
         'user_id', 'ppdb_period_id', 'registration_number', 'full_name', 'nisn', 'nik',
         'gender', 'birth_place', 'birth_date', 'address', 'phone', 'email',
         'parent_name', 'parent_phone', 'previous_school',
+        'nilai_rapor', 'nilai_ijazah',
         'status', 'notes', 'verified_by', 'verified_at',
         'accepted_at', 're_registration_deadline',
         're_registration_reference', 're_registration_notes',
@@ -26,11 +27,22 @@ class PpdbRegistration extends Model
     {
         return [
             'birth_date' => 'date',
+            'nilai_rapor' => 'decimal:2',
+            'nilai_ijazah' => 'decimal:2',
             'verified_at' => 'datetime',
             'accepted_at' => 'datetime',
             're_registration_deadline' => 'date',
             're_registration_confirmed_at' => 'datetime',
         ];
+    }
+
+    public function academicScore(): ?float
+    {
+        if ($this->nilai_rapor === null || $this->nilai_ijazah === null) {
+            return null;
+        }
+
+        return round(((float) $this->nilai_rapor + (float) $this->nilai_ijazah) / 2, 2);
     }
 
     protected static function booted(): void

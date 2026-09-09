@@ -201,6 +201,18 @@
                                placeholder="Nama SMP/sederajat" required>
                     </div>
 
+                    <div class="form-field">
+                        <label>Nilai Rata-rata Rapor <span>*</span></label>
+                        <input type="number" name="nilai_rapor" value="{{ old('nilai_rapor') }}"
+                               min="0" max="100" step="0.01" placeholder="Contoh: 85.50" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Nilai Ijazah <span>*</span></label>
+                        <input type="number" name="nilai_ijazah" value="{{ old('nilai_ijazah') }}"
+                               min="0" max="100" step="0.01" placeholder="Contoh: 82.00" required>
+                    </div>
+
                 </div>
 
             </div>

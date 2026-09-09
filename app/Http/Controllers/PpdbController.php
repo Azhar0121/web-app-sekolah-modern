@@ -63,6 +63,8 @@ class PpdbController extends Controller
             'parent_name' => ['required', 'string', 'max:255'],
             'parent_phone' => ['required', 'string', 'max:20'],
             'previous_school' => ['required', 'string', 'max:255'],
+            'nilai_rapor' => ['required', 'numeric', 'min:0', 'max:100'],
+            'nilai_ijazah' => ['required', 'numeric', 'min:0', 'max:100'],
             'documents' => ['nullable', 'array'],
             'document_types' => ['nullable', 'array'],
         ], [
