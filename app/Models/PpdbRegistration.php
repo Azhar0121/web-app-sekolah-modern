@@ -15,7 +15,7 @@ class PpdbRegistration extends Model
     protected $fillable = [
         'user_id', 'ppdb_period_id', 'registration_number', 'full_name', 'nisn', 'nik',
         'gender', 'birth_place', 'birth_date', 'address', 'phone', 'email',
-        'parent_name', 'parent_phone', 'previous_school',
+        'parent_name', 'parent_phone', 'previous_school', 'first_major', 'second_major',
         'nilai_rapor', 'nilai_ijazah',
         'status', 'notes', 'verified_by', 'verified_at',
         'accepted_at', 're_registration_deadline',

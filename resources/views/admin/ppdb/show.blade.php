@@ -152,11 +152,24 @@
                         </tr>
 
                         <tr>
+                            <th>Pilihan Jurusan 1</th>
+                            <td><strong>{{ $registration->first_major ?? '-' }}</strong></td>
+                        </tr>
+
+                        @if ($registration->second_major)
+                            <tr>
+                                <th>Pilihan Jurusan 2</th>
+                                <td>{{ $registration->second_major }}</td>
+                            </tr>
+                        @endif
+
+                        <tr>
                             <th>Asal Sekolah</th>
                             <td>{{ $registration->previous_school }}</td>
                         </tr>
+
                         <tr>
-                            <th>Nilai Rata-rata Rapor</th>
+                            <th>Nilai Rata-rata Rapor (Sem. 1-5)</th>
                             <td>{{ $registration->nilai_rapor ?? '-' }}</td>
                         </tr>
                         <tr>

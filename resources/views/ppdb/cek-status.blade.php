@@ -133,6 +133,14 @@
                             </div>
 
                             <div class="data-item">
+                                <span class="data-label">Pilihan Jurusan</span>
+                                <strong>{{ $registration->first_major ?: '-' }}</strong>
+                                @if ($registration->second_major)
+                                    <small style="display: block; color: #64748b;">(Pilihan 2: {{ $registration->second_major }})</small>
+                                @endif
+                            </div>
+
+                            <div class="data-item">
                                 <span class="data-label">Status</span>
                                 <strong class="registration-status">{{ $registration->statusLabel() }}</strong>
                             </div>

@@ -63,14 +63,17 @@ class PpdbController extends Controller
             'parent_name' => ['required', 'string', 'max:255'],
             'parent_phone' => ['required', 'string', 'max:20'],
             'previous_school' => ['required', 'string', 'max:255'],
+            'first_major' => ['required', 'string', 'max:100'],
+            'second_major' => ['nullable', 'string', 'max:100'],
             'nilai_rapor' => ['required', 'numeric', 'min:0', 'max:100'],
             'nilai_ijazah' => ['required', 'numeric', 'min:0', 'max:100'],
             'documents' => ['nullable', 'array'],
-            'document_types' => ['nullable', 'array'],
+            'documents.*' => ['nullable', 'file', 'max:2048', 'mimes:pdf,jpg,jpeg,png'],
         ], [
             'email.unique' => 'Email ini sudah terdaftar pada periode PPDB yang sedang berjalan. '
                 .'Jika Anda sebelumnya sudah mendaftar, gunakan menu "Cek Status" atau "Lupa Nomor Pendaftaran". '
                 .'Jika ini bukan pendaftaran Anda, gunakan email pribadi lain.',
+            'first_major.required' => 'Pilihan Jurusan 1 wajib dipilih.',
         ]);
 
         $registration = PpdbRegistration::create([
@@ -79,12 +82,12 @@ class PpdbController extends Controller
             'status' => 'submitted',
         ]);
 
-        foreach ($request->file('documents', []) as $index => $file) {
+        foreach ($request->file('documents', []) as $docType => $file) {
             if (! $file || ! $file->isValid()) {
                 continue;
             }
 
-            if ($file->getSize() > 2 * 1024 * 1024 || ! in_array($file->getClientOriginalExtension(), ['pdf', 'jpg', 'jpeg', 'png'])) {
+            if ($file->getSize() > 2 * 1024 * 1024 || ! in_array(strtolower($file->getClientOriginalExtension()), ['pdf', 'jpg', 'jpeg', 'png'])) {
                 continue;
             }
 
@@ -92,7 +95,7 @@ class PpdbController extends Controller
 
             PpdbDocument::create([
                 'ppdb_registration_id' => $registration->id,
-                'document_type' => $validated['document_types'][$index] ?? 'lainnya',
+                'document_type' => $docType,
                 'original_name' => $file->getClientOriginalName(),
                 'file_path' => $path,
             ]);

@@ -151,6 +151,10 @@
                         </th>
 
                         <th>
+                            Jurusan
+                        </th>
+
+                        <th>
                             Asal Sekolah
                         </th>
 
@@ -190,6 +194,15 @@
 
                                 <span class="ppdb-name">
                                     {{ $registration->full_name }}
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <span class="badge bg-light text-dark border px-2 py-1">
+                                    {{ $registration->first_major ?: '-' }}
                                 </span>
 
                             </td>

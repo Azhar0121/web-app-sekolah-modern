@@ -139,11 +139,23 @@
                 </table>
             </div>
 
-            {{-- ASAL SEKOLAH --}}
+            {{-- PILIHAN JURUSAN & ASAL SEKOLAH --}}
             <div class="data-section">
-                <h3>Asal Sekolah</h3>
+                <h3>Pilihan Jurusan & Asal Sekolah</h3>
 
                 <table class="data-table">
+                    <tr>
+                        <td class="label">Pilihan Jurusan 1</td>
+                        <td class="sep">:</td>
+                        <td class="value"><strong>{{ $registration->first_major ?: '-' }}</strong></td>
+                    </tr>
+                    @if ($registration->second_major)
+                        <tr>
+                            <td class="label">Pilihan Jurusan 2</td>
+                            <td class="sep">:</td>
+                            <td class="value">{{ $registration->second_major }}</td>
+                        </tr>
+                    @endif
                     <tr>
                         <td class="label">Sekolah Asal (SMP)</td>
                         <td class="sep">:</td>

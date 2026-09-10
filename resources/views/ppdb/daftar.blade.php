@@ -202,7 +202,7 @@
                     </div>
 
                     <div class="form-field">
-                        <label>Nilai Rata-rata Rapor <span>*</span></label>
+                        <label>Nilai Rata-rata Rapor (Semester 1-5) <span>*</span></label>
                         <input type="number" name="nilai_rapor" value="{{ old('nilai_rapor') }}"
                                min="0" max="100" step="0.01" placeholder="Contoh: 85.50" required>
                     </div>
@@ -218,7 +218,7 @@
             </div>
 
 
-            {{-- DOKUMEN --}}
+            {{-- PILIHAN JURUSAN --}}
             <div class="form-card">
 
                 <div class="section-heading">
@@ -226,6 +226,63 @@
 
                     <div>
                         <span>LANGKAH 4</span>
+                        <h2>Pilihan Jurusan (SMA / SMK)</h2>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-field">
+                        <label>Pilihan Jurusan 1 <span>*</span></label>
+                        <select name="first_major" required>
+                            <option value="">-- Pilih Jurusan Utama --</option>
+                            <optgroup label="Sekolah Menengah Atas (SMA)">
+                                <option value="SMA - MIPA / IPA" @selected(old('first_major') === 'SMA - MIPA / IPA')>SMA - MIPA / IPA (Matematika & IPA)</option>
+                                <option value="SMA - IPS" @selected(old('first_major') === 'SMA - IPS')>SMA - IPS (Ilmu-Ilmu Sosial)</option>
+                                <option value="SMA - Bahasa & Budaya" @selected(old('first_major') === 'SMA - Bahasa & Budaya')>SMA - Bahasa & Budaya</option>
+                            </optgroup>
+                            <optgroup label="Sekolah Menengah Kejuruan (SMK)">
+                                <option value="SMK - Rekayasa Perangkat Lunak (RPL)" @selected(old('first_major') === 'SMK - Rekayasa Perangkat Lunak (RPL)')>SMK - Rekayasa Perangkat Lunak (RPL)</option>
+                                <option value="SMK - Teknik Komputer & Jaringan (TKJ)" @selected(old('first_major') === 'SMK - Teknik Komputer & Jaringan (TKJ)')>SMK - Teknik Komputer & Jaringan (TKJ)</option>
+                                <option value="SMK - Teknik Kendaraan Ringan (TKR)" @selected(old('first_major') === 'SMK - Teknik Kendaraan Ringan (TKR)')>SMK - Teknik Kendaraan Ringan (TKR / Otomotif)</option>
+                                <option value="SMK - Akuntansi & Keuangan Lembaga (AKL)" @selected(old('first_major') === 'SMK - Akuntansi & Keuangan Lembaga (AKL)')>SMK - Akuntansi & Keuangan Lembaga (AKL)</option>
+                                <option value="SMK - Manajemen Perkantoran (MPLB / OTKP)" @selected(old('first_major') === 'SMK - Manajemen Perkantoran (MPLB / OTKP)')>SMK - Manajemen Perkantoran (MPLB / OTKP)</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Pilihan Jurusan 2 <span class="text-muted">(Opsional / Cadangan)</span></label>
+                        <select name="second_major">
+                            <option value="">-- Tanpa Pilihan Kedua --</option>
+                            <optgroup label="Sekolah Menengah Atas (SMA)">
+                                <option value="SMA - MIPA / IPA" @selected(old('second_major') === 'SMA - MIPA / IPA')>SMA - MIPA / IPA (Matematika & IPA)</option>
+                                <option value="SMA - IPS" @selected(old('second_major') === 'SMA - IPS')>SMA - IPS (Ilmu-Ilmu Sosial)</option>
+                                <option value="SMA - Bahasa & Budaya" @selected(old('second_major') === 'SMA - Bahasa & Budaya')>SMA - Bahasa & Budaya</option>
+                            </optgroup>
+                            <optgroup label="Sekolah Menengah Kejuruan (SMK)">
+                                <option value="SMK - Rekayasa Perangkat Lunak (RPL)" @selected(old('second_major') === 'SMK - Rekayasa Perangkat Lunak (RPL)')>SMK - Rekayasa Perangkat Lunak (RPL)</option>
+                                <option value="SMK - Teknik Komputer & Jaringan (TKJ)" @selected(old('second_major') === 'SMK - Teknik Komputer & Jaringan (TKJ)')>SMK - Teknik Komputer & Jaringan (TKJ)</option>
+                                <option value="SMK - Teknik Kendaraan Ringan (TKR)" @selected(old('second_major') === 'SMK - Teknik Kendaraan Ringan (TKR)')>SMK - Teknik Kendaraan Ringan (TKR / Otomotif)</option>
+                                <option value="SMK - Akuntansi & Keuangan Lembaga (AKL)" @selected(old('second_major') === 'SMK - Akuntansi & Keuangan Lembaga (AKL)')>SMK - Akuntansi & Keuangan Lembaga (AKL)</option>
+                                <option value="SMK - Manajemen Perkantoran (MPLB / OTKP)" @selected(old('second_major') === 'SMK - Manajemen Perkantoran (MPLB / OTKP)')>SMK - Manajemen Perkantoran (MPLB / OTKP)</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            {{-- DOKUMEN --}}
+            <div class="form-card">
+
+                <div class="section-heading">
+                    <div class="section-number">5</div>
+
+                    <div>
+                        <span>LANGKAH 5</span>
                         <h2>Unggah Dokumen</h2>
                     </div>
                 </div>
@@ -240,8 +297,7 @@
                         <strong>Kartu Keluarga</strong>
                         <span>PDF, JPG, atau PNG — maks. 2MB</span>
                     </div>
-                    <input type="file" name="documents[]" accept=".pdf,.jpg,.jpeg,.png">
-                    <input type="hidden" name="document_types[]" value="kartu_keluarga">
+                    <input type="file" name="documents[kartu_keluarga]" accept=".pdf,.jpg,.jpeg,.png">
                 </div>
 
                 <div class="file-field">
@@ -249,17 +305,39 @@
                         <strong>Akta Lahir</strong>
                         <span>PDF, JPG, atau PNG — maks. 2MB</span>
                     </div>
-                    <input type="file" name="documents[]" accept=".pdf,.jpg,.jpeg,.png">
-                    <input type="hidden" name="document_types[]" value="akta_lahir">
+                    <input type="file" name="documents[akta_lahir]" accept=".pdf,.jpg,.jpeg,.png">
                 </div>
 
                 <div class="file-field">
                     <div class="file-info">
-                        <strong>Rapor</strong>
+                        <strong>Rapor (Semester 1-5)</strong>
                         <span>PDF, JPG, atau PNG — maks. 2MB</span>
                     </div>
-                    <input type="file" name="documents[]" accept=".pdf,.jpg,.jpeg,.png">
-                    <input type="hidden" name="document_types[]" value="rapor">
+                    <input type="file" name="documents[rapor]" accept=".pdf,.jpg,.jpeg,.png">
+                </div>
+
+                <div class="file-field">
+                    <div class="file-info">
+                        <strong>Sertifikat Prestasi 1 <span class="text-muted">(Opsional)</span></strong>
+                        <span>PDF, JPG, atau PNG — maks. 2MB</span>
+                    </div>
+                    <input type="file" name="documents[sertifikat_1]" accept=".pdf,.jpg,.jpeg,.png">
+                </div>
+
+                <div class="file-field">
+                    <div class="file-info">
+                        <strong>Sertifikat Prestasi 2 <span class="text-muted">(Opsional)</span></strong>
+                        <span>PDF, JPG, atau PNG — maks. 2MB</span>
+                    </div>
+                    <input type="file" name="documents[sertifikat_2]" accept=".pdf,.jpg,.jpeg,.png">
+                </div>
+
+                <div class="file-field">
+                    <div class="file-info">
+                        <strong>Surat Keterangan Lulus (SKL) <span class="text-muted">(Opsional)</span></strong>
+                        <span>PDF, JPG, atau PNG — maks. 2MB. Cukup lampirkan salah satu: SKL atau Ijazah asli kalau sudah terbit.</span>
+                    </div>
+                    <input type="file" name="documents[surat_keterangan_lulus]" accept=".pdf,.jpg,.jpeg,.png">
                 </div>
 
                 <div class="form-submit">

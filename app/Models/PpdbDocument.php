@@ -22,8 +22,11 @@ class PpdbDocument extends Model
         return match ($this->document_type) {
             'kartu_keluarga' => 'Kartu Keluarga',
             'akta_lahir' => 'Akta Lahir',
-            'rapor' => 'Rapor',
+            'rapor' => 'Rapor (Semester 1-5)',
             'foto' => 'Foto',
+            'sertifikat_1' => 'Sertifikat Prestasi 1',
+            'sertifikat_2' => 'Sertifikat Prestasi 2',
+            'surat_keterangan_lulus' => 'Surat Keterangan Lulus (SKL)',
             'lainnya' => 'Lainnya',
             default => $this->document_type,
         };
