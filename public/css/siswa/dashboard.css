@@ -1,0 +1,2141 @@
+/* =========================================================
+DASHBOARD SISWA
+DYNAMIC BLUE — MODERN / CREATIVE / INFORMATION FIRST
+========================================================= */
+
+:root {
+--student-blue: #1677e8;
+--student-blue-dark: #0b5fc7;
+--student-blue-deep: #084b9b;
+--student-blue-bright: #2690f5;
+--student-cyan: #16a9e8;
+
+
+--student-blue-soft: #edf6ff;
+--student-blue-pale: #f5faff;
+
+--student-text: #15324d;
+--student-muted: #71859a;
+
+--student-white: #ffffff;
+--student-border: #dceaf6;
+
+--student-green: #18a86b;
+--student-orange: #f39a27;
+
+--student-radius: 22px;
+--student-shadow: 0 12px 32px rgba(22, 91, 153, .08);
+
+
+}
+
+/* =========================================================
+GLOBAL
+========================================================= */
+
+.student-dashboard {
+width: 100%;
+max-width: 1440px;
+margin: 0 auto;
+padding: 24px 30px 45px;
+color: var(--student-text);
+font-family: inherit;
+}
+
+.student-dashboard *,
+.student-dashboard *::before,
+.student-dashboard *::after {
+box-sizing: border-box;
+}
+
+.student-dashboard a {
+text-decoration: none;
+color: inherit;
+}
+
+/* =========================================================
+HERO
+========================================================= */
+
+.student-hero {
+position: relative;
+min-height: 285px;
+overflow: hidden;
+
+
+display: flex;
+align-items: center;
+
+padding: 42px 48px;
+
+border-radius: 28px;
+
+background:
+    radial-gradient(
+        circle at 90% 15%,
+        rgba(255,255,255,.23),
+        transparent 24%
+    ),
+    radial-gradient(
+        circle at 72% 100%,
+        rgba(29,190,238,.38),
+        transparent 32%
+    ),
+    linear-gradient(
+        120deg,
+        #0a5fc7 0%,
+        #167de6 54%,
+        #159fe4 100%
+    );
+
+box-shadow:
+    0 18px 45px rgba(15,103,201,.22);
+
+isolation: isolate;
+
+
+}
+
+.hero-content {
+position: relative;
+z-index: 5;
+max-width: 780px;
+}
+
+.hero-label {
+display: inline-flex;
+align-items: center;
+gap: 9px;
+
+
+margin-bottom: 14px;
+padding: 7px 13px;
+
+border: 1px solid rgba(255,255,255,.24);
+border-radius: 999px;
+
+background: rgba(255,255,255,.12);
+
+color: rgba(255,255,255,.94);
+
+font-size: 11px;
+font-weight: 800;
+letter-spacing: 1.5px;
+
+
+}
+
+.label-dot {
+width: 7px;
+height: 7px;
+
+
+border-radius: 50%;
+background: #fff;
+
+box-shadow: 0 0 0 5px rgba(255,255,255,.12);
+
+
+}
+
+.student-hero h1 {
+margin: 0;
+
+
+color: #fff;
+
+font-size: clamp(32px, 4vw, 49px);
+line-height: 1.06;
+font-weight: 800;
+letter-spacing: -1px;
+
+
+}
+
+.student-hero h1 span {
+display: block;
+margin-top: 4px;
+}
+
+.student-hero p {
+max-width: 650px;
+
+
+margin: 16px 0 25px;
+
+color: rgba(255,255,255,.84);
+
+font-size: 14px;
+line-height: 1.7;
+
+
+}
+
+.hero-info {
+display: flex;
+align-items: center;
+gap: 22px;
+}
+
+.hero-info-item {
+display: flex;
+align-items: center;
+gap: 11px;
+}
+
+.hero-info-icon {
+width: 39px;
+height: 39px;
+
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border-radius: 12px;
+
+background: rgba(255,255,255,.17);
+
+color: #fff;
+font-size: 17px;
+
+
+}
+
+.hero-info-icon.warning {
+background: rgba(255,193,7,.22);
+}
+
+.hero-info-item small {
+display: block;
+margin-bottom: 2px;
+
+
+color: rgba(255,255,255,.67);
+
+font-size: 10px;
+font-weight: 600;
+
+
+}
+
+.hero-info-item strong {
+display: block;
+
+
+color: #fff;
+
+font-size: 13px;
+font-weight: 750;
+
+
+}
+
+.hero-info-divider {
+width: 1px;
+height: 38px;
+
+
+background: rgba(255,255,255,.22);
+
+
+}
+
+/* =========================================================
+HERO DECORATION
+========================================================= */
+
+.hero-decoration {
+position: absolute;
+border-radius: 50%;
+pointer-events: none;
+z-index: -1;
+}
+
+.decoration-one {
+width: 300px;
+height: 300px;
+
+
+right: -95px;
+top: -150px;
+
+border: 55px solid rgba(255,255,255,.08);
+
+
+}
+
+.decoration-two {
+width: 190px;
+height: 190px;
+
+
+right: 220px;
+bottom: -125px;
+
+border: 42px solid rgba(255,255,255,.07);
+
+
+}
+
+.hero-grid {
+position: absolute;
+right: 0;
+top: 0;
+
+
+width: 52%;
+height: 100%;
+
+opacity: .15;
+
+background-image:
+    linear-gradient(rgba(255,255,255,.45) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.45) 1px, transparent 1px);
+
+background-size: 28px 28px;
+
+mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 40%
+);
+
+z-index: -1;
+
+
+}
+
+.hero-symbol {
+position: absolute;
+right: 65px;
+bottom: 38px;
+
+
+width: 115px;
+height: 115px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border: 1px solid rgba(255,255,255,.18);
+border-radius: 32px;
+
+background: rgba(255,255,255,.09);
+
+color: rgba(255,255,255,.8);
+
+font-size: 48px;
+
+transform: rotate(-8deg);
+
+
+}
+
+.hero-symbol i {
+transform: rotate(8deg);
+}
+
+/* =========================================================
+MAIN LAYOUT
+========================================================= */
+
+.student-main {
+display: grid;
+grid-template-columns: minmax(0, 1.75fr) minmax(290px, .75fr);
+gap: 18px;
+
+
+margin-top: 28px;
+
+
+}
+
+.student-main-left {
+display: flex;
+flex-direction: column;
+gap: 18px;
+}
+
+.student-main-right {
+display: flex;
+flex-direction: column;
+gap: 18px;
+}
+
+/* =========================================================
+GENERAL PANEL
+========================================================= */
+
+.schedule-panel,
+.tasks-panel {
+position: relative;
+
+
+overflow: hidden;
+
+border: 1px solid var(--student-border);
+border-radius: var(--student-radius);
+
+background: #fff;
+
+box-shadow: var(--student-shadow);
+
+
+}
+
+.panel-heading {
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+
+padding: 24px 25px 18px;
+
+border-bottom: 1px solid #edf3f8;
+
+
+}
+
+.panel-heading.compact {
+padding-bottom: 16px;
+}
+
+.section-kicker {
+display: block;
+
+
+margin-bottom: 4px;
+
+color: var(--student-blue);
+
+font-size: 9px;
+font-weight: 850;
+letter-spacing: 1.7px;
+
+
+}
+
+.panel-heading h2 {
+margin: 0;
+
+
+color: var(--student-text);
+
+font-size: 22px;
+font-weight: 800;
+letter-spacing: -.4px;
+
+
+}
+
+.panel-heading p {
+margin: 4px 0 0;
+
+
+color: var(--student-muted);
+
+font-size: 11px;
+
+
+}
+
+.panel-link {
+display: inline-flex;
+align-items: center;
+gap: 7px;
+
+
+padding: 9px 13px;
+
+border-radius: 11px;
+
+background: var(--student-blue-soft);
+
+color: var(--student-blue);
+
+font-size: 10px;
+font-weight: 800;
+
+transition: .2s ease;
+
+
+}
+
+.panel-link:hover {
+background: var(--student-blue);
+color: #fff;
+}
+
+.panel-link i {
+font-size: 12px;
+}
+
+/* =========================================================
+SCHEDULE
+========================================================= */
+
+.schedule-list {
+padding: 8px 20px 18px;
+}
+
+.schedule-item {
+position: relative;
+
+
+display: grid;
+grid-template-columns: 75px 18px minmax(0, 1fr) 25px;
+align-items: center;
+
+min-height: 78px;
+
+padding: 10px 5px;
+
+border-bottom: 1px solid #edf3f7;
+
+transition: .2s ease;
+
+
+}
+
+.schedule-item:last-child {
+border-bottom: 0;
+}
+
+.schedule-item:hover {
+padding-left: 10px;
+padding-right: 0;
+
+
+border-radius: 14px;
+
+background: var(--student-blue-pale);
+
+
+}
+
+.schedule-time {
+text-align: left;
+}
+
+.schedule-time strong {
+display: block;
+
+
+color: var(--student-blue);
+
+font-size: 15px;
+font-weight: 850;
+
+
+}
+
+.schedule-time span {
+display: block;
+
+
+margin-top: 3px;
+
+color: #91a2b2;
+
+font-size: 9px;
+
+
+}
+
+.schedule-line {
+position: relative;
+
+
+height: 45px;
+
+display: flex;
+justify-content: center;
+
+
+}
+
+.schedule-line::before {
+content: "";
+
+
+position: absolute;
+
+width: 2px;
+height: 100%;
+
+background: #dcecff;
+
+
+}
+
+.schedule-line span {
+position: relative;
+z-index: 2;
+
+
+width: 9px;
+height: 9px;
+
+margin-top: 7px;
+
+border: 2px solid #fff;
+border-radius: 50%;
+
+background: var(--student-blue);
+
+box-shadow: 0 0 0 4px #e5f2ff;
+
+
+}
+
+.schedule-info {
+min-width: 0;
+padding-left: 10px;
+}
+
+.schedule-info > strong {
+display: block;
+
+
+overflow: hidden;
+
+color: var(--student-text);
+
+font-size: 13px;
+font-weight: 800;
+
+text-overflow: ellipsis;
+white-space: nowrap;
+
+
+}
+
+.schedule-meta {
+display: flex;
+flex-wrap: wrap;
+gap: 13px;
+
+
+margin-top: 5px;
+
+
+}
+
+.schedule-meta span {
+display: inline-flex;
+align-items: center;
+gap: 5px;
+
+
+color: var(--student-muted);
+
+font-size: 9px;
+
+
+}
+
+.schedule-meta i {
+color: var(--student-blue);
+}
+
+.schedule-arrow {
+display: flex;
+justify-content: flex-end;
+
+
+color: #a8bfd2;
+
+font-size: 13px;
+
+
+}
+
+.empty-schedule {
+display: flex;
+align-items: center;
+gap: 14px;
+
+
+margin: 15px 5px;
+padding: 19px;
+
+border-radius: 15px;
+
+background: var(--student-blue-pale);
+
+
+}
+
+.empty-icon {
+width: 43px;
+height: 43px;
+
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+flex-shrink: 0;
+
+border-radius: 13px;
+
+background: #e5f2ff;
+
+color: var(--student-blue);
+
+font-size: 19px;
+
+
+}
+
+.empty-schedule strong,
+.empty-task strong {
+display: block;
+
+
+color: var(--student-text);
+
+font-size: 12px;
+
+
+}
+
+.empty-schedule span,
+.empty-task span {
+display: block;
+
+
+margin-top: 3px;
+
+color: var(--student-muted);
+
+font-size: 10px;
+
+
+}
+
+/* =========================================================
+TASKS
+========================================================= */
+
+.task-list {
+padding: 7px 20px 15px;
+}
+
+.task-item {
+display: grid;
+grid-template-columns: 43px minmax(0, 1fr) 70px 18px;
+align-items: center;
+gap: 13px;
+
+
+min-height: 66px;
+
+padding: 8px 5px;
+
+border-bottom: 1px solid #edf3f7;
+
+transition: .2s ease;
+
+
+}
+
+.task-item:last-child {
+border-bottom: 0;
+}
+
+.task-item:hover {
+padding-left: 10px;
+border-radius: 13px;
+background: #f5faff;
+}
+
+.task-icon {
+width: 40px;
+height: 40px;
+
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border-radius: 12px;
+
+background: #eaf5ff;
+
+color: var(--student-blue);
+
+font-size: 18px;
+
+
+}
+
+.task-content {
+min-width: 0;
+}
+
+.task-content strong {
+display: block;
+
+
+overflow: hidden;
+
+color: var(--student-text);
+
+font-size: 12px;
+font-weight: 800;
+
+text-overflow: ellipsis;
+white-space: nowrap;
+
+
+}
+
+.task-content span {
+display: block;
+
+
+margin-top: 4px;
+
+color: var(--student-muted);
+
+font-size: 9px;
+
+
+}
+
+.task-deadline {
+text-align: right;
+}
+
+.task-deadline small {
+display: block;
+
+
+color: #9aaaba;
+
+font-size: 7px;
+font-weight: 800;
+letter-spacing: .8px;
+
+
+}
+
+.task-deadline strong {
+display: block;
+
+
+margin-top: 3px;
+
+color: var(--student-orange);
+
+font-size: 11px;
+
+
+}
+
+.task-arrow {
+color: #a8bfd2;
+}
+
+.empty-task {
+display: flex;
+align-items: center;
+gap: 12px;
+
+
+padding: 18px 5px;
+
+color: var(--student-green);
+
+
+}
+
+.empty-task > i {
+font-size: 27px;
+}
+
+/* =========================================================
+QR PANEL
+========================================================= */
+
+.qr-panel {
+position: relative;
+
+
+min-height: 275px;
+
+overflow: hidden;
+
+padding: 22px;
+
+border-radius: 23px;
+
+color: #fff;
+
+background:
+    radial-gradient(
+        circle at 90% 10%,
+        rgba(255,255,255,.23),
+        transparent 27%
+    ),
+    linear-gradient(
+        145deg,
+        #075fc8,
+        #1688eb
+    );
+
+box-shadow:
+    0 15px 35px rgba(15,101,198,.20);
+
+transition: transform .25s ease;
+
+
+}
+
+.qr-panel:hover {
+transform: translateY(-4px);
+}
+
+.qr-panel::after {
+content: "";
+
+
+position: absolute;
+
+width: 170px;
+height: 170px;
+
+right: -75px;
+bottom: -90px;
+
+border: 30px solid rgba(255,255,255,.08);
+
+border-radius: 50%;
+
+
+}
+
+.qr-top {
+position: relative;
+z-index: 2;
+
+
+display: flex;
+align-items: flex-start;
+justify-content: space-between;
+
+
+}
+
+.qr-top span {
+display: block;
+
+
+margin-bottom: 4px;
+
+color: rgba(255,255,255,.66);
+
+font-size: 8px;
+font-weight: 850;
+letter-spacing: 1.5px;
+
+
+}
+
+.qr-top h3 {
+margin: 0;
+
+
+color: #fff;
+
+font-size: 20px;
+font-weight: 800;
+
+
+}
+
+.qr-mini-icon {
+width: 39px;
+height: 39px;
+
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border-radius: 12px;
+
+background: rgba(255,255,255,.16);
+
+font-size: 19px;
+
+
+}
+
+.qr-visual {
+position: relative;
+z-index: 2;
+
+
+display: flex;
+align-items: center;
+gap: 15px;
+
+margin-top: 23px;
+
+
+}
+
+.qr-pattern {
+width: 76px;
+height: 76px;
+
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+flex-shrink: 0;
+
+border-radius: 14px;
+
+background: #fff;
+
+color: #0966cc;
+
+font-size: 52px;
+
+
+}
+
+.qr-info {
+min-width: 0;
+}
+
+.qr-info strong {
+display: block;
+
+
+overflow: hidden;
+
+color: #fff;
+
+font-size: 13px;
+font-weight: 800;
+
+text-overflow: ellipsis;
+white-space: nowrap;
+
+
+}
+
+.qr-info span {
+display: block;
+
+
+margin-top: 3px;
+
+color: rgba(255,255,255,.76);
+
+font-size: 10px;
+
+
+}
+
+.qr-info small {
+display: block;
+
+
+margin-top: 8px;
+
+color: rgba(255,255,255,.58);
+
+font-size: 8px;
+
+
+}
+
+.qr-action {
+position: absolute;
+z-index: 3;
+
+
+left: 22px;
+right: 22px;
+bottom: 18px;
+
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+padding-top: 12px;
+
+border-top: 1px solid rgba(255,255,255,.18);
+
+color: #fff;
+
+font-size: 9px;
+font-weight: 800;
+
+
+}
+
+/* =========================================================
+ATTENDANCE PANEL
+========================================================= */
+
+.attendance-panel {
+position: relative;
+
+
+padding: 21px;
+
+overflow: hidden;
+
+border: 1px solid var(--student-border);
+border-radius: 22px;
+
+background: #fff;
+
+box-shadow: var(--student-shadow);
+
+transition: .25s ease;
+
+
+}
+
+.attendance-panel:hover {
+transform: translateY(-3px);
+border-color: #b9daf7;
+}
+
+.attendance-heading {
+display: flex;
+align-items: flex-start;
+justify-content: space-between;
+}
+
+.attendance-heading span {
+display: block;
+
+
+margin-bottom: 4px;
+
+color: var(--student-blue);
+
+font-size: 8px;
+font-weight: 850;
+letter-spacing: 1.3px;
+
+
+}
+
+.attendance-heading h3 {
+margin: 0;
+
+
+color: var(--student-text);
+
+font-size: 16px;
+font-weight: 800;
+
+
+}
+
+.attendance-heading > i {
+width: 39px;
+height: 39px;
+
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border-radius: 12px;
+
+background: #eaf5ff;
+
+color: var(--student-blue);
+
+font-size: 18px;
+
+
+}
+
+.attendance-highlight {
+display: flex;
+align-items: baseline;
+gap: 8px;
+
+
+margin-top: 20px;
+
+
+}
+
+.attendance-highlight strong {
+color: var(--student-blue);
+
+
+font-size: 36px;
+line-height: 1;
+font-weight: 850;
+
+
+}
+
+.attendance-highlight span {
+color: var(--student-muted);
+
+
+font-size: 10px;
+
+
+}
+
+.attendance-mini {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+
+
+gap: 7px;
+
+margin-top: 15px;
+
+
+}
+
+.attendance-mini > div {
+padding: 10px 7px;
+
+
+text-align: center;
+
+border-radius: 11px;
+
+background: #f6faff;
+
+
+}
+
+.attendance-mini strong {
+display: block;
+
+
+color: var(--student-text);
+
+font-size: 14px;
+
+
+}
+
+.attendance-mini span {
+display: block;
+
+
+margin-top: 2px;
+
+color: var(--student-muted);
+
+font-size: 8px;
+
+
+}
+
+.attendance-footer {
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+
+margin-top: 15px;
+padding-top: 12px;
+
+border-top: 1px solid #edf3f7;
+
+color: var(--student-blue);
+
+font-size: 9px;
+font-weight: 800;
+
+
+}
+
+/* =========================================================
+MATERIAL
+========================================================= */
+
+.material-panel {
+display: grid;
+grid-template-columns: 43px minmax(0, 1fr) 18px;
+align-items: center;
+gap: 12px;
+
+
+padding: 17px 19px;
+
+border-radius: 19px;
+
+background: #f0f8ff;
+
+border: 1px solid #d9ecfb;
+
+transition: .2s ease;
+
+
+}
+
+.material-panel:hover {
+background: #e6f4ff;
+transform: translateY(-2px);
+}
+
+.material-icon {
+width: 42px;
+height: 42px;
+
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border-radius: 12px;
+
+background: #fff;
+
+color: var(--student-blue);
+
+font-size: 18px;
+
+box-shadow: 0 6px 15px rgba(22,100,170,.07);
+
+
+}
+
+.material-panel span {
+display: block;
+
+
+margin-bottom: 3px;
+
+color: var(--student-blue);
+
+font-size: 7px;
+font-weight: 850;
+letter-spacing: 1px;
+
+
+}
+
+.material-panel strong {
+display: block;
+
+
+color: var(--student-text);
+
+font-size: 12px;
+
+
+}
+
+.material-panel small {
+display: block;
+
+
+margin-top: 3px;
+
+color: var(--student-muted);
+
+font-size: 9px;
+
+
+}
+
+.material-panel > i {
+color: var(--student-blue);
+}
+
+/* =========================================================
+BOTTOM
+========================================================= */
+
+.student-bottom {
+display: grid;
+grid-template-columns: minmax(0, 1.6fr) minmax(260px, .7fr);
+gap: 18px;
+
+
+margin-top: 18px;
+
+
+}
+
+/* =========================================================
+GRADE
+========================================================= */
+
+.grade-panel {
+position: relative;
+
+
+min-height: 150px;
+
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+overflow: hidden;
+
+padding: 25px 30px;
+
+border-radius: 23px;
+
+color: #fff;
+
+background:
+    radial-gradient(
+        circle at 88% 20%,
+        rgba(255,255,255,.2),
+        transparent 28%
+    ),
+    linear-gradient(
+        120deg,
+        #0a5fc7,
+        #147de0,
+        #1798e2
+    );
+
+box-shadow:
+    0 13px 32px rgba(17,102,196,.16);
+
+transition: .25s ease;
+
+
+}
+
+.grade-panel:hover {
+transform: translateY(-3px);
+}
+
+.grade-panel .section-kicker {
+color: rgba(255,255,255,.66);
+}
+
+.grade-main {
+position: relative;
+z-index: 2;
+}
+
+.grade-main h2 {
+margin: 0;
+
+
+color: #fff;
+
+font-size: 22px;
+font-weight: 800;
+
+
+}
+
+.grade-main p {
+max-width: 520px;
+
+
+margin: 6px 0 15px;
+
+color: rgba(255,255,255,.76);
+
+font-size: 10.5px;
+line-height: 1.55;
+
+
+}
+
+.grade-action {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+
+
+font-size: 9px;
+font-weight: 850;
+
+
+}
+
+.grade-visual {
+position: relative;
+z-index: 2;
+
+
+display: flex;
+flex-direction: column;
+align-items: center;
+
+margin-right: 18px;
+
+
+}
+
+.grade-circle {
+width: 72px;
+height: 72px;
+
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border: 1px solid rgba(255,255,255,.18);
+border-radius: 50%;
+
+background: rgba(255,255,255,.12);
+
+font-size: 27px;
+
+
+}
+
+.grade-visual span {
+margin-top: 7px;
+
+
+color: rgba(255,255,255,.52);
+
+font-size: 6px;
+font-weight: 850;
+letter-spacing: 1.2px;
+text-align: center;
+
+
+}
+
+/* =========================================================
+SYSTEM
+========================================================= */
+
+.system-panel {
+min-height: 150px;
+
+
+display: flex;
+align-items: center;
+gap: 13px;
+
+padding: 22px;
+
+border: 1px solid var(--student-border);
+border-radius: 23px;
+
+background: #fff;
+
+box-shadow: var(--student-shadow);
+
+
+}
+
+.system-icon {
+width: 47px;
+height: 47px;
+
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+flex-shrink: 0;
+
+border-radius: 14px;
+
+background: #e9f9f1;
+
+color: var(--student-green);
+
+font-size: 20px;
+
+
+}
+
+.system-panel > div:nth-child(2) {
+min-width: 0;
+}
+
+.system-panel span:not(.system-dot) {
+display: block;
+
+
+color: #8999a9;
+
+font-size: 8px;
+font-weight: 800;
+letter-spacing: 1px;
+
+
+}
+
+.system-panel strong {
+display: block;
+
+
+margin-top: 4px;
+
+color: var(--student-text);
+
+font-size: 12px;
+
+
+}
+
+.system-panel small {
+display: block;
+
+
+margin-top: 4px;
+
+color: var(--student-muted);
+
+font-size: 9px;
+
+
+}
+
+.system-dot {
+width: 9px;
+height: 9px;
+
+
+margin-left: auto;
+
+flex-shrink: 0;
+
+border-radius: 50%;
+
+background: #1ab46c;
+
+box-shadow:
+    0 0 0 5px rgba(26,180,108,.10);
+
+
+}
+
+/* =========================================================
+RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+
+
+.student-dashboard {
+    padding: 22px;
+}
+
+.student-main {
+    grid-template-columns: 1fr;
+}
+
+.student-main-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+}
+
+.material-panel {
+    grid-column: span 2;
+}
+
+.student-bottom {
+    grid-template-columns: 1fr;
+}
+
+
+}
+
+/* =========================================================
+RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+
+.student-dashboard {
+    padding: 15px;
+}
+
+.student-hero {
+    min-height: auto;
+    padding: 28px 23px;
+    border-radius: 22px;
+}
+
+.student-hero h1 {
+    font-size: 30px;
+}
+
+.student-hero p {
+    font-size: 12px;
+}
+
+.hero-info {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.hero-info-divider {
+    display: none;
+}
+
+.hero-symbol {
+    width: 75px;
+    height: 75px;
+
+    right: 20px;
+    bottom: 20px;
+
+    font-size: 31px;
+    opacity: .3;
+}
+
+.student-main-right {
+    display: flex;
+}
+
+.material-panel {
+    width: 100%;
+}
+
+.panel-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+
+    padding: 20px;
+}
+
+.schedule-list {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.schedule-item {
+    grid-template-columns: 62px 14px minmax(0, 1fr) 15px;
+}
+
+.schedule-time strong {
+    font-size: 13px;
+}
+
+.schedule-info > strong {
+    font-size: 11px;
+}
+
+.schedule-meta {
+    gap: 7px;
+}
+
+.schedule-meta span {
+    font-size: 8px;
+}
+
+.task-item {
+    grid-template-columns: 39px minmax(0, 1fr) 55px 12px;
+    gap: 9px;
+}
+
+.task-content strong {
+    font-size: 10px;
+}
+
+.task-deadline strong {
+    font-size: 10px;
+}
+
+.grade-panel {
+    min-height: 160px;
+    padding: 22px;
+}
+
+.grade-visual {
+    margin-right: 0;
+}
+
+.grade-circle {
+    width: 58px;
+    height: 58px;
+    font-size: 22px;
+}
+
+
+}
+
+/* =========================================================
+SMALL MOBILE
+========================================================= */
+
+@media (max-width: 430px) {
+
+
+.student-dashboard {
+    padding: 12px;
+}
+
+.student-hero {
+    padding: 25px 20px;
+}
+
+.student-hero h1 {
+    font-size: 27px;
+}
+
+.hero-symbol {
+    display: none;
+}
+
+.panel-heading h2 {
+    font-size: 19px;
+}
+
+.schedule-item {
+    grid-template-columns: 55px 10px minmax(0, 1fr) 10px;
+}
+
+.schedule-meta {
+    flex-direction: column;
+    gap: 3px;
+}
+
+.task-item {
+    grid-template-columns: 38px minmax(0, 1fr) 48px;
+}
+
+.task-arrow {
+    display: none;
+}
+
+.qr-visual {
+    gap: 11px;
+}
+
+.qr-pattern {
+    width: 66px;
+    height: 66px;
+    font-size: 44px;
+}
+
+.grade-panel {
+    align-items: flex-start;
+}
+
+.grade-visual {
+    display: none;
+}
+
+
+}
+
+/* =========================================================
+   FINAL LAYOUT ALIGNMENT
+   DASHBOARD SISWA
+========================================================= */
+
+
+/* =========================================================
+   MAIN GRID
+   Menjaga kolom kiri dan kanan tetap seimbang
+========================================================= */
+
+.student-main {
+    align-items: start;
+}
+
+
+/* =========================================================
+   TUGAS TERBARU
+   Dibuat lebih panjang dan tetap fixed
+========================================================= */
+
+.tasks-panel {
+    height: 360px;
+    min-height: 360px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Header tugas tidak ikut scroll */
+
+.tasks-panel .panel-heading {
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   TASK LIST
+   Hanya bagian daftar yang bisa scroll
+========================================================= */
+
+.tasks-panel .task-list {
+    flex: 1;
+
+    min-height: 0;
+
+    max-height: none;
+
+    overflow-y: auto;
+
+    padding: 8px 20px 15px;
+}
+
+
+/* Scrollbar dibuat tipis */
+
+.tasks-panel .task-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.tasks-panel .task-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.tasks-panel .task-list::-webkit-scrollbar-thumb {
+    background: #c8def2;
+    border-radius: 20px;
+}
+
+.tasks-panel .task-list::-webkit-scrollbar-thumb:hover {
+    background: var(--student-blue);
+}
+
+
+/* Firefox */
+
+.tasks-panel .task-list {
+    scrollbar-width: thin;
+    scrollbar-color: #c8def2 transparent;
+}
+
+
+/* =========================================================
+   TASK ITEM
+   Sedikit lebih compact supaya banyak tugas tetap terlihat
+========================================================= */
+
+.tasks-panel .task-item {
+    min-height: 62px;
+
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   Jarak antar card dibuat lebih konsisten
+========================================================= */
+
+.student-main-right {
+    gap: 14px;
+}
+
+
+/* =========================================================
+   MATERIAL
+   Supaya posisinya tetap rapi di bawah presensi
+========================================================= */
+
+.material-panel {
+    min-height: 84px;
+}
+
+
+/* =========================================================
+   BOTTOM SECTION
+   Nilai + Portal dibuat lebih ramping
+========================================================= */
+
+.student-bottom {
+    grid-template-columns: minmax(0, 1.6fr) minmax(260px, .7fr);
+
+    gap: 14px;
+
+    margin-top: 16px;
+}
+
+
+/* =========================================================
+   NILAI RAPOR
+========================================================= */
+
+.grade-panel {
+    min-height: 112px;
+    height: 112px;
+
+    padding: 19px 25px;
+
+    border-radius: 20px;
+}
+
+
+/* Judul nilai */
+
+.grade-main h2 {
+    font-size: 20px;
+}
+
+
+/* Deskripsi lebih pendek */
+
+.grade-main p {
+    margin: 4px 0 10px;
+
+    font-size: 10px;
+
+    line-height: 1.4;
+}
+
+
+/* Tombol */
+
+.grade-action {
+    font-size: 8.5px;
+}
+
+
+/* Visual grafik diperkecil */
+
+.grade-circle {
+    width: 57px;
+    height: 57px;
+
+    font-size: 22px;
+}
+
+.grade-visual {
+    margin-right: 8px;
+}
+
+.grade-visual span {
+    margin-top: 5px;
+
+    font-size: 5.5px;
+}
+
+
+/* =========================================================
+   PORTAL SISWA AKTIF
+========================================================= */
+
+.system-panel {
+    min-height: 112px;
+    height: 112px;
+
+    padding: 18px 20px;
+
+    border-radius: 20px;
+}
+
+
+/* Icon lebih compact */
+
+.system-icon {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 12px;
+
+    font-size: 18px;
+}
+
+
+/* Text */
+
+.system-panel strong {
+    font-size: 11px;
+}
+
+.system-panel small {
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   JARAK KE BOTTOM
+========================================================= */
+
+.student-bottom {
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    .tasks-panel {
+        height: 340px;
+        min-height: 340px;
+    }
+
+    .student-bottom {
+        grid-template-columns: 1fr;
+    }
+
+    .grade-panel,
+    .system-panel {
+        height: 112px;
+        min-height: 112px;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .tasks-panel {
+        height: 350px;
+        min-height: 350px;
+    }
+
+    .tasks-panel .task-list {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .grade-panel {
+        height: 125px;
+        min-height: 125px;
+
+        padding: 20px;
+    }
+
+    .system-panel {
+        height: 105px;
+        min-height: 105px;
+    }
+}
+
+
+@media (max-width: 430px) {
+
+    .tasks-panel {
+        height: 330px;
+        min-height: 330px;
+    }
+
+    .grade-panel {
+        height: 120px;
+        min-height: 120px;
+    }
+
+    .system-panel {
+        height: 100px;
+        min-height: 100px;
+    }
+}
+

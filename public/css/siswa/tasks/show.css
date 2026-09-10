@@ -1,0 +1,1279 @@
+/* =========================================================
+   SISWA — DETAIL TUGAS
+   MODERN BLUE ACADEMIC
+========================================================= */
+
+.student-task-detail {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding-bottom: 25px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.task-detail-header {
+    position: relative;
+    overflow: hidden;
+
+    min-height: 185px;
+    margin-bottom: 24px;
+    padding: 30px 34px;
+
+    display: flex;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1769d5 0%,
+            #1676dc 48%,
+            #0c8acb 100%
+        );
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 28px rgba(23, 105, 213, 0.16);
+}
+
+.task-detail-header-content {
+    position: relative;
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    max-width: calc(100% - 80px);
+}
+
+.task-detail-icon {
+    width: 62px;
+    height: 62px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #1769d5;
+    background: #ffffff;
+
+    border-radius: 15px;
+
+    font-size: 25px;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.10);
+}
+
+.task-detail-info {
+    color: #ffffff;
+}
+
+.task-detail-eyebrow {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: rgba(255, 255, 255, 0.76);
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.7px;
+}
+
+.task-detail-info h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 27px;
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.task-detail-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 9px;
+
+    margin-top: 10px;
+
+    color: rgba(255, 255, 255, 0.88);
+
+    font-size: 11px;
+}
+
+.task-detail-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.task-detail-meta i {
+    font-size: 10px;
+}
+
+.meta-divider {
+    width: 4px;
+    height: 4px;
+
+    background: rgba(255, 255, 255, 0.45);
+
+    border-radius: 50%;
+}
+
+.deadline-badge {
+    padding: 5px 8px;
+
+    color: #fff1f1 !important;
+    background: rgba(185, 44, 44, 0.28);
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    border-radius: 6px;
+
+    font-size: 8px !important;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   HERO DECORATIONS
+========================================================= */
+
+.detail-decoration {
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.detail-decoration-one {
+    width: 220px;
+    height: 220px;
+
+    right: -70px;
+    top: -120px;
+
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.detail-decoration-two {
+    width: 120px;
+    height: 120px;
+
+    right: 190px;
+    bottom: -78px;
+
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.detail-dot {
+    position: absolute;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.30);
+
+    pointer-events: none;
+}
+
+.detail-dot-one {
+    width: 9px;
+    height: 9px;
+
+    right: 125px;
+    top: 35px;
+}
+
+.detail-dot-two {
+    width: 5px;
+    height: 5px;
+
+    right: 95px;
+    top: 58px;
+}
+
+.detail-floating-icon {
+    position: absolute;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: rgba(255, 255, 255, 0.52);
+
+    background: rgba(255, 255, 255, 0.10);
+
+    border: 1px solid rgba(255, 255, 255, 0.14);
+
+    border-radius: 11px;
+
+    pointer-events: none;
+}
+
+.detail-floating-one {
+    width: 42px;
+    height: 42px;
+
+    right: 48px;
+    bottom: 24px;
+
+    font-size: 16px;
+
+    transform: rotate(8deg);
+}
+
+.detail-floating-two {
+    width: 31px;
+    height: 31px;
+
+    right: 150px;
+    top: 23px;
+
+    font-size: 12px;
+
+    transform: rotate(-8deg);
+
+    opacity: 0.75;
+}
+
+
+/* =========================================================
+   CONTENT GRID
+========================================================= */
+
+.task-detail-grid {
+    align-items: stretch;
+}
+
+.task-detail-grid > div {
+    display: flex;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.detail-card {
+    width: 100%;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #ffffff;
+
+    border: 1px solid #e2edf7;
+    border-radius: 16px;
+
+    box-shadow:
+        0 7px 22px rgba(25, 75, 125, 0.07);
+}
+
+.detail-card-header {
+    min-height: 76px;
+
+    padding: 14px 18px;
+
+    display: flex;
+    align-items: center;
+
+    background: #eef6ff;
+
+    border-bottom: 1px solid #d9e9f8;
+}
+
+.detail-card-title {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.card-title-icon {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #1769d5;
+    background: #ffffff;
+
+    border: 1px solid #d6e7f8;
+    border-radius: 9px;
+
+    font-size: 15px;
+}
+
+.submission-icon {
+    color: #087ea4;
+}
+
+.detail-card-title span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #68839d;
+
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.detail-card-title h5 {
+    margin: 0;
+
+    color: #214d78;
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   CARD BODY
+========================================================= */
+
+.detail-card-body {
+    flex: 1;
+
+    padding: 20px;
+}
+
+
+/* =========================================================
+   INSTRUCTION
+========================================================= */
+
+.instruction-box {
+    padding: 16px;
+
+    background: #f7fbff;
+
+    border: 1px solid #e2edf7;
+    border-radius: 11px;
+}
+
+.instruction-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    margin-bottom: 9px;
+
+    color: #1769d5;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.instruction-label i {
+    font-size: 11px;
+}
+
+.instruction-box p {
+    margin: 0;
+
+    color: #506b86;
+
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   ATTACHMENT
+========================================================= */
+
+.attachment-box {
+    margin-top: 15px;
+    padding: 11px 12px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background: #eef7ff;
+
+    border: 1px solid #d8eaf9;
+    border-radius: 10px;
+}
+
+.attachment-icon {
+    width: 35px;
+    height: 35px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #1769d5;
+    background: #ffffff;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+}
+
+.attachment-info {
+    min-width: 0;
+
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.attachment-info strong {
+    color: #315d87;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.attachment-info span {
+    color: #8195a9;
+
+    font-size: 8px;
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    padding: 7px 10px;
+
+    color: #1769d5;
+    background: #ffffff;
+
+    border: 1px solid #c4dcf3;
+    border-radius: 7px;
+
+    font-size: 8px;
+    font-weight: 800;
+
+    text-decoration: none;
+
+    transition: 0.2s ease;
+}
+
+.download-btn:hover {
+    color: #ffffff;
+    background: #1769d5;
+    border-color: #1769d5;
+}
+
+
+/* =========================================================
+   GRADE
+========================================================= */
+
+.grade-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 13px 15px;
+
+    background: #eaf8f1;
+
+    border: 1px solid #ccebdc;
+    border-radius: 10px;
+}
+
+.grade-icon {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #198754;
+    background: #ffffff;
+
+    border-radius: 10px;
+
+    font-size: 18px;
+}
+
+.grade-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.grade-info span {
+    color: #5e806d;
+
+    font-size: 8px;
+    font-weight: 700;
+}
+
+.grade-info strong {
+    color: #16804e;
+
+    font-size: 23px;
+    line-height: 1;
+
+    font-weight: 850;
+}
+
+
+/* =========================================================
+   FEEDBACK
+========================================================= */
+
+.feedback-box {
+    margin-top: 12px;
+    padding: 12px 14px;
+
+    background: #f7fbff;
+
+    border-left: 3px solid #1769d5;
+
+    border-radius: 0 8px 8px 0;
+}
+
+.feedback-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    margin-bottom: 5px;
+
+    color: #315d87;
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.feedback-title i {
+    color: #1769d5;
+}
+
+.feedback-box p {
+    margin: 0;
+
+    color: #667d93;
+
+    font-size: 10px;
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   SUBMISSION INFO
+========================================================= */
+
+.submission-info {
+    margin-top: 15px;
+
+    padding: 13px 14px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e7edf3;
+    border-radius: 10px;
+}
+
+.submission-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+
+    padding: 7px 0;
+}
+
+.submission-row + .submission-row {
+    border-top: 1px solid #e9eef3;
+}
+
+.submission-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    color: #71869b;
+
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.submission-label i {
+    color: #1769d5;
+
+    font-size: 10px;
+}
+
+.submission-value {
+    text-align: right;
+
+    color: #3d5e7d;
+
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.late-badge {
+    display: inline-block;
+
+    margin-left: 5px;
+    padding: 3px 6px;
+
+    color: #946800;
+    background: #fff3cd;
+
+    border-radius: 5px;
+
+    font-size: 7px;
+    font-weight: 800;
+}
+
+.submission-file {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    max-width: 230px;
+
+    color: #1769d5;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.submission-file:hover {
+    color: #0d4fa8;
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   NOTE
+========================================================= */
+
+.submission-note {
+    margin-top: 10px;
+    padding: 10px 12px;
+
+    background: #ffffff;
+
+    border: 1px solid #e2eaf2;
+    border-radius: 8px;
+}
+
+.submission-note-title {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    margin-bottom: 4px;
+
+    color: #637d96;
+
+    font-size: 8px;
+    font-weight: 800;
+}
+
+.submission-note-title i {
+    color: #1769d5;
+}
+
+.submission-note p {
+    margin: 0;
+
+    color: #657c92;
+
+    font-size: 9px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   GRADED NOTICE
+========================================================= */
+
+.graded-notice {
+    margin-top: 16px;
+    padding: 11px 13px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #66788b;
+    background: #f3f6f9;
+
+    border: 1px solid #e1e7ed;
+    border-radius: 8px;
+
+    font-size: 9px;
+    line-height: 1.5;
+}
+
+.graded-notice i {
+    color: #7c8d9d;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.submission-form {
+    margin-top: 17px;
+}
+
+.form-divider {
+    position: relative;
+
+    margin-bottom: 15px;
+
+    display: flex;
+    align-items: center;
+}
+
+.form-divider::before {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    height: 1px;
+
+    background: #e4edf5;
+}
+
+.form-divider span {
+    position: relative;
+    z-index: 2;
+
+    padding-right: 10px;
+
+    color: #315d87;
+    background: #ffffff;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   FORM GROUP
+========================================================= */
+
+.form-group {
+    margin-bottom: 14px;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    margin-bottom: 6px;
+
+    color: #496984;
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.form-group label i {
+    color: #1769d5;
+}
+
+.form-group label small {
+    color: #91a1b0;
+
+    font-size: 8px;
+    font-weight: 500;
+}
+
+.task-form-control {
+    width: 100%;
+
+    padding: 10px 11px;
+
+    color: #405d77;
+    background: #ffffff;
+
+    border: 1px solid #d9e5ef;
+    border-radius: 8px;
+
+    outline: none;
+
+    font-family: inherit;
+    font-size: 10px;
+
+    resize: vertical;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.task-form-control::placeholder {
+    color: #a7b5c2;
+}
+
+.task-form-control:focus {
+    border-color: #70a9e3;
+
+    box-shadow: 0 0 0 3px rgba(23, 105, 213, 0.08);
+}
+
+
+/* =========================================================
+   FILE UPLOAD
+========================================================= */
+
+.task-file-input {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+.file-upload-label {
+    width: 100%;
+    min-height: 65px;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    margin: 0 !important;
+    padding: 12px;
+
+    color: #1769d5;
+    background: #f7fbff;
+
+    border: 1px dashed #a9cceb;
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    font-size: 10px !important;
+    font-weight: 800 !important;
+
+    transition: 0.2s ease;
+}
+
+.file-upload-label:hover {
+    background: #eef7ff;
+    border-color: #1769d5;
+}
+
+.file-upload-label > i {
+    color: #1769d5;
+
+    font-size: 21px;
+}
+
+.file-upload-label span {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.file-upload-label small {
+    color: #8da0b2;
+
+    font-size: 8px !important;
+    font-weight: 500 !important;
+}
+
+.previous-file {
+    margin-top: 6px;
+
+    color: #8293a3;
+
+    font-size: 8px;
+    line-height: 1.5;
+}
+
+.previous-file i {
+    margin-right: 3px;
+
+    color: #1769d5;
+}
+
+.previous-file strong {
+    color: #5d7185;
+}
+
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.submit-task-btn {
+    width: 100%;
+
+    min-height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    margin-top: 5px;
+    padding: 9px 14px;
+
+    color: #ffffff;
+    background: #1769d5;
+
+    border: 0;
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 12px rgba(23, 105, 213, 0.15);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.submit-task-btn i {
+    font-size: 10px;
+}
+
+.submit-task-btn:hover {
+    background: #0d58bc;
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 7px 15px rgba(23, 105, 213, 0.20);
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.task-detail-back {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: 18px;
+}
+
+.back-task-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 9px 14px;
+
+    color: #1769d5;
+    background: #ffffff;
+
+    border: 1px solid #c9def2;
+    border-radius: 8px;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    text-decoration: none;
+
+    box-shadow: 0 4px 12px rgba(23, 105, 213, 0.06);
+
+    transition: 0.2s ease;
+}
+
+.back-task-btn:hover {
+    color: #ffffff;
+    background: #1769d5;
+    border-color: #1769d5;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 992px) {
+
+    .student-task-detail {
+        padding: 0 2px 20px;
+    }
+
+    .task-detail-header {
+        min-height: 165px;
+
+        padding: 25px 26px;
+    }
+
+    .task-detail-info h2 {
+        font-size: 24px;
+    }
+
+    .detail-card-body {
+        padding: 17px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 576px) {
+
+    .student-task-detail {
+        padding-bottom: 18px;
+    }
+
+    .task-detail-header {
+        min-height: 155px;
+
+        margin-bottom: 16px;
+        padding: 22px 18px;
+
+        border-radius: 14px;
+    }
+
+    .task-detail-header-content {
+        gap: 11px;
+
+        max-width: calc(100% - 20px);
+    }
+
+    .task-detail-icon {
+        width: 47px;
+        height: 47px;
+
+        border-radius: 10px;
+
+        font-size: 19px;
+    }
+
+    .task-detail-eyebrow {
+        margin-bottom: 4px;
+
+        font-size: 7px;
+        letter-spacing: 1.2px;
+    }
+
+    .task-detail-info h2 {
+        font-size: 19px;
+    }
+
+    .task-detail-meta {
+        gap: 6px;
+
+        margin-top: 7px;
+
+        font-size: 8px;
+    }
+
+    .deadline-badge {
+        padding: 4px 6px;
+
+        font-size: 7px !important;
+    }
+
+    .detail-decoration-one {
+        width: 150px;
+        height: 150px;
+
+        right: -65px;
+        top: -85px;
+    }
+
+    .detail-decoration-two {
+        width: 80px;
+        height: 80px;
+
+        right: 120px;
+        bottom: -50px;
+    }
+
+    .detail-floating-one {
+        width: 34px;
+        height: 34px;
+
+        right: 24px;
+        bottom: 18px;
+
+        font-size: 13px;
+    }
+
+    .detail-floating-two {
+        width: 26px;
+        height: 26px;
+
+        right: 80px;
+        top: 17px;
+
+        font-size: 10px;
+    }
+
+    .detail-card {
+        border-radius: 12px;
+    }
+
+    .detail-card-header {
+        min-height: 65px;
+
+        padding: 11px 13px;
+    }
+
+    .card-title-icon {
+        width: 33px;
+        height: 33px;
+
+        border-radius: 8px;
+
+        font-size: 13px;
+    }
+
+    .detail-card-title {
+        gap: 8px;
+    }
+
+    .detail-card-title span {
+        font-size: 6px;
+    }
+
+    .detail-card-title h5 {
+        font-size: 12px;
+    }
+
+    .detail-card-body {
+        padding: 13px;
+    }
+
+    .instruction-box {
+        padding: 12px;
+    }
+
+    .instruction-label {
+        font-size: 9px;
+    }
+
+    .instruction-box p {
+        font-size: 10px;
+        line-height: 1.6;
+    }
+
+    .attachment-box {
+        padding: 9px;
+
+        gap: 8px;
+    }
+
+    .attachment-icon {
+        width: 31px;
+        height: 31px;
+
+        font-size: 12px;
+    }
+
+    .attachment-info strong {
+        font-size: 9px;
+    }
+
+    .attachment-info span {
+        font-size: 7px;
+    }
+
+    .download-btn {
+        padding: 6px 8px;
+
+        font-size: 7px;
+    }
+
+    .grade-box {
+        padding: 11px 12px;
+    }
+
+    .grade-icon {
+        width: 36px;
+        height: 36px;
+
+        font-size: 15px;
+    }
+
+    .grade-info strong {
+        font-size: 20px;
+    }
+
+    .submission-info {
+        padding: 10px 11px;
+    }
+
+    .submission-row {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .submission-value {
+        text-align: left;
+    }
+
+    .submission-file {
+        max-width: 100%;
+    }
+
+    .task-form-control {
+        font-size: 9px;
+    }
+
+    .file-upload-label {
+        min-height: 58px;
+    }
+
+    .submit-task-btn {
+        min-height: 38px;
+
+        font-size: 9px;
+    }
+
+    .back-task-btn {
+        padding: 8px 11px;
+
+        font-size: 9px;
+    }
+
+}

@@ -1,0 +1,1286 @@
+/* =========================================================
+   DASHBOARD SISWA
+   NILAI RAPOR
+   MODERN BRIGHT BLUE
+========================================================= */
+
+.student-grades-page {
+    width: 100%;
+    padding-bottom: 30px;
+}
+
+
+/* =========================================================
+   HEADER NILAI RAPOR
+========================================================= */
+
+.grades-header {
+    position: relative;
+    overflow: hidden;
+
+    min-height: 142px;
+
+    padding: 24px 27px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    background: linear-gradient(
+        135deg,
+        #1769d5 0%,
+        #087ed1 55%,
+        #08a2e8 100%
+    );
+
+    border-radius: 18px;
+
+    box-shadow: 0 9px 23px rgba(23, 105, 213, 0.16);
+}
+
+.grades-header-content {
+    position: relative;
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+}
+
+.grades-header-icon {
+    width: 54px;
+    height: 54px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #ffffff;
+
+    background: rgba(255, 255, 255, 0.16);
+
+    border: 1px solid rgba(255, 255, 255, 0.24);
+
+    border-radius: 14px;
+
+    font-size: 23px;
+
+    backdrop-filter: blur(5px);
+}
+
+.grades-header-text {
+    position: relative;
+    z-index: 5;
+}
+
+.grades-eyebrow {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: rgba(255, 255, 255, 0.70);
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+}
+
+.grades-header h4 {
+    margin: 0 0 4px;
+
+    color: #ffffff !important;
+
+    font-size: 23px;
+
+    font-weight: 800;
+}
+
+.grades-header p {
+    color: rgba(255, 255, 255, 0.88) !important;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+.grades-header p strong {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   HEADER DECORATION
+========================================================= */
+
+.grades-decoration {
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.grades-decoration-one {
+    width: 175px;
+    height: 175px;
+
+    right: -60px;
+    top: -95px;
+
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.grades-decoration-two {
+    width: 85px;
+    height: 85px;
+
+    right: 170px;
+    bottom: -55px;
+
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.grades-dot {
+    position: absolute;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.24);
+
+    z-index: 2;
+}
+
+.grades-dot-one {
+    width: 9px;
+    height: 9px;
+
+    right: 100px;
+    top: 43px;
+}
+
+.grades-dot-two {
+    width: 5px;
+    height: 5px;
+
+    right: 126px;
+    top: 64px;
+}
+
+
+/* =========================================================
+   SEMESTER
+========================================================= */
+
+.semester-selector {
+    position: relative;
+    z-index: 10;
+
+    min-width: 185px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 10px 12px;
+
+    background: rgba(255, 255, 255, 0.13);
+
+    border: 1px solid rgba(255, 255, 255, 0.20);
+
+    border-radius: 12px;
+
+    backdrop-filter: blur(7px);
+}
+
+.semester-icon {
+    width: 32px;
+    height: 32px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #ffffff;
+
+    background: rgba(255, 255, 255, 0.15);
+
+    border-radius: 8px;
+
+    font-size: 13px;
+}
+
+.semester-select-wrapper {
+    min-width: 0;
+}
+
+.semester-select-wrapper > span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: rgba(255, 255, 255, 0.68);
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+}
+
+.semester-select {
+    width: 100%;
+
+    padding: 0 20px 0 0;
+
+    border: none;
+
+    outline: none;
+
+    background-color: transparent;
+
+    color: #ffffff;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.semester-select option {
+    color: #25496d;
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   GRAFIK NILAI
+   BIRU MUDA + DEKORASI
+========================================================= */
+
+.grade-chart-card {
+    position: relative;
+
+    overflow: hidden;
+
+    min-height: 375px;
+
+    background: #eaf5ff;
+
+    border: 1px solid #cfe6fb;
+
+    border-radius: 17px;
+
+    box-shadow: 0 6px 18px rgba(23, 105, 213, 0.08);
+}
+
+
+/* =========================================================
+   DEKORASI GRAFIK
+========================================================= */
+
+.chart-decoration {
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+.chart-decoration-one {
+    width: 190px;
+    height: 190px;
+
+    right: -75px;
+    top: -90px;
+
+    background: rgba(23, 105, 213, 0.08);
+}
+
+.chart-decoration-two {
+    width: 105px;
+    height: 105px;
+
+    left: -50px;
+    bottom: -55px;
+
+    background: rgba(8, 162, 232, 0.09);
+}
+
+.chart-decoration-three {
+    width: 55px;
+    height: 55px;
+
+    right: 130px;
+    bottom: -30px;
+
+    background: rgba(255, 255, 255, 0.75);
+}
+
+.chart-floating-icon {
+    position: absolute;
+
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #1769d5;
+
+    background: rgba(255, 255, 255, 0.65);
+
+    border: 1px solid rgba(23, 105, 213, 0.08);
+
+    border-radius: 11px;
+
+    pointer-events: none;
+}
+
+.chart-floating-one {
+    width: 38px;
+    height: 38px;
+
+    right: 45px;
+    top: 84px;
+
+    font-size: 15px;
+
+    transform: rotate(8deg);
+
+    opacity: 0.55;
+}
+
+.chart-floating-two {
+    width: 30px;
+    height: 30px;
+
+    left: 35px;
+    bottom: 38px;
+
+    font-size: 11px;
+
+    transform: rotate(-8deg);
+
+    opacity: 0.45;
+}
+
+
+/* =========================================================
+   HEADER GRAFIK
+========================================================= */
+
+.grade-chart-header {
+    position: relative;
+    z-index: 5;
+
+    min-height: 72px;
+
+    padding: 13px 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    background: rgba(255, 255, 255, 0.58);
+
+    border-bottom: 1px solid rgba(190, 219, 242, 0.8);
+
+    backdrop-filter: blur(5px);
+}
+
+.chart-title-wrapper {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.chart-icon {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #1769d5;
+
+    background: #ffffff;
+
+    border: 1px solid #d7eafd;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    box-shadow: 0 3px 8px rgba(23, 105, 213, 0.06);
+}
+
+.chart-eyebrow {
+    display: block;
+
+    margin-bottom: 1px;
+
+    color: #7893ad;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.9px;
+}
+
+.grade-chart-header h5 {
+    margin: 0;
+
+    color: #25496d;
+
+    font-size: 14px;
+
+    font-weight: 750;
+}
+
+.chart-badge {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 5px;
+
+    padding: 7px 10px;
+
+    color: #1769d5;
+
+    background: #ffffff;
+
+    border: 1px solid #d6e9fb;
+
+    border-radius: 8px;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    box-shadow: 0 3px 8px rgba(23, 105, 213, 0.04);
+}
+
+
+/* =========================================================
+   AREA CHART
+========================================================= */
+
+.grade-chart-body {
+    position: relative;
+    z-index: 4;
+
+    height: 300px;
+
+    padding: 17px 20px 14px;
+}
+
+.grade-chart-body canvas {
+    position: relative;
+    z-index: 5;
+
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.chart-top-line {
+    position: absolute;
+
+    left: 20px;
+    right: 20px;
+    top: 13px;
+
+    height: 1px;
+
+    background: rgba(255, 255, 255, 0.75);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   TABEL NILAI
+========================================================= */
+
+.grades-table-card {
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border: 1px solid #e3ebf5;
+
+    border-radius: 15px;
+
+    box-shadow: 0 4px 14px rgba(31, 76, 120, 0.055);
+}
+
+.grades-table-header {
+    min-height: 67px;
+
+    padding: 12px 17px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    background: #f8fbff;
+
+    border-bottom: 1px solid #e7eef6;
+}
+
+.grades-table-title {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.grades-table-icon {
+    width: 36px;
+    height: 36px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #1769d5;
+
+    background: #e8f3ff;
+
+    border: 1px solid #d8eaff;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+}
+
+.grades-table-title span {
+    display: block;
+
+    margin-bottom: 1px;
+
+    color: #8a9caf;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+}
+
+.grades-table-title h5 {
+    margin: 0;
+
+    color: #25496d;
+
+    font-size: 13px;
+
+    font-weight: 750;
+}
+
+.subject-count {
+    padding: 6px 10px;
+
+    color: #1769d5;
+
+    background: #edf5ff;
+
+    border: 1px solid #dcecff;
+
+    border-radius: 7px;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   TABLE HEADER
+========================================================= */
+
+.grades-table {
+    width: 100%;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+}
+
+.grades-table thead th {
+    padding: 11px 14px !important;
+
+    background: #1769d5 !important;
+
+    color: #ffffff !important;
+
+    border: none !important;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.15px;
+
+    vertical-align: middle;
+
+    white-space: nowrap;
+}
+
+.grades-table thead th + th {
+    border-left: 1px solid rgba(255, 255, 255, 0.13) !important;
+}
+
+
+/* =========================================================
+   TABLE BODY
+========================================================= */
+
+.grades-table tbody td {
+    height: 50px;
+
+    padding: 9px 14px !important;
+
+    color: #526f8b;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #edf2f7 !important;
+
+    font-size: 11px;
+
+    vertical-align: middle;
+}
+
+.grades-table tbody tr:last-child td {
+    border-bottom: none !important;
+}
+
+.grades-table tbody tr {
+    transition: background 0.15s ease;
+}
+
+.grades-table tbody tr:hover td {
+    background: #f7faff;
+}
+
+
+/* =========================================================
+   SUBJECT
+========================================================= */
+
+.subject-cell {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+}
+
+.subject-number {
+    width: 23px;
+    height: 23px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #7890a8;
+
+    background: #f5f8fb;
+
+    border-radius: 6px;
+
+    font-size: 8px;
+
+    font-weight: 800;
+}
+
+.subject-icon {
+    width: 28px;
+    height: 28px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #1769d5;
+
+    background: #edf5ff;
+
+    border-radius: 8px;
+
+    font-size: 11px;
+}
+
+.subject-name {
+    color: #25496d;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   SCORE
+========================================================= */
+
+.score-value {
+    display: inline-flex;
+
+    min-width: 34px;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 4px 7px;
+
+    color: #526f8b;
+
+    background: #f7faff;
+
+    border: 1px solid #edf2f7;
+
+    border-radius: 6px;
+
+    font-size: 10px;
+
+    font-weight: 650;
+}
+
+
+/* =========================================================
+   NILAI AKHIR
+========================================================= */
+
+.final-score {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+}
+
+.final-score strong {
+    min-width: 38px;
+
+    padding: 5px 7px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #1769d5;
+
+    background: #eaf4ff;
+
+    border: 1px solid #d9eaff;
+
+    border-radius: 7px;
+
+    font-size: 11px;
+
+    font-weight: 800;
+}
+
+.temporary-badge {
+    padding: 3px 6px;
+
+    color: #7d8da0;
+
+    background: #f1f4f7;
+
+    border-radius: 5px;
+
+    font-size: 8px;
+
+    font-weight: 700;
+}
+
+.score-empty {
+    color: #a2afbd;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.grades-empty {
+    position: relative;
+    overflow: hidden;
+
+    padding: 50px 20px;
+
+    text-align: center;
+
+    background: #ffffff;
+
+    border: 1px solid #e4edf7;
+
+    border-radius: 17px;
+
+    box-shadow: 0 6px 18px rgba(31, 76, 120, 0.055);
+}
+
+.empty-decoration {
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.empty-decoration-one {
+    width: 130px;
+    height: 130px;
+
+    right: -55px;
+    top: -70px;
+
+    background: #f0f7ff;
+}
+
+.empty-decoration-two {
+    width: 75px;
+    height: 75px;
+
+    left: -30px;
+    bottom: -38px;
+
+    background: #f5faff;
+}
+
+.empty-icon {
+    position: relative;
+    z-index: 2;
+
+    width: 52px;
+    height: 52px;
+
+    margin: 0 auto 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #1769d5;
+
+    background: #eaf4ff;
+
+    border-radius: 14px;
+
+    font-size: 22px;
+}
+
+.grades-empty h5 {
+    position: relative;
+    z-index: 2;
+
+    margin-bottom: 5px;
+
+    color: #24496f;
+
+    font-size: 15px;
+
+    font-weight: 750;
+}
+
+.grades-empty p {
+    position: relative;
+    z-index: 2;
+
+    margin: 0;
+
+    color: #7b8ea5;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   KEMBALI KE DASHBOARD
+   PALING BAWAH
+========================================================= */
+
+.grades-back-bottom {
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: 18px;
+}
+
+.back-dashboard {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 9px 14px;
+
+    color: #1769d5;
+
+    background: #ffffff;
+
+    border: 1px solid #dce9f7;
+
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    box-shadow: 0 3px 10px rgba(31, 76, 120, 0.05);
+
+    transition: all 0.2s ease;
+}
+
+.back-dashboard i {
+    font-size: 13px;
+}
+
+.back-dashboard:hover {
+    color: #ffffff;
+
+    background: #1769d5;
+
+    border-color: #1769d5;
+
+    transform: translateX(-2px);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .grades-header {
+        min-height: 135px;
+
+        padding: 21px 20px;
+
+        border-radius: 16px;
+
+        align-items: flex-start;
+    }
+
+    .grades-header-content {
+        gap: 13px;
+    }
+
+    .grades-header-icon {
+        width: 46px;
+        height: 46px;
+
+        border-radius: 12px;
+
+        font-size: 20px;
+    }
+
+    .grades-header h4 {
+        font-size: 20px;
+    }
+
+    .grades-header p {
+        font-size: 11px;
+    }
+
+    .semester-selector {
+        min-width: 160px;
+
+        padding: 8px 10px;
+    }
+
+    .semester-icon {
+        width: 29px;
+        height: 29px;
+    }
+
+    .semester-select {
+        font-size: 10px;
+    }
+
+
+    .grade-chart-card {
+        min-height: 350px;
+    }
+
+    .grade-chart-header,
+    .grades-table-header {
+        min-height: 62px;
+
+        padding: 10px 14px;
+    }
+
+    .grade-chart-body {
+        height: 275px;
+
+        padding: 14px;
+    }
+
+    .grades-table thead th {
+        padding: 10px 10px !important;
+
+        font-size: 9px;
+    }
+
+    .grades-table tbody td {
+        padding: 9px 10px !important;
+
+        font-size: 10px;
+    }
+
+    .subject-name {
+        font-size: 10px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 576px) {
+
+    .student-grades-page {
+        padding-bottom: 20px;
+    }
+
+    .grades-header {
+        min-height: auto;
+
+        padding: 18px 16px;
+
+        display: block;
+    }
+
+    .grades-header-content {
+        gap: 11px;
+    }
+
+    .grades-header-icon {
+        width: 42px;
+        height: 42px;
+
+        border-radius: 10px;
+
+        font-size: 18px;
+    }
+
+    .grades-eyebrow {
+        font-size: 7px;
+    }
+
+    .grades-header h4 {
+        font-size: 18px;
+    }
+
+    .grades-header p {
+        font-size: 10px;
+    }
+
+
+    /* SEMESTER */
+
+    .semester-selector {
+        width: 100%;
+
+        min-width: 0;
+
+        margin-top: 15px;
+    }
+
+
+    /* GRAFIK */
+
+    .grade-chart-card {
+        min-height: 310px;
+
+        border-radius: 15px;
+    }
+
+    .grade-chart-header {
+        padding: 10px 12px;
+    }
+
+    .chart-icon {
+        width: 32px;
+        height: 32px;
+
+        font-size: 13px;
+    }
+
+    .chart-eyebrow {
+        font-size: 6px;
+    }
+
+    .grade-chart-header h5 {
+        font-size: 12px;
+    }
+
+    .chart-badge {
+        display: none;
+    }
+
+    .chart-floating-one {
+        right: 20px;
+        top: 76px;
+    }
+
+    .chart-floating-two {
+        left: 20px;
+        bottom: 25px;
+    }
+
+    .grade-chart-body {
+        height: 240px;
+
+        padding: 12px 9px 10px;
+    }
+
+
+    /* TABLE */
+
+    .grades-table-header {
+        padding: 10px 12px;
+    }
+
+    .grades-table-icon {
+        width: 32px;
+        height: 32px;
+
+        font-size: 13px;
+    }
+
+    .grades-table-title span {
+        font-size: 6px;
+    }
+
+    .grades-table-title h5 {
+        font-size: 12px;
+    }
+
+    .subject-count {
+        padding: 5px 7px;
+
+        font-size: 8px;
+    }
+
+    .grades-table {
+        min-width: 680px;
+    }
+
+    .grades-table thead th {
+        padding: 9px 10px !important;
+
+        font-size: 9px;
+    }
+
+    .grades-table tbody td {
+        height: 46px;
+
+        padding: 8px 10px !important;
+
+        font-size: 9px;
+    }
+
+    .subject-cell {
+        gap: 6px;
+    }
+
+    .subject-number {
+        width: 21px;
+        height: 21px;
+
+        font-size: 7px;
+    }
+
+    .subject-icon {
+        width: 25px;
+        height: 25px;
+
+        font-size: 10px;
+    }
+
+    .subject-name {
+        font-size: 9px;
+    }
+
+    .score-value {
+        min-width: 31px;
+
+        padding: 3px 5px;
+
+        font-size: 9px;
+    }
+
+    .final-score strong {
+        min-width: 34px;
+
+        padding: 4px 6px;
+
+        font-size: 10px;
+    }
+
+    .temporary-badge {
+        font-size: 7px;
+    }
+
+
+    /* BUTTON */
+
+    .grades-back-bottom {
+        margin-top: 14px;
+    }
+
+    .back-dashboard {
+        padding: 8px 12px;
+
+        font-size: 11px;
+    }
+
+}
+

@@ -3,47 +3,115 @@
 @section('title', 'Kartu Pelajar Digital')
 
 @section('content')
-<div class="row justify-content-center">
-    <div class="col-md-6 col-lg-5">
 
-        <div class="card border-0 shadow-sm">
-            <div class="card-body p-4 text-center">
-                <span class="badge text-bg-primary mb-2">KARTU PELAJAR DIGITAL</span>
-                <h4 class="fw-bold mb-1">{{ $student->name }}</h4>
-                <p class="text-muted mb-3">
-                    {{ $classroom?->name ?? 'Kelas belum ditentukan' }}
-                    &middot; {{ $student->email }}
-                </p>
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+      
+<link rel="stylesheet" href="{{ asset('css/siswa/qr/show.css') }}">
 
-                <div id="qr-code" class="d-flex justify-content-center my-3"></div>
+<div class="student-qr-page">
 
-                <div class="d-flex align-items-center justify-content-center gap-2 mb-2">
-                    <div class="progress" style="height: 6px; width: 140px;">
-                        <div id="qr-progress" class="progress-bar bg-primary" style="width: 100%;"></div>
-                    </div>
-                    <span id="qr-countdown" class="text-muted small">{{ $ttl }}s</span>
+    <div class="student-qr-wrapper">
+
+        <div class="student-qr-card">
+
+            <div class="student-qr-header">
+                <span class="student-qr-badge">
+                    <i class="bi bi-person-badge-fill"></i>
+                    Kartu Pelajar Digital
+                </span>
+
+                <div class="student-qr-title">
+                    <h4>{{ $student->name }}</h4>
+
+                    <p>
+                        {{ $classroom?->name ?? 'Kelas belum ditentukan' }}
+                        <span>•</span>
+                        {{ $student->email }}
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="student-qr-body">
+
+                <div class="student-qr-label">
+                    <i class="bi bi-qr-code-scan"></i>
+                    QR Presensi Siswa
                 </div>
 
-                <p class="text-muted small mb-0">
-                    QR ini <strong>otomatis berganti setiap {{ $ttl }} detik</strong> demi keamanan —
-                    supaya tidak bisa dipakai titip absen lewat screenshot.
-                    Tunjukkan langsung dari HP Anda ke kamera guru saat presensi berlangsung.
-                    Jangan bagikan tangkapan layar QR ini ke orang lain.
-                </p>
+                <div id="qr-code" class="student-qr-code"></div>
+
+                <div class="student-qr-timer">
+
+                    <div class="student-qr-progress">
+                        <div
+                            id="qr-progress"
+                            class="student-qr-progress-bar"
+                            style="width: 100%;">
+                        </div>
+                    </div>
+
+                    <span id="qr-countdown">{{ $ttl }}s</span>
+
+                </div>
+
+                <div class="student-qr-security">
+                    <i class="bi bi-shield-check"></i>
+
+                    <div>
+                        <strong>QR otomatis diperbarui</strong>
+
+                        <p>
+                            QR berganti setiap {{ $ttl }} detik demi keamanan
+                            dan mencegah penggunaan screenshot untuk titip absen.
+                        </p>
+                    </div>
+                </div>
+
             </div>
+
+
+            <div class="student-qr-footer">
+
+                <div class="student-qr-footer-icon">
+                    <i class="bi bi-camera"></i>
+                </div>
+
+                <div>
+                    <strong>Tunjukkan QR ke kamera guru</strong>
+
+                    <span>
+                        Jangan bagikan tangkapan layar QR kepada orang lain.
+                    </span>
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="text-center mt-3">
-            <a href="{{ route('siswa.attendance.index') }}" class="text-decoration-none">
-                Lihat Riwayat Presensi Saya &rarr;
-            </a>
-        </div>
+
+        <a
+            href="{{ route('siswa.attendance.index') }}"
+            class="student-qr-history"
+        >
+            <span>
+                <i class="bi bi-clock-history"></i>
+                Lihat Riwayat Presensi Saya
+            </span>
+
+            <i class="bi bi-arrow-right"></i>
+        </a>
 
     </div>
+
 </div>
 
+
 @push('scripts')
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
 <script>
     const refreshUrl = @json(route('siswa.qr-code.refresh'));
     const csrfToken = @json(csrf_token());
@@ -68,6 +136,7 @@
     async function rotateToken() {
         if (isRotating) return;
         isRotating = true;
+
         try {
             const res = await fetch(refreshUrl, {
                 method: 'POST',
@@ -76,11 +145,16 @@
                     'Accept': 'application/json',
                 },
             });
+
             const data = await res.json();
+
             qrCode.makeCode(data.token);
+
             ttlSeconds = data.ttl;
             secondsLeft = ttlSeconds;
+
             updateCountdownUI();
+
         } catch (e) {
 
         } finally {
@@ -88,9 +162,9 @@
         }
     }
 
-    // Hitung mundur tiap detik, dan minta token baru begitu waktunya habis.
     setInterval(() => {
         secondsLeft -= 1;
+
         if (secondsLeft <= 0) {
             rotateToken();
         } else {
@@ -98,5 +172,7 @@
         }
     }, 1000);
 </script>
+
 @endpush
+
 @endsection

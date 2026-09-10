@@ -1,0 +1,505 @@
+/* =========================================================
+   KARTU PELAJAR DIGITAL — SISWA
+   QR SHOW PAGE
+========================================================= */
+
+.student-qr-page {
+    min-height: calc(100vh - 80px);
+
+    display: flex;
+    justify-content: center;
+
+    padding: 35px 20px 45px;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(23, 105, 213, .07),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 90% 85%,
+            rgba(24, 166, 217, .06),
+            transparent 28%
+        ),
+        #f5f9fd;
+}
+
+
+/* =========================================================
+   WRAPPER
+========================================================= */
+
+.student-qr-wrapper {
+    width: 100%;
+    max-width: 570px;
+}
+
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
+
+.student-qr-card {
+    overflow: hidden;
+
+    border: 1px solid #e1edf7;
+    border-radius: 26px;
+
+    background: #fff;
+
+    box-shadow:
+        0 15px 40px rgba(24, 82, 135, .10);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.student-qr-header {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 28px 30px 25px;
+
+    color: #fff;
+
+    background:
+        radial-gradient(
+            circle at 92% 5%,
+            rgba(255,255,255,.20),
+            transparent 28%
+        ),
+        linear-gradient(
+            135deg,
+            #075fc8,
+            #176ed8 55%,
+            #168fe5
+        );
+}
+
+.student-qr-header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+    height: 150px;
+
+    right: -65px;
+    bottom: -90px;
+
+    border: 28px solid rgba(255,255,255,.07);
+
+    border-radius: 50%;
+}
+
+.student-qr-badge {
+    position: relative;
+    z-index: 2;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 7px 12px;
+
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 999px;
+
+    background: rgba(255,255,255,.12);
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .7px;
+    text-transform: uppercase;
+}
+
+.student-qr-title {
+    position: relative;
+    z-index: 2;
+
+    margin-top: 15px;
+}
+
+.student-qr-title h4 {
+    margin: 0;
+
+    font-size: 24px;
+    line-height: 1.25;
+    font-weight: 800;
+}
+
+.student-qr-title p {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 7px;
+
+    margin: 7px 0 0;
+
+    color: rgba(255,255,255,.78);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+.student-qr-body {
+    padding: 28px 30px 25px;
+
+    text-align: center;
+}
+
+.student-qr-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    margin-bottom: 17px;
+
+    color: #1769d5;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.student-qr-label i {
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   QR CODE
+========================================================= */
+
+.student-qr-code {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 246px;
+    height: 246px;
+
+    margin: 0 auto;
+
+    padding: 13px;
+
+    border: 1px solid #dceaf6;
+    border-radius: 21px;
+
+    background: #fff;
+
+    box-shadow:
+        0 9px 25px rgba(23, 105, 213, .08);
+}
+
+.student-qr-code img,
+.student-qr-code canvas {
+    display: block;
+
+    width: 220px !important;
+    height: 220px !important;
+
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+/* =========================================================
+   TIMER
+========================================================= */
+
+.student-qr-timer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    margin-top: 19px;
+}
+
+.student-qr-progress {
+    width: 190px;
+    height: 7px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background: #e7f0f8;
+}
+
+.student-qr-progress-bar {
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #075fc8,
+            #18a6d9
+        );
+
+    transition: width .4s linear;
+}
+
+#qr-countdown {
+    min-width: 31px;
+
+    color: #1769d5;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    text-align: left;
+}
+
+
+/* =========================================================
+   SECURITY INFO
+========================================================= */
+
+.student-qr-security {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+
+    margin-top: 22px;
+    padding: 13px 15px;
+
+    border: 1px solid #dcecf9;
+    border-radius: 15px;
+
+    background: #f3f9ff;
+
+    text-align: left;
+}
+
+.student-qr-security > i {
+    flex: 0 0 auto;
+
+    margin-top: 1px;
+
+    color: #1769d5;
+
+    font-size: 17px;
+}
+
+.student-qr-security strong {
+    display: block;
+
+    color: #17324d;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.student-qr-security p {
+    margin: 3px 0 0;
+
+    color: #71859a;
+
+    font-size: 10px;
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   FOOTER INFO
+========================================================= */
+
+.student-qr-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin: 0 30px 25px;
+    padding: 14px 16px;
+
+    border-radius: 15px;
+
+    background: #f8fbfe;
+
+    border: 1px solid #e8f1f8;
+}
+
+.student-qr-footer-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 auto;
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 11px;
+
+    background: #eaf4ff;
+    color: #1769d5;
+
+    font-size: 16px;
+}
+
+.student-qr-footer strong {
+    display: block;
+
+    color: #17324d;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.student-qr-footer span {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #71859a;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   HISTORY LINK
+========================================================= */
+
+.student-qr-history {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    margin-top: 15px;
+    padding: 14px 17px;
+
+    border: 1px solid #dceaf6;
+    border-radius: 15px;
+
+    background: #fff;
+
+    color: #1769d5;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 7px 20px rgba(25, 86, 145, .06);
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        background .2s ease;
+}
+
+.student-qr-history span {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.student-qr-history > i {
+    font-size: 13px;
+}
+
+.student-qr-history:hover {
+    transform: translateY(-2px);
+
+    border-color: #b9daf5;
+
+    background: #f5faff;
+
+    color: #0d4fa8;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .student-qr-page {
+        padding: 22px 14px 35px;
+    }
+
+    .student-qr-header {
+        padding: 24px 22px 22px;
+    }
+
+    .student-qr-title h4 {
+        font-size: 21px;
+    }
+
+    .student-qr-body {
+        padding: 24px 20px 22px;
+    }
+
+    .student-qr-code {
+        width: 225px;
+        height: 225px;
+
+        padding: 11px;
+    }
+
+    .student-qr-code img,
+    .student-qr-code canvas {
+        width: 200px !important;
+        height: 200px !important;
+    }
+
+    .student-qr-progress {
+        width: 160px;
+    }
+
+    .student-qr-footer {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+
+@media (max-width: 400px) {
+
+    .student-qr-page {
+        padding: 15px 10px 28px;
+    }
+
+    .student-qr-header {
+        padding: 21px 18px;
+    }
+
+    .student-qr-body {
+        padding: 21px 16px;
+    }
+
+    .student-qr-code {
+        width: 210px;
+        height: 210px;
+    }
+
+    .student-qr-code img,
+    .student-qr-code canvas {
+        width: 188px !important;
+        height: 188px !important;
+    }
+
+    .student-qr-footer {
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+
+    .student-qr-security {
+        padding: 12px;
+    }
+}
