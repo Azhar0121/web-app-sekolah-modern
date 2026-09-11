@@ -146,10 +146,30 @@
 @else
 
     {{-- =========================
-        SESI SELESAI
+        SESI SELESAI / DITUTUP
     ========================== --}}
-    <div class="roster-card roster-closed">
+    <div class="alert alert-info border-0 shadow-sm d-flex align-items-center gap-3 p-3 mb-3" style="border-radius: 14px; background: #e0f2fe; color: #0369a1;">
+        <i class="bi bi-info-circle-fill fs-4 flex-shrink-0"></i>
+        <div>
+            <strong class="d-block">Sesi presensi telah ditutup.</strong>
+            <span class="small">Anda masih dapat mengedit status kehadiran siswa secara manual (Hadir, Izin, Sakit, Alpha) pada kolom <strong>Edit Status</strong> di tabel bawah ini. Klik <strong>Buka Kembali Sesi</strong> jika ingin mengaktifkan pemindaian QR kembali.</span>
+        </div>
+    </div>
+
+    <div class="roster-card roster-closed mb-3">
         @include('guru.attendance.partials.roster')
+    </div>
+
+    <div class="attendance-actions d-flex gap-2">
+        <form method="POST"
+              action="{{ route('guru.attendance.reopen', $attendanceSession) }}"
+              onsubmit="return confirm('Buka kembali sesi presensi ini untuk aktifkan scan QR?');">
+            @csrf
+            <button type="submit" class="btn btn-success fw-bold px-4 py-2" style="border-radius: 10px;">
+                <i class="bi bi-play-circle me-1"></i>
+                Buka Kembali Sesi (Scan QR)
+            </button>
+        </form>
     </div>
 
 @endif

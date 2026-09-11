@@ -139,6 +139,7 @@ Route::middleware(['auth', 'role:guru'])->prefix('guru')->name('guru.')->group(f
     Route::post('/presensi/sesi/{attendanceSession}/scan', [GuruAttendanceController::class, 'scan'])->name('attendance.scan');
     Route::put('/presensi/sesi/{attendanceSession}/siswa/{student}/status', [GuruAttendanceController::class, 'updateStatus'])->name('attendance.update-status');
     Route::post('/presensi/sesi/{attendanceSession}/tutup', [GuruAttendanceController::class, 'close'])->name('attendance.close');
+    Route::post('/presensi/sesi/{attendanceSession}/buka-kembali', [GuruAttendanceController::class, 'reopen'])->name('attendance.reopen');
 });
 
 // ================= PORTAL SISWA =================

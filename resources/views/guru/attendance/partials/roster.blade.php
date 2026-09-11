@@ -9,9 +9,7 @@
                 <tr>
                     <th>Nama Siswa</th>
                     <th style="width: 130px;">Status</th>
-                    @if ($attendanceSession->isOpen())
-                        <th style="width: 170px;">Tandai Manual</th>
-                    @endif
+                    <th style="width: 170px;">Edit Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,22 +27,20 @@
                                 <span class="badge text-bg-light text-dark border">Belum Absen</span>
                             @endif
                         </td>
-                        @if ($attendanceSession->isOpen())
-                            <td>
-                                <form method="POST"
-                                      action="{{ route('guru.attendance.update-status', [$attendanceSession, $student]) }}">
-                                    @csrf
-                                    @method('PUT')
-                                    <select name="status" class="form-select form-select-sm" onchange="this.form.submit()">
-                                        <option value="">-- Pilih --</option>
-                                        <option value="hadir" @selected($attendance?->status === 'hadir')>Hadir</option>
-                                        <option value="izin" @selected($attendance?->status === 'izin')>Izin</option>
-                                        <option value="sakit" @selected($attendance?->status === 'sakit')>Sakit</option>
-                                        <option value="alpha" @selected($attendance?->status === 'alpha')>Alpha</option>
-                                    </select>
-                                </form>
-                            </td>
-                        @endif
+                        <td>
+                            <form method="POST"
+                                  action="{{ route('guru.attendance.update-status', [$attendanceSession, $student]) }}">
+                                @csrf
+                                @method('PUT')
+                                <select name="status" class="form-select form-select-sm" onchange="this.form.submit()">
+                                    <option value="">-- Pilih --</option>
+                                    <option value="hadir" @selected($attendance?->status === 'hadir')>Hadir</option>
+                                    <option value="izin" @selected($attendance?->status === 'izin')>Izin</option>
+                                    <option value="sakit" @selected($attendance?->status === 'sakit')>Sakit</option>
+                                    <option value="alpha" @selected($attendance?->status === 'alpha')>Alpha</option>
+                                </select>
+                            </form>
+                        </td>
                     </tr>
                 @empty
                     <tr>

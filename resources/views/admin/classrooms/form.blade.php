@@ -6,11 +6,54 @@
     </div>
 @endif
 
-<div class="mb-3">
-    <label for="name" class="form-label">Nama Kelas</label>
-    <input type="text" name="name" id="name" class="form-control" placeholder="Contoh: X IPA 1"
-           value="{{ old('name', $classroom?->name) }}" required autofocus>
-</div>
+@if (isset($existingClassrooms) && $classroom?->exists)
+    <div class="mb-3">
+        <label for="name_select" class="form-label">Nama Kelas</label>
+        <select id="name_select" class="form-select mb-2" onchange="toggleCustomClassName(this.value)">
+            <option value="">-- Pilih dari Kelas yang Sudah Ada --</option>
+            @foreach ($existingClassrooms as $existing)
+                <option value="{{ $existing->name }}" @selected(old('name', $classroom->name) === $existing->name)>
+                    {{ $existing->name }} (Tingkat {{ $existing->grade_level }} {{ $existing->major ? '- ' . $existing->major : '' }})
+                </option>
+            @endforeach
+            <option value="__CUSTOM__" @selected(old('name') && !$existingClassrooms->pluck('name')->contains(old('name')))>
+                + Input / Ketik Nama Kelas Baru...
+            </option>
+        </select>
+
+        <input type="text" name="name" id="name" class="form-control {{ old('name') && !$existingClassrooms->pluck('name')->contains(old('name')) ? '' : 'd-none' }}"
+               placeholder="Ketik nama kelas kustom"
+               value="{{ old('name', $classroom->name) }}" required>
+    </div>
+
+    <script>
+        function toggleCustomClassName(val) {
+            const input = document.getElementById('name');
+            if (val === '__CUSTOM__') {
+                input.classList.remove('d-none');
+                input.value = '';
+                input.focus();
+            } else if (val) {
+                input.classList.add('d-none');
+                input.value = val;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const select = document.getElementById('name_select');
+            const input = document.getElementById('name');
+            if (select.value && select.value !== '__CUSTOM__') {
+                input.value = select.value;
+            }
+        });
+    </script>
+@else
+    <div class="mb-3">
+        <label for="name" class="form-label">Nama Kelas</label>
+        <input type="text" name="name" id="name" class="form-control" placeholder="Contoh: X IPA 1"
+               value="{{ old('name') }}" required autofocus autocomplete="off">
+    </div>
+@endif
 
 <div class="row">
     <div class="col-md-6 mb-3">

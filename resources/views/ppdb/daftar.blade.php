@@ -310,10 +310,58 @@
 
                 <div class="file-field">
                     <div class="file-info">
-                        <strong>Rapor (Semester 1-5)</strong>
+                        <strong>Rapor Semester 1</strong>
                         <span>PDF, JPG, atau PNG — maks. 2MB</span>
                     </div>
-                    <input type="file" name="documents[rapor]" accept=".pdf,.jpg,.jpeg,.png">
+                    <input type="file" name="documents[rapor_1]" accept=".pdf,.jpg,.jpeg,.png">
+                </div>
+
+                <div class="file-field">
+                    <div class="file-info">
+                        <strong>Rapor Semester 2</strong>
+                        <span>PDF, JPG, atau PNG — maks. 2MB</span>
+                    </div>
+                    <input type="file" name="documents[rapor_2]" accept=".pdf,.jpg,.jpeg,.png">
+                </div>
+
+                <div class="file-field">
+                    <div class="file-info">
+                        <strong>Rapor Semester 3</strong>
+                        <span>PDF, JPG, atau PNG — maks. 2MB</span>
+                    </div>
+                    <input type="file" name="documents[rapor_3]" accept=".pdf,.jpg,.jpeg,.png">
+                </div>
+
+                <div class="file-field">
+                    <div class="file-info">
+                        <strong>Rapor Semester 4</strong>
+                        <span>PDF, JPG, atau PNG — maks. 2MB</span>
+                    </div>
+                    <input type="file" name="documents[rapor_4]" accept=".pdf,.jpg,.jpeg,.png">
+                </div>
+
+                <div class="file-field">
+                    <div class="file-info">
+                        <strong>Rapor Semester 5</strong>
+                        <span>PDF, JPG, atau PNG — maks. 2MB</span>
+                    </div>
+                    <input type="file" name="documents[rapor_5]" accept=".pdf,.jpg,.jpeg,.png">
+                </div>
+
+                <div class="file-field">
+                    <div class="file-info">
+                        <strong>Ijazah <span class="text-muted">(Opsional, isi kalau sudah terbit)</span></strong>
+                        <span>PDF, JPG, atau PNG — maks. 2MB. Sebagai bukti pendukung Nilai Ijazah yang diisi di atas.</span>
+                    </div>
+                    <input type="file" name="documents[ijazah]" accept=".pdf,.jpg,.jpeg,.png">
+                </div>
+
+                <div class="file-field">
+                    <div class="file-info">
+                        <strong>Surat Keterangan Lulus (SKL) <span class="text-muted">(Opsional, isi kalau Ijazah belum terbit)</span></strong>
+                        <span>PDF, JPG, atau PNG — maks. 2MB.</span>
+                    </div>
+                    <input type="file" name="documents[surat_keterangan_lulus]" accept=".pdf,.jpg,.jpeg,.png">
                 </div>
 
                 <div class="file-field">
@@ -330,14 +378,6 @@
                         <span>PDF, JPG, atau PNG — maks. 2MB</span>
                     </div>
                     <input type="file" name="documents[sertifikat_2]" accept=".pdf,.jpg,.jpeg,.png">
-                </div>
-
-                <div class="file-field">
-                    <div class="file-info">
-                        <strong>Surat Keterangan Lulus (SKL) <span class="text-muted">(Opsional)</span></strong>
-                        <span>PDF, JPG, atau PNG — maks. 2MB. Cukup lampirkan salah satu: SKL atau Ijazah asli kalau sudah terbit.</span>
-                    </div>
-                    <input type="file" name="documents[surat_keterangan_lulus]" accept=".pdf,.jpg,.jpeg,.png">
                 </div>
 
                 <div class="form-submit">

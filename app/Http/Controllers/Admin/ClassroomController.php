@@ -47,8 +47,11 @@ class ClassroomController extends Controller
     public function edit(Classroom $classroom): View
     {
         $teachers = $this->teacherOptions();
+        $existingClassrooms = Classroom::orderBy('grade_level')
+            ->orderBy('name')
+            ->get();
 
-        return view('admin.classrooms.edit', compact('classroom', 'teachers'));
+        return view('admin.classrooms.edit', compact('classroom', 'teachers', 'existingClassrooms'));
     }
 
     public function update(Request $request, Classroom $classroom): RedirectResponse

@@ -181,6 +181,15 @@ class AttendanceController extends Controller
             ->with('success', 'Sesi presensi berhasil ditutup. Siswa yang belum tercatat otomatis ditandai Alpha.');
     }
 
+    public function reopen(AttendanceSession $attendanceSession): RedirectResponse
+    {
+        $this->authorizeTeacher($attendanceSession->schedule);
+
+        $attendanceSession->update(['closed_at' => null]);
+
+        return back()->with('success', 'Sesi presensi berhasil dibuka kembali. Anda dapat melakukan scan QR lagi.');
+    }
+
     private function authorizeTeacher(Schedule $schedule): void
     {
         $schedule->loadMissing('teachingAssignment');
