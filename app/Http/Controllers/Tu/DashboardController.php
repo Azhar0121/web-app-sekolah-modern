@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Tu;
 
 use App\Http\Controllers\Controller;
+use App\Models\Correspondence;
 use App\Models\PpdbRegistration;
 use Illuminate\View\View;
 
@@ -17,16 +18,17 @@ class DashboardController extends Controller
             'registered_ulang' => PpdbRegistration::where('status', 'registered_ulang')->count(),
         ];
 
-        // Sudah "Diterima" tapi belum daftar ulang — ini yang jadi tugas
-        // utama TU: menunggu siswa datang bayar & mengonfirmasi di sistem.
+        $correspondenceStats = [
+            'masuk' => Correspondence::where('type', 'masuk')->count(),
+            'masuk_baru' => Correspondence::where('type', 'masuk')->where('status', 'baru')->count(),
+            'keluar' => Correspondence::where('type', 'keluar')->count(),
+        ];
+
         $awaitingReRegistration = PpdbRegistration::where('status', 'accepted')
             ->orderBy('re_registration_deadline')
             ->limit(8)
             ->get();
 
-        // Riwayat penempatan kelas otomatis paling baru, supaya TU bisa
-        // langsung lihat hasil dari konfirmasi yang baru saja dilakukan
-        // (termasuk yang gagal ditempatkan karena kelas X penuh).
         $recentEnrollments = PpdbRegistration::with('user')
             ->where('status', 'registered_ulang')
             ->whereNotNull('user_id')
@@ -39,6 +41,6 @@ class DashboardController extends Controller
                 return $registration;
             });
 
-        return view('tu.dashboard', compact('stats', 'awaitingReRegistration', 'recentEnrollments'));
+        return view('tu.dashboard', compact('stats', 'awaitingReRegistration', 'recentEnrollments', 'correspondenceStats'));
     }
 }

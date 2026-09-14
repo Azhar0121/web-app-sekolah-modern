@@ -131,7 +131,56 @@
     </div>
 </div>
 
+<div class="d-flex justify-content-between align-items-center mt-5 mb-3">
+    <h5 class="fw-bold mb-0">Persuratan Digital</h5>
+    <a href="{{ route('admin.correspondences.index') }}" class="small">Kelola semua surat &rarr;</a>
+</div>
+
+<div class="row g-3 mb-4">
+    <div class="col-md-4">
+        <a href="{{ route('admin.correspondences.index', ['type' => 'masuk']) }}" class="text-decoration-none">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body d-flex align-items-center gap-3">
+                    <span class="stat-icon"><x-icon name="file-text" :size="20" /></span>
+                    <div>
+                        <div class="stat-value">{{ $correspondenceStats['masuk'] }}</div>
+                        <div class="stat-label">Surat Masuk</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a href="{{ route('admin.correspondences.index', ['type' => 'masuk']) }}" class="text-decoration-none">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body d-flex align-items-center gap-3">
+                    <span class="stat-icon"><x-icon name="clipboard-list" :size="20" /></span>
+                    <div>
+                        <div class="stat-value">{{ $correspondenceStats['masuk_baru'] }}</div>
+                        <div class="stat-label">Surat Masuk Belum Diproses</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a href="{{ route('admin.correspondences.index', ['type' => 'keluar']) }}" class="text-decoration-none">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body d-flex align-items-center gap-3">
+                    <span class="stat-icon"><x-icon name="file-text" :size="20" /></span>
+                    <div>
+                        <div class="stat-value">{{ $correspondenceStats['keluar'] }}</div>
+                        <div class="stat-label">Surat Keluar</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
 <div class="mt-4">
     <a href="{{ route('admin.ppdb.index') }}" class="btn btn-outline-primary">Kelola Semua Pendaftaran PPDB &rarr;</a>
+    <a href="{{ route('admin.correspondences.create', ['type' => 'masuk']) }}" class="btn btn-primary">+ Catat Surat Masuk</a>
+    <a href="{{ route('admin.correspondences.create', ['type' => 'keluar']) }}" class="btn btn-outline-primary">+ Buat Surat Keluar</a>
 </div>
 @endsection

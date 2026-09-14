@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AcademicYearController;
 use App\Http\Controllers\Admin\ClassroomController;
+use App\Http\Controllers\Admin\CorrespondenceController;
 use App\Http\Controllers\Admin\PpdbController as AdminPpdbController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\ScheduleController as AdminScheduleController;
@@ -100,6 +101,17 @@ Route::middleware(['auth', 'permission:ppdb.manage'])->prefix('admin/ppdb')->nam
     Route::get('/{ppdbRegistration}', [AdminPpdbController::class, 'show'])->name('show');
     Route::put('/{ppdbRegistration}/status', [AdminPpdbController::class, 'updateStatus'])->name('update-status');
     Route::put('/{ppdbRegistration}/re-registration', [AdminPpdbController::class, 'confirmReRegistration'])->name('confirm-re-registration');
+});
+
+// ================= PERSURATAN DIGITAL (SUPER ADMIN & TU, by permission) =================
+Route::middleware(['auth', 'permission:persuratan.manage'])->prefix('admin/persuratan')->name('admin.correspondences.')->group(function () {
+    Route::get('/', [CorrespondenceController::class, 'index'])->name('index');
+    Route::get('/create', [CorrespondenceController::class, 'create'])->name('create');
+    Route::post('/', [CorrespondenceController::class, 'store'])->name('store');
+    Route::get('/{correspondence}', [CorrespondenceController::class, 'show'])->name('show');
+    Route::get('/{correspondence}/edit', [CorrespondenceController::class, 'edit'])->name('edit');
+    Route::put('/{correspondence}', [CorrespondenceController::class, 'update'])->name('update');
+    Route::delete('/{correspondence}', [CorrespondenceController::class, 'destroy'])->name('destroy');
 });
 
 // ================= PORTAL GURU / WALI KELAS =================
