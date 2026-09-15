@@ -62,6 +62,7 @@ class PpdbController extends Controller
             ],
             'parent_name' => ['required', 'string', 'max:255'],
             'parent_phone' => ['required', 'string', 'max:20'],
+            'parent_email' => ['required', 'email', 'max:255'],
             'previous_school' => ['required', 'string', 'max:255'],
             'first_major' => ['required', 'string', 'max:100'],
             'second_major' => ['nullable', 'string', 'max:100'],

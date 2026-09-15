@@ -13,9 +13,9 @@ class PpdbRegistration extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'ppdb_period_id', 'registration_number', 'full_name', 'nisn', 'nik',
+        'user_id', 'parent_user_id', 'ppdb_period_id', 'registration_number', 'full_name', 'nisn', 'nik',
         'gender', 'birth_place', 'birth_date', 'address', 'phone', 'email',
-        'parent_name', 'parent_phone', 'previous_school', 'first_major', 'second_major',
+        'parent_name', 'parent_phone', 'parent_email', 'previous_school', 'first_major', 'second_major',
         'nilai_rapor', 'nilai_ijazah',
         'status', 'notes', 'verified_by', 'verified_at',
         'accepted_at', 're_registration_deadline',
@@ -77,6 +77,11 @@ class PpdbRegistration extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function parentUser(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'parent_user_id');
     }
 
     public function documents(): HasMany

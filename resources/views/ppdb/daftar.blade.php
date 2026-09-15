@@ -176,6 +176,15 @@
                                placeholder="08xxxxxxxxxx" required>
                     </div>
 
+                    <div class="form-field">
+                        <label>Email Orang Tua/Wali <span>*</span></label>
+                        <input type="email" name="parent_email" value="{{ old('parent_email') }}"
+                               placeholder="email@aktif.com" required>
+                        <small style="color: var(--muted); font-size: 12px; margin-top: 4px; display: block;">
+                            Dipakai untuk akun Portal Orang Tua setelah daftar ulang dikonfirmasi.
+                        </small>
+                    </div>
+
                 </div>
 
             </div>

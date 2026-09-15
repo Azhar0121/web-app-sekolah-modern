@@ -11,14 +11,14 @@ return new class extends Migration
         Schema::create('correspondences', function (Blueprint $table) {
             $table->id();
             $table->enum('type', ['masuk', 'keluar']);
-            $table->string('number')->unique(); // nomor agenda (masuk) atau nomor surat resmi (keluar), auto-generate
-            $table->date('letter_date'); // tanggal surat
-            $table->string('category', 50); // Undangan, Pemberitahuan, Permohonan, Keputusan, Edaran, Lainnya
-            $table->string('subject'); // perihal
-            $table->string('correspondent'); // pengirim (surat masuk) / tujuan (surat keluar)
+            $table->string('number')->unique();
+            $table->date('letter_date');
+            $table->string('category', 50);
+            $table->string('subject');
+            $table->string('correspondent');
             $table->text('description')->nullable();
-            $table->text('disposition')->nullable(); // catatan disposisi/tindak lanjut, khusus surat masuk
-            $table->string('status', 20); // masuk: baru/diproses/selesai | keluar: draft/terkirim
+            $table->text('disposition')->nullable();
+            $table->string('status', 20);
             $table->string('file_path')->nullable();
             $table->string('file_original_name')->nullable();
             $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();

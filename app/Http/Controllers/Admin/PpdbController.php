@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ParentAccountLinked;
 use App\Mail\PpdbAccepted;
 use App\Mail\StudentAccountCreated;
 use App\Models\AcademicYear;
@@ -43,6 +44,7 @@ class PpdbController extends Controller
             'verifiedBy',
             'reRegistrationConfirmedBy',
             'user',
+            'parentUser',
         ]);
 
         return view('admin.ppdb.show', [
@@ -134,6 +136,8 @@ class PpdbController extends Controller
 
             // Kirim email kredensial ke siswa
             $this->sendAccountCreatedEmail($ppdbRegistration, $user->email, $password, $classroom);
+
+            $this->createOrLinkParentAccount($ppdbRegistration, $user);
         });
 
         return redirect()
@@ -225,6 +229,64 @@ class PpdbController extends Controller
             Mail::to($email)->send(new StudentAccountCreated($registration, $email, $password, $classroom));
         } catch (\Throwable $e) {
             Log::warning('Gagal mengirim email akun siswa: ' . $e->getMessage(), [
+                'registration_id' => $registration->id,
+            ]);
+        }
+    }
+
+    private function createOrLinkParentAccount(PpdbRegistration $registration, User $student): void
+    {
+        if (! $registration->parent_email) {
+            return; // data lama sebelum kolom ini ada, lewati dengan aman
+        }
+
+        $ortuRole = Role::where('slug', 'ortu')->first();
+
+        if (! $ortuRole) {
+            Log::warning('Role "ortu" tidak ditemukan, akun orang tua tidak dibuat.', [
+                'registration_id' => $registration->id,
+            ]);
+
+            return;
+        }
+
+        $parentUser = User::where('email', $registration->parent_email)->first();
+        $isNewAccount = ! $parentUser;
+        $password = null;
+
+        if (! $parentUser) {
+            $password = Str::random(10);
+
+            $parentUser = User::create([
+                'name' => $registration->parent_name,
+                'email' => $registration->parent_email,
+                'password' => Hash::make($password),
+                'role_id' => $ortuRole->id,
+            ]);
+        }
+
+        $parentUser->children()->syncWithoutDetaching([$student->id]);
+
+        $registration->update(['parent_user_id' => $parentUser->id]);
+
+        $this->sendParentAccountEmail($registration, $parentUser, $password, $isNewAccount);
+    }
+
+    private function sendParentAccountEmail(
+        PpdbRegistration $registration,
+        User $parentUser,
+        ?string $password,
+        bool $isNewAccount,
+    ): void {
+        try {
+            Mail::to($parentUser->email)->send(new ParentAccountLinked(
+                registration: $registration,
+                parentUser: $parentUser,
+                password: $password,
+                isNewAccount: $isNewAccount,
+            ));
+        } catch (\Throwable $e) {
+            Log::warning('Gagal mengirim email akun orang tua: ' . $e->getMessage(), [
                 'registration_id' => $registration->id,
             ]);
         }

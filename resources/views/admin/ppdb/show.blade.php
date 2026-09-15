@@ -739,6 +739,32 @@
 
                             </div>
 
+                            <div class="ppdb-confirmed-box mt-2">
+
+                                <strong>Akun Orang Tua</strong>
+
+                                <br>
+
+                                @if ($registration->parentUser)
+
+                                    Email login:
+                                    {{ $registration->parentUser->email }}
+
+                                    <br>
+
+                                    <span class="text-muted">
+                                        Menautkan {{ $registration->parentUser->children()->count() }}
+                                        anak di sekolah ini.
+                                    </span>
+
+                                @else
+                                    <span class="text-danger">
+                                        Akun orang tua belum berhasil dibuat/ditautkan. Coba periksa log aplikasi.
+                                    </span>
+                                @endif
+
+                            </div>
+
                         @else
 
                             <form
