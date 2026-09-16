@@ -36,6 +36,9 @@
                             <a href="{{ route('ortu.attendance.index', $child) }}" class="btn btn-sm btn-outline-primary">
                                 📅 Riwayat Presensi
                             </a>
+                            <a href="{{ route('ortu.grades.index', $child) }}" class="btn btn-sm btn-outline-primary">
+                                📊 Nilai Rapor
+                            </a>
                         </div>
                     </div>
                 </div>
