@@ -137,6 +137,9 @@ class PpdbController extends Controller
             // Kirim email kredensial ke siswa
             $this->sendAccountCreatedEmail($ppdbRegistration, $user->email, $password, $classroom);
 
+            // Jeda 1.5 detik agar tidak terkena rate limit Mailtrap Testing (max 1 email/detik)
+            usleep(1500000);
+
             $this->createOrLinkParentAccount($ppdbRegistration, $user);
         });
 
@@ -279,6 +282,9 @@ class PpdbController extends Controller
         bool $isNewAccount,
     ): void {
         try {
+            // Beri jeda 2 detik untuk menghindari rate limit Mailtrap Sandbox (max 1 email/detik)
+            sleep(2);
+
             Mail::to($parentUser->email)->send(new ParentAccountLinked(
                 registration: $registration,
                 parentUser: $parentUser,
@@ -286,6 +292,23 @@ class PpdbController extends Controller
                 isNewAccount: $isNewAccount,
             ));
         } catch (\Throwable $e) {
+            // Jika gagal karena rate limit Mailtrap, coba 1x lagi setelah 3 detik
+            if (str_contains($e->getMessage(), '550') || str_contains($e->getMessage(), 'Too many emails')) {
+                try {
+                    sleep(3);
+                    Mail::to($parentUser->email)->send(new ParentAccountLinked(
+                        registration: $registration,
+                        parentUser: $parentUser,
+                        password: $password,
+                        isNewAccount: $isNewAccount,
+                    ));
+
+                    return;
+                } catch (\Throwable $retryException) {
+                    $e = $retryException;
+                }
+            }
+
             Log::warning('Gagal mengirim email akun orang tua: ' . $e->getMessage(), [
                 'registration_id' => $registration->id,
             ]);

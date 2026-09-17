@@ -40,6 +40,13 @@
                 ['label' => 'Kelola Pendaftaran', 'route' => 'admin.ppdb.index', 'pattern' => 'admin.ppdb.*', 'icon' => 'file-text', 'show' => $user->hasPermission('ppdb.manage')],
             ],
         ],
+        [
+            'label' => 'Tata Usaha',
+            'items' => [
+                ['label' => 'Dashboard TU', 'route' => 'tu.dashboard', 'pattern' => 'tu.dashboard', 'icon' => 'dashboard', 'show' => $user->hasPermission('persuratan.manage')],
+                ['label' => 'Persuratan', 'route' => 'admin.correspondences.index', 'pattern' => 'admin.correspondences.*', 'icon' => 'file-text', 'show' => $user->hasPermission('persuratan.manage')],
+            ],
+        ],
     ];
 @endphp          
 
