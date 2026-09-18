@@ -8,15 +8,6 @@
 
 <div class="ppdb-detail-page">
 
-    {{-- KEMBALI --}}
-    <a
-        href="{{ route('admin.ppdb.index') }}"
-        class="ppdb-back-button"
-    >
-        <span>&larr;</span>
-        Kembali ke Daftar
-    </a>
-
 
     {{-- HEADER --}}
     <div class="ppdb-detail-header">
@@ -35,6 +26,34 @@
                 Informasi lengkap calon siswa dan proses verifikasi pendaftaran.
             </p>
 
+            <a
+                href="{{ route('admin.ppdb.index') }}"
+                class="ppdb-back-button"
+            >
+                <span>&larr;</span>
+                Kembali ke Daftar
+            </a>
+
+        </div>
+
+        <div class="ppdb-detail-header-decoration" aria-hidden="true">
+            <svg
+                width="150"
+                height="150"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="0.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <rect x="5" y="3" width="14" height="18" rx="2"></rect>
+                <path d="M9 8h6"></path>
+                <path d="M9 12h6"></path>
+                <path d="M9 16h4"></path>
+                <circle cx="17" cy="17" r="3"></circle>
+                <path d="M19.2 19.2L21 21"></path>
+            </svg>
         </div>
 
     </div>

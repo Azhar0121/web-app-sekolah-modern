@@ -1,25 +1,40 @@
 /* =========================================================
-   WEB SEKOLAH MODERN
-   ADMIN - PENEMPATAN SISWA
+   STUDENT PLACEMENTS
+   ADMIN — MODERN INSTITUTIONAL
    ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
     --placement-navy: #071b35;
     --placement-navy-2: #0b294d;
 
-    --placement-blue: #0866d8;
-    --placement-blue-dark: #0754b5;
-    --placement-blue-light: #eaf4ff;
+    --placement-text: #172033;
+    --placement-text-soft: #66758a;
 
-    --placement-text: #102a43;
-    --placement-text-soft: #58708a;
+    --placement-border: #e1e6ed;
+    --placement-border-dark: #d5dce4;
 
-    --placement-border: #dbe7f2;
     --placement-white: #ffffff;
-    --placement-bg: #f5f8fc;
 
-    --placement-shadow:
-        0 8px 24px rgba(16, 42, 67, 0.06);
+    --placement-gray: #e8edf3;
+    --placement-gray-dark: #d7e0ea;
+
+    --placement-bg: #f7f9fc;
+
+    --placement-danger: #c62828;
+
+    --placement-shadow: 0 6px 18px rgba(16, 42, 67, 0.05);
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+.student-placement-page,
+.student-placement-page * {
+    box-sizing: border-box;
+    font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 
@@ -32,12 +47,13 @@
     max-width: 100%;
     margin: 0;
     padding: 10px 8px 40px;
-    box-sizing: border-box;
+
+    color: var(--placement-text);
 }
 
 
 /* =========================================================
-   HEADER
+   HERO
    ========================================================= */
 
 .student-placement-header {
@@ -45,151 +61,159 @@
     overflow: hidden;
 
     width: 100%;
+    min-height: 155px;
 
-    margin-bottom: 24px;
-    padding: 30px 32px;
+    margin-bottom: 20px;
+    padding: 29px 32px;
 
-    background:
-        linear-gradient(
-            135deg,
-            var(--placement-navy) 0%,
-            #0a3768 62%,
-            #0d5fb7 100%
-        );
+    background: var(--placement-navy);
 
-    border-radius: 18px;
+    border: 1px solid var(--placement-navy);
+    border-radius: 7px;
 
-    box-shadow:
-        0 10px 28px rgba(7, 27, 53, 0.12);
-
-    box-sizing: border-box;
+    box-shadow: var(--placement-shadow);
 }
 
 
-/* =========================================================
-   HEADER DECORATION
-   ========================================================= */
+/* Dekorasi tipis */
 
 .student-placement-header::before {
     content: "";
 
     position: absolute;
 
-    width: 230px;
-    height: 230px;
+    width: 220px;
+    height: 220px;
 
     top: -125px;
-    right: -75px;
+    right: -70px;
 
+    border: 1px solid rgba(255, 255, 255, 0.07);
     border-radius: 50%;
 
-    background: rgba(255, 255, 255, 0.07);
+    pointer-events: none;
 }
-
 
 .student-placement-header::after {
     content: "";
 
     position: absolute;
 
-    width: 140px;
-    height: 140px;
+    width: 135px;
+    height: 135px;
 
-    right: 120px;
-    bottom: -88px;
+    right: 115px;
+    bottom: -90px;
 
+    border: 1px solid rgba(255, 255, 255, 0.045);
     border-radius: 50%;
 
-    background: rgba(255, 255, 255, 0.045);
+    pointer-events: none;
 }
 
 
 /* =========================================================
-   HEADER CONTENT
+   HERO CONTENT
    ========================================================= */
 
 .student-placement-header-content {
     position: relative;
-
     z-index: 2;
 
     display: flex;
-
+    flex-direction: row;
     align-items: center;
-
     justify-content: space-between;
 
-    gap: 25px;
-}
+    width: 100%;
+    min-height: 97px;
 
-
-.student-placement-title-area {
-    max-width: 800px;
+    gap: 30px;
 }
 
 
 /* =========================================================
-   HEADER LABEL
+   HERO TITLE
    ========================================================= */
+
+.student-placement-title-area {
+    min-width: 0;
+    flex: 1 1 auto;
+}
 
 .student-placement-label {
     display: inline-flex;
-
     align-items: center;
 
-    margin-bottom: 10px;
+    margin-bottom: 7px;
 
-    padding: 6px 12px;
+    color: #d9e0e8;
 
-    border: 1px solid rgba(255, 255, 255, 0.18);
-
-    border-radius: 7px;
-
-    background: rgba(255, 255, 255, 0.09);
-
-    color: #dceeff;
-
-    font-size: 10.5px;
-
+    font-size: 10px;
     font-weight: 800;
 
-    letter-spacing: 1.3px;
-
-    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: 1.15px;
 }
-
-
-/* =========================================================
-   HEADER TITLE
-   ========================================================= */
 
 .student-placement-title-area h1 {
     margin: 0;
 
     color: #ffffff;
 
-    font-size: 29px;
-
+    font-size: 27px;
     font-weight: 800;
 
     line-height: 1.3;
+    letter-spacing: -0.35px;
+}
 
-    letter-spacing: -0.4px;
+.student-placement-title-area p {
+    max-width: 720px;
+
+    margin: 7px 0 0;
+
+    color: #c8d0da;
+
+    font-size: 13px;
+    font-weight: 400;
+
+    line-height: 1.6;
 }
 
 
-.student-placement-title-area p {
-    max-width: 700px;
+/* =========================================================
+   HERO ICON — KANAN
+   ========================================================= */
 
-    margin: 9px 0 0;
+.student-placement-hero-icon {
+    position: relative;
+    z-index: 3;
 
-    color: #c9def3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    font-size: 13.5px;
+    width: 70px;
+    height: 70px;
 
-    font-weight: 400;
+    flex: 0 0 70px;
 
-    line-height: 1.7;
+    margin-left: auto;
+
+    color: #ffffff;
+
+    background: transparent;
+
+    border: none;
+    border-radius: 0;
+}
+
+.student-placement-hero-icon svg {
+    display: block;
+
+    width: 34px;
+    height: 34px;
 }
 
 
@@ -199,20 +223,18 @@
 
 .student-placement-filter-card {
     width: 100%;
+    max-width: 100%;
 
-    margin-bottom: 20px;
+    margin: 0 0 20px;
 
     overflow: hidden;
 
-    background: #ffffff;
+    background: var(--placement-white);
 
     border: 1px solid var(--placement-border);
-
-    border-radius: 17px;
+    border-radius: 7px;
 
     box-shadow: var(--placement-shadow);
-
-    box-sizing: border-box;
 }
 
 
@@ -221,129 +243,61 @@
    ========================================================= */
 
 .student-placement-filter-header {
-    position: relative;
-
     display: flex;
-
     align-items: center;
 
-    gap: 14px;
+    min-height: 78px;
 
-    min-height: 88px;
+    padding: 16px 25px;
 
-    padding: 18px 26px;
+    gap: 13px;
 
-    border-bottom: 1px solid #c9dced;
+    background: var(--placement-gray);
 
-    background:
-        linear-gradient(
-            90deg,
-            #e8f3ff 0%,
-            #edf6ff 55%,
-            #e2f0ff 100%
-        );
-
-    overflow: hidden;
-
-    box-sizing: border-box;
+    border-bottom: 1px solid var(--placement-border-dark);
 }
-
-
-.student-placement-filter-header::before {
-    content: "";
-
-    position: absolute;
-
-    width: 150px;
-    height: 150px;
-
-    top: -90px;
-    right: 35px;
-
-    border-radius: 50%;
-
-    background: rgba(8, 102, 216, 0.08);
-}
-
-
-.student-placement-filter-header::after {
-    content: "";
-
-    position: absolute;
-
-    width: 90px;
-    height: 90px;
-
-    right: 135px;
-    bottom: -58px;
-
-    border-radius: 50%;
-
-    background: rgba(8, 102, 216, 0.06);
-}
-
-
-/* =========================================================
-   FILTER ICON
-   ========================================================= */
 
 .student-placement-filter-icon {
-    position: relative;
-    z-index: 2;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
 
-    width: 46px;
-    height: 46px;
+    width: 45px;
+    height: 45px;
 
-    flex: 0 0 46px;
+    flex: 0 0 45px;
 
-    border-radius: 12px;
+    color: var(--placement-navy);
 
-    background:
-        linear-gradient(
-            145deg,
-            #ffffff,
-            #d4e5f7
-        );
+    background: var(--placement-gray-dark);
 
-    border: 1px solid #c3def7;
-
-    color: var(--placement-blue);
-
-    box-shadow:
-        0 6px 14px rgba(8, 102, 216, 0.12);
+    border: 1px solid #cbd5df;
+    border-radius: 6px;
 }
 
-
-.student-placement-filter-header > div:last-child {
-    position: relative;
-    z-index: 2;
+.student-placement-filter-icon svg {
+    width: 21px;
+    height: 21px;
 }
-
 
 .student-placement-filter-header h2 {
     margin: 0;
 
-    color: #09284b;
+    color: var(--placement-text);
 
     font-size: 17px;
-
     font-weight: 800;
 
     line-height: 1.35;
 }
 
-
 .student-placement-filter-header p {
-    margin: 4px 0 0;
+    margin: 3px 0 0;
 
-    color: #4f6f8e;
+    color: var(--placement-text-soft);
 
-    font-size: 12.5px;
+    font-size: 12px;
+    font-weight: 400;
 
     line-height: 1.45;
 }
@@ -354,82 +308,82 @@
    ========================================================= */
 
 .student-placement-filter-body {
-    padding: 22px 26px 24px;
+    width: 100%;
+
+    padding: 20px 25px;
 
     background: #ffffff;
-
-    box-sizing: border-box;
 }
 
+.student-placement-filter-body form {
+    width: 100%;
+    max-width: 100%;
+}
 
 .student-placement-form-group {
     width: 100%;
-
-    max-width: 650px;
+    max-width: 100%;
 }
-
 
 .student-placement-form-group label {
     display: block;
 
     margin-bottom: 7px;
 
-    color: #173a5c;
+    color: var(--placement-text);
 
-    font-size: 13px;
-
+    font-size: 12px;
     font-weight: 700;
+
+    line-height: 1.4;
 }
 
+
+/* =========================================================
+   SELECT TAHUN AJARAN
+   FULL WIDTH
+   ========================================================= */
 
 .student-placement-select {
     display: block;
 
     width: 100%;
+    max-width: 100%;
 
-    min-height: 45px;
+    min-height: 43px;
 
-    padding: 9px 40px 9px 13px;
+    padding: 9px 13px;
 
-    border: 1px solid #d5e1ec;
-
-    border-radius: 9px;
-
-    background-color: #fbfdff;
-
-    color: #102a43;
-
-    font-size: 13px;
-
-    font-weight: 500;
+    border: 1px solid var(--placement-border-dark);
+    border-radius: 6px;
 
     outline: none;
 
-    cursor: pointer;
+    background: #ffffff;
 
-    box-shadow: none;
+    color: var(--placement-text);
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    box-sizing: border-box;
+
+    cursor: pointer;
 
     transition:
         border-color 0.2s ease,
         box-shadow 0.2s ease,
         background-color 0.2s ease;
-
-    box-sizing: border-box;
 }
-
-
-.student-placement-select:hover {
-    border-color: #b9cfe2;
-}
-
 
 .student-placement-select:focus {
-    border-color: var(--placement-blue);
+    border-color: var(--placement-navy);
 
-    background-color: #ffffff;
+    background: #ffffff;
 
-    box-shadow:
-        0 0 0 3px rgba(8, 102, 216, 0.10);
+    box-shadow: 0 0 0 3px rgba(7, 27, 53, 0.07);
 }
 
 
@@ -439,18 +393,18 @@
 
 .student-placement-main-card {
     width: 100%;
+    max-width: 100%;
+
+    margin: 0;
 
     overflow: hidden;
 
-    background: #ffffff;
+    background: var(--placement-white);
 
     border: 1px solid var(--placement-border);
-
-    border-radius: 17px;
+    border-radius: 7px;
 
     box-shadow: var(--placement-shadow);
-
-    box-sizing: border-box;
 }
 
 
@@ -459,137 +413,74 @@
    ========================================================= */
 
 .student-placement-card-top {
-    position: relative;
-
     display: flex;
-
     align-items: center;
+    justify-content: space-between;
 
     width: 100%;
+    min-height: 82px;
 
-    min-height: 92px;
+    padding: 17px 25px;
 
-    padding: 18px 26px;
+    background: var(--placement-gray);
 
-    border-bottom: 1px solid #c9dced;
-
-    background:
-        linear-gradient(
-            90deg,
-            #e8f3ff 0%,
-            #edf6ff 55%,
-            #e2f0ff 100%
-        );
-
-    overflow: hidden;
-
-    box-sizing: border-box;
+    border-bottom: 1px solid var(--placement-border-dark);
 }
-
-
-.student-placement-card-top::before {
-    content: "";
-
-    position: absolute;
-
-    width: 150px;
-    height: 150px;
-
-    top: -88px;
-    right: 30px;
-
-    border-radius: 50%;
-
-    background: rgba(8, 102, 216, 0.08);
-}
-
-
-.student-placement-card-top::after {
-    content: "";
-
-    position: absolute;
-
-    width: 90px;
-    height: 90px;
-
-    right: 125px;
-    bottom: -58px;
-
-    border-radius: 50%;
-
-    background: rgba(8, 102, 216, 0.065);
-}
-
-
-/* =========================================================
-   CARD TITLE
-   ========================================================= */
 
 .student-placement-card-title {
-    position: relative;
-
-    z-index: 2;
-
     display: flex;
-
     align-items: center;
 
-    gap: 14px;
-
     min-width: 0;
-}
 
+    gap: 13px;
+}
 
 .student-placement-title-icon {
     display: flex;
-
     align-items: center;
     justify-content: center;
 
-    width: 46px;
-    height: 46px;
+    width: 45px;
+    height: 45px;
 
-    flex: 0 0 46px;
+    flex: 0 0 45px;
 
-    border-radius: 12px;
+    color: var(--placement-navy);
 
-    background:
-        linear-gradient(
-            145deg,
-            #ffffff,
-            #d4e5f7
-        );
+    background: var(--placement-gray-dark);
 
-    border: 1px solid #c3def7;
-
-    color: var(--placement-blue);
-
-    box-shadow:
-        0 6px 14px rgba(8, 102, 216, 0.12);
+    border: 1px solid #cbd5df;
+    border-radius: 6px;
 }
 
+.student-placement-title-icon svg {
+    width: 21px;
+    height: 21px;
+}
+
+.student-placement-card-title > div:last-child {
+    min-width: 0;
+}
 
 .student-placement-card-title h2 {
     margin: 0;
 
-    color: #09284b;
+    color: var(--placement-text);
 
-    font-size: 18px;
-
+    font-size: 17px;
     font-weight: 800;
 
     line-height: 1.35;
-
-    letter-spacing: -0.2px;
 }
 
-
 .student-placement-card-title p {
-    margin: 4px 0 0;
+    margin: 3px 0 0;
 
-    color: #4f6f8e;
+    color: var(--placement-text-soft);
 
-    font-size: 12.5px;
+    font-size: 12px;
+    font-weight: 400;
 
     line-height: 1.45;
 }
@@ -597,14 +488,15 @@
 
 /* =========================================================
    TABLE WRAPPER
+   TIDAK BOLEH HORIZONTAL SCROLL
    ========================================================= */
 
 .student-placement-table-wrapper {
     width: 100%;
+    max-width: 100%;
 
-    overflow-x: auto;
-
-    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: visible;
 }
 
 
@@ -614,42 +506,14 @@
 
 .student-placement-table {
     width: 100%;
-
-    min-width: 700px;
+    max-width: 100%;
 
     border-collapse: separate;
-
     border-spacing: 0;
 
     table-layout: fixed;
-}
 
-
-/* =========================================================
-   COLUMN WIDTH
-   ========================================================= */
-
-.student-placement-table th:nth-child(1),
-.student-placement-table td:nth-child(1) {
-    width: 32%;
-}
-
-
-.student-placement-table th:nth-child(2),
-.student-placement-table td:nth-child(2) {
-    width: 18%;
-}
-
-
-.student-placement-table th:nth-child(3),
-.student-placement-table td:nth-child(3) {
-    width: 20%;
-}
-
-
-.student-placement-table th:nth-child(4),
-.student-placement-table td:nth-child(4) {
-    width: 30%;
+    background: #ffffff;
 }
 
 
@@ -658,30 +522,42 @@
    ========================================================= */
 
 .student-placement-table thead th {
-    padding: 16px 18px;
+    padding: 12px 15px;
 
-    background: #0b294d;
+    background: var(--placement-navy);
 
-    border-bottom: 1px solid #d9e5f0;
+    border: none;
 
-    color: #f3f4f5;
+    color: #ffffff;
 
-    font-size: 11.5px;
-
+    font-size: 11px;
     font-weight: 800;
 
-    letter-spacing: 0.55px;
+    line-height: 1.4;
 
     text-align: left;
 
     white-space: nowrap;
-
-    box-sizing: border-box;
 }
 
-
 .student-placement-table thead th:first-child {
-    padding-left: 25px;
+    width: 32%;
+}
+
+.student-placement-table thead th:nth-child(2) {
+    width: 18%;
+}
+
+.student-placement-table thead th:nth-child(3) {
+    width: 20%;
+}
+
+.student-placement-table thead th:nth-child(4) {
+    width: 30%;
+}
+
+.student-placement-table thead th.text-center {
+    text-align: center;
 }
 
 
@@ -689,48 +565,39 @@
    TABLE BODY
    ========================================================= */
 
-.student-placement-table tbody tr {
-    background: #ffffff;
-
-    transition:
-        background-color 0.2s ease;
-}
-
-
-.student-placement-table tbody tr:nth-child(even) {
-    background: #fbfdff;
-}
-
-
-.student-placement-table tbody tr:hover {
-    background: #f2f8ff;
-}
-
-
 .student-placement-table tbody td {
-    padding: 18px;
+    padding: 13px 15px;
 
-    border-bottom: 1px solid #e4edf5;
-
-    vertical-align: middle;
+    border-bottom: 1px solid var(--placement-border);
 
     color: var(--placement-text);
 
-    font-size: 14px;
+    font-size: 12px;
+    font-weight: 500;
 
-    line-height: 1.55;
+    line-height: 1.45;
 
-    box-sizing: border-box;
+    vertical-align: middle;
+
+    overflow: hidden;
 }
-
 
 .student-placement-table tbody tr:last-child td {
     border-bottom: none;
 }
 
+.student-placement-table tbody tr {
+    background: #ffffff;
 
-.student-placement-table tbody td:first-child {
-    padding-left: 25px;
+    transition: background-color 0.18s ease;
+}
+
+.student-placement-table tbody tr:hover {
+    background: #f7f8fa;
+}
+
+.student-placement-table tbody td.text-center {
+    text-align: center;
 }
 
 
@@ -740,70 +607,65 @@
 
 .classroom-name {
     display: flex;
-
     align-items: center;
 
-    gap: 13px;
-
     min-width: 0;
-}
 
+    gap: 10px;
+}
 
 .classroom-icon {
     display: flex;
-
     align-items: center;
     justify-content: center;
 
-    width: 44px;
-    height: 44px;
+    width: 38px;
+    height: 38px;
 
-    flex: 0 0 44px;
+    flex: 0 0 38px;
 
-    border-radius: 11px;
+    color: var(--placement-navy);
 
-    background:
-        linear-gradient(
-            145deg,
-            #0874ed,
-            #0754b5
-        );
+    background: var(--placement-gray-dark);
 
-    color: #ffffff;
-
-    box-shadow:
-        0 6px 13px rgba(8, 102, 216, 0.18);
+    border: 1px solid #cbd5df;
+    border-radius: 6px;
 }
 
+.classroom-icon svg {
+    width: 18px;
+    height: 18px;
+}
 
 .classroom-name > div:last-child {
     min-width: 0;
 }
 
-
 .classroom-name strong {
     display: block;
 
-    margin-bottom: 3px;
+    overflow: hidden;
 
-    color: #09284b;
+    color: var(--placement-text);
 
-    font-size: 14.5px;
-
+    font-size: 12px;
     font-weight: 800;
 
     line-height: 1.4;
-}
 
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
 .classroom-name span {
     display: block;
 
-    color: #71859a;
+    margin-top: 2px;
 
-    font-size: 11.5px;
+    color: var(--placement-text-soft);
 
-    line-height: 1.4;
+    font-size: 10px;
+    font-weight: 500;
 }
 
 
@@ -813,26 +675,22 @@
 
 .grade-badge {
     display: inline-flex;
-
     align-items: center;
     justify-content: center;
 
-    min-width: 54px;
+    min-width: 42px;
+    min-height: 27px;
 
-    min-height: 32px;
+    padding: 5px 9px;
 
-    padding: 5px 12px;
+    background: var(--placement-gray);
 
-    border: 1px solid #c7dff3;
+    border: 1px solid var(--placement-border-dark);
+    border-radius: 5px;
 
-    border-radius: 8px;
+    color: var(--placement-navy);
 
-    background: #edf5fc;
-
-    color: #1e5b8d;
-
-    font-size: 12px;
-
+    font-size: 11px;
     font-weight: 800;
 
     line-height: 1;
@@ -845,32 +703,26 @@
 
 .student-count {
     display: inline-flex;
-
     align-items: baseline;
-
     justify-content: center;
 
-    min-width: 80px;
+    gap: 2px;
+
+    white-space: nowrap;
 }
 
-
 .student-count-number {
-    color: #09284b;
+    color: var(--placement-text);
 
-    font-size: 16px;
-
+    font-size: 13px;
     font-weight: 800;
 }
 
-
 .student-count-capacity {
-    margin-left: 3px;
+    color: var(--placement-text-soft);
 
-    color: #7890a5;
-
-    font-size: 12px;
-
-    font-weight: 600;
+    font-size: 11px;
+    font-weight: 500;
 }
 
 
@@ -880,90 +732,63 @@
 
 .manage-student-button {
     display: inline-flex;
-
     align-items: center;
     justify-content: center;
 
+    max-width: 100%;
+
+    min-height: 37px;
+
+    padding: 8px 12px;
+
     gap: 7px;
 
-    width: 100%;
+    border: 1px solid var(--placement-navy);
+    border-radius: 5px;
 
-    max-width: 190px;
-
-    min-height: 42px;
-
-    padding: 9px 13px;
-
-    border: 1px solid #0759c5;
-
-    border-radius: 9px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #0871e8,
-            #0759c5
-        );
+    background: var(--placement-navy);
 
     color: #ffffff;
 
-    font-size: 12px;
+    font-family: "Plus Jakarta Sans", sans-serif;
 
-    font-weight: 800;
+    font-size: 11px;
+    font-weight: 700;
 
-    line-height: 1.3;
+    line-height: 1.2;
 
     text-decoration: none;
 
-    box-shadow:
-        0 5px 12px rgba(8, 102, 216, 0.18);
+    white-space: nowrap;
+
+    cursor: pointer;
 
     transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease;
-
-    box-sizing: border-box;
-}
-
-
-.manage-student-button svg {
-    flex: 0 0 auto;
-}
-
-
-.manage-student-button .button-arrow {
-    margin-left: 2px;
-
-    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
         transform 0.2s ease;
 }
 
-
 .manage-student-button:hover {
-    background:
-        linear-gradient(
-            135deg,
-            #075fcf,
-            #064ba8
-        );
+    background: var(--placement-navy-2);
+
+    border-color: var(--placement-navy-2);
 
     color: #ffffff;
 
     transform: translateY(-1px);
-
-    box-shadow:
-        0 8px 17px rgba(8, 102, 216, 0.25);
 }
 
+.manage-student-button svg {
+    width: 15px;
+    height: 15px;
 
-.manage-student-button:hover .button-arrow {
-    transform: translateX(3px);
+    flex: 0 0 auto;
 }
 
-
-.manage-student-button:active {
-    transform: translateY(0);
+.manage-student-button .button-arrow {
+    width: 13px;
+    height: 13px;
 }
 
 
@@ -971,94 +796,67 @@
    EMPTY STATE
    ========================================================= */
 
-.student-placement-table .empty-state {
-    height: 190px;
+.empty-state {
+    padding: 50px 20px !important;
 
-    padding: 30px !important;
-
-    text-align: center;
-
-    vertical-align: middle;
-
-    background: #ffffff;
+    text-align: center !important;
 }
-
 
 .empty-state-icon {
     display: flex;
-
     align-items: center;
     justify-content: center;
 
-    width: 50px;
-    height: 50px;
+    width: 52px;
+    height: 52px;
 
-    margin: 0 auto 12px;
+    margin: 0 auto 13px;
 
-    border-radius: 12px;
+    color: var(--placement-navy);
 
-    background: #eaf4ff;
+    background: var(--placement-gray);
 
-    border: 1px solid #c9e1f7;
-
-    color: var(--placement-blue);
+    border: 1px solid var(--placement-border-dark);
+    border-radius: 6px;
 }
 
+.empty-state-icon svg {
+    width: 24px;
+    height: 24px;
+}
 
-.student-placement-table .empty-state strong {
+.empty-state strong {
     display: block;
 
     margin-bottom: 4px;
 
-    color: #173a5c;
+    color: var(--placement-text);
 
-    font-size: 14px;
-
+    font-size: 13px;
     font-weight: 800;
 }
 
-
-.student-placement-table .empty-state span {
+.empty-state span {
     display: block;
 
-    color: #71859a;
+    color: var(--placement-text-soft);
 
-    font-size: 12px;
+    font-size: 11px;
+    font-weight: 400;
 
     line-height: 1.5;
 }
 
 
 /* =========================================================
-   BOOTSTRAP ALIGNMENT
-   ========================================================= */
-
-.student-placement-table .text-center {
-    text-align: center !important;
-}
-
-
-.student-placement-table .text-end {
-    text-align: right !important;
-}
-
-
-/* =========================================================
-   TABLET
+   RESPONSIVE — TABLET
    ========================================================= */
 
 @media (max-width: 1100px) {
 
-    .student-placement-page {
-        padding-left: 4px;
-        padding-right: 4px;
-    }
-
-
     .student-placement-header {
-        padding: 27px 28px;
+        padding: 27px 27px;
     }
-
 
     .student-placement-filter-header,
     .student-placement-card-top {
@@ -1066,249 +864,380 @@
         padding-right: 22px;
     }
 
-
     .student-placement-filter-body {
-        padding-left: 22px;
-        padding-right: 22px;
+        padding: 19px 22px;
     }
-
 
     .student-placement-table thead th {
-        padding: 15px 14px;
+        padding: 11px 12px;
     }
-
 
     .student-placement-table tbody td {
-        padding: 17px 14px;
+        padding: 12px;
     }
-
-
-    .student-placement-table tbody td:first-child {
-        padding-left: 20px;
-    }
-
-
-    .student-placement-table thead th:first-child {
-        padding-left: 20px;
-    }
-
 
     .manage-student-button {
-        max-width: 175px;
+        padding: 8px 10px;
+        gap: 6px;
     }
 }
 
 
 /* =========================================================
-   MOBILE
+   RESPONSIVE — MOBILE
    ========================================================= */
 
 @media (max-width: 768px) {
 
     .student-placement-page {
-        padding-bottom: 28px;
+        padding: 8px 6px 30px;
     }
-
 
     .student-placement-header {
-        margin-bottom: 18px;
+        min-height: 145px;
 
-        padding: 24px 21px;
+        padding: 23px 20px;
 
-        border-radius: 14px;
+        border-radius: 7px;
     }
 
+    .student-placement-header-content {
+        min-height: 99px;
+
+        gap: 20px;
+    }
 
     .student-placement-title-area h1 {
-        font-size: 24px;
+        font-size: 23px;
     }
-
 
     .student-placement-title-area p {
-        font-size: 13px;
+        font-size: 12px;
     }
 
+    .student-placement-hero-icon {
+        width: 54px;
+        height: 54px;
 
-    .student-placement-filter-header {
-        min-height: 84px;
+        flex-basis: 54px;
+    }
 
+    .student-placement-hero-icon svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .student-placement-filter-header,
+    .student-placement-card-top {
+        min-height: 76px;
+
+        padding: 15px 19px;
+    }
+
+    .student-placement-filter-body {
         padding: 18px 19px;
     }
 
-
-    .student-placement-filter-body {
-        padding: 20px 19px 22px;
+    .student-placement-filter-header h2,
+    .student-placement-card-title h2 {
+        font-size: 15px;
     }
 
+    .student-placement-filter-header p,
+    .student-placement-card-title p {
+        font-size: 11px;
+    }
 
     .student-placement-filter-icon,
     .student-placement-title-icon {
+        width: 40px;
+        height: 40px;
+
+        flex-basis: 40px;
+    }
+
+    .student-placement-filter-icon svg,
+    .student-placement-title-icon svg {
+        width: 19px;
+        height: 19px;
+    }
+
+    .student-placement-table thead th {
+        padding: 10px 9px;
+
+        font-size: 10px;
+    }
+
+    .student-placement-table tbody td {
+        padding: 10px 9px;
+
+        font-size: 11px;
+    }
+
+    .classroom-icon {
+        width: 34px;
+        height: 34px;
+
+        flex-basis: 34px;
+    }
+
+    .classroom-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .classroom-name {
+        gap: 7px;
+    }
+
+    .classroom-name strong {
+        font-size: 11px;
+    }
+
+    .classroom-name span {
+        font-size: 9px;
+    }
+
+    .grade-badge {
+        min-width: 38px;
+        min-height: 25px;
+
+        padding: 5px 7px;
+
+        font-size: 10px;
+    }
+
+    .student-count-number {
+        font-size: 12px;
+    }
+
+    .student-count-capacity {
+        font-size: 10px;
+    }
+
+    .manage-student-button {
+        min-height: 34px;
+
+        padding: 7px 9px;
+
+        font-size: 10px;
+    }
+
+    .manage-student-button svg {
+        width: 13px;
+        height: 13px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 576px) {
+
+    .student-placement-header {
+        min-height: 140px;
+
+        padding: 20px 17px;
+    }
+
+    .student-placement-header-content {
+        gap: 12px;
+    }
+
+    .student-placement-label {
+        margin-bottom: 6px;
+
+        font-size: 9px;
+    }
+
+    .student-placement-title-area h1 {
+        font-size: 20px;
+    }
+
+    .student-placement-title-area p {
+        margin-top: 6px;
+
+        font-size: 11px;
+
+        line-height: 1.55;
+    }
+
+    .student-placement-hero-icon {
         width: 42px;
         height: 42px;
 
         flex-basis: 42px;
     }
 
+    .student-placement-hero-icon svg {
+        width: 27px;
+        height: 27px;
+    }
+
+    .student-placement-filter-header,
+    .student-placement-card-top {
+        min-height: 72px;
+
+        padding: 13px 15px;
+    }
+
+    .student-placement-filter-body {
+        padding: 16px 15px;
+    }
+
+    .student-placement-filter-header,
+    .student-placement-card-title {
+        gap: 10px;
+    }
+
+    .student-placement-filter-icon,
+    .student-placement-title-icon {
+        width: 38px;
+        height: 38px;
+
+        flex-basis: 38px;
+    }
 
     .student-placement-filter-header h2,
     .student-placement-card-title h2 {
-        font-size: 16px;
+        font-size: 14px;
     }
-
 
     .student-placement-filter-header p,
     .student-placement-card-title p {
-        font-size: 11.5px;
+        font-size: 10px;
     }
 
-
-    .student-placement-card-top {
-        min-height: 84px;
-
-        padding: 18px 19px;
-    }
-}
-
-
-/* =========================================================
-   SMALL MOBILE
-   ========================================================= */
-
-@media (max-width: 576px) {
-
-    .student-placement-page {
-        padding: 5px 0 25px;
+    .student-placement-form-group label {
+        font-size: 11px;
     }
 
+    .student-placement-select {
+        min-height: 41px;
 
-    .student-placement-header {
-        padding: 21px 18px;
+        padding: 8px 11px;
 
-        border-radius: 13px;
-    }
-
-
-    .student-placement-label {
-        font-size: 9.5px;
-    }
-
-
-    .student-placement-title-area h1 {
-        font-size: 22px;
-    }
-
-
-    .student-placement-title-area p {
         font-size: 12px;
     }
 
 
-    .student-placement-filter-header {
-        min-height: 80px;
+    /* Table tetap full dan tidak bisa digeser */
 
-        padding: 16px;
+    .student-placement-table-wrapper {
+        overflow-x: hidden;
     }
-
-
-    .student-placement-filter-body {
-        padding: 18px 16px 20px;
-    }
-
-
-    .student-placement-filter-icon,
-    .student-placement-title-icon {
-        width: 40px;
-        height: 40px;
-
-        flex-basis: 40px;
-    }
-
-
-    .student-placement-card-top {
-        min-height: 78px;
-
-        padding: 16px;
-    }
-
 
     .student-placement-table {
-        min-width: 650px;
-    }
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
 
+        table-layout: fixed;
+    }
 
     .student-placement-table thead th {
-        padding: 14px 12px;
+        padding: 9px 6px;
 
-        font-size: 11px;
+        font-size: 9px;
     }
-
 
     .student-placement-table tbody td {
-        padding: 16px 12px;
+        padding: 9px 6px;
 
-        font-size: 13px;
+        font-size: 10px;
     }
 
 
-    .student-placement-table tbody td:first-child {
-        padding-left: 16px;
-    }
-
+    /* Lebar kolom mobile */
 
     .student-placement-table thead th:first-child {
-        padding-left: 16px;
+        width: 28%;
+    }
+
+    .student-placement-table thead th:nth-child(2) {
+        width: 15%;
+    }
+
+    .student-placement-table thead th:nth-child(3) {
+        width: 20%;
+    }
+
+    .student-placement-table thead th:nth-child(4) {
+        width: 37%;
     }
 
 
     .classroom-icon {
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
 
-        flex-basis: 40px;
+        flex-basis: 30px;
     }
 
+    .classroom-icon svg {
+        width: 14px;
+        height: 14px;
+    }
 
     .classroom-name {
-        gap: 10px;
+        gap: 5px;
     }
-
 
     .classroom-name strong {
-        font-size: 13.5px;
+        font-size: 10px;
     }
-
 
     .classroom-name span {
-        font-size: 10.5px;
+        font-size: 8px;
     }
-
 
     .grade-badge {
-        min-height: 30px;
+        min-width: 34px;
+        min-height: 23px;
 
-        padding: 5px 10px;
+        padding: 4px 6px;
 
-        font-size: 11px;
+        font-size: 9px;
     }
 
+    .student-count {
+        gap: 1px;
+    }
 
     .student-count-number {
-        font-size: 14px;
+        font-size: 10px;
     }
-
 
     .student-count-capacity {
-        font-size: 11px;
+        font-size: 8px;
     }
 
-
     .manage-student-button {
-        max-width: 175px;
+        width: 100%;
+        max-width: 100%;
 
-        min-height: 40px;
+        min-height: 32px;
 
-        padding: 8px 11px;
+        padding: 6px 5px;
 
-        font-size: 11.5px;
+        gap: 4px;
+
+        font-size: 8.5px;
+    }
+
+    .manage-student-button svg {
+        width: 12px;
+        height: 12px;
+    }
+
+    .manage-student-button .button-arrow {
+        width: 10px;
+        height: 10px;
+    }
+
+    .empty-state {
+        padding: 40px 15px !important;
     }
 }

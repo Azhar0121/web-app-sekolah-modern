@@ -1,36 +1,58 @@
 /* =========================================================
    WEB SEKOLAH MODERN
    ADMIN - PPDB DETAIL
+   PROFESSIONAL ADMIN STYLE
+   FONT: PLUS JAKARTA SANS
    ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
     --detail-navy: #071b35;
     --detail-navy-2: #0b294d;
-    --detail-blue: #1769d5;
-    --detail-blue-dark: #0d4fa8;
-    --detail-blue-light: #eef6ff;
 
     --detail-text: #172033;
-    --detail-text-soft: #64748b;
+    --detail-text-dark: #263449;
+    --detail-text-soft: #66758a;
 
-    --detail-border: #d8e2ee;
-    --detail-border-light: #e7edf4;
+    --detail-border: #dbe2e9;
+    --detail-border-light: #e7ecf1;
+    --detail-border-dark: #cbd4de;
 
     --detail-white: #ffffff;
+    --detail-bg: #f7f9fc;
+
+    --detail-gray-light: #f4f6f8;
+    --detail-gray: #e9edf2;
+    --detail-gray-text: #536174;
 
     --detail-success: #16804b;
-    --detail-success-light: #eaf8f1;
+    --detail-success-bg: #edf7f1;
+    --detail-success-border: #c7e2d2;
 
-    --detail-danger: #c0392b;
-    --detail-danger-light: #fff0ee;
+    --detail-danger: #b9382d;
+    --detail-danger-bg: #fbf0ee;
+    --detail-danger-border: #ebcbc6;
 
-    --detail-warning: #a96800;
-    --detail-warning-light: #fff7e5;
+    --detail-warning: #9a6508;
+    --detail-warning-bg: #fbf6e9;
+    --detail-warning-border: #e8d8ad;
 
-    --detail-radius: 15px;
+    --detail-radius: 7px;
+    --detail-small-radius: 5px;
 
-    --detail-shadow:
-        0 8px 25px rgba(15, 35, 65, 0.07);
+    --detail-shadow: 0 2px 8px rgba(16, 34, 61, 0.06);
+}
+
+
+/* =========================================================
+   GLOBAL FONT
+   ========================================================= */
+
+.ppdb-detail-page,
+.ppdb-detail-page *,
+.ppdb-detail-page *::before,
+.ppdb-detail-page *::after {
+    font-family: "Plus Jakarta Sans", sans-serif !important;
 }
 
 
@@ -40,147 +62,102 @@
 
 .ppdb-detail-page {
     width: 100%;
-    padding: 8px 18px 45px;
-
+    padding: 8px 20px 40px;
     color: var(--detail-text);
+    font-family: "Plus Jakarta Sans", sans-serif !important;
 }
 
 
 /* =========================================================
-   HEADER
+   HEADER / HERO
    ========================================================= */
 
 .ppdb-detail-header {
     position: relative;
-
     width: 100%;
-    margin-bottom: 24px;
-    padding: 30px 34px;
-
+    margin-bottom: 20px;
+    padding: 27px 30px;
+    border: 1px solid var(--detail-navy-2);
     border-radius: var(--detail-radius);
-
     background: var(--detail-navy);
-
-    box-shadow:
-        0 10px 30px rgba(7, 27, 53, 0.16);
-
+    box-shadow: 0 3px 10px rgba(7, 27, 53, 0.10);
     overflow: hidden;
 }
 
-
-.ppdb-detail-header::before {
-    content: "";
-
-    position: absolute;
-
-    width: 240px;
-    height: 240px;
-
-    right: -90px;
-    top: -125px;
-
-    border-radius: 50%;
-
-    background: rgba(255, 255, 255, 0.06);
-}
-
-
-.ppdb-detail-header::after {
-    content: "";
-
-    position: absolute;
-
-    width: 150px;
-    height: 150px;
-
-    right: 100px;
-    bottom: -110px;
-
-    border-radius: 50%;
-
-    background: rgba(255, 255, 255, 0.04);
-}
-
-
 .ppdb-detail-header-content {
     position: relative;
-
-    z-index: 2;
+    z-index: 1;
 }
-
 
 .ppdb-detail-label {
     display: inline-flex;
     align-items: center;
-
     margin-bottom: 9px;
-    padding: 6px 11px;
-
-    border: 1px solid rgba(255, 255, 255, 0.20);
-    border-radius: 7px;
-
-    background: rgba(255, 255, 255, 0.09);
-
-    color: #dcecff;
-
-    font-size: 10.5px;
-    font-weight: 800;
-    letter-spacing: 1.15px;
+    padding: 5px 9px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.4;
 }
-
 
 .ppdb-detail-header h1 {
     margin: 0;
-
     color: #ffffff;
-
-    font-size: 26px;
-    font-weight: 750;
+    font-size: 25px;
+    font-weight: 700;
     line-height: 1.3;
-
-    letter-spacing: -0.35px;
+    letter-spacing: -0.3px;
 }
 
-
 .ppdb-detail-header p {
-    margin: 7px 0 0;
-
-    color: rgba(255, 255, 255, 0.72);
-
-    font-size: 13px;
+    max-width: 720px;
+    margin: 8px 0 0;
+    color: #d7dee8;
+    font-size: 12.5px;
+    font-weight: 400;
+    line-height: 1.6;
 }
 
 
 /* =========================================================
    BACK BUTTON
+   SEKARANG BERADA DI DALAM HERO
    ========================================================= */
 
 .ppdb-back-button {
     display: inline-flex;
     align-items: center;
     gap: 7px;
-
-    margin-bottom: 16px;
-
-    color: #48627d;
-
-    font-size: 12.5px;
+    margin-top: 16px;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    font-size: 10.5px;
     font-weight: 700;
-
+    line-height: 1.3;
     text-decoration: none;
-
     transition:
-        color 0.2s ease,
-        transform 0.2s ease;
+        background 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
 }
 
+.ppdb-back-button span {
+    font-size: 13px;
+    line-height: 1;
+}
 
 .ppdb-back-button:hover {
-    color: var(--detail-blue);
-
+    border-color: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
     text-decoration: none;
-
-    transform: translateX(-2px);
 }
 
 
@@ -199,20 +176,15 @@
 
 .ppdb-detail-card {
     margin-bottom: 18px;
-
     border: 1px solid var(--detail-border) !important;
     border-radius: var(--detail-radius) !important;
-
     background: var(--detail-white);
-
     box-shadow: var(--detail-shadow) !important;
-
     overflow: hidden;
 }
 
-
 .ppdb-detail-card .card-body {
-    padding: 22px 23px;
+    padding: 21px 22px;
 }
 
 
@@ -223,46 +195,42 @@
 .ppdb-detail-card-header {
     display: flex;
     align-items: center;
-    gap: 12px;
-
-    margin-bottom: 18px;
+    gap: 11px;
+    margin-bottom: 17px;
 }
-
 
 .ppdb-detail-card-icon {
-    flex: 0 0 40px;
-
     display: flex;
+    flex: 0 0 36px;
     align-items: center;
     justify-content: center;
-
-    width: 40px;
-    height: 40px;
-
-    border-radius: 10px;
-
-    background: var(--detail-blue-light);
-
-    color: var(--detail-blue);
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--detail-border-dark);
+    border-radius: 6px;
+    background: var(--detail-gray-light);
+    color: var(--detail-navy);
 }
 
+.ppdb-detail-card-icon svg {
+    width: 18px;
+    height: 18px;
+}
 
 .ppdb-detail-card-title {
     margin: 0;
-
     color: var(--detail-text);
-
-    font-size: 14px;
-    font-weight: 800;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.4;
 }
-
 
 .ppdb-detail-card-subtitle {
     margin: 3px 0 0;
-
     color: var(--detail-text-soft);
-
-    font-size: 11px;
+    font-size: 10.5px;
+    font-weight: 400;
+    line-height: 1.5;
 }
 
 
@@ -273,82 +241,66 @@
 .ppdb-data-table {
     width: 100%;
     margin: 0;
-
     border-collapse: separate;
     border-spacing: 0;
 }
-
 
 .ppdb-data-table tr:first-child th,
 .ppdb-data-table tr:first-child td {
     border-top: 1px solid var(--detail-border-light);
 }
 
-
 .ppdb-data-table th,
 .ppdb-data-table td {
-    padding: 12px 13px;
-
+    padding: 11px 12px;
     border-bottom: 1px solid var(--detail-border-light);
-
     vertical-align: middle;
-
-    font-size: 12px;
+    font-size: 11.5px;
 }
-
 
 .ppdb-data-table th {
     width: 180px;
-
-    background: #f5f8fc;
-
-    color: #46566b;
-
-    font-weight: 750;
-
+    background: var(--detail-gray-light);
+    color: #465568;
+    font-weight: 700;
+    line-height: 1.45;
     white-space: nowrap;
 }
 
-
 .ppdb-data-table td {
-    color: #29384c;
-
+    color: var(--detail-text-dark);
     background: #ffffff;
-
+    font-weight: 500;
     line-height: 1.55;
 }
-
 
 .ppdb-data-table tr:last-child th,
 .ppdb-data-table tr:last-child td {
     border-bottom: none;
 }
 
+.ppdb-data-table strong {
+    color: var(--detail-navy);
+    font-weight: 700;
+}
+
 
 /* =========================================================
    REGISTRATION NUMBER
+   TIDAK LAGI MONOSPACE / BIRU
    ========================================================= */
 
 .ppdb-detail-registration {
     display: inline-flex;
-
-    padding: 5px 9px;
-
-    border: 1px solid #b5d0eb;
-    border-radius: 7px;
-
-    background: #eaf4ff;
-
-    color: #0d4f91;
-
-    font-family:
-        "SFMono-Regular",
-        Consolas,
-        "Liberation Mono",
-        monospace;
-
-    font-size: 11px;
+    align-items: center;
+    padding: 5px 8px;
+    border: 1px solid var(--detail-border-dark);
+    border-radius: 5px;
+    background: var(--detail-gray-light);
+    color: var(--detail-navy);
+    font-size: 10.5px;
     font-weight: 700;
+    line-height: 1.3;
 }
 
 
@@ -359,85 +311,66 @@
 .ppdb-document-list {
     display: flex;
     flex-direction: column;
-
-    gap: 8px;
+    gap: 7px;
 }
-
 
 .ppdb-document-item {
     display: flex;
     align-items: center;
-    gap: 11px;
-
-    padding: 11px 13px;
-
+    gap: 10px;
+    padding: 10px 12px;
     border: 1px solid var(--detail-border);
-    border-radius: 9px;
-
-    background: #f8fbff;
-
+    border-radius: 6px;
+    background: #ffffff;
     transition:
-        background 0.2s ease,
-        border-color 0.2s ease;
+        background 0.15s ease,
+        border-color 0.15s ease;
 }
-
 
 .ppdb-document-item:hover {
-    border-color: #aac8e7;
-
-    background: #eef6ff;
+    border-color: var(--detail-border-dark);
+    background: var(--detail-gray-light);
 }
-
 
 .ppdb-document-icon {
-    flex: 0 0 32px;
-
     display: flex;
+    flex: 0 0 31px;
     align-items: center;
     justify-content: center;
-
-    width: 32px;
-    height: 32px;
-
-    border-radius: 8px;
-
-    background: #e2efff;
-
-    color: var(--detail-blue);
+    width: 31px;
+    height: 31px;
+    border: 1px solid var(--detail-border-dark);
+    border-radius: 5px;
+    background: var(--detail-gray-light);
+    color: var(--detail-navy);
 }
 
+.ppdb-document-icon svg {
+    width: 16px;
+    height: 16px;
+}
 
 .ppdb-document-link {
     display: block;
-
-    color: #185a9e;
-
-    font-size: 11.5px;
+    color: var(--detail-navy);
+    font-size: 11px;
     font-weight: 700;
-
     line-height: 1.45;
-
     text-decoration: none;
 }
 
-
 .ppdb-document-link:hover {
-    color: var(--detail-blue-dark);
-
+    color: var(--detail-navy-2);
     text-decoration: underline;
 }
 
-
 .ppdb-document-name {
     display: block;
-
     margin-top: 2px;
-
     color: #7a8798;
-
-    font-size: 10.5px;
-
+    font-size: 10px;
     font-weight: 500;
+    line-height: 1.4;
 }
 
 
@@ -446,17 +379,13 @@
    ========================================================= */
 
 .ppdb-document-empty {
-    padding: 18px;
-
-    border: 1px dashed #ccd7e3;
-    border-radius: 9px;
-
-    background: #f8fafc;
-
+    padding: 17px;
+    border: 1px dashed var(--detail-border-dark);
+    border-radius: 6px;
+    background: var(--detail-gray-light);
     color: #7d8999;
-
-    font-size: 11.5px;
-
+    font-size: 11px;
+    font-weight: 500;
     text-align: center;
 }
 
@@ -467,38 +396,28 @@
 
 .ppdb-detail-alert {
     margin-bottom: 15px;
-
-    border-radius: 10px;
-
-    font-size: 11.5px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 500;
     line-height: 1.6;
 }
 
-
 .ppdb-detail-alert-success {
-    border: 1px solid #b9e2cc;
-
-    background: var(--detail-success-light);
-
+    border: 1px solid var(--detail-success-border);
+    background: var(--detail-success-bg);
     color: #176b42;
 }
 
-
 .ppdb-detail-alert-danger {
-    border: 1px solid #f0c5c0;
-
-    background: var(--detail-danger-light);
-
-    color: #9e3026;
+    border: 1px solid var(--detail-danger-border);
+    background: var(--detail-danger-bg);
+    color: #963229;
 }
 
-
 .ppdb-detail-alert-warning {
-    border: 1px solid #efd49d;
-
-    background: var(--detail-warning-light);
-
-    color: #8b5c08;
+    border: 1px solid var(--detail-warning-border);
+    background: var(--detail-warning-bg);
+    color: #855b0c;
 }
 
 
@@ -511,43 +430,31 @@
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-
     margin-bottom: 17px;
-    padding: 13px 14px;
-
+    padding: 12px 13px;
     border: 1px solid var(--detail-border);
-    border-radius: 10px;
-
-    background: #f7faff;
+    border-radius: 6px;
+    background: var(--detail-gray-light);
 }
-
 
 .ppdb-current-status-label {
     color: #58687b;
-
-    font-size: 11.5px;
-    font-weight: 650;
+    font-size: 11px;
+    font-weight: 600;
 }
-
 
 .ppdb-status-badge-detail {
     display: inline-flex;
     align-items: center;
-
-    min-height: 27px;
-
-    padding: 5px 10px;
-
-    border: 1px solid #9fc3e8;
-    border-radius: 7px;
-
-    background: #e6f2ff;
-
-    color: #0d4f91;
-
-    font-size: 10.5px;
-    font-weight: 750;
-
+    min-height: 25px;
+    padding: 4px 9px;
+    border: 1px solid var(--detail-border-dark);
+    border-radius: 5px;
+    background: #ffffff;
+    color: var(--detail-navy);
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.3;
     white-space: nowrap;
 }
 
@@ -558,18 +465,18 @@
 
 .ppdb-verified-info {
     margin: 0 0 17px;
-
-    padding: 10px 12px;
-
-    border-left: 3px solid #9fb5cc;
-
-    background: #f7f9fb;
-
+    padding: 9px 11px;
+    border-left: 3px solid #9aa8b8;
+    background: var(--detail-gray-light);
     color: #778496;
-
-    font-size: 10.5px;
-
+    font-size: 10px;
+    font-weight: 500;
     line-height: 1.6;
+}
+
+.ppdb-verified-info strong {
+    color: #4c5b6d;
+    font-weight: 700;
 }
 
 
@@ -581,103 +488,90 @@
     margin-bottom: 15px;
 }
 
-
 .ppdb-detail-form-label {
     display: block;
-
-    margin-bottom: 7px;
-
+    margin-bottom: 6px;
     color: #34445a;
-
-    font-size: 11.5px;
-    font-weight: 750;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.4;
 }
 
-
-.ppdb-detail-form-control {
+.ppdb-detail-form-control,
+.ppdb-detail-form-control.form-control,
+.ppdb-detail-form-control.form-select {
     width: 100%;
-
-    border: 1px solid #ccd8e5;
-    border-radius: 9px;
-
+    border: 1px solid var(--detail-border-dark);
+    border-radius: 5px;
     background: #ffffff;
-    color: #263449;
-
-    font-size: 12px;
-
+    color: var(--detail-text-dark);
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 11.5px;
+    font-weight: 500;
+    line-height: 1.5;
+    box-shadow: none;
     transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
 }
-
 
 .ppdb-detail-form-control:focus {
-    border-color: var(--detail-blue);
-
-    box-shadow:
-        0 0 0 3px rgba(23, 105, 213, 0.11);
-
+    border-color: var(--detail-navy-2);
+    background: #ffffff;
+    color: var(--detail-text-dark);
+    box-shadow: 0 0 0 3px rgba(11, 41, 77, 0.08);
     outline: none;
 }
 
+.ppdb-detail-form-control::placeholder {
+    color: #9aa6b4;
+    opacity: 1;
+}
 
 .ppdb-detail-form-help {
     display: block;
-
-    margin-top: 7px;
-
+    margin-top: 6px;
     color: #7b8797;
-
-    font-size: 10px;
-
+    font-size: 9.5px;
+    font-weight: 400;
     line-height: 1.6;
 }
 
-
 .ppdb-detail-textarea {
     min-height: 82px;
-
     resize: vertical;
 }
 
 
 /* =========================================================
-   PRIMARY BUTTON
+   SAVE STATUS BUTTON
    ========================================================= */
 
 .ppdb-save-status-button {
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 100%;
-    min-height: 42px;
-
-    border: none;
-    border-radius: 9px;
-
-    background: var(--detail-blue);
+    min-height: 41px;
+    padding: 0 14px;
+    border: 1px solid var(--detail-navy-2);
+    border-radius: 5px;
+    background: var(--detail-navy-2);
     color: #ffffff;
-
-    font-size: 11.5px;
-    font-weight: 750;
-
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.3;
     cursor: pointer;
-
     transition:
-        background 0.2s ease,
-        box-shadow 0.2s ease,
-        transform 0.15s ease;
+        background 0.15s ease,
+        border-color 0.15s ease;
 }
 
-
 .ppdb-save-status-button:hover {
-    background: var(--detail-blue-dark);
-
-    box-shadow:
-        0 5px 14px rgba(23, 105, 213, 0.22);
-
-    transform: translateY(-1px);
+    border-color: var(--detail-navy);
+    background: var(--detail-navy);
+    color: #ffffff;
 }
 
 
@@ -688,41 +582,33 @@
 .ppdb-schedule-box {
     display: flex;
     flex-direction: column;
-
-    gap: 10px;
-
+    gap: 8px;
     margin-top: 3px;
 }
-
 
 .ppdb-schedule-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 15px;
-
-    padding: 11px 13px;
-
+    padding: 10px 12px;
     border: 1px solid var(--detail-border-light);
-    border-radius: 9px;
-
-    background: #f8fafc;
+    border-radius: 6px;
+    background: var(--detail-gray-light);
 }
-
 
 .ppdb-schedule-label {
     color: #68778a;
-
-    font-size: 11px;
+    font-size: 10.5px;
+    font-weight: 500;
+    line-height: 1.5;
 }
 
-
 .ppdb-schedule-value {
-    color: #26384e;
-
-    font-size: 11.5px;
-    font-weight: 750;
-
+    color: var(--detail-navy);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.5;
     text-align: right;
 }
 
@@ -733,24 +619,19 @@
 
 .ppdb-payment-info {
     margin-bottom: 17px;
-
-    padding: 12px 13px;
-
-    border: 1px solid #dbe5ef;
-    border-radius: 9px;
-
-    background: #f7faff;
-
+    padding: 11px 12px;
+    border: 1px solid var(--detail-border);
+    border-radius: 6px;
+    background: var(--detail-gray-light);
     color: #6c7a8c;
-
-    font-size: 10.5px;
-
+    font-size: 10px;
+    font-weight: 500;
     line-height: 1.65;
 }
 
-
 .ppdb-payment-info strong {
     color: #3c4d63;
+    font-weight: 700;
 }
 
 
@@ -759,63 +640,68 @@
    ========================================================= */
 
 .ppdb-confirmed-box {
-    padding: 13px 14px;
-
-    border: 1px solid #b8dfca;
-    border-radius: 10px;
-
-    background: var(--detail-success-light);
-
+    padding: 12px 13px;
+    border: 1px solid var(--detail-success-border);
+    border-radius: 6px;
+    background: var(--detail-success-bg);
     color: #246344;
-
-    font-size: 11px;
-
+    font-size: 10.5px;
+    font-weight: 500;
     line-height: 1.7;
 }
 
-
 .ppdb-confirmed-box strong {
     color: #14633c;
+    font-weight: 700;
+}
+
+.ppdb-confirmed-box a {
+    color: var(--detail-navy);
+    font-weight: 700;
+}
+
+.ppdb-confirmed-box .text-warning {
+    color: var(--detail-warning) !important;
+}
+
+.ppdb-confirmed-box .text-danger {
+    color: var(--detail-danger) !important;
+}
+
+.ppdb-confirmed-box .text-muted {
+    color: #718096 !important;
 }
 
 
 /* =========================================================
-   SUCCESS BUTTON
+   CONFIRM RE-REGISTRATION BUTTON
    ========================================================= */
 
 .ppdb-confirm-button {
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 100%;
-    min-height: 42px;
-
-    border: none;
-    border-radius: 9px;
-
+    min-height: 41px;
+    padding: 0 14px;
+    border: 1px solid #16804b;
+    border-radius: 5px;
     background: #16804b;
     color: #ffffff;
-
-    font-size: 11.5px;
-    font-weight: 750;
-
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.3;
     cursor: pointer;
-
     transition:
-        background 0.2s ease,
-        box-shadow 0.2s ease,
-        transform 0.15s ease;
+        background 0.15s ease,
+        border-color 0.15s ease;
 }
 
-
 .ppdb-confirm-button:hover {
+    border-color: #116a3d;
     background: #116a3d;
-
-    box-shadow:
-        0 5px 14px rgba(22, 128, 75, 0.22);
-
-    transform: translateY(-1px);
+    color: #ffffff;
 }
 
 
@@ -826,15 +712,13 @@
 @media (max-width: 1000px) {
 
     .ppdb-detail-page {
-        padding-left: 14px;
-        padding-right: 14px;
+        padding-left: 15px;
+        padding-right: 15px;
     }
-
 
     .ppdb-detail-header {
-        padding: 27px 27px;
+        padding: 25px 27px;
     }
-
 }
 
 
@@ -845,82 +729,80 @@
 @media (max-width: 767px) {
 
     .ppdb-detail-page {
-        padding:
-            5px
-            8px
-            30px;
+        padding: 5px 8px 30px;
     }
-
 
     .ppdb-detail-header {
-        margin-bottom: 18px;
-
-        padding: 23px 20px;
-
-        border-radius: 13px;
+        margin-bottom: 17px;
+        padding: 22px 19px;
+        border-radius: 6px;
     }
 
+    .ppdb-detail-label {
+        margin-bottom: 8px;
+        font-size: 9px;
+    }
 
     .ppdb-detail-header h1 {
-        font-size: 21px;
+        font-size: 20px;
     }
-
 
     .ppdb-detail-header p {
         font-size: 11.5px;
     }
 
+    .ppdb-back-button {
+        margin-top: 14px;
+        padding: 7px 10px;
+        font-size: 10px;
+    }
 
     .ppdb-detail-card {
         margin-bottom: 15px;
-
-        border-radius: 12px !important;
+        border-radius: 6px !important;
     }
-
 
     .ppdb-detail-card .card-body {
         padding: 17px;
     }
 
-
     .ppdb-detail-card-title {
-        font-size: 13px;
+        font-size: 12.5px;
     }
 
+    .ppdb-detail-card-subtitle {
+        font-size: 10px;
+    }
 
     .ppdb-data-table th,
     .ppdb-data-table td {
         padding: 10px;
-
-        font-size: 11px;
+        font-size: 10.5px;
     }
-
 
     .ppdb-data-table th {
         width: 135px;
-
         white-space: normal;
     }
 
+    .ppdb-detail-registration {
+        font-size: 9.5px;
+    }
 
     .ppdb-current-status {
         align-items: flex-start;
         flex-direction: column;
     }
 
-
     .ppdb-schedule-row {
         align-items: flex-start;
         flex-direction: column;
-
         gap: 4px;
     }
-
 
     .ppdb-schedule-value {
         text-align: left;
     }
-
 }
 
 
@@ -931,25 +813,89 @@
 @media (max-width: 430px) {
 
     .ppdb-detail-header h1 {
-        font-size: 19px;
+        font-size: 18px;
     }
-
 
     .ppdb-detail-card .card-body {
         padding: 15px;
     }
 
-
     .ppdb-data-table th,
     .ppdb-data-table td {
         padding: 9px 8px;
-
-        font-size: 10.5px;
+        font-size: 10px;
     }
-
 
     .ppdb-data-table th {
         width: 115px;
     }
 
+    .ppdb-detail-card-header {
+        gap: 9px;
+    }
+
+    .ppdb-detail-card-icon {
+        flex-basis: 34px;
+        width: 34px;
+        height: 34px;
+    }
+
+    .ppdb-detail-card-icon svg {
+        width: 17px;
+        height: 17px;
+    }
+
+    .ppdb-document-item {
+        padding: 9px 10px;
+    }
+}
+
+/* =========================================================
+   HERO DECORATION
+   ========================================================= */
+
+.ppdb-detail-header-decoration {
+    position: absolute;
+    top: 50%;
+    right: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 145px;
+    height: 145px;
+    color: rgba(255, 255, 255, 0.24);
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.ppdb-detail-header-decoration svg {
+    width: 145px;
+    height: 145px;
+}
+
+
+/* =========================================================
+   HERO CONTENT SPACE
+   ========================================================= */
+
+.ppdb-detail-header-content {
+    max-width: calc(100% - 190px);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    .ppdb-detail-header-content {
+        max-width: 100%;
+    }
+
+    .ppdb-detail-header-decoration {
+        right: 20px;
+        opacity: 0.06;
+        transform: translateY(-50%) scale(0.8);
+    }
 }

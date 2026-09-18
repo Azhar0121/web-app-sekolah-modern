@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="{{ asset('css/sidebar.css') }}">
+
 @php
     $user = auth()->user();
 

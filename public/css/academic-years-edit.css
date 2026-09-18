@@ -1,178 +1,197 @@
-css
 /* =========================================================
-   WEB SEKOLAH MODERN
    ADMIN - KELOLA TAHUN AJARAN
-========================================================= */
+   academic-years-edit.css
+   MATCHED 100% WITH CURRENT BLADE
+   ========================================================= */
+/* =========================================================
+   PLUS JAKARTA SANS - LOAD FONT
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+
+/* =========================================================
+   FONT
+   ========================================================= */
+
+.academic-edit-page,
+.academic-edit-page *,
+.academic-edit-page *::before,
+.academic-edit-page *::after {
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
 
 .academic-edit-page {
     width: 100%;
-    max-width: 100%;
     margin: 0;
-    padding: 10px 8px 40px;
-    box-sizing: border-box;
-    color: #102a43;
+    padding: 0;
+
+    color: #172033;
+
+    font-family: "Plus Jakarta Sans", sans-serif !important;
 }
 
 
 /* =========================================================
-   HEADER
-========================================================= */
+   HEADER / HERO
+   ========================================================= */
 
 .academic-edit-header {
     position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
     width: 100%;
-    margin-bottom: 22px;
-    padding: 30px 32px;
+    min-height: 178px;
+
+    margin-bottom: 20px;
+    padding: 28px 32px;
+
     overflow: hidden;
 
-    background:
-        linear-gradient(
-            135deg,
-            #071b35 0%,
-            #0a3768 60%,
-            #0d5fb7 100%
-        );
+    background: #071b35;
+    border: 1px solid #071b35;
+    border-radius: 7px;
 
-    border-radius: 18px;
+    box-shadow: 0 4px 12px rgba(7, 27, 53, 0.08);
 
-    box-shadow:
-        0 10px 28px rgba(7, 27, 53, 0.12);
-
-    box-sizing: border-box;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
 }
 
 
-.academic-edit-header::before {
-    content: "";
-
-    position: absolute;
-
-    width: 220px;
-    height: 220px;
-
-    top: -115px;
-    right: -80px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255, 255, 255, 0.07);
-}
-
-
-.academic-edit-header::after {
-    content: "";
-
-    position: absolute;
-
-    width: 140px;
-    height: 140px;
-
-    right: 110px;
-    bottom: -90px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255, 255, 255, 0.045);
-}
-
+/* =========================================================
+   HEADER CONTENT
+   ========================================================= */
 
 .academic-edit-header-content {
     position: relative;
     z-index: 2;
-}
 
+    min-width: 0;
+    max-width: 760px;
+
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+}
 
 .academic-edit-label {
     display: inline-flex;
-
     align-items: center;
 
-    margin-bottom: 10px;
+    margin-bottom: 9px;
+    padding: 5px 10px;
 
-    padding: 6px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 5px;
 
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
 
-    border-radius: 7px;
-
-    background:
-        rgba(255, 255, 255, 0.09);
-
-    color: #dceeff;
-
-    font-size: 11px;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 10px;
     font-weight: 800;
-
-    letter-spacing: 1.3px;
+    letter-spacing: 1.15px;
+    line-height: 1.4;
 }
-
 
 .academic-edit-header h1 {
     margin: 0;
 
     color: #ffffff;
 
-    font-size: 29px;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 27px;
     font-weight: 800;
-
     line-height: 1.3;
 }
-
 
 .academic-edit-header p {
     max-width: 700px;
 
-    margin: 9px 0 0;
+    margin: 8px 0 0;
 
-    color: #c9def3;
+    color: rgba(255, 255, 255, 0.72);
 
-    font-size: 14px;
-
-    line-height: 1.7;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.65;
 }
 
 
 /* =========================================================
-   ALERT
-========================================================= */
+   HERO CALENDAR ICON
+   ========================================================= */
+
+.academic-edit-hero-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 82px;
+    height: 82px;
+
+    flex: 0 0 82px;
+
+    margin-left: 30px;
+
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    color: rgba(255, 255, 255, 0.92);
+
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+}
+
+.academic-edit-hero-icon svg {
+    display: block;
+
+    width: 47px;
+    height: 47px;
+
+    margin: 0;
+
+    color: inherit;
+}
+
+
+/* =========================================================
+   ERROR ALERT
+   ========================================================= */
 
 .academic-edit-alert {
     display: flex;
     align-items: flex-start;
-
     gap: 10px;
 
     width: 100%;
 
     margin-bottom: 20px;
+    padding: 13px 15px;
 
-    padding: 12px 14px;
+    border: 1px solid #e5caca;
+    border-radius: 6px;
 
-    box-sizing: border-box;
+    background: #fff8f8;
+    color: #9f3030;
 
-    border:
-        1px solid
-        #fecaca;
-
-    border-radius: 10px;
-
-    background: #fff5f5;
-
-    color: #b91c1c;
-
-    font-size: 12px;
-
-    line-height: 1.55;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 11.5px;
+    font-weight: 600;
+    line-height: 1.6;
 }
-
 
 .academic-edit-alert-icon {
     display: flex;
-
     align-items: center;
     justify-content: center;
 
@@ -183,273 +202,251 @@ css
 
     border-radius: 50%;
 
-    background: #dc2626;
-
+    background: #9f3030;
     color: #ffffff;
 
+    font-family: "Plus Jakarta Sans", sans-serif !important;
     font-size: 11px;
     font-weight: 800;
+    line-height: 1;
 }
 
 
 /* =========================================================
-   GRID
-========================================================= */
+   MAIN GRID
+   ========================================================= */
 
 .academic-edit-grid {
     display: grid;
 
     grid-template-columns:
-        minmax(0, 1fr)
-        minmax(0, 1fr);
+        minmax(0, 1.15fr)
+        minmax(350px, 0.85fr);
 
     gap: 20px;
 
     width: 100%;
+
+    font-family: "Plus Jakarta Sans", sans-serif !important;
 }
 
 
 /* =========================================================
    CARD
-========================================================= */
+   ========================================================= */
 
 .academic-edit-card {
     width: 100%;
 
-    overflow: hidden;
-
     background: #ffffff;
 
-    border:
-        1px solid
-        #dbe7f2;
+    border: 1px solid #e1e6ed;
+    border-radius: 7px;
 
-    border-radius: 17px;
+    box-shadow: 0 3px 10px rgba(16, 34, 61, 0.035);
 
-    box-shadow:
-        0 8px 24px
-        rgba(16, 42, 67, 0.06);
-
-    box-sizing: border-box;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
 }
 
 
 /* =========================================================
    CARD HEADER
-========================================================= */
+   ========================================================= */
 
 .academic-edit-card-header {
     display: flex;
-
     align-items: center;
+    gap: 12px;
 
-    gap: 13px;
+    padding: 21px 22px;
 
-    min-height: 86px;
+    border-bottom: 1px solid #edf0f4;
 
-    padding: 18px 22px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #e8f3ff 0%,
-            #edf6ff 55%,
-            #e2f0ff 100%
-        );
-
-    border-bottom:
-        1px solid
-        #c9dced;
-
-    box-sizing: border-box;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
 }
-
 
 .academic-edit-card-icon {
     display: flex;
-
     align-items: center;
     justify-content: center;
 
-    width: 44px;
-    height: 44px;
+    width: 39px;
+    height: 39px;
 
-    flex: 0 0 44px;
+    flex: 0 0 39px;
 
-    border:
-        1px solid
-        #c3def7;
+    border: 1px solid #dfe4ea;
+    border-radius: 6px;
 
-    border-radius: 11px;
+    background: #f5f6f8;
+    color: #071b35;
 
-    background:
-        linear-gradient(
-            145deg,
-            #ffffff,
-            #d4e5f7
-        );
-
-    color: #0866d8;
-
-    box-shadow:
-        0 6px 14px
-        rgba(8, 102, 216, 0.10);
+    font-family: "Plus Jakarta Sans", sans-serif !important;
 }
 
+.academic-edit-card-icon svg {
+    display: block;
+
+    width: 20px;
+    height: 20px;
+}
 
 .academic-edit-card-header h2 {
     margin: 0;
 
-    color: #09284b;
+    color: #172033;
 
-    font-size: 17px;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 15px;
     font-weight: 800;
-
     line-height: 1.4;
 }
-
 
 .academic-edit-card-header p {
     margin: 3px 0 0;
 
-    color: #4f6f8e;
+    color: #718096;
 
-    font-size: 11.5px;
-
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 11px;
+    font-weight: 500;
     line-height: 1.5;
 }
 
 
 /* =========================================================
    CARD BODY
-========================================================= */
+   ========================================================= */
 
 .academic-edit-card-body {
-    padding: 25px 24px;
+    padding: 22px;
 
-    box-sizing: border-box;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
 }
 
 
 /* =========================================================
-   FORM
-========================================================= */
+   FORM GROUP
+   ========================================================= */
 
 .academic-edit-form-group {
-    margin-bottom: 18px;
+    width: 100%;
+    margin-bottom: 17px;
+
+    font-family: "Plus Jakarta Sans", sans-serif !important;
 }
 
+.academic-edit-form-group:last-child {
+    margin-bottom: 0;
+}
 
 .academic-edit-form-group label {
     display: block;
 
     margin-bottom: 7px;
 
-    color: #153858;
+    color: #172033;
 
-    font-size: 12.5px;
-    font-weight: 800;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 11.5px;
+    font-weight: 700;
+    line-height: 1.4;
 }
 
 
-.academic-edit-form-group input {
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.academic-edit-form-group input[type="text"],
+.academic-edit-form-group input[type="date"] {
     display: block;
 
     width: 100%;
-    height: 44px;
+    height: 42px;
 
-    padding:
-        0 13px;
+    padding: 9px 12px;
 
-    box-sizing: border-box;
-
-    border:
-        1px solid
-        #d5e2ed;
-
-    border-radius: 8px;
+    border: 1px solid #d8dfe8;
+    border-radius: 5px;
 
     outline: none;
 
-    background: #fbfdff;
+    background: #ffffff;
+    color: #172033;
 
-    color: #102a43;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 11.5px;
+    font-weight: 500;
 
-    font-family: inherit;
-
-    font-size: 12.5px;
+    line-height: 1.5;
 
     transition:
-        border-color .2s ease,
-        background .2s ease,
-        box-shadow .2s ease;
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
 }
 
+.academic-edit-form-group input::placeholder {
+    color: #9aa5b4;
 
-.academic-edit-form-group input:hover {
-    border-color: #b8cada;
-
-    background: #ffffff;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
 }
-
 
 .academic-edit-form-group input:focus {
-    border-color: #0866d8;
+    border-color: #071b35;
 
-    background: #ffffff;
-
-    box-shadow:
-        0 0 0 3px
-        rgba(8, 102, 216, 0.09);
+    box-shadow: 0 0 0 3px rgba(7, 27, 53, 0.07);
 }
 
 
 /* =========================================================
    DATE GRID
-========================================================= */
+   ========================================================= */
 
 .academic-edit-date-grid {
     display: grid;
 
-    grid-template-columns:
-        minmax(0, 1fr)
-        minmax(0, 1fr);
+    grid-template-columns: 1fr 1fr;
 
     gap: 14px;
+
+    width: 100%;
+
+    font-family: "Plus Jakarta Sans", sans-serif !important;
 }
 
 
 /* =========================================================
    ACTIVE BOX
-========================================================= */
+   ========================================================= */
 
 .academic-edit-active-box {
-    margin: 2px 0 20px;
+    width: 100%;
 
+    margin-top: 3px;
     padding: 13px 14px;
 
-    border:
-        1px solid
-        #dbe8f3;
+    border: 1px solid #dfe4ea;
+    border-radius: 6px;
 
-    border-radius: 10px;
+    background: #f7f8fa;
 
-    background: #f5f9fd;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
 }
-
 
 .academic-edit-checkbox {
     display: flex;
-
     align-items: flex-start;
-
     gap: 10px;
+
+    width: 100%;
+
+    margin: 0;
 
     cursor: pointer;
 
-    user-select: none;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
 }
-
 
 .academic-edit-checkbox input {
     position: absolute;
@@ -460,892 +457,920 @@ css
     opacity: 0;
 }
 
-
 .academic-edit-checkmark {
-    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    width: 18px;
-    height: 18px;
+    width: 19px;
+    height: 19px;
 
-    flex: 0 0 18px;
+    flex: 0 0 19px;
 
     margin-top: 1px;
 
-    border:
-        1.5px solid
-        #bdccda;
-
-    border-radius: 5px;
+    border: 1px solid #cbd3dd;
+    border-radius: 4px;
 
     background: #ffffff;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease;
 }
 
+.academic-edit-checkbox input:checked + .academic-edit-checkmark {
+    border-color: #071b35;
 
-.academic-edit-checkbox
-input:checked
-+ .academic-edit-checkmark {
-    border-color: #0866d8;
-
-    background: #0866d8;
+    background: #071b35;
 }
 
-
-.academic-edit-checkbox
-input:checked
-+ .academic-edit-checkmark::after {
+.academic-edit-checkbox input:checked + .academic-edit-checkmark::after {
     content: "";
 
-    position: absolute;
+    width: 9px;
+    height: 5px;
 
-    left: 5px;
-    top: 2px;
+    margin-top: -2px;
 
-    width: 5px;
-    height: 9px;
+    border-left: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
 
-    border-right:
-        2px solid
-        #ffffff;
-
-    border-bottom:
-        2px solid
-        #ffffff;
-
-    transform: rotate(45deg);
+    transform: rotate(-45deg);
 }
-
 
 .academic-edit-checkbox-text {
     display: flex;
-
     flex-direction: column;
-
     gap: 3px;
-}
 
+    min-width: 0;
+
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+}
 
 .academic-edit-checkbox-text strong {
-    color: #153858;
+    color: #172033;
 
-    font-size: 12px;
-    font-weight: 800;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 11.5px;
+    font-weight: 700;
+    line-height: 1.4;
 }
 
-
 .academic-edit-checkbox-text small {
-    color: #71859a;
+    color: #718096;
 
-    font-size: 10.5px;
-
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 10px;
+    font-weight: 500;
     line-height: 1.5;
 }
 
 
 /* =========================================================
    ACTIVE STATUS
-========================================================= */
+   ========================================================= */
 
 .academic-edit-active-status {
     display: flex;
-
-    align-items: center;
-
+    align-items: flex-start;
     gap: 10px;
 
-    margin:
-        2px 0 20px;
+    width: 100%;
 
-    padding:
-        12px 14px;
+    padding: 13px 14px;
 
-    border:
-        1px solid
-        #cfe8d5;
+    border: 1px solid #dfe4ea;
+    border-radius: 6px;
 
-    border-radius: 10px;
+    background: #f7f8fa;
 
-    background: #f3fbf5;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
 }
 
-
 .academic-edit-status-dot {
+    display: block;
+
     width: 9px;
     height: 9px;
 
     flex: 0 0 9px;
 
+    margin-top: 5px;
+
     border-radius: 50%;
 
-    background: #22c55e;
-
-    box-shadow:
-        0 0 0 4px
-        rgba(34, 197, 94, 0.12);
+    background: #3f8f62;
 }
-
 
 .academic-edit-active-status div {
     display: flex;
-
     flex-direction: column;
+    gap: 3px;
 
-    gap: 2px;
+    min-width: 0;
+
+    font-family: "Plus Jakarta Sans", sans-serif !important;
 }
-
 
 .academic-edit-active-status strong {
-    color: #166534;
+    color: #172033;
 
-    font-size: 12px;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 11.5px;
+    font-weight: 700;
+    line-height: 1.4;
 }
 
-
 .academic-edit-active-status span:not(.academic-edit-status-dot) {
-    color: #5f7e69;
+    color: #718096;
 
-    font-size: 10.5px;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.5;
 }
 
 
 /* =========================================================
-   FORM ACTIONS
-========================================================= */
+   ACTIONS
+   ========================================================= */
 
 .academic-edit-actions {
     display: flex;
-
-    justify-content: flex-end;
     align-items: center;
-
+    justify-content: flex-end;
     gap: 8px;
 
+    margin-top: 20px;
     padding-top: 18px;
 
-    border-top:
-        1px solid
-        #e2ebf3;
+    border-top: 1px solid #edf0f4;
+
+    font-family: "Plus Jakarta Sans", sans-serif !important;
 }
 
 
-.academic-edit-cancel,
-.academic-edit-save {
-    display: inline-flex;
+/* =========================================================
+   CANCEL
+   ========================================================= */
 
+.academic-edit-cancel {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
 
-    height: 39px;
+    min-height: 39px;
 
-    padding:
-        0 15px;
+    padding: 9px 15px;
 
-    box-sizing: border-box;
+    border: 1px solid #d8dfe7;
+    border-radius: 5px;
 
-    border-radius: 8px;
-
-    font-family: inherit;
-
-    font-size: 11.5px;
-    font-weight: 800;
+    background: #ffffff;
+    color: #536174;
 
     text-decoration: none;
 
-    cursor: pointer;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 11px;
+    font-weight: 700;
+
+    line-height: 1.4;
 
     transition:
-        transform .2s ease,
-        box-shadow .2s ease,
-        background .2s ease;
+        background 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
 }
-
-
-.academic-edit-cancel {
-    min-width: 78px;
-
-    border:
-        1px solid
-        #d1dce6;
-
-    background: #ffffff;
-
-    color: #58708a;
-}
-
 
 .academic-edit-cancel:hover {
-    background: #f5f8fc;
+    border-color: #c8d0da;
 
-    color: #405c75;
-
-    transform:
-        translateY(-1px);
+    background: #f5f6f8;
+    color: #172033;
 }
 
+
+/* =========================================================
+   SAVE
+   ========================================================= */
 
 .academic-edit-save {
-    min-width: 135px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-    border:
-        1px solid
-        #0759c5;
+    min-height: 39px;
 
-    background:
-        linear-gradient(
-            135deg,
-            #0871e8,
-            #0759c5
-        );
+    padding: 9px 17px;
 
+    border: 1px solid #071b35;
+    border-radius: 5px;
+
+    background: #071b35;
     color: #ffffff;
 
-    box-shadow:
-        0 5px 12px
-        rgba(8, 102, 216, 0.17);
+    cursor: pointer;
+
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 11px;
+    font-weight: 700;
+
+    line-height: 1.4;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.academic-edit-save:hover {
+    border-color: #0b294d;
+
+    background: #0b294d;
+
+    box-shadow: 0 4px 10px rgba(7, 27, 53, 0.12);
 }
 
 
-.academic-edit-save:hover {
-    transform:
-        translateY(-1px);
+/* =========================================================
+   EMPTY SEMESTER
+   ========================================================= */
 
-    box-shadow:
-        0 8px 17px
-        rgba(8, 102, 216, 0.24);
+.academic-edit-empty {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    width: 100%;
+
+    padding: 25px 15px;
+
+    border: 1px dashed #d7dee7;
+    border-radius: 6px;
+
+    background: #fafbfc;
+
+    text-align: center;
+
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+}
+
+.academic-edit-empty-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+
+    margin-bottom: 9px;
+
+    border: 1px solid #dbe1e8;
+    border-radius: 6px;
+
+    background: #f3f5f7;
+    color: #071b35;
+
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.academic-edit-empty strong {
+    color: #172033;
+
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 11.5px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.academic-edit-empty span {
+    margin-top: 3px;
+
+    color: #7a8797;
+
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.5;
 }
 
 
 /* =========================================================
    SEMESTER LIST
-========================================================= */
+   ========================================================= */
 
 .academic-edit-semester-list {
     display: flex;
-
     flex-direction: column;
+    gap: 8px;
 
-    gap: 9px;
+    width: 100%;
 
-    margin-bottom: 20px;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
 }
-
 
 .academic-edit-semester-item {
     display: flex;
-
     align-items: center;
     justify-content: space-between;
-
     gap: 12px;
 
-    min-height: 66px;
+    width: 100%;
 
-    padding: 10px 12px;
+    padding: 11px 12px;
 
-    border:
-        1px solid
-        #dce7f0;
+    border: 1px solid #e1e6ed;
+    border-radius: 6px;
 
-    border-radius: 10px;
+    background: #ffffff;
 
-    background: #fbfdff;
-
-    box-sizing: border-box;
-
-    transition:
-        background .2s ease,
-        border-color .2s ease;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
 }
-
-
-.academic-edit-semester-item:hover {
-    background: #f5f9fd;
-
-    border-color: #cbddea;
-}
-
 
 .academic-edit-semester-info {
     display: flex;
-
     align-items: center;
-
     gap: 10px;
 
     min-width: 0;
-}
 
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+}
 
 .academic-edit-semester-number {
     display: flex;
-
     align-items: center;
     justify-content: center;
 
-    width: 34px;
-    height: 34px;
+    width: 30px;
+    height: 30px;
 
-    flex: 0 0 34px;
+    flex: 0 0 30px;
 
-    border-radius: 9px;
+    border: 1px solid #dce2e9;
+    border-radius: 5px;
 
-    background: #eaf4ff;
+    background: #f5f6f8;
+    color: #071b35;
 
-    color: #0866d8;
-
-    font-size: 12px;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 10px;
     font-weight: 800;
+    line-height: 1;
 }
-
 
 .academic-edit-semester-info > div:last-child {
     display: flex;
-
     flex-direction: column;
-
     align-items: flex-start;
-
-    gap: 2px;
+    gap: 3px;
 
     min-width: 0;
-}
 
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+}
 
 .academic-edit-semester-info strong {
-    color: #09284b;
+    color: #172033;
 
-    font-size: 12.5px;
-    font-weight: 800;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 11.5px;
+    font-weight: 700;
+    line-height: 1.4;
 }
-
 
 .academic-edit-semester-info small {
-    color: #8295a7;
+    color: #8a95a4;
 
-    font-size: 10px;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 9.5px;
+    font-weight: 500;
+    line-height: 1.4;
 }
 
 
-.academic-edit-active-badge {
-    display: inline-flex;
+/* =========================================================
+   ACTIVE BADGE
+   ========================================================= */
 
+.academic-edit-active-badge {
+    display: inline-flex !important;
     align-items: center;
 
-    padding:
-        3px 7px;
+    padding: 3px 7px;
 
-    border-radius: 5px;
+    border: 1px solid #cde2d5;
+    border-radius: 4px;
 
-    background: #e8f7ed;
+    background: #f3faf5;
+    color: #397652;
 
-    color: #15803d;
-
-    font-size: 9.5px;
-    font-weight: 800;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 9px !important;
+    font-weight: 700 !important;
+    line-height: 1.3 !important;
 }
 
 
 /* =========================================================
    SEMESTER ACTIONS
-========================================================= */
+   ========================================================= */
 
 .academic-edit-semester-actions {
     display: flex;
-
     align-items: center;
-
-    gap: 5px;
+    gap: 6px;
 
     flex: 0 0 auto;
-}
 
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+}
 
 .academic-edit-semester-actions form {
     margin: 0;
+
+    font-family: "Plus Jakarta Sans", sans-serif !important;
 }
 
 
-.academic-edit-semester-actions button {
-    display: inline-flex;
+/* =========================================================
+   ACTIVATE
+   ========================================================= */
 
+.academic-edit-activate {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
 
-    height: 32px;
+    min-height: 31px;
 
-    padding:
-        0 10px;
+    padding: 6px 10px;
 
-    border-radius: 7px;
+    border: 1px solid #d4dae2;
+    border-radius: 5px;
 
-    font-family: inherit;
-
-    font-size: 10px;
-    font-weight: 800;
+    background: #f7f8fa;
+    color: #263449;
 
     cursor: pointer;
 
-    white-space: nowrap;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 9.5px;
+    font-weight: 700;
+
+    line-height: 1.3;
 
     transition:
-        background .2s ease,
-        transform .2s ease;
+        background 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
 }
-
-
-.academic-edit-activate {
-    border:
-        1px solid
-        #b9dec4;
-
-    background: #f4fbf6;
-
-    color: #16803d;
-}
-
 
 .academic-edit-activate:hover {
-    background: #e8f7ed;
+    border-color: #071b35;
 
-    transform:
-        translateY(-1px);
+    background: #071b35;
+    color: #ffffff;
 }
 
+
+/* =========================================================
+   DELETE
+   ========================================================= */
 
 .academic-edit-delete {
-    border:
-        1px solid
-        #f2c5c5;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-    background: #fff7f7;
+    min-height: 31px;
 
-    color: #dc2626;
+    padding: 6px 10px;
+
+    border: 1px solid #ead1d1;
+    border-radius: 5px;
+
+    background: #fffafa;
+    color: #aa3838;
+
+    cursor: pointer;
+
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 9.5px;
+    font-weight: 700;
+
+    line-height: 1.3;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
 }
-
 
 .academic-edit-delete:hover {
-    background: #fef0f0;
+    border-color: #aa3838;
 
-    transform:
-        translateY(-1px);
+    background: #aa3838;
+    color: #ffffff;
 }
 
 
 /* =========================================================
-   EMPTY
-========================================================= */
-
-.academic-edit-empty {
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    min-height: 145px;
-
-    padding: 20px;
-
-    border:
-        1px dashed
-        #cbdce9;
-
-    border-radius: 11px;
-
-    background: #fbfdff;
-
-    text-align: center;
-}
-
-
-.academic-edit-empty-icon {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    width: 40px;
-    height: 40px;
-
-    margin-bottom: 9px;
-
-    border-radius: 10px;
-
-    background: #eaf4ff;
-
-    color: #0866d8;
-
-    font-size: 20px;
-}
-
-
-.academic-edit-empty strong {
-    color: #153858;
-
-    font-size: 12px;
-}
-
-
-.academic-edit-empty span {
-    margin-top: 3px;
-
-    color: #8093a5;
-
-    font-size: 10.5px;
-}
-
-
-/* =========================================================
-   ADD SEMESTER
-========================================================= */
+   ADD SEMESTER SECTION
+   ========================================================= */
 
 .academic-edit-add-section {
+    width: 100%;
+
+    margin-top: 17px;
     padding-top: 17px;
 
-    border-top:
-        1px solid
-        #e2ebf3;
-}
+    border-top: 1px solid #edf0f4;
 
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+}
 
 .academic-edit-add-title {
     margin-bottom: 8px;
 
-    color: #153858;
+    color: #172033;
 
-    font-size: 11.5px;
-    font-weight: 800;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.4;
 }
-
 
 .academic-edit-add-form {
-    display: grid;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 
-    grid-template-columns:
-        minmax(0, 1fr)
-        auto;
+    width: 100%;
 
-    gap: 7px;
+    margin: 0;
+
+    font-family: "Plus Jakarta Sans", sans-serif !important;
 }
 
-
 .academic-edit-add-form select {
+    display: block;
+
+    flex: 1;
+
     width: 100%;
-    height: 38px;
+    min-width: 0;
+    height: 39px;
 
-    padding:
-        0 11px;
+    padding: 8px 11px;
 
-    border:
-        1px solid
-        #d5e2ed;
-
-    border-radius: 8px;
+    border: 1px solid #d8dfe7;
+    border-radius: 5px;
 
     outline: none;
 
-    background: #fbfdff;
-
-    color: #476681;
-
-    font-family: inherit;
-
-    font-size: 11.5px;
-}
-
-
-.academic-edit-add-form select:focus {
-    border-color: #0866d8;
-
-    box-shadow:
-        0 0 0 3px
-        rgba(8, 102, 216, 0.08);
-}
-
-
-.academic-edit-add-form button {
-    height: 38px;
-
-    padding:
-        0 13px;
-
-    border:
-        1px solid
-        #0759c5;
-
-    border-radius: 8px;
-
     background: #ffffff;
-
-    color: #0866d8;
-
-    font-family: inherit;
-
-    font-size: 11px;
-    font-weight: 800;
+    color: #172033;
 
     cursor: pointer;
 
-    white-space: nowrap;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 10.5px;
+    font-weight: 500;
 
-    transition:
-        background .2s ease,
-        color .2s ease,
-        transform .2s ease;
+    line-height: 1.4;
 }
 
+.academic-edit-add-form select:focus {
+    border-color: #071b35;
 
-.academic-edit-add-form button:hover {
-    background: #0866d8;
+    box-shadow: 0 0 0 3px rgba(7, 27, 53, 0.07);
+}
 
+.academic-edit-add-form select option {
+    background: #ffffff;
+    color: #172033;
+
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+}
+
+.academic-edit-add-form button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 39px;
+
+    flex: 0 0 auto;
+
+    padding: 8px 13px;
+
+    border: 1px solid #071b35;
+    border-radius: 5px;
+
+    background: #071b35;
     color: #ffffff;
 
-    transform:
-        translateY(-1px);
+    cursor: pointer;
+
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 10.5px;
+    font-weight: 700;
+
+    line-height: 1.4;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease;
+}
+
+.academic-edit-add-form button:hover {
+    border-color: #0b294d;
+
+    background: #0b294d;
 }
 
 
 /* =========================================================
    INFORMATION
-========================================================= */
+   ========================================================= */
 
 .academic-edit-information {
     display: flex;
-
     align-items: flex-start;
+    gap: 10px;
 
-    gap: 9px;
+    width: 100%;
 
     margin-top: 17px;
+    padding: 13px 14px;
 
-    padding:
-        12px 13px;
+    border: 1px solid rgba(7, 27, 53, 0.12);
+    border-radius: 6px;
 
-    border:
-        1px solid
-        #dbe8f3;
+    background: rgba(7, 27, 53, 0.035);
 
-    border-radius: 9px;
-
-    background: #f5f9fd;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
 }
-
 
 .academic-edit-information-icon {
     display: flex;
-
     align-items: center;
     justify-content: center;
 
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
 
-    flex: 0 0 24px;
+    flex: 0 0 20px;
 
-    border-radius: 7px;
+    border: 1px solid #cbd3dd;
+    border-radius: 50%;
 
-    background: #e7f2fd;
+    background: #ffffff;
+    color: #071b35;
 
-    color: #1670c9;
-
-    font-size: 11px;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 10px;
     font-weight: 800;
+    line-height: 1;
 }
 
-
 .academic-edit-information p {
-    margin: 1px 0 0;
+    margin: 0;
 
-    color: #607b94;
+    color: #5f6d7e;
 
-    font-size: 10.5px;
-
-    line-height: 1.6;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.65;
 }
 
 
 /* =========================================================
-   TABLET
-========================================================= */
+   ALL BUTTON / FORM CONTROL FONT LOCK
+   ========================================================= */
 
-@media (max-width: 950px) {
+.academic-edit-page button,
+.academic-edit-page input,
+.academic-edit-page select,
+.academic-edit-page textarea,
+.academic-edit-page option,
+.academic-edit-page label,
+.academic-edit-page a,
+.academic-edit-page strong,
+.academic-edit-page small,
+.academic-edit-page span,
+.academic-edit-page p,
+.academic-edit-page h1,
+.academic-edit-page h2,
+.academic-edit-page div {
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+   ========================================================= */
+
+@media (max-width: 992px) {
 
     .academic-edit-grid {
         grid-template-columns: 1fr;
     }
 
+    .academic-edit-header-content {
+        max-width: 700px;
+    }
+
 }
 
 
 /* =========================================================
-   MOBILE
-========================================================= */
+   RESPONSIVE - MOBILE
+   ========================================================= */
 
 @media (max-width: 768px) {
 
-    .academic-edit-page {
-        padding:
-            7px
-            3px
-            30px;
-    }
-
-
     .academic-edit-header {
-        padding:
-            24px
-            21px;
+        min-height: 0;
 
-        border-radius: 14px;
+        padding: 24px 21px;
     }
 
+    .academic-edit-header-content {
+        max-width: calc(100% - 78px);
+    }
 
     .academic-edit-header h1 {
         font-size: 24px;
     }
 
-
     .academic-edit-header p {
-        font-size: 12.5px;
+        font-size: 12px;
     }
 
+    .academic-edit-hero-icon {
+        width: 64px;
+        height: 64px;
 
-    .academic-edit-card {
-        border-radius: 14px;
+        flex-basis: 64px;
+
+        margin-left: 18px;
     }
 
-
-    .academic-edit-card-header {
-        min-height: 80px;
-
-        padding:
-            17px
-            19px;
+    .academic-edit-hero-icon svg {
+        width: 37px;
+        height: 37px;
     }
-
 
     .academic-edit-card-body {
-        padding:
-            22px
-            19px;
-    }
-
-
-    .academic-edit-date-grid {
-        grid-template-columns: 1fr;
-
-        gap: 0;
+        padding: 19px;
     }
 
 }
 
 
 /* =========================================================
-   SMALL MOBILE
-========================================================= */
+   RESPONSIVE - SMALL MOBILE
+   ========================================================= */
 
 @media (max-width: 576px) {
 
     .academic-edit-header {
-        padding:
-            21px
-            18px;
+        padding: 21px 18px;
     }
 
+    .academic-edit-header-content {
+        max-width: calc(100% - 61px);
+    }
 
     .academic-edit-label {
-        font-size: 10px;
+        font-size: 9px;
+        letter-spacing: 1px;
     }
-
 
     .academic-edit-header h1 {
-        font-size: 22px;
+        font-size: 21px;
     }
-
 
     .academic-edit-header p {
-        font-size: 12px;
+        font-size: 11px;
+        line-height: 1.6;
     }
 
+    .academic-edit-hero-icon {
+        width: 52px;
+        height: 52px;
+
+        flex-basis: 52px;
+
+        margin-left: 10px;
+    }
+
+    .academic-edit-hero-icon svg {
+        width: 30px;
+        height: 30px;
+    }
 
     .academic-edit-card-header {
-        gap: 10px;
-
-        padding:
-            16px;
+        padding: 18px;
     }
-
-
-    .academic-edit-card-icon {
-        width: 40px;
-        height: 40px;
-
-        flex-basis: 40px;
-    }
-
-
-    .academic-edit-card-header h2 {
-        font-size: 15px;
-    }
-
-
-    .academic-edit-card-header p {
-        font-size: 10.5px;
-    }
-
 
     .academic-edit-card-body {
-        padding:
-            20px
-            16px;
+        padding: 17px;
     }
 
-
-    .academic-edit-semester-item {
-        align-items: flex-start;
-
-        flex-direction: column;
-    }
-
-
-    .academic-edit-semester-actions {
-        width: 100%;
-    }
-
-
-    .academic-edit-semester-actions button {
-        flex: 1;
-
-        width: 100%;
-    }
-
-
-    .academic-edit-semester-actions form {
-        flex: 1;
-    }
-
-
-    .academic-edit-add-form {
+    .academic-edit-date-grid {
         grid-template-columns: 1fr;
+        gap: 0;
     }
-
-
-    .academic-edit-add-form button {
-        width: 100%;
-    }
-
 
     .academic-edit-actions {
-        flex-direction: column-reverse;
-
+        flex-direction: column;
         align-items: stretch;
     }
-
 
     .academic-edit-cancel,
     .academic-edit-save {
         width: 100%;
     }
 
+    .academic-edit-semester-item {
+        align-items: flex-start;
+    }
+
+    .academic-edit-semester-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .academic-edit-activate,
+    .academic-edit-delete {
+        width: 100%;
+    }
+
+    .academic-edit-add-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .academic-edit-add-form select,
+    .academic-edit-add-form button {
+        width: 100%;
+    }
+
 }
 
+
+/* =========================================================
+   VERY SMALL SCREEN
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .academic-edit-header {
+        padding: 18px 15px;
+    }
+
+    .academic-edit-header-content {
+        max-width: calc(100% - 50px);
+    }
+
+    .academic-edit-header h1 {
+        font-size: 19px;
+    }
+
+    .academic-edit-header p {
+        font-size: 10.5px;
+    }
+
+    .academic-edit-hero-icon {
+        width: 44px;
+        height: 44px;
+
+        flex-basis: 44px;
+
+        margin-left: 7px;
+    }
+
+    .academic-edit-hero-icon svg {
+        width: 25px;
+        height: 25px;
+    }
+
+    .academic-edit-card-header {
+        padding: 16px;
+    }
+
+    .academic-edit-card-body {
+        padding: 15px;
+    }
+
+}

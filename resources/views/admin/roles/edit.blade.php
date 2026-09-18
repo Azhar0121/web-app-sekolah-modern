@@ -4,6 +4,10 @@
 
 @section('content')
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="{{ asset('css/roles-edit.css') }}">
 
 <div class="roles-page">
@@ -11,20 +15,36 @@
     {{-- HEADER --}}
     <div class="roles-header">
 
-        <div class="roles-title-area">
+        <div class="roles-header-content">
 
-            <span class="roles-label">
-                ADMINISTRATOR
-            </span>
+            <div class="roles-title-area">
 
-            <h1>
-                Edit Role: {{ $role->name }}
-            </h1>
+                <span class="roles-label">
+                    ADMINISTRATOR
+                </span>
 
-            <p>
-                Perbarui informasi role dan atur permission yang dimiliki
-                oleh role ini.
-            </p>
+                <h1>
+                    Edit Role: {{ $role->name }}
+                </h1>
+
+                <p>
+                    Perbarui informasi role dan atur permission yang dimiliki
+                    oleh role ini.
+                </p>
+
+            </div>
+
+            {{-- HERO ICON --}}
+            <div class="roles-hero-icon">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1.7"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+            </div>
 
         </div>
 
@@ -253,10 +273,6 @@
                                             <strong>
                                                 {{ $permission->name }}
                                             </strong>
-
-                                            <code>
-                                                {{ $permission->slug }}
-                                            </code>
 
                                         </span>
 

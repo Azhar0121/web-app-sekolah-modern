@@ -1,75 +1,899 @@
-.found-list {
-  display: flex;
-  flex-direction: column;
-  gap: 14px
+/* =========================================================
+   WEB SEKOLAH MODERN
+   PPDB - LUPA NOMOR PENDAFTARAN
+   ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --lupa-navy: #123f61;
+    --lupa-navy-dark: #0e3452;
+    --lupa-blue: #2f6fad;
+    --lupa-blue-soft: #edf4fb;
+
+    --lupa-bg: #f3f6f9;
+    --lupa-white: #ffffff;
+
+    --lupa-text: #172c40;
+    --lupa-muted: #718193;
+
+    --lupa-border: #dce5ed;
+    --lupa-border-dark: #cbd7e2;
+
+    --lupa-danger: #b44b4b;
+    --lupa-danger-bg: #fff1f1;
+    --lupa-danger-border: #f0d1d1;
 }
-.found-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 18px 20px;
-  border-radius: 13px;
-  background: #f7faff;
-  border: 1px solid #e2ebf5;
-  transition: .2s ease
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.status-container .status-hero {
+    min-height: 285px;
+
+    padding: 40px 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 40px;
 }
-.found-item:hover {
-  border-color: #c7dbf3;
-  background: var(--blue-light)
-}
-.found-number {
-  color: var(--navy);
-  font-size: 19px;
-  font-weight: 800;
-  letter-spacing: .3px;
-  margin: 0 0 6px
-}
-.found-meta {
-  margin: 0;
-  color: var(--muted);
-  font-size: 13px
-}
-.found-meta strong {
-  color: var(--blue)
-}
-.found-item .check-link {
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 9px 15px;
-  border-radius: 9px;
-  background: var(--navy);
-  color: #fff;
-  font-size: 13px;
-  font-weight: 700;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: .2s ease
-}
-.found-item .check-link:hover {
-  background: var(--blue);
-  color: #fff;
-  transform: translateY(-1px)
-}
-.intro-text {
-  margin: 0 0 22px;
-  padding: 15px 18px;
-  border-left: 4px solid var(--blue);
-  border-radius: 8px;
-  background: var(--blue-light);
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.6
-}
-@media (max-width:520px) {
-  .found-item {
-    flex-direction: column;
-    align-items: flex-start
-  }
-  .found-item .check-link {
+
+
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
+
+.status-container .status-hero .hero-content {
     width: 100%;
-    justify-content: center
-  }
+    max-width: 680px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+
+/* =========================================================
+   HERO LABEL
+   ========================================================= */
+
+.status-container .status-hero .hero-label {
+    display: block;
+
+    margin-bottom: 10px;
+}
+
+.status-container .status-hero .hero-label::before,
+.status-container .status-hero .hero-label::after {
+    display: none !important;
+}
+
+
+/* =========================================================
+   HERO TITLE
+   ========================================================= */
+
+.status-container .status-hero h1 {
+    margin: 0;
+
+    font-size: clamp(29px, 3.2vw, 37px);
+    line-height: 1.15;
+
+    letter-spacing: -0.5px;
+}
+
+
+/* =========================================================
+   HERO DESCRIPTION
+   ========================================================= */
+
+.status-container .status-hero p {
+    max-width: 590px;
+
+    margin: 11px 0 0;
+
+    font-size: 12.5px;
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   CEK STATUS
+   POSISI: KIRI BAWAH DI DALAM HERO
+   ========================================================= */
+
+.status-container .status-hero .hero-content > .back-button {
+    display: inline-flex !important;
+
+    align-items: center;
+    justify-content: center;
+
+    align-self: flex-start !important;
+
+    width: fit-content !important;
+    max-width: none !important;
+
+    margin-top: 20px !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+
+    padding: 0 16px;
+
+    min-height: 40px;
+
+    color: var(--lupa-navy);
+
+    background: #ffffff;
+
+    border: 1px solid rgba(255, 255, 255, 0.75);
+
+    border-radius: 6px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    text-decoration: none;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+
+    position: static !important;
+
+    transform: none;
+}
+
+.status-container .status-hero .hero-content > .back-button:hover {
+    color: var(--lupa-navy);
+
+    background: #f5f9fc;
+
+    border-color: #ffffff;
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+.status-container .status-hero .hero-content > .back-button span {
+    line-height: 1;
+}
+
+.status-container .status-hero .hero-content > .back-button span:first-child {
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   HERO ICON
+   ========================================================= */
+
+.status-container .status-hero .hero-icon {
+    position: relative;
+    z-index: 3;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 72px;
+    height: 72px;
+
+    flex-shrink: 0;
+
+    color: rgba(255, 255, 255, 0.85);
+
+    background: rgba(255, 255, 255, 0.07);
+
+    border: 1px solid rgba(255, 255, 255, 0.17);
+
+    border-radius: 8px;
+}
+
+.status-container .status-hero .hero-icon svg {
+    width: 36px;
+    height: 36px;
+}
+
+
+/* =========================================================
+   FORM CARD
+   ========================================================= */
+
+.status-container .status-form-card {
+    margin-top: 18px;
+
+    padding: 29px 34px 31px;
+}
+
+
+/* =========================================================
+   SECTION HEADING
+   ========================================================= */
+
+.status-container .section-heading {
+    gap: 12px;
+
+    margin-bottom: 20px;
+}
+
+.status-container .heading-icon {
+    width: 46px;
+    height: 46px;
+
+    color: var(--lupa-navy);
+
+    background: var(--lupa-blue-soft);
+
+    border-color: #d5e4ef;
+
+    border-radius: 7px;
+}
+
+.status-container .section-heading span {
+    color: var(--lupa-blue);
+
+    font-size: 9px;
+    letter-spacing: 0.9px;
+}
+
+.status-container .section-heading h2 {
+    font-size: 18px;
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.intro-text {
+    margin: 0 0 21px;
+
+    padding: 13px 16px;
+
+    color: var(--lupa-muted);
+
+    background: #f7f9fb;
+
+    border: 1px solid var(--lupa-border);
+
+    border-left: 3px solid var(--lupa-blue);
+
+    border-radius: 5px;
+
+    font-size: 11.5px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.error-box {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 11px;
+
+    margin-bottom: 20px;
+
+    padding: 13px 15px;
+
+    background: var(--lupa-danger-bg);
+
+    border: 1px solid var(--lupa-danger-border);
+
+    border-radius: 6px;
+
+    color: #7e4545;
+}
+
+.error-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 25px;
+    height: 25px;
+
+    flex-shrink: 0;
+
+    color: var(--lupa-danger);
+
+    background: #ffe2e2;
+
+    border-radius: 50%;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.error-box strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #843e3e;
+
+    font-size: 11px;
+}
+
+.error-box ul {
+    margin: 0;
+
+    padding-left: 16px;
+}
+
+.error-box li {
+    font-size: 10.5px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.status-container .status-form-card form {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 17px 18px;
+}
+
+.status-container .form-group {
+    min-width: 0;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.status-container .form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--lupa-text);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.status-container .input-wrapper {
+    position: relative;
+
+    width: 100%;
+}
+
+.status-container .input-icon {
+    position: absolute;
+
+    left: 15px;
+    top: 50%;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #6e879a;
+
+    transform: translateY(-50%);
+
+    pointer-events: none;
+}
+
+.status-container .input-icon svg {
+    width: 17px;
+    height: 17px;
+}
+
+.status-container .input-wrapper input {
+    width: 100%;
+    height: 48px;
+
+    padding: 0 14px 0 42px;
+
+    color: var(--lupa-text);
+
+    background: #ffffff;
+
+    border: 1px solid var(--lupa-border-dark);
+
+    border-radius: 6px;
+
+    outline: none;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.status-container .input-wrapper input::placeholder {
+    color: #9aa8b5;
+}
+
+.status-container .input-wrapper input:hover {
+    border-color: #b8c9d8;
+}
+
+.status-container .input-wrapper input:focus {
+    border-color: var(--lupa-blue);
+
+    box-shadow: 0 0 0 3px rgba(47, 111, 173, 0.10);
+}
+
+
+/* =========================================================
+   CARI NOMOR
+   ========================================================= */
+
+.status-container .status-form-card form > .check-button {
+    grid-column: 1 / -1;
+
+    width: 100%;
+    height: 48px;
+
+    margin-top: 1px;
+
+    color: #ffffff;
+
+    background: var(--lupa-navy);
+
+    border: 1px solid var(--lupa-navy);
+
+    border-radius: 6px;
+
+    box-shadow: none;
+}
+
+.status-container .status-form-card form > .check-button:hover {
+    color: #ffffff;
+
+    background: var(--lupa-navy-dark);
+
+    border-color: var(--lupa-navy-dark);
+
+    box-shadow: 0 6px 14px rgba(18, 63, 97, 0.15);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   RESULT CARD
+   ========================================================= */
+
+.status-container .result-card {
+    margin-top: 18px;
+
+    padding: 29px 34px;
+}
+
+
+/* =========================================================
+   FOUND LIST
+   ========================================================= */
+
+.found-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    padding-top: 20px !important;
+}
+
+.found-item {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 18px;
+
+    padding: 16px 18px;
+
+    background: #f8fafc;
+
+    border: 1px solid var(--lupa-border);
+
+    border-radius: 6px;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.found-item:hover {
+    background: var(--lupa-blue-soft);
+
+    border-color: #c9dbea;
+
+    transform: translateY(-1px);
+}
+
+.found-number {
+    margin: 0 0 4px;
+
+    color: var(--lupa-navy);
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.2px;
+}
+
+.found-meta {
+    margin: 0;
+
+    color: var(--lupa-muted);
+
+    font-size: 10.5px;
+
+    line-height: 1.5;
+}
+
+.found-meta strong {
+    color: var(--lupa-blue);
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   LIHAT STATUS
+   ========================================================= */
+
+.found-item .check-link {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    min-height: 38px;
+
+    padding: 0 15px;
+
+    color: #ffffff;
+
+    background: var(--lupa-navy);
+
+    border: 1px solid var(--lupa-navy);
+
+    border-radius: 5px;
+
+    font-size: 10.5px;
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.found-item .check-link:hover {
+    color: #ffffff;
+
+    background: var(--lupa-navy-dark);
+
+    border-color: var(--lupa-navy-dark);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   NOT FOUND
+   ========================================================= */
+
+.status-container .not-found {
+    gap: 13px;
+}
+
+.status-container .not-found-icon {
+    width: 43px;
+    height: 43px;
+
+    flex-shrink: 0;
+}
+
+.status-container .not-found h2 {
+    margin-bottom: 4px;
+
+    font-size: 16px;
+}
+
+.status-container .not-found p {
+    font-size: 11px;
+
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.status-container .status-footer {
+    padding-top: 21px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    .status-container .status-hero {
+        min-height: 280px;
+
+        padding: 37px 32px;
+    }
+
+    .status-container .status-form-card,
+    .status-container .result-card {
+        padding: 27px;
+    }
+
+    .status-container .status-form-card form {
+        grid-template-columns: 1fr;
+    }
+
+    .status-container .status-form-card form > .check-button {
+        grid-column: auto;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .status-page {
+        padding-top: 16px;
+    }
+
+    .status-container .status-hero {
+        min-height: 0;
+
+        padding: 29px 22px 25px;
+
+        align-items: flex-start;
+    }
+
+    .status-container .status-hero h1 {
+        font-size: 27px;
+    }
+
+    .status-container .status-hero p {
+        font-size: 11.5px;
+
+        line-height: 1.65;
+    }
+
+
+    /* CEK STATUS MOBILE */
+
+    .status-container .status-hero .hero-content > .back-button {
+        margin-top: 17px !important;
+
+        min-height: 39px;
+
+        padding: 0 14px;
+
+        font-size: 10.5px;
+    }
+
+
+    /* ICON */
+
+    .status-container .status-hero .hero-icon {
+        display: none;
+    }
+
+
+    /* FORM */
+
+    .status-container .status-form-card {
+        margin-top: 15px;
+
+        padding: 23px 19px 21px;
+    }
+
+    .status-container .section-heading {
+        margin-bottom: 18px;
+    }
+
+    .status-container .heading-icon {
+        width: 41px;
+        height: 41px;
+    }
+
+    .status-container .section-heading h2 {
+        font-size: 16px;
+    }
+
+    .intro-text {
+        padding: 12px 14px;
+
+        font-size: 10.5px;
+
+        line-height: 1.65;
+    }
+
+    .status-container .status-form-card form {
+        gap: 15px;
+    }
+
+    .status-container .status-form-card form > .check-button {
+        height: 47px;
+    }
+
+
+    /* RESULT */
+
+    .status-container .result-card {
+        margin-top: 15px;
+
+        padding: 23px 19px;
+    }
+
+    .found-list {
+        gap: 9px;
+
+        padding-top: 17px !important;
+    }
+
+    .found-item {
+        align-items: stretch;
+
+        flex-direction: column;
+
+        gap: 12px;
+
+        padding: 14px;
+    }
+
+    .found-item .check-link {
+        width: 100%;
+
+        min-height: 40px;
+    }
+
+    .found-number {
+        font-size: 14px;
+    }
+
+    .found-meta {
+        font-size: 10px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .status-container .status-hero {
+        padding: 26px 18px 22px;
+    }
+
+    .status-container .status-hero h1 {
+        font-size: 25px;
+    }
+
+    .status-container .status-form-card,
+    .status-container .result-card {
+        padding: 20px 16px;
+    }
+
+    .intro-text {
+        font-size: 10px;
+    }
+
+    .status-container .status-hero .hero-content > .back-button {
+        margin-top: 15px !important;
+    }
+}
+
+/* =========================================================
+   PERBAIKAN JUDUL & TOMBOL CEK STATUS
+   ========================================================= */
+
+/* Judul dibuat lebih proporsional */
+.status-container .status-hero .hero-content h1 {
+    font-size: clamp(26px, 3vw, 34px) !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.4px !important;
+    margin: 8px 0 12px !important;
+}
+
+/* Tombol Cek Status transparan seperti tombol PPDB Online */
+.status-container .status-hero .hero-content > .back-button {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+
+    width: auto !important;
+    min-height: 40px;
+
+    margin-top: 20px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+    padding: 0 17px;
+
+    color: #ffffff !important;
+    background: transparent !important;
+
+    border: 1px solid rgba(255, 255, 255, 0.75) !important;
+    border-radius: 6px;
+
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+
+    text-decoration: none;
+
+    box-shadow: none !important;
+    position: static !important;
+    transform: none !important;
+}
+
+/* Hover */
+.status-container .status-hero .hero-content > .back-button:hover {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.10) !important;
+    border-color: #ffffff !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Kalau masih ada ikon panah */
+.status-container .status-hero .hero-content > .back-button span:first-child {
+    color: inherit;
 }

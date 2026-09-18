@@ -2,95 +2,133 @@
    WEB SEKOLAH MODERN
    ADMIN - EDIT ROLE
    ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
     --role-navy: #071b35;
     --role-navy-2: #0b294d;
-    --role-blue: #1769d5;
-    --role-blue-dark: #0d4fa8;
-    --role-blue-light: #eef6ff;
 
     --role-text: #172033;
-    --role-text-soft: #64748b;
-    --role-border: #dbe3ee;
-    --role-bg: #f5f8fc;
+    --role-text-soft: #66758a;
+
+    --role-border: #e1e6ed;
+    --role-border-dark: #d5dce4;
+
+    --role-bg: #f7f9fc;
     --role-white: #ffffff;
 
-    --role-success: #16835b;
+    --role-gray: #e8edf3;
+    --role-gray-dark: #d7e0ea;
+
     --role-danger: #c62828;
 
-    --role-radius: 16px;
-    --role-shadow: 0 8px 28px rgba(15, 35, 65, 0.07);
+    --role-shadow: 0 6px 18px rgba(16, 42, 67, 0.05);
 }
 
 
 /* =========================================================
-   PAGE
+   RESET & FONT
    ========================================================= */
+
+.roles-page,
+.roles-page * {
+    box-sizing: border-box;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
 
 .roles-page {
     width: 100%;
     max-width: 100%;
-    padding: 8px 18px 45px;
+    margin: 0;
+    padding: 10px 8px 40px;
     color: var(--role-text);
 }
 
 
 /* =========================================================
-   HEADER
+   HEADER / HERO
    ========================================================= */
 
 .roles-header {
     position: relative;
     width: 100%;
-    margin-bottom: 25px;
-    padding: 30px 34px;
-    border-radius: var(--role-radius);
+    min-height: 155px;
 
-    background:
-        linear-gradient(
-            135deg,
-            #071b35 0%,
-            #0b315d 58%,
-            #155da8 100%
-        );
+    margin-bottom: 20px;
+    padding: 29px 32px;
 
-    box-shadow: 0 10px 30px rgba(7, 27, 53, 0.16);
     overflow: hidden;
+
+    border-radius: 7px;
+
+    background: var(--role-navy);
+
+    box-shadow:
+        0 6px 18px rgba(7, 27, 53, 0.12);
 }
 
 
-/* Decorative background */
+/* Decorative circle */
 
 .roles-header::before {
     content: "";
+
     position: absolute;
+
     width: 230px;
     height: 230px;
+
     right: -75px;
     top: -105px;
 
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.07);
+
+    background: transparent;
 }
 
 
 .roles-header::after {
     content: "";
+
     position: absolute;
+
     width: 150px;
     height: 150px;
+
     right: 110px;
     bottom: -100px;
 
+    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.045);
+
+    background: transparent;
 }
 
 
-.roles-title-area {
+/* Header content */
+
+.roles-header-content {
     position: relative;
     z-index: 2;
+
+    min-height: 97px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+/* Title */
+
+.roles-title-area {
+    position: relative;
+    z-index: 3;
+
+    min-width: 0;
 }
 
 
@@ -98,18 +136,21 @@
     display: inline-flex;
     align-items: center;
 
-    margin-bottom: 10px;
-    padding: 6px 11px;
+    margin-bottom: 9px;
+    padding: 5px 10px;
 
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 7px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 5px;
 
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.07);
 
-    color: #dcecff;
-    font-size: 11px;
+    color: rgba(255, 255, 255, 0.82);
+
+    font-size: 10px;
     font-weight: 800;
-    letter-spacing: 1.2px;
+
+    letter-spacing: 1.1px;
+    line-height: 1.3;
 }
 
 
@@ -117,8 +158,10 @@
     margin: 0;
 
     color: #ffffff;
+
     font-size: 27px;
     font-weight: 750;
+
     line-height: 1.25;
     letter-spacing: -0.4px;
 }
@@ -126,11 +169,46 @@
 
 .roles-header p {
     max-width: 720px;
-    margin: 9px 0 0;
 
-    color: rgba(255, 255, 255, 0.76);
-    font-size: 14px;
-    line-height: 1.7;
+    margin: 8px 0 0;
+
+    color: rgba(255, 255, 255, 0.72);
+
+    font-size: 13px;
+    font-weight: 400;
+
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   HERO ICON
+   ========================================================= */
+
+.roles-hero-icon {
+    position: relative;
+    z-index: 3;
+
+    flex: 0 0 auto;
+
+    width: 70px;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #ffffff;
+
+    background: transparent;
+
+    border: none;
+    border-radius: 0;
+}
+
+
+.roles-hero-icon svg {
+    display: block;
 }
 
 
@@ -141,45 +219,52 @@
 .role-error {
     display: flex;
     align-items: flex-start;
-    gap: 13px;
+
+    gap: 12px;
 
     width: 100%;
-    margin-bottom: 22px;
-    padding: 16px 18px;
 
-    border: 1px solid #fecaca;
-    border-radius: 12px;
+    margin-bottom: 20px;
+    padding: 14px 16px;
 
-    background: #fff7f7;
+    border: 1px solid #e6bcbc;
+    border-radius: 6px;
+
+    background: #fff8f8;
+
     color: #7f1d1d;
 
-    font-size: 13px;
-    line-height: 1.65;
+    font-size: 12.5px;
+    line-height: 1.6;
 }
 
 
 .role-error-icon {
-    flex: 0 0 34px;
+    flex: 0 0 32px;
+
+    width: 32px;
+    height: 32px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: 34px;
-    height: 34px;
+    border-radius: 5px;
 
-    border-radius: 9px;
-    background: #fee2e2;
+    background: #f4dddd;
     color: var(--role-danger);
 }
 
 
 .role-error strong {
     display: block;
-    margin-bottom: 3px;
+
+    margin-bottom: 2px;
 
     color: #991b1b;
-    font-size: 14px;
+
+    font-size: 13px;
+    font-weight: 700;
 }
 
 
@@ -189,15 +274,17 @@
 
 .role-edit-card {
     width: 100%;
-    margin-bottom: 22px;
 
-    border: 1px solid var(--role-border);
-    border-radius: var(--role-radius);
-
-    background: var(--role-white);
-    box-shadow: var(--role-shadow);
+    margin-bottom: 20px;
 
     overflow: hidden;
+
+    border: 1px solid var(--role-border);
+    border-radius: 7px;
+
+    background: var(--role-white);
+
+    box-shadow: var(--role-shadow);
 }
 
 
@@ -208,35 +295,40 @@
 .role-edit-card-header {
     display: flex;
     align-items: center;
-    gap: 14px;
 
-    padding: 21px 26px;
+    gap: 13px;
 
-    border-bottom: 1px solid #e8edf4;
-    background: #ffffff;
+    min-height: 78px;
+
+    padding: 16px 24px;
+
+    border-bottom: 1px solid var(--role-border);
+
+    background: var(--role-gray);
 }
 
 
 .role-edit-icon {
-    flex: 0 0 43px;
+    flex: 0 0 44px;
+
+    width: 44px;
+    height: 44px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: 43px;
-    height: 43px;
+    border-radius: 6px;
 
-    border-radius: 11px;
+    background: var(--role-gray-dark);
 
-    background: #eaf3ff;
-    color: var(--role-blue);
+    color: var(--role-navy);
 }
 
 
 .permission-icon {
-    background: #edf1ff;
-    color: #4056b5;
+    background: var(--role-gray-dark);
+    color: var(--role-navy);
 }
 
 
@@ -244,8 +336,10 @@
     margin: 0 0 3px;
 
     color: var(--role-text);
+
     font-size: 16px;
     font-weight: 750;
+
     line-height: 1.35;
 }
 
@@ -254,7 +348,10 @@
     margin: 0;
 
     color: var(--role-text-soft);
-    font-size: 12.5px;
+
+    font-size: 12px;
+    font-weight: 400;
+
     line-height: 1.5;
 }
 
@@ -264,14 +361,17 @@
    ========================================================= */
 
 .role-edit-body {
-    padding: 25px 26px 27px;
+    padding: 24px;
 }
 
 
 .role-form-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 22px;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
 }
 
 
@@ -282,11 +382,15 @@
 
 .role-form-group label {
     display: block;
-    margin-bottom: 8px;
+
+    margin-bottom: 7px;
 
     color: #263449;
-    font-size: 13px;
+
+    font-size: 12.5px;
     font-weight: 700;
+
+    line-height: 1.4;
 }
 
 
@@ -294,20 +398,21 @@
     display: block;
 
     width: 100%;
-    height: 46px;
+    height: 44px;
 
-    padding: 0 14px;
+    padding: 0 13px;
 
-    border: 1px solid #cfd9e6;
-    border-radius: 10px;
+    border: 1px solid var(--role-border-dark);
+    border-radius: 5px;
 
     outline: none;
 
     background: #ffffff;
     color: var(--role-text);
 
-    font-family: inherit;
-    font-size: 13.5px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
 
     transition:
         border-color 0.2s ease,
@@ -317,22 +422,22 @@
 
 
 .role-form-group input[type="text"]::placeholder {
-    color: #9aa7b8;
+    color: #8a97a8;
 }
 
 
 .role-form-group input[type="text"]:hover {
-    border-color: #b8c7d9;
+    border-color: #bfc9d5;
 }
 
 
 .role-form-group input[type="text"]:focus {
-    border-color: var(--role-blue);
+    border-color: var(--role-navy);
 
     background: #ffffff;
 
     box-shadow:
-        0 0 0 3px rgba(23, 105, 213, 0.11);
+        0 0 0 3px rgba(7, 27, 53, 0.08);
 }
 
 
@@ -341,7 +446,7 @@
    ========================================================= */
 
 .permission-body {
-    padding: 24px 26px 27px;
+    padding: 24px;
 }
 
 
@@ -355,10 +460,10 @@
 
 
 .permission-module + .permission-module {
-    margin-top: 25px;
-    padding-top: 25px;
+    margin-top: 24px;
+    padding-top: 24px;
 
-    border-top: 1px solid #e8edf4;
+    border-top: 1px solid var(--role-border);
 }
 
 
@@ -367,19 +472,21 @@
     align-items: center;
 
     min-height: 34px;
-    margin-bottom: 14px;
-    padding: 8px 13px;
 
-    border-left: 4px solid var(--role-blue);
-    border-radius: 6px;
+    margin-bottom: 13px;
+    padding: 8px 12px;
 
-    background: #f1f6fc;
+    border-left: 4px solid var(--role-navy);
+    border-radius: 4px;
 
-    color: #183452;
+    background: #eef1f4;
 
-    font-size: 13px;
+    color: var(--role-navy);
+
+    font-size: 12.5px;
     font-weight: 800;
-    letter-spacing: 0.1px;
+
+    line-height: 1.4;
 }
 
 
@@ -393,7 +500,7 @@
     grid-template-columns:
         repeat(3, minmax(0, 1fr));
 
-    gap: 12px;
+    gap: 10px;
 }
 
 
@@ -403,6 +510,7 @@
 
 .permission-item {
     position: relative;
+
     min-width: 0;
 }
 
@@ -425,15 +533,16 @@
 .permission-item label {
     display: flex;
     align-items: center;
-    gap: 11px;
+
+    gap: 10px;
 
     width: 100%;
-    min-height: 70px;
+    min-height: 58px;
 
-    padding: 12px 14px;
+    padding: 11px 13px;
 
-    border: 1px solid #dce4ee;
-    border-radius: 11px;
+    border: 1px solid var(--role-border);
+    border-radius: 5px;
 
     background: #ffffff;
 
@@ -442,39 +551,39 @@
     transition:
         border-color 0.2s ease,
         background 0.2s ease,
-        box-shadow 0.2s ease,
-        transform 0.15s ease;
+        box-shadow 0.2s ease;
 }
 
 
 .permission-item label:hover {
-    border-color: #a9c8ed;
-    background: #f9fcff;
+    border-color: #b9c2ce;
 
-    box-shadow: 0 5px 15px rgba(23, 105, 213, 0.07);
+    background: #f8f9fb;
 
-    transform: translateY(-1px);
+    box-shadow:
+        0 3px 10px rgba(16, 42, 67, 0.05);
 }
 
 
 /* =========================================================
-   CUSTOM CHECK
+   CUSTOM CHECKBOX
    ========================================================= */
 
 .permission-check {
-    flex: 0 0 22px;
+    flex: 0 0 21px;
+
+    width: 21px;
+    height: 21px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: 22px;
-    height: 22px;
-
-    border: 1.5px solid #b9c7d7;
-    border-radius: 6px;
+    border: 1.5px solid #b8c1cd;
+    border-radius: 4px;
 
     background: #ffffff;
+
     color: transparent;
 
     transition:
@@ -496,11 +605,12 @@
    ========================================================= */
 
 .permission-item input[type="checkbox"]:checked + label {
-    border-color: #9ec3ef;
-    background: #f3f8ff;
+    border-color: #aeb8c5;
+
+    background: #f1f3f5;
 
     box-shadow:
-        inset 0 0 0 1px rgba(23, 105, 213, 0.04);
+        inset 0 0 0 1px rgba(7, 27, 53, 0.03);
 }
 
 
@@ -508,21 +618,25 @@
 input[type="checkbox"]:checked
 + label
 .permission-check {
-    border-color: var(--role-blue);
-    background: var(--role-blue);
+    border-color: var(--role-navy);
+
+    background: var(--role-navy);
+
     color: #ffffff;
 
     box-shadow:
-        0 3px 8px rgba(23, 105, 213, 0.22);
+        0 2px 6px rgba(7, 27, 53, 0.18);
 }
 
 
-/* Keyboard focus */
+/* =========================================================
+   KEYBOARD FOCUS
+   ========================================================= */
 
 .permission-item
 input[type="checkbox"]:focus-visible
 + label {
-    outline: 3px solid rgba(23, 105, 213, 0.16);
+    outline: 3px solid rgba(7, 27, 53, 0.12);
     outline-offset: 2px;
 }
 
@@ -533,11 +647,9 @@ input[type="checkbox"]:focus-visible
 
 .permission-text {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
 
     min-width: 0;
-    gap: 4px;
 }
 
 
@@ -548,30 +660,10 @@ input[type="checkbox"]:focus-visible
 
     color: #263449;
 
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 700;
-    line-height: 1.3;
 
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-
-.permission-text code {
-    display: block;
-
-    overflow: hidden;
-
-    color: #718096;
-
-    font-family:
-        "SFMono-Regular",
-        Consolas,
-        "Liberation Mono",
-        monospace;
-
-    font-size: 10.5px;
-    line-height: 1.3;
+    line-height: 1.4;
 
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -586,13 +678,15 @@ input[type="checkbox"]:focus-visible
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 11px;
+
+    gap: 10px;
 
     width: 100%;
-    margin-top: 4px;
-    padding: 20px 0 0;
 
-    border-top: 1px solid #e3e9f1;
+    margin-top: 4px;
+    padding-top: 18px;
+
+    border-top: 1px solid var(--role-border);
 }
 
 
@@ -604,26 +698,27 @@ input[type="checkbox"]:focus-visible
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     gap: 8px;
 
-    min-height: 43px;
+    min-height: 42px;
 
-    padding: 0 18px;
+    padding: 0 17px;
 
-    border: 1px solid var(--role-blue);
-    border-radius: 9px;
+    border: 1px solid var(--role-navy);
+    border-radius: 5px;
 
-    background: var(--role-blue);
+    background: var(--role-navy);
     color: #ffffff;
 
-    font-family: inherit;
-    font-size: 13px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 12.5px;
     font-weight: 700;
 
     cursor: pointer;
 
     box-shadow:
-        0 5px 13px rgba(23, 105, 213, 0.18);
+        0 4px 10px rgba(7, 27, 53, 0.12);
 
     transition:
         background 0.2s ease,
@@ -639,11 +734,12 @@ input[type="checkbox"]:focus-visible
 
 
 .save-role-button:hover {
-    border-color: var(--role-blue-dark);
-    background: var(--role-blue-dark);
+    border-color: var(--role-navy-2);
+
+    background: var(--role-navy-2);
 
     box-shadow:
-        0 7px 17px rgba(23, 105, 213, 0.23);
+        0 5px 13px rgba(7, 27, 53, 0.17);
 
     transform: translateY(-1px);
 }
@@ -663,17 +759,18 @@ input[type="checkbox"]:focus-visible
     align-items: center;
     justify-content: center;
 
-    min-height: 43px;
+    min-height: 42px;
 
-    padding: 0 18px;
+    padding: 0 17px;
 
-    border: 1px solid #d4dce7;
-    border-radius: 9px;
+    border: 1px solid var(--role-border-dark);
+    border-radius: 5px;
 
     background: #ffffff;
     color: #526176;
 
-    font-size: 13px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 12.5px;
     font-weight: 700;
 
     text-decoration: none;
@@ -681,19 +778,17 @@ input[type="checkbox"]:focus-visible
     transition:
         background 0.2s ease,
         border-color 0.2s ease,
-        color 0.2s ease,
-        transform 0.15s ease;
+        color 0.2s ease;
 }
 
 
 .cancel-role-button:hover {
-    border-color: #bdc8d6;
-    background: #f7f9fc;
-    color: #263449;
+    border-color: #bdc5cf;
+
+    background: #f5f6f8;
+    color: var(--role-text);
 
     text-decoration: none;
-
-    transform: translateY(-1px);
 }
 
 
@@ -707,7 +802,6 @@ input[type="checkbox"]:focus-visible
         padding-left: 14px;
         padding-right: 14px;
     }
-
 
     .permission-grid {
         grid-template-columns:
@@ -727,23 +821,19 @@ input[type="checkbox"]:focus-visible
         padding: 25px 24px;
     }
 
-
     .roles-header h1 {
         font-size: 24px;
     }
 
-
     .role-edit-card-header {
-        padding: 19px 21px;
+        padding: 18px 21px;
     }
-
 
     .role-edit-body,
     .permission-body {
         padding-left: 21px;
         padding-right: 21px;
     }
-
 
     .role-form-grid {
         grid-template-columns: 1fr;
@@ -760,48 +850,56 @@ input[type="checkbox"]:focus-visible
 @media (max-width: 600px) {
 
     .roles-page {
-        padding:
-            5px
-            8px
-            30px;
+        padding: 5px 8px 30px;
     }
-
 
     .roles-header {
+        min-height: 150px;
+
         margin-bottom: 18px;
+
         padding: 22px 20px;
 
-        border-radius: 13px;
+        border-radius: 6px;
     }
 
+    .roles-header-content {
+        min-height: 106px;
+        gap: 15px;
+    }
 
     .roles-label {
-        font-size: 10px;
+        font-size: 9.5px;
     }
-
 
     .roles-header h1 {
         font-size: 21px;
     }
 
-
     .roles-header p {
-        margin-top: 8px;
-        font-size: 12.5px;
+        margin-top: 7px;
+        font-size: 12px;
     }
 
+    .roles-hero-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .roles-hero-icon svg {
+        width: 30px;
+        height: 30px;
+    }
 
     .role-edit-card {
         margin-bottom: 17px;
-        border-radius: 13px;
+        border-radius: 6px;
     }
-
 
     .role-edit-card-header {
         align-items: flex-start;
-        padding: 17px 18px;
+        padding: 16px 18px;
     }
-
 
     .role-edit-icon {
         flex-basis: 39px;
@@ -810,48 +908,39 @@ input[type="checkbox"]:focus-visible
         height: 39px;
     }
 
-
     .role-edit-card-header h2 {
         font-size: 14px;
     }
 
-
     .role-edit-card-header p {
-        font-size: 11.5px;
+        font-size: 11px;
     }
-
 
     .role-edit-body,
     .permission-body {
         padding: 18px;
     }
 
-
     .permission-grid {
         grid-template-columns: 1fr;
         gap: 9px;
     }
 
-
     .permission-item label {
-        min-height: 62px;
-        padding: 11px 12px;
+        min-height: 58px;
+        padding: 10px 12px;
     }
-
 
     .permission-module + .permission-module {
         margin-top: 20px;
         padding-top: 20px;
     }
 
-
     .role-form-actions {
         flex-direction: column-reverse;
         align-items: stretch;
-
         gap: 9px;
     }
-
 
     .save-role-button,
     .cancel-role-button {
@@ -871,20 +960,23 @@ input[type="checkbox"]:focus-visible
         font-size: 19px;
     }
 
+    .roles-hero-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .roles-hero-icon svg {
+        width: 27px;
+        height: 27px;
+    }
 
     .role-edit-body,
     .permission-body {
         padding: 15px;
     }
 
-
     .permission-text strong {
         font-size: 12px;
-    }
-
-
-    .permission-text code {
-        font-size: 9.5px;
     }
 
 }

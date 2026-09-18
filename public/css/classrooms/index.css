@@ -1,68 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
 /* =========================================================
-WEB SEKOLAH MODERN
-ADMIN - KELOLA KELAS
+CLASSROOMS
 ========================================================= */
 
-.classrooms-page {
-width: 100%;
-max-width: 100%;
-margin: 0;
-padding: 10px 8px 40px;
+.classrooms-page,
+.classrooms-page * {
+font-family: "Plus Jakarta Sans", sans-serif;
 box-sizing: border-box;
 }
 
+.classrooms-page {
+width: 100%;
+color: #172033;
+}
+
 /* =========================================================
-HEADER
+HERO
 ========================================================= */
 
 .classrooms-header {
 position: relative;
-width: 100%;
 overflow: hidden;
-margin-bottom: 22px;
-padding: 28px 32px;
-border-radius: 18px;
-background:
-linear-gradient(
-135deg,
-#071b35 0%,
-#0a3768 60%,
-#0d5fb7 100%
-);
-box-shadow:
-0 10px 28px rgba(7, 27, 53, 0.12);
-box-sizing: border-box;
+min-height: 155px;
+margin-bottom: 20px;
+padding: 29px 32px;
+background: #071b35;
+border: 1px solid #071b35;
+border-radius: 7px;
 }
 
 .classrooms-header::before {
 content: "";
 position: absolute;
-width: 220px;
-height: 220px;
-top: -120px;
-right: -75px;
+width: 180px;
+height: 180px;
+right: -65px;
+top: -80px;
+border: 1px solid rgba(255, 255, 255, 0.08);
 border-radius: 50%;
-background: rgba(255, 255, 255, 0.07);
 }
 
 .classrooms-header::after {
 content: "";
 position: absolute;
-width: 130px;
-height: 130px;
-right: 120px;
-bottom: -85px;
+width: 110px;
+height: 110px;
+right: 55px;
+bottom: -70px;
+border: 1px solid rgba(255, 255, 255, 0.06);
 border-radius: 50%;
-background: rgba(255, 255, 255, 0.045);
 }
 
 .classrooms-header-content {
 position: relative;
 z-index: 2;
+min-height: 97px;
 display: flex;
 align-items: center;
 justify-content: space-between;
-gap: 25px;
+gap: 30px;
 }
 
 .classrooms-title-area {
@@ -70,73 +67,53 @@ min-width: 0;
 }
 
 .classrooms-label {
-display: inline-flex;
-align-items: center;
-margin-bottom: 9px;
-padding: 6px 12px;
-border: 1px solid rgba(255, 255, 255, 0.18);
-border-radius: 7px;
-background: rgba(255, 255, 255, 0.09);
-color: #dceeff;
-font-size: 10.5px;
-font-weight: 800;
-letter-spacing: 1.2px;
+display: inline-block;
+margin-bottom: 7px;
+color: #cbd3dd;
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 1.3px;
+line-height: 1.2;
 }
 
 .classrooms-title-area h1 {
 margin: 0;
 color: #ffffff;
-font-size: 29px;
-font-weight: 800;
-line-height: 1.3;
-letter-spacing: -0.4px;
+font-size: 27px;
+font-weight: 700;
+line-height: 1.2;
 }
 
 .classrooms-title-area p {
-max-width: 680px;
-margin: 8px 0 0;
-color: #c9def3;
-font-size: 13.5px;
-line-height: 1.65;
+max-width: 650px;
+margin: 7px 0 0;
+color: #c1cad5;
+font-size: 13px;
+font-weight: 400;
+line-height: 1.6;
 }
 
 /* =========================================================
-ADD BUTTON
+HERO ICON
 ========================================================= */
 
-.classrooms-add-button {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-gap: 8px;
-flex-shrink: 0;
-min-height: 43px;
-padding: 10px 17px;
-border: 1px solid rgba(255, 255, 255, 0.22);
-border-radius: 9px;
-background: #ffffff;
-color: #0754b5;
-font-size: 12.5px;
-font-weight: 800;
-text-decoration: none;
-box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-transition:
-transform 0.2s ease,
-box-shadow 0.2s ease,
-background 0.2s ease;
+.classrooms-hero-icon {
+    position: relative;
+    z-index: 3;
+    flex: 0 0 auto;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    background: transparent;
+    border: none;
+    border-radius: 0;
 }
 
-.classrooms-add-button span {
-font-size: 18px;
-font-weight: 500;
-line-height: 1;
-}
-
-.classrooms-add-button:hover {
-color: #064ba8;
-background: #f5f9ff;
-transform: translateY(-1px);
-box-shadow: 0 9px 20px rgba(0, 0, 0, 0.15);
+.classrooms-hero-icon svg {
+    display: block;
 }
 
 /* =========================================================
@@ -144,131 +121,132 @@ SEARCH CARD
 ========================================================= */
 
 .classrooms-search-card {
-width: 100%;
 margin-bottom: 20px;
-padding: 20px 24px;
-border: 1px solid #dbe7f2;
-border-radius: 16px;
+padding: 20px;
 background: #ffffff;
-box-shadow: 0 8px 24px rgba(16, 42, 67, 0.055);
-box-sizing: border-box;
+border: 1px solid #e1e6ed;
+border-radius: 7px;
 }
 
 .classrooms-search-header {
 display: flex;
 align-items: center;
-gap: 13px;
-margin-bottom: 17px;
+gap: 12px;
+margin-bottom: 18px;
 }
 
 .classrooms-search-icon {
+width: 42px;
+height: 42px;
+flex: 0 0 42px;
 display: flex;
 align-items: center;
 justify-content: center;
-width: 43px;
-height: 43px;
-flex: 0 0 43px;
-border: 1px solid #c9e0f6;
-border-radius: 11px;
-background: #eaf4ff;
-color: #0866d8;
+color: #071b35;
+background: #e4e9ef;
+border: 1px solid #d8e0e8;
+border-radius: 6px;
+}
+
+.classrooms-search-icon svg {
+display: block;
 }
 
 .classrooms-search-header h2 {
 margin: 0;
-color: #09284b;
-font-size: 16px;
-font-weight: 800;
+color: #172033;
+font-size: 15px;
+font-weight: 700;
 line-height: 1.35;
 }
 
 .classrooms-search-header p {
 margin: 3px 0 0;
-color: #6a8198;
-font-size: 12px;
-line-height: 1.45;
+color: #66758a;
+font-size: 11.5px;
+line-height: 1.5;
 }
 
+/* =========================================================
+SEARCH FORM
+========================================================= */
+
 .classrooms-search-form {
-display: grid;
-grid-template-columns: 1fr 150px;
+display: flex;
+align-items: flex-end;
 gap: 12px;
-align-items: end;
+}
+
+.classrooms-search-field {
+flex: 1;
+min-width: 0;
 }
 
 .classrooms-search-field label {
 display: block;
-margin-bottom: 6px;
-color: #244563;
-font-size: 12px;
-font-weight: 700;
+margin-bottom: 7px;
+color: #344054;
+font-size: 11.5px;
+font-weight: 600;
 }
 
 .classrooms-input-wrapper {
 position: relative;
+display: flex;
+align-items: center;
 }
 
 .classrooms-input-wrapper svg {
 position: absolute;
-top: 50%;
-left: 14px;
-color: #8498ac;
-transform: translateY(-50%);
+left: 13px;
+color: #7b8795;
 pointer-events: none;
 }
 
 .classrooms-input-wrapper input {
 width: 100%;
-height: 43px;
-padding: 0 14px 0 41px;
-border: 1px solid #dbe7f2;
-border-radius: 8px;
+height: 40px;
+padding: 0 13px 0 40px;
+color: #172033;
+background: #ffffff;
+border: 1px solid #d8dfe7;
+border-radius: 5px;
 outline: none;
-background: #fbfdff;
-color: #102a43;
-font-family: inherit;
-font-size: 13px;
-box-sizing: border-box;
-transition:
-border-color 0.2s ease,
-box-shadow 0.2s ease,
-background 0.2s ease;
+font-family: "Plus Jakarta Sans", sans-serif;
+font-size: 12px;
+font-weight: 400;
+transition: border-color 0.18s ease, box-shadow 0.18s ease;
 }
 
 .classrooms-input-wrapper input::placeholder {
-color: #9aaabd;
-}
-
-.classrooms-input-wrapper input:hover {
-border-color: #bfd2e4;
+color: #9aa5b2;
 }
 
 .classrooms-input-wrapper input:focus {
-border-color: #0866d8;
-background: #ffffff;
-box-shadow: 0 0 0 3px rgba(8, 102, 216, 0.09);
+border-color: #071b35;
+box-shadow: 0 0 0 2px rgba(7, 27, 53, 0.08);
 }
 
 .classrooms-search-button {
-width: 100%;
-height: 43px;
-border: 1px solid #0759c5;
-border-radius: 8px;
-background: linear-gradient(135deg, #0871e8, #0759c5);
+height: 40px;
+padding: 0 20px;
 color: #ffffff;
-font-family: inherit;
-font-size: 12.5px;
-font-weight: 800;
+background: #071b35;
+border: 1px solid #071b35;
+border-radius: 5px;
 cursor: pointer;
-box-shadow: 0 5px 12px rgba(8, 102, 216, 0.16);
+font-family: "Plus Jakarta Sans", sans-serif;
+font-size: 11.5px;
+font-weight: 700;
+white-space: nowrap;
 transition:
-transform 0.2s ease,
-box-shadow 0.2s ease;
+background-color 0.18s ease,
+border-color 0.18s ease;
 }
 
 .classrooms-search-button:hover {
-transform: translateY(-1px);
-box-shadow: 0 8px 17px rgba(8, 102, 216, 0.23);
+background: #0b294d;
+border-color: #0b294d;
 }
 
 /* =========================================================
@@ -276,92 +254,104 @@ TABLE CARD
 ========================================================= */
 
 .classrooms-table-card {
-width: 100%;
 overflow: hidden;
-border: 1px solid #dbe7f2;
-border-radius: 17px;
 background: #ffffff;
-box-shadow: 0 8px 24px rgba(16, 42, 67, 0.06);
+border: 1px solid #e1e6ed;
+border-radius: 7px;
 }
 
 /* =========================================================
-CARD TOP
+TABLE CARD HEADER
 ========================================================= */
 
 .classrooms-card-top {
-position: relative;
 display: flex;
 align-items: center;
-min-height: 88px;
-padding: 17px 25px;
-overflow: hidden;
-border-bottom: 1px solid #c9dced;
-background:
-linear-gradient(
-90deg,
-#e8f3ff 0%,
-#edf6ff 55%,
-#e2f0ff 100%
-);
-box-sizing: border-box;
-}
-
-.classrooms-card-top::before {
-content: "";
-position: absolute;
-width: 145px;
-height: 145px;
-top: -82px;
-right: 35px;
-border-radius: 50%;
-background: rgba(8, 102, 216, 0.075);
-}
-
-.classrooms-card-top::after {
-content: "";
-position: absolute;
-width: 85px;
-height: 85px;
-right: 130px;
-bottom: -55px;
-border-radius: 50%;
-background: rgba(8, 102, 216, 0.055);
+justify-content: space-between;
+gap: 20px;
+padding: 17px 20px;
+background: #e8edf3;
+border-bottom: 1px solid #dbe2e9;
 }
 
 .classrooms-card-title {
-position: relative;
-z-index: 2;
 display: flex;
 align-items: center;
-gap: 13px;
+gap: 12px;
+min-width: 0;
 }
 
 .classrooms-title-icon {
+width: 42px;
+height: 42px;
+flex: 0 0 42px;
 display: flex;
 align-items: center;
 justify-content: center;
-width: 45px;
-height: 45px;
-flex: 0 0 45px;
-border: 1px solid #c3def7;
-border-radius: 12px;
-background: linear-gradient(145deg, #ffffff, #d4e5f7);
-color: #0866d8;
-box-shadow: 0 6px 14px rgba(8, 102, 216, 0.11);
+color: #071b35;
+background: #d7e0ea;
+border: 1px solid #cbd5df;
+border-radius: 6px;
+}
+
+.classrooms-title-icon svg {
+display: block;
 }
 
 .classrooms-card-title h2 {
 margin: 0;
-color: #09284b;
-font-size: 18px;
-font-weight: 800;
-line-height: 1.35;
+color: #172033;
+font-size: 16px;
+font-weight: 700;
+line-height: 1.3;
 }
 
 .classrooms-card-title p {
 margin: 3px 0 0;
-color: #4f6f8e;
+color: #66758a;
+font-size: 11.5px;
+line-height: 1.5;
+}
+
+/* =========================================================
+TAMBAH KELAS
+========================================================= */
+
+.classrooms-add-button {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 7px;
+flex: 0 0 auto;
+min-height: 38px;
+padding: 0 15px;
+color: #ffffff;
+background: #071b35;
+border: 1px solid #071b35;
+border-radius: 5px;
+text-decoration: none;
+font-family: "Plus Jakarta Sans", sans-serif;
 font-size: 12px;
+font-weight: 700;
+line-height: 1;
+white-space: nowrap;
+transition:
+background-color 0.18s ease,
+border-color 0.18s ease,
+transform 0.18s ease;
+}
+
+.classrooms-add-button span {
+font-size: 17px;
+font-weight: 400;
+line-height: 1;
+}
+
+.classrooms-add-button:hover {
+color: #ffffff;
+background: #0b294d;
+border-color: #0b294d;
+transform: translateY(-1px);
 }
 
 /* =========================================================
@@ -375,82 +365,51 @@ overflow-x: auto;
 
 .classrooms-table {
 width: 100%;
-border-collapse: separate;
+min-width: 900px;
+border-collapse: collapse;
 border-spacing: 0;
-table-layout: fixed;
 }
 
 .classrooms-table thead th {
-padding: 15px 16px;
-border-bottom: 1px solid #d9e5f0;
-background: #0b294d;
-color: #f3f4f5;
-font-size: 11px;
-font-weight: 800;
-letter-spacing: 0.5px;
+padding: 12px 16px;
+color: #ffffff;
+background: #071b35;
+border: 0;
+font-size: 10.5px;
+font-weight: 700;
+line-height: 1.4;
 text-align: left;
 white-space: nowrap;
 }
 
-.classrooms-table thead th:first-child {
-width: 23%;
-padding-left: 25px;
-}
-
-.classrooms-table thead th:nth-child(2) {
-width: 13%;
-}
-
-.classrooms-table thead th:nth-child(3) {
-width: 17%;
-}
-
-.classrooms-table thead th:nth-child(4) {
-width: 20%;
-}
-
-.classrooms-table thead th:nth-child(5) {
-width: 12%;
-}
-
-.classrooms-table thead th:nth-child(6) {
-width: 15%;
+.classrooms-table thead th.text-center {
 text-align: center;
 }
 
-/* =========================================================
-TABLE BODY
-========================================================= */
-
 .classrooms-table tbody tr {
 background: #ffffff;
-transition: background-color 0.2s ease;
+border-bottom: 1px solid #e8edf2;
+transition: background-color 0.15s ease;
 }
 
-.classrooms-table tbody tr:nth-child(even) {
-background: #fbfdff;
+.classrooms-table tbody tr:last-child {
+border-bottom: 0;
 }
 
 .classrooms-table tbody tr:hover {
-background: #f2f8ff;
+background: #f7f8fa;
 }
 
 .classrooms-table tbody td {
-padding: 17px 16px;
-border-bottom: 1px solid #e4edf5;
-color: #102a43;
-font-size: 13px;
-line-height: 1.5;
+padding: 13px 16px;
+color: #344054;
+font-size: 11.5px;
+font-weight: 400;
 vertical-align: middle;
-box-sizing: border-box;
 }
 
-.classrooms-table tbody tr:last-child td {
-border-bottom: none;
-}
-
-.classrooms-table tbody td:first-child {
-padding-left: 25px;
+.classrooms-table tbody td.text-center {
+text-align: center;
 }
 
 /* =========================================================
@@ -460,63 +419,63 @@ CLASS NAME
 .classroom-name {
 display: flex;
 align-items: center;
-gap: 11px;
-min-width: 0;
+gap: 10px;
+min-width: 160px;
 }
 
 .classroom-avatar {
+width: 36px;
+height: 36px;
+flex: 0 0 36px;
 display: flex;
 align-items: center;
 justify-content: center;
-width: 42px;
-height: 42px;
-flex: 0 0 42px;
-border-radius: 11px;
-background: linear-gradient(145deg, #0874ed, #0754b5);
-color: #ffffff;
-font-size: 14px;
-font-weight: 800;
-box-shadow: 0 5px 12px rgba(8, 102, 216, 0.18);
+color: #071b35;
+background: #d7e0ea;
+border: 1px solid #cbd5df;
+border-radius: 6px;
+font-size: 12px;
+font-weight: 700;
 }
 
 .classroom-name strong {
 display: block;
-margin-bottom: 2px;
-color: #09284b;
-font-size: 14px;
-font-weight: 800;
+color: #172033;
+font-size: 11.5px;
+font-weight: 700;
+line-height: 1.4;
 }
 
 .classroom-name span {
 display: block;
-color: #7a8ea2;
-font-size: 10.5px;
+margin-top: 2px;
+color: #8994a2;
+font-size: 10px;
+line-height: 1.3;
 }
 
 /* =========================================================
-TABLE TEXT
+GRADE / MAJOR / TEACHER
 ========================================================= */
 
 .classroom-grade {
 display: inline-flex;
 align-items: center;
-padding: 5px 9px;
-border: 1px solid #d1e2f2;
-border-radius: 7px;
-background: #f2f8fd;
-color: #245a83;
-font-size: 11.5px;
-font-weight: 700;
+min-height: 26px;
+padding: 0 9px;
+color: #344054;
+background: #eef1f4;
+border: 1px solid #dfe4e9;
+border-radius: 4px;
+font-size: 10.5px;
+font-weight: 600;
 }
 
-.classroom-major {
-color: #476681;
-font-size: 12.5px;
-}
-
+.classroom-major,
 .classroom-teacher {
-color: #385b77;
-font-size: 12.5px;
+color: #526071;
+font-size: 11px;
+font-weight: 500;
 }
 
 /* =========================================================
@@ -528,11 +487,12 @@ display: inline-flex;
 align-items: center;
 justify-content: center;
 gap: 6px;
-min-width: 78px;
-padding: 6px 9px;
-border-radius: 7px;
-font-size: 11px;
-font-weight: 800;
+min-height: 25px;
+padding: 0 9px;
+border-radius: 4px;
+font-size: 10px;
+font-weight: 600;
+white-space: nowrap;
 }
 
 .classroom-status .status-dot {
@@ -542,90 +502,79 @@ border-radius: 50%;
 }
 
 .classroom-status.active {
-border: 1px solid #bde5cd;
-background: #effaf3;
-color: #168044;
+color: #276749;
+background: #edf7f1;
+border: 1px solid #d5ebdd;
 }
 
 .classroom-status.active .status-dot {
-background: #22a65a;
+background: #3b8a5a;
 }
 
 .classroom-status.inactive {
-border: 1px solid #dbe3ea;
-background: #f6f8fa;
-color: #7b8794;
+color: #667085;
+background: #f1f3f5;
+border: 1px solid #e1e5e9;
 }
 
 .classroom-status.inactive .status-dot {
-background: #a5b0ba;
+background: #98a2b3;
 }
 
 /* =========================================================
-ACTION
+ACTIONS
 ========================================================= */
 
 .classroom-actions {
-display: flex;
+display: inline-flex;
 align-items: center;
 justify-content: center;
 gap: 6px;
-width: 100%;
 }
 
 .classroom-edit-button,
 .classroom-delete-button {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-width: 62px;
-min-height: 35px;
-padding: 7px 9px;
-border-radius: 7px;
-font-family: inherit;
-font-size: 11px;
-font-weight: 800;
-line-height: 1;
-box-sizing: border-box;
+min-height: 30px;
+padding: 0 10px;
+border-radius: 4px;
+font-family: "Plus Jakarta Sans", sans-serif;
+font-size: 10px;
+font-weight: 600;
+line-height: 28px;
+text-decoration: none;
+cursor: pointer;
 transition:
-background 0.2s ease,
-color 0.2s ease,
-border-color 0.2s ease,
-transform 0.2s ease;
+background-color 0.15s ease,
+border-color 0.15s ease,
+color 0.15s ease;
 }
 
 .classroom-edit-button {
-border: 1px solid #a9c8e5;
-background: #ffffff;
-color: #1765a3;
-text-decoration: none;
+color: #344054;
+background: #f1f3f5;
+border: 1px solid #dfe4e9;
 }
 
 .classroom-edit-button:hover {
-border-color: #0866d8;
-background: #eaf4ff;
-color: #0754b5;
-transform: translateY(-1px);
+color: #ffffff;
+background: #071b35;
+border-color: #071b35;
 }
 
 .classroom-delete-form {
-display: inline-flex;
 margin: 0;
-padding: 0;
 }
 
 .classroom-delete-button {
-border: 1px solid #f1b9b9;
-background: #ffffff;
-color: #dc3545;
-cursor: pointer;
+color: #b42318;
+background: #fff5f4;
+border: 1px solid #f2d3d0;
 }
 
 .classroom-delete-button:hover {
-border-color: #dc3545;
-background: #fff3f3;
-color: #c82333;
-transform: translateY(-1px);
+color: #ffffff;
+background: #b42318;
+border-color: #b42318;
 }
 
 /* =========================================================
@@ -633,32 +582,39 @@ EMPTY STATE
 ========================================================= */
 
 .classrooms-empty {
-padding: 45px 20px !important;
+padding: 55px 20px !important;
 text-align: center !important;
 }
 
 .classrooms-empty-icon {
+width: 50px;
+height: 50px;
+margin: 0 auto 13px;
 display: flex;
 align-items: center;
 justify-content: center;
-width: 52px;
-height: 52px;
-margin: 0 auto 12px;
-border-radius: 13px;
-background: #edf5fc;
-color: #5b88b0;
+color: #071b35;
+background: #e4e9ef;
+border: 1px solid #d8e0e8;
+border-radius: 6px;
+}
+
+.classrooms-empty-icon svg {
+display: block;
 }
 
 .classrooms-empty strong {
 display: block;
-margin-bottom: 4px;
-color: #294b67;
-font-size: 13px;
+margin-bottom: 5px;
+color: #344054;
+font-size: 12px;
+font-weight: 700;
 }
 
 .classrooms-empty span {
-color: #7b8fa2;
-font-size: 11.5px;
+display: block;
+color: #8994a2;
+font-size: 10.5px;
 }
 
 /* =========================================================
@@ -666,82 +622,83 @@ PAGINATION
 ========================================================= */
 
 .classrooms-pagination {
-padding: 15px 22px;
-border-top: 1px solid #e4edf5;
-background: #fbfdff;
-}
-
-.classrooms-pagination .pagination {
-margin: 0;
+display: flex;
 justify-content: flex-end;
+padding: 15px 20px;
+border-top: 1px solid #e8edf2;
+background: #ffffff;
 }
 
-.classrooms-pagination .page-link {
-border-color: #dbe7f2;
-color: #1765a3;
-font-size: 12px;
+.classrooms-pagination nav {
+font-family: "Plus Jakarta Sans", sans-serif;
 }
 
-.classrooms-pagination .page-item.active .page-link {
-border-color: #0866d8;
-background: #0866d8;
+.classrooms-pagination svg {
+width: 15px;
+height: 15px;
 }
 
-/* =========================================================
-TABLET
-========================================================= */
-
-@media (max-width: 1000px) {
-
-
-.classrooms-page {
-    padding-left: 4px;
-    padding-right: 4px;
+.classrooms-pagination a,
+.classrooms-pagination span {
+font-family: "Plus Jakarta Sans", sans-serif !important;
 }
 
-.classrooms-header {
-    padding: 25px 27px;
+.classrooms-pagination a {
+color: #526071 !important;
 }
 
-.classrooms-table thead th,
-.classrooms-table tbody td {
-    padding-left: 12px;
-    padding-right: 12px;
-}
-
-.classrooms-table thead th:first-child,
-.classrooms-table tbody td:first-child {
-    padding-left: 18px;
-}
-
-.classrooms-actions {
-    gap: 4px;
-}
-
-.classroom-edit-button,
-.classroom-delete-button {
-    width: 58px;
-}
-
-
+.classrooms-pagination [aria-current="page"] span {
+color: #ffffff !important;
+background: #071b35 !important;
+border-color: #071b35 !important;
 }
 
 /* =========================================================
-MOBILE
+RESPONSIVE
 ========================================================= */
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
 
 
 .classrooms-header {
-    margin-bottom: 17px;
-    padding: 23px 20px;
-    border-radius: 14px;
+    padding: 25px;
 }
 
 .classrooms-header-content {
-    align-items: flex-start;
+    min-height: 105px;
+}
+
+.classrooms-hero-icon {
+    width: 60px;
+    height: 60px;
+}
+
+.classrooms-hero-icon svg {
+    width: 29px;
+    height: 29px;
+}
+
+.classrooms-search-form {
+    align-items: stretch;
     flex-direction: column;
+}
+
+.classrooms-search-button {
+    width: 100%;
+}
+
+
+}
+
+@media (max-width: 600px) {
+
+
+.classrooms-header {
+    padding: 23px 20px;
+}
+
+.classrooms-header-content {
+    gap: 15px;
 }
 
 .classrooms-title-area h1 {
@@ -749,76 +706,49 @@ MOBILE
 }
 
 .classrooms-title-area p {
-    font-size: 12.5px;
+    font-size: 12px;
+}
+
+.classrooms-hero-icon {
+    width: 55px;
+    height: 55px;
+}
+
+.classrooms-hero-icon svg {
+    width: 27px;
+    height: 27px;
+}
+
+.classrooms-search-card {
+    padding: 17px;
+}
+
+.classrooms-card-top {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 16px;
 }
 
 .classrooms-add-button {
     width: 100%;
 }
 
-.classrooms-search-card {
-    padding: 18px;
-}
-
-.classrooms-search-form {
-    grid-template-columns: 1fr;
-}
-
-.classrooms-table-card {
-    border-radius: 14px;
-}
-
-.classrooms-card-top {
-    padding: 16px 18px;
-}
-
-.classrooms-title-icon {
-    width: 40px;
-    height: 40px;
-    flex-basis: 40px;
-}
-
-.classrooms-card-title h2 {
-    font-size: 16px;
-}
-
-.classrooms-card-title p {
-    font-size: 11px;
-}
-
-.classrooms-table {
-    min-width: 850px;
-}
-
-.classrooms-table-wrapper {
-    overflow-x: auto;
-}
-
 .classrooms-pagination {
-    padding: 13px 16px;
+    justify-content: center;
 }
 
 
 }
 
-/* =========================================================
-SMALL MOBILE
-========================================================= */
+@media (max-width: 430px) {
 
-@media (max-width: 576px) {
-
-
-.classrooms-page {
-    padding-top: 5px;
-    padding-bottom: 25px;
-}
 
 .classrooms-header {
-    padding: 20px 17px;
+    padding: 21px 17px;
 }
 
-.classrooms-label {
-    font-size: 9.5px;
+.classrooms-hero-icon {
+    display: none;
 }
 
 .classrooms-title-area h1 {
@@ -829,34 +759,24 @@ SMALL MOBILE
     font-size: 11.5px;
 }
 
-.classrooms-search-card {
-    padding: 16px;
-}
-
 .classrooms-search-header {
-    margin-bottom: 14px;
+    align-items: flex-start;
 }
 
 .classrooms-search-icon {
-    width: 39px;
-    height: 39px;
-    flex-basis: 39px;
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
 }
 
-.classrooms-search-header h2 {
-    font-size: 15px;
+.classrooms-card-title {
+    align-items: flex-start;
 }
 
-.classrooms-search-header p {
-    font-size: 10.5px;
-}
-
-.classrooms-card-top {
-    min-height: 78px;
-}
-
-.classrooms-pagination .pagination {
-    justify-content: center;
+.classrooms-title-icon {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
 }
 
 

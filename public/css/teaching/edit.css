@@ -1,32 +1,29 @@
 /* =========================================================
-   TAMBAH PENUGASAN MENGAJAR
+   EDIT PENUGASAN MENGAJAR
    MODERN INSTITUTIONAL ADMIN STYLE
-   MATCHED WITH STUDENT PLACEMENT
+   MATCHED WITH TEACHING CREATE & STUDENT PLACEMENT
    ========================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
-    --teaching-create-navy: #071b35;
-    --teaching-create-navy-2: #0b294d;
+    --teaching-edit-navy: #071b35;
+    --teaching-edit-navy-2: #0b294d;
 
-    --teaching-create-text: #172033;
-    --teaching-create-text-soft: #66758a;
+    --teaching-edit-text: #172033;
+    --teaching-edit-text-soft: #66758a;
 
-    --teaching-create-border: #e1e6ed;
-    --teaching-create-border-dark: #d5dce4;
+    --teaching-edit-border: #e1e6ed;
+    --teaching-edit-border-dark: #d5dce4;
 
-    --teaching-create-white: #ffffff;
+    --teaching-edit-white: #ffffff;
 
-    --teaching-create-gray: #e8edf3;
-    --teaching-create-gray-dark: #d7e0ea;
+    --teaching-edit-gray: #e8edf3;
+    --teaching-edit-bg: #f7f9fc;
 
-    --teaching-create-bg: #f7f9fc;
+    --teaching-edit-blue: #1769d5;
 
-    --teaching-create-blue: #1769d5;
-    --teaching-create-blue-soft: #eaf3ff;
-
-    --teaching-create-shadow: 0 6px 18px rgba(16, 42, 67, 0.05);
+    --teaching-edit-shadow: 0 6px 18px rgba(16, 42, 67, 0.05);
 }
 
 
@@ -34,14 +31,15 @@
    PAGE
    ========================================================= */
 
-.teaching-create-page {
+.teaching-edit-page {
     width: 100%;
     max-width: 1100px;
+
     margin: 0 auto;
     padding: 10px 8px 40px;
 
     font-family: 'Plus Jakarta Sans', sans-serif;
-    color: var(--teaching-create-text);
+    color: var(--teaching-edit-text);
 }
 
 
@@ -49,21 +47,23 @@
    HEADER / HERO
    ========================================================= */
 
-.teaching-create-header {
+.teaching-edit-header {
     position: relative;
     overflow: hidden;
 
     min-height: 155px;
+
     margin-bottom: 20px;
     padding: 29px 32px;
 
     border-radius: 7px;
 
-    background: var(--teaching-create-navy);
-    box-shadow: var(--teaching-create-shadow);
+    background: var(--teaching-edit-navy);
+
+    box-shadow: var(--teaching-edit-shadow);
 }
 
-.teaching-create-header::before {
+.teaching-edit-header::before {
     content: "";
 
     position: absolute;
@@ -78,7 +78,7 @@
     border-radius: 50%;
 }
 
-.teaching-create-header::after {
+.teaching-edit-header::after {
     content: "";
 
     position: absolute;
@@ -93,7 +93,7 @@
     border-radius: 50%;
 }
 
-.teaching-create-header-content {
+.teaching-edit-header-content {
     position: relative;
     z-index: 2;
 
@@ -111,11 +111,11 @@
    TITLE
    ========================================================= */
 
-.teaching-create-title-area {
+.teaching-edit-title-area {
     min-width: 0;
 }
 
-.teaching-create-label {
+.teaching-edit-label {
     display: block;
 
     margin-bottom: 6px;
@@ -129,7 +129,7 @@
     letter-spacing: 1.5px;
 }
 
-.teaching-create-title-area h1 {
+.teaching-edit-title-area h1 {
     margin: 0;
 
     color: #ffffff;
@@ -141,10 +141,10 @@
     letter-spacing: -0.3px;
 }
 
-.teaching-create-title-area p {
-    margin: 8px 0 0;
-
+.teaching-edit-title-area p {
     max-width: 650px;
+
+    margin: 8px 0 0;
 
     color: rgba(255, 255, 255, 0.72);
 
@@ -158,7 +158,7 @@
    HERO ICON
    ========================================================= */
 
-.teaching-create-hero-icon {
+.teaching-edit-hero-icon {
     width: 70px;
     height: 70px;
 
@@ -171,7 +171,7 @@
     color: rgba(255, 255, 255, 0.86);
 }
 
-.teaching-create-hero-icon svg {
+.teaching-edit-hero-icon svg {
     width: 34px;
     height: 34px;
 }
@@ -181,15 +181,15 @@
    FORM CARD
    ========================================================= */
 
-.teaching-create-card {
+.teaching-edit-card {
     overflow: hidden;
 
-    background: var(--teaching-create-white);
+    background: var(--teaching-edit-white);
 
-    border: 1px solid var(--teaching-create-border);
+    border: 1px solid var(--teaching-edit-border);
     border-radius: 7px;
 
-    box-shadow: var(--teaching-create-shadow);
+    box-shadow: var(--teaching-edit-shadow);
 }
 
 
@@ -197,7 +197,7 @@
    CARD HEADER
    ========================================================= */
 
-.teaching-create-card-header {
+.teaching-edit-card-header {
     display: flex;
     align-items: center;
 
@@ -205,12 +205,12 @@
 
     padding: 20px 25px;
 
-    background: var(--teaching-create-gray);
+    background: var(--teaching-edit-gray);
 
-    border-bottom: 1px solid var(--teaching-create-border);
+    border-bottom: 1px solid var(--teaching-edit-border);
 }
 
-.teaching-create-card-icon {
+.teaching-edit-card-icon {
     width: 45px;
     height: 45px;
 
@@ -222,31 +222,31 @@
 
     border-radius: 7px;
 
-    background: var(--teaching-create-white);
-    color: var(--teaching-create-navy);
+    background: #ffffff;
+    color: var(--teaching-edit-navy);
 
-    border: 1px solid var(--teaching-create-border-dark);
+    border: 1px solid var(--teaching-edit-border-dark);
 }
 
-.teaching-create-card-icon svg {
+.teaching-edit-card-icon svg {
     width: 21px;
     height: 21px;
 }
 
-.teaching-create-card-header h2 {
+.teaching-edit-card-header h2 {
     margin: 0;
 
-    color: var(--teaching-create-text);
+    color: var(--teaching-edit-text);
 
     font-size: 16px;
     font-weight: 800;
     line-height: 1.3;
 }
 
-.teaching-create-card-header p {
+.teaching-edit-card-header p {
     margin: 4px 0 0;
 
-    color: var(--teaching-create-text-soft);
+    color: var(--teaching-edit-text-soft);
 
     font-size: 12px;
     line-height: 1.5;
@@ -257,7 +257,7 @@
    CARD BODY
    ========================================================= */
 
-.teaching-create-card-body {
+.teaching-edit-card-body {
     padding: 25px;
 }
 
@@ -267,30 +267,30 @@
    SUPPORT PARTIAL admin.teaching-assignments.form
    ========================================================= */
 
-.teaching-create-card-body .form-label {
+.teaching-edit-card-body .form-label {
     display: block;
 
     margin-bottom: 7px;
 
-    color: var(--teaching-create-text);
+    color: var(--teaching-edit-text);
 
     font-size: 12px;
     font-weight: 700;
     line-height: 1.4;
 }
 
-.teaching-create-card-body .form-control,
-.teaching-create-card-body .form-select {
+.teaching-edit-card-body .form-control,
+.teaching-edit-card-body .form-select {
     width: 100%;
     min-height: 44px;
 
     padding: 9px 12px;
 
-    border: 1px solid var(--teaching-create-border-dark);
+    border: 1px solid var(--teaching-edit-border-dark);
     border-radius: 6px;
 
     background: #ffffff;
-    color: var(--teaching-create-text);
+    color: var(--teaching-edit-text);
 
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 13px;
@@ -304,25 +304,25 @@
         background-color 0.2s ease;
 }
 
-.teaching-create-card-body .form-control:hover,
-.teaching-create-card-body .form-select:hover {
+.teaching-edit-card-body .form-control:hover,
+.teaching-edit-card-body .form-select:hover {
     border-color: #bdc9d6;
 }
 
-.teaching-create-card-body .form-control:focus,
-.teaching-create-card-body .form-select:focus {
-    border-color: var(--teaching-create-blue);
+.teaching-edit-card-body .form-control:focus,
+.teaching-edit-card-body .form-select:focus {
+    border-color: var(--teaching-edit-blue);
 
     box-shadow: 0 0 0 3px rgba(23, 105, 213, 0.10);
 
     outline: none;
 }
 
-.teaching-create-card-body .form-control::placeholder {
+.teaching-edit-card-body .form-control::placeholder {
     color: #9aa8b8;
 }
 
-.teaching-create-card-body .text-danger {
+.teaching-edit-card-body .text-danger {
     display: block;
 
     margin-top: 5px;
@@ -338,11 +338,11 @@
    FORM GROUP SPACING
    ========================================================= */
 
-.teaching-create-card-body .mb-3 {
+.teaching-edit-card-body .mb-3 {
     margin-bottom: 18px !important;
 }
 
-.teaching-create-card-body .mb-4 {
+.teaching-edit-card-body .mb-4 {
     margin-bottom: 22px !important;
 }
 
@@ -351,7 +351,7 @@
    ACTIONS
    ========================================================= */
 
-.teaching-form-actions {
+.teaching-edit-form-actions {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -361,11 +361,16 @@
     margin-top: 25px;
     padding-top: 20px;
 
-    border-top: 1px solid var(--teaching-create-border);
+    border-top: 1px solid var(--teaching-edit-border);
 }
 
-.teaching-cancel-button,
-.teaching-save-button {
+
+/* =========================================================
+   BUTTON BASE
+   ========================================================= */
+
+.teaching-edit-cancel-button,
+.teaching-edit-save-button {
     min-height: 42px;
 
     display: inline-flex;
@@ -395,19 +400,19 @@
 
 
 /* =========================================================
-   CANCEL
+   CANCEL BUTTON
    ========================================================= */
 
-.teaching-cancel-button {
-    color: var(--teaching-create-text-soft);
+.teaching-edit-cancel-button {
+    color: var(--teaching-edit-text-soft);
 
     background: #ffffff;
 
-    border: 1px solid var(--teaching-create-border-dark);
+    border: 1px solid var(--teaching-edit-border-dark);
 }
 
-.teaching-cancel-button:hover {
-    color: var(--teaching-create-text);
+.teaching-edit-cancel-button:hover {
+    color: var(--teaching-edit-text);
 
     background: #f5f7fa;
 
@@ -418,46 +423,48 @@
 
 
 /* =========================================================
-   SAVE
+   SAVE BUTTON
    ========================================================= */
 
-.teaching-save-button {
+.teaching-edit-save-button {
     color: #ffffff;
 
-    background: var(--teaching-create-navy);
+    background: var(--teaching-edit-navy);
 
-    border: 1px solid var(--teaching-create-navy);
+    border: 1px solid var(--teaching-edit-navy);
 }
 
-.teaching-save-button svg {
+.teaching-edit-save-button svg {
     width: 16px;
     height: 16px;
 }
 
-.teaching-save-button:hover {
+.teaching-edit-save-button:hover {
     color: #ffffff;
 
-    background: var(--teaching-create-navy-2);
+    background: var(--teaching-edit-navy-2);
 
-    border-color: var(--teaching-create-navy-2);
+    border-color: var(--teaching-edit-navy-2);
 
     transform: translateY(-1px);
 }
 
-.teaching-save-button:active,
-.teaching-cancel-button:active {
+.teaching-edit-save-button:active,
+.teaching-edit-cancel-button:active {
     transform: translateY(0);
 }
 
 
 /* =========================================================
-   DISABLED
+   DISABLED FORM
    ========================================================= */
 
-.teaching-create-card-body .form-control:disabled,
-.teaching-create-card-body .form-select:disabled {
+.teaching-edit-card-body .form-control:disabled,
+.teaching-edit-card-body .form-select:disabled {
     background: #f3f6f9;
+
     color: #8a98a8;
+
     cursor: not-allowed;
 }
 
@@ -468,56 +475,58 @@
 
 @media (max-width: 768px) {
 
-    .teaching-create-page {
+    .teaching-edit-page {
         padding: 8px 6px 30px;
     }
 
-    .teaching-create-header {
+    .teaching-edit-header {
         min-height: auto;
+
         padding: 24px 22px;
 
         border-radius: 7px;
     }
 
-    .teaching-create-header-content {
+    .teaching-edit-header-content {
         align-items: flex-start;
     }
 
-    .teaching-create-title-area h1 {
+    .teaching-edit-title-area h1 {
         font-size: 23px;
     }
 
-    .teaching-create-title-area p {
+    .teaching-edit-title-area p {
         font-size: 12px;
     }
 
-    .teaching-create-hero-icon {
+    .teaching-edit-hero-icon {
         width: 55px;
         height: 55px;
+
         flex-basis: 55px;
     }
 
-    .teaching-create-hero-icon svg {
+    .teaching-edit-hero-icon svg {
         width: 29px;
         height: 29px;
     }
 
-    .teaching-create-card-header {
+    .teaching-edit-card-header {
         padding: 18px 20px;
     }
 
-    .teaching-create-card-body {
+    .teaching-edit-card-body {
         padding: 20px;
     }
 
-    .teaching-form-actions {
+    .teaching-edit-form-actions {
         align-items: stretch;
 
         flex-direction: column-reverse;
     }
 
-    .teaching-cancel-button,
-    .teaching-save-button {
+    .teaching-edit-cancel-button,
+    .teaching-edit-save-button {
         width: 100%;
     }
 }
@@ -525,68 +534,70 @@
 
 @media (max-width: 576px) {
 
-    .teaching-create-header {
+    .teaching-edit-header {
         padding: 21px 18px;
     }
 
-    .teaching-create-header-content {
+    .teaching-edit-header-content {
         gap: 15px;
     }
 
-    .teaching-create-label {
+    .teaching-edit-label {
         font-size: 9px;
         letter-spacing: 1.3px;
     }
 
-    .teaching-create-title-area h1 {
+    .teaching-edit-title-area h1 {
         font-size: 21px;
     }
 
-    .teaching-create-title-area p {
+    .teaching-edit-title-area p {
         margin-top: 7px;
 
         font-size: 11px;
         line-height: 1.55;
     }
 
-    .teaching-create-hero-icon {
+    .teaching-edit-hero-icon {
         display: none;
     }
 
-    .teaching-create-card-header {
+    .teaching-edit-card-header {
         gap: 11px;
+
         padding: 16px;
     }
 
-    .teaching-create-card-icon {
+    .teaching-edit-card-icon {
         width: 40px;
         height: 40px;
+
         flex-basis: 40px;
     }
 
-    .teaching-create-card-icon svg {
+    .teaching-edit-card-icon svg {
         width: 19px;
         height: 19px;
     }
 
-    .teaching-create-card-header h2 {
+    .teaching-edit-card-header h2 {
         font-size: 14px;
     }
 
-    .teaching-create-card-header p {
+    .teaching-edit-card-header p {
         font-size: 11px;
     }
 
-    .teaching-create-card-body {
+    .teaching-edit-card-body {
         padding: 17px 16px;
     }
 
-    .teaching-create-card-body .form-label {
+    .teaching-edit-card-body .form-label {
         font-size: 11px;
     }
 
-    .teaching-create-card-body .form-control,
-    .teaching-create-card-body .form-select {
+    .teaching-edit-card-body .form-control,
+    .teaching-edit-card-body .form-select {
         min-height: 42px;
 
         font-size: 12px;

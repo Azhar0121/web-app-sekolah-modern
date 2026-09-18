@@ -11,24 +11,57 @@
     {{-- HEADER --}}
     <div class="ppdb-header">
 
-        <div class="ppdb-header-content">
 
-            <span class="ppdb-label">
-                ADMINISTRATOR
-            </span>
+    <div class="ppdb-header-content">
 
-            <h1>
-                Kelola Pendaftar PPDB
-            </h1>
+        <span class="ppdb-label">
+            ADMINISTRATOR
+        </span>
 
-            <p>
-                Kelola, pantau, dan verifikasi data pendaftar
-                PPDB sekolah melalui halaman administrasi.
-            </p>
+        <h1>
+            Kelola Pendaftar PPDB
+        </h1>
+
+        <p>
+            Kelola, pantau, dan verifikasi data pendaftar
+            PPDB sekolah melalui halaman administrasi.
+        </p>
+
+    </div>
+
+    <div class="ppdb-header-info">
+
+        <div class="ppdb-header-icon">
+
+            <svg
+                width="30"
+                height="30"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="8" y1="13" x2="16" y2="13"></line>
+                <line x1="8" y1="17" x2="14" y2="17"></line>
+                <line x1="8" y1="9" x2="9" y2="9"></line>
+            </svg>
 
         </div>
 
+        <div class="ppdb-header-info-text">
+            <strong>PPDB Online</strong>
+            <span>Penerimaan Peserta Didik Baru</span>
+        </div>
+
     </div>
+
+
+    </div>
+
 
 
     {{-- FILTER --}}

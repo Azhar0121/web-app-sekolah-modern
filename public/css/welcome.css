@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 /* =========================================================
    HOME SEKOLAH
    MODERN INSTITUTIONAL — MATCHED WITH CURRENT BLADE
@@ -106,6 +107,18 @@
     z-index: 2;
 }
 
+html,
+body {
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+button,
+input,
+textarea,
+select,
+option {
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
 
 /* =========================================================
    HERO

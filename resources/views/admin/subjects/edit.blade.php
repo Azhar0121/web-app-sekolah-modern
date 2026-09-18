@@ -1,4 +1,3 @@
-blade
 @extends('layouts.admin')
 
 @section('title', 'Edit Mata Pelajaran')
@@ -14,8 +13,10 @@ blade
 
         <div class="subject-edit-header-content">
 
-            <div>
-                <span class="subject-edit-label">KELOLA MATA PELAJARAN</span>
+            <div class="subject-edit-title-area">
+                <span class="subject-edit-label">
+                    KELOLA MATA PELAJARAN
+                </span>
 
                 <h1>Edit Mata Pelajaran</h1>
 
@@ -24,10 +25,15 @@ blade
                 </p>
             </div>
 
-            <a href="{{ route('admin.subjects.index') }}" class="subject-back-button">
-                <span class="back-icon">←</span>
-                Kembali
-            </a>
+            {{-- ICON MATA PELAJARAN --}}
+            <div class="subject-edit-header-icon" aria-hidden="true">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="1.7"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                </svg>
+            </div>
 
         </div>
 
@@ -41,7 +47,7 @@ blade
         <div class="subject-edit-card-header">
 
             <div class="subject-edit-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none"
                      stroke="currentColor" stroke-width="2"
                      stroke-linecap="round" stroke-linejoin="round">
                     <path d="M12 20h9"></path>
@@ -81,7 +87,7 @@ blade
 
                     <button type="submit" class="subject-save-button">
 
-                        <svg width="17" height="17"
+                        <svg width="16" height="16"
                              viewBox="0 0 24 24"
                              fill="none"
                              stroke="currentColor"
@@ -108,4 +114,3 @@ blade
 </div>
 
 @endsection
-

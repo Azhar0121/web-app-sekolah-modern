@@ -1,0 +1,426 @@
+css
+/* =========================================================
+   ADMIN SIDEBAR
+   MODERN SCHOOL — NAVY
+   ========================================================= */
+
+:root {
+    --sidebar-navy: #071b35;
+    --sidebar-navy-2: #0b294d;
+
+    --sidebar-text: #10223d;
+    --sidebar-text-soft: #66758a;
+
+    --sidebar-white: #ffffff;
+    --sidebar-bg: #ffffff;
+
+    --sidebar-border: #dbe5f0;
+    --sidebar-hover: #071b35;
+
+    --sidebar-radius: 5px;
+}
+
+
+/* =========================================================
+   GLOBAL LAYOUT
+   ========================================================= */
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    overflow: hidden;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+
+/* =========================================================
+   APP SHELL
+   ========================================================= */
+
+.app-shell {
+    display: flex;
+    align-items: stretch;
+
+    width: 100%;
+    height: calc(100vh - 58px);
+    min-height: 0;
+
+    background: #f5f8fc;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.app-sidebar {
+    width: 225px;
+    min-width: 225px;
+    height: calc(100vh - 58px);
+
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 10px 9px 14px;
+
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--sidebar-border);
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+}
+
+
+/* Chrome / Edge scrollbar */
+
+.app-sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.app-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.app-sidebar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+.app-sidebar::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.app-sidebar nav {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 1px !important;
+}
+
+
+/* =========================================================
+   GROUP LABEL
+   ========================================================= */
+
+.sidebar-group-label {
+    margin: 13px 7px 5px;
+
+    color: var(--sidebar-text-soft);
+
+    font-size: 8.5px;
+    font-weight: 800;
+
+    line-height: 1.3;
+
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   SIDEBAR LINK
+   ========================================================= */
+
+.sidebar-link {
+    position: relative;
+
+    width: 100%;
+    min-height: 35px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 7px 9px;
+
+    border-radius: var(--sidebar-radius);
+
+    background: transparent;
+
+    color: var(--sidebar-text);
+
+    text-decoration: none;
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 10.5px;
+    font-weight: 600;
+
+    line-height: 1.3;
+
+    transition:
+        background-color 0.15s ease,
+        color 0.15s ease;
+}
+
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+.sidebar-link svg {
+    width: 16px;
+    height: 16px;
+
+    flex: 0 0 16px;
+
+    color: #718096;
+
+    opacity: 0.9;
+
+    transition:
+        color 0.15s ease,
+        opacity 0.15s ease;
+}
+
+
+/* =========================================================
+   TEXT
+   ========================================================= */
+
+.sidebar-link span {
+    min-width: 0;
+
+    color: inherit;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.sidebar-link:hover {
+    background: var(--sidebar-navy);
+    color: var(--sidebar-white);
+}
+
+.sidebar-link:hover svg {
+    color: var(--sidebar-white);
+    opacity: 1;
+}
+
+
+/* =========================================================
+   ACTIVE
+   ========================================================= */
+
+.sidebar-link.active {
+    background: var(--sidebar-navy);
+    color: var(--sidebar-white);
+
+    font-weight: 700;
+}
+
+.sidebar-link.active svg {
+    color: var(--sidebar-white);
+    opacity: 1;
+}
+
+
+/* =========================================================
+   ACTIVE INDICATOR
+   ========================================================= */
+
+.sidebar-link.active::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 7px;
+    bottom: 7px;
+
+    width: 3px;
+
+    background: #ffffff;
+
+    border-radius: 0 2px 2px 0;
+}
+
+
+/* =========================================================
+   GROUP SPACING
+   ========================================================= */
+
+.sidebar-group-label + .sidebar-link {
+    margin-top: 1px;
+}
+
+.sidebar-link + .sidebar-link {
+    margin-top: 1px;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.app-main {
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+
+    height: calc(100vh - 58px);
+
+    padding: 20px;
+
+    background: #f5f8fc;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   SIDEBAR BACKDROP
+   ========================================================= */
+
+.sidebar-backdrop {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    background: rgba(7, 27, 53, 0.42);
+
+    z-index: 1035;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+
+    body {
+        overflow: hidden;
+    }
+
+    .app-sidebar {
+        position: fixed;
+
+        top: 0;
+        left: 0;
+
+        width: 235px;
+        min-width: 235px;
+        height: 100vh;
+
+        z-index: 1040;
+
+        transform: translateX(-100%);
+
+        padding-top: 14px;
+
+        box-shadow:
+            8px 0 24px rgba(16, 34, 61, 0.10);
+
+        transition: transform 0.2s ease;
+    }
+
+    .app-sidebar.is-open {
+        transform: translateX(0);
+    }
+
+    .sidebar-backdrop.is-open {
+        display: block;
+    }
+
+    .app-shell {
+        height: calc(100vh - 58px);
+    }
+
+    .app-main {
+        width: 100%;
+        height: calc(100vh - 58px);
+
+        padding: 18px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767.98px) {
+
+    .app-sidebar {
+        width: 245px;
+        min-width: 245px;
+    }
+
+    .app-main {
+        padding: 15px;
+    }
+
+    .sidebar-group-label {
+        margin-top: 12px;
+    }
+
+    .sidebar-link {
+        min-height: 36px;
+
+        padding: 7px 9px;
+
+        font-size: 10px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .app-sidebar {
+        width: 235px;
+        min-width: 235px;
+    }
+
+    .app-main {
+        padding: 12px;
+    }
+}
+
+.sidebar-link:hover {
+    background: #071b35;
+    color: #ffffff;
+}
+
+.sidebar-link:hover svg {
+    color: #ffffff;
+}
+
+.sidebar-link.active {
+    background: #071b35;
+    color: #ffffff;
+}
+
+.sidebar-link.active svg {
+    color: #ffffff;
+}

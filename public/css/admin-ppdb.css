@@ -1,24 +1,45 @@
 /* =========================================================
    WEB SEKOLAH MODERN
    ADMIN - KELOLA PPDB
+   PROFESSIONAL BOOTSTRAP STYLE
+   FONT: PLUS JAKARTA SANS
    ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
     --ppdb-navy: #071b35;
     --ppdb-navy-2: #0b294d;
+
     --ppdb-blue: #1769d5;
-    --ppdb-blue-dark: #0d4fa8;
-    --ppdb-blue-light: #eef6ff;
+    --ppdb-blue-dark: #125bbd;
 
     --ppdb-text: #172033;
-    --ppdb-text-soft: #64748b;
+    --ppdb-text-soft: #66758a;
 
-    --ppdb-border: #d8e2ee;
-    --ppdb-bg: #f5f8fc;
+    --ppdb-border: #dbe5f0;
+    --ppdb-border-dark: #cbd7e5;
+
+    --ppdb-bg: #f7f9fc;
     --ppdb-white: #ffffff;
 
-    --ppdb-radius: 15px;
-    --ppdb-shadow: 0 8px 25px rgba(15, 35, 65, 0.07);
+    --ppdb-gray-light: #f4f6f8;
+    --ppdb-gray: #e9edf2;
+    --ppdb-gray-text: #536174;
+
+    --ppdb-radius: 8px;
+    --ppdb-shadow: 0 2px 8px rgba(16, 34, 61, 0.06);
+}
+
+
+/* =========================================================
+   GLOBAL FONT
+   ========================================================= */
+
+.ppdb-page,
+.ppdb-page *,
+.ppdb-page *::before,
+.ppdb-page *::after {
+    font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 
@@ -28,8 +49,9 @@
 
 .ppdb-page {
     width: 100%;
-    padding: 8px 18px 45px;
+    padding: 8px 20px 40px;
     color: var(--ppdb-text);
+    font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 
@@ -39,109 +61,62 @@
 
 .ppdb-header {
     position: relative;
-
     width: 100%;
-    margin-bottom: 24px;
-    padding: 30px 34px;
-
+    margin-bottom: 20px;
+    padding: 27px 30px;
+    border: 1px solid var(--ppdb-navy-2);
     border-radius: var(--ppdb-radius);
-
-    background:
-        linear-gradient(
-            135deg,
-            #071b35 0%,
-            #0b315d 55%,
-            #1769b8 100%
-        );
-
-    box-shadow:
-        0 10px 30px rgba(7, 27, 53, 0.16);
-
+    background: var(--ppdb-navy);
+    box-shadow: 0 3px 10px rgba(7, 27, 53, 0.10);
     overflow: hidden;
+    font-family: "Plus Jakarta Sans", sans-serif;
 }
 
-
-.ppdb-header::before {
-    content: "";
-
-    position: absolute;
-
-    width: 250px;
-    height: 250px;
-
-    right: -85px;
-    top: -125px;
-
-    border-radius: 50%;
-
-    background: rgba(255, 255, 255, 0.075);
-}
-
-
+.ppdb-header::before,
 .ppdb-header::after {
-    content: "";
-
-    position: absolute;
-
-    width: 160px;
-    height: 160px;
-
-    right: 115px;
-    bottom: -115px;
-
-    border-radius: 50%;
-
-    background: rgba(255, 255, 255, 0.045);
+    display: none;
 }
-
 
 .ppdb-header-content {
     position: relative;
-    z-index: 2;
+    z-index: 1;
+    font-family: "Plus Jakarta Sans", sans-serif;
 }
-
 
 .ppdb-label {
     display: inline-flex;
     align-items: center;
-
-    margin-bottom: 10px;
-    padding: 6px 11px;
-
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    border-radius: 7px;
-
-    background: rgba(255, 255, 255, 0.10);
-
-    color: #e1efff;
-
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1.2px;
+    margin-bottom: 9px;
+    padding: 5px 9px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.4;
 }
-
 
 .ppdb-header h1 {
     margin: 0;
-
     color: #ffffff;
-
-    font-size: 27px;
-    font-weight: 750;
-    line-height: 1.25;
-    letter-spacing: -0.4px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.3px;
 }
-
 
 .ppdb-header p {
     max-width: 720px;
-
-    margin: 9px 0 0;
-
-    color: rgba(255, 255, 255, 0.78);
-
-    font-size: 14px;
-    line-height: 1.7;
+    margin: 8px 0 0;
+    color: #d7dee8;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.65;
 }
 
 
@@ -153,63 +128,60 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
-
+    gap: 24px;
     width: 100%;
-    margin-bottom: 20px;
-    padding: 18px 21px;
-
+    margin-bottom: 18px;
+    padding: 17px 19px;
     border: 1px solid var(--ppdb-border);
-    border-radius: 13px;
-
+    border-radius: var(--ppdb-radius);
     background: var(--ppdb-white);
-
     box-shadow: var(--ppdb-shadow);
+    font-family: "Plus Jakarta Sans", sans-serif;
 }
-
 
 .ppdb-filter-info {
     display: flex;
     align-items: center;
-    gap: 12px;
-
+    gap: 11px;
     min-width: 0;
+    font-family: "Plus Jakarta Sans", sans-serif;
 }
 
+
+/* =========================================================
+   FILTER ICON
+   ========================================================= */
 
 .ppdb-filter-icon {
-    flex: 0 0 40px;
-
     display: flex;
+    flex: 0 0 36px;
     align-items: center;
     justify-content: center;
-
-    width: 40px;
-    height: 40px;
-
-    border-radius: 10px;
-
-    background: #e5f1ff;
-    color: var(--ppdb-blue);
+    width: 36px;
+    height: 36px;
+    border: 1px solid #cbd3dc;
+    border-radius: 7px;
+    background: var(--ppdb-gray-light);
+    color: var(--ppdb-navy);
+    font-family: "Plus Jakarta Sans", sans-serif;
 }
-
 
 .ppdb-filter-title {
     margin: 0;
-
     color: var(--ppdb-text);
-
-    font-size: 13px;
-    font-weight: 750;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 12.5px;
+    font-weight: 700;
+    line-height: 1.4;
 }
-
 
 .ppdb-filter-description {
     margin: 3px 0 0;
-
     color: var(--ppdb-text-soft);
-
-    font-size: 11.5px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.5;
 }
 
 
@@ -219,52 +191,39 @@
 
 .ppdb-filter-form {
     flex: 0 0 auto;
+    font-family: "Plus Jakarta Sans", sans-serif;
 }
-
 
 .ppdb-filter-form form {
     margin: 0;
+    font-family: "Plus Jakarta Sans", sans-serif;
 }
-
 
 .ppdb-status-select {
-    width: 270px;
-    min-height: 44px;
-
-    padding: 0 38px 0 14px;
-
-    border: 1px solid #c6d4e4;
-    border-radius: 9px;
-
+    width: 265px;
+    min-height: 40px;
+    padding: 0 35px 0 12px;
+    border: 1px solid var(--ppdb-border-dark);
+    border-radius: 6px;
     outline: none;
-
     background-color: #ffffff;
     color: #263449;
-
-    font-family: inherit;
-    font-size: 12.5px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 11.5px;
     font-weight: 600;
-
     cursor: pointer;
-
     transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease;
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
 }
-
 
 .ppdb-status-select:hover {
-    border-color: #9fb6d0;
-    background: #fbfdff;
+    border-color: #9aa8b8;
 }
 
-
 .ppdb-status-select:focus {
-    border-color: var(--ppdb-blue);
-
-    box-shadow:
-        0 0 0 3px rgba(23, 105, 213, 0.12);
+    border-color: var(--ppdb-navy-2);
+    box-shadow: 0 0 0 3px rgba(11, 41, 77, 0.08);
 }
 
 
@@ -274,15 +233,12 @@
 
 .ppdb-table-card {
     width: 100%;
-
-    border: 1px solid #cfdbe8;
+    border: 1px solid var(--ppdb-border);
     border-radius: var(--ppdb-radius);
-
     background: var(--ppdb-white);
-
     box-shadow: var(--ppdb-shadow);
-
     overflow: hidden;
+    font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 
@@ -293,6 +249,7 @@
 .ppdb-table-wrapper {
     width: 100%;
     overflow-x: auto;
+    font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 
@@ -303,39 +260,42 @@
 .ppdb-table {
     width: 100%;
     margin: 0;
-
     border-collapse: separate;
     border-spacing: 0;
-
     table-layout: auto;
+    font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 
 /* =========================================================
-   TABLE HEADER - BOLD
+   TABLE HEADER
    ========================================================= */
 
-.ppdb-table thead th {
-    padding: 16px 19px;
-
-    border-bottom: 2px solid #1769d5;
-
-    background: #0b294d;
-
-    color: #ffffff;
-
-    font-size: 11.5px;
-    font-weight: 800;
-    letter-spacing: 0.2px;
-
-    white-space: nowrap;
+.ppdb-table thead {
+    font-family: "Plus Jakarta Sans", sans-serif;
 }
 
+.ppdb-table thead tr {
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
 
-/* Garis tipis antar header */
+.ppdb-table thead th {
+    padding: 13px 17px;
+    border-bottom: 1px solid var(--ppdb-navy);
+    background: var(--ppdb-navy-2);
+    color: #ffffff;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.1px;
+    line-height: 1.4;
+    white-space: nowrap;
+    text-align: left;
+    vertical-align: middle;
+}
 
 .ppdb-table thead th + th {
-    border-left: 1px solid rgba(255, 255, 255, 0.10);
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 
@@ -343,38 +303,34 @@
    TABLE BODY
    ========================================================= */
 
+.ppdb-table tbody {
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.ppdb-table tbody tr {
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
 .ppdb-table tbody td {
-    padding: 16px 19px;
-
-    border-bottom: 1px solid #dce5ef;
-
+    padding: 14px 17px;
+    border-bottom: 1px solid #e5ebf2;
     background: #ffffff;
-
     color: #344256;
-
-    font-size: 12.5px;
-
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 11.5px;
+    font-weight: 500;
+    line-height: 1.5;
     vertical-align: middle;
-
     white-space: nowrap;
 }
 
-
-/* Zebra rows */
-
 .ppdb-table tbody tr:nth-child(even) td {
-    background: #f4f8fd;
+    background: #fafbfd;
 }
-
-
-/* Hover */
 
 .ppdb-table tbody tr:hover td {
-    background: #e7f2ff;
+    background: #f3f5f7;
 }
-
-
-/* Last row */
 
 .ppdb-table tbody tr:last-child td {
     border-bottom: none;
@@ -388,24 +344,15 @@
 .ppdb-registration-code {
     display: inline-flex;
     align-items: center;
-
-    padding: 6px 9px;
-
-    border: 1px solid #a9c9e9;
-    border-radius: 7px;
-
-    background: #e5f1ff;
-
-    color: #0d4f91;
-
-    font-family:
-        "SFMono-Regular",
-        Consolas,
-        "Liberation Mono",
-        monospace;
-
-    font-size: 11px;
+    padding: 5px 8px;
+    border: 1px solid #d5dce4;
+    border-radius: 5px;
+    background: #f5f7f9;
+    color: var(--ppdb-navy);
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 10.5px;
     font-weight: 700;
+    line-height: 1.3;
 }
 
 
@@ -415,9 +362,10 @@
 
 .ppdb-name {
     color: #172b44;
-
-    font-size: 13px;
-    font-weight: 750;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.5;
 }
 
 
@@ -427,8 +375,10 @@
 
 .ppdb-school {
     color: #526176;
-
-    font-size: 12.5px;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 11.5px;
+    font-weight: 500;
+    line-height: 1.5;
 }
 
 
@@ -438,8 +388,31 @@
 
 .ppdb-date {
     color: #526176;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.5;
+}
 
-    font-size: 12px;
+
+/* =========================================================
+   MAJOR BADGE
+   Override Bootstrap badge
+   ========================================================= */
+
+.ppdb-table .badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 25px;
+    padding: 4px 8px !important;
+    border: 1px solid #d5dce4 !important;
+    border-radius: 5px !important;
+    background: #f4f6f8 !important;
+    color: #465568 !important;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    line-height: 1.3;
 }
 
 
@@ -450,21 +423,16 @@
 .ppdb-status-badge {
     display: inline-flex;
     align-items: center;
-
-    min-height: 28px;
-
-    padding: 5px 11px;
-
-    border: 1px solid #9fc3e8;
-    border-radius: 7px;
-
-    background: #e6f2ff;
-
-    color: #0d4f91;
-
-    font-size: 10.5px;
-    font-weight: 750;
-
+    min-height: 25px;
+    padding: 4px 9px;
+    border: 1px solid #d5dce4;
+    border-radius: 5px;
+    background: #f4f6f8;
+    color: #465568;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.3;
     white-space: nowrap;
 }
 
@@ -475,62 +443,59 @@
 
 .ppdb-action-column {
     width: 1%;
-
     text-align: center !important;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
 }
-
 
 .ppdb-action {
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 100%;
+    font-family: "Plus Jakarta Sans", sans-serif;
 }
 
+
+/* =========================================================
+   DETAIL BUTTON
+   ========================================================= */
 
 .ppdb-detail-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
-    min-width: 70px;
-    min-height: 34px;
-
-    padding: 0 13px;
-
-    border: 1px solid #9bbce0;
-    border-radius: 8px;
-
-    background: #ffffff;
-    color: #14589b;
-
-    font-size: 11.5px;
-    font-weight: 750;
-
+    min-width: 64px;
+    min-height: 32px;
+    padding: 0 11px;
+    border: 1px solid var(--ppdb-navy-2);
+    border-radius: 5px;
+    background: var(--ppdb-navy-2);
+    color: #ffffff;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 10.5px;
+    font-weight: 700;
+    line-height: 1;
     text-decoration: none;
-
+    box-shadow: none;
     transition:
-        background 0.2s ease,
-        border-color 0.2s ease,
-        color 0.2s ease,
-        box-shadow 0.2s ease,
-        transform 0.15s ease;
+        background 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
 }
 
-
 .ppdb-detail-button:hover {
-    border-color: #1769d5;
-
-    background: #1769d5;
+    border-color: var(--ppdb-navy);
+    background: var(--ppdb-navy);
     color: #ffffff;
-
     text-decoration: none;
+}
 
-    box-shadow:
-        0 4px 12px rgba(23, 105, 213, 0.23);
-
-    transform: translateY(-1px);
+.ppdb-detail-button:focus {
+    border-color: var(--ppdb-navy);
+    background: var(--ppdb-navy);
+    color: #ffffff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(7, 27, 53, 0.10);
 }
 
 
@@ -539,30 +504,26 @@
    ========================================================= */
 
 .ppdb-empty {
-    padding: 52px 20px !important;
-
-    color: #7c8a9d !important;
-
-    font-size: 13px !important;
-
+    padding: 48px 20px !important;
+    color: #7a889a !important;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 11.5px !important;
+    font-weight: 500;
     text-align: center;
 }
-
 
 .ppdb-empty-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    width: 48px;
-    height: 48px;
-
-    margin: 0 auto 11px;
-
-    border-radius: 12px;
-
-    background: #edf3f9;
-    color: #718198;
+    width: 44px;
+    height: 44px;
+    margin: 0 auto 10px;
+    border: 1px solid #d5dce4;
+    border-radius: 7px;
+    background: #f4f6f8;
+    color: var(--ppdb-navy);
+    font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 
@@ -571,74 +532,63 @@
    ========================================================= */
 
 .ppdb-pagination {
-    padding: 18px 21px;
-
-    border-top: 1px solid #dce5ef;
-
+    padding: 14px 18px;
+    border-top: 1px solid #e3e9f1;
     background: #ffffff;
+    font-family: "Plus Jakarta Sans", sans-serif;
 }
-
 
 .ppdb-pagination nav {
     display: flex;
     justify-content: flex-end;
+    font-family: "Plus Jakarta Sans", sans-serif;
 }
-
 
 .ppdb-pagination .pagination {
+    display: flex;
+    align-items: center;
     margin: 0;
-
-    gap: 5px;
+    gap: 4px;
+    font-family: "Plus Jakarta Sans", sans-serif;
 }
-
 
 .ppdb-pagination .page-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
-    min-width: 34px;
-    height: 34px;
-
-    padding: 0 9px;
-
-    border: 1px solid #d1dce8;
-    border-radius: 7px !important;
-
+    min-width: 32px;
+    height: 32px;
+    padding: 0 8px;
+    border: 1px solid #d2dce7;
+    border-radius: 5px !important;
     background: #ffffff;
     color: #526176;
-
-    font-size: 11.5px;
-    font-weight: 650;
-
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 10.5px;
+    font-weight: 600;
+    line-height: 1;
     box-shadow: none;
-
     transition:
-        background 0.2s ease,
-        border-color 0.2s ease,
-        color 0.2s ease;
+        background 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
 }
-
 
 .ppdb-pagination .page-link:hover {
-    border-color: #9ebfe2;
-
-    background: #eaf4ff;
-    color: var(--ppdb-blue);
+    border-color: #aab5c1;
+    background: #f3f5f7;
+    color: var(--ppdb-navy);
 }
 
-
 .ppdb-pagination .page-item.active .page-link {
-    border-color: var(--ppdb-blue);
-
-    background: var(--ppdb-blue);
+    border-color: var(--ppdb-navy-2);
+    background: var(--ppdb-navy-2);
     color: #ffffff;
 }
 
-
 .ppdb-pagination .page-item.disabled .page-link {
-    background: #f5f8fb;
-    color: #a0acba;
+    background: #f7f9fb;
+    color: #a2adba;
 }
 
 
@@ -649,27 +599,24 @@
 @media (max-width: 1000px) {
 
     .ppdb-page {
-        padding-left: 14px;
-        padding-right: 14px;
+        padding-left: 15px;
+        padding-right: 15px;
     }
-
 
     .ppdb-filter-card {
         align-items: flex-start;
         flex-direction: column;
+        gap: 15px;
     }
-
 
     .ppdb-filter-form {
         width: 100%;
     }
 
-
     .ppdb-status-select {
         width: 100%;
         max-width: 340px;
     }
-
 }
 
 
@@ -680,21 +627,18 @@
 @media (max-width: 800px) {
 
     .ppdb-header {
-        padding: 26px 25px;
+        padding: 24px;
     }
-
 
     .ppdb-header h1 {
-        font-size: 24px;
+        font-size: 23px;
     }
-
 
     .ppdb-table thead th,
     .ppdb-table tbody td {
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-left: 14px;
+        padding-right: 14px;
     }
-
 }
 
 
@@ -705,116 +649,97 @@
 @media (max-width: 650px) {
 
     .ppdb-page {
-        padding:
-            5px
-            8px
-            30px;
+        padding: 5px 8px 30px;
     }
-
 
     .ppdb-header {
-        margin-bottom: 18px;
-        padding: 23px 20px;
-
-        border-radius: 13px;
+        margin-bottom: 16px;
+        padding: 22px 19px;
+        border-radius: 7px;
     }
-
 
     .ppdb-label {
-        font-size: 10px;
+        margin-bottom: 8px;
+        font-size: 9px;
     }
-
 
     .ppdb-header h1 {
-        font-size: 21px;
+        font-size: 20px;
     }
-
 
     .ppdb-header p {
-        margin-top: 8px;
-
-        font-size: 12px;
+        margin-top: 7px;
+        font-size: 11.5px;
     }
-
 
     .ppdb-filter-card {
-        margin-bottom: 17px;
-        padding: 16px;
+        margin-bottom: 15px;
+        padding: 15px;
+        border-radius: 7px;
     }
-
 
     .ppdb-filter-info {
         align-items: flex-start;
     }
 
-
     .ppdb-filter-icon {
-        flex-basis: 36px;
-
-        width: 36px;
-        height: 36px;
+        flex-basis: 34px;
+        width: 34px;
+        height: 34px;
     }
-
 
     .ppdb-status-select {
         width: 100%;
         max-width: none;
     }
 
-
     .ppdb-table-card {
-        border-radius: 12px;
+        border-radius: 7px;
     }
 
-
     .ppdb-table thead th {
-        padding: 14px;
+        padding: 12px;
+        font-size: 9.5px;
+    }
 
+    .ppdb-table tbody td {
+        padding: 12px;
         font-size: 10.5px;
     }
 
-
-    .ppdb-table tbody td {
-        padding: 14px;
-
-        font-size: 11.5px;
-    }
-
-
     .ppdb-registration-code {
-        font-size: 10px;
+        font-size: 9.5px;
     }
-
 
     .ppdb-name {
-        font-size: 12px;
-    }
-
-
-    .ppdb-school {
-        font-size: 11.5px;
-    }
-
-
-    .ppdb-date {
         font-size: 11px;
     }
 
+    .ppdb-school {
+        font-size: 10.5px;
+    }
 
-    .ppdb-status-badge {
+    .ppdb-date {
         font-size: 10px;
     }
 
-
-    .ppdb-pagination {
-        padding: 15px;
+    .ppdb-status-badge {
+        font-size: 9px;
     }
 
+    .ppdb-detail-button {
+        min-width: 60px;
+        min-height: 30px;
+        font-size: 9.5px;
+    }
+
+    .ppdb-pagination {
+        padding: 13px;
+    }
 
     .ppdb-pagination nav {
         justify-content: center;
     }
-
 }
 
 
@@ -825,27 +750,76 @@
 @media (max-width: 400px) {
 
     .ppdb-header h1 {
-        font-size: 19px;
+        font-size: 18px;
     }
-
 
     .ppdb-filter-title {
-        font-size: 12px;
+        font-size: 11.5px;
     }
-
 
     .ppdb-filter-description {
-        font-size: 10.5px;
+        font-size: 10px;
     }
-
 
     .ppdb-table thead th {
-        padding: 12px;
+        padding: 11px;
     }
-
 
     .ppdb-table tbody td {
-        padding: 12px;
+        padding: 11px;
     }
+}
 
+.ppdb-header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 35px;
+}
+
+.ppdb-header-info {
+display: flex;
+align-items: center;
+gap: 13px;
+flex: 0 0 auto;
+min-width: 235px;
+padding: 13px 15px;
+border: 1px solid rgba(255, 255, 255, 0.14);
+border-radius: 7px;
+background: rgba(255, 255, 255, 0.06);
+}
+
+.ppdb-header-icon {
+display: flex;
+align-items: center;
+justify-content: center;
+flex: 0 0 52px;
+width: 52px;
+height: 52px;
+border: 1px solid rgba(255, 255, 255, 0.16);
+border-radius: 7px;
+background: rgba(255, 255, 255, 0.09);
+color: #ffffff;
+}
+
+.ppdb-header-info-text {
+display: flex;
+flex-direction: column;
+gap: 3px;
+}
+
+.ppdb-header-info-text strong {
+color: #ffffff;
+font-family: "Plus Jakarta Sans", sans-serif;
+font-size: 12px;
+font-weight: 700;
+line-height: 1.4;
+}
+
+.ppdb-header-info-text span {
+color: #cbd6e3;
+font-family: "Plus Jakarta Sans", sans-serif;
+font-size: 9.5px;
+font-weight: 500;
+line-height: 1.5;
 }

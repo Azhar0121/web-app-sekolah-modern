@@ -1,247 +1,939 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+
+/* =========================================================
+   PPDB ONLINE
+   BUKTI PENDAFTARAN
+   SEKOLAH MODERN
+   ========================================================= */
+
 :root {
-  --background: #eef4fb;
-  --muted: #62748a;
-  --border: #d8e2ee
+    --navy: #123f61;
+    --navy-dark: #0e3452;
+    --navy-soft: #edf4f9;
+
+    --text: #1d2d3d;
+    --muted: #687887;
+
+    --border: #cfd9e2;
+    --border-dark: #aebdca;
+
+    --white: #ffffff;
+    --background: #f1f4f7;
 }
-body {
-  margin: 0;
-  color: var(--text);
-  background: var(--background)
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
 }
-.print-page {
-  min-height: 100vh;
-  padding: 30px 20px 50px
-}
-.print-toolbar {
-  width: min(820px,100%);
-  margin: 0 auto 18px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px
-}
-.toolbar-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  border-radius: 9px;
-  background: #fff;
-  border: 1px solid var(--border);
-  color: var(--navy);
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 700;
-  transition: .2s ease
-}
-.toolbar-back:hover {
-  border-color: var(--blue);
-  color: var(--blue)
-}
-.toolbar-print {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  padding: 10px 18px;
-  border: none;
-  border-radius: 9px;
-  background: linear-gradient(135deg,var(--navy-2),var(--blue));
-  color: #fff;
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 800;
-  cursor: pointer;
-  box-shadow: 0 8px 18px rgba(23,105,213,.22);
-  transition: .2s ease
-}
-.toolbar-print:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 11px 24px rgba(23,105,213,.28)
-}
-.print-sheet {
-  width: min(820px,100%);
-  margin: 0 auto;
-  padding: 46px 52px;
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  box-shadow: 0 10px 28px rgba(11,40,85,.08)
-}
-.kop-surat {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding-bottom: 18px;
-  border-bottom: 3px solid var(--navy)
-}
-.kop-logo {
-  width: 58px;
-  height: 58px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  background: linear-gradient(135deg,var(--navy),var(--blue));
-  color: #fff;
-  font-size: 24px;
-  font-weight: 800
-}
-.kop-text h1 {
-  margin: 0 0 3px;
-  color: var(--navy);
-  font-size: 19px;
-  font-weight: 800;
-  letter-spacing: .2px
-}
-.kop-text p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 12px
-}
-.doc-title {
-  margin: 22px 0 4px;
-  text-align: center
-}
-.doc-title h2 {
-  margin: 0 0 4px;
-  color: var(--navy);
-  font-size: 18px;
-  font-weight: 800;
-  letter-spacing: .4px;
-  text-transform: uppercase
-}
-.doc-title span {
-  color: var(--muted);
-  font-size: 12px
-}
-.reg-summary {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 14px;
-  margin: 24px 0;
-  padding: 18px 20px;
-  border-radius: 12px;
-  background: var(--blue-light);
-  border: 1px solid #d4e4f6
-}
-.reg-summary div span {
-  display: block;
-  margin-bottom: 4px;
-  color: var(--blue);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: .6px;
-  text-transform: uppercase
-}
-.reg-summary div strong {
-  display: block;
-  color: var(--navy);
-  font-size: 14px;
-  font-weight: 800
-}
-.data-section {
-  margin-top: 22px
-}
-.data-section h3 {
-  margin: 0 0 12px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--border);
-  color: var(--navy);
-  font-size: 13px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: .5px
-}
-.data-table {
-  width: 100%;
-  border-collapse: collapse
-}
-.data-table td {
-  padding: 7px 0;
-  font-size: 13px;
-  vertical-align: top
-}
-.data-table td.label {
-  width: 34%;
-  color: var(--muted)
-}
-.data-table td.sep {
-  width: 14px;
-  color: var(--muted)
-}
-.data-table td.value {
-  color: var(--text);
-  font-weight: 650
-}
-.signature-area {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  margin-top: 46px
-}
-.signature-box {
-  text-align: center
-}
-.signature-box p.role {
-  margin: 0 0 70px;
-  color: var(--muted);
-  font-size: 12px
-}
-.signature-box p.name {
-  margin: 0;
-  padding-top: 6px;
-  border-top: 1px solid var(--text);
-  display: inline-block;
-  min-width: 200px;
-  color: var(--text);
-  font-size: 13px;
-  font-weight: 700
-}
-.doc-footer {
-  margin-top: 34px;
-  padding-top: 16px;
-  border-top: 1px dashed var(--border);
-  color: var(--muted);
-  font-size: 11px;
-  line-height: 1.6;
-  text-align: center
-}
-@media print {
-  body {
-    background: #fff
-  }
-  .print-toolbar,
-  .no-print {
-    display: none !important
-  }
-  .print-page {
-    padding: 0
-  }
-  .print-sheet {
-    width: 100%;
+
+html {
     margin: 0;
-    padding: 10mm 14mm;
-    border: none;
-    border-radius: 0;
-    box-shadow: none
-  }
-  .signature-area {
-    page-break-inside: avoid
-  }
+    padding: 0;
 }
-@media (max-width:700px) {
-  .print-sheet {
-    padding: 30px 24px
-  }
-  .kop-text h1 {
-    font-size: 16px
-  }
-  .reg-summary {
-    grid-template-columns: 1fr
-  }
-  .signature-area {
-    grid-template-columns: 1fr;
-    gap: 40px
-  }
+
+body {
+    margin: 0;
+
+    color: var(--text);
+    background: var(--background);
+
+    font-family: "Plus Jakarta Sans", Arial, sans-serif;
+    font-size: 14px;
+}
+
+.print-page,
+.print-page * {
+    font-family: "Plus Jakarta Sans", Arial, sans-serif;
+}
+
+
+/* =========================================================
+   HALAMAN
+   ========================================================= */
+
+.print-page {
+    min-height: 100vh;
+
+    padding: 34px 20px 50px;
+}
+
+
+/* =========================================================
+   LEMBAR DOKUMEN
+   ========================================================= */
+
+.print-sheet {
+    width: min(850px, 100%);
+
+    margin: 0 auto;
+    padding: 48px 54px 34px;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    box-shadow: 0 8px 24px rgba(15, 39, 71, 0.08);
+}
+
+
+/* =========================================================
+   KOP SURAT
+   ========================================================= */
+
+.kop-surat {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding-bottom: 18px;
+
+    border-bottom: 3px solid var(--navy);
+}
+
+.kop-logo {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 68px;
+
+    width: 68px;
+    height: 68px;
+
+    background: var(--navy);
+
+    border: 1px solid var(--navy-dark);
+
+    border-radius: 6px;
+}
+
+.kop-logo svg {
+    display: block;
+
+    width: 54px;
+    height: 54px;
+}
+
+.kop-text {
+    min-width: 0;
+}
+
+.kop-text h1 {
+    margin: 0 0 5px;
+
+    color: var(--navy);
+
+    font-size: 22px;
+    font-weight: 800;
+
+    line-height: 1.2;
+
+    letter-spacing: 0.3px;
+
+    text-transform: uppercase;
+}
+
+.kop-text p {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   JUDUL DOKUMEN
+   ========================================================= */
+
+.doc-title {
+    margin: 25px 0 5px;
+
+    text-align: center;
+}
+
+.doc-title h2 {
+    margin: 0 0 5px;
+
+    color: var(--navy);
+
+    font-size: 20px;
+    font-weight: 800;
+
+    line-height: 1.3;
+
+    letter-spacing: 0.2px;
+
+    text-transform: uppercase;
+}
+
+.doc-title span {
+    color: var(--muted);
+
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   RINGKASAN PENDAFTARAN
+   ========================================================= */
+
+.reg-summary {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 0;
+
+    margin: 24px 0 28px;
+
+    background: var(--navy-soft);
+
+    border: 1px solid var(--border);
+
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+.reg-summary > div {
+    min-width: 0;
+
+    padding: 14px 16px;
+}
+
+.reg-summary > div + div {
+    border-left: 1px solid var(--border);
+}
+
+.reg-summary div span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.3px;
+
+    text-transform: uppercase;
+}
+
+.reg-summary div strong {
+    display: block;
+
+    color: var(--navy);
+
+    font-size: 14px;
+    font-weight: 800;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   BAGIAN DATA
+   ========================================================= */
+
+.data-section {
+    margin-top: 23px;
+}
+
+.data-section h3 {
+    margin: 0 0 10px;
+
+    padding-bottom: 7px;
+
+    color: var(--navy);
+
+    border-bottom: 1px solid var(--border);
+
+    font-size: 15px;
+    font-weight: 800;
+
+    line-height: 1.3;
+
+    letter-spacing: 0.2px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   TABEL DATA
+   ========================================================= */
+
+.data-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    table-layout: fixed;
+}
+
+.data-table td {
+    padding: 6px 0;
+
+    color: var(--text);
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    vertical-align: top;
+}
+
+.data-table td.label {
+    width: 32%;
+
+    padding-right: 10px;
+
+    color: var(--muted);
+
+    font-weight: 500;
+}
+
+.data-table td.sep {
+    width: 18px;
+
+    color: var(--muted);
+
+    text-align: center;
+}
+
+.data-table td.value {
+    width: auto;
+
+    color: var(--text);
+
+    font-weight: 600;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   TANDA TANGAN
+   ========================================================= */
+
+.signature-area {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 50px;
+
+    margin-top: 55px;
+
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.signature-box {
+    min-width: 0;
+
+    text-align: center;
+}
+
+.signature-box p.role {
+    margin: 0 0 72px;
+
+    color: var(--text);
+
+    font-size: 13px;
+
+    line-height: 1.4;
+}
+
+.signature-box p.name {
+    display: inline-block;
+
+    min-width: 210px;
+
+    margin: 0;
+
+    padding-top: 6px;
+
+    color: var(--text);
+
+    border-top: 1px solid var(--text);
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   FOOTER DOKUMEN
+   ========================================================= */
+
+.doc-footer {
+    margin-top: 36px;
+
+    padding-top: 14px;
+
+    color: var(--muted);
+
+    border-top: 1px dashed var(--border);
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+    text-align: center;
+
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+
+/* =========================================================
+   TOOLBAR
+   ========================================================= */
+
+.print-toolbar {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    width: 100%;
+
+    margin-top: 26px;
+
+    padding-top: 22px;
+
+    border-top: 1px solid var(--border);
+}
+
+
+/* =========================================================
+   TOMBOL KEMBALI
+   ========================================================= */
+
+.toolbar-back {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    min-height: 42px;
+
+    padding: 0 18px;
+
+    color: var(--navy);
+
+    background: #ffffff;
+
+    border: 1px solid var(--border-dark);
+
+    border-radius: 5px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    text-decoration: none;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.toolbar-back:hover {
+    color: #ffffff;
+
+    background: var(--navy);
+
+    border-color: var(--navy);
+}
+
+.toolbar-back span:first-child {
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   TOMBOL CETAK
+   ========================================================= */
+
+.toolbar-print {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    min-height: 42px;
+
+    padding: 0 19px;
+
+    color: #ffffff;
+
+    background: var(--navy);
+
+    border: 1px solid var(--navy);
+
+    border-radius: 5px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.toolbar-print:hover {
+    background: var(--navy-dark);
+
+    border-color: var(--navy-dark);
+}
+
+.toolbar-print svg {
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   PRINT A4
+   ========================================================= */
+
+@media print {
+
+    @page {
+        size: A4;
+
+        margin: 10mm 14mm;
+    }
+
+    html,
+    body {
+        width: 100%;
+
+        margin: 0;
+        padding: 0;
+
+        background: #ffffff !important;
+    }
+
+    .print-page {
+        min-height: auto;
+
+        padding: 0;
+    }
+
+    .print-sheet {
+        width: 100%;
+
+        margin: 0;
+
+        padding: 5mm 7mm 5mm;
+
+        border: none;
+
+        box-shadow: none;
+    }
+
+    .print-toolbar,
+    .no-print {
+        display: none !important;
+    }
+
+
+    /* =====================================================
+       KOP SURAT
+       ===================================================== */
+
+    .kop-surat {
+        gap: 17px;
+
+        padding-bottom: 14px;
+
+        border-bottom: 2px solid var(--navy);
+
+        page-break-after: avoid;
+    }
+
+    .kop-logo {
+        width: 64px;
+        height: 64px;
+
+        flex-basis: 64px;
+    }
+
+    .kop-logo svg {
+        width: 51px;
+        height: 51px;
+    }
+
+    .kop-text h1 {
+        margin-bottom: 4px;
+
+        font-size: 21px;
+    }
+
+    .kop-text p {
+        font-size: 12px;
+    }
+
+
+    /* =====================================================
+       JUDUL
+       ===================================================== */
+
+    .doc-title {
+        margin: 20px 0 5px;
+
+        page-break-after: avoid;
+    }
+
+    .doc-title h2 {
+        margin-bottom: 4px;
+
+        font-size: 19px;
+    }
+
+    .doc-title span {
+        font-size: 12px;
+    }
+
+
+    /* =====================================================
+       RINGKASAN
+       ===================================================== */
+
+    .reg-summary {
+        margin: 18px 0 23px;
+
+        background: #edf4f9 !important;
+
+        border: 1px solid #cfd9e2;
+
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .reg-summary > div {
+        padding: 11px 14px;
+    }
+
+    .reg-summary div span {
+        margin-bottom: 4px;
+
+        font-size: 10px;
+    }
+
+    .reg-summary div strong {
+        font-size: 13px;
+    }
+
+
+    /* =====================================================
+       BAGIAN DATA
+       ===================================================== */
+
+    .data-section {
+        margin-top: 18px;
+
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .data-section h3 {
+        margin-bottom: 7px;
+
+        padding-bottom: 5px;
+
+        font-size: 14px;
+    }
+
+    .data-table td {
+        padding: 4.5px 0;
+
+        font-size: 12px;
+
+        line-height: 1.4;
+    }
+
+    .data-table td.label {
+        width: 32%;
+
+        padding-right: 9px;
+    }
+
+    .data-table td.sep {
+        width: 17px;
+    }
+
+
+    /* =====================================================
+       TANDA TANGAN
+       ===================================================== */
+
+    .signature-area {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 55px;
+
+        margin-top: 38px;
+
+        page-break-before: auto;
+        page-break-inside: avoid;
+
+        break-before: auto;
+        break-inside: avoid;
+    }
+
+    .signature-box {
+        min-width: 0;
+
+        text-align: center;
+    }
+
+    .signature-box p.role {
+        margin: 0 0 62px;
+
+        font-size: 12px;
+
+        line-height: 1.4;
+    }
+
+    .signature-box p.name {
+        min-width: 210px;
+
+        padding-top: 6px;
+
+        font-size: 12px;
+
+        font-weight: 700;
+
+        line-height: 1.4;
+    }
+
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+
+    .doc-footer {
+        margin-top: 22px;
+
+        padding-top: 10px;
+
+        font-size: 9.5px;
+
+        line-height: 1.45;
+
+        page-break-before: avoid;
+        page-break-after: avoid;
+        page-break-inside: avoid;
+
+        break-before: avoid;
+        break-after: avoid;
+        break-inside: avoid;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .print-page {
+        padding: 20px 12px 30px;
+    }
+
+    .print-sheet {
+        padding: 32px 26px;
+    }
+
+    .kop-surat {
+        gap: 14px;
+    }
+
+    .kop-logo {
+        flex-basis: 58px;
+
+        width: 58px;
+        height: 58px;
+    }
+
+    .kop-logo svg {
+        width: 47px;
+        height: 47px;
+    }
+
+    .kop-text h1 {
+        font-size: 19px;
+    }
+
+    .kop-text p {
+        font-size: 12px;
+    }
+
+    .reg-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .reg-summary > div + div {
+        border-top: 1px solid var(--border);
+
+        border-left: none;
+    }
+
+    .signature-area {
+        gap: 35px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 520px) {
+
+    .print-page {
+        padding: 10px;
+    }
+
+    .print-sheet {
+        padding: 26px 18px;
+    }
+
+    .kop-surat {
+        align-items: flex-start;
+
+        gap: 12px;
+
+        padding-bottom: 15px;
+    }
+
+    .kop-logo {
+        flex-basis: 50px;
+
+        width: 50px;
+        height: 50px;
+    }
+
+    .kop-logo svg {
+        width: 41px;
+        height: 41px;
+    }
+
+    .kop-text h1 {
+        font-size: 17px;
+    }
+
+    .kop-text p {
+        font-size: 11px;
+    }
+
+    .doc-title {
+        margin-top: 20px;
+    }
+
+    .doc-title h2 {
+        font-size: 17px;
+    }
+
+    .doc-title span {
+        font-size: 12px;
+    }
+
+    .reg-summary {
+        margin-top: 20px;
+        margin-bottom: 24px;
+    }
+
+    .reg-summary > div {
+        padding: 12px 13px;
+    }
+
+    .data-section {
+        margin-top: 20px;
+    }
+
+    .data-section h3 {
+        font-size: 13px;
+    }
+
+    .data-table td {
+        font-size: 12px;
+    }
+
+    .data-table td.label {
+        width: 37%;
+    }
+
+    .data-table td.sep {
+        width: 14px;
+    }
+
+    .signature-area {
+        grid-template-columns: 1fr;
+
+        gap: 42px;
+
+        margin-top: 45px;
+    }
+
+    .signature-box p.role {
+        margin-bottom: 65px;
+    }
+
+    .doc-footer {
+        margin-top: 30px;
+
+        font-size: 10px;
+    }
+
+    .print-toolbar {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 9px;
+    }
+
+    .toolbar-back,
+    .toolbar-print {
+        width: 100%;
+    }
 }
