@@ -2,6 +2,7 @@
 EDIT MATERI GURU
 Modern Institutional Blue
 ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 .materials-edit-page {
 --blue: #1769d5;
@@ -22,7 +23,7 @@ background: #eef4fb;
 
 color: var(--text);
 
-
+font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 /* =========================================================

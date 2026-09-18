@@ -3,6 +3,60 @@
    GURU / WALI KELAS DASHBOARD
    MODERN COLORFUL VERSION
    ========================================================= */
+/* =========================================================
+WEB SEKOLAH MODERN
+GURU / WALI KELAS DASHBOARD
+MODERN COLORFUL VERSION
+========================================================= */
+
+/* =========================================================
+FONT — PLUS JAKARTA SANS
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+.guru-dashboard,
+.guru-dashboard *,
+.guru-dashboard button,
+.guru-dashboard input,
+.guru-dashboard select,
+.guru-dashboard textarea {
+font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* =========================================================
+VARIABLES
+========================================================= */
+
+:root {
+--guru-blue: #1769d5;
+--guru-blue-dark: #0d4fa8;
+--guru-blue-deep: #0b3b7a;
+--guru-blue-soft: #eaf3ff;
+--guru-cyan: #087ea4;
+--guru-cyan-soft: #e8f7fa;
+--guru-purple: #6857d9;
+--guru-purple-soft: #f0edff;
+--guru-green: #15956b;
+--guru-green-soft: #eaf9f3;
+--guru-orange: #e58a2b;
+--guru-orange-soft: #fff4e6;
+--guru-bg: #f4f7fb;
+--guru-white: #ffffff;
+--guru-text: #152b46;
+--guru-muted: #718198;
+--guru-light-text: #91a0b2;
+--guru-border: #e1e9f2;
+
+
+--guru-shadow:
+    0 12px 35px rgba(26, 72, 119, 0.08);
+
+--guru-shadow-hover:
+    0 18px 40px rgba(26, 72, 119, 0.13);
+
+
+}
 
 :root {
     --guru-blue: #1769d5;

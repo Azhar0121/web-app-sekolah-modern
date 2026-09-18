@@ -3,6 +3,7 @@
    MODERN BLUE — CLEAN & NEAT
    ========================================================= */
 
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 /* =========================================================
    VARIABLES & PAGE
@@ -49,6 +50,8 @@
             #eef5fb 52%,
             #f1f9fa 100%
         );
+
+        font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 

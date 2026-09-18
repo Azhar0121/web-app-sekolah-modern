@@ -1,0 +1,2013 @@
+/* =========================================================
+   NILAI GURU
+   MODERN BLUE — CONSISTENT WITH HERO
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.grades-page {
+
+    --blue: #1769d5;
+    --blue-dark: #0d47a1;
+    --blue-light: #eaf3ff;
+    --blue-soft: #f4f8fd;
+
+    --cyan: #078ba8;
+    --cyan-light: #e8f8fb;
+
+    --text: #243b53;
+    --heading: #1769d5;
+    --muted: #718096;
+
+    --bg: #f4f8fc;
+    --white: #ffffff;
+
+    --border: #dbe6f1;
+    --border-soft: #e8eef5;
+
+    min-height: 100vh;
+    padding-bottom: 45px;
+
+    color: var(--text);
+
+    background:
+        radial-gradient(
+            circle at 4% 8%,
+            rgba(23,105,213,.08),
+            transparent 23%
+        ),
+        radial-gradient(
+            circle at 96% 12%,
+            rgba(7,139,168,.07),
+            transparent 22%
+        ),
+        linear-gradient(
+            135deg,
+            #f5f8fc 0%,
+            #eef5fb 52%,
+            #f1f9fa 100%
+        );
+
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+
+.grades-page *,
+.grades-page *::before,
+.grades-page *::after {
+
+    box-sizing: border-box;
+
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+
+.grades-page h1,
+.grades-page h2,
+.grades-page h3,
+.grades-page p {
+
+    margin-top: 0;
+}
+
+
+.grades-page form {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.grades-header-card {
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    min-height: 220px;
+
+    margin-bottom: 22px;
+    padding: 30px 34px;
+
+    overflow: hidden;
+
+    border: none;
+
+    border-radius: 20px;
+
+    background:
+        radial-gradient(
+            circle at 88% 20%,
+            rgba(255,255,255,.20),
+            transparent 22%
+        ),
+        radial-gradient(
+            circle at 105% 110%,
+            rgba(7,148,184,.32),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #0d47a1 0%,
+            #1769d5 57%,
+            #078ba8 100%
+        );
+
+    box-shadow:
+        0 14px 32px rgba(13,71,161,.18);
+}
+
+
+.grades-header-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    right: -80px;
+    top: -120px;
+
+    border-radius: 50%;
+
+    border: 35px solid rgba(255,255,255,.07);
+
+    pointer-events: none;
+}
+
+
+.grades-header-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 115px;
+    height: 115px;
+
+    right: 210px;
+    bottom: -70px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.06);
+
+    pointer-events: none;
+}
+
+
+.grades-header-content {
+
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    gap: 30px;
+}
+
+
+.grades-header-info {
+
+    position: relative;
+    z-index: 3;
+
+    max-width: 650px;
+}
+
+
+.grades-eyebrow {
+
+    display: inline-flex;
+    align-items: center;
+
+    margin-bottom: 11px;
+
+    padding: 6px 12px;
+
+    border: 1px solid rgba(255,255,255,.25);
+
+    border-radius: 999px;
+
+    background: rgba(255,255,255,.10);
+
+    color: #ffffff !important;
+
+    font-size: 10px !important;
+    font-weight: 800 !important;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+.grades-header-info h1 {
+
+    margin: 0 0 7px;
+
+    color: #ffffff !important;
+
+    font-size: 28px !important;
+    font-weight: 800 !important;
+
+    line-height: 1.2;
+
+    letter-spacing: -.5px;
+}
+
+
+.grades-header-info p {
+
+    margin: 0;
+
+    color: rgba(255,255,255,.86) !important;
+
+    font-size: 13px !important;
+    font-weight: 500 !important;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   TOMBOL KEMBALI
+   ========================================================= */
+
+.grades-header-actions {
+
+    display: flex;
+    align-items: center;
+
+    margin-top: 22px;
+}
+
+
+.grades-back-button {
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 37px;
+
+    padding: 8px 15px;
+
+    border: 1px solid rgba(255,255,255,.38);
+
+    border-radius: 8px;
+
+    background: rgba(255,255,255,.11);
+
+    color: #ffffff !important;
+
+    font-size: 10.5px !important;
+    font-weight: 700 !important;
+
+    text-decoration: none;
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.grades-back-button:hover {
+
+    border-color: #ffffff;
+
+    background: #ffffff;
+
+    color: var(--blue-dark) !important;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 15px rgba(0,0,0,.13);
+}
+
+
+/* =========================================================
+   SEMESTER
+   ========================================================= */
+
+.grades-semester-box {
+
+    position: relative;
+    z-index: 5;
+
+    flex: 0 0 230px;
+
+    padding: 15px;
+
+    border: 1px solid rgba(255,255,255,.18);
+
+    border-radius: 10px;
+
+    background: rgba(255,255,255,.97);
+
+    box-shadow:
+        0 9px 22px rgba(13,71,161,.16);
+}
+
+
+.grades-semester-label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #6b7f93;
+
+    font-size: 9px !important;
+    font-weight: 800 !important;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+.grades-semester-box .form-select {
+
+    width: 100%;
+
+    min-height: 40px;
+
+    border: 1px solid #d5e0eb;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: var(--text);
+
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+
+    font-size: 11px !important;
+    font-weight: 700 !important;
+
+    box-shadow: none;
+}
+
+
+.grades-semester-box .form-select:focus {
+
+    border-color: var(--blue);
+
+    box-shadow:
+        0 0 0 3px rgba(23,105,213,.10);
+}
+
+
+/* =========================================================
+   MAIN GRID
+   ========================================================= */
+
+.grades-main-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(290px,.72fr)
+        minmax(430px,1.28fr);
+
+    gap: 22px;
+
+    margin-bottom: 22px;
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.grades-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    border: 1px solid var(--border) !important;
+
+    border-radius: 18px !important;
+
+    background: #ffffff !important;
+
+    box-shadow:
+        0 8px 25px rgba(16,42,67,.07) !important;
+}
+
+
+/* =========================================================
+   CARD HEADER
+   TANPA GARIS BIRU DI ATAS
+   ========================================================= */
+
+.grades-card-header {
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 82px;
+
+    padding: 17px 23px;
+
+    overflow: hidden;
+
+    border: none !important;
+
+    border-bottom: 1px solid #d7e4f0 !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #edf5ff 0%,
+            #f4f8ff 52%,
+            #eef9fa 100%
+        ) !important;
+}
+
+
+/*
+   Tidak ada lagi border-top / garis biru.
+   Identitas warna menggunakan aksen kecil
+   di sisi kiri header.
+*/
+
+.grades-card-header::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 4px;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            180deg,
+            #1769d5,
+            #078ba8
+        );
+
+    pointer-events: none;
+}
+
+
+.grades-card-header::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 125px;
+    height: 125px;
+
+    right: -48px;
+    top: -70px;
+
+    border-radius: 50%;
+
+    border: 20px solid rgba(23,105,213,.06);
+
+    pointer-events: none;
+}
+
+
+.grades-card-header > * {
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================================================
+   JUDUL SECTION
+   SEMUA KONSISTEN DENGAN HERO
+   ========================================================= */
+
+.grades-card-label {
+
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #1769d5 !important;
+
+    font-size: 9px !important;
+    font-weight: 800 !important;
+
+    letter-spacing: 1px;
+
+    line-height: 1.3;
+
+    text-transform: uppercase;
+}
+
+
+.grades-card-header h2 {
+
+    margin: 0;
+
+    color: #1769d5 !important;
+
+    font-size: 17px !important;
+    font-weight: 800 !important;
+
+    line-height: 1.3;
+
+    letter-spacing: -.15px;
+}
+
+
+.grades-card-body {
+    padding: 22px 23px;
+}
+
+
+/* =========================================================
+   BOBOT PENILAIAN
+   ========================================================= */
+
+.grades-weight-card {
+
+    border-top: none !important;
+}
+
+
+.grades-weight-card .grades-card-label {
+    color: #1769d5 !important;
+}
+
+
+.weight-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap: 14px;
+
+    margin-bottom: 18px;
+}
+
+
+.grades-page .form-label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--text);
+
+    font-size: 10px !important;
+    font-weight: 700 !important;
+}
+
+
+.grades-page .form-control,
+.grades-page .form-select {
+
+    border: 1px solid #d3dfeb;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: var(--text);
+
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+
+    font-size: 11.5px !important;
+
+    box-shadow: none;
+}
+
+
+.grades-page .form-control {
+    min-height: 40px;
+}
+
+
+.grades-page .form-control::placeholder {
+    color: #9ba8b8;
+}
+
+
+.grades-page .form-control:focus,
+.grades-page .form-select:focus {
+
+    border-color: var(--blue);
+
+    box-shadow:
+        0 0 0 3px rgba(23,105,213,.10);
+}
+
+
+.weight-field .form-control {
+
+    text-align: center;
+
+    color: #1769d5;
+
+    font-size: 14px !important;
+    font-weight: 800 !important;
+
+    background: #f8fbff;
+}
+
+
+/* =========================================================
+   TOTAL BOBOT
+   ========================================================= */
+
+.weight-total-box {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: 17px;
+
+    padding: 13px 14px;
+
+    border: 1px solid #cfe0f2;
+
+    border-left: 4px solid #1769d5;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #edf5ff,
+            #f1f9fb
+        );
+}
+
+
+.weight-total-box > div {
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.weight-total-box span {
+
+    color: var(--muted);
+
+    font-size: 10.5px !important;
+    font-weight: 600 !important;
+}
+
+
+.weight-total-box strong {
+
+    color: #1769d5;
+
+    font-size: 15px !important;
+    font-weight: 800 !important;
+}
+
+
+.weight-total-box small {
+
+    color: var(--muted);
+
+    font-size: 9px !important;
+    font-weight: 600 !important;
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+.grades-save-button {
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 38px;
+
+    padding: 8px 17px;
+
+    border: 0 !important;
+
+    border-radius: 8px !important;
+
+    background: #1769d5 !important;
+
+    color: #ffffff !important;
+
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+
+    font-size: 10.5px !important;
+    font-weight: 700 !important;
+
+    box-shadow:
+        0 5px 12px rgba(23,105,213,.14);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+}
+
+
+.grades-save-button:hover {
+
+    background: #0d47a1 !important;
+
+    color: #ffffff !important;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 17px rgba(23,105,213,.20);
+}
+
+
+/* =========================================================
+   TAMBAH NILAI
+   ========================================================= */
+
+.grades-add-card {
+
+    border-top: none !important;
+}
+
+
+.grades-add-card .grades-card-label {
+    color: #1769d5 !important;
+}
+
+
+.grades-input-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(150px,.72fr)
+        minmax(220px,1.28fr);
+
+    gap: 14px;
+
+    margin-bottom: 17px;
+}
+
+
+.grades-field-help {
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--muted);
+
+    font-size: 9.5px !important;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   INFO
+   ========================================================= */
+
+.grades-info-box {
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin-bottom: 18px;
+
+    padding: 12px 13px;
+
+    border: 1px solid #c5e4ea;
+
+    border-left: 4px solid #078ba8;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eaf9fb,
+            #f2fbfc
+        );
+
+    color: #526b7b;
+
+    font-size: 10px !important;
+
+    line-height: 1.65;
+}
+
+
+.grades-info-box a {
+
+    color: #078ba8;
+
+    font-weight: 800;
+
+    text-decoration: none;
+}
+
+
+.grades-info-box a:hover {
+    text-decoration: underline;
+}
+
+
+.grades-info-icon {
+
+    flex: 0 0 22px;
+
+    width: 22px;
+    height: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #078ba8;
+
+    color: #ffffff;
+
+    font-size: 10px !important;
+    font-weight: 800 !important;
+}
+
+
+/* =========================================================
+   DAFTAR SISWA
+   ========================================================= */
+
+.grades-entry-table {
+
+    overflow: hidden;
+
+    border: 1px solid #cfe0f2;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+}
+
+
+.grades-table-title {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 13px 15px;
+
+    background:
+        linear-gradient(
+            100deg,
+            #0d47a1,
+            #1769d5 58%,
+            #078ba8
+        );
+}
+
+
+.grades-table-title > div {
+
+    display: flex;
+    align-items: baseline;
+
+    gap: 9px;
+}
+
+
+.grades-table-title span {
+
+    color: #b9dcff;
+
+    font-size: 9px !important;
+    font-weight: 800 !important;
+
+    letter-spacing: .9px;
+}
+
+
+.grades-table-title strong {
+
+    color: #ffffff;
+
+    font-size: 11px !important;
+    font-weight: 700 !important;
+}
+
+
+.grades-table-title small {
+
+    color: rgba(255,255,255,.78);
+
+    font-size: 9px !important;
+    font-weight: 600 !important;
+}
+
+
+.grades-student-scroll {
+
+    max-height: 260px;
+
+    overflow-y: auto;
+}
+
+
+.grades-student-scroll::-webkit-scrollbar {
+    width: 7px;
+}
+
+
+.grades-student-scroll::-webkit-scrollbar-track {
+    background: #edf3f8;
+}
+
+
+.grades-student-scroll::-webkit-scrollbar-thumb {
+
+    background: #b8cde2;
+
+    border-radius: 20px;
+}
+
+
+.grades-entry-table .table {
+
+    width: 100%;
+
+    margin: 0;
+
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+
+    font-size: 12px !important;
+}
+
+
+.grades-entry-table thead {
+    background: #eaf3ff;
+}
+
+
+.grades-entry-table thead th {
+
+    height: 47px;
+
+    padding: 0 14px !important;
+
+    border: none !important;
+
+    border-bottom: 1px solid #cbdff2 !important;
+
+    background: #eaf3ff !important;
+
+    color: #1769d5 !important;
+
+    font-size: 10px !important;
+    font-weight: 800 !important;
+
+    text-transform: uppercase;
+
+    letter-spacing: .6px;
+
+    vertical-align: middle;
+}
+
+
+.grades-entry-table tbody tr {
+
+    background: #ffffff;
+
+    transition:
+        background .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.grades-entry-table tbody tr:nth-child(even) {
+    background: #f8fbff;
+}
+
+
+.grades-entry-table tbody tr:hover {
+
+    background: #eef7ff;
+
+    box-shadow:
+        inset 4px 0 0 #1769d5;
+}
+
+
+.grades-entry-table tbody td {
+
+    height: 68px;
+
+    padding: 11px 14px !important;
+
+    border-top: 1px solid #e8eef5 !important;
+
+    border-bottom: none !important;
+
+    background: inherit !important;
+
+    color: var(--text) !important;
+
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+
+    font-size: 11px !important;
+
+    vertical-align: middle;
+}
+
+
+.grades-entry-table .student-name {
+
+    color: #1769d5;
+
+    font-size: 11px !important;
+    font-weight: 700 !important;
+}
+
+
+.grades-score-heading {
+
+    width: 105px;
+
+    text-align: center;
+}
+
+
+.grades-entry-table td:last-child {
+
+    width: 105px;
+
+    text-align: center;
+}
+
+
+.grades-entry-table td:last-child .form-control {
+
+    width: 82px;
+
+    min-height: 34px;
+
+    margin: 0 auto;
+
+    text-align: center;
+
+    border-color: #c9dced;
+
+    color: #1769d5;
+
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+
+    font-size: 11px !important;
+    font-weight: 800 !important;
+
+    background: #f8fbff;
+}
+
+
+/* =========================================================
+   FOOTER FORM
+   ========================================================= */
+
+.grades-form-footer {
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 16px;
+}
+
+
+.grades-form-footer > span {
+
+    color: var(--muted);
+
+    font-size: 9.5px !important;
+    font-weight: 500 !important;
+}
+
+
+/* =========================================================
+   REKAP NILAI SISWA
+   ========================================================= */
+
+.grades-recap-card {
+
+    margin-bottom: 22px;
+
+    border-top: none !important;
+}
+
+
+.grades-recap-card .grades-card-header {
+
+    background:
+        linear-gradient(
+            135deg,
+            #edf5ff 0%,
+            #f4f8ff 55%,
+            #eef9fa 100%
+        ) !important;
+}
+
+
+.grades-recap-card .grades-card-label {
+    color: #1769d5 !important;
+}
+
+
+.grades-section-header {
+    min-height: 82px;
+}
+
+
+.grades-header-note {
+
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 28px;
+
+    padding: 5px 10px;
+
+    border: 1px solid #c6dff4;
+
+    border-radius: 999px;
+
+    background: #edf6ff;
+
+    color: #1769d5;
+
+    font-size: 9px !important;
+    font-weight: 800 !important;
+}
+
+
+/* =========================================================
+   REKAP TABLE
+   ========================================================= */
+
+.grades-recap-table {
+
+    width: 100%;
+
+    min-width: 700px;
+
+    margin: 0 !important;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+
+.grades-recap-table thead {
+
+    background:
+        linear-gradient(
+            100deg,
+            #0d47a1,
+            #1769d5 55%,
+            #078ba8
+        );
+}
+
+
+.grades-recap-table thead th {
+
+    height: 50px;
+
+    padding: 0 15px !important;
+
+    border: none !important;
+
+    background: transparent !important;
+
+    color: #ffffff !important;
+
+    font-size: 10px !important;
+    font-weight: 800 !important;
+
+    letter-spacing: .65px;
+
+    text-transform: uppercase;
+
+    vertical-align: middle;
+
+    white-space: nowrap;
+}
+
+
+.grades-recap-table tbody tr {
+
+    background: #ffffff;
+
+    transition:
+        background .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.grades-recap-table tbody tr:nth-child(even) {
+    background: #f6faff;
+}
+
+
+.grades-recap-table tbody tr:hover {
+
+    background: #eaf5ff;
+
+    box-shadow:
+        inset 4px 0 0 #1769d5;
+}
+
+
+.grades-recap-table tbody td {
+
+    height: 66px;
+
+    padding: 11px 15px !important;
+
+    border-top: 1px solid #e5edf5 !important;
+
+    background: inherit !important;
+
+    color: var(--text) !important;
+
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+
+    font-size: 11px !important;
+
+    vertical-align: middle;
+}
+
+
+.recap-student-name {
+
+    color: #1769d5;
+
+    font-size: 11.5px !important;
+    font-weight: 800 !important;
+}
+
+
+/* =========================================================
+   FINAL SCORE
+   ========================================================= */
+
+.final-score {
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    min-width: 65px;
+
+    padding: 6px 9px;
+
+    border: 1px solid #c3dcf5;
+
+    border-radius: 7px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eaf3ff,
+            #edf9fb
+        );
+
+    color: #1769d5;
+
+    font-size: 12px !important;
+    font-weight: 800 !important;
+}
+
+
+.final-score .badge {
+
+    padding: 4px 6px !important;
+
+    border: 0;
+
+    border-radius: 5px;
+
+    background: #e9eef4 !important;
+
+    color: #68798b !important;
+
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+
+    font-size: 7.5px !important;
+    font-weight: 700 !important;
+}
+
+
+.score-empty {
+
+    color: #a2adba;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   RIWAYAT
+   ========================================================= */
+
+.grades-history-card {
+
+    margin-bottom: 10px;
+
+    border-top: none !important;
+}
+
+
+.grades-history-card .grades-card-header {
+
+    background:
+        linear-gradient(
+            135deg,
+            #edf5ff 0%,
+            #f4f8ff 55%,
+            #eef9fa 100%
+        ) !important;
+}
+
+
+.grades-history-card .grades-card-label {
+    color: #1769d5 !important;
+}
+
+
+/* =========================================================
+   HISTORY TABLE
+   ========================================================= */
+
+.grades-history-table {
+
+    width: 100%;
+
+    min-width: 750px;
+
+    margin: 0 !important;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+
+.grades-history-table thead {
+
+    background:
+        linear-gradient(
+            100deg,
+            #087d98,
+            #078ba8 55%,
+            #1769d5
+        );
+}
+
+
+.grades-history-table thead th {
+
+    height: 50px;
+
+    padding: 0 15px !important;
+
+    border: none !important;
+
+    background: transparent !important;
+
+    color: #ffffff !important;
+
+    font-size: 10px !important;
+    font-weight: 800 !important;
+
+    letter-spacing: .65px;
+
+    text-transform: uppercase;
+
+    vertical-align: middle;
+
+    white-space: nowrap;
+}
+
+
+.grades-history-table tbody tr {
+
+    background: #ffffff;
+
+    transition:
+        background .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.grades-history-table tbody tr:nth-child(even) {
+    background: #f7fcfd;
+}
+
+
+.grades-history-table tbody tr:hover {
+
+    background: #edf9fb;
+
+    box-shadow:
+        inset 4px 0 0 #078ba8;
+}
+
+
+.grades-history-table tbody td {
+
+    height: 65px;
+
+    padding: 11px 15px !important;
+
+    border-top: 1px solid #e4edf2 !important;
+
+    background: inherit !important;
+
+    color: var(--text) !important;
+
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+
+    font-size: 11px !important;
+
+    vertical-align: middle;
+}
+
+
+.history-label {
+
+    color: #1769d5;
+
+    font-size: 11px !important;
+    font-weight: 750 !important;
+}
+
+
+/* =========================================================
+   CATEGORY
+   ========================================================= */
+
+.category-badge {
+
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 27px;
+
+    padding: 5px 10px;
+
+    border: 1px solid #bfe0e8;
+
+    border-radius: 7px;
+
+    background: #eaf8fb;
+
+    color: #078ba8;
+
+    font-size: 9px !important;
+    font-weight: 800 !important;
+}
+
+
+/* =========================================================
+   HISTORY SCORE
+   ========================================================= */
+
+.history-score {
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 40px;
+    min-height: 29px;
+
+    padding: 5px 8px;
+
+    border-radius: 6px;
+
+    background: #1769d5;
+
+    color: #ffffff;
+
+    font-size: 10px !important;
+    font-weight: 800 !important;
+
+    box-shadow:
+        0 4px 9px rgba(23,105,213,.12);
+}
+
+
+/* =========================================================
+   DELETE
+   ========================================================= */
+
+.grades-delete-button {
+
+    min-height: 31px;
+
+    padding: 5px 11px;
+
+    border: 1px solid #efc9c9 !important;
+
+    border-radius: 7px !important;
+
+    background: #fff4f4 !important;
+
+    color: #c0392b !important;
+
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+
+    font-size: 9.5px !important;
+    font-weight: 700 !important;
+
+    transition:
+        transform .18s ease,
+        background .18s ease,
+        box-shadow .18s ease;
+}
+
+
+.grades-delete-button:hover {
+
+    border-color: #c0392b !important;
+
+    background: #d9534f !important;
+
+    color: #ffffff !important;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 5px 12px rgba(192,57,43,.15);
+}
+
+
+/* =========================================================
+   ALERT
+   ========================================================= */
+
+.grades-alert {
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 11px;
+
+    margin-bottom: 18px;
+
+    padding: 13px 14px;
+
+    border-radius: 9px;
+
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+
+    font-size: 10.5px !important;
+
+    line-height: 1.55;
+}
+
+
+.grades-alert-warning {
+
+    border: 1px solid #ead9ae;
+
+    background: #fff9ec;
+
+    color: #795b20;
+}
+
+
+.grades-alert-danger {
+
+    border: 1px solid #efcaca;
+
+    background: #fff4f4;
+
+    color: #9d3333;
+}
+
+
+.grades-alert-icon {
+
+    flex: 0 0 21px;
+
+    width: 21px;
+    height: 21px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    color: #ffffff;
+
+    font-size: 10px !important;
+    font-weight: 800 !important;
+}
+
+
+.grades-alert-warning .grades-alert-icon {
+    background: #b7791f;
+}
+
+
+.grades-alert-danger .grades-alert-icon {
+    background: #dc3545;
+}
+
+
+.grades-alert strong {
+
+    display: block;
+
+    margin-bottom: 2px;
+
+    font-weight: 800 !important;
+}
+
+
+.grades-alert p {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   TABLE RESPONSIVE
+   ========================================================= */
+
+.grades-page .table-responsive {
+
+    width: 100%;
+
+    overflow-x: auto;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        #b9ccdf
+        #eef3f7;
+}
+
+
+.grades-page .table-responsive::-webkit-scrollbar {
+    height: 7px;
+}
+
+
+.grades-page .table-responsive::-webkit-scrollbar-track {
+    background: #eef3f7;
+}
+
+
+.grades-page .table-responsive::-webkit-scrollbar-thumb {
+
+    background: #b9ccdf;
+
+    border-radius: 20px;
+}
+
+
+.grades-page .table-hover > tbody > tr:hover > * {
+
+    --bs-table-accent-bg: transparent !important;
+
+    color: inherit !important;
+}
+
+
+.grades-page .table > :not(caption) > * > * {
+    box-shadow: none;
+}
+
+
+.grades-page .btn-primary {
+
+    background-color: #1769d5 !important;
+
+    border-color: #1769d5 !important;
+
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+
+.grades-page .btn-primary:hover,
+.grades-page .btn-primary:focus {
+
+    background-color: #0d47a1 !important;
+
+    border-color: #0d47a1 !important;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .grades-main-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 992px) {
+
+    .grades-header-card {
+
+        align-items: flex-start;
+
+        min-height: auto;
+
+        padding: 28px 30px;
+    }
+
+
+    .grades-header-content {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .grades-header-info {
+        max-width: 100%;
+    }
+
+
+    .grades-semester-box {
+
+        width: 100%;
+
+        flex: auto;
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    .grades-page {
+        padding-bottom: 30px;
+    }
+
+
+    .grades-header-card {
+
+        padding: 25px 23px;
+
+        border-radius: 17px;
+    }
+
+
+    .grades-header-info h1 {
+        font-size: 24px !important;
+    }
+
+
+    .grades-header-info p {
+        font-size: 12px !important;
+    }
+
+
+    .grades-header-actions {
+        margin-top: 19px;
+    }
+
+
+    .grades-back-button {
+
+        min-height: 36px;
+
+        padding: 7px 13px;
+
+        font-size: 10px !important;
+    }
+
+
+    .grades-card {
+
+        border-radius: 15px !important;
+    }
+
+
+    .grades-card-header {
+
+        min-height: 74px;
+
+        padding: 17px 19px;
+    }
+
+
+    .grades-card-label {
+        font-size: 9px !important;
+    }
+
+
+    .grades-card-header h2 {
+        font-size: 16px !important;
+    }
+
+
+    .grades-card-body {
+        padding: 18px;
+    }
+
+
+    .grades-input-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .weight-total-box {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .grades-table-title {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 4px;
+    }
+
+
+    .grades-table-title > div {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 2px;
+    }
+
+
+    .grades-section-header {
+        align-items: flex-start;
+    }
+
+
+    .grades-header-note {
+        display: none;
+    }
+
+
+    .grades-form-footer {
+
+        align-items: stretch;
+
+        flex-direction: column;
+    }
+
+
+    .grades-form-footer .grades-save-button {
+        width: 100%;
+    }
+
+
+    .grades-recap-table {
+        min-width: 700px;
+    }
+
+
+    .grades-history-table {
+        min-width: 750px;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .grades-header-card {
+
+        padding: 22px 18px;
+
+        border-radius: 15px;
+    }
+
+
+    .grades-eyebrow {
+
+        padding: 5px 10px;
+
+        font-size: 9px !important;
+    }
+
+
+    .grades-header-info h1 {
+        font-size: 21px !important;
+    }
+
+
+    .grades-header-info p {
+        font-size: 11px !important;
+    }
+
+
+    .grades-card-header {
+        padding: 16px;
+    }
+
+
+    .grades-card-body {
+        padding: 16px;
+    }
+
+
+    .grades-card-label {
+        font-size: 8.5px !important;
+    }
+
+
+    .grades-card-header h2 {
+        font-size: 15px !important;
+    }
+
+
+    .weight-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .grades-info-box {
+        font-size: 9.5px !important;
+    }
+
+
+    .grades-recap-table {
+        min-width: 680px;
+    }
+
+
+    .grades-history-table {
+        min-width: 720px;
+    }
+
+}

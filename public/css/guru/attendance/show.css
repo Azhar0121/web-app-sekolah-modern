@@ -3,6 +3,7 @@
    MODERN • COLORFUL • COMPACT • CLEAN
 ========================================================= */
 
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 /* =========================================================
    PAGE
@@ -26,6 +27,8 @@
             rgba(14, 165, 233, 0.07),
             transparent 28%
         );
+
+        font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 

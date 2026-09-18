@@ -1,1514 +1,1506 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+
 /* =========================================================
-GURU — JADWAL MENGAJAR
-MODERN BLUE • CLEAN • TIDY
+   GURU SCHEDULE
 ========================================================= */
 
 :root {
---blue: #1769d5;
---blue-dark: #0d47a1;
---blue-light: #eaf3ff;
---blue-soft: #f3f8ff;
---navy: #102a43;
---text: #243b53;
---muted: #718096;
---bg: #eef4fb;
---white: #ffffff;
---border: #d5e3f2;
---border-soft: #e4edf7;
---cyan: #0794b8;
+    --schedule-blue: #1769d5;
+    --schedule-blue-dark: #125bbd;
+    --schedule-blue-soft: #edf5ff;
+    --schedule-blue-pale: #f7fbff;
+
+    --schedule-navy: #123f61;
+
+    --schedule-text: #15324d;
+    --schedule-text-dark: #203f5f;
+    --schedule-muted: #71859a;
+
+    --schedule-border: #dfeaf4;
+    --schedule-border-soft: #edf2f7;
+
+    --schedule-white: #ffffff;
+
+    --schedule-green: #18a86b;
+    --schedule-green-soft: #eaf8f2;
+
+    --schedule-radius: 12px;
+
+    --schedule-shadow:
+        0 5px 18px rgba(31, 76, 120, 0.055);
+    
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
+
 /* =========================================================
-PAGE
+   PAGE
 ========================================================= */
 
 .guru-schedule-page {
-width: 100%;
-min-height: 100%;
-padding: 8px 0 45px;
-color: var(--text);
-background: var(--bg);
+    width: 100%;
+    max-width: 1180px;
+
+    margin: 0 auto;
+    padding: 8px 0 40px;
+
+    font-family:
+        'Plus Jakarta Sans',
+        sans-serif;
+
+    color: var(--schedule-text);
 }
 
+
 /* =========================================================
-HERO
+   HERO
 ========================================================= */
 
 .schedule-hero {
-position: relative;
-display: flex;
-justify-content: space-between;
-align-items: stretch;
+    position: relative;
 
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
 
-min-height: 235px;
-margin-bottom: 28px;
-overflow: hidden;
+    min-height: 185px;
 
-border-radius: 20px;
+    margin-bottom: 24px;
 
-background:
-    radial-gradient(
-        circle at 90% 20%,
-        rgba(255, 255, 255, .17),
-        transparent 30%
-    ),
-    linear-gradient(
-        135deg,
-        #0d47a1 0%,
-        #1769d5 48%,
-        #058ba8 100%
-    );
+    overflow: hidden;
 
-box-shadow:
-    0 15px 35px rgba(23, 105, 213, .17);
+    padding: 30px 32px;
 
+    background:
+        linear-gradient(
+            135deg,
+            #125b9f 0%,
+            #1769d5 58%,
+            #2d7ed0 100%
+        );
 
+    border-radius: 14px;
+
+    box-shadow:
+        0 10px 28px rgba(23, 105, 213, 0.13);
 }
 
-.schedule-hero::before {
-content: "";
-
-
-position: absolute;
-
-width: 210px;
-height: 210px;
-
-left: -100px;
-bottom: -130px;
-
-border: 1px solid rgba(255, 255, 255, .10);
-border-radius: 50%;
-
-
-}
 
 /* =========================================================
-HERO CONTENT
+   HERO CONTENT
 ========================================================= */
 
 .schedule-hero-content {
-position: relative;
-z-index: 5;
+    position: relative;
+    z-index: 3;
 
-
-max-width: 680px;
-
-padding: 34px 37px;
-
-
+    max-width: 720px;
 }
 
 .schedule-eyebrow {
-display: inline-flex;
-align-items: center;
-gap: 8px;
+    display: block;
 
+    margin-bottom: 7px;
 
-margin-bottom: 9px;
+    color: rgba(255, 255, 255, 0.7);
 
-color: rgba(255, 255, 255, .72);
+    font-size: 8px;
+    font-weight: 800;
 
-font-size: 9px;
-font-weight: 900;
-letter-spacing: 1.7px;
+    line-height: 1.2;
 
-
-}
-
-.schedule-eyebrow::before {
-content: "";
-
-
-width: 21px;
-height: 2px;
-
-border-radius: 10px;
-
-background: rgba(255, 255, 255, .7);
-
-
+    letter-spacing: 1.6px;
 }
 
 .schedule-hero h1 {
-margin: 0;
+    margin: 0 0 8px;
 
+    color: #ffffff;
 
-color: #fff;
+    font-size: 24px;
+    font-weight: 800;
 
-font-size: 30px;
-font-weight: 850;
-letter-spacing: -.6px;
-line-height: 1.2;
+    line-height: 1.2;
 
-
+    letter-spacing: -0.3px;
 }
 
 .schedule-hero p {
-max-width: 570px;
+    max-width: 570px;
 
+    margin: 0;
 
-margin: 11px 0 0;
+    color: rgba(255, 255, 255, 0.78);
 
-color: rgba(255, 255, 255, .82);
+    font-size: 10px;
 
-font-size: 12px;
-line-height: 1.7;
-
-
-}
-
-/* =========================================================
-   HERO SIDE
-   Tombol kembali berada DI BAWAH hero
-   ========================================================= */
-
-.schedule-hero-side {
-    position: relative;
-    width: 43%;
-    min-width: 245px;
-
-    display: flex;
-    flex-direction: column;
-
-    /* tombol didorong ke bawah */
-    justify-content: flex-end;
-    align-items: flex-end;
-
-    padding: 30px 30px 30px 20px;
-
-    z-index: 10;
+    line-height: 1.65;
 }
 
 
 /* =========================================================
-   TOMBOL KEMBALI
-   ========================================================= */
+   TAHUN AJARAN
+========================================================= */
 
-.schedule-back-button {
-    position: relative;
-
+.schedule-year {
     display: inline-flex;
     align-items: center;
+
     gap: 9px;
 
-    padding: 11px 18px;
+    margin-top: 18px;
 
-    background: #ffffff;
-    color: var(--blue-dark);
+    padding: 7px 11px;
 
-    border: 1px solid rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
 
-    font-size: 13px;
-    font-weight: 700;
+    border: 1px solid rgba(255, 255, 255, 0.16);
 
-    text-decoration: none;
-
-    box-shadow: 0 8px 20px rgba(13, 71, 161, 0.16);
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease;
-
-    z-index: 20;
-
-    /* jangan ada margin atas */
-    margin: 0;
+    border-radius: 8px;
 }
 
-.schedule-back-button:hover {
-    background: #f5f9ff;
-    color: var(--blue-dark);
-
-    transform: translateY(-2px);
-
-    box-shadow: 0 12px 25px rgba(13, 71, 161, 0.22);
-}
-
-
-.schedule-back-icon {
-    width: 25px;
-    height: 25px;
-
-    display: inline-flex;
+.schedule-year-icon {
+    display: flex;
     align-items: center;
     justify-content: center;
 
+    width: 27px;
+    height: 27px;
+
+    color: #1769d5;
+
+    background: #ffffff;
+
     border-radius: 7px;
 
-    background: var(--blue-light);
-    color: var(--blue);
-
-    font-size: 16px;
+    font-size: 9px;
     font-weight: 800;
+}
 
+.schedule-year small {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: rgba(255, 255, 255, 0.6);
+
+    font-size: 6.5px;
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    letter-spacing: 0.7px;
+}
+
+.schedule-year strong {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    line-height: 1.2;
+}
+
+
+/* =========================================================
+   WARNING
+========================================================= */
+
+.schedule-warning {
+    display: flex;
+    flex-direction: column;
+
+    width: fit-content;
+
+    margin-top: 17px;
+    padding: 9px 12px;
+
+    background: rgba(255, 255, 255, 0.1);
+
+    border: 1px solid rgba(255, 255, 255, 0.16);
+
+    border-radius: 8px;
+}
+
+.schedule-warning strong {
+    margin-bottom: 2px;
+
+    color: #ffffff;
+
+    font-size: 8px;
+    font-weight: 700;
+}
+
+.schedule-warning span {
+    color: rgba(255, 255, 255, 0.65);
+
+    font-size: 7px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   HERO SIDE — LEBIH MASUK KE TENGAH
+========================================================= */
+
+.schedule-hero-side {
+    position: relative;
+    z-index: 3;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-width: 180px;
+
+    padding-right: 22px;
+}
+
+
+/* =========================================================
+   BACK BUTTON — LEBIH BESAR
+========================================================= */
+
+.schedule-back-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 112px;
+    padding: 10px 16px;
+
+    margin-top: 38px;
+
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.11);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.schedule-back-button:hover {
+    color: #ffffff;
+
+    background: rgba(255, 255, 255, 0.18);
+
+    border-color: rgba(255, 255, 255, 0.3);
+
+    transform: translateY(-1px);
+}
+
+.schedule-back-icon {
+    font-size: 12px;
     line-height: 1;
 }
 
 
 /* =========================================================
-HERO DECORATION
+   HERO DECORATION
 ========================================================= */
 
 .schedule-hero-decoration {
-position: absolute;
+    position: absolute;
 
+    inset: 0;
 
-top: 0;
-right: 0;
-
-width: 43%;
-height: 100%;
-
-pointer-events: none;
-
-
+    pointer-events: none;
 }
 
 .schedule-circle {
-position: absolute;
+    position: absolute;
 
+    display: block;
 
-display: block;
+    border-radius: 50%;
 
-border: 1px solid rgba(255, 255, 255, .14);
-border-radius: 50%;
-
-
+    border: 1px solid rgba(255, 255, 255, 0.16);
 }
 
 .schedule-circle-one {
-width: 300px;
-height: 300px;
+    width: 210px;
+    height: 210px;
 
-
-right: -75px;
-top: -90px;
-
-
+    right: -80px;
+    top: -105px;
 }
 
 .schedule-circle-two {
-width: 210px;
-height: 210px;
+    width: 145px;
+    height: 145px;
 
-
-right: 20px;
-top: -35px;
-
-
+    right: 75px;
+    bottom: -95px;
 }
 
 .schedule-circle-three {
-width: 115px;
-height: 115px;
+    width: 70px;
+    height: 70px;
 
+    right: 22%;
+    bottom: 20px;
 
-right: 68px;
-top: 12px;
-
-border-color: rgba(255, 255, 255, .22);
-
-
+    border-color: rgba(255, 255, 255, 0.11);
 }
 
 .schedule-dot {
-position: absolute;
+    position: absolute;
 
+    width: 6px;
+    height: 6px;
 
-display: block;
+    background: rgba(255, 255, 255, 0.5);
 
-border-radius: 50%;
-
-background: rgba(255, 255, 255, .45);
-
-
+    border-radius: 50%;
 }
 
 .schedule-dot-one {
-width: 9px;
-height: 9px;
-
-
-right: 205px;
-top: 40px;
-
-
+    right: 27%;
+    top: 28%;
 }
 
 .schedule-dot-two {
-width: 15px;
-height: 15px;
-
-
-right: 38px;
-bottom: 34px;
-
-background: rgba(255, 255, 255, .18);
-
-
+    right: 13%;
+    bottom: 24%;
 }
 
 .schedule-dot-three {
-width: 6px;
-height: 6px;
-
-
-right: 150px;
-bottom: 29px;
-
-
+    right: 35%;
+    bottom: 22%;
 }
+
 
 /* =========================================================
-ACTIVE YEAR
-========================================================= */
-
-.schedule-year {
-display: inline-flex;
-align-items: center;
-gap: 10px;
-
-
-margin-top: 18px;
-padding: 8px 15px 8px 8px;
-
-border: 1px solid rgba(255, 255, 255, .20);
-border-radius: 12px;
-
-background: rgba(255, 255, 255, .13);
-
-backdrop-filter: blur(8px);
-
-
-}
-
-.schedule-year-icon {
-display: flex;
-align-items: center;
-justify-content: center;
-
-
-width: 34px;
-height: 34px;
-
-border-radius: 9px;
-
-color: var(--blue);
-background: #fff;
-
-font-size: 11px;
-font-weight: 900;
-
-
-}
-
-.schedule-year div {
-display: flex;
-flex-direction: column;
-gap: 2px;
-}
-
-.schedule-year small {
-color: rgba(255, 255, 255, .60);
-
-
-font-size: 7px;
-font-weight: 800;
-letter-spacing: 1px;
-
-
-}
-
-.schedule-year strong {
-color: #fff;
-
-
-font-size: 11px;
-
-
-}
-
-/* =========================================================
-WARNING
-========================================================= */
-
-.schedule-warning {
-display: flex;
-flex-direction: column;
-gap: 3px;
-
-
-margin-top: 17px;
-padding: 11px 14px;
-
-border-left: 4px solid #facc15;
-border-radius: 8px;
-
-background: rgba(255, 255, 255, .10);
-
-
-}
-
-.schedule-warning strong {
-color: #fff;
-
-
-font-size: 11px;
-
-
-}
-
-.schedule-warning span {
-color: rgba(255, 255, 255, .70);
-
-
-font-size: 9px;
-
-
-}
-
-/* =========================================================
-LIST
+   SCHEDULE LIST
 ========================================================= */
 
 .schedule-list {
-display: flex;
-flex-direction: column;
-gap: 20px;
+    width: 100%;
 }
 
+
 /* =========================================================
-DAY CARD
+   DAY CARD
+   Dibuat seperti divider jadwal siswa
 ========================================================= */
 
 .schedule-day-card {
-position: relative;
+    margin-bottom: 21px;
 
+    background: transparent;
 
-overflow: hidden;
+    border: none;
 
-border: 1px solid var(--border);
-border-radius: 17px;
+    border-radius: 0;
 
-background: #f8fbff;
-
-box-shadow:
-    0 8px 25px rgba(30, 70, 110, .07);
-
-transition:
-    transform .2s ease,
-    box-shadow .2s ease,
-    border-color .2s ease;
-
-
+    overflow: visible;
 }
 
-.schedule-day-card:hover {
-transform: translateY(-2px);
-
-
-border-color: #bfd5eb;
-
-box-shadow:
-    0 14px 32px rgba(30, 70, 110, .10);
-
-
-}
 
 /* =========================================================
-TODAY
-========================================================= */
-
-.schedule-day-card.is-today {
-border-color: #9fc8f2;
-
-
-box-shadow:
-    0 10px 30px rgba(23, 105, 213, .12);
-
-
-}
-
-.schedule-day-card.is-today::before {
-content: "";
-
-
-position: absolute;
-
-left: 0;
-top: 0;
-
-width: 5px;
-height: 100%;
-
-background:
-    linear-gradient(
-        180deg,
-        #1769d5,
-        #0794b8
-    );
-
-
-}
-
-/* =========================================================
-DAY HEADER
+   DAY HEADER
 ========================================================= */
 
 .schedule-day-header {
-display: flex;
-align-items: center;
-justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    gap: 11px;
 
-min-height: 78px;
+    min-height: 42px;
 
-padding: 13px 22px;
+    padding: 6px 18px;
 
-border-bottom: 1px solid var(--border);
+    background: transparent;
 
-background:
-    linear-gradient(
-        90deg,
-        #e9f3ff 0%,
-        #f4f9ff 55%,
-        #eef9fc 100%
-    );
-
-
+    border: none;
 }
+
+
+/* Garis kiri dan kanan */
+.schedule-day-header::before,
+.schedule-day-header::after {
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background: #d9e6f2;
+}
+
+
+/* =========================================================
+   DAY TITLE
+========================================================= */
 
 .schedule-day-title {
-display: flex;
-align-items: center;
-gap: 12px;
-}
-
-/* =========================================================
-DAY ICON
-========================================================= */
-
-.schedule-day-icon {
-position: relative;
-
-
-display: flex;
-align-items: center;
-justify-content: center;
-
-width: 41px;
-height: 41px;
-
-flex: 0 0 41px;
-
-border-radius: 11px;
-
-background:
-    linear-gradient(
-        135deg,
-        #1769d5,
-        #087ea4
-    );
-
-box-shadow:
-    0 6px 14px rgba(23, 105, 213, .22);
-
-
-}
-
-.schedule-day-icon::before,
-.schedule-day-icon::after,
-.schedule-day-icon span {
-content: "";
-
-
-position: absolute;
-
-width: 5px;
-height: 5px;
-
-border-radius: 50%;
-
-background: #fff;
-
-
-}
-
-.schedule-day-icon::before {
-transform: translate(-7px, -6px);
-}
-
-.schedule-day-icon::after {
-transform: translate(7px, -6px);
-}
-
-.schedule-day-icon span {
-transform: translate(0, 7px);
-}
-
-/* =========================================================
-DAY TITLE
-========================================================= */
-
-.schedule-day-label {
-display: block;
-
-
-margin-bottom: 2px;
-
-color: var(--blue);
-
-font-size: 7px;
-font-weight: 900;
-letter-spacing: 1.2px;
-
-
-}
-
-.schedule-day-title h2 {
-margin: 0;
-
-
-color: var(--navy);
-
-font-size: 18px;
-font-weight: 850;
-
-
-}
-
-/* =========================================================
-TODAY BADGE
-========================================================= */
-
-.schedule-today-badge {
-display: inline-flex;
-align-items: center;
-gap: 7px;
-
-
-padding: 7px 12px;
-
-border: 1px solid #b8d6f6;
-border-radius: 9px;
-
-color: var(--blue-dark);
-background: #e6f1ff;
-
-font-size: 9px;
-font-weight: 800;
-
-
-}
-
-.schedule-today-badge span {
-width: 6px;
-height: 6px;
-
-
-border-radius: 50%;
-
-background: #1769d5;
-
-box-shadow:
-    0 0 0 3px rgba(23, 105, 213, .12);
-
-
-}
-
-/* =========================================================
-TABLE WRAPPER
-========================================================= */
-
-.schedule-table-wrapper {
-width: 100%;
-
-
-overflow-x: auto;
-
-scrollbar-width: thin;
-
-
-}
-
-/* =========================================================
-TABLE
-========================================================= */
-
-.schedule-table {
-width: 100%;
-min-width: 720px;
-
-
-table-layout: fixed;
-
-border-collapse: separate;
-border-spacing: 0;
-
-
-}
-
-/* =========================================================
-COLUMN WIDTH
-========================================================= */
-
-.schedule-table th:nth-child(1),
-.schedule-table td:nth-child(1) {
-width: 18%;
-}
-
-.schedule-table th:nth-child(2),
-.schedule-table td:nth-child(2) {
-width: 37%;
-}
-
-.schedule-table th:nth-child(3),
-.schedule-table td:nth-child(3) {
-width: 21%;
-}
-
-.schedule-table th:nth-child(4),
-.schedule-table td:nth-child(4) {
-width: 24%;
-}
-
-/* =========================================================
-TABLE HEADER
-========================================================= */
-
-.schedule-table thead {
-background:
-linear-gradient(
-90deg,
-#1262c7,
-#1769d5
-);
-}
-
-.schedule-table th {
-height: 48px;
-
-
-padding: 13px 18px;
-
-border: 0;
-border-right: 1px solid rgba(255, 255, 255, .13);
-
-color: rgba(255, 255, 255, .92);
-
-background: transparent;
-
-font-size: 8px;
-font-weight: 900;
-letter-spacing: .8px;
-
-text-align: left;
-text-transform: uppercase;
-
-
-}
-
-.schedule-table th:last-child {
-border-right: 0;
-}
-
-/* =========================================================
-TABLE BODY
-========================================================= */
-
-.schedule-table tbody tr {
-background: #f5f9fe;
-
-
-transition:
-    background .18s ease;
-
-
-}
-
-.schedule-table tbody tr:nth-child(even) {
-background: #edf5fd;
-}
-
-.schedule-table tbody tr:hover {
-background: #e4f0ff;
-}
-
-.schedule-table td {
-height: 82px;
-
-
-padding: 16px 18px;
-
-vertical-align: middle;
-
-border-bottom: 1px solid var(--border-soft);
-
-
-}
-
-.schedule-table tbody tr:last-child td {
-border-bottom: 0;
-}
-
-/* =========================================================
-TIME
-========================================================= */
-
-.schedule-time {
-white-space: nowrap;
-}
-
-.schedule-time-main {
-display: flex;
-align-items: center;
-gap: 6px;
-}
-
-.schedule-time strong {
-color: var(--navy);
-
-
-font-size: 14px;
-font-weight: 850;
-
-
-}
-
-.schedule-time-main span {
-color: #7d8fa5;
-
-
-font-size: 11px;
-
-
-}
-
-.schedule-time > span {
-display: block;
-
-
-margin-top: 4px;
-
-color: #7d8fa5;
-
-font-size: 8px;
-
-
-}
-
-/* =========================================================
-SUBJECT
-TD TETAP TABLE-CELL
-========================================================= */
-
-.schedule-subject {
-position: relative;
-
-
-min-width: 0;
-
-padding-left: 38px !important;
-
-
-}
-
-.schedule-subject-mark {
-position: absolute;
-
-
-left: 18px;
-top: 50%;
-
-width: 4px;
-height: 38px;
-
-transform: translateY(-50%);
-
-border-radius: 8px;
-
-background:
-    linear-gradient(
-        180deg,
-        #1769d5,
-        #08a0c1
-    );
-
-
-}
-
-.schedule-subject-content {
-min-width: 0;
-}
-
-.schedule-subject-content strong {
-display: block;
-
-
-overflow: hidden;
-
-color: var(--text);
-
-font-size: 12px;
-font-weight: 850;
-line-height: 1.35;
-
-text-overflow: ellipsis;
-white-space: nowrap;
-
-
-}
-
-.schedule-subject-content small {
-display: block;
-
-
-margin-top: 4px;
-
-color: #8495a9;
-
-font-size: 8px;
-
-
-}
-
-/* =========================================================
-CLASS
-========================================================= */
-
-.schedule-class {
-min-width: 0;
-
-
-white-space: nowrap;
-
-
-}
-
-.schedule-class-badge {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-
-
-width: 34px;
-height: 34px;
-
-margin-right: 8px;
-
-vertical-align: middle;
-
-border: 1px solid #c9def7;
-border-radius: 10px;
-
-color: var(--blue-dark);
-background: #e8f2ff;
-
-font-size: 10px;
-font-weight: 900;
-
-
-}
-
-.schedule-class-content {
-display: inline-block;
-
-
-max-width: calc(100% - 48px);
-
-vertical-align: middle;
-
-min-width: 0;
-
-
-}
-
-.schedule-class-content strong {
-display: block;
-
-
-overflow: hidden;
-
-color: #304b68;
-
-font-size: 11px;
-font-weight: 800;
-
-text-overflow: ellipsis;
-white-space: nowrap;
-
-
-}
-
-.schedule-class-content small {
-display: block;
-
-
-margin-top: 2px;
-
-color: #8495a9;
-
-font-size: 8px;
-
-
-}
-
-/* =========================================================
-ROOM
-========================================================= */
-
-.schedule-room {
-min-width: 0;
-
-
-white-space: nowrap;
-
-background: rgba(225, 239, 253, .55);
-
-
-}
-
-.room-badge {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-gap: 6px;
-
-
-max-width: 100%;
-
-padding: 8px 12px;
-
-overflow: hidden;
-
-border: 1px solid #b9d5f2;
-border-radius: 9px;
-
-color: #1458ad;
-background: #e5f1ff;
-
-font-size: 9px;
-font-weight: 850;
-
-text-overflow: ellipsis;
-white-space: nowrap;
-
-
-}
-
-.room-icon {
-flex: 0 0 auto;
-
-
-font-size: 11px;
-
-
-}
-
-.room-empty {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-
-
-width: auto;
-min-width: 29px;
-height: 29px;
-
-padding: 0 9px;
-
-border-radius: 8px;
-
-color: #7f92a8;
-background: #e5edf6;
-
-font-size: 9px;
-
-
-}
-
-/* =========================================================
-EMPTY STATE
-========================================================= */
-
-.schedule-empty-card {
-position: relative;
-
-
-display: flex;
-align-items: center;
-flex-direction: column;
-
-overflow: hidden;
-
-padding: 58px 25px;
-
-border: 1px solid var(--border);
-border-radius: 18px;
-
-background:
-    linear-gradient(
-        135deg,
-        #edf6ff,
-        #f7fbff
-    );
-
-box-shadow:
-    0 8px 25px rgba(30, 70, 110, .07);
-
-text-align: center;
-
-
-}
-
-.schedule-empty-card::before,
-.schedule-empty-card::after {
-content: "";
-
-
-position: absolute;
-
-border: 1px solid rgba(23, 105, 213, .08);
-border-radius: 50%;
-
-
-}
-
-.schedule-empty-card::before {
-width: 180px;
-height: 180px;
-
-
-left: -90px;
-bottom: -90px;
-
-
-}
-
-.schedule-empty-card::after {
-width: 140px;
-height: 140px;
-
-
-right: -70px;
-top: -70px;
-
-
-}
-
-.schedule-empty-visual {
-position: relative;
-
-
-display: flex;
-align-items: center;
-justify-content: center;
-
-width: 62px;
-height: 62px;
-
-margin-bottom: 17px;
-
-border: 1px solid #cce0f5;
-border-radius: 50%;
-
-background: #e6f2ff;
-
-
-}
-
-.schedule-empty-visual span {
-position: absolute;
-
-
-display: block;
-
-border-radius: 50%;
-
-
-}
-
-.schedule-empty-visual span:nth-child(1) {
-width: 8px;
-height: 8px;
-
-
-transform: translateX(-14px);
-
-background: #60a5fa;
-
-
-}
-
-.schedule-empty-visual span:nth-child(2) {
-width: 15px;
-height: 15px;
-
-
-background: #1769d5;
-
-
-}
-
-.schedule-empty-visual span:nth-child(3) {
-width: 8px;
-height: 8px;
-
-
-transform: translateX(14px);
-
-background: #38bdf8;
-
-
-}
-
-.schedule-empty-card h2 {
-margin: 0 0 7px;
-
-
-color: var(--navy);
-
-font-size: 17px;
-font-weight: 850;
-
-
-}
-
-.schedule-empty-card p {
-max-width: 500px;
-
-
-margin: 0 0 7px;
-
-color: var(--muted);
-
-font-size: 11px;
-line-height: 1.7;
-
-
-}
-
-.schedule-empty-card small {
-color: #91a0b2;
-
-
-font-size: 9px;
-
-
-}
-
-/* =========================================================
-TABLET
-========================================================= */
-
-@media (max-width: 900px) {
-
-
-.schedule-hero-side {
-    min-width: 220px;
-
-    padding-right: 20px;
-}
-
-.schedule-table {
-    min-width: 720px;
-}
-
-
-}
-
-/* =========================================================
-MOBILE
-========================================================= */
-
-@media (max-width: 768px) {
-
-
-.guru-schedule-page {
-    padding-bottom: 28px;
-}
-
-
-.schedule-hero {
-    min-height: 230px;
-
-    border-radius: 17px;
-}
-
-
-.schedule-hero-content {
-    padding: 28px 23px;
-}
-
-
-.schedule-hero h1 {
-    font-size: 24px;
-}
-
-
-.schedule-hero p {
-    font-size: 11px;
-}
-
-
-.schedule-hero-side {
-    width: auto;
-    min-width: 190px;
-
-    padding: 20px 18px;
-}
-
-
-.schedule-back-button {
-    padding: 7px 11px 7px 7px;
-
-    font-size: 9px;
-}
-
-
-.schedule-back-icon {
-    width: 23px;
-    height: 23px;
-
-    flex-basis: 23px;
-
-    font-size: 14px;
-}
-
-
-.schedule-hero-decoration {
-    opacity: .5;
-}
-
-
-.schedule-day-header {
-    min-height: 72px;
-
-    padding: 12px 17px;
-}
-
-
-.schedule-day-icon {
-    width: 38px;
-    height: 38px;
-
-    flex-basis: 38px;
-}
-
-
-.schedule-day-title h2 {
-    font-size: 17px;
-}
-
-
-.schedule-table th,
-.schedule-table td {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-
-.schedule-subject {
-    padding-left: 35px !important;
-}
-
-
-.schedule-subject-mark {
-    left: 15px;
-}
-
-
-}
-
-/* =========================================================
-SMALL MOBILE
-========================================================= */
-
-@media (max-width: 600px) {
-
-
-.schedule-hero {
-    display: block;
-
-    min-height: 225px;
-}
-
-
-.schedule-hero-content {
-    padding: 25px 19px 10px;
-}
-
-
-.schedule-hero h1 {
-    font-size: 21px;
-}
-
-
-.schedule-hero p {
-    font-size: 10px;
-}
-
-
-.schedule-hero-side {
-    display: block;
-
-    width: 100%;
-
-    padding: 8px 19px 20px;
-}
-
-
-.schedule-back-button {
     display: inline-flex;
+    align-items: center;
 
-    margin: 0;
+    gap: 7px;
 
-    font-size: 9px;
+    flex: 0 0 auto;
+
+    min-width: max-content;
 }
 
 
-.schedule-hero-decoration {
+/* Hilangkan icon model lama */
+.schedule-day-icon {
     display: none;
 }
 
 
-.schedule-day-header {
-    padding: 11px 14px;
+/* Label HARI */
+.schedule-day-label {
+    display: inline;
+
+    margin: 0;
+
+    color: var(--schedule-blue);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    line-height: 1;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
 }
 
 
-.schedule-day-icon {
-    width: 36px;
-    height: 36px;
+/* =========================================================
+   NAMA HARI
+========================================================= */
 
-    flex-basis: 36px;
+.schedule-day-title > div:last-child {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 7px;
 }
 
+.schedule-day-title > div:last-child::before {
+    content: "•";
+
+    color: #7da5ca;
+
+    font-size: 10px;
+}
 
 .schedule-day-title h2 {
-    font-size: 16px;
+    display: inline;
+
+    margin: 0;
+
+    color: var(--schedule-blue);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    line-height: 1;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
 }
 
 
+/* =========================================================
+   TODAY BADGE
+========================================================= */
+
 .schedule-today-badge {
-    padding: 6px 9px;
+    display: inline-flex;
+    align-items: center;
+
+    gap: 5px;
+
+    flex: 0 0 auto;
+
+    padding: 4px 7px;
+
+    color: #16845a;
+
+    background: var(--schedule-green-soft);
+
+    border: 1px solid #cdeee0;
+
+    border-radius: 5px;
+
+    font-size: 6.5px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    white-space: nowrap;
+}
+
+.schedule-today-badge span {
+    width: 5px;
+    height: 5px;
+
+    flex: 0 0 5px;
+
+    background: var(--schedule-green);
+
+    border-radius: 50%;
+}
+
+
+/* =========================================================
+   TODAY DAY
+========================================================= */
+
+.schedule-day-card.is-today .schedule-day-header::before,
+.schedule-day-card.is-today .schedule-day-header::after {
+    background: #cfe1f2;
+}
+
+.schedule-day-card.is-today .schedule-day-label,
+.schedule-day-card.is-today .schedule-day-title h2 {
+    color: var(--schedule-blue-dark);
+}
+
+
+/* =========================================================
+   TABLE WRAPPER
+========================================================= */
+
+.schedule-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+
+    background: #ffffff;
+
+    border: 1px solid var(--schedule-border);
+
+    border-radius: 10px;
+
+    box-shadow: var(--schedule-shadow);
+
+    scrollbar-width: thin;
+}
+
+.schedule-table-wrapper::-webkit-scrollbar {
+    height: 5px;
+}
+
+.schedule-table-wrapper::-webkit-scrollbar-track {
+    background: #f4f7fa;
+}
+
+.schedule-table-wrapper::-webkit-scrollbar-thumb {
+    background: #ccdbe8;
+
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.schedule-table {
+    width: 100%;
+
+    min-width: 700px;
+
+    margin: 0;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+
+    table-layout: fixed;
+}
+
+
+/* =========================================================
+   COLUMN WIDTH
+========================================================= */
+
+.schedule-time-column {
+    width: 20%;
+}
+
+.schedule-subject-column {
+    width: 32%;
+}
+
+.schedule-class-column {
+    width: 23%;
+}
+
+.schedule-room-column {
+    width: 25%;
+}
+
+
+/* =========================================================
+   TABLE HEADER — BLUE SEDIKIT LEBIH TERLIHAT
+========================================================= */
+
+.schedule-table thead th {
+    height: 43px;
+
+    padding: 9px 14px !important;
+
+    color: #2f6394 !important;
+
+    background: #e3effd !important;
+
+    border: none !important;
+
+    font-size: 8.5px;
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    letter-spacing: 0.15px;
+
+    text-align: left;
+
+    vertical-align: middle;
+
+    white-space: nowrap;
+}
+
+.schedule-table thead th:first-child {
+    padding-left: 18px !important;
+
+    border-top-left-radius: 9px;
+}
+
+.schedule-table thead th:last-child {
+    border-top-right-radius: 9px;
+}
+
+.schedule-table thead th + th {
+    border-left: 1px solid rgba(23, 105, 213, 0.09) !important;
+}
+
+/* =========================================================
+   TABLE BODY
+========================================================= */
+
+.schedule-table tbody td {
+    height: 62px;
+
+    padding: 9px 14px !important;
+
+    color: #536d84;
+
+    background: #ffffff;
+
+    border: none !important;
+
+    border-bottom: 1px solid #edf1f5 !important;
+
+    font-size: 9.5px;
+
+    line-height: 1.4;
+
+    vertical-align: middle;
+}
+
+.schedule-table tbody td:first-child {
+    padding-left: 18px !important;
+}
+
+.schedule-table tbody tr:last-child td {
+    border-bottom: none !important;
+}
+
+.schedule-table tbody tr {
+    transition:
+        background-color 0.15s ease;
+}
+
+.schedule-table tbody tr:hover td {
+    background: #f8fbff;
+}
+
+
+/* =========================================================
+   JAM
+========================================================= */
+
+.schedule-time {
+    white-space: nowrap;
+}
+
+.schedule-time-main {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 5px 8px;
+
+    background: var(--schedule-blue-soft);
+
+    border: 1px solid #dceafb;
+
+    border-radius: 6px;
+}
+
+.schedule-time-main strong {
+    color: #42627d;
+
+    font-size: 8.5px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.schedule-time-main span {
+    color: #91a5b8;
 
     font-size: 8px;
 }
 
 
-.schedule-table {
-    min-width: 720px;
+/* =========================================================
+   MATA PELAJARAN
+========================================================= */
+
+.schedule-subject {
+    max-width: 0;
 }
 
+.schedule-subject-content {
+    min-width: 0;
+}
+
+.schedule-subject-mark {
+    display: inline-block;
+
+    width: 3px;
+    height: 25px;
+
+    margin-right: 9px;
+
+    vertical-align: middle;
+
+    background: #1769d5;
+
+    border-radius: 3px;
+}
+
+.schedule-subject-content {
+    display: inline-flex;
+    flex-direction: column;
+
+    vertical-align: middle;
+
+    max-width: calc(100% - 18px);
+}
+
+.schedule-subject-content strong {
+    display: block;
+
+    overflow: hidden;
+
+    color: #284963;
+
+    font-size: 9.5px;
+    font-weight: 700;
+
+    line-height: 1.35;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+.schedule-subject-content small {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #9aaabd;
+
+    font-size: 7px;
+    font-weight: 500;
+
+    line-height: 1.2;
+}
+
+
+/* =========================================================
+   KELAS
+========================================================= */
+
+.schedule-class {
+    white-space: nowrap;
+}
+
+.schedule-class-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 27px;
+    height: 27px;
+
+    margin-right: 7px;
+
+    color: var(--schedule-blue);
+
+    background: var(--schedule-blue-soft);
+
+    border: 1px solid #dceafb;
+
+    border-radius: 7px;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    vertical-align: middle;
+}
+
+.schedule-class-content {
+    display: inline-flex;
+    flex-direction: column;
+
+    vertical-align: middle;
+
+    max-width: calc(100% - 40px);
+}
+
+.schedule-class-content strong {
+    display: block;
+
+    overflow: hidden;
+
+    color: #42627d;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    line-height: 1.3;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+.schedule-class-content small {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #9aaabd;
+
+    font-size: 7px;
+
+    line-height: 1.2;
+}
+
+
+/* =========================================================
+   RUANGAN
+========================================================= */
+
+.schedule-room {
+    white-space: nowrap;
+}
+
+.room-badge {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 5px;
+
+    max-width: 100%;
+
+    padding: 5px 8px;
+
+    color: #42627d;
+
+    background: #f3f7fb;
+
+    border: 1px solid #e0e9f1;
+
+    border-radius: 6px;
+
+    font-size: 8px;
+    font-weight: 650;
+
+    white-space: nowrap;
+}
+
+.room-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--schedule-blue);
+
+    font-size: 8px;
+}
+
+.room-empty {
+    color: #a4b2bf;
+
+    font-size: 8px;
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
 
 .schedule-empty-card {
-    padding: 45px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 220px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    background: #ffffff;
+
+    border: 1px solid var(--schedule-border);
+
+    border-radius: 12px;
+
+    box-shadow: var(--schedule-shadow);
+}
+
+.schedule-empty-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    width: 48px;
+    height: 48px;
+
+    margin-bottom: 13px;
+
+    background: var(--schedule-blue-soft);
+
+    border: 1px solid #dceafb;
+
+    border-radius: 10px;
+}
+
+.schedule-empty-visual span {
+    width: 5px;
+    height: 17px;
+
+    background: #8bb7e8;
+
+    border-radius: 3px;
+}
+
+.schedule-empty-visual span:nth-child(2) {
+    height: 25px;
+
+    background: var(--schedule-blue);
+}
+
+.schedule-empty-visual span:nth-child(3) {
+    height: 12px;
+
+    background: #9fc4eb;
+}
+
+.schedule-empty-card h2 {
+    margin: 0 0 6px;
+
+    color: var(--schedule-text-dark);
+
+    font-size: 14px;
+    font-weight: 750;
+}
+
+.schedule-empty-card p {
+    max-width: 430px;
+
+    margin: 0 0 5px;
+
+    color: var(--schedule-muted);
+
+    font-size: 9.5px;
+
+    line-height: 1.6;
+}
+
+.schedule-empty-card small {
+    color: #9aaabd;
+
+    font-size: 8px;
+
+    line-height: 1.5;
 }
 
 
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .guru-schedule-page {
+        padding-top: 4px;
+    }
+
+
+    /* HERO */
+
+    .schedule-hero {
+        min-height: 170px;
+
+        padding: 26px 25px;
+
+        border-radius: 12px;
+    }
+
+    .schedule-hero h1 {
+        font-size: 20px;
+    }
+
+    .schedule-hero p {
+        font-size: 9px;
+    }
+
+    .schedule-hero-side {
+        min-width: 125px;
+    }
+
+
+    /* DAY */
+
+    .schedule-day-header {
+        min-height: 40px;
+
+        padding: 6px 13px;
+
+        gap: 9px;
+    }
+
+    .schedule-day-label,
+    .schedule-day-title h2 {
+        font-size: 9px;
+    }
+
+    .schedule-day-title > div:last-child::before {
+        font-size: 9px;
+    }
+
+
+    /* TABLE */
+
+    .schedule-table {
+        min-width: 680px;
+    }
+
+    .schedule-table thead th {
+        height: 42px;
+
+        padding: 8px 12px !important;
+
+        font-size: 8px;
+    }
+
+    .schedule-table tbody td {
+        height: 59px;
+
+        padding: 8px 12px !important;
+    }
+
+    .schedule-table tbody td:first-child {
+        padding-left: 14px !important;
+    }
+
+    .schedule-time-main {
+        padding: 5px 7px;
+    }
+
+    .schedule-time-main strong {
+        font-size: 8px;
+    }
+
+    .schedule-subject-content strong {
+        font-size: 9px;
+    }
+
+    .schedule-class-content strong {
+        font-size: 8.5px;
+    }
+
+    .room-badge {
+        font-size: 7.5px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 576px) {
+
+    .guru-schedule-page {
+        padding-bottom: 30px;
+    }
+
+
+    /* HERO */
+
+    .schedule-hero {
+        min-height: 155px;
+
+        padding: 21px 18px;
+
+        border-radius: 10px;
+    }
+
+    .schedule-hero-content {
+        max-width: calc(100% - 45px);
+    }
+
+    .schedule-eyebrow {
+        margin-bottom: 5px;
+
+        font-size: 7px;
+
+        letter-spacing: 1.2px;
+    }
+
+    .schedule-hero h1 {
+        margin-bottom: 6px;
+
+        font-size: 17px;
+    }
+
+    .schedule-hero p {
+        font-size: 8px;
+
+        line-height: 1.55;
+    }
+
+    .schedule-year {
+        margin-top: 13px;
+
+        padding: 6px 8px;
+    }
+
+    .schedule-year-icon {
+        width: 23px;
+        height: 23px;
+
+        font-size: 8px;
+    }
+
+    .schedule-year small {
+        font-size: 5.5px;
+    }
+
+    .schedule-year strong {
+        font-size: 7.5px;
+    }
+
+    .schedule-warning {
+        margin-top: 12px;
+
+        padding: 7px 9px;
+    }
+
+    .schedule-warning strong {
+        font-size: 7px;
+    }
+
+    .schedule-warning span {
+        font-size: 6px;
+    }
+
+
+    /* BACK BUTTON */
+
+    .schedule-back-button {
+        padding: 7px 9px;
+
+        font-size: 7px;
+    }
+
+    .schedule-back-icon {
+        font-size: 9px;
+    }
+
+
+    /* DECORATION */
+
+    .schedule-circle-one {
+        width: 150px;
+        height: 150px;
+
+        right: -75px;
+        top: -75px;
+    }
+
+    .schedule-circle-two {
+        width: 100px;
+        height: 100px;
+
+        right: 25px;
+        bottom: -70px;
+    }
+
+    .schedule-circle-three,
+    .schedule-dot {
+        display: none;
+    }
+
+
+    /* DAY */
+
+    .schedule-day-card {
+        margin-bottom: 15px;
+    }
+
+    .schedule-day-header {
+        min-height: 38px;
+
+        padding: 5px 8px;
+
+        gap: 7px;
+    }
+
+    .schedule-day-label,
+    .schedule-day-title h2 {
+        font-size: 8px;
+
+        letter-spacing: 0.8px;
+    }
+
+    .schedule-day-title {
+        gap: 5px;
+    }
+
+    .schedule-day-title > div:last-child {
+        gap: 5px;
+    }
+
+    .schedule-day-title > div:last-child::before {
+        font-size: 8px;
+    }
+
+    .schedule-today-badge {
+        padding: 4px 6px;
+
+        font-size: 6px;
+    }
+
+
+    /* TABLE */
+
+    .schedule-table-wrapper {
+        border-radius: 8px;
+    }
+
+    .schedule-table {
+        min-width: 650px;
+    }
+
+    .schedule-table thead th {
+        height: 39px;
+
+        padding: 7px 10px !important;
+
+        font-size: 7px;
+    }
+
+    .schedule-table thead th:first-child {
+        padding-left: 12px !important;
+    }
+
+    .schedule-table tbody td {
+        height: 54px;
+
+        padding: 7px 10px !important;
+
+        font-size: 8px;
+    }
+
+    .schedule-table tbody td:first-child {
+        padding-left: 12px !important;
+    }
+
+    .schedule-time-main {
+        gap: 4px;
+
+        padding: 4px 6px;
+    }
+
+    .schedule-time-main strong {
+        font-size: 7.5px;
+    }
+
+    .schedule-time-main span {
+        font-size: 7px;
+    }
+
+    .schedule-subject-mark {
+        width: 2px;
+        height: 21px;
+
+        margin-right: 6px;
+    }
+
+    .schedule-subject-content strong {
+        font-size: 8px;
+    }
+
+    .schedule-subject-content small {
+        font-size: 6px;
+    }
+
+    .schedule-class-badge {
+        width: 23px;
+        height: 23px;
+
+        margin-right: 5px;
+
+        border-radius: 6px;
+
+        font-size: 7.5px;
+    }
+
+    .schedule-class-content {
+        max-width: calc(100% - 32px);
+    }
+
+    .schedule-class-content strong {
+        font-size: 7.5px;
+    }
+
+    .schedule-class-content small {
+        font-size: 6px;
+    }
+
+    .room-badge {
+        gap: 4px;
+
+        padding: 4px 6px;
+
+        font-size: 6.5px;
+    }
+
+    .room-icon {
+        font-size: 7px;
+    }
+
+    .room-empty {
+        font-size: 7px;
+    }
+
+
+    /* EMPTY */
+
+    .schedule-empty-card {
+        min-height: 190px;
+
+        padding: 25px 18px;
+    }
+
+    .schedule-empty-visual {
+        width: 44px;
+        height: 44px;
+    }
+
+    .schedule-empty-card h2 {
+        font-size: 13px;
+    }
+
+    .schedule-empty-card p {
+        font-size: 8.5px;
+    }
+
+    .schedule-empty-card small {
+        font-size: 7px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 430px) {
+
+    .schedule-hero {
+        min-height: 145px;
+
+        padding: 18px 15px;
+    }
+
+    .schedule-hero h1 {
+        font-size: 15px;
+    }
+
+    .schedule-hero p {
+        font-size: 7.5px;
+    }
+
+    .schedule-back-button {
+        padding: 6px 8px;
+
+        font-size: 6.5px;
+    }
+
+    .schedule-day-header {
+        min-height: 35px;
+
+        padding: 5px 5px;
+
+        gap: 5px;
+    }
+
+    .schedule-day-label,
+    .schedule-day-title h2 {
+        font-size: 7.5px;
+
+        letter-spacing: 0.6px;
+    }
+
+    .schedule-day-title > div:last-child::before {
+        font-size: 7.5px;
+    }
+
+    .schedule-today-badge {
+        padding: 3px 5px;
+
+        font-size: 5.5px;
+    }
+
+    .schedule-table {
+        min-width: 630px;
+    }
 }
