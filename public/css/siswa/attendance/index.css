@@ -1,8 +1,13 @@
 /* =========================================================
-   DASHBOARD SISWA
-   RIWAYAT PRESENSI
-   MODERN BLUE
+   SISWA — RIWAYAT PRESENSI
+   MODERN BLUE SCHOOL DASHBOARD
+   FONT: PLUS JAKARTA SANS
 ========================================================= */
+
+.student-attendance-page,
+.student-attendance-page * {
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
 
 .student-attendance-page {
     width: 100%;
@@ -11,48 +16,57 @@
 
 
 /* =========================================================
-   HEADER RIWAYAT PRESENSI
+   HEADER
 ========================================================= */
 
 .attendance-header {
     position: relative;
     overflow: hidden;
+
+    min-height: 132px;
+    padding: 24px 27px;
+
     background: linear-gradient(
         135deg,
         #1769d5 0%,
         #087ed1 55%,
         #08a2e8 100%
     );
-    border-radius: 18px;
-    padding: 24px 27px;
-    min-height: 132px;
-    box-shadow: 0 9px 23px rgba(23, 105, 213, 0.16);
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 9px 23px rgba(23, 105, 213, 0.14);
 }
 
 .attendance-header-content {
     position: relative;
     z-index: 5;
+
     display: flex;
     align-items: center;
+
     gap: 16px;
 }
 
 .attendance-header-icon {
     width: 52px;
     height: 52px;
+
     flex-shrink: 0;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background: rgba(255, 255, 255, 0.16);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.15);
 
-    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.23);
+    border-radius: 12px;
 
     color: #ffffff;
-    font-size: 22px;
+
+    font-size: 21px;
 
     backdrop-filter: blur(5px);
 }
@@ -62,15 +76,24 @@
 
     color: #ffffff !important;
 
-    font-size: 23px;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+
+    font-size: 22px;
     font-weight: 800;
-    letter-spacing: 0.2px;
+
+    letter-spacing: 0.1px;
 }
 
 .attendance-header p {
-    color: rgba(255, 255, 255, 0.87) !important;
+    margin: 0;
 
-    font-size: 12px;
+    color: rgba(255, 255, 255, 0.88) !important;
+
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+
+    font-size: 11.5px;
+    font-weight: 400;
+
     line-height: 1.5;
 }
 
@@ -81,7 +104,9 @@
 
 .attendance-header-decoration {
     position: absolute;
+
     border-radius: 50%;
+
     pointer-events: none;
 }
 
@@ -92,7 +117,7 @@
     right: -55px;
     top: -90px;
 
-    background: rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.09);
 }
 
 .decoration-two {
@@ -102,7 +127,7 @@
     right: 125px;
     bottom: -58px;
 
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.07);
 }
 
 .attendance-header-dot {
@@ -110,7 +135,7 @@
 
     border-radius: 50%;
 
-    background: rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.21);
 
     z-index: 2;
 }
@@ -144,7 +169,7 @@
 
     border-radius: 10px;
 
-    background: rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.15);
 
     transform: rotate(-35deg);
 }
@@ -155,6 +180,12 @@
 ========================================================= */
 
 .attendance-recap {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 12px;
+
     margin-bottom: 20px;
 }
 
@@ -162,32 +193,36 @@
     position: relative;
     overflow: hidden;
 
-    height: 76px;
-    min-height: 76px;
+    min-height: 116px;
 
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
 
-    gap: 10px;
-
-    padding: 10px 14px;
+    padding: 14px 12px 13px;
 
     background: #ffffff;
 
-    border-radius: 13px;
-    border: 1px solid #e4ebf4;
+    border: 1px solid #e1e9f2;
+    border-radius: 10px;
 
-    box-shadow: 0 4px 12px rgba(31, 76, 120, 0.055);
+    box-shadow:
+        0 4px 13px rgba(31, 76, 120, 0.045);
+
+    text-align: center;
 
     transition:
         transform 0.2s ease,
-        box-shadow 0.2s ease;
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
 }
 
 .recap-card:hover {
     transform: translateY(-2px);
 
-    box-shadow: 0 7px 17px rgba(31, 76, 120, 0.09);
+    box-shadow:
+        0 7px 17px rgba(31, 76, 120, 0.075);
 }
 
 .recap-card::before {
@@ -196,87 +231,75 @@
     position: absolute;
 
     left: 0;
+    right: 0;
     top: 0;
 
-    width: 3px;
-    height: 100%;
+    height: 3px;
+}
+
+.recap-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 80px;
+    height: 80px;
+
+    right: -42px;
+    top: -42px;
+
+    border-radius: 50%;
+
+    opacity: 0.55;
 }
 
 
 /* =========================================================
-   DEKORASI REKAP
+   ICON REKAP
 ========================================================= */
-
-.recap-shape {
-    position: absolute;
-
-    width: 70px;
-    height: 70px;
-
-    border-radius: 50%;
-
-    right: -28px;
-    top: -30px;
-
-    pointer-events: none;
-
-    opacity: 0.9;
-}
 
 .recap-icon {
     position: relative;
-    z-index: 3;
+    z-index: 2;
 
-    width: 34px;
-    height: 34px;
+    width: 29px;
+    height: 29px;
 
-    flex-shrink: 0;
+    margin-bottom: 7px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    border-radius: 9px;
+    border-radius: 8px;
 
-    font-size: 16px;
-}
-
-.recap-content {
-    position: relative;
-    z-index: 3;
-
-    min-width: 0;
+    font-size: 12px;
 }
 
 .recap-number {
-    font-size: 19px;
+    position: relative;
+    z-index: 2;
+
+    margin-bottom: 3px;
+
+    font-size: 23px;
 
     line-height: 1;
 
     font-weight: 800;
-
-    margin-bottom: 3px;
 }
 
 .recap-label {
-    color: #71849a;
+    position: relative;
+    z-index: 2;
 
-    font-size: 10px;
+    font-size: 9px;
 
-    font-weight: 650;
-}
+    font-weight: 700;
 
-.recap-mini-icon {
-    position: absolute;
+    text-transform: uppercase;
 
-    right: 11px;
-    bottom: 9px;
-
-    z-index: 3;
-
-    font-size: 12px;
-
-    opacity: 0.25;
+    letter-spacing: 0.45px;
 }
 
 
@@ -288,6 +311,10 @@
     background: #19a974;
 }
 
+.recap-hadir::after {
+    background: #eaf8f2;
+}
+
 .recap-hadir .recap-icon {
     background: #e8f8f1;
     color: #159564;
@@ -297,12 +324,8 @@
     color: #159564;
 }
 
-.recap-hadir .recap-shape {
-    background: #e8f8f1;
-}
-
-.recap-hadir .recap-mini-icon {
-    color: #159564;
+.recap-hadir .recap-label {
+    color: #6b8c7e;
 }
 
 
@@ -314,6 +337,10 @@
     background: #168bd3;
 }
 
+.recap-izin::after {
+    background: #e9f6ff;
+}
+
 .recap-izin .recap-icon {
     background: #e8f5ff;
     color: #168bd3;
@@ -323,12 +350,8 @@
     color: #168bd3;
 }
 
-.recap-izin .recap-shape {
-    background: #e8f5ff;
-}
-
-.recap-izin .recap-mini-icon {
-    color: #168bd3;
+.recap-izin .recap-label {
+    color: #69869b;
 }
 
 
@@ -340,8 +363,12 @@
     background: #e5a11a;
 }
 
-.recap-sakit .recap-icon {
+.recap-sakit::after {
     background: #fff7df;
+}
+
+.recap-sakit .recap-icon {
+    background: #fff6dc;
     color: #d38d08;
 }
 
@@ -349,12 +376,8 @@
     color: #d38d08;
 }
 
-.recap-sakit .recap-shape {
-    background: #fff7df;
-}
-
-.recap-sakit .recap-mini-icon {
-    color: #d38d08;
+.recap-sakit .recap-label {
+    color: #927c55;
 }
 
 
@@ -366,6 +389,10 @@
     background: #e24d5b;
 }
 
+.recap-alpha::after {
+    background: #ffedf0;
+}
+
 .recap-alpha .recap-icon {
     background: #ffedef;
     color: #db4350;
@@ -375,12 +402,8 @@
     color: #db4350;
 }
 
-.recap-alpha .recap-shape {
-    background: #ffedef;
-}
-
-.recap-alpha .recap-mini-icon {
-    color: #db4350;
+.recap-alpha .recap-label {
+    color: #946d73;
 }
 
 
@@ -392,20 +415,25 @@
     position: relative;
     overflow: hidden;
 
+    margin-bottom: 16px !important;
+
     background: #ffffff;
 
-    border-radius: 15px;
-    border: 1px solid #e3ebf5;
+    border: 1px solid #dce6f0;
+    border-radius: 10px;
 
-    box-shadow: 0 4px 14px rgba(31, 76, 120, 0.055);
-
-    margin-bottom: 14px !important;
+    box-shadow:
+        0 5px 16px rgba(31, 76, 120, 0.055);
 }
 
 
 /* =========================================================
    HEADER TANGGAL
 ========================================================= */
+
+.attendance-date-card::before {
+    display: none;
+}
 
 .attendance-date-header {
     position: relative;
@@ -414,20 +442,20 @@
     display: flex;
     align-items: center;
 
-    gap: 11px;
+    gap: 12px;
 
-    min-height: 62px;
+    min-height: 68px;
 
-    padding: 12px 17px;
+    padding: 13px 17px;
 
-    background: #f8fbff;
+    background: rgba(234, 243, 255, 0.72);
 
-    border-bottom: 1px solid #e5edf6;
+    border-bottom: 1px solid #d9e8f7;
 }
 
 .attendance-date-icon {
-    width: 36px;
-    height: 36px;
+    width: 37px;
+    height: 37px;
 
     flex-shrink: 0;
 
@@ -435,14 +463,17 @@
     align-items: center;
     justify-content: center;
 
-    background: #e8f3ff;
+    background: #ffffff;
+
     color: #1769d5;
 
-    border-radius: 10px;
+    border: 1px solid #d5e6f7;
+    border-radius: 9px;
 
-    font-size: 16px;
+    font-size: 15px;
 
-    border: 1px solid #d8eaff;
+    box-shadow:
+        0 2px 6px rgba(23, 105, 213, 0.06);
 }
 
 .attendance-date-info {
@@ -452,42 +483,48 @@
     display: flex;
     flex-direction: column;
 
-    gap: 1px;
+    gap: 3px;
+
+    min-width: 0;
 }
 
 .date-label {
-    color: #7c91a8;
+    color: #6f89a3;
 
-    font-size: 8px;
-
+    font-size: 7.5px;
     font-weight: 800;
 
     letter-spacing: 0.8px;
+
+    line-height: 1.3;
 }
 
 .date-value {
-    color: #25496d;
+    color: #244d74;
 
-    font-size: 13px;
+    font-size: 12px;
+    font-weight: 750;
 
-    font-weight: 700;
+    line-height: 1.45;
+
+    white-space: nowrap;
 }
 
 .date-small-decoration {
     position: absolute;
 
-    right: 20px;
+    right: 18px;
     top: 50%;
 
     transform: translateY(-50%);
 
     color: #1769d5;
 
-    opacity: 0.10;
+    opacity: 0.075;
 
-    font-size: 36px;
+    font-size: 34px;
 
-    z-index: 2;
+    z-index: 1;
 }
 
 
@@ -512,7 +549,7 @@
     right: -35px;
     top: -40px;
 
-    background: #edf6ff;
+    background: #f1f7ff;
 }
 
 .date-decoration-two {
@@ -522,32 +559,28 @@
     right: 55px;
     bottom: -22px;
 
-    background: #f3f9ff;
-}
-
-.attendance-date-card::before {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    top: 0;
-
-    width: 100%;
-    height: 3px;
-
-    background: #1769d5;
-
-    z-index: 10;
+    background: #f7fbff;
 }
 
 
 /* =========================================================
-   TABEL PRESENSI
+   TABLE
 ========================================================= */
+
+.attendance-date-card .table-responsive {
+    overflow-x: auto;
+
+    background: #ffffff;
+}
 
 .attendance-table {
     width: 100%;
+
+    /*
+     * Mata Pelajaran dibuat lebih proporsional.
+     * Tidak mengambil hampir seluruh lebar tabel.
+     */
+    min-width: 560px;
 
     border-collapse: separate;
     border-spacing: 0;
@@ -555,58 +588,117 @@
     margin: 0 !important;
 
     background: #ffffff;
+
+    table-layout: fixed;
 }
 
 
 /* =========================================================
-   HEADER TABEL
+   LEBAR KOLOM
+========================================================= */
+
+/*
+ * Kolom Mata Pelajaran
+ * dibuat sekitar 48% saja.
+ */
+.attendance-table th:first-child,
+.attendance-table td:first-child {
+    width: 48%;
+}
+
+/*
+ * Kolom Status
+ */
+.attendance-table th:nth-child(2),
+.attendance-table td:nth-child(2) {
+    width: 25%;
+}
+
+/*
+ * Kolom Waktu Scan
+ */
+.attendance-table th:nth-child(3),
+.attendance-table td:nth-child(3) {
+    width: 27%;
+}
+
+
+/* =========================================================
+   TABLE HEADER
+   LIGHT BLUE — LEBIH TEGAS
 ========================================================= */
 
 .attendance-table thead th {
-    background: #1769d5 !important;
+    height: 46px;
 
-    color: #ffffff !important;
+    padding: 10px 15px !important;
+
+    color: #245b8d !important;
+
+    background: #d9ebfb !important;
 
     border: none !important;
 
-    padding: 10px 14px !important;
+    border-bottom: 1px solid #c5def2 !important;
 
-    font-size: 11px;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
 
-    font-weight: 700;
+    font-size: 8.5px;
 
-    letter-spacing: 0.2px;
+    font-weight: 800;
+
+    letter-spacing: 0.35px;
+
+    text-transform: uppercase;
 
     vertical-align: middle;
+
+    white-space: nowrap;
 }
 
 .attendance-table thead th:first-child {
-    border-radius: 0 !important;
+    padding-left: 18px !important;
 }
 
-.attendance-table thead th:last-child {
-    border-radius: 0 !important;
+.attendance-table thead th i {
+    margin-right: 6px;
+
+    color: #1769d5;
+
+    font-size: 10px;
+}
+
+.attendance-table thead th + th {
+    border-left: 1px solid #c9e0f3 !important;
 }
 
 
 /* =========================================================
-   ISI TABEL
+   BODY TABLE
 ========================================================= */
 
 .attendance-table tbody td {
+    height: 62px;
+
+    padding: 10px 15px !important;
+
+    color: #526d85;
+
     background: #ffffff;
 
-    color: #38536e;
+    border: none !important;
 
-    border-bottom: 1px solid #edf2f7 !important;
+    border-bottom: 1px solid #e8eef5 !important;
 
-    padding: 10px 14px !important;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
 
-    height: 48px;
-
-    font-size: 12px;
+    font-size: 10px;
 
     vertical-align: middle;
+}
+
+.attendance-table tbody td:first-child {
+    padding-left: 18px !important;
 }
 
 .attendance-table tbody tr:last-child td {
@@ -614,28 +706,31 @@
 }
 
 .attendance-table tbody tr {
-    transition: background 0.15s ease;
+    transition: background-color 0.15s ease;
 }
 
 .attendance-table tbody tr:hover td {
-    background: #f7faff;
+    background: #f4f8fd;
 }
 
 
 /* =========================================================
-   SUBJECT CELL
+   SUBJECT
 ========================================================= */
 
 .subject-cell {
     display: flex;
+
     align-items: center;
 
     gap: 9px;
+
+    min-width: 0;
 }
 
 .subject-icon {
-    width: 29px;
-    height: 29px;
+    width: 31px;
+    height: 31px;
 
     flex-shrink: 0;
 
@@ -647,17 +742,30 @@
 
     color: #1769d5;
 
+    border: 1px solid #d9e9fa;
+
     border-radius: 8px;
 
-    font-size: 12px;
+    font-size: 11px;
 }
 
 .subject-name {
-    color: #25496d;
+    min-width: 0;
 
-    font-size: 12px;
+    color: #244d74;
 
-    font-weight: 650;
+    font-size: 10.5px;
+
+    font-weight: 700;
+
+    line-height: 1.35;
+
+    /*
+     * Mencegah teks mendorong kolom menjadi terlalu lebar.
+     */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 
@@ -671,17 +779,21 @@
     align-items: center;
     justify-content: center;
 
-    min-width: 58px;
+    min-width: 61px;
 
-    padding: 4px 8px;
+    padding: 6px 10px;
 
     border-radius: 6px;
 
-    font-size: 10px;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+
+    font-size: 8.5px;
+
+    font-weight: 750;
 
     line-height: 1.2;
 
-    font-weight: 700;
+    letter-spacing: 0.1px;
 }
 
 
@@ -694,19 +806,21 @@
 
     align-items: center;
 
-    gap: 5px;
+    gap: 6px;
 
-    color: #627990;
+    color: #60788e;
 
-    font-size: 11px;
+    font-size: 9.5px;
 
     font-weight: 600;
+
+    white-space: nowrap;
 }
 
 .scan-time i {
-    color: #1769d5;
+    color: #6d9bc2;
 
-    font-size: 10px;
+    font-size: 9px;
 }
 
 
@@ -753,11 +867,12 @@
 
     background: #ffffff;
 
-    border: 1px solid #e4edf7;
+    border: 1px solid #e2eaf3;
 
-    border-radius: 17px;
+    border-radius: 11px;
 
-    box-shadow: 0 6px 18px rgba(31, 76, 120, 0.055);
+    box-shadow:
+        0 6px 18px rgba(31, 76, 120, 0.045);
 }
 
 .empty-decoration {
@@ -805,22 +920,22 @@
 
     color: #1769d5;
 
-    border-radius: 14px;
+    border-radius: 12px;
 
-    font-size: 22px;
+    font-size: 21px;
 }
 
 .attendance-empty h5 {
     position: relative;
     z-index: 2;
 
+    margin-bottom: 5px;
+
     color: #24496f;
 
-    font-size: 15px;
+    font-size: 14px;
 
     font-weight: 750;
-
-    margin-bottom: 5px;
 }
 
 .attendance-empty p {
@@ -829,15 +944,16 @@
 
     color: #7b8ea5;
 
-    font-size: 12px;
+    font-size: 10.5px;
+
+    line-height: 1.5;
 
     margin: 0;
 }
 
 
 /* =========================================================
-   KEMBALI KE DASHBOARD
-   POSISI PALING BAWAH
+   BUTTON KEMBALI
 ========================================================= */
 
 .attendance-back-bottom {
@@ -846,6 +962,7 @@
     justify-content: flex-end;
 
     margin-top: 18px;
+    margin-bottom: 5px;
 }
 
 .back-dashboard {
@@ -855,37 +972,40 @@
 
     gap: 7px;
 
-    padding: 9px 14px;
+    padding: 8px 13px;
 
     background: #ffffff;
 
     color: #1769d5;
 
-    border: 1px solid #dce9f7;
+    border: 1px solid #dce8f4;
 
-    border-radius: 9px;
+    border-radius: 7px;
 
     text-decoration: none;
 
-    font-size: 12px;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+
+    font-size: 10px;
 
     font-weight: 700;
 
-    box-shadow: 0 3px 10px rgba(31, 76, 120, 0.05);
+    box-shadow:
+        0 3px 9px rgba(31, 76, 120, 0.04);
 
     transition: all 0.2s ease;
 }
 
 .back-dashboard i {
-    font-size: 13px;
+    font-size: 11px;
 }
 
 .back-dashboard:hover {
-    background: #1769d5;
+    background: #f4f8fd;
 
-    color: #ffffff;
+    color: #125bbd;
 
-    border-color: #1769d5;
+    border-color: #cbddec;
 
     transform: translateX(-2px);
 }
@@ -898,11 +1018,9 @@
 @media (max-width: 768px) {
 
     .attendance-header {
-        padding: 21px 20px;
-
         min-height: 125px;
 
-        border-radius: 16px;
+        padding: 21px 20px;
     }
 
     .attendance-header-content {
@@ -913,9 +1031,9 @@
         width: 46px;
         height: 46px;
 
-        border-radius: 12px;
+        border-radius: 11px;
 
-        font-size: 20px;
+        font-size: 19px;
     }
 
     .attendance-header h4 {
@@ -923,39 +1041,44 @@
     }
 
     .attendance-header p {
-        font-size: 11px;
+        font-size: 10.5px;
     }
 
 
     /* REKAP */
 
-    .recap-card {
-        height: 72px;
-        min-height: 72px;
+    .attendance-recap {
+        grid-template-columns: repeat(2, 1fr);
 
-        padding: 9px 12px;
+        gap: 10px;
+    }
+
+    .recap-card {
+        min-height: 110px;
+
+        padding: 13px 11px;
     }
 
     .recap-icon {
-        width: 32px;
-        height: 32px;
+        width: 28px;
+        height: 28px;
 
-        font-size: 15px;
+        margin-bottom: 6px;
     }
 
     .recap-number {
-        font-size: 18px;
+        font-size: 21px;
     }
 
     .recap-label {
-        font-size: 9px;
+        font-size: 8.5px;
     }
 
 
     /* TANGGAL */
 
     .attendance-date-header {
-        min-height: 60px;
+        min-height: 62px;
 
         padding: 11px 14px;
     }
@@ -964,26 +1087,30 @@
         width: 34px;
         height: 34px;
 
-        font-size: 15px;
+        font-size: 14px;
     }
 
     .date-value {
-        font-size: 12px;
+        font-size: 11.5px;
     }
 
 
-    /* TABEL */
+    /* TABLE */
+
+    .attendance-table {
+        min-width: 540px;
+    }
 
     .attendance-table thead th {
-        padding: 10px 11px !important;
-
-        font-size: 10px;
+        padding: 9px 11px !important;
     }
 
     .attendance-table tbody td {
-        padding: 10px 11px !important;
+        padding: 9px 11px !important;
+    }
 
-        font-size: 11px;
+    .attendance-table tbody td:first-child {
+        padding-left: 13px !important;
     }
 
 
@@ -992,12 +1119,11 @@
     .attendance-back-bottom {
         margin-top: 15px;
     }
-
 }
 
 
 /* =========================================================
-   RESPONSIVE MOBILE
+   MOBILE
 ========================================================= */
 
 @media (max-width: 480px) {
@@ -1010,9 +1136,11 @@
     /* HEADER */
 
     .attendance-header {
+        min-height: 115px;
+
         padding: 19px 16px;
 
-        min-height: 115px;
+        border-radius: 12px;
     }
 
     .attendance-header-content {
@@ -1023,9 +1151,9 @@
         width: 42px;
         height: 42px;
 
-        border-radius: 11px;
+        border-radius: 10px;
 
-        font-size: 18px;
+        font-size: 17px;
     }
 
     .attendance-header h4 {
@@ -1033,96 +1161,108 @@
     }
 
     .attendance-header p {
-        font-size: 10px;
+        font-size: 9.5px;
     }
 
 
     /* REKAP */
 
-    .recap-card {
-        height: 68px;
-        min-height: 68px;
-
+    .attendance-recap {
         gap: 8px;
 
-        padding: 8px 10px;
+        margin-bottom: 16px;
+    }
+
+    .recap-card {
+        min-height: 102px;
+
+        padding: 11px 9px;
+
+        border-radius: 8px;
+    }
+
+    .recap-card::before {
+        height: 2px;
     }
 
     .recap-icon {
-        width: 29px;
-        height: 29px;
+        width: 26px;
+        height: 26px;
 
-        border-radius: 8px;
+        margin-bottom: 6px;
 
-        font-size: 14px;
+        border-radius: 7px;
+
+        font-size: 10px;
     }
 
     .recap-number {
-        font-size: 17px;
+        font-size: 19px;
     }
 
     .recap-label {
-        font-size: 9px;
-    }
-
-    .recap-mini-icon {
-        right: 8px;
-        bottom: 7px;
-
-        font-size: 10px;
+        font-size: 7.5px;
     }
 
 
     /* TANGGAL */
 
     .attendance-date-header {
-        min-height: 57px;
+        min-height: 55px;
 
-        padding: 10px 12px;
+        padding: 9px 11px;
 
         gap: 9px;
     }
 
     .attendance-date-icon {
-        width: 32px;
-        height: 32px;
+        width: 31px;
+        height: 31px;
 
-        border-radius: 9px;
+        border-radius: 8px;
 
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .date-label {
-        font-size: 7px;
+        font-size: 6.5px;
     }
 
     .date-value {
-        font-size: 11px;
+        font-size: 10px;
     }
 
     .date-small-decoration {
-        right: 14px;
+        right: 13px;
 
-        font-size: 28px;
+        font-size: 25px;
     }
 
 
-    /* TABEL */
+    /* TABLE */
 
     .attendance-table {
-        min-width: 450px;
+        min-width: 500px;
     }
 
     .attendance-table thead th {
-        padding: 9px 10px !important;
+        height: 42px;
+
+        padding: 8px 10px !important;
+
+        font-size: 7.5px;
+    }
+
+    .attendance-table tbody td {
+        height: 55px;
+
+        padding: 8px 10px !important;
 
         font-size: 9px;
     }
 
-    .attendance-table tbody td {
-        padding: 9px 10px !important;
-
-        font-size: 10px;
+    .attendance-table tbody td:first-child {
+        padding-left: 12px !important;
     }
 
     .subject-cell {
@@ -1133,50 +1273,121 @@
         width: 26px;
         height: 26px;
 
-        font-size: 10px;
+        font-size: 9px;
     }
 
     .subject-name {
-        font-size: 10px;
+        font-size: 9px;
     }
 
     .attendance-status {
-        min-width: 52px;
+        min-width: 50px;
 
         padding: 4px 7px;
 
-        font-size: 9px;
+        font-size: 7.5px;
     }
 
     .scan-time {
-        font-size: 10px;
+        font-size: 8.5px;
     }
 
     .scan-time i {
-        font-size: 9px;
+        font-size: 8px;
     }
 
 
     /* BUTTON */
 
     .attendance-back-bottom {
-        justify-content: flex-end;
-
         margin-top: 14px;
     }
 
     .back-dashboard {
         padding: 8px 12px;
 
-        font-size: 11px;
+        font-size: 9.5px;
+    }
+}
+
+
+/* =========================================================
+   EXTRA SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .attendance-header {
+        padding: 17px 14px;
     }
 
-}
+    .attendance-header-icon {
+        width: 38px;
+        height: 38px;
 
-.attendance-table thead tr {
-    background: #1769d5 !important;
-}
+        font-size: 16px;
+    }
 
-.attendance-table thead th + th {
-    border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
+    .attendance-header h4 {
+        font-size: 16px;
+    }
+
+    .attendance-header p {
+        font-size: 9px;
+    }
+
+
+    .attendance-recap {
+        gap: 7px;
+    }
+
+    .recap-card {
+        min-height: 96px;
+
+        padding: 9px 8px;
+    }
+
+    .recap-icon {
+        width: 24px;
+        height: 24px;
+
+        font-size: 9px;
+    }
+
+    .recap-number {
+        font-size: 17px;
+    }
+
+    .recap-label {
+        font-size: 7px;
+    }
+
+
+    .attendance-date-header {
+        padding: 9px 10px;
+    }
+
+    .date-value {
+        font-size: 9.5px;
+    }
+
+
+    .attendance-table {
+        min-width: 470px;
+    }
+
+    .attendance-table th:first-child,
+    .attendance-table td:first-child {
+        width: 45%;
+    }
+
+    .attendance-table th:nth-child(2),
+    .attendance-table td:nth-child(2) {
+        width: 27%;
+    }
+
+    .attendance-table th:nth-child(3),
+    .attendance-table td:nth-child(3) {
+        width: 28%;
+    }
 }

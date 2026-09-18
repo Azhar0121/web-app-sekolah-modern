@@ -1,42 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+
 /* =========================================================
-   DASHBOARD SISWA
-   JADWAL PELAJARAN
-   MODERN BRIGHT BLUE
+   STUDENT SCHEDULE
+========================================================= */
+
+:root {
+    --schedule-blue: #1769d5;
+    --schedule-blue-dark: #125bbd;
+    --schedule-blue-soft: #edf5ff;
+    --schedule-blue-pale: #f7fbff;
+
+    --schedule-text: #15324d;
+    --schedule-text-dark: #203f5f;
+    --schedule-muted: #71859a;
+
+    --schedule-border: #dfeaf4;
+    --schedule-border-soft: #edf2f7;
+
+    --schedule-white: #ffffff;
+
+    --schedule-green: #18a86b;
+
+    --schedule-radius: 12px;
+
+    --schedule-shadow:
+        0 5px 18px rgba(31, 76, 120, 0.055);
+}
+
+
+/* =========================================================
+   PAGE
 ========================================================= */
 
 .student-schedule-page {
     width: 100%;
-    padding-bottom: 30px;
+    max-width: 1180px;
+
+    margin: 0 auto;
+    padding: 8px 0 40px;
+
+    font-family:
+        'Plus Jakarta Sans',
+        sans-serif;
+
+    color: var(--schedule-text);
 }
 
 
 /* =========================================================
-   HEADER
+   HERO
 ========================================================= */
 
 .schedule-header {
     position: relative;
+
+    min-height: 180px;
+
     overflow: hidden;
 
-    min-height: 142px;
+    padding: 30px 34px;
 
-    padding: 24px 27px;
+    background:
+        linear-gradient(
+            135deg,
+            #0f5fbd 0%,
+            #1769d5 48%,
+            #2b7fe2 100%
+        );
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 10px 28px rgba(23, 105, 213, 0.14);
+}
+
+
+/* =========================================================
+   HERO DECORATION
+========================================================= */
+
+.schedule-decoration {
+    position: absolute;
+
+    pointer-events: none;
+
+    border-radius: 50%;
+
+    opacity: 0.16;
+}
+
+.schedule-decoration-one {
+    width: 210px;
+    height: 210px;
+
+    right: -65px;
+    top: -90px;
+
+    border: 30px solid rgba(255, 255, 255, 0.22);
+}
+
+.schedule-decoration-two {
+    width: 150px;
+    height: 150px;
+
+    left: -75px;
+    bottom: -90px;
+
+    border: 24px solid rgba(255, 255, 255, 0.18);
+}
+
+
+.schedule-dot {
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    background: rgba(255, 255, 255, 0.6);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.schedule-dot-one {
+    right: 24%;
+    top: 27%;
+}
+
+.schedule-dot-two {
+    right: 12%;
+    bottom: 24%;
+}
+
+
+/* =========================================================
+   HERO FLOATING ICON
+========================================================= */
+
+.schedule-floating-icon {
+    position: absolute;
 
     display: flex;
     align-items: center;
+    justify-content: center;
 
-    background: linear-gradient(
-        135deg,
-        #1769d5 0%,
-        #087ed1 55%,
-        #08a2e8 100%
-    );
+    width: 38px;
+    height: 38px;
 
-    border-radius: 18px;
+    color: rgba(255, 255, 255, 0.72);
 
-    box-shadow: 0 9px 23px rgba(23, 105, 213, 0.16);
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 9px;
+
+    font-size: 15px;
+
+    pointer-events: none;
 }
 
+.schedule-floating-one {
+    right: 8%;
+    top: 30px;
+
+    transform: rotate(8deg);
+}
+
+.schedule-floating-two {
+    right: 18%;
+    bottom: 22px;
+
+    transform: rotate(-7deg);
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
 
 .schedule-header-content {
     position: relative;
@@ -45,311 +188,304 @@
     display: flex;
     align-items: center;
 
-    gap: 16px;
+    gap: 18px;
+
+    max-width: 760px;
 }
 
-
 .schedule-header-icon {
-    width: 54px;
-    height: 54px;
-
-    flex-shrink: 0;
-
     display: flex;
     align-items: center;
     justify-content: center;
 
+    flex: 0 0 auto;
+
+    width: 58px;
+    height: 58px;
+
     color: #ffffff;
 
-    background: rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.12);
 
-    border: 1px solid rgba(255, 255, 255, 0.24);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 
-    border-radius: 14px;
+    border-radius: 12px;
 
-    font-size: 23px;
+    font-size: 22px;
+
+    box-shadow:
+        0 6px 15px rgba(0, 0, 0, 0.08);
 }
-
 
 .schedule-header-text {
     min-width: 0;
 }
 
-
 .schedule-eyebrow {
     display: block;
 
-    margin-bottom: 3px;
+    margin-bottom: 5px;
 
     color: rgba(255, 255, 255, 0.72);
 
     font-size: 8px;
-
     font-weight: 800;
 
-    letter-spacing: 1.2px;
+    letter-spacing: 1.5px;
 }
-
 
 .schedule-header h4 {
-    margin: 0 0 4px;
+    margin: 0 0 7px;
 
-    color: #ffffff !important;
+    color: #ffffff;
 
-    font-size: 23px;
-
+    font-size: 22px;
     font-weight: 800;
-}
 
+    line-height: 1.2;
+}
 
 .schedule-header p {
-    color: rgba(255, 255, 255, 0.9) !important;
+    color: rgba(255, 255, 255, 0.78);
 
-    font-size: 12px;
-
-    line-height: 1.5;
+    font-size: 10px;
+    line-height: 1.6;
 }
-
 
 .schedule-header p strong {
     color: #ffffff;
+    font-weight: 700;
 }
-
 
 .schedule-separator {
     margin: 0 5px;
 
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(255, 255, 255, 0.5);
 }
 
 
 /* =========================================================
-   DAY CARD
+   DAY DIVIDER
 ========================================================= */
 
 .schedule-day-card {
-    overflow: hidden;
+    margin-bottom: 20px;
 
-    margin-bottom: 15px;
-
-    background: #ffffff;
-
-    border: 1px solid #e1ebf5;
-
-    border-radius: 15px;
-
-    box-shadow: 0 4px 14px rgba(31, 76, 120, 0.055);
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+    background: transparent;
 }
-
-
-.schedule-day-card:hover {
-    box-shadow: 0 7px 19px rgba(23, 105, 213, 0.09);
-}
-
-
-.schedule-day-card.is-today {
-    border: 1px solid #bcdcff;
-
-    box-shadow: 0 5px 18px rgba(23, 105, 213, 0.10);
-}
-
-
-/* =========================================================
-   DAY HEADER
-========================================================= */
 
 .schedule-day-header {
-    min-height: 66px;
-
-    padding: 11px 17px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 15px;
-
-    background: #f7fbff;
-
-    border-bottom: 1px solid #e3edf7;
-}
-
-
-.day-title-wrapper {
-    display: flex;
-    align-items: center;
-
-    gap: 10px;
-}
-
-
-.day-icon {
-    width: 37px;
-    height: 37px;
-
-    flex-shrink: 0;
-
     display: flex;
     align-items: center;
     justify-content: center;
 
-    color: #1769d5;
+    gap: 12px;
 
-    background: #e8f3ff;
+    min-height: 42px;
 
-    border: 1px solid #d5e9fb;
+    padding: 6px 18px;
 
-    border-radius: 10px;
+    background: transparent;
 
-    font-size: 15px;
+    border: none;
 }
 
+.day-divider-line {
+    flex: 1;
 
-.day-eyebrow {
-    display: block;
+    height: 1px;
 
-    margin-bottom: 1px;
+    background: #d9e6f2;
+}
 
-    color: #8a9caf;
+.day-divider-title {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-    font-size: 7px;
+    gap: 7px;
 
+    color: var(--schedule-blue);
+
+    font-size: 10px;
     font-weight: 800;
 
-    letter-spacing: 0.8px;
+    line-height: 1;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
 }
 
+.day-divider-title i {
+    color: var(--schedule-blue);
 
-.schedule-day-header h5 {
-    margin: 0;
-
-    color: #25496d;
-
-    font-size: 14px;
-
-    font-weight: 750;
+    font-size: 9px;
 }
-
-
-/* =========================================================
-   TODAY BADGE
-========================================================= */
 
 .today-badge {
     display: inline-flex;
     align-items: center;
 
-    gap: 5px;
+    padding: 4px 7px;
 
-    padding: 6px 10px;
+    color: #16845a;
 
-    color: #ffffff;
+    background: #eaf8f2;
 
-    background: #1769d5;
+    border: 1px solid #cdeee0;
 
-    border-radius: 7px;
+    border-radius: 5px;
 
-    font-size: 9px;
-
+    font-size: 6.5px;
     font-weight: 700;
 
+    letter-spacing: 0;
+
+    text-transform: none;
+
     white-space: nowrap;
-
-    box-shadow: 0 3px 8px rgba(23, 105, 213, 0.14);
-}
-
-
-.today-badge i {
-    font-size: 10px;
 }
 
 
 /* =========================================================
-   TABLE
+   HILANGKAN STYLE HEADER HARI LAMA
 ========================================================= */
+
+.day-title-wrapper,
+.day-eyebrow,
+.day-icon {
+    display: none;
+}
+
+
+/* =========================================================
+   TABLE CARD
+========================================================= */
+
+.schedule-day-card .table-responsive {
+    overflow-x: auto;
+
+    background: #ffffff;
+
+    border: 1px solid var(--schedule-border);
+
+    border-radius: 10px;
+
+    box-shadow: var(--schedule-shadow);
+}
 
 .schedule-table {
     width: 100%;
 
-    border-collapse: separate;
+    min-width: 760px;
 
+    margin: 0;
+
+    border-collapse: separate;
     border-spacing: 0;
 }
 
 
-/* TABLE HEADER */
+/* =========================================================
+   TABLE HEADER
+========================================================= */
+
+/* =========================================================
+   TABLE HEADER — SOFT BLUE
+========================================================= */
 
 .schedule-table thead th {
-    padding: 11px 14px !important;
+    height: 43px;
 
-    color: #ffffff !important;
+    padding: 9px 15px !important;
 
-    background: #1769d5 !important;
+    color: #35658d !important;
+
+    background: #eaf3ff !important;
 
     border: none !important;
 
-    font-size: 10px;
-
+    font-size: 8.5px;
     font-weight: 700;
+
+    line-height: 1.2;
+
+    letter-spacing: 0.15px;
+
+    text-align: left;
 
     vertical-align: middle;
 
     white-space: nowrap;
 }
 
+.schedule-table thead th:first-child {
+    padding-left: 18px !important;
+}
 
 .schedule-table thead th i {
-    margin-right: 4px;
+    margin-right: 5px;
 
-    font-size: 10px;
+    color: #5d8fc0;
+
+    font-size: 8.5px;
 }
-
 
 .schedule-table thead th + th {
-    border-left: 1px solid rgba(255, 255, 255, 0.13) !important;
+    border-left: 1px solid rgba(23, 105, 213, 0.08) !important;
 }
 
 
-/* TABLE BODY */
+/* =========================================================
+   TABLE BODY
+========================================================= */
 
 .schedule-table tbody td {
-    height: 52px;
+    height: 61px;
 
-    padding: 9px 14px !important;
+    padding: 9px 15px !important;
 
-    color: #526f8b;
+    color: #536d84;
 
     background: #ffffff;
 
-    border-bottom: 1px solid #edf2f7 !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
 
-    font-size: 11px;
+    border-bottom:
+        1px solid #edf1f5 !important;
+
+    font-size: 10px;
+
+    line-height: 1.4;
 
     vertical-align: middle;
 }
 
+.schedule-table tbody td:first-child {
+    padding-left: 18px !important;
+}
 
 .schedule-table tbody tr:last-child td {
     border-bottom: none !important;
 }
 
-
 .schedule-table tbody tr {
-    transition: background 0.15s ease;
+    transition:
+        background-color 0.15s ease;
 }
 
-
 .schedule-table tbody tr:hover td {
-    background: #f7faff;
+    background: #f8fbff;
 }
 
 
 /* =========================================================
-   TIME
+   JAM
 ========================================================= */
 
 .time-cell {
@@ -357,42 +493,41 @@
     align-items: center;
 
     gap: 8px;
+}
+
+.time-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 auto;
+
+    width: 25px;
+    height: 25px;
+
+    color: var(--schedule-blue);
+
+    background: var(--schedule-blue-soft);
+
+    border: 1px solid #dceafb;
+
+    border-radius: 6px;
+
+    font-size: 9px;
+}
+
+.time-cell span {
+    color: #536d84;
+
+    font-size: 9.5px;
+    font-weight: 600;
 
     white-space: nowrap;
 }
 
 
-.time-icon {
-    width: 27px;
-    height: 27px;
-
-    flex-shrink: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: #1769d5;
-
-    background: #edf5ff;
-
-    border-radius: 7px;
-
-    font-size: 10px;
-}
-
-
-.time-cell span {
-    color: #526f8b;
-
-    font-size: 10px;
-
-    font-weight: 650;
-}
-
-
 /* =========================================================
-   SUBJECT
+   MATA PELAJARAN
 ========================================================= */
 
 .subject-cell {
@@ -402,38 +537,37 @@
     gap: 8px;
 }
 
-
 .subject-icon {
-    width: 28px;
-    height: 28px;
-
-    flex-shrink: 0;
-
     display: flex;
     align-items: center;
     justify-content: center;
 
-    color: #1769d5;
+    flex: 0 0 auto;
 
-    background: #edf5ff;
+    width: 25px;
+    height: 25px;
 
-    border-radius: 8px;
+    color: var(--schedule-blue);
 
-    font-size: 11px;
+    background: var(--schedule-blue-soft);
+
+    border: 1px solid #dceafb;
+
+    border-radius: 6px;
+
+    font-size: 9px;
 }
 
-
 .subject-cell span {
-    color: #25496d;
+    color: #284963;
 
-    font-size: 11px;
-
-    font-weight: 700;
+    font-size: 10px;
+    font-weight: 650;
 }
 
 
 /* =========================================================
-   TEACHER
+   GURU
 ========================================================= */
 
 .teacher-cell {
@@ -443,38 +577,37 @@
     gap: 8px;
 }
 
-
 .teacher-icon {
-    width: 27px;
-    height: 27px;
-
-    flex-shrink: 0;
-
     display: flex;
     align-items: center;
     justify-content: center;
 
-    color: #087ed1;
+    flex: 0 0 auto;
 
-    background: #eaf7ff;
+    width: 25px;
+    height: 25px;
 
-    border-radius: 7px;
+    color: var(--schedule-blue);
 
-    font-size: 10px;
+    background: #f1f6fc;
+
+    border: 1px solid #e1eaf3;
+
+    border-radius: 6px;
+
+    font-size: 9px;
 }
 
-
 .teacher-cell span {
-    color: #526f8b;
+    color: #536d84;
 
-    font-size: 10px;
-
-    font-weight: 600;
+    font-size: 9.5px;
+    font-weight: 550;
 }
 
 
 /* =========================================================
-   ROOM
+   RUANGAN
 ========================================================= */
 
 .room-badge {
@@ -485,33 +618,51 @@
 
     padding: 5px 8px;
 
-    color: #1769d5;
+    color: #42627d;
 
-    background: #edf5ff;
+    background: #f3f7fb;
 
-    border: 1px solid #dcecff;
+    border: 1px solid #e0e9f1;
 
     border-radius: 6px;
 
-    font-size: 9px;
-
-    font-weight: 700;
+    font-size: 8px;
+    font-weight: 650;
 
     white-space: nowrap;
 }
 
-
 .room-badge i {
-    font-size: 9px;
+    color: var(--schedule-blue);
+
+    font-size: 8px;
+}
+
+.room-empty {
+    color: #a4b2bf;
+
+    font-size: 10px;
 }
 
 
-.room-empty {
-    color: #a2afbd;
+/* =========================================================
+   TODAY
+========================================================= */
 
-    font-size: 11px;
+.schedule-day-card.is-today .day-divider-title {
+    color: var(--schedule-blue-dark);
+}
 
-    font-weight: 600;
+.schedule-day-card.is-today .day-divider-title i {
+    color: var(--schedule-blue-dark);
+}
+
+.schedule-day-card.is-today .day-divider-line {
+    background: #cfe1f2;
+}
+
+.schedule-day-card.is-today .table-responsive {
+    border-color: #d4e6f7;
 }
 
 
@@ -520,59 +671,64 @@
 ========================================================= */
 
 .schedule-empty {
-    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 230px;
+
+    padding: 30px;
 
     text-align: center;
 
     background: #ffffff;
 
-    border: 1px solid #e4edf7;
+    border: 1px solid var(--schedule-border);
 
-    border-radius: 17px;
+    border-radius: var(--schedule-radius);
 
-    box-shadow: 0 6px 18px rgba(31, 76, 120, 0.055);
+    box-shadow: var(--schedule-shadow);
 }
 
-
 .empty-icon {
-    width: 52px;
-    height: 52px;
-
-    margin: 0 auto 13px;
-
     display: flex;
     align-items: center;
     justify-content: center;
 
-    color: #1769d5;
+    width: 50px;
+    height: 50px;
 
-    background: #eaf4ff;
+    margin-bottom: 12px;
 
-    border-radius: 14px;
+    color: var(--schedule-blue);
 
-    font-size: 22px;
+    background: var(--schedule-blue-soft);
+
+    border: 1px solid #dceafb;
+
+    border-radius: 10px;
+
+    font-size: 20px;
 }
 
-
 .schedule-empty h5 {
-    margin-bottom: 5px;
+    margin: 0 0 6px;
 
-    color: #24496f;
+    color: var(--schedule-text-dark);
 
-    font-size: 15px;
-
+    font-size: 14px;
     font-weight: 750;
 }
 
-
 .schedule-empty p {
-    max-width: 520px;
+    max-width: 420px;
 
-    margin: 0 auto;
+    margin: 0;
 
-    color: #7b8ea5;
+    color: var(--schedule-muted);
 
-    font-size: 12px;
+    font-size: 9.5px;
 
     line-height: 1.6;
 }
@@ -582,59 +738,46 @@
    BACK TO DASHBOARD
 ========================================================= */
 
+/* =========================================================
+   TOMBOL KEMBALI — POSISI KANAN
+========================================================= */
+
 .schedule-back-bottom {
     display: flex;
-
     justify-content: flex-end;
-
     margin-top: 18px;
+    margin-bottom: 8px;
 }
-
 
 .back-dashboard {
     display: inline-flex;
-
     align-items: center;
-
     gap: 7px;
 
-    padding: 9px 14px;
+    padding: 9px 15px;
 
     color: #1769d5;
-
     background: #ffffff;
 
-    border: 1px solid #dce9f7;
+    border: 1px solid #dbe7f2;
+    border-radius: 7px;
 
-    border-radius: 9px;
-
-    text-decoration: none;
-
-    font-size: 12px;
-
+    font-size: 9px;
     font-weight: 700;
-
-    box-shadow: 0 3px 10px rgba(31, 76, 120, 0.05);
+    text-decoration: none;
 
     transition: all 0.2s ease;
 }
 
+.back-dashboard:hover {
+    color: #125bbd;
+    background: #f4f8fd;
+    border-color: #c9dced;
+}
 
 .back-dashboard i {
-    font-size: 13px;
+    font-size: 10px;
 }
-
-
-.back-dashboard:hover {
-    color: #ffffff;
-
-    background: #1769d5;
-
-    border-color: #1769d5;
-
-    transform: translateX(-2px);
-}
-
 
 /* =========================================================
    TABLET
@@ -642,72 +785,90 @@
 
 @media (max-width: 768px) {
 
+    .student-schedule-page {
+        padding-top: 4px;
+    }
+
     .schedule-header {
-        min-height: 135px;
+        min-height: 165px;
 
-        padding: 21px 20px;
-
-        border-radius: 16px;
-    }
-
-
-    .schedule-header-content {
-        gap: 13px;
-    }
-
-
-    .schedule-header-icon {
-        width: 46px;
-        height: 46px;
+        padding: 25px 25px;
 
         border-radius: 12px;
-
-        font-size: 20px;
     }
 
+    .schedule-header-content {
+        gap: 14px;
+    }
+
+    .schedule-header-icon {
+        width: 50px;
+        height: 50px;
+
+        font-size: 19px;
+    }
 
     .schedule-header h4 {
-        font-size: 20px;
+        font-size: 19px;
     }
-
 
     .schedule-header p {
-        font-size: 11px;
-    }
-
-
-    .schedule-day-header {
-        min-height: 62px;
-
-        padding: 10px 14px;
-    }
-
-
-    .schedule-table thead th {
-        padding: 10px 10px !important;
-
         font-size: 9px;
     }
 
+    .schedule-day-header {
+        min-height: 40px;
 
-    .schedule-table tbody td {
-        padding: 9px 10px !important;
+        padding: 6px 13px;
 
-        font-size: 10px;
+        gap: 9px;
     }
 
+    .day-divider-title {
+        gap: 6px;
 
-    .subject-cell span {
-        font-size: 10px;
+        font-size: 9px;
+
+        letter-spacing: 0.8px;
     }
 
+    .day-divider-title i {
+        font-size: 8px;
+    }
 
     .today-badge {
-        padding: 5px 8px;
+        padding: 3px 6px;
+
+        font-size: 6px;
+    }
+
+    .schedule-table {
+        min-width: 720px;
+    }
+
+    .schedule-table thead th {
+        height: 42px;
+
+        padding: 8px 12px !important;
 
         font-size: 8px;
     }
 
+    .schedule-table tbody td {
+        height: 58px;
+
+        padding: 8px 12px !important;
+    }
+
+    .schedule-table tbody td:first-child {
+        padding-left: 14px !important;
+    }
+
+    .time-cell,
+    .subject-cell,
+    .teacher-cell {
+        gap: 6px;
+    }
 }
 
 
@@ -718,356 +879,193 @@
 @media (max-width: 576px) {
 
     .student-schedule-page {
-        padding-bottom: 20px;
+        padding-bottom: 30px;
     }
-
 
     .schedule-header {
-        min-height: auto;
+        min-height: 150px;
 
-        padding: 18px 16px;
+        padding: 21px 18px;
 
-        border-radius: 15px;
+        border-radius: 10px;
     }
 
-
     .schedule-header-content {
+        align-items: flex-start;
+
         gap: 11px;
     }
 
-
     .schedule-header-icon {
-        width: 42px;
-        height: 42px;
+        width: 43px;
+        height: 43px;
 
-        border-radius: 10px;
+        border-radius: 9px;
 
-        font-size: 18px;
+        font-size: 17px;
     }
-
 
     .schedule-eyebrow {
-        font-size: 7px;
-    }
+        margin-bottom: 4px;
 
+        font-size: 7px;
+
+        letter-spacing: 1.2px;
+    }
 
     .schedule-header h4 {
-        font-size: 18px;
-    }
+        margin-bottom: 6px;
 
+        font-size: 16px;
+    }
 
     .schedule-header p {
-        font-size: 10px;
+        font-size: 8px;
+
+        line-height: 1.55;
     }
 
-
-    .schedule-separator {
-        margin: 0 3px;
+    .schedule-floating-icon {
+        display: none;
     }
-
-
-    /* DAY */
 
     .schedule-day-card {
-        margin-bottom: 12px;
-
-        border-radius: 13px;
+        margin-bottom: 14px;
     }
-
 
     .schedule-day-header {
-        min-height: 58px;
+        min-height: 38px;
 
-        padding: 9px 11px;
+        padding: 5px 10px;
+
+        gap: 7px;
     }
 
-
-    .day-title-wrapper {
-        gap: 8px;
-    }
-
-
-    .day-icon {
-        width: 32px;
-        height: 32px;
-
-        border-radius: 8px;
-
-        font-size: 13px;
-    }
-
-
-    .day-eyebrow {
-        font-size: 6px;
-    }
-
-
-    .schedule-day-header h5 {
-        font-size: 12px;
-    }
-
-
-    .today-badge {
-        padding: 5px 7px;
-
-        font-size: 7px;
-    }
-
-
-    .today-badge i {
+    .day-divider-title {
         font-size: 8px;
+
+        letter-spacing: 0.7px;
     }
 
+    .day-divider-line {
+        background: #dfe8f0;
+    }
 
-    /* TABLE */
+    .schedule-day-card .table-responsive {
+        border-radius: 8px;
+    }
 
     .schedule-table {
-        min-width: 650px;
+        min-width: 680px;
     }
-
 
     .schedule-table thead th {
-        padding: 9px 9px !important;
+        height: 40px;
 
-        font-size: 8px;
+        padding: 7px 10px !important;
+
+        font-size: 7.5px;
     }
-
-
-    .schedule-table thead th i {
-        font-size: 8px;
-    }
-
 
     .schedule-table tbody td {
-        height: 46px;
+        height: 55px;
 
-        padding: 8px 9px !important;
-
-        font-size: 9px;
-    }
-
-
-    .time-cell {
-        gap: 6px;
-    }
-
-
-    .time-icon {
-        width: 23px;
-        height: 23px;
+        padding: 7px 10px !important;
 
         font-size: 9px;
     }
 
-
-    .time-cell span {
-        font-size: 9px;
+    .schedule-table tbody td:first-child {
+        padding-left: 12px !important;
     }
 
+    .time-icon,
+    .subject-icon,
+    .teacher-icon {
+        width: 22px;
+        height: 22px;
 
-    .subject-cell {
-        gap: 6px;
+        font-size: 8px;
     }
 
-
-    .subject-icon {
-        width: 25px;
-        height: 25px;
-
-        font-size: 10px;
+    .time-cell span,
+    .teacher-cell span {
+        font-size: 8.5px;
     }
-
 
     .subject-cell span {
         font-size: 9px;
     }
 
-
-    .teacher-cell {
-        gap: 6px;
-    }
-
-
-    .teacher-icon {
-        width: 24px;
-        height: 24px;
-
-        font-size: 9px;
-    }
-
-
-    .teacher-cell span {
-        font-size: 9px;
-    }
-
-
     .room-badge {
         padding: 4px 6px;
 
-        font-size: 8px;
+        font-size: 7px;
     }
 
-
-    /* EMPTY */
+    .room-badge i {
+        font-size: 7px;
+    }
 
     .schedule-empty {
-        padding: 40px 16px;
+        min-height: 200px;
+
+        padding: 25px 18px;
     }
-
-
-    .empty-icon {
-        width: 46px;
-        height: 46px;
-
-        font-size: 19px;
-    }
-
 
     .schedule-empty h5 {
+        font-size: 13px;
+    }
+
+    .schedule-empty p {
+        font-size: 8.5px;
+    }
+
+    .schedule-back-bottom {
+        margin-top: 20px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 430px) {
+
+    .schedule-header {
+        min-height: 140px;
+
+        padding: 18px 15px;
+    }
+
+    .schedule-header-icon {
+        width: 39px;
+        height: 39px;
+
+        font-size: 15px;
+    }
+
+    .schedule-header h4 {
         font-size: 14px;
     }
 
-
-    .schedule-empty p {
-        font-size: 10px;
+    .schedule-header p {
+        font-size: 7.5px;
     }
 
+    .schedule-day-header {
+        min-height: 36px;
 
-    /* BUTTON */
-
-    .schedule-back-bottom {
-        margin-top: 14px;
+        padding: 5px 8px;
     }
 
-
-    .back-dashboard {
-        padding: 8px 12px;
-
-        font-size: 11px;
+    .day-divider-title {
+        font-size: 7.5px;
     }
 
-}
-
-/* =========================================================
-   HERO DECORATION
-========================================================= */
-
-.schedule-header {
-    position: relative;
-    overflow: hidden;
-}
-
-
-/* LINGKARAN BESAR */
-
-.schedule-decoration {
-    position: absolute;
-
-    border-radius: 50%;
-
-    pointer-events: none;
-}
-
-.schedule-decoration-one {
-    width: 190px;
-    height: 190px;
-
-    right: -65px;
-    top: -105px;
-
-    background: rgba(255, 255, 255, 0.11);
-}
-
-.schedule-decoration-two {
-    width: 100px;
-    height: 100px;
-
-    right: 190px;
-    bottom: -65px;
-
-    background: rgba(255, 255, 255, 0.08);
-}
-
-
-/* TITIK */
-
-.schedule-dot {
-    position: absolute;
-
-    border-radius: 50%;
-
-    background: rgba(255, 255, 255, 0.28);
-
-    pointer-events: none;
-}
-
-.schedule-dot-one {
-    width: 9px;
-    height: 9px;
-
-    right: 120px;
-    top: 35px;
-}
-
-.schedule-dot-two {
-    width: 5px;
-    height: 5px;
-
-    right: 92px;
-    top: 58px;
-}
-
-
-/* ICON MELAYANG */
-
-.schedule-floating-icon {
-    position: absolute;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: rgba(255, 255, 255, 0.55);
-
-    background: rgba(255, 255, 255, 0.10);
-
-    border: 1px solid rgba(255, 255, 255, 0.14);
-
-    border-radius: 10px;
-
-    pointer-events: none;
-}
-
-.schedule-floating-one {
-    width: 38px;
-    height: 38px;
-
-    right: 45px;
-    bottom: 25px;
-
-    font-size: 15px;
-
-    transform: rotate(8deg);
-}
-
-.schedule-floating-two {
-    width: 29px;
-    height: 29px;
-
-    right: 145px;
-    top: 20px;
-
-    font-size: 11px;
-
-    transform: rotate(-8deg);
-
-    opacity: 0.75;
-}
-
-
-/* PASTIKAN ISI HERO DI ATAS DEKORASI */
-
-.schedule-header-content {
-    position: relative;
-    z-index: 5;
+    .schedule-table {
+        min-width: 650px;
+    }
 }

@@ -2,7 +2,7 @@
 DASHBOARD SISWA
 DYNAMIC BLUE — MODERN / CREATIVE / INFORMATION FIRST
 ========================================================= */
-
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 :root {
 --student-blue: #1677e8;
 --student-blue-dark: #0b5fc7;
@@ -39,13 +39,14 @@ max-width: 1440px;
 margin: 0 auto;
 padding: 24px 30px 45px;
 color: var(--student-text);
-font-family: inherit;
+font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .student-dashboard *,
 .student-dashboard *::before,
 .student-dashboard *::after {
 box-sizing: border-box;
+font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .student-dashboard a {

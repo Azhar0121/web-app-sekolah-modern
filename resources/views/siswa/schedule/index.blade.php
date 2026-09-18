@@ -18,19 +18,19 @@
 
     <div class="schedule-header mb-4">
 
-    <div class="schedule-decoration schedule-decoration-one"></div>
-    <div class="schedule-decoration schedule-decoration-two"></div>
+        <div class="schedule-decoration schedule-decoration-one"></div>
+        <div class="schedule-decoration schedule-decoration-two"></div>
 
-    <div class="schedule-dot schedule-dot-one"></div>
-    <div class="schedule-dot schedule-dot-two"></div>
+        <div class="schedule-dot schedule-dot-one"></div>
+        <div class="schedule-dot schedule-dot-two"></div>
 
-    <div class="schedule-floating-icon schedule-floating-one">
-        <i class="bi bi-calendar-week"></i>
-    </div>
+        <div class="schedule-floating-icon schedule-floating-one">
+            <i class="bi bi-calendar-week"></i>
+        </div>
 
-    <div class="schedule-floating-icon schedule-floating-two">
-        <i class="bi bi-clock-fill"></i>
-    </div>
+        <div class="schedule-floating-icon schedule-floating-two">
+            <i class="bi bi-clock-fill"></i>
+        </div>
 
         <div class="schedule-header-content">
 
@@ -48,13 +48,21 @@
 
                 <p class="mb-0">
                     @if ($activeYear && $classroom)
+
                         Kelas <strong>{{ $classroom->name }}</strong>
+
                         <span class="schedule-separator">•</span>
+
                         Tahun ajaran <strong>{{ $activeYear->name }}</strong>
+
                     @elseif (! $classroom)
+
                         Anda belum terdaftar di kelas manapun pada tahun ajaran ini.
+
                     @else
+
                         Belum ada tahun ajaran aktif — hubungi Tata Usaha.
+
                     @endif
                 </p>
 
@@ -88,41 +96,38 @@
 
         <div class="schedule-day-card {{ $day === $today ? 'is-today' : '' }}">
 
-            {{-- HEADER HARI --}}
+            {{-- =================================================
+                DAY DIVIDER
+            ================================================== --}}
 
             <div class="schedule-day-header">
 
-                <div class="day-title-wrapper">
+                <span class="day-divider-line"></span>
 
-                    <div class="day-icon">
-                        <i class="bi bi-calendar-week"></i>
-                    </div>
+                <div class="day-divider-title">
 
-                    <div>
+                    <i class="bi bi-calendar-week"></i>
 
-                        <span class="day-eyebrow">
-                            JADWAL HARIAN
+                    <span>{{ $day }}</span>
+
+                    @if ($day === $today)
+
+                        <span class="today-badge">
+                            Hari Ini
                         </span>
 
-                        <h5>{{ $day }}</h5>
-
-                    </div>
+                    @endif
 
                 </div>
 
-                @if ($day === $today)
-
-                    <span class="today-badge">
-                        <i class="bi bi-check-circle-fill"></i>
-                        Hari Ini
-                    </span>
-
-                @endif
+                <span class="day-divider-line"></span>
 
             </div>
 
 
-            {{-- TABEL --}}
+            {{-- =================================================
+                TABEL
+            ================================================== --}}
 
             <div class="table-responsive">
 
@@ -162,6 +167,8 @@
 
                             <tr>
 
+                                {{-- JAM --}}
+
                                 <td>
 
                                     <div class="time-cell">
@@ -181,6 +188,8 @@
                                 </td>
 
 
+                                {{-- MATA PELAJARAN --}}
+
                                 <td>
 
                                     <div class="subject-cell">
@@ -197,6 +206,8 @@
 
                                 </td>
 
+
+                                {{-- GURU --}}
 
                                 <td>
 
@@ -215,13 +226,18 @@
                                 </td>
 
 
+                                {{-- RUANGAN --}}
+
                                 <td>
 
                                     @if ($schedule->room)
 
                                         <span class="room-badge">
+
                                             <i class="bi bi-geo-alt-fill"></i>
+
                                             {{ $schedule->room }}
+
                                         </span>
 
                                     @else
