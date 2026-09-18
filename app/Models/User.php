@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -79,6 +80,16 @@ class User extends Authenticatable
     public function children(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'parent_student', 'parent_id', 'student_id');
+    }
+
+    public function studentProfile(): HasOne
+    {
+        return $this->hasOne(StudentProfile::class);
+    }
+
+    public function classroomStudents(): HasMany
+    {
+        return $this->hasMany(ClassroomStudent::class, 'student_id');
     }
 
     public function parents(): BelongsToMany

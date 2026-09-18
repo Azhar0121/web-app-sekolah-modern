@@ -47,6 +47,7 @@
             'items' => [
                 ['label' => 'Dashboard TU', 'route' => 'tu.dashboard', 'pattern' => 'tu.dashboard', 'icon' => 'dashboard', 'show' => $user->hasPermission('persuratan.manage')],
                 ['label' => 'Persuratan', 'route' => 'admin.correspondences.index', 'pattern' => 'admin.correspondences.*', 'icon' => 'file-text', 'show' => $user->hasPermission('persuratan.manage')],
+                ['label' => 'Biodata Siswa', 'route' => 'admin.student-profiles.index', 'pattern' => 'admin.student-profiles.*', 'icon' => 'user-check', 'show' => $user->hasPermission('siswa.manage')],
             ],
         ],
     ];

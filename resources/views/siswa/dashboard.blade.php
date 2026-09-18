@@ -575,6 +575,12 @@ try {
 </section>
 
 
+<div class="container mt-3">
+    <a href="{{ route('siswa.profile.edit') }}" class="btn btn-outline-primary btn-sm">
+        🧾 Kelola Biodata Saya
+    </a>
+</div>
+
 </div>
 
 @endsection

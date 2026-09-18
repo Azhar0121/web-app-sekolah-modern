@@ -11,6 +11,7 @@ use App\Models\Classroom;
 use App\Models\ClassroomStudent;
 use App\Models\PpdbRegistration;
 use App\Models\Role;
+use App\Models\StudentProfile;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -121,6 +122,20 @@ class PpdbController extends Controller
 
             // Link registrasi ke user
             $ppdbRegistration->update(['user_id' => $user->id]);
+
+            StudentProfile::create([
+                'user_id'         => $user->id,
+                'nisn'            => $ppdbRegistration->nisn,
+                'nik'             => $ppdbRegistration->nik,
+                'gender'          => $ppdbRegistration->gender,
+                'birth_place'     => $ppdbRegistration->birth_place,
+                'birth_date'      => $ppdbRegistration->birth_date,
+                'previous_school' => $ppdbRegistration->previous_school,
+                'parent_name'     => $ppdbRegistration->parent_name,
+                'parent_phone'    => $ppdbRegistration->parent_phone,
+                'address'         => $ppdbRegistration->address,
+                'phone'           => $ppdbRegistration->phone,
+            ]);
 
             // Coba tempatkan ke kelas X yang masih tersedia
             $activeYear = AcademicYear::active();
@@ -308,7 +323,7 @@ class PpdbController extends Controller
                     $e = $retryException;
                 }
             }
-
+            
             Log::warning('Gagal mengirim email akun orang tua: ' . $e->getMessage(), [
                 'registration_id' => $registration->id,
             ]);

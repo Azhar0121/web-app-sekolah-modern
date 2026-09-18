@@ -16,7 +16,12 @@
                 @forelse ($students as $student)
                     @php($attendance = $attendances->get($student->id))
                     <tr data-student-name="{{ $student->name }}">
-                        <td>{{ $student->name }}</td>
+                        <td>
+                            {{ $student->name }}
+                            <a href="{{ route('guru.student-profile.show', $student) }}" class="text-muted small ms-1" title="Lihat biodata">
+                                (biodata)
+                            </a>
+                        </td>
                         <td class="status-cell">
                             @if ($attendance)
                                 <span class="badge {{ $attendance->statusBadgeClass() }}">{{ $attendance->statusLabel() }}</span>

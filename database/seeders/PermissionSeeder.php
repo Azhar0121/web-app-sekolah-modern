@@ -32,6 +32,9 @@ class PermissionSeeder extends Seeder
             ['name' => 'Kelola Persuratan', 'slug' => 'persuratan.manage', 'module' => 'TU'],
             ['name' => 'Kelola Inventaris', 'slug' => 'inventaris.manage', 'module' => 'TU'],
 
+            // Biodata Siswa
+            ['name' => 'Kelola Biodata Siswa', 'slug' => 'siswa.manage', 'module' => 'Siswa'],
+
             // Super Admin
             ['name' => 'Kelola User & Permission', 'slug' => 'user.manage', 'module' => 'Admin'],
             ['name' => 'Lihat Audit Log', 'slug' => 'audit.view', 'module' => 'Admin'],
@@ -51,8 +54,8 @@ class PermissionSeeder extends Seeder
             'guru' => ['nilai.input', 'nilai.view', 'presensi.manage', 'presensi.view'],
             'siswa' => ['nilai.view', 'presensi.view'],
             'ortu' => ['nilai.view', 'presensi.view'],
-            // TU menangani verifikasi & pengelolaan pendaftar PPDB
-            'tu' => ['persuratan.manage', 'inventaris.manage', 'ppdb.manage', 'ppdb.view'],
+            // TU menangani verifikasi & pengelolaan pendaftar PPDB, serta biodata resmi siswa
+            'tu' => ['persuratan.manage', 'inventaris.manage', 'ppdb.manage', 'ppdb.view', 'siswa.manage'],
             'kepsek' => ['dashboard.report.view', 'nilai.approve', 'audit.view', 'ppdb.view'],
         ];
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\ScheduleController as AdminScheduleController;
 use App\Http\Controllers\Admin\SemesterController;
 use App\Http\Controllers\Admin\StudentPlacementController;
+use App\Http\Controllers\Admin\StudentProfileController as AdminStudentProfileController;
 use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TeachingAssignmentController;
 use App\Http\Controllers\Admin\UserController;
@@ -17,11 +18,13 @@ use App\Http\Controllers\Guru\DashboardController as GuruDashboardController;
 use App\Http\Controllers\Guru\GradeController as GuruGradeController;
 use App\Http\Controllers\Guru\MaterialController as GuruMaterialController;
 use App\Http\Controllers\Guru\ScheduleController as GuruScheduleController;
+use App\Http\Controllers\Guru\StudentProfileController as GuruStudentProfileController;
 use App\Http\Controllers\Guru\TaskController as GuruTaskController;
 use App\Http\Controllers\PpdbController;
 use App\Http\Controllers\Siswa\AttendanceController as SiswaAttendanceController;
 use App\Http\Controllers\Siswa\GradeController as SiswaGradeController;
 use App\Http\Controllers\Siswa\MaterialController as SiswaMaterialController;
+use App\Http\Controllers\Siswa\ProfileController as SiswaProfileController;
 use App\Http\Controllers\Siswa\QrCodeController as SiswaQrCodeController;
 use App\Http\Controllers\Siswa\ScheduleController as SiswaScheduleController;
 use App\Http\Controllers\Siswa\TaskController as SiswaTaskController;
@@ -111,6 +114,13 @@ Route::middleware(['auth', 'permission:persuratan.manage'])->prefix('admin')->na
     Route::resource('correspondences', CorrespondenceController::class);
 });
 
+// ================= BIODATA SISWA (TU & SUPER ADMIN, by permission) =================
+Route::middleware(['auth', 'permission:siswa.manage'])->prefix('admin/siswa-profiles')->name('admin.student-profiles.')->group(function () {
+    Route::get('/', [AdminStudentProfileController::class, 'index'])->name('index');
+    Route::get('/{student}/edit', [AdminStudentProfileController::class, 'edit'])->name('edit');
+    Route::put('/{student}', [AdminStudentProfileController::class, 'update'])->name('update');
+});
+
 // ================= PORTAL GURU / WALI KELAS =================
 Route::middleware(['auth', 'role:guru'])->prefix('guru')->name('guru.')->group(function () {
     Route::get('/dashboard', [GuruDashboardController::class, 'index'])->name('dashboard');
@@ -142,6 +152,9 @@ Route::middleware(['auth', 'role:guru'])->prefix('guru')->name('guru.')->group(f
     // Jadwal Mengajar Pribadi
     Route::get('/jadwal', [GuruScheduleController::class, 'index'])->name('schedule.index');
 
+    // Biodata Siswa (lihat saja, dibatasi ke siswa di kelas yang diampu)
+    Route::get('/siswa/{student}/biodata', [GuruStudentProfileController::class, 'show'])->name('student-profile.show');
+
     // Presensi/Absensi QR Code
     Route::get('/presensi', [GuruAttendanceController::class, 'index'])->name('attendance.index');
     Route::get('/presensi/{schedule}/kelola', [GuruAttendanceController::class, 'session'])->name('attendance.session');
@@ -160,6 +173,10 @@ Route::middleware(['auth', 'role:siswa'])->prefix('siswa')->name('siswa.')->grou
 
     // Nilai Rapor & Grafik
     Route::get('/nilai', [SiswaGradeController::class, 'index'])->name('grades.index');
+
+    // Biodata Diri
+    Route::get('/biodata', [SiswaProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/biodata', [SiswaProfileController::class, 'update'])->name('profile.update');
 
     // Presensi/Absensi QR Code
     Route::get('/kartu-pelajar', [SiswaQrCodeController::class, 'show'])->name('qr-code.show');
