@@ -1,0 +1,670 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+--correspondence-create-navy: #071b35;
+--correspondence-create-navy-2: #0b294d;
+--correspondence-create-blue: #1769d5;
+--correspondence-create-blue-dark: #125bbd;
+
+
+--correspondence-create-text: #172033;
+--correspondence-create-muted: #66758a;
+
+--correspondence-create-border: #dbe5f0;
+--correspondence-create-border-dark: #cbd7e5;
+
+--correspondence-create-bg: #f7f9fc;
+--correspondence-create-white: #ffffff;
+
+--correspondence-create-radius: 8px;
+--correspondence-create-small-radius: 5px;
+
+--correspondence-create-shadow:
+    0 2px 8px rgba(16, 34, 61, 0.06);
+
+
+}
+
+/* =========================================================
+PAGE
+========================================================= */
+
+.correspondence-create-page {
+width: 100%;
+max-width: 1080px;
+margin: 0 auto;
+padding: 4px 0 40px;
+
+
+color: var(--correspondence-create-text);
+font-family: "Plus Jakarta Sans", sans-serif;
+box-sizing: border-box;
+
+
+}
+
+.correspondence-create-page *,
+.correspondence-create-page *::before,
+.correspondence-create-page *::after {
+box-sizing: border-box;
+}
+
+/* =========================================================
+HEADER / HERO
+========================================================= */
+
+.correspondence-create-header {
+display: flex;
+align-items: flex-start;
+justify-content: space-between;
+gap: 30px;
+
+
+width: 100%;
+min-height: 145px;
+
+padding: 26px 30px;
+margin-bottom: 18px;
+
+background: var(--correspondence-create-navy);
+border-radius: var(--correspondence-create-radius);
+
+box-shadow: var(--correspondence-create-shadow);
+
+
+}
+
+.correspondence-create-header-content {
+min-width: 0;
+}
+
+.correspondence-create-label {
+display: inline-block;
+
+
+margin-bottom: 7px;
+
+color: rgba(255, 255, 255, 0.68);
+
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 0.08em;
+line-height: 1.4;
+
+text-transform: uppercase;
+
+
+}
+
+.correspondence-create-header h1 {
+margin: 0 0 7px;
+
+
+color: #ffffff;
+
+font-size: 23px;
+line-height: 1.3;
+font-weight: 700;
+
+
+}
+
+.correspondence-create-header p {
+max-width: 680px;
+
+
+margin: 0;
+
+color: rgba(255, 255, 255, 0.76);
+
+font-size: 12px;
+line-height: 1.65;
+
+
+}
+
+/* =========================================================
+HEADER MARK
+========================================================= */
+
+.correspondence-create-header-mark {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+
+
+flex-shrink: 0;
+
+margin-top: 3px;
+padding: 8px 11px;
+
+border: 1px solid rgba(255, 255, 255, 0.16);
+border-radius: var(--correspondence-create-small-radius);
+
+background: rgba(255, 255, 255, 0.06);
+
+color: rgba(255, 255, 255, 0.76);
+
+font-size: 9px;
+font-weight: 700;
+letter-spacing: 0.07em;
+line-height: 1.3;
+
+white-space: nowrap;
+
+
+}
+
+.correspondence-create-header-dot {
+width: 7px;
+height: 7px;
+
+
+flex-shrink: 0;
+
+border-radius: 50%;
+
+background: #ffffff;
+
+
+}
+
+/* =========================================================
+FORM CARD
+========================================================= */
+
+.correspondence-create-card {
+width: 100%;
+max-width: none;
+
+
+margin: 0;
+
+overflow: hidden;
+
+border: 1px solid var(--correspondence-create-border);
+border-radius: var(--correspondence-create-radius);
+
+background: var(--correspondence-create-white);
+
+box-shadow: var(--correspondence-create-shadow);
+
+
+}
+
+/* =========================================================
+FORM CARD HEADER
+========================================================= */
+
+.correspondence-create-card-header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+
+min-height: 72px;
+
+padding: 17px 24px;
+
+border-bottom: 1px solid var(--correspondence-create-border);
+
+background: #ffffff;
+
+
+}
+
+.correspondence-create-card-label {
+display: block;
+
+
+margin-bottom: 4px;
+
+color: var(--correspondence-create-muted);
+
+font-size: 9px;
+font-weight: 700;
+letter-spacing: 0.08em;
+line-height: 1.4;
+
+text-transform: uppercase;
+
+
+}
+
+.correspondence-create-card-header h2 {
+margin: 0;
+
+
+color: var(--correspondence-create-text);
+
+font-size: 15px;
+line-height: 1.4;
+font-weight: 700;
+
+
+}
+
+/* =========================================================
+FORM CARD BODY
+========================================================= */
+
+.correspondence-create-card-body {
+padding: 26px 28px;
+}
+
+/* =========================================================
+FORM LABEL
+========================================================= */
+
+.correspondence-create-card-body label {
+display: block;
+
+
+margin-bottom: 6px;
+
+color: var(--correspondence-create-text);
+
+font-size: 11px;
+font-weight: 700;
+line-height: 1.5;
+
+
+}
+
+.correspondence-create-card-body .form-label {
+margin-bottom: 6px;
+
+
+color: var(--correspondence-create-text);
+
+font-size: 11px;
+font-weight: 700;
+line-height: 1.5;
+
+
+}
+
+/* =========================================================
+FORM INPUT
+========================================================= */
+
+.correspondence-create-card-body .form-control,
+.correspondence-create-card-body .form-select,
+.correspondence-create-card-body input[type="text"],
+.correspondence-create-card-body input[type="date"],
+.correspondence-create-card-body input[type="file"],
+.correspondence-create-card-body input[type="number"],
+.correspondence-create-card-body input[type="email"],
+.correspondence-create-card-body input[type="password"],
+.correspondence-create-card-body select,
+.correspondence-create-card-body textarea {
+width: 100%;
+min-height: 39px;
+
+
+padding: 8px 11px;
+
+border: 1px solid var(--correspondence-create-border-dark);
+border-radius: var(--correspondence-create-small-radius);
+
+background: #ffffff;
+color: var(--correspondence-create-text);
+
+font-family: "Plus Jakarta Sans", sans-serif;
+font-size: 11px;
+line-height: 1.5;
+
+outline: none;
+box-shadow: none;
+
+transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+
+}
+
+.correspondence-create-card-body textarea {
+min-height: 105px;
+resize: vertical;
+}
+
+.correspondence-create-card-body input[type="file"] {
+padding: 7px 9px;
+
+
+background: #ffffff;
+
+cursor: pointer;
+
+
+}
+
+/* =========================================================
+INPUT FOCUS
+========================================================= */
+
+.correspondence-create-card-body .form-control:focus,
+.correspondence-create-card-body .form-select:focus,
+.correspondence-create-card-body input:focus,
+.correspondence-create-card-body select:focus,
+.correspondence-create-card-body textarea:focus {
+border-color: var(--correspondence-create-blue);
+
+
+box-shadow:
+    0 0 0 2px rgba(23, 105, 213, 0.08);
+
+outline: none;
+
+
+}
+
+/* =========================================================
+PLACEHOLDER
+========================================================= */
+
+.correspondence-create-card-body input::placeholder,
+.correspondence-create-card-body textarea::placeholder {
+color: #9aa7b7;
+opacity: 1;
+}
+
+/* =========================================================
+HELP TEXT
+========================================================= */
+
+.correspondence-create-card-body .form-text,
+.correspondence-create-card-body small {
+display: block;
+
+
+margin-top: 5px;
+
+color: var(--correspondence-create-muted);
+
+font-size: 10px;
+line-height: 1.5;
+
+
+}
+
+/* =========================================================
+FORM SPACING
+========================================================= */
+
+.correspondence-create-card-body .mb-3 {
+margin-bottom: 18px !important;
+}
+
+.correspondence-create-card-body .mb-4 {
+margin-bottom: 21px !important;
+}
+
+.correspondence-create-card-body .row {
+row-gap: 2px;
+}
+
+/* =========================================================
+CHECKBOX
+========================================================= */
+
+.correspondence-create-card-body input[type="checkbox"],
+.correspondence-create-card-body input[type="radio"] {
+accent-color: var(--correspondence-create-navy-2);
+}
+
+.correspondence-create-card-body .form-check {
+display: flex;
+align-items: center;
+gap: 7px;
+
+
+min-height: 30px;
+
+
+}
+
+.correspondence-create-card-body .form-check-input {
+margin-top: 0;
+}
+
+.correspondence-create-card-body .form-check-label {
+margin: 0;
+
+
+color: var(--correspondence-create-text);
+
+font-size: 11px;
+font-weight: 500;
+
+
+}
+
+/* =========================================================
+VALIDATION
+========================================================= */
+
+.correspondence-create-card-body .invalid-feedback {
+display: block;
+
+
+margin-top: 5px;
+
+color: #b42318;
+
+font-size: 10px;
+line-height: 1.5;
+
+
+}
+
+.correspondence-create-card-body .is-invalid {
+border-color: #d92d20 !important;
+}
+
+.correspondence-create-card-body .is-valid {
+border-color: #2e8b57 !important;
+}
+
+/* =========================================================
+ALERT / ERROR
+========================================================= */
+
+.correspondence-create-card-body .alert {
+margin-bottom: 18px;
+
+
+border-radius: var(--correspondence-create-small-radius);
+
+font-size: 11px;
+line-height: 1.5;
+
+
+}
+
+/* =========================================================
+ACTIONS
+========================================================= */
+
+.correspondence-create-actions {
+display: flex;
+align-items: center;
+gap: 8px;
+
+
+margin-top: 25px;
+padding-top: 19px;
+
+border-top: 1px solid var(--correspondence-create-border);
+
+
+}
+
+/* =========================================================
+SIMPAN
+========================================================= */
+
+.correspondence-create-submit {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
+
+min-height: 39px;
+
+padding: 0 17px;
+
+border: 1px solid var(--correspondence-create-navy-2);
+border-radius: var(--correspondence-create-small-radius);
+
+background: var(--correspondence-create-navy-2);
+color: #ffffff;
+
+font-family: "Plus Jakarta Sans", sans-serif;
+font-size: 10px;
+font-weight: 700;
+line-height: 1;
+
+cursor: pointer;
+
+transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+
+
+}
+
+.correspondence-create-submit:hover {
+border-color: var(--correspondence-create-navy);
+background: var(--correspondence-create-navy);
+color: #ffffff;
+}
+
+/* =========================================================
+BATAL
+========================================================= */
+
+.correspondence-create-cancel {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
+
+min-height: 39px;
+
+padding: 0 17px;
+
+border: 1px solid var(--correspondence-create-border-dark);
+border-radius: var(--correspondence-create-small-radius);
+
+background: #ffffff;
+color: var(--correspondence-create-text);
+
+font-family: "Plus Jakarta Sans", sans-serif;
+font-size: 10px;
+font-weight: 700;
+line-height: 1;
+
+text-decoration: none;
+
+cursor: pointer;
+
+transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+
+
+}
+
+.correspondence-create-cancel:hover {
+border-color: var(--correspondence-create-navy-2);
+background: #f7f9fc;
+color: var(--correspondence-create-navy-2);
+text-decoration: none;
+}
+
+/* =========================================================
+REMOVE BOOTSTRAP DEFAULT BUTTON EFFECT
+========================================================= */
+
+.correspondence-create-page .btn-primary {
+border-color: var(--correspondence-create-navy-2);
+background: var(--correspondence-create-navy-2);
+box-shadow: none;
+}
+
+.correspondence-create-page .btn-primary:hover,
+.correspondence-create-page .btn-primary:focus {
+border-color: var(--correspondence-create-navy);
+background: var(--correspondence-create-navy);
+box-shadow: none;
+}
+
+.correspondence-create-page .btn-outline-secondary {
+border-color: var(--correspondence-create-border-dark);
+background: #ffffff;
+color: var(--correspondence-create-text);
+}
+
+.correspondence-create-page .btn-outline-secondary:hover {
+border-color: var(--correspondence-create-navy-2);
+background: #f7f9fc;
+color: var(--correspondence-create-navy-2);
+}
+
+/* =========================================================
+TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+
+.correspondence-create-page {
+    max-width: 100%;
+    padding: 0 12px 30px;
+}
+
+.correspondence-create-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+
+    min-height: auto;
+
+    padding: 22px 20px;
+}
+
+.correspondence-create-header-mark {
+    margin-top: 0;
+}
+
+.correspondence-create-header h1 {
+    font-size: 20px;
+}
+
+.correspondence-create-header p {
+    font-size: 11px;
+}
+
+.correspondence-create-card {
+    width: 100%;
+    max-width: 100%;
+}
+
+.correspondence-create-card-header {
+    padding: 16px 20px;
+}
+
+.correspondence-create-card-body {
+    padding: 22px 20px;
+}
+
+
+}
+
+/* =========================================================
+MOBILE
+======

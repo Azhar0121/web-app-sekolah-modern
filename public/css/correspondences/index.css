@@ -1,0 +1,1182 @@
+/* =========================================================
+WEB SEKOLAH MODERN
+ADMIN - PERSURATAN DIGITAL
+PROFESSIONAL ADMIN STYLE
+FONT: PLUS JAKARTA SANS
+========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* =========================================================
+VARIABLES
+========================================================= */
+
+:root {
+--correspondence-navy: #071b35;
+--correspondence-navy-2: #0b294d;
+
+
+--correspondence-blue: #1769d5;
+--correspondence-blue-dark: #125bbd;
+
+--correspondence-text: #172033;
+--correspondence-text-soft: #66758a;
+
+--correspondence-border: #dbe5f0;
+--correspondence-border-dark: #cbd7e5;
+
+--correspondence-bg: #f7f9fc;
+--correspondence-white: #ffffff;
+
+--correspondence-gray-light: #f4f6f8;
+--correspondence-gray: #e9edf2;
+
+--correspondence-radius: 8px;
+
+--correspondence-shadow:
+    0 2px 8px rgba(16, 34, 61, 0.06);
+
+
+}
+
+/* =========================================================
+GLOBAL
+========================================================= */
+
+.correspondence-page,
+.correspondence-page *,
+.correspondence-page *::before,
+.correspondence-page *::after {
+box-sizing: border-box;
+font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.correspondence-page {
+width: 100%;
+padding: 8px 20px 40px;
+color: var(--correspondence-text);
+}
+
+/* =========================================================
+HEADER
+========================================================= */
+
+.correspondence-header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 30px;
+
+
+width: 100%;
+margin-bottom: 20px;
+padding: 26px 29px;
+
+border: 1px solid var(--correspondence-navy-2);
+border-radius: var(--correspondence-radius);
+
+background: var(--correspondence-navy);
+
+box-shadow:
+    0 3px 10px rgba(7, 27, 53, 0.10);
+
+
+}
+
+.correspondence-header-content {
+min-width: 0;
+}
+
+.correspondence-label {
+display: inline-flex;
+align-items: center;
+
+
+margin-bottom: 8px;
+padding: 5px 9px;
+
+border: 1px solid rgba(255, 255, 255, 0.18);
+border-radius: 5px;
+
+background: rgba(255, 255, 255, 0.08);
+
+color: #ffffff;
+
+font-size: 9.5px;
+font-weight: 700;
+
+letter-spacing: 1px;
+line-height: 1.4;
+
+
+}
+
+.correspondence-header h4 {
+margin: 0 0 7px;
+
+
+color: #ffffff;
+
+font-size: 25px;
+font-weight: 700;
+
+line-height: 1.3;
+letter-spacing: -0.3px;
+
+
+}
+
+.correspondence-header p {
+max-width: 720px;
+
+
+margin: 0;
+
+color: #d7dee8;
+
+font-size: 12px;
+font-weight: 400;
+
+line-height: 1.65;
+
+
+}
+
+/* =========================================================
+HEADER ACTIONS
+========================================================= */
+
+.correspondence-header-actions {
+display: flex;
+align-items: center;
+gap: 8px;
+
+
+flex: 0 0 auto;
+
+
+}
+
+.correspondence-btn {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
+
+min-height: 36px;
+padding: 0 13px;
+
+border-radius: 5px;
+
+font-size: 10px;
+font-weight: 700;
+
+line-height: 1;
+text-decoration: none;
+
+white-space: nowrap;
+
+transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+
+
+}
+
+/* Dashboard */
+
+.correspondence-btn-back {
+border: 1px solid rgba(255, 255, 255, 0.25);
+
+
+background: transparent;
+
+color: #ffffff;
+
+
+}
+
+.correspondence-btn-back:hover {
+border-color: rgba(255, 255, 255, 0.50);
+
+
+background: rgba(255, 255, 255, 0.09);
+
+color: #ffffff;
+
+
+}
+
+/* Primary */
+
+.correspondence-btn-primary {
+border: 1px solid #ffffff;
+
+
+background: #ffffff;
+
+color: var(--correspondence-navy);
+
+
+}
+
+.correspondence-btn-primary:hover {
+border-color: #e8eef5;
+
+
+background: #e8eef5;
+
+color: var(--correspondence-navy);
+
+
+}
+
+/* =========================================================
+TABS
+========================================================= */
+
+.correspondence-tabs {
+display: flex;
+align-items: flex-end;
+gap: 3px;
+
+
+width: 100%;
+margin-bottom: 14px;
+
+padding-left: 2px;
+
+border-bottom: 1px solid var(--correspondence-border);
+
+
+}
+
+.correspondence-tab {
+display: inline-flex;
+align-items: center;
+gap: 7px;
+
+
+min-height: 40px;
+padding: 9px 15px;
+
+border: 1px solid transparent;
+border-bottom: 2px solid transparent;
+border-radius: 5px 5px 0 0;
+
+background: transparent;
+
+color: var(--correspondence-text-soft);
+
+font-size: 10.5px;
+font-weight: 600;
+
+line-height: 1.3;
+
+text-decoration: none;
+
+transition:
+    color 0.15s ease,
+    background 0.15s ease,
+    border-color 0.15s ease;
+
+
+}
+
+.correspondence-tab:hover {
+border-color: transparent;
+
+
+background: #f4f7fa;
+
+color: var(--correspondence-navy);
+
+text-decoration: none;
+
+
+}
+
+.correspondence-tab.active {
+border-color: transparent;
+border-bottom-color: var(--correspondence-navy);
+
+
+background: #ffffff;
+
+color: var(--correspondence-navy);
+
+font-weight: 700;
+
+
+}
+
+.correspondence-count {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
+
+min-width: 21px;
+height: 20px;
+
+padding: 0 6px;
+
+border: 1px solid #d5dce4;
+border-radius: 4px;
+
+background: #f1f4f7;
+
+color: #536174;
+
+font-size: 8.5px;
+font-weight: 700;
+
+line-height: 1;
+
+
+}
+
+.correspondence-tab.active .correspondence-count {
+border-color: #cbd7e5;
+
+
+background: #eaf3ff;
+
+color: var(--correspondence-blue-dark);
+
+
+}
+
+/* =========================================================
+SEARCH CARD
+========================================================= */
+
+.correspondence-search-card {
+width: 100%;
+margin-bottom: 14px;
+
+
+padding: 17px 19px;
+
+border: 1px solid var(--correspondence-border);
+border-radius: var(--correspondence-radius);
+
+background: #ffffff;
+
+box-shadow: var(--correspondence-shadow);
+
+
+}
+
+.correspondence-search-form {
+display: grid;
+grid-template-columns: minmax(0, 1fr) 180px;
+align-items: end;
+
+
+gap: 12px;
+
+margin: 0;
+
+
+}
+
+.correspondence-search-field {
+min-width: 0;
+}
+
+.correspondence-search-field label {
+display: block;
+
+
+margin: 0 0 6px;
+
+color: var(--correspondence-text-soft);
+
+font-size: 10px;
+font-weight: 600;
+
+line-height: 1.4;
+
+
+}
+
+.correspondence-input {
+display: block;
+
+
+width: 100%;
+min-height: 39px;
+
+padding: 8px 12px;
+
+border: 1px solid var(--correspondence-border-dark);
+border-radius: 5px;
+
+outline: none;
+
+background: #ffffff;
+
+color: var(--correspondence-text);
+
+font-size: 10.5px;
+font-weight: 500;
+
+box-shadow: none;
+
+transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+
+}
+
+.correspondence-input::placeholder {
+color: #9aa6b5;
+
+
+font-weight: 400;
+
+
+}
+
+.correspondence-input:hover {
+border-color: #aebccc;
+}
+
+.correspondence-input:focus {
+border-color: var(--correspondence-navy-2);
+
+
+box-shadow:
+    0 0 0 3px rgba(11, 41, 77, 0.08);
+
+
+}
+
+/* Apply button */
+
+.correspondence-apply-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 39px;
+
+    padding: 0 15px;
+
+    border: 1px solid var(--correspondence-navy-2);
+    border-radius: 5px;
+
+    background: var(--correspondence-navy-2);
+
+    color: #ffffff;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow: none;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
+}
+
+.correspondence-apply-button:hover {
+    border-color: var(--correspondence-navy);
+
+    background: var(--correspondence-navy);
+
+    color: #ffffff;
+}
+
+/* =========================================================
+TABLE CARD
+========================================================= */
+
+.correspondence-table-card {
+width: 100%;
+
+
+overflow: hidden;
+
+border: 1px solid var(--correspondence-border);
+border-radius: var(--correspondence-radius);
+
+background: #ffffff;
+
+box-shadow: var(--correspondence-shadow);
+
+
+}
+
+/* =========================================================
+TABLE WRAPPER
+========================================================= */
+
+.correspondence-table-wrapper {
+width: 100%;
+
+
+overflow-x: auto;
+
+
+}
+
+/* =========================================================
+TABLE
+========================================================= */
+
+.correspondence-table {
+width: 100%;
+min-width: 850px;
+
+
+margin: 0;
+
+border-collapse: separate;
+border-spacing: 0;
+
+table-layout: fixed;
+
+
+}
+
+/* =========================================================
+COLUMN WIDTH
+========================================================= */
+
+.correspondence-table .column-number {
+width: 17%;
+}
+
+.correspondence-table .column-date {
+width: 13%;
+}
+
+.correspondence-table .column-subject {
+width: 26%;
+}
+
+.correspondence-table .column-correspondent {
+width: 19%;
+}
+
+.correspondence-table .column-status {
+width: 13%;
+}
+
+.correspondence-table .column-action {
+width: 12%;
+}
+
+/* =========================================================
+TABLE HEADER
+========================================================= */
+
+.correspondence-table thead th {
+padding: 13px 15px;
+
+
+border-bottom: 1px solid var(--correspondence-navy);
+
+background: var(--correspondence-navy-2);
+
+color: #ffffff;
+
+font-size: 9.5px;
+font-weight: 700;
+
+line-height: 1.4;
+
+white-space: nowrap;
+
+vertical-align: middle;
+
+
+}
+
+.correspondence-table thead th + th {
+border-left: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* =========================================================
+TABLE BODY
+========================================================= */
+
+.correspondence-table tbody td {
+padding: 13px 15px;
+
+
+border-bottom: 1px solid #e5ebf2;
+
+background: #ffffff;
+
+color: #344256;
+
+font-size: 10.5px;
+font-weight: 500;
+
+line-height: 1.5;
+
+vertical-align: middle;
+
+
+}
+
+.correspondence-table tbody tr:nth-child(even) td {
+background: #fafbfd;
+}
+
+.correspondence-table tbody tr:hover td {
+background: #f3f6f9;
+}
+
+.correspondence-table tbody tr:last-child td {
+border-bottom: none;
+}
+
+/* =========================================================
+NUMBER
+========================================================= */
+
+.correspondence-number {
+display: inline-flex;
+align-items: center;
+
+
+max-width: 100%;
+
+padding: 4px 7px;
+
+overflow: hidden;
+
+border: 1px solid #d5dce4;
+border-radius: 4px;
+
+background: #f5f7f9;
+
+color: var(--correspondence-navy);
+
+font-family: "Plus Jakarta Sans", sans-serif !important;
+
+font-size: 9px;
+font-weight: 700;
+
+line-height: 1.3;
+
+text-overflow: ellipsis;
+white-space: nowrap;
+
+
+}
+
+/* =========================================================
+DATE
+========================================================= */
+
+.correspondence-date {
+color: #526176;
+
+
+font-size: 10px;
+font-weight: 500;
+
+white-space: nowrap;
+
+
+}
+
+/* =========================================================
+SUBJECT
+========================================================= */
+
+.correspondence-subject {
+overflow: hidden;
+
+
+color: #263449;
+
+font-size: 10.5px;
+font-weight: 600;
+
+line-height: 1.5;
+
+text-overflow: ellipsis;
+white-space: nowrap;
+
+
+}
+
+.correspondence-category {
+margin-top: 3px;
+
+
+overflow: hidden;
+
+color: var(--correspondence-text-soft);
+
+font-size: 8.8px;
+font-weight: 500;
+
+line-height: 1.4;
+
+text-overflow: ellipsis;
+white-space: nowrap;
+
+
+}
+
+/* =========================================================
+CORRESPONDENT
+========================================================= */
+
+.correspondence-person {
+display: block;
+
+
+overflow: hidden;
+
+color: #526176;
+
+font-size: 10px;
+font-weight: 500;
+
+line-height: 1.5;
+
+text-overflow: ellipsis;
+white-space: nowrap;
+
+
+}
+
+/* =========================================================
+STATUS
+========================================================= */
+
+.correspondence-status {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
+
+min-width: 64px;
+min-height: 25px;
+
+padding: 4px 8px;
+
+border: 1px solid #d5dce4;
+border-radius: 5px;
+
+background: #f4f6f8;
+
+color: #465568;
+
+font-size: 9px;
+font-weight: 700;
+
+line-height: 1.3;
+
+white-space: nowrap;
+
+
+}
+
+.correspondence-status-success {
+border-color: #cfe3d7;
+
+
+background: #eef8f1;
+
+color: #267344;
+
+
+}
+
+.correspondence-status-warning {
+border-color: #eadcb4;
+
+
+background: #fff8e7;
+
+color: #86681a;
+
+
+}
+
+.correspondence-status-secondary {
+border-color: #d5dce4;
+
+
+background: #f4f6f8;
+
+color: #59687a;
+
+
+}
+
+/* =========================================================
+DETAIL BUTTON
+========================================================= */
+
+.correspondence-detail-button {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
+
+min-width: 58px;
+min-height: 31px;
+
+padding: 0 10px;
+
+border: 1px solid var(--correspondence-navy-2);
+border-radius: 5px;
+
+background: var(--correspondence-navy-2);
+
+color: #ffffff;
+
+font-size: 9.5px;
+font-weight: 700;
+
+line-height: 1;
+
+text-decoration: none;
+
+transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+
+
+}
+
+.correspondence-detail-button:hover {
+border-color: var(--correspondence-navy);
+
+
+background: var(--correspondence-navy);
+
+color: #ffffff;
+
+text-decoration: none;
+
+
+}
+
+/* =========================================================
+EMPTY STATE
+========================================================= */
+
+.correspondence-empty {
+padding: 50px 20px !important;
+
+
+color: #7a889a !important;
+
+font-size: 10.5px !important;
+font-weight: 500 !important;
+
+text-align: center;
+
+
+}
+
+/* =========================================================
+PAGINATION
+========================================================= */
+
+.correspondence-pagination {
+display: flex;
+justify-content: flex-end;
+
+
+padding: 14px 18px;
+
+border-top: 1px solid #e3e9f1;
+
+background: #ffffff;
+
+
+}
+
+.correspondence-pagination nav {
+margin: 0;
+}
+
+.correspondence-pagination .pagination {
+display: flex;
+align-items: center;
+gap: 4px;
+
+
+margin: 0;
+
+
+}
+
+.correspondence-pagination .page-link {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
+
+min-width: 32px;
+height: 32px;
+
+padding: 0 8px;
+
+border: 1px solid #d2dce7;
+border-radius: 5px !important;
+
+background: #ffffff;
+
+color: #526176;
+
+font-family: "Plus Jakarta Sans", sans-serif;
+
+font-size: 9.5px;
+font-weight: 600;
+
+line-height: 1;
+
+box-shadow: none;
+
+
+}
+
+.correspondence-pagination .page-link:hover {
+border-color: #aab5c1;
+
+
+background: #f3f5f7;
+
+color: var(--correspondence-navy);
+
+
+}
+
+.correspondence-pagination .page-item.active .page-link {
+border-color: var(--correspondence-navy-2);
+
+
+background: var(--correspondence-navy-2);
+
+color: #ffffff;
+
+
+}
+
+.correspondence-pagination .page-item.disabled .page-link {
+background: #f7f9fb;
+
+
+color: #a2adba;
+
+
+}
+
+/* =========================================================
+TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+
+.correspondence-page {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.correspondence-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 17px;
+
+    padding: 23px;
+}
+
+.correspondence-header-actions {
+    width: 100%;
+}
+
+.correspondence-btn {
+    flex: 1;
+}
+
+.correspondence-search-form {
+    grid-template-columns: 1fr 150px;
+}
+
+
+}
+
+/* =========================================================
+MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+
+.correspondence-page {
+    padding: 5px 8px 30px;
+}
+
+.correspondence-header {
+    margin-bottom: 16px;
+
+    padding: 21px 18px;
+
+    border-radius: 7px;
+}
+
+.correspondence-label {
+    margin-bottom: 7px;
+
+    font-size: 8.5px;
+}
+
+.correspondence-header h4 {
+    font-size: 20px;
+}
+
+.correspondence-header p {
+    font-size: 10.5px;
+}
+
+.correspondence-header-actions {
+    flex-direction: column;
+    gap: 7px;
+}
+
+.correspondence-btn {
+    width: 100%;
+    min-height: 35px;
+}
+
+
+/* Tabs */
+
+.correspondence-tabs {
+    overflow-x: auto;
+
+    flex-wrap: nowrap;
+}
+
+.correspondence-tab {
+    flex: 0 0 auto;
+
+    padding: 8px 12px;
+
+    font-size: 10px;
+
+    white-space: nowrap;
+}
+
+
+/* Search */
+
+.correspondence-search-card {
+    margin-bottom: 14px;
+
+    padding: 15px;
+
+    border-radius: 7px;
+}
+
+.correspondence-search-form {
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+}
+
+.correspondence-apply-button {
+    min-height: 38px;
+}
+
+
+/* Table */
+
+.correspondence-table-card {
+    border-radius: 7px;
+}
+
+.correspondence-table {
+    min-width: 850px;
+}
+
+.correspondence-table thead th {
+    padding: 12px;
+
+    font-size: 9px;
+}
+
+.correspondence-table tbody td {
+    padding: 12px;
+
+    font-size: 9.8px;
+}
+
+.correspondence-number {
+    font-size: 8.5px;
+}
+
+.correspondence-status {
+    font-size: 8.5px;
+}
+
+.correspondence-detail-button {
+    min-width: 55px;
+    min-height: 30px;
+
+    font-size: 9px;
+}
+
+
+/* Pagination */
+
+.correspondence-pagination {
+    justify-content: center;
+
+    padding: 13px;
+}
+
+
+}
+
+/* =========================================================
+EXTRA SMALL
+========================================================= */
+
+@media (max-width: 400px) {
+
+
+.correspondence-header h4 {
+    font-size: 18px;
+}
+
+.correspondence-header p {
+    font-size: 10px;
+}
+
+.correspondence-tab {
+    font-size: 9.5px;
+}
+
+.correspondence-search-field label {
+    font-size: 9.5px;
+}
+
+.correspondence-input,
+.correspondence-apply-button {
+    font-size: 9.5px;
+}
+
+
+}

@@ -4,34 +4,82 @@
 
 @section('content')
 
-<div class="d-flex justify-content-between align-items-start mb-4">
-    <div>
-        <span class="text-uppercase text-muted small fw-semibold">Persuratan Digital</span>
-        <h1 class="h4 fw-bold mb-1">
+<link rel="stylesheet" href="{{ asset('css/correspondences/create.css') }}">
+
+<div class="correspondence-create-page">
+
+
+{{-- HEADER --}}
+<div class="correspondence-create-header">
+    <div class="correspondence-create-header-content">
+        <span class="correspondence-create-label">
+            PERSURATAN DIGITAL
+        </span>
+
+        <h1>
             {{ $type === 'masuk' ? 'Catat Surat Masuk' : 'Buat Surat Keluar' }}
         </h1>
-        <p class="text-muted mb-0">
-            Nomor {{ $type === 'masuk' ? 'agenda' : 'surat resmi' }} akan digenerate otomatis
-            begitu disimpan.
+
+        <p>
+            Nomor {{ $type === 'masuk' ? 'agenda' : 'surat resmi' }} akan
+            digenerate otomatis begitu disimpan.
         </p>
     </div>
-    <a href="{{ route('admin.correspondences.index', ['type' => $type]) }}" class="btn btn-outline-secondary btn-sm">
-        &larr; Kembali
-    </a>
+
+    <div class="correspondence-create-header-mark">
+        <span class="correspondence-create-header-dot"></span>
+        <span>
+            {{ $type === 'masuk' ? 'SURAT MASUK' : 'SURAT KELUAR' }}
+        </span>
+    </div>
 </div>
 
-<div class="card border-0 shadow-sm" style="max-width: 700px;">
-    <div class="card-body">
-        <form method="POST" action="{{ route('admin.correspondences.store') }}" enctype="multipart/form-data">
-            @csrf
-            @php($correspondence = null)
-            @include('admin.correspondences.form')
-            <div class="mt-3">
-                <button type="submit" class="btn btn-primary">Simpan</button>
-                <a href="{{ route('admin.correspondences.index', ['type' => $type]) }}" class="btn btn-outline-secondary">Batal</a>
-            </div>
-        </form>
+
+{{-- FORM CARD --}}
+<div class="correspondence-create-card">
+
+    <div class="correspondence-create-card-header">
+        <div>
+            <span class="correspondence-create-card-label">
+                FORMULIR SURAT
+            </span>
+
+            <h2>
+                {{ $type === 'masuk' ? 'Data Surat Masuk' : 'Data Surat Keluar' }}
+            </h2>
+        </div>
     </div>
+
+    <div class="correspondence-create-card-body">
+
+        <form method="POST"
+              action="{{ route('admin.correspondences.store') }}"
+              enctype="multipart/form-data">
+
+            @csrf
+
+            @php($correspondence = null)
+
+            @include('admin.correspondences.form')
+
+            <div class="correspondence-create-actions">
+                <button type="submit"
+                        class="correspondence-create-submit">
+                    Simpan
+                </button>
+
+                <a href="{{ route('admin.correspondences.index', ['type' => $type]) }}"
+                   class="correspondence-create-cancel">
+                    Batal
+                </a>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+
 </div>
 
 @endsection

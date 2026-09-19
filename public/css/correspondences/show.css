@@ -1,0 +1,1134 @@
+/* =========================================================
+CORRESPONDENCE DETAIL
+========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+.correspondence-detail-page {
+--cd-navy: #071b35;
+--cd-navy-2: #0b294d;
+--cd-blue: #1769d5;
+--cd-blue-light: #eaf3ff;
+--cd-bg: #f5f8fc;
+--cd-white: #ffffff;
+--cd-text: #10223d;
+--cd-muted: #66758a;
+--cd-border: #dbe5f0;
+--cd-success: #16845b;
+--cd-warning: #b77908;
+--cd-danger: #c93636;
+
+
+min-height: 100vh;
+padding: 28px 0 50px;
+
+color: var(--cd-text);
+font-family: "Plus Jakarta Sans", sans-serif;
+
+
+}
+
+/* =========================================================
+HERO
+========================================================= */
+
+.correspondence-detail-header {
+position: relative;
+
+
+display: flex;
+align-items: flex-end;
+justify-content: space-between;
+gap: 25px;
+
+width: min(1060px, calc(100% - 40px));
+min-height: 205px;
+
+margin: 0 auto 24px;
+padding: 36px 40px;
+
+overflow: hidden;
+
+border-radius: 10px;
+
+background:
+    linear-gradient(
+        135deg,
+        rgba(7, 27, 53, 0.98),
+        rgba(11, 41, 77, 0.94)
+    );
+
+box-shadow: 0 12px 30px rgba(7, 27, 53, 0.12);
+
+
+}
+
+.correspondence-detail-header::before {
+content: "";
+
+
+position: absolute;
+
+width: 230px;
+height: 230px;
+
+top: -125px;
+right: -80px;
+
+border-radius: 50%;
+
+background: rgba(255, 255, 255, 0.05);
+
+
+}
+
+.correspondence-detail-header::after {
+content: "";
+
+
+position: absolute;
+
+width: 160px;
+height: 160px;
+
+right: 180px;
+bottom: -110px;
+
+border-radius: 50%;
+
+background: rgba(23, 105, 213, 0.13);
+
+
+}
+
+.correspondence-detail-header-content {
+position: relative;
+z-index: 2;
+
+
+max-width: 720px;
+
+
+}
+
+.correspondence-detail-label {
+display: inline-flex;
+align-items: center;
+
+
+margin-bottom: 10px;
+padding: 6px 11px;
+
+border: 1px solid rgba(255, 255, 255, 0.16);
+border-radius: 5px;
+
+background: rgba(255, 255, 255, 0.075);
+
+color: rgba(255, 255, 255, 0.86);
+
+font-size: 10px;
+font-weight: 800;
+letter-spacing: 0.12em;
+
+
+}
+
+.correspondence-detail-header h1 {
+margin: 0;
+
+
+color: #ffffff;
+
+font-size: clamp(25px, 2.8vw, 34px);
+font-weight: 800;
+line-height: 1.2;
+letter-spacing: -0.02em;
+
+word-break: break-word;
+
+
+}
+
+.correspondence-detail-header p {
+max-width: 650px;
+
+
+margin: 9px 0 0;
+
+color: rgba(255, 255, 255, 0.72);
+
+font-size: 13px;
+font-weight: 500;
+line-height: 1.65;
+
+
+}
+
+.correspondence-detail-header-mark {
+position: relative;
+z-index: 2;
+
+
+display: flex;
+align-items: center;
+gap: 9px;
+
+flex-shrink: 0;
+
+color: rgba(255, 255, 255, 0.64);
+
+font-size: 9px;
+font-weight: 800;
+letter-spacing: 0.11em;
+
+
+}
+
+.correspondence-detail-header-dot {
+width: 7px;
+height: 7px;
+
+
+border-radius: 50%;
+
+background: #67a9ff;
+
+box-shadow:
+    0 0 0 4px rgba(103, 169, 255, 0.12);
+
+
+}
+
+/* =========================================================
+MAIN GRID
+========================================================= */
+
+.correspondence-detail-grid {
+display: grid;
+
+
+grid-template-columns: minmax(0, 1.55fr) minmax(280px, 0.72fr);
+
+gap: 20px;
+
+width: min(1060px, calc(100% - 40px));
+
+margin: 0 auto;
+
+
+}
+
+.correspondence-detail-main,
+.correspondence-detail-sidebar {
+min-width: 0;
+}
+
+/* =========================================================
+CARD
+========================================================= */
+
+.correspondence-detail-card {
+overflow: hidden;
+
+
+border: 1px solid var(--cd-border);
+border-radius: 8px;
+
+background: var(--cd-white);
+
+box-shadow:
+    0 7px 20px rgba(16, 34, 61, 0.045);
+
+
+}
+
+/* =========================================================
+CARD HEADER
+========================================================= */
+
+.correspondence-detail-card-header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+
+gap: 15px;
+
+padding: 17px 20px;
+
+border-bottom: 1px solid rgba(219, 229, 240, 0.9);
+
+background:
+    linear-gradient(
+        135deg,
+        rgba(7, 27, 53, 0.09),
+        rgba(11, 41, 77, 0.035)
+    );
+
+
+}
+
+.correspondence-detail-card-label {
+display: inline-block;
+
+
+margin-bottom: 4px;
+
+color: rgba(7, 27, 53, 0.57);
+
+font-size: 9px;
+font-weight: 800;
+letter-spacing: 0.13em;
+
+
+}
+
+.correspondence-detail-card-header h2 {
+margin: 0;
+
+
+color: var(--cd-navy);
+
+font-size: 16px;
+font-weight: 800;
+line-height: 1.35;
+
+
+}
+
+/* =========================================================
+CARD ICON
+========================================================= */
+
+.correspondence-detail-card-icon {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
+
+min-width: 39px;
+height: 34px;
+
+padding: 0 9px;
+
+border-radius: 5px;
+
+font-size: 9px;
+font-weight: 800;
+letter-spacing: 0.07em;
+
+
+}
+
+.correspondence-detail-status-icon {
+border: 1px solid rgba(7, 27, 53, 0.11);
+
+
+background: rgba(7, 27, 53, 0.075);
+
+color: var(--cd-navy);
+
+
+}
+
+.correspondence-detail-document-icon {
+border: 1px solid rgba(23, 105, 213, 0.12);
+
+
+background: rgba(23, 105, 213, 0.07);
+
+color: var(--cd-blue);
+
+
+}
+
+/* =========================================================
+CARD BODY
+========================================================= */
+
+.correspondence-detail-card-body {
+padding: 19px 20px;
+}
+
+/* =========================================================
+INFORMASI
+========================================================= */
+
+.correspondence-detail-main
+> .correspondence-detail-card
+.correspondence-detail-card-header {
+
+
+background:
+    linear-gradient(
+        135deg,
+        rgba(7, 27, 53, 0.11),
+        rgba(11, 41, 77, 0.035)
+    );
+
+
+}
+
+/* =========================================================
+DETAIL LIST
+========================================================= */
+
+.correspondence-detail-list {
+margin: 0;
+}
+
+.correspondence-detail-row {
+display: grid;
+
+
+grid-template-columns: 135px minmax(0, 1fr);
+
+gap: 18px;
+
+padding: 13px 0;
+
+border-bottom: 1px solid #edf1f5;
+
+
+}
+
+.correspondence-detail-row:first-child {
+padding-top: 1px;
+}
+
+.correspondence-detail-row:last-child {
+padding-bottom: 1px;
+
+
+border-bottom: 0;
+
+
+}
+
+.correspondence-detail-row dt {
+margin: 0;
+
+
+color: var(--cd-muted);
+
+font-size: 11px;
+font-weight: 700;
+
+line-height: 1.6;
+
+
+}
+
+.correspondence-detail-row dd {
+min-width: 0;
+
+
+margin: 0;
+
+color: var(--cd-text);
+
+font-size: 12px;
+font-weight: 600;
+
+line-height: 1.65;
+
+overflow-wrap: anywhere;
+
+
+}
+
+.correspondence-detail-number {
+display: inline-block;
+
+
+max-width: 100%;
+
+padding: 4px 8px;
+
+border: 1px solid #d8e4f1;
+border-radius: 4px;
+
+background: #f3f7fb;
+
+color: var(--cd-navy);
+
+font-family: "Plus Jakarta Sans", sans-serif;
+
+font-size: 11px;
+font-weight: 700;
+
+overflow-wrap: anywhere;
+
+
+}
+
+.correspondence-detail-preline {
+white-space: pre-line;
+}
+
+.correspondence-detail-separator {
+margin: 0 5px;
+
+
+color: #a3afbd;
+
+
+}
+
+/* =========================================================
+KEMBALI
+DI BAWAH CARD INFORMASI - RATA KANAN
+========================================================= */
+
+.correspondence-detail-main-actions {
+display: flex;
+
+
+justify-content: flex-end;
+align-items: center;
+
+margin-top: 13px;
+
+
+}
+
+.correspondence-detail-action {
+display: inline-flex;
+
+
+align-items: center;
+justify-content: center;
+
+min-height: 39px;
+
+padding: 0 16px;
+
+border-radius: 5px;
+
+font-family: inherit;
+
+font-size: 11px;
+font-weight: 800;
+
+line-height: 1;
+
+text-decoration: none;
+
+cursor: pointer;
+
+transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+
+
+}
+
+.correspondence-detail-back {
+border: 1px solid var(--cd-navy);
+
+
+background: var(--cd-navy);
+
+color: #ffffff;
+
+
+}
+
+.correspondence-detail-back:hover {
+border-color: var(--cd-navy-2);
+
+
+background: var(--cd-navy-2);
+
+color: #ffffff;
+
+transform: translateY(-1px);
+
+box-shadow:
+    0 6px 15px rgba(7, 27, 53, 0.14);
+
+
+}
+
+/* =========================================================
+SIDEBAR
+========================================================= */
+
+.correspondence-detail-sidebar {
+display: flex;
+
+
+flex-direction: column;
+
+gap: 16px;
+
+
+}
+
+/* =========================================================
+STATUS
+========================================================= */
+
+.correspondence-detail-status-card
+.correspondence-detail-card-header {
+
+
+background:
+    linear-gradient(
+        135deg,
+        rgba(7, 27, 53, 0.12),
+        rgba(7, 27, 53, 0.035)
+    );
+
+
+}
+
+.correspondence-detail-status {
+display: flex;
+
+
+align-items: center;
+
+gap: 9px;
+
+min-height: 41px;
+
+padding: 0 11px;
+
+border: 1px solid transparent;
+
+border-radius: 5px;
+
+font-size: 11px;
+font-weight: 800;
+
+
+}
+
+.correspondence-detail-status-dot {
+width: 7px;
+height: 7px;
+
+
+flex-shrink: 0;
+
+border-radius: 50%;
+
+
+}
+
+/* SUCCESS */
+
+.correspondence-detail-status-success {
+border-color: rgba(22, 132, 91, 0.17);
+
+
+background: rgba(22, 132, 91, 0.075);
+
+color: #126a4a;
+
+
+}
+
+.correspondence-detail-status-success
+.correspondence-detail-status-dot {
+
+
+background: var(--cd-success);
+
+box-shadow:
+    0 0 0 4px rgba(22, 132, 91, 0.09);
+
+
+}
+
+/* WARNING */
+
+.correspondence-detail-status-warning {
+border-color: rgba(183, 121, 8, 0.18);
+
+
+background: rgba(183, 121, 8, 0.075);
+
+color: #8b5b04;
+
+
+}
+
+.correspondence-detail-status-warning
+.correspondence-detail-status-dot {
+
+
+background: var(--cd-warning);
+
+box-shadow:
+    0 0 0 4px rgba(183, 121, 8, 0.09);
+
+
+}
+
+/* SECONDARY */
+
+.correspondence-detail-status-secondary {
+border-color: rgba(102, 117, 138, 0.17);
+
+
+background: rgba(102, 117, 138, 0.07);
+
+color: #566477;
+
+
+}
+
+.correspondence-detail-status-secondary
+.correspondence-detail-status-dot {
+
+
+background: #7f8b9b;
+
+box-shadow:
+    0 0 0 4px rgba(127, 139, 155, 0.09);
+
+
+}
+
+/* =========================================================
+DOKUMEN
+========================================================= */
+
+.correspondence-detail-document-card
+.correspondence-detail-card-header {
+
+
+background:
+    linear-gradient(
+        135deg,
+        rgba(23, 105, 213, 0.09),
+        rgba(23, 105, 213, 0.03)
+    );
+
+
+}
+
+.correspondence-detail-file {
+display: flex;
+
+
+align-items: center;
+
+gap: 11px;
+
+min-width: 0;
+
+padding: 11px;
+
+border: 1px solid #dce7f3;
+
+border-radius: 6px;
+
+background: #f7faff;
+
+color: var(--cd-text);
+
+text-decoration: none;
+
+transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+
+}
+
+.correspondence-detail-file:hover {
+border-color: #b9cfe7;
+
+
+background: #f1f7ff;
+
+color: var(--cd-text);
+
+transform: translateY(-1px);
+
+box-shadow:
+    0 5px 13px rgba(23, 105, 213, 0.07);
+
+
+}
+
+.correspondence-detail-file-icon {
+display: flex;
+
+
+align-items: center;
+justify-content: center;
+
+width: 39px;
+height: 39px;
+
+flex-shrink: 0;
+
+border-radius: 5px;
+
+background: var(--cd-navy);
+
+color: #ffffff;
+
+font-size: 8px;
+font-weight: 800;
+
+letter-spacing: 0.07em;
+
+
+}
+
+.correspondence-detail-file-content {
+display: flex;
+
+
+flex-direction: column;
+
+gap: 2px;
+
+min-width: 0;
+
+
+}
+
+.correspondence-detail-file-name {
+display: block;
+
+
+color: var(--cd-text);
+
+font-size: 10px;
+font-weight: 800;
+
+line-height: 1.4;
+
+overflow: hidden;
+
+text-overflow: ellipsis;
+
+white-space: nowrap;
+
+
+}
+
+.correspondence-detail-file-action {
+color: var(--cd-blue);
+
+
+font-size: 9px;
+font-weight: 700;
+
+
+}
+
+.correspondence-detail-empty-file {
+display: flex;
+
+
+flex-direction: column;
+
+align-items: center;
+justify-content: center;
+
+min-height: 105px;
+
+padding: 16px;
+
+border: 1px dashed #d7e1eb;
+
+border-radius: 6px;
+
+background: #f8fafc;
+
+text-align: center;
+
+
+}
+
+.correspondence-detail-empty-icon {
+display: flex;
+
+
+align-items: center;
+justify-content: center;
+
+width: 34px;
+height: 34px;
+
+margin-bottom: 7px;
+
+border-radius: 5px;
+
+background: rgba(7, 27, 53, 0.065);
+
+color: var(--cd-muted);
+
+font-size: 16px;
+
+
+}
+
+.correspondence-detail-empty-file p {
+margin: 0;
+
+
+color: var(--cd-muted);
+
+font-size: 10px;
+font-weight: 600;
+
+line-height: 1.5;
+
+
+}
+
+/* =========================================================
+EDIT + HAPUS
+========================================================= */
+
+.correspondence-detail-actions {
+display: grid;
+
+
+grid-template-columns: 1fr 1fr;
+
+gap: 9px;
+
+
+}
+
+.correspondence-detail-edit {
+border: 1px solid var(--cd-navy);
+
+
+background: var(--cd-navy);
+
+color: #ffffff;
+
+
+}
+
+.correspondence-detail-edit:hover {
+border-color: var(--cd-navy-2);
+
+
+background: var(--cd-navy-2);
+
+color: #ffffff;
+
+transform: translateY(-1px);
+
+box-shadow:
+    0 6px 15px rgba(7, 27, 53, 0.14);
+
+
+}
+
+.correspondence-detail-delete-form {
+display: block;
+
+
+margin: 0;
+
+
+}
+
+.correspondence-detail-delete {
+width: 100%;
+
+
+border: 1px solid rgba(201, 54, 54, 0.20);
+
+background: #fff4f4;
+
+color: var(--cd-danger);
+
+
+}
+
+.correspondence-detail-delete:hover {
+border-color: var(--cd-danger);
+
+
+background: var(--cd-danger);
+
+color: #ffffff;
+
+transform: translateY(-1px);
+
+box-shadow:
+    0 6px 15px rgba(201, 54, 54, 0.13);
+
+
+}
+
+/* =========================================================
+TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+
+.correspondence-detail-header,
+.correspondence-detail-grid {
+    width: min(900px, calc(100% - 30px));
+}
+
+
+.correspondence-detail-grid {
+    grid-template-columns: 1fr;
+}
+
+
+.correspondence-detail-sidebar {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    align-items: start;
+}
+
+
+.correspondence-detail-actions {
+    grid-column: 1 / -1;
+}
+
+
+}
+
+/* =========================================================
+MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+
+.correspondence-detail-page {
+    padding-top: 18px;
+}
+
+
+.correspondence-detail-header {
+    width: calc(100% - 24px);
+
+    min-height: auto;
+
+    margin-bottom: 18px;
+
+    padding: 28px 22px;
+
+    border-radius: 8px;
+}
+
+
+.correspondence-detail-header {
+    align-items: flex-start;
+}
+
+
+.correspondence-detail-header h1 {
+    font-size: 24px;
+}
+
+
+.correspondence-detail-header p {
+    font-size: 12px;
+}
+
+
+.correspondence-detail-header-mark {
+    display: none;
+}
+
+
+.correspondence-detail-grid {
+    width: calc(100% - 24px);
+
+    gap: 15px;
+}
+
+
+.correspondence-detail-sidebar {
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.correspondence-detail-card-header {
+    padding: 16px 17px;
+}
+
+
+.correspondence-detail-card-body {
+    padding: 17px;
+}
+
+
+.correspondence-detail-row {
+    grid-template-columns: 1fr;
+
+    gap: 3px;
+
+    padding: 12px 0;
+}
+
+
+.correspondence-detail-row dt {
+    font-size: 10px;
+}
+
+
+.correspondence-detail-row dd {
+    font-size: 11px;
+}
+
+
+.correspondence-detail-main-actions {
+    justify-content: flex-end;
+
+    margin-top: 11px;
+}
+
+
+.correspondence-detail-back {
+    min-height: 38px;
+
+    padding: 0 14px;
+
+    font-size: 10px;
+}
+
+
+.correspondence-detail-actions {
+    grid-template-columns: 1fr 1fr;
+}
+
+
+}
+
+/* =========================================================
+SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+
+.correspondence-detail-actions {
+    grid-template-columns: 1fr;
+}
+
+
+.correspondence-detail-back {
+    width: auto;
+}
+
+
+}

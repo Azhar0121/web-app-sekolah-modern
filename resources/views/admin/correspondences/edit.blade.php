@@ -4,29 +4,94 @@
 
 @section('content')
 
-<div class="d-flex justify-content-between align-items-start mb-4">
-    <div>
-        <span class="text-uppercase text-muted small fw-semibold">Persuratan Digital</span>
-        <h1 class="h4 fw-bold mb-1">Edit Surat <code>{{ $correspondence->number }}</code></h1>
-        <p class="text-muted mb-0">Jenis surat & nomor tidak bisa diubah, hanya detail isinya.</p>
+<link rel="stylesheet" href="{{ asset('css/correspondences/edit.css') }}">
+
+<div class="correspondence-create-page">
+
+
+{{-- HEADER --}}
+<div class="correspondence-create-header">
+
+    <div class="correspondence-create-header-content">
+
+        <span class="correspondence-create-label">
+            PERSURATAN DIGITAL
+        </span>
+
+        <h1>
+            Edit Surat
+            <code>{{ $correspondence->number }}</code>
+        </h1>
+
+        <p>
+            Jenis surat & nomor tidak bisa diubah, hanya detail isinya.
+        </p>
+
     </div>
-    <a href="{{ route('admin.correspondences.show', $correspondence) }}" class="btn btn-outline-secondary btn-sm">
-        &larr; Kembali
-    </a>
+
+    <div class="correspondence-create-header-mark">
+        <span class="correspondence-create-header-dot"></span>
+        <span>EDIT SURAT</span>
+    </div>
+
 </div>
 
-<div class="card border-0 shadow-sm" style="max-width: 700px;">
-    <div class="card-body">
-        <form method="POST" action="{{ route('admin.correspondences.update', $correspondence) }}" enctype="multipart/form-data">
+
+{{-- FORM CARD --}}
+<div class="correspondence-create-card">
+
+    {{-- CARD HEADER --}}
+    <div class="correspondence-create-card-header">
+
+        <div>
+            <span class="correspondence-create-card-label">
+                FORMULIR
+            </span>
+
+            <h2>
+                Detail Surat
+            </h2>
+        </div>
+
+    </div>
+
+
+    {{-- CARD BODY --}}
+    <div class="correspondence-create-card-body">
+
+        <form method="POST"
+              action="{{ route('admin.correspondences.update', $correspondence) }}"
+              enctype="multipart/form-data">
+
             @csrf
             @method('PUT')
+
+            {{-- FORM SURAT --}}
             @include('admin.correspondences.form')
-            <div class="mt-3">
-                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                <a href="{{ route('admin.correspondences.show', $correspondence) }}" class="btn btn-outline-secondary">Batal</a>
+
+
+            {{-- ACTION --}}
+            <div class="correspondence-create-actions">
+
+                <button type="submit"
+                        class="correspondence-create-submit">
+                    Simpan Perubahan
+                </button>
+
+                <a href="{{ route('admin.correspondences.show', $correspondence) }}"
+                   class="correspondence-create-cancel">
+                    Batal
+                </a>
+
             </div>
+
         </form>
+
     </div>
+
+</div>
+
+
 </div>
 
 @endsection
