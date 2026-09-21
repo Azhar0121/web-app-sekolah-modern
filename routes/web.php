@@ -154,6 +154,7 @@ Route::middleware(['auth', 'role:guru'])->prefix('guru')->name('guru.')->group(f
     Route::get('/jadwal', [GuruScheduleController::class, 'index'])->name('schedule.index');
 
     // Biodata Siswa (lihat saja, dibatasi ke siswa di kelas yang diampu)
+    Route::get('/siswa', [GuruStudentProfileController::class, 'index'])->name('student-profile.index');
     Route::get('/siswa/{student}/biodata', [GuruStudentProfileController::class, 'show'])->name('student-profile.show');
 
     // Presensi/Absensi QR Code

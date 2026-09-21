@@ -17,6 +17,7 @@
             'items' => [
                 ['label' => 'Jadwal Mengajar', 'route' => 'guru.schedule.index', 'pattern' => 'guru.schedule.*', 'icon' => 'calendar', 'show' => $user->hasRole('guru')],
                 ['label' => 'Presensi Kelas', 'route' => 'guru.attendance.index', 'pattern' => 'guru.attendance.*', 'icon' => 'user-check', 'show' => $user->hasRole('guru')],
+                ['label' => 'Daftar Siswa', 'route' => 'guru.student-profile.index', 'pattern' => 'guru.student-profile.*', 'icon' => 'users', 'show' => $user->hasRole('guru')],
             ],
         ],
         [

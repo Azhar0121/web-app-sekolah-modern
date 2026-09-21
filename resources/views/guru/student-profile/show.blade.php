@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('title', 'Biodata Siswa — ' . $student->name)
 
@@ -41,6 +41,6 @@
 @endif
 
 <div class="mt-3">
-    <a href="{{ route('guru.dashboard') }}" class="text-decoration-none">&larr; Kembali ke Dashboard</a>
+    <a href="{{ route('guru.student-profile.index') }}" class="text-decoration-none">&larr; Kembali ke Daftar Siswa</a>
 </div>
 @endsection

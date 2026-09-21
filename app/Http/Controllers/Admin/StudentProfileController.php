@@ -52,11 +52,8 @@ class StudentProfileController extends Controller
         $profile    = $student->studentProfile ?? new StudentProfile(['user_id' => $student->id]);
         $classroom  = $student->currentClassroom();
 
-        // Cari data PPDB terkait untuk keperluan prefill / sinkronisasi
         $ppdbRegistration = PpdbRegistration::where('user_id', $student->id)->first();
 
-        // Jika profil masih kosong (belum ada record di DB) dan ada data PPDB,
-        // prefill objek profil dari data PPDB agar form tidak tampak kosong
         if (! $student->studentProfile && $ppdbRegistration) {
             $profile->nisn            = $ppdbRegistration->nisn;
             $profile->nik             = $ppdbRegistration->nik;
