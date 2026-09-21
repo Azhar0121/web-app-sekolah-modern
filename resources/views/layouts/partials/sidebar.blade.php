@@ -9,6 +9,7 @@
             'items' => [
                 ['label' => 'Dashboard', 'route' => 'admin.dashboard', 'pattern' => 'admin.dashboard', 'icon' => 'dashboard', 'show' => $user->hasRole('super-admin')],
                 ['label' => 'Dashboard', 'route' => 'guru.dashboard', 'pattern' => 'guru.dashboard', 'icon' => 'dashboard', 'show' => $user->hasRole('guru')],
+                ['label' => 'Dashboard', 'route' => 'tu.dashboard', 'pattern' => 'tu.dashboard', 'icon' => 'dashboard', 'show' => $user->hasRole('tu')],
             ],
         ],
         [
@@ -37,17 +38,18 @@
             ],
         ],
         [
+            // Grup PPDB khusus super-admin (TU punya entri sendiri di grup Tata Usaha)
             'label' => 'PPDB',
             'items' => [
-                ['label' => 'Kelola Pendaftaran', 'route' => 'admin.ppdb.index', 'pattern' => 'admin.ppdb.*', 'icon' => 'file-text', 'show' => $user->hasPermission('ppdb.manage')],
+                ['label' => 'Kelola Pendaftaran', 'route' => 'admin.ppdb.index', 'pattern' => 'admin.ppdb.*', 'icon' => 'file-text', 'show' => $user->hasRole('super-admin')],
             ],
         ],
         [
             'label' => 'Tata Usaha',
             'items' => [
-                ['label' => 'Dashboard TU', 'route' => 'tu.dashboard', 'pattern' => 'tu.dashboard', 'icon' => 'dashboard', 'show' => $user->hasPermission('persuratan.manage')],
-                ['label' => 'Persuratan', 'route' => 'admin.correspondences.index', 'pattern' => 'admin.correspondences.*', 'icon' => 'file-text', 'show' => $user->hasPermission('persuratan.manage')],
-                ['label' => 'Biodata Siswa', 'route' => 'admin.student-profiles.index', 'pattern' => 'admin.student-profiles.*', 'icon' => 'user-check', 'show' => $user->hasPermission('siswa.manage')],
+                ['label' => 'Kelola PPDB', 'route' => 'admin.ppdb.index', 'pattern' => 'admin.ppdb.*', 'icon' => 'file-text', 'show' => $user->hasRole('tu')],
+                ['label' => 'Persuratan Digital', 'route' => 'admin.correspondences.index', 'pattern' => 'admin.correspondences.*', 'icon' => 'file-text', 'show' => $user->hasRole('tu')],
+                ['label' => 'Biodata Siswa', 'route' => 'admin.student-profiles.index', 'pattern' => 'admin.student-profiles.*', 'icon' => 'user-check', 'show' => $user->hasRole('tu')],
             ],
         ],
     ];

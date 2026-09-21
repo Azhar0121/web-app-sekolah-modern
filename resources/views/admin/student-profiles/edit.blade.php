@@ -11,6 +11,22 @@
     @endif
 </p>
 
+@if ($ppdbRegistration)
+    <div class="alert alert-info d-flex align-items-start gap-3 mb-4" style="max-width: 760px;">
+        <span style="font-size: 1.4rem;">📋</span>
+        <div class="flex-grow-1">
+            <div class="fw-semibold mb-1">Data PPDB Tersedia</div>
+            <div class="small mb-2">Siswa ini memiliki data pendaftaran PPDB (No. <strong>{{ $ppdbRegistration->registration_number }}</strong>). Klik tombol di bawah untuk menyinkronkan data PPDB secara otomatis ke form biodata ini.</div>
+            <form method="POST" action="{{ route('admin.student-profiles.sync-ppdb', $student) }}" class="d-inline">
+                @csrf
+                <button type="submit" class="btn btn-sm btn-info text-white">
+                    🔄 Sinkronkan dari Data PPDB
+                </button>
+            </form>
+        </div>
+    </div>
+@endif
+
 <div class="card border-0 shadow-sm" style="max-width: 760px;">
     <div class="card-body">
         @if ($errors->any())

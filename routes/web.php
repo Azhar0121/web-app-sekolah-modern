@@ -119,6 +119,7 @@ Route::middleware(['auth', 'permission:siswa.manage'])->prefix('admin/siswa-prof
     Route::get('/', [AdminStudentProfileController::class, 'index'])->name('index');
     Route::get('/{student}/edit', [AdminStudentProfileController::class, 'edit'])->name('edit');
     Route::put('/{student}', [AdminStudentProfileController::class, 'update'])->name('update');
+    Route::post('/{student}/sync-ppdb', [AdminStudentProfileController::class, 'syncFromPpdb'])->name('sync-ppdb');
 });
 
 // ================= PORTAL GURU / WALI KELAS =================
