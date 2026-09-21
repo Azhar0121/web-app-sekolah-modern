@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Classroom;
+use App\Models\PpdbRegistration;
 use App\Models\StudentProfile;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -48,10 +49,56 @@ class StudentProfileController extends Controller
     {
         abort_unless($student->hasRole('siswa'), 404);
 
-        $profile = $student->studentProfile ?? new StudentProfile(['user_id' => $student->id]);
-        $classroom = $student->currentClassroom();
+        $profile    = $student->studentProfile ?? new StudentProfile(['user_id' => $student->id]);
+        $classroom  = $student->currentClassroom();
 
-        return view('admin.student-profiles.edit', compact('student', 'profile', 'classroom'));
+        $ppdbRegistration = PpdbRegistration::where('user_id', $student->id)->first();
+
+        if (! $student->studentProfile && $ppdbRegistration) {
+            $profile->nisn            = $ppdbRegistration->nisn;
+            $profile->nik             = $ppdbRegistration->nik;
+            $profile->gender          = $ppdbRegistration->gender;
+            $profile->birth_place     = $ppdbRegistration->birth_place;
+            $profile->birth_date      = $ppdbRegistration->birth_date;
+            $profile->previous_school = $ppdbRegistration->previous_school;
+            $profile->parent_name     = $ppdbRegistration->parent_name;
+            $profile->parent_phone    = $ppdbRegistration->parent_phone;
+            $profile->address         = $ppdbRegistration->address;
+            $profile->phone           = $ppdbRegistration->phone;
+        }
+
+        return view('admin.student-profiles.edit', compact('student', 'profile', 'classroom', 'ppdbRegistration'));
+    }
+
+    public function syncFromPpdb(User $student): RedirectResponse
+    {
+        abort_unless($student->hasRole('siswa'), 404);
+
+        $ppdb = PpdbRegistration::where('user_id', $student->id)->first();
+
+        if (! $ppdb) {
+            return back()->with('error', 'Tidak ada data pendaftaran PPDB yang terhubung ke siswa ini.');
+        }
+
+        StudentProfile::updateOrCreate(
+            ['user_id' => $student->id],
+            [
+                'nisn'            => $ppdb->nisn,
+                'nik'             => $ppdb->nik,
+                'gender'          => $ppdb->gender,
+                'birth_place'     => $ppdb->birth_place,
+                'birth_date'      => $ppdb->birth_date,
+                'previous_school' => $ppdb->previous_school,
+                'parent_name'     => $ppdb->parent_name,
+                'parent_phone'    => $ppdb->parent_phone,
+                'address'         => $ppdb->address,
+                'phone'           => $ppdb->phone,
+            ]
+        );
+
+        return redirect()
+            ->route('admin.student-profiles.edit', $student)
+            ->with('success', 'Biodata berhasil disinkronkan dari data pendaftaran PPDB.');
     }
 
     public function update(Request $request, User $student): RedirectResponse

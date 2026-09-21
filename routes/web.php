@@ -119,6 +119,7 @@ Route::middleware(['auth', 'permission:siswa.manage'])->prefix('admin/siswa-prof
     Route::get('/', [AdminStudentProfileController::class, 'index'])->name('index');
     Route::get('/{student}/edit', [AdminStudentProfileController::class, 'edit'])->name('edit');
     Route::put('/{student}', [AdminStudentProfileController::class, 'update'])->name('update');
+    Route::post('/{student}/sync-ppdb', [AdminStudentProfileController::class, 'syncFromPpdb'])->name('sync-ppdb');
 });
 
 // ================= PORTAL GURU / WALI KELAS =================
@@ -153,6 +154,7 @@ Route::middleware(['auth', 'role:guru'])->prefix('guru')->name('guru.')->group(f
     Route::get('/jadwal', [GuruScheduleController::class, 'index'])->name('schedule.index');
 
     // Biodata Siswa (lihat saja, dibatasi ke siswa di kelas yang diampu)
+    Route::get('/siswa', [GuruStudentProfileController::class, 'index'])->name('student-profile.index');
     Route::get('/siswa/{student}/biodata', [GuruStudentProfileController::class, 'show'])->name('student-profile.show');
 
     // Presensi/Absensi QR Code
