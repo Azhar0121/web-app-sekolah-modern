@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\StudentProfile;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
@@ -44,5 +45,36 @@ class ProfileController extends Controller
         StudentProfile::updateOrCreate(['user_id' => $student->id], $validated);
 
         return back()->with('success', 'Biodata Anda berhasil diperbarui.');
+    }
+
+    public function updatePassword(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'current_password' => ['required', 'string'],
+            'new_password'     => [
+                'required', 'string', 'min:8',
+                'confirmed',        // butuh field new_password_confirmation
+                'different:current_password',
+            ],
+        ], [
+            'current_password.required' => 'Password saat ini wajib diisi.',
+            'new_password.required'     => 'Password baru wajib diisi.',
+            'new_password.min'          => 'Password baru minimal 8 karakter.',
+            'new_password.confirmed'    => 'Konfirmasi password tidak cocok.',
+            'new_password.different'    => 'Password baru harus berbeda dari password saat ini.',
+        ]);
+
+        $user = auth()->user();
+
+        if (! Hash::check($request->current_password, $user->password)) {
+            return back()
+                ->withErrors(['current_password' => 'Password saat ini tidak sesuai.'])
+                ->withInput();
+        }
+
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return back()->with('password_success', 'Password berhasil diperbarui.');
     }
 }

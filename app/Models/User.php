@@ -97,6 +97,26 @@ class User extends Authenticatable
         return $this->belongsToMany(User::class, 'parent_student', 'student_id', 'parent_id');
     }
 
+    public function billingRecords(): HasMany
+    {
+        return $this->hasMany(BillingRecord::class, 'student_id');
+    }
+
+    public function reportCards(): HasMany
+    {
+        return $this->hasMany(ReportCard::class, 'student_id');
+    }
+
+    public function leaveRequestsAsStudent(): HasMany
+    {
+        return $this->hasMany(LeaveRequest::class, 'student_id');
+    }
+
+    public function ppdbRegistration(): HasOne
+    {
+        return $this->hasOne(PpdbRegistration::class);
+    }
+
     public function ensureQrToken(): string
     {
         if (! $this->qr_token) {

@@ -6,6 +6,8 @@
 
 <link rel="stylesheet" href="{{ asset('css/guru/dashboard.css') }}">
 
+@include('layouts.partials.announcements-banner')
+
 <div class="guru-dashboard">
 
 {{-- =========================

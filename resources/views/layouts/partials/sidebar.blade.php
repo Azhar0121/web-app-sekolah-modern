@@ -18,6 +18,7 @@
                 ['label' => 'Jadwal Mengajar', 'route' => 'guru.schedule.index', 'pattern' => 'guru.schedule.*', 'icon' => 'calendar', 'show' => $user->hasRole('guru')],
                 ['label' => 'Presensi Kelas', 'route' => 'guru.attendance.index', 'pattern' => 'guru.attendance.*', 'icon' => 'user-check', 'show' => $user->hasRole('guru')],
                 ['label' => 'Daftar Siswa', 'route' => 'guru.student-profile.index', 'pattern' => 'guru.student-profile.*', 'icon' => 'users', 'show' => $user->hasRole('guru')],
+                ['label' => 'Izin Siswa', 'route' => 'guru.leave-requests.index', 'pattern' => 'guru.leave-requests.*', 'icon' => 'file-text', 'show' => $user->hasRole('guru')],
             ],
         ],
         [
@@ -39,7 +40,14 @@
             ],
         ],
         [
-            // Grup PPDB khusus super-admin (TU punya entri sendiri di grup Tata Usaha)
+            // Pengumuman: semua yang punya permission pengumuman.manage (super-admin, TU, kepsek)
+            // Ditampilkan sebagai grup terpisah hanya untuk super-admin & kepsek (TU punya di bawah)
+            'label' => 'Pengumuman',
+            'items' => [
+                ['label' => 'Kelola Pengumuman', 'route' => 'admin.announcements.index', 'pattern' => 'admin.announcements.*', 'icon' => 'megaphone', 'show' => $user->hasRole('super-admin') || $user->hasRole('kepsek')],
+            ],
+        ],
+        [
             'label' => 'PPDB',
             'items' => [
                 ['label' => 'Kelola Pendaftaran', 'route' => 'admin.ppdb.index', 'pattern' => 'admin.ppdb.*', 'icon' => 'file-text', 'show' => $user->hasRole('super-admin')],
@@ -51,6 +59,8 @@
                 ['label' => 'Kelola PPDB', 'route' => 'admin.ppdb.index', 'pattern' => 'admin.ppdb.*', 'icon' => 'file-text', 'show' => $user->hasRole('tu')],
                 ['label' => 'Persuratan Digital', 'route' => 'admin.correspondences.index', 'pattern' => 'admin.correspondences.*', 'icon' => 'file-text', 'show' => $user->hasRole('tu')],
                 ['label' => 'Biodata Siswa', 'route' => 'admin.student-profiles.index', 'pattern' => 'admin.student-profiles.*', 'icon' => 'user-check', 'show' => $user->hasRole('tu')],
+                ['label' => 'Tagihan Siswa', 'route' => 'admin.billing.index', 'pattern' => 'admin.billing.*', 'icon' => 'clipboard-list', 'show' => $user->hasRole('tu')],
+                ['label' => 'Pengumuman', 'route' => 'admin.announcements.index', 'pattern' => 'admin.announcements.*', 'icon' => 'megaphone', 'show' => $user->hasRole('tu')],
             ],
         ],
     ];

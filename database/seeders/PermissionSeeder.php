@@ -16,7 +16,7 @@ class PermissionSeeder extends Seeder
             ['name' => 'Kelola PPDB Online', 'slug' => 'ppdb.manage', 'module' => 'PPDB'],
             ['name' => 'Lihat Status PPDB', 'slug' => 'ppdb.view', 'module' => 'PPDB'],
 
-            // Master Data Akademik (Tahun Ajaran, Semester, Kelas, Mata Pelajaran)
+            // Master Data Akademik
             ['name' => 'Kelola Master Data Akademik', 'slug' => 'akademik.manage', 'module' => 'Akademik'],
 
             // Akademik
@@ -31,9 +31,17 @@ class PermissionSeeder extends Seeder
             // TU
             ['name' => 'Kelola Persuratan', 'slug' => 'persuratan.manage', 'module' => 'TU'],
             ['name' => 'Kelola Inventaris', 'slug' => 'inventaris.manage', 'module' => 'TU'],
+            ['name' => 'Kelola Tagihan Siswa', 'slug' => 'billing.manage', 'module' => 'TU'],
+            ['name' => 'Kelola Rapor Digital', 'slug' => 'rapor.manage', 'module' => 'TU'],
 
             // Biodata Siswa
             ['name' => 'Kelola Biodata Siswa', 'slug' => 'siswa.manage', 'module' => 'Siswa'],
+
+            // Pengumuman Internal
+            ['name' => 'Kelola Pengumuman', 'slug' => 'pengumuman.manage', 'module' => 'Pengumuman'],
+
+            // Izin Siswa
+            ['name' => 'Proses Izin Siswa', 'slug' => 'izin.manage', 'module' => 'Akademik'],
 
             // Super Admin
             ['name' => 'Kelola User & Permission', 'slug' => 'user.manage', 'module' => 'Admin'],
@@ -50,13 +58,19 @@ class PermissionSeeder extends Seeder
 
         // Mapping permission -> role
         $map = [
-            'super-admin' => Permission::pluck('slug')->all(), // semua permission
-            'guru' => ['nilai.input', 'nilai.view', 'presensi.manage', 'presensi.view'],
-            'siswa' => ['nilai.view', 'presensi.view'],
-            'ortu' => ['nilai.view', 'presensi.view'],
-            // TU menangani verifikasi & pengelolaan pendaftar PPDB, serta biodata resmi siswa
-            'tu' => ['persuratan.manage', 'inventaris.manage', 'ppdb.manage', 'ppdb.view', 'siswa.manage'],
-            'kepsek' => ['dashboard.report.view', 'nilai.approve', 'audit.view', 'ppdb.view'],
+            'super-admin' => Permission::pluck('slug')->all(),
+            'guru'        => ['nilai.input', 'nilai.view', 'presensi.manage', 'presensi.view', 'izin.manage'],
+            'siswa'       => ['nilai.view', 'presensi.view'],
+            'ortu'        => ['nilai.view', 'presensi.view'],
+            'tu'          => [
+                'persuratan.manage', 'inventaris.manage',
+                'ppdb.manage', 'ppdb.view',
+                'siswa.manage',
+                'billing.manage',
+                'rapor.manage',
+                'pengumuman.manage',
+            ],
+            'kepsek'      => ['dashboard.report.view', 'nilai.approve', 'audit.view', 'ppdb.view', 'pengumuman.manage'],
         ];
 
         foreach ($map as $roleSlug => $permissionSlugs) {

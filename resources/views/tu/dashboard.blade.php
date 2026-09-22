@@ -3,6 +3,7 @@
 @section('title', 'Dashboard Tata Usaha')
 
 @section('content')
+@include('layouts.partials.announcements-banner')
 <div class="card border-0 shadow-sm mb-4">
     <div class="card-body p-4">
         <h4 class="fw-bold mb-1">Dashboard Tata Usaha</h4>

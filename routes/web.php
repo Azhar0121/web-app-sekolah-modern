@@ -1,9 +1,13 @@
 <?php
 
 use App\Http\Controllers\Admin\AcademicYearController;
+use App\Http\Controllers\Admin\AnnouncementController as AdminAnnouncementController;
+use App\Http\Controllers\Admin\BillingController as AdminBillingController;
 use App\Http\Controllers\Admin\ClassroomController;
 use App\Http\Controllers\Admin\CorrespondenceController;
+use App\Http\Controllers\Admin\LeaveRequestController as AdminLeaveRequestController;
 use App\Http\Controllers\Admin\PpdbController as AdminPpdbController;
+use App\Http\Controllers\Admin\ReportCardController as AdminReportCardController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\ScheduleController as AdminScheduleController;
 use App\Http\Controllers\Admin\SemesterController;
@@ -20,6 +24,12 @@ use App\Http\Controllers\Guru\MaterialController as GuruMaterialController;
 use App\Http\Controllers\Guru\ScheduleController as GuruScheduleController;
 use App\Http\Controllers\Guru\StudentProfileController as GuruStudentProfileController;
 use App\Http\Controllers\Guru\TaskController as GuruTaskController;
+use App\Http\Controllers\Ortu\AttendanceController as OrtuAttendanceController;
+use App\Http\Controllers\Ortu\BillingController as OrtuBillingController;
+use App\Http\Controllers\Ortu\DashboardController as OrtuDashboardController;
+use App\Http\Controllers\Ortu\GradeController as OrtuGradeController;
+use App\Http\Controllers\Ortu\LeaveRequestController as OrtuLeaveRequestController;
+use App\Http\Controllers\Ortu\ReportCardController as OrtuReportCardController;
 use App\Http\Controllers\PpdbController;
 use App\Http\Controllers\Siswa\AttendanceController as SiswaAttendanceController;
 use App\Http\Controllers\Siswa\GradeController as SiswaGradeController;
@@ -28,9 +38,6 @@ use App\Http\Controllers\Siswa\ProfileController as SiswaProfileController;
 use App\Http\Controllers\Siswa\QrCodeController as SiswaQrCodeController;
 use App\Http\Controllers\Siswa\ScheduleController as SiswaScheduleController;
 use App\Http\Controllers\Siswa\TaskController as SiswaTaskController;
-use App\Http\Controllers\Ortu\AttendanceController as OrtuAttendanceController;
-use App\Http\Controllers\Ortu\DashboardController as OrtuDashboardController;
-use App\Http\Controllers\Ortu\GradeController as OrtuGradeController;
 use App\Http\Controllers\Tu\DashboardController as TuDashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -179,6 +186,7 @@ Route::middleware(['auth', 'role:siswa'])->prefix('siswa')->name('siswa.')->grou
     // Biodata Diri
     Route::get('/biodata', [SiswaProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/biodata', [SiswaProfileController::class, 'update'])->name('profile.update');
+    Route::post('/biodata/ganti-password', [SiswaProfileController::class, 'updatePassword'])->name('profile.update-password');
 
     // Presensi/Absensi QR Code
     Route::get('/kartu-pelajar', [SiswaQrCodeController::class, 'show'])->name('qr-code.show');
@@ -202,12 +210,72 @@ Route::middleware(['auth', 'role:ortu'])->prefix('ortu')->name('ortu.')->group(f
     Route::get('/dashboard', [OrtuDashboardController::class, 'index'])->name('dashboard');
     Route::get('/anak/{student}/presensi', [OrtuAttendanceController::class, 'index'])->name('attendance.index');
     Route::get('/anak/{student}/nilai', [OrtuGradeController::class, 'index'])->name('grades.index');
+
+    // Pengajuan Izin
+    Route::get('/izin', [OrtuLeaveRequestController::class, 'index'])->name('leave-requests.index');
+    Route::get('/izin/ajukan', [OrtuLeaveRequestController::class, 'create'])->name('leave-requests.create');
+    Route::post('/izin', [OrtuLeaveRequestController::class, 'store'])->name('leave-requests.store');
+
+    // Tagihan
+    Route::get('/anak/{student}/tagihan', [OrtuBillingController::class, 'index'])->name('billing.index');
+
+    // Rapor Digital
+    Route::get('/anak/{student}/rapor', [OrtuReportCardController::class, 'index'])->name('report-cards.index');
+    Route::get('/rapor/{reportCard}/unduh', [OrtuReportCardController::class, 'download'])->name('report-cards.download');
 });
 
 // ================= PORTAL TATA USAHA =================
 Route::middleware(['auth', 'role:tu'])->prefix('tu')->group(function () {
     Route::get('/dashboard', [TuDashboardController::class, 'index'])->name('tu.dashboard');
 });
+
+// ================= PENGUMUMAN INTERNAL (Super Admin, TU, Kepsek) =================
+Route::middleware(['auth', 'permission:pengumuman.manage'])
+    ->prefix('admin/pengumuman')->name('admin.announcements.')
+    ->group(function () {
+        Route::get('/', [AdminAnnouncementController::class, 'index'])->name('index');
+        Route::get('/buat', [AdminAnnouncementController::class, 'create'])->name('create');
+        Route::post('/', [AdminAnnouncementController::class, 'store'])->name('store');
+        Route::get('/{announcement}/edit', [AdminAnnouncementController::class, 'edit'])->name('edit');
+        Route::put('/{announcement}', [AdminAnnouncementController::class, 'update'])->name('update');
+        Route::delete('/{announcement}', [AdminAnnouncementController::class, 'destroy'])->name('destroy');
+        Route::post('/{announcement}/toggle', [AdminAnnouncementController::class, 'toggle'])->name('toggle');
+    });
+
+// ================= PENGAJUAN IZIN (Guru/Admin memproses) =================
+Route::middleware(['auth', 'permission:izin.manage'])
+    ->prefix('guru/izin-siswa')->name('guru.leave-requests.')
+    ->group(function () {
+        Route::get('/', [AdminLeaveRequestController::class, 'index'])->name('index');
+        Route::post('/{leaveRequest}/proses', [AdminLeaveRequestController::class, 'process'])->name('process');
+    });
+
+Route::middleware(['auth', 'permission:izin.manage'])
+    ->prefix('admin/izin-siswa')->name('admin.leave-requests.')
+    ->group(function () {
+        Route::get('/', [AdminLeaveRequestController::class, 'index'])->name('index');
+        Route::post('/{leaveRequest}/proses', [AdminLeaveRequestController::class, 'process'])->name('process');
+    });
+
+// ================= TAGIHAN SISWA (TU) =================
+Route::middleware(['auth', 'permission:billing.manage'])
+    ->prefix('admin/tagihan')->name('admin.billing.')
+    ->group(function () {
+        Route::get('/', [AdminBillingController::class, 'index'])->name('index');
+        Route::get('/{student}', [AdminBillingController::class, 'show'])->name('show');
+        Route::post('/{student}', [AdminBillingController::class, 'store'])->name('store');
+        Route::post('/record/{billing}/konfirmasi', [AdminBillingController::class, 'confirm'])->name('confirm');
+        Route::delete('/record/{billing}', [AdminBillingController::class, 'destroy'])->name('destroy');
+    });
+
+// ================= RAPOR DIGITAL (TU) =================
+Route::middleware(['auth', 'permission:rapor.manage'])
+    ->prefix('admin/rapor')->name('admin.report-cards.')
+    ->group(function () {
+        Route::get('/{student}', [AdminReportCardController::class, 'index'])->name('index');
+        Route::post('/{student}', [AdminReportCardController::class, 'store'])->name('store');
+        Route::delete('/{reportCard}', [AdminReportCardController::class, 'destroy'])->name('destroy');
+    });
 
 // ================= PORTAL KEPALA SEKOLAH =================
 Route::middleware(['auth', 'role:kepsek'])->prefix('kepsek')->group(function () {
