@@ -30,6 +30,7 @@ use App\Http\Controllers\Ortu\DashboardController as OrtuDashboardController;
 use App\Http\Controllers\Ortu\GradeController as OrtuGradeController;
 use App\Http\Controllers\Ortu\LeaveRequestController as OrtuLeaveRequestController;
 use App\Http\Controllers\Ortu\ReportCardController as OrtuReportCardController;
+use App\Http\Controllers\Ortu\ScheduleController as OrtuScheduleController;
 use App\Http\Controllers\PpdbController;
 use App\Http\Controllers\Siswa\AttendanceController as SiswaAttendanceController;
 use App\Http\Controllers\Siswa\GradeController as SiswaGradeController;
@@ -210,6 +211,7 @@ Route::middleware(['auth', 'role:ortu'])->prefix('ortu')->name('ortu.')->group(f
     Route::get('/dashboard', [OrtuDashboardController::class, 'index'])->name('dashboard');
     Route::get('/anak/{student}/presensi', [OrtuAttendanceController::class, 'index'])->name('attendance.index');
     Route::get('/anak/{student}/nilai', [OrtuGradeController::class, 'index'])->name('grades.index');
+    Route::get('/anak/{student}/jadwal', [OrtuScheduleController::class, 'index'])->name('schedule.index');
 
     // Pengajuan Izin
     Route::get('/izin', [OrtuLeaveRequestController::class, 'index'])->name('leave-requests.index');

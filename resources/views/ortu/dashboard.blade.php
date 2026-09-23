@@ -6,12 +6,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 <style>
-/* ============================================================
-   PORTAL ORANG TUA — PREMIUM DASHBOARD
-   ============================================================ */
 .ortu-dashboard { max-width: 960px; margin: 0 auto; padding-bottom: 3rem; }
 
-/* HERO */
 .ortu-hero {
     background: linear-gradient(135deg, #1e3a5f 0%, #2d6a9f 60%, #3b8abf 100%);
     border-radius: 1.25rem;
@@ -48,7 +44,6 @@
     font-size: 6rem; opacity: .08; pointer-events: none;
 }
 
-/* QUICK ACTIONS */
 .ortu-quick-actions {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -78,7 +73,6 @@
 .ortu-quick-card strong { font-size: .82rem; font-weight: 600; }
 .ortu-quick-card small { font-size: .72rem; color: #6b7280; }
 
-/* ANAK CARD */
 .child-card {
     background: #fff; border-radius: 1.25rem;
     box-shadow: 0 1px 4px rgba(0,0,0,.07);
@@ -122,7 +116,6 @@
 .btn-tagihan i { color: #b45309; }
 .btn-rapor i { color: #6d28d9; }
 
-/* EMPTY */
 .ortu-empty {
     text-align: center; padding: 4rem 2rem;
     background: #fff; border-radius: 1.25rem;
@@ -135,7 +128,6 @@
 
 <div class="ortu-dashboard">
 
-    {{-- ===================== HERO ===================== --}}
     <div class="ortu-hero">
         <div class="ortu-hero-label">
             <i class="bi bi-shield-check"></i>
@@ -175,7 +167,6 @@
         <i class="bi bi-house-heart-fill ortu-hero-icon"></i>
     </div>
 
-    {{-- ===================== QUICK ACTIONS ===================== --}}
     <div class="ortu-quick-actions">
         <a href="{{ route('ortu.leave-requests.index') }}" class="ortu-quick-card">
             <div class="ortu-quick-icon qi-izin"><i class="bi bi-envelope-paper-fill"></i></div>
@@ -188,8 +179,13 @@
             <small>Lihat pengajuan izin</small>
         </a>
         @if ($children->isNotEmpty())
+        <a href="{{ route('ortu.schedule.index', $children->first()) }}" class="ortu-quick-card">
+            <div class="ortu-quick-icon qi-attendance" style="background:#e0e7ff; color:#4338ca;"><i class="bi bi-calendar3"></i></div>
+            <strong>Jadwal</strong>
+            <small>Jadwal pelajaran anak</small>
+        </a>
         <a href="{{ route('ortu.attendance.index', $children->first()) }}" class="ortu-quick-card">
-            <div class="ortu-quick-icon qi-grade"><i class="bi bi-clipboard2-check-fill"></i></div>
+            <div class="ortu-quick-icon qi-attendance"><i class="bi bi-calendar-check-fill"></i></div>
             <strong>Presensi</strong>
             <small>Riwayat kehadiran</small>
         </a>
@@ -201,7 +197,6 @@
         @endif
     </div>
 
-    {{-- ===================== DAFTAR ANAK ===================== --}}
     @if ($children->isEmpty())
         <div class="ortu-empty">
             <div class="empty-icon">👨‍👩‍👧</div>
@@ -249,6 +244,10 @@
 
             <div class="child-card-body">
                 <div class="child-action-grid">
+                    <a href="{{ route('ortu.schedule.index', $child) }}" class="child-action-btn" style="background:#eff6ff; color:#1e40af; border:1px solid #dbeafe;">
+                        <i class="bi bi-calendar3" style="color:#2563eb;"></i>
+                        <span>Jadwal Pelajaran</span>
+                    </a>
                     <a href="{{ route('ortu.attendance.index', $child) }}" class="child-action-btn btn-presensi">
                         <i class="bi bi-calendar-check-fill"></i>
                         <span>Riwayat Presensi</span>
