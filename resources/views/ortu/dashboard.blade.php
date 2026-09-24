@@ -173,6 +173,11 @@
             <strong>Ajukan Izin</strong>
             <small>Kirim surat izin anak</small>
         </a>
+        <a href="{{ route('ortu.communication.index') }}" class="ortu-quick-card">
+            <div class="ortu-quick-icon qi-leave" style="background:#e0f2fe; color:#0369a1;"><i class="bi bi-chat-dots-fill"></i></div>
+            <strong>Konsultasi Guru</strong>
+            <small>Pesan terarah dengan guru</small>
+        </a>
         <a href="{{ route('ortu.leave-requests.index') }}" class="ortu-quick-card">
             <div class="ortu-quick-icon qi-attendance"><i class="bi bi-calendar-check-fill"></i></div>
             <strong>Riwayat Izin</strong>
@@ -268,6 +273,10 @@
                     <a href="{{ route('ortu.report-cards.index', $child) }}" class="child-action-btn btn-rapor">
                         <i class="bi bi-file-earmark-pdf-fill"></i>
                         <span>Rapor Digital</span>
+                    </a>
+                    <a href="{{ route('ortu.communication.index') }}" class="child-action-btn" style="background:#f0fdf4; color:#15803d; border:1px solid #dcfce7;">
+                        <i class="bi bi-chat-dots-fill" style="color:#16a34a;"></i>
+                        <span>Konsultasi Guru</span>
                     </a>
                     <a href="{{ route('ortu.leave-requests.create') }}" class="child-action-btn">
                         <i class="bi bi-envelope-paper" style="color:#be185d;"></i>

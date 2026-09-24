@@ -19,6 +19,7 @@
                 ['label' => 'Presensi Kelas', 'route' => 'guru.attendance.index', 'pattern' => 'guru.attendance.*', 'icon' => 'user-check', 'show' => $user->hasRole('guru')],
                 ['label' => 'Daftar Siswa', 'route' => 'guru.student-profile.index', 'pattern' => 'guru.student-profile.*', 'icon' => 'users', 'show' => $user->hasRole('guru')],
                 ['label' => 'Izin Siswa', 'route' => 'guru.leave-requests.index', 'pattern' => 'guru.leave-requests.*', 'icon' => 'file-text', 'show' => $user->hasRole('guru')],
+                ['label' => 'Komunikasi Ortu', 'route' => 'guru.communication.index', 'pattern' => 'guru.communication.*', 'icon' => 'message-square', 'show' => $user->hasRole('guru')],
             ],
         ],
         [

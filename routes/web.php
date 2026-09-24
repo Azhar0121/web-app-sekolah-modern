@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\TeachingAssignmentController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Guru\AttendanceController as GuruAttendanceController;
+use App\Http\Controllers\Guru\CommunicationController as GuruCommunicationController;
 use App\Http\Controllers\Guru\DashboardController as GuruDashboardController;
 use App\Http\Controllers\Guru\GradeController as GuruGradeController;
 use App\Http\Controllers\Guru\MaterialController as GuruMaterialController;
@@ -26,6 +27,7 @@ use App\Http\Controllers\Guru\StudentProfileController as GuruStudentProfileCont
 use App\Http\Controllers\Guru\TaskController as GuruTaskController;
 use App\Http\Controllers\Ortu\AttendanceController as OrtuAttendanceController;
 use App\Http\Controllers\Ortu\BillingController as OrtuBillingController;
+use App\Http\Controllers\Ortu\CommunicationController as OrtuCommunicationController;
 use App\Http\Controllers\Ortu\DashboardController as OrtuDashboardController;
 use App\Http\Controllers\Ortu\GradeController as OrtuGradeController;
 use App\Http\Controllers\Ortu\LeaveRequestController as OrtuLeaveRequestController;
@@ -172,6 +174,12 @@ Route::middleware(['auth', 'role:guru'])->prefix('guru')->name('guru.')->group(f
     Route::put('/presensi/sesi/{attendanceSession}/siswa/{student}/status', [GuruAttendanceController::class, 'updateStatus'])->name('attendance.update-status');
     Route::post('/presensi/sesi/{attendanceSession}/tutup', [GuruAttendanceController::class, 'close'])->name('attendance.close');
     Route::post('/presensi/sesi/{attendanceSession}/buka-kembali', [GuruAttendanceController::class, 'reopen'])->name('attendance.reopen');
+
+    // Ruang Komunikasi Terarah (Orang Tua)
+    Route::get('/komunikasi', [GuruCommunicationController::class, 'index'])->name('communication.index');
+    Route::post('/komunikasi', [GuruCommunicationController::class, 'store'])->name('communication.store');
+    Route::post('/komunikasi/{thread}/balas', [GuruCommunicationController::class, 'reply'])->name('communication.reply');
+    Route::post('/komunikasi/{thread}/toggle-status', [GuruCommunicationController::class, 'toggleStatus'])->name('communication.toggle-status');
 });
 
 // ================= PORTAL SISWA =================
@@ -224,6 +232,11 @@ Route::middleware(['auth', 'role:ortu'])->prefix('ortu')->name('ortu.')->group(f
     // Rapor Digital
     Route::get('/anak/{student}/rapor', [OrtuReportCardController::class, 'index'])->name('report-cards.index');
     Route::get('/rapor/{reportCard}/unduh', [OrtuReportCardController::class, 'download'])->name('report-cards.download');
+
+    // Ruang Komunikasi Terarah (Guru)
+    Route::get('/komunikasi', [OrtuCommunicationController::class, 'index'])->name('communication.index');
+    Route::post('/komunikasi', [OrtuCommunicationController::class, 'store'])->name('communication.store');
+    Route::post('/komunikasi/{thread}/balas', [OrtuCommunicationController::class, 'reply'])->name('communication.reply');
 });
 
 // ================= PORTAL TATA USAHA =================
