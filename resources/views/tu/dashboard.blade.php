@@ -3,13 +3,8 @@
 @section('title', 'Dashboard Tata Usaha')
 
 @section('content')
+
 @include('layouts.partials.announcements-banner')
-<div class="card border-0 shadow-sm mb-4">
-    <div class="card-body p-4">
-        <h4 class="fw-bold mb-1">Dashboard Tata Usaha</h4>
-        <p class="text-muted mb-0">Selamat datang, <strong>{{ auth()->user()->name }}</strong>.</p>
-    </div>
-</div>
 
 <link rel="stylesheet" href="{{ asset('css/tu/dashboard.css') }}">
 
@@ -44,7 +39,6 @@
 
     </div>
 
-
     {{-- =====================================================
         PPDB
     ====================================================== --}}
@@ -71,7 +65,6 @@
             </a>
 
         </div>
-
 
         <div class="tu-stat-grid">
 
@@ -102,7 +95,6 @@
 
             </div>
 
-
             {{-- CARD 2 --}}
             <div class="tu-stat-card">
 
@@ -130,7 +122,6 @@
 
             </div>
 
-
             {{-- CARD 3 --}}
             <div class="tu-stat-card">
 
@@ -157,7 +148,6 @@
                 <div class="tu-stat-decoration"></div>
 
             </div>
-
 
             {{-- CARD 4 --}}
             <div class="tu-stat-card">
@@ -225,7 +215,6 @@
 
                 </div>
 
-
                 <div class="tu-table-wrapper">
 
                     <table class="tu-table">
@@ -260,7 +249,6 @@
 
                                     </td>
 
-
                                     <td>
 
                                         @if ($registration->isReRegistrationOverdue())
@@ -276,7 +264,6 @@
                                         </span>
 
                                     </td>
-
 
                                     <td class="text-end">
 
@@ -350,7 +337,6 @@
 
                 </div>
 
-
                 <div class="tu-table-wrapper">
 
                     <table class="tu-table">
@@ -383,7 +369,6 @@
                                         </div>
 
                                     </td>
-
 
                                     <td>
 
@@ -481,7 +466,6 @@
             </a>
 
         </div>
-
 
         <div class="tu-correspondence-grid">
 

@@ -15,7 +15,6 @@
 
     --tu-text: #10223d;
     --tu-muted: #66758a;
-
     --tu-border: #d8e5f3;
     --tu-white: #ffffff;
 
@@ -40,12 +39,9 @@
 .tu-dashboard {
     width: 100%;
     max-width: 1200px;
-
     margin: 0 auto;
     padding: 8px 4px 42px;
-
     font-family: 'Plus Jakarta Sans', sans-serif;
-
     color: var(--tu-text);
 }
 
@@ -67,58 +63,38 @@
 .tu-header {
     position: relative;
     overflow: hidden;
-
     min-height: 175px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     gap: 25px;
-
     padding: 30px 32px;
-
     margin-bottom: 31px;
-
     border-radius: 15px;
-
     background: var(--tu-navy);
-
     color: #ffffff;
-
-    box-shadow:
-        0 10px 25px rgba(7, 27, 53, 0.16);
+    box-shadow: 0 10px 25px rgba(7, 27, 53, 0.16);
 }
 
 .tu-header::before {
     content: '';
-
     position: absolute;
-
     width: 220px;
     height: 220px;
-
     right: 35px;
     top: -135px;
-
     border-radius: 50%;
-
     background: rgba(255, 255, 255, 0.045);
 }
 
 .tu-header::after {
     content: '';
-
     position: absolute;
-
     width: 150px;
     height: 150px;
-
     right: -50px;
     bottom: -90px;
-
     border-radius: 50%;
-
     background: rgba(23, 105, 213, 0.18);
 }
 
@@ -129,36 +105,26 @@
 
 .tu-eyebrow {
     display: inline-block;
-
     margin-bottom: 7px;
-
     font-size: 10px;
     font-weight: 800;
-
     letter-spacing: 1.3px;
-
     color: rgba(255, 255, 255, 0.68);
 }
 
 .tu-header h1 {
     margin: 0;
-
     font-size: 28px;
     line-height: 1.25;
-
     font-weight: 800;
-
     color: #ffffff;
 }
 
 .tu-header p {
     max-width: 650px;
-
     margin: 9px 0 0;
-
     font-size: 12px;
     line-height: 1.7;
-
     color: rgba(255, 255, 255, 0.76);
 }
 
@@ -169,22 +135,15 @@
 .tu-header-icon {
     position: relative;
     z-index: 3;
-
     width: 59px;
     height: 59px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     flex-shrink: 0;
-
     border-radius: 14px;
-
     background: rgba(255, 255, 255, 0.08);
-
     border: 1px solid rgba(255, 255, 255, 0.12);
-
     color: #ffffff;
 }
 
@@ -201,33 +160,24 @@
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-
     gap: 18px;
-
     margin-bottom: 15px;
 }
 
 .tu-section-label {
     display: block;
-
     margin-bottom: 5px;
-
     font-size: 9px;
     font-weight: 800;
-
     letter-spacing: 1.15px;
-
     color: var(--tu-blue);
 }
 
 .tu-section-heading h2 {
     margin: 0;
-
     font-size: 20px;
     line-height: 1.3;
-
     font-weight: 800;
-
     color: var(--tu-text);
 }
 
@@ -240,27 +190,17 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     gap: 7px;
-
     min-height: 37px;
-
     padding: 8px 13px;
-
     flex-shrink: 0;
-
     border-radius: 7px;
-
-    background: var(--tu-navy);
-
+    background: var(--tu-navy-2);
+    border: 1px solid var(--tu-navy-2);
     color: #ffffff;
-
     font-size: 10px;
     font-weight: 700;
-
-    box-shadow:
-        0 5px 12px rgba(7, 27, 53, 0.12);
-
+    box-shadow: 0 5px 12px rgba(7, 27, 53, 0.12);
     transition:
         background 0.2s ease,
         transform 0.2s ease,
@@ -268,20 +208,16 @@
 }
 
 .tu-section-button:hover {
-    background: var(--tu-navy-2);
-
+    background: var(--tu-navy);
+    border-color: var(--tu-navy);
     color: #ffffff;
-
     transform: translateY(-2px);
-
-    box-shadow:
-        0 8px 16px rgba(7, 27, 53, 0.18);
+    box-shadow: 0 8px 16px rgba(7, 27, 53, 0.18);
 }
 
 .tu-button-arrow {
     font-size: 14px;
     line-height: 1;
-
     transition: transform 0.2s ease;
 }
 
@@ -296,39 +232,25 @@
 
 .tu-stat-grid {
     display: grid;
-
     grid-template-columns:
         repeat(4, minmax(190px, 1fr));
-
     gap: 13px;
-
     max-width: 1120px;
 }
 
 .tu-stat-card {
     position: relative;
     overflow: hidden;
-
     min-height: 128px;
-
     display: flex;
     align-items: center;
-
     gap: 14px;
-
     padding: 19px;
-
     border-radius: 12px;
-
     background: var(--tu-navy);
-
     border: 1px solid rgba(7, 27, 53, 0.08);
-
     color: #ffffff;
-
-    box-shadow:
-        0 8px 20px rgba(7, 27, 53, 0.12);
-
+    box-shadow: 0 8px 20px rgba(7, 27, 53, 0.12);
     transition:
         transform 0.2s ease,
         background 0.2s ease,
@@ -337,89 +259,63 @@
 
 .tu-stat-card:hover {
     background: var(--tu-navy-2);
-
     transform: translateY(-3px);
-
-    box-shadow:
-        0 12px 26px rgba(7, 27, 53, 0.18);
+    box-shadow: 0 12px 26px rgba(7, 27, 53, 0.18);
 }
 
 .tu-stat-icon {
     position: relative;
     z-index: 2;
-
     width: 45px;
     height: 45px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     flex-shrink: 0;
-
     border-radius: 11px;
-
     background: rgba(255, 255, 255, 0.09);
-
     border: 1px solid rgba(255, 255, 255, 0.10);
-
     color: #ffffff;
 }
 
 .tu-stat-content {
     position: relative;
     z-index: 2;
-
     min-width: 0;
 }
 
 .tu-stat-label {
     display: block;
-
     margin-bottom: 4px;
-
     font-size: 10px;
     line-height: 1.4;
-
     font-weight: 600;
-
     color: rgba(255, 255, 255, 0.70);
 }
 
 .tu-stat-content strong {
     display: block;
-
     font-size: 28px;
     line-height: 1;
-
     font-weight: 800;
-
     color: #ffffff;
 }
 
 .tu-stat-content small {
     display: block;
-
     margin-top: 5px;
-
     font-size: 9px;
-
     color: rgba(255, 255, 255, 0.55);
 }
 
 .tu-stat-decoration {
     position: absolute;
-
     width: 95px;
     height: 95px;
-
     right: -34px;
     bottom: -43px;
-
     border-radius: 50%;
-
     background: rgba(23, 105, 213, 0.16);
-
     pointer-events: none;
 }
 
@@ -430,29 +326,20 @@
 
 .tu-two-column {
     display: grid;
-
     grid-template-columns:
         minmax(0, 1.05fr)
         minmax(0, 0.88fr);
-
     gap: 16px;
-
     max-width: 1120px;
 }
 
 .tu-panel {
     width: 100%;
-
     overflow: hidden;
-
     border: 1px solid var(--tu-border);
-
     border-radius: 12px;
-
     background: #ffffff;
-
     box-shadow: var(--tu-shadow);
-
     transition:
         transform 0.2s ease,
         box-shadow 0.2s ease;
@@ -460,24 +347,26 @@
 
 .tu-panel:hover {
     transform: translateY(-2px);
-
     box-shadow: var(--tu-shadow-hover);
 }
 
+
+/* =========================================================
+   PENEMPATAN KELAS
+========================================================= */
+
 .tu-panel-blue {
-    background: #f0f6fd;
+    background: #ffffff;
 }
 
 .tu-panel-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     gap: 13px;
-
     padding: 18px 19px 15px;
-
     border-bottom: 1px solid var(--tu-border);
+    background: #ffffff;
 }
 
 .tu-panel-header > div {
@@ -486,53 +375,41 @@
 
 .tu-panel-label {
     display: block;
-
     margin-bottom: 4px;
-
     font-size: 9px;
     font-weight: 800;
-
     letter-spacing: 1px;
-
     color: var(--tu-blue);
 }
 
 .tu-panel-header h3 {
     margin: 0;
-
     font-size: 13px;
     line-height: 1.45;
-
     font-weight: 800;
-
     color: var(--tu-text);
 }
 
 
 /* =========================================================
    LIHAT SEMUA
+   NAVY
 ========================================================= */
 
 .tu-panel-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     gap: 5px;
-
     min-height: 32px;
-
     padding: 6px 10px;
-
     flex-shrink: 0;
-
     border-radius: 7px;
 
-    background: var(--tu-blue-soft);
-
-    border: 1px solid #cfe0f2;
-
-    color: var(--tu-navy);
+    /* DIUBAH DARI BIRU MUDA KE NAVY */
+    background: var(--tu-navy);
+    border: 1px solid var(--tu-navy);
+    color: #ffffff;
 
     font-size: 9px;
     font-weight: 700;
@@ -540,17 +417,16 @@
     transition:
         background 0.2s ease,
         color 0.2s ease,
-        transform 0.2s ease;
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .tu-panel-button:hover {
-    background: var(--tu-navy);
-
-    border-color: var(--tu-navy);
-
+    background: var(--tu-navy-2);
+    border-color: var(--tu-navy-2);
     color: #ffffff;
-
     transform: translateY(-1px);
+    box-shadow: 0 5px 12px rgba(7, 27, 53, 0.15);
 }
 
 .tu-panel-button span:last-child {
@@ -564,44 +440,47 @@
 
 .tu-table-wrapper {
     width: 100%;
-
     overflow-x: auto;
 }
 
 .tu-table {
     width: 100%;
-
     border-collapse: collapse;
-
     font-size: 10px;
 }
+
+
+/* =========================================================
+   HEADER TABLE
+   NAMA PENDAFTAR | BATAS DAFTAR ULANG | AKSI
+   NAMA SISWA | KELAS
+   FULL NAVY
+========================================================= */
 
 .tu-table th {
     padding: 11px 17px;
 
-    background: #e5f1ff;
+    /* DIUBAH DARI #e5f1ff KE NAVY */
+    background: var(--tu-navy);
 
-    border-bottom: 1px solid #cfe2f7;
+    /* DIUBAH DARI BORDER BIRU MUDA KE NAVY */
+    border-bottom: 1px solid var(--tu-navy-2);
 
     text-align: left;
-
     font-size: 8px;
     font-weight: 800;
-
     letter-spacing: 0.3px;
 
-    color: var(--tu-navy);
+    /* TEKS PUTIH */
+    color: #ffffff;
 
     white-space: nowrap;
 }
 
 .tu-table td {
     padding: 13px 17px;
-
     border-bottom: 1px solid rgba(216, 229, 243, 0.78);
-
     vertical-align: middle;
-
     color: var(--tu-text);
 }
 
@@ -614,7 +493,7 @@
 }
 
 .tu-table tbody tr:hover {
-    background: rgba(23, 105, 213, 0.035);
+    background: rgba(7, 27, 53, 0.035);
 }
 
 
@@ -625,80 +504,26 @@
 .tu-person {
     display: flex;
     flex-direction: column;
-
     gap: 3px;
-
     min-width: 135px;
 }
 
 .tu-person strong {
     font-size: 10px;
     font-weight: 700;
-
     color: var(--tu-text);
 }
 
 .tu-person span {
     font-size: 8px;
-
     color: var(--tu-muted);
 }
 
 .tu-date {
     display: inline-block;
-
     font-size: 9px;
     font-weight: 600;
-
-    color: var(--tu-text);
-}
-
-
-/* =========================================================
-   BUTTON TABLE
-========================================================= */
-
-.tu-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 0;
-
-    cursor: pointer;
-
-    font-family: inherit;
-
-    text-decoration: none;
-}
-
-.tu-btn-primary {
-    background: var(--tu-navy);
-
-    color: #ffffff;
-
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease;
-}
-
-.tu-btn-primary:hover {
-    background: var(--tu-navy-2);
-
-    color: #ffffff;
-
-    transform: translateY(-1px);
-}
-
-.tu-btn-sm {
-    min-height: 29px;
-
-    padding: 6px 10px;
-
-    border-radius: 7px;
-
-    font-size: 8px;
-    font-weight: 700;
+    color: var(--tu-muted);
 }
 
 
@@ -709,191 +534,157 @@
 .tu-badge {
     display: inline-flex;
     align-items: center;
-
+    justify-content: center;
     min-height: 24px;
-
     padding: 4px 8px;
-
     border-radius: 6px;
-
     font-size: 8px;
     font-weight: 700;
+    white-space: nowrap;
 }
 
 .tu-badge-success {
     background: var(--tu-success-bg);
-
     color: var(--tu-success);
 }
 
 .tu-badge-warning {
     background: var(--tu-warning-bg);
-
     color: var(--tu-warning);
 }
 
 .tu-badge-danger {
-    margin-right: 5px;
-
     background: var(--tu-danger-bg);
-
     color: var(--tu-danger);
 }
 
 
 /* =========================================================
-   EMPTY
+   BADGE BLUE
+   DIUBAH MENJADI NAVY
+========================================================= */
+
+.tu-badge-blue {
+    background: var(--tu-navy);
+    color: #ffffff;
+    border: 1px solid var(--tu-navy);
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ICON "BELUM ADA PENEMPATAN"
+   NAVY
 ========================================================= */
 
 .tu-empty {
-    min-height: 125px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    gap: 5px;
-
+    padding: 35px 20px;
     text-align: center;
 }
 
 .tu-empty-icon {
-    width: 38px;
-    height: 38px;
-
+    width: 45px;
+    height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0 auto 10px;
+    border-radius: 11px;
 
-    margin-bottom: 3px;
+    /* DIUBAH DARI BIRU MUDA KE NAVY */
+    background: var(--tu-navy);
 
-    border-radius: 10px;
+    color: #ffffff;
 
-    background: var(--tu-blue-soft);
-
-    color: var(--tu-navy);
+    box-shadow: 0 5px 12px rgba(7, 27, 53, 0.12);
 }
 
 .tu-empty strong {
-    font-size: 10px;
-    font-weight: 800;
-
+    display: block;
+    margin-bottom: 4px;
+    font-size: 11px;
     color: var(--tu-text);
 }
 
 .tu-empty span {
-    max-width: 220px;
-
-    font-size: 8px;
-    line-height: 1.5;
-
+    font-size: 9px;
     color: var(--tu-muted);
 }
 
 
 /* =========================================================
-   PERSURATAN DIGITAL
+   ADMINISTRASI / PERSURATAN DIGITAL
+   FULL NAVY
 ========================================================= */
 
 .tu-correspondence-section {
     position: relative;
     overflow: hidden;
-
     max-width: 1120px;
-
     padding: 24px;
-
     border-radius: 15px;
-
-    background: #eaf3fc;
-
-    border: 1px solid #d3e2f1;
-
-    box-shadow:
-        0 8px 24px rgba(7, 27, 53, 0.06);
+    background: var(--tu-navy);
+    border: 1px solid var(--tu-navy);
+    box-shadow: var(--tu-shadow);
+    color: #ffffff;
 }
 
 .tu-correspondence-section::before {
     content: '';
-
     position: absolute;
-
-    width: 190px;
-    height: 190px;
-
+    width: 180px;
+    height: 180px;
     right: -65px;
-    top: -105px;
-
+    top: -90px;
     border-radius: 50%;
-
-    background: rgba(7, 27, 53, 0.035);
-
+    background: rgba(255, 255, 255, 0.045);
     pointer-events: none;
 }
 
 .tu-correspondence-section::after {
     content: '';
-
     position: absolute;
-
-    width: 115px;
-    height: 115px;
-
-    left: -55px;
-    bottom: -65px;
-
+    width: 100px;
+    height: 100px;
+    left: -45px;
+    bottom: -55px;
     border-radius: 50%;
-
-    background: rgba(255, 255, 255, 0.45);
-
+    background: rgba(23, 105, 213, 0.13);
     pointer-events: none;
 }
 
 .tu-correspondence-heading {
     position: relative;
     z-index: 2;
-
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-
     gap: 18px;
-
     margin-bottom: 17px;
 }
 
 .tu-correspondence-label {
     display: block;
-
     margin-bottom: 5px;
-
     font-size: 9px;
     font-weight: 800;
-
     letter-spacing: 1.15px;
-
-    color: var(--tu-navy);
+    color: rgba(255, 255, 255, 0.72);
 }
 
 .tu-correspondence-heading h2 {
     margin: 0;
-
     font-size: 20px;
     line-height: 1.3;
-
     font-weight: 800;
-
-    color: var(--tu-text);
+    color: #ffffff;
 }
 
 .tu-correspondence-heading p {
     margin: 6px 0 0;
-
     font-size: 11px;
     line-height: 1.6;
-
-    color: #58708c;
+    color: rgba(255, 255, 255, 0.68);
 }
 
 
@@ -905,29 +696,17 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     gap: 7px;
-
     min-height: 37px;
-
     padding: 8px 13px;
-
     flex-shrink: 0;
-
     border-radius: 7px;
-
-    background: var(--tu-navy);
-
-    border: 1px solid var(--tu-navy);
-
+    background: var(--tu-navy-2);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     color: #ffffff;
-
     font-size: 10px;
     font-weight: 700;
-
-    box-shadow:
-        0 4px 10px rgba(7, 27, 53, 0.10);
-
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     transition:
         background 0.2s ease,
         color 0.2s ease,
@@ -936,16 +715,11 @@
 }
 
 .tu-correspondence-button:hover {
-    background: var(--tu-navy-2);
-
-    border-color: var(--tu-navy-2);
-
-    color: #ffffff;
-
+    background: #ffffff;
+    border-color: #ffffff;
+    color: var(--tu-navy);
     transform: translateY(-2px);
-
-    box-shadow:
-        0 7px 15px rgba(7, 27, 53, 0.16);
+    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.18);
 }
 
 .tu-correspondence-button:hover .tu-button-arrow {
@@ -955,44 +729,31 @@
 
 /* =========================================================
    CORRESPONDENCE CARDS
+   TETAP PUTIH
 ========================================================= */
 
 .tu-correspondence-grid {
     position: relative;
     z-index: 2;
-
     display: grid;
-
     grid-template-columns:
         repeat(3, minmax(200px, 1fr));
-
     gap: 13px;
-
     max-width: 1060px;
 }
 
 .tu-correspondence-card {
     position: relative;
     overflow: hidden;
-
     min-height: 145px;
-
     display: flex;
     flex-direction: column;
-
     padding: 18px;
-
     border-radius: 12px;
-
     background: #ffffff;
-
     border: 1px solid #d5e2ef;
-
     color: var(--tu-text);
-
-    box-shadow:
-        0 6px 17px rgba(7, 27, 53, 0.06);
-
+    box-shadow: 0 6px 17px rgba(0, 0, 0, 0.10);
     transition:
         transform 0.2s ease,
         box-shadow 0.2s ease;
@@ -1000,149 +761,110 @@
 
 .tu-correspondence-card:hover {
     transform: translateY(-3px);
-
-    box-shadow:
-        0 11px 23px rgba(7, 27, 53, 0.11);
+    box-shadow: 0 11px 23px rgba(0, 0, 0, 0.16);
 }
 
 .tu-correspondence-card::before {
     content: '';
-
     position: absolute;
-
     width: 92px;
     height: 92px;
-
     right: -36px;
     top: -36px;
-
     border-radius: 50%;
-
     background: #edf4fb;
-
     pointer-events: none;
 }
 
 .tu-correspondence-card::after {
     content: '';
-
     position: absolute;
-
     width: 50px;
     height: 50px;
-
     right: 20px;
     bottom: -24px;
-
     border-radius: 50%;
-
     background: #f5f9fd;
-
     pointer-events: none;
 }
 
 .tu-correspondence-top {
     position: relative;
     z-index: 2;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     margin-bottom: 15px;
 }
 
 .tu-correspondence-icon {
     width: 45px;
     height: 45px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     border-radius: 11px;
 
-    background: var(--tu-blue-soft);
-
-    color: var(--tu-navy);
+    background: var(--tu-navy);
+    color: #ffffff;
 }
 
 .tu-icon-warning {
     background: #fff3d7;
-
     color: #a96d00;
 }
 
 .tu-icon-send {
     background: #e7f7f1;
-
     color: #16845b;
 }
 
 .tu-card-number {
     font-size: 9px;
     font-weight: 800;
-
     letter-spacing: 0.8px;
-
     color: #aebfd1;
 }
 
 .tu-correspondence-content {
     position: relative;
     z-index: 2;
-
     min-width: 0;
 }
 
 .tu-correspondence-title {
     display: block;
-
     margin-bottom: 5px;
-
     font-size: 10px;
     line-height: 1.4;
-
     font-weight: 700;
-
     color: var(--tu-muted);
 }
 
 .tu-correspondence-content strong {
     display: block;
-
     font-size: 27px;
     line-height: 1;
-
     font-weight: 800;
-
     color: var(--tu-navy);
 }
 
 .tu-correspondence-content small {
     display: block;
-
     margin-top: 6px;
-
     font-size: 8px;
-
     color: var(--tu-muted);
 }
 
 .tu-card-arrow {
     position: absolute;
     z-index: 3;
-
     right: 17px;
     bottom: 15px;
-
     font-size: 17px;
     line-height: 1;
-
     font-weight: 700;
-
     color: var(--tu-navy);
-
     transition: transform 0.2s ease;
 }
 
@@ -1153,19 +875,15 @@
 
 /* =========================================================
    AKSES CEPAT
+   PUTIH
 ========================================================= */
 
 .tu-actions {
     max-width: 1120px;
-
     padding: 24px;
-
     border-radius: 15px;
-
-    background: #f4f7fb;
-
+    background: #ffffff;
     border: 1px solid #dbe5ef;
-
     box-shadow: var(--tu-shadow);
 }
 
@@ -1175,52 +893,38 @@
 
 .tu-actions-header h2 {
     margin: 0;
-
     font-size: 20px;
     line-height: 1.3;
-
     font-weight: 800;
-
     color: var(--tu-text);
 }
 
 .tu-action-grid {
     display: grid;
-
     grid-template-columns:
         repeat(3, minmax(200px, 1fr));
-
     gap: 13px;
-
     max-width: 1060px;
 }
 
 
 /* =========================================================
    ACTION CARD
+   PUTIH
 ========================================================= */
 
 .tu-action-card {
     position: relative;
     overflow: hidden;
-
     min-height: 96px;
-
     display: flex;
     align-items: center;
-
     gap: 13px;
-
     padding: 17px;
-
     border-radius: 12px;
-
-    background: #e6f0fb;
-
-    border: 1px solid #d0dfef;
-
+    background: #ffffff;
+    border: 1px solid #dbe5ef;
     color: var(--tu-text);
-
     transition:
         transform 0.2s ease,
         background 0.2s ease,
@@ -1228,114 +932,77 @@
         box-shadow 0.2s ease;
 }
 
-.tu-action-card:nth-child(1) {
-    background: #e4effb;
-}
-
-.tu-action-card:nth-child(2) {
-    background: #edf5fc;
-}
-
+.tu-action-card:nth-child(1),
+.tu-action-card:nth-child(2),
 .tu-action-card:nth-child(3) {
-    background: #deebf9;
+    background: #ffffff;
 }
 
 .tu-action-card::after {
     content: '';
-
     position: absolute;
-
     width: 80px;
     height: 80px;
-
     right: -28px;
     bottom: -42px;
-
     border-radius: 50%;
-
     background: rgba(7, 27, 53, 0.045);
-
     pointer-events: none;
 }
 
 .tu-action-card:hover {
     transform: translateY(-3px);
-
-    background: #d6e6f7;
-
+    background: #f8fbff;
     border-color: #c2d7ec;
-
-    box-shadow:
-        0 10px 22px rgba(7, 27, 53, 0.09);
+    box-shadow: 0 10px 22px rgba(7, 27, 53, 0.09);
 }
 
 .tu-action-icon {
     position: relative;
     z-index: 2;
-
     width: 43px;
     height: 43px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     flex-shrink: 0;
-
     border-radius: 10px;
-
     background: var(--tu-navy);
-
     color: #ffffff;
-
-    box-shadow:
-        0 4px 9px rgba(7, 27, 53, 0.10);
+    box-shadow: 0 4px 9px rgba(7, 27, 53, 0.10);
 }
 
 .tu-action-content {
     position: relative;
     z-index: 2;
-
     min-width: 0;
 }
 
 .tu-action-content strong {
     display: block;
-
     margin-bottom: 3px;
-
     font-size: 11px;
     line-height: 1.4;
-
     font-weight: 800;
-
     color: var(--tu-navy);
 }
 
 .tu-action-content span {
     display: block;
-
     font-size: 9px;
     line-height: 1.5;
-
     color: var(--tu-muted);
 }
 
 .tu-action-arrow {
     position: relative;
     z-index: 2;
-
     margin-left: auto;
-
     flex-shrink: 0;
-
     font-size: 17px;
     line-height: 1;
-
     font-weight: 700;
-
     color: var(--tu-navy);
-
     transition: transform 0.2s ease;
 }
 
@@ -1352,7 +1019,6 @@
 
     .tu-dashboard {
         max-width: 100%;
-
         padding-left: 12px;
         padding-right: 12px;
     }
@@ -1404,9 +1070,7 @@
 
     .tu-header {
         min-height: 160px;
-
         padding: 25px 22px;
-
         border-radius: 13px;
     }
 
@@ -1426,9 +1090,7 @@
     .tu-correspondence-heading,
     .tu-section-heading {
         align-items: flex-start;
-
         flex-direction: column;
-
         gap: 10px;
     }
 
@@ -1448,7 +1110,6 @@
 
     .tu-header {
         padding: 22px 18px;
-
         margin-bottom: 24px;
     }
 
@@ -1470,7 +1131,6 @@
 
     .tu-stat-card {
         min-height: 120px;
-
         padding: 18px;
     }
 
@@ -1491,13 +1151,11 @@
 
     .tu-correspondence-card {
         min-height: 135px;
-
         padding: 17px;
     }
 
     .tu-action-card {
         min-height: 92px;
-
         padding: 16px;
     }
 }
