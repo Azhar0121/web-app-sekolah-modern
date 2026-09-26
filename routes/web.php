@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TeachingAssignmentController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Kepsek\DashboardController as KepsekDashboardController;
 use App\Http\Controllers\Guru\AttendanceController as GuruAttendanceController;
 use App\Http\Controllers\Guru\CommunicationController as GuruCommunicationController;
 use App\Http\Controllers\Guru\DashboardController as GuruDashboardController;
@@ -294,5 +295,5 @@ Route::middleware(['auth', 'permission:rapor.manage'])
 
 // ================= PORTAL KEPALA SEKOLAH =================
 Route::middleware(['auth', 'role:kepsek'])->prefix('kepsek')->group(function () {
-    Route::view('/dashboard', 'kepsek.dashboard')->name('kepsek.dashboard');
+    Route::get('/dashboard', [KepsekDashboardController::class, 'index'])->name('kepsek.dashboard');
 });

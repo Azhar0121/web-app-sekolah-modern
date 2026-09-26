@@ -10,6 +10,7 @@
                 ['label' => 'Dashboard', 'route' => 'admin.dashboard', 'pattern' => 'admin.dashboard', 'icon' => 'dashboard', 'show' => $user->hasRole('super-admin')],
                 ['label' => 'Dashboard', 'route' => 'guru.dashboard', 'pattern' => 'guru.dashboard', 'icon' => 'dashboard', 'show' => $user->hasRole('guru')],
                 ['label' => 'Dashboard', 'route' => 'tu.dashboard', 'pattern' => 'tu.dashboard', 'icon' => 'dashboard', 'show' => $user->hasRole('tu')],
+                ['label' => 'Dashboard', 'route' => 'kepsek.dashboard', 'pattern' => 'kepsek.dashboard', 'icon' => 'dashboard', 'show' => $user->hasRole('kepsek')],
             ],
         ],
         [
