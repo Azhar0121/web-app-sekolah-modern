@@ -585,4 +585,25 @@ try {
 
 </div>
 
+<div class="d-md-none mt-3">
+    <a href="{{ route('siswa.attendance.scan') }}"
+       class="btn btn-success fw-bold w-100 py-3 d-flex align-items-center gap-3">
+        <i class="bi bi-qr-code-scan fs-4"></i>
+        <div class="text-start">
+            <div>Scan Presensi Sekarang</div>
+            <div class="small fw-normal opacity-75">Arahkan kamera ke QR yang ditampilkan guru</div>
+        </div>
+        <i class="bi bi-arrow-right-circle-fill ms-auto fs-5"></i>
+    </a>
+</div>
+
+<a href="{{ route('siswa.attendance.scan') }}"
+   class="d-md-none position-fixed bottom-0 end-0 m-4 btn btn-success rounded-pill px-4 py-3 fw-bold shadow d-flex align-items-center gap-2"
+   style="z-index:1050; animation:fabPop .4s cubic-bezier(.34,1.56,.64,1) forwards;">
+    <i class="bi bi-qr-code-scan fs-5"></i> Scan
+</a>
+<style>
+@keyframes fabPop { from{transform:scale(.5) translateY(20px);opacity:0} to{transform:scale(1) translateY(0);opacity:1} }
+</style>
+
 @endsection

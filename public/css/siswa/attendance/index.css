@@ -1391,3 +1391,138 @@
         width: 28%;
     }
 }
+
+
+/* =========================================================
+   TOMBOL SCAN — DI DALAM HEADER CARD
+========================================================= */
+
+.btn-scan-header {
+    position: relative;
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-top: 16px;
+    padding: 13px 20px;
+
+    background: rgba(255, 255, 255, 0.18);
+    border: 1.5px solid rgba(255, 255, 255, 0.55);
+    border-radius: 12px;
+
+    color: #ffffff;
+    text-decoration: none;
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+
+    backdrop-filter: blur(6px);
+
+    transition:
+        background 0.22s ease,
+        border-color 0.22s ease,
+        transform 0.22s ease,
+        box-shadow 0.22s ease;
+}
+
+.btn-scan-header:hover {
+    background: rgba(255, 255, 255, 0.28);
+    border-color: rgba(255, 255, 255, 0.8);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-scan-header:active {
+    transform: translateY(0);
+}
+
+.btn-scan-header > .bi-qr-code-scan {
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.scan-arrow {
+    margin-left: auto;
+    font-size: 17px;
+    opacity: 0.75;
+    transition: transform 0.2s ease;
+}
+
+.btn-scan-header:hover .scan-arrow {
+    transform: translateX(4px);
+    opacity: 1;
+}
+
+
+/* =========================================================
+   FLOATING ACTION BUTTON — Scan Presensi (Mobile only)
+   Muncul di pojok kanan bawah layar
+========================================================= */
+
+.fab-scan-presensi {
+    display: none;
+    position: fixed;
+    bottom: 24px;
+    right: 20px;
+    z-index: 1050;
+
+    align-items: center;
+    gap: 8px;
+
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: #ffffff;
+    text-decoration: none;
+
+    padding: 14px 20px;
+    border-radius: 99px;
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+
+    box-shadow:
+        0 6px 20px rgba(16, 185, 129, 0.45),
+        0 2px 6px rgba(0, 0, 0, 0.12);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
+    animation: fabPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes fabPop {
+    from { transform: scale(0.5) translateY(20px); opacity: 0; }
+    to   { transform: scale(1) translateY(0);      opacity: 1; }
+}
+
+.fab-scan-presensi:hover {
+    color: #ffffff;
+    transform: translateY(-3px) scale(1.04);
+    box-shadow:
+        0 10px 30px rgba(16, 185, 129, 0.5),
+        0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.fab-scan-presensi:active {
+    transform: scale(0.96);
+}
+
+.fab-scan-presensi i {
+    font-size: 18px;
+}
+
+@media (max-width: 767px) {
+    .fab-scan-presensi {
+        display: flex;
+    }
+
+    .student-attendance-page {
+        padding-bottom: 90px;
+    }
+}

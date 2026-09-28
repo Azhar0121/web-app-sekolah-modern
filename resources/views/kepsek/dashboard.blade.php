@@ -5,13 +5,14 @@
 @section('content')
 <div class="container-fluid py-4">
 
+    {{-- HEADER PAGE --}}
     <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
         <div>
             <h3 class="fw-bold text-dark mb-1">
                 <i class="bi bi-speedometer2 text-primary me-2"></i> Dashboard Eksekutif Kepala Sekolah
             </h3>
             <p class="text-secondary mb-0 small">
-                Analitik performa akademik siswa, keaktifan pengajaran guru, dan indikator kualitas pembelajaran.
+                Analitik performa akademik siswa, keaktifan pengajaran guru, dan tingkat kehadiran harian sekolah.
             </p>
         </div>
         <div class="d-flex align-items-center gap-2">
@@ -21,6 +22,7 @@
         </div>
     </div>
 
+    {{-- KPI EXECUTIVE CARDS --}}
     <div class="row g-3 mb-4">
         <div class="col-xl-3 col-md-6">
             <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
@@ -40,11 +42,11 @@
             <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
                 <div class="d-flex align-items-center justify-content-between">
                     <div>
-                        <span class="text-secondary small fw-medium d-block mb-1">Respon Koreksi Guru</span>
-                        <h3 class="fw-bold text-dark mb-0">{{ $teacherGradingRate }}%</h3>
+                        <span class="text-secondary small fw-medium d-block mb-1">Tingkat Kehadiran Sekolah</span>
+                        <h3 class="fw-bold text-dark mb-0">{{ $todayAttendanceRate }}%</h3>
                     </div>
                     <div class="rounded-circle p-3 bg-success-subtle text-success">
-                        <i class="bi bi-check-circle-fill fs-4"></i>
+                        <i class="bi bi-calendar-check-fill fs-4"></i>
                     </div>
                 </div>
             </div>
@@ -54,11 +56,11 @@
             <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
                 <div class="d-flex align-items-center justify-content-between">
                     <div>
-                        <span class="text-secondary small fw-medium d-block mb-1">Total Siswa Evaluasi</span>
-                        <h3 class="fw-bold text-dark mb-0">{{ $totalStudents }}</h3>
+                        <span class="text-secondary small fw-medium d-block mb-1">Respon Koreksi Guru</span>
+                        <h3 class="fw-bold text-dark mb-0">{{ $teacherGradingRate }}%</h3>
                     </div>
                     <div class="rounded-circle p-3 bg-info-subtle text-info">
-                        <i class="bi bi-people-fill fs-4"></i>
+                        <i class="bi bi-check-circle-fill fs-4"></i>
                     </div>
                 </div>
             </div>
@@ -79,8 +81,89 @@
         </div>
     </div>
 
-    <div class="row g-4 mb-4">
+    {{-- MODUL 1: TINGKAT KEHADIRAN HARIAN --}}
+    <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
+        <div class="card-header bg-white py-3 px-4 border-bottom d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <div>
+                <h6 class="fw-bold text-dark mb-0">
+                    <i class="bi bi-calendar-check-fill text-success me-2"></i> Tingkat Kehadiran Harian Sekolah
+                </h6>
+                <small class="text-secondary">Statistik & distribusi presensi harian siswa/guru tanggal {{ now()->translatedFormat('d F Y') }}</small>
+            </div>
+            <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-1">
+                Tingkat Kehadiran: <strong>{{ $todayAttendanceRate }}%</strong>
+            </span>
+        </div>
+        <div class="card-body p-4">
+            <div class="row g-4 align-items-center">
+                
+                {{-- GRAFIK DONUT PRESENSI HARIAN --}}
+                <div class="col-lg-5 col-md-6 text-center border-end-lg">
+                    <div class="mx-auto" style="width: 220px; height: 220px;">
+                        <canvas id="todayAttendanceChart"></canvas>
+                    </div>
+                    <div class="mt-3 small text-secondary">
+                        Total Rekaman Presensi Hari Ini: <strong class="text-dark">{{ $todayTotal }}</strong>
+                    </div>
+                </div>
 
+                {{-- KARTU STATUS PRESENSI HARIAN --}}
+                <div class="col-lg-7 col-md-6">
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="p-3 rounded-3 bg-success-subtle border border-success-subtle">
+                                <div class="d-flex align-items-center gap-2 mb-1">
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                    <span class="text-success fw-semibold small">HADIR</span>
+                                </div>
+                                <h3 class="fw-bold text-success mb-0">{{ $todayAttendanceDistribution['hadir'] }}</h3>
+                                <small class="text-success-emphasis">Siswa / Guru</small>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="p-3 rounded-3 bg-warning-subtle border border-warning-subtle">
+                                <div class="d-flex align-items-center gap-2 mb-1">
+                                    <i class="bi bi-clock-history text-warning-emphasis"></i>
+                                    <span class="text-warning-emphasis fw-semibold small">IZIN</span>
+                                </div>
+                                <h3 class="fw-bold text-warning-emphasis mb-0">{{ $todayAttendanceDistribution['izin'] }}</h3>
+                                <small class="text-warning-emphasis">Siswa / Guru</small>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="p-3 rounded-3 bg-info-subtle border border-info-subtle">
+                                <div class="d-flex align-items-center gap-2 mb-1">
+                                    <i class="bi bi-hospital-fill text-info"></i>
+                                    <span class="text-info-emphasis fw-semibold small">SAKIT</span>
+                                </div>
+                                <h3 class="fw-bold text-info-emphasis mb-0">{{ $todayAttendanceDistribution['sakit'] }}</h3>
+                                <small class="text-info-emphasis">Siswa / Guru</small>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="p-3 rounded-3 bg-danger-subtle border border-danger-subtle">
+                                <div class="d-flex align-items-center gap-2 mb-1">
+                                    <i class="bi bi-x-circle-fill text-danger"></i>
+                                    <span class="text-danger fw-semibold small">ALPHA / TANPA KETERANGAN</span>
+                                </div>
+                                <h3 class="fw-bold text-danger mb-0">{{ $todayAttendanceDistribution['alpha'] }}</h3>
+                                <small class="text-danger-emphasis">Siswa / Guru</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {{-- ROW 1: GRAFIK NILAI MAPEL & DISTRIBUSI PREDIKAT --}}
+    <div class="row g-4 mb-4">
+        
+        {{-- GRAFIK RATA-RATA NILAI PER MAPEL --}}
         <div class="col-lg-8">
             <div class="card border-0 shadow-sm rounded-4 h-100">
                 <div class="card-header bg-white py-3 px-4 border-bottom d-flex justify-content-between align-items-center">
@@ -95,6 +178,7 @@
             </div>
         </div>
 
+        {{-- DISTRIBUSI PREDIKAT SISWA --}}
         <div class="col-lg-4">
             <div class="card border-0 shadow-sm rounded-4 h-100">
                 <div class="card-header bg-white py-3 px-4 border-bottom">
@@ -118,8 +202,10 @@
 
     </div>
 
+    {{-- ROW 2: GRAFIK PERFORMA GURU & NILA PER KELAS --}}
     <div class="row g-4 mb-4">
 
+        {{-- GRAFIK RATA-RATA NILAI PER KELAS --}}
         <div class="col-lg-6">
             <div class="card border-0 shadow-sm rounded-4 h-100">
                 <div class="card-header bg-white py-3 px-4 border-bottom">
@@ -133,6 +219,7 @@
             </div>
         </div>
 
+        {{-- GRAFIK KEAKTIFAN PENGAJARAN GURU --}}
         <div class="col-lg-6">
             <div class="card border-0 shadow-sm rounded-4 h-100">
                 <div class="card-header bg-white py-3 px-4 border-bottom">
@@ -148,6 +235,7 @@
 
     </div>
 
+    {{-- TABEL DETAIL PERFORMA & KEAKTIFAN GURU --}}
     <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
         <div class="card-header bg-white py-3 px-4 border-bottom d-flex justify-content-between align-items-center">
             <h6 class="fw-bold text-dark mb-0">
@@ -215,16 +303,42 @@
 
 </div>
 
+{{-- SCRIPT CHART.JS --}}
 @push('scripts')
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 
-    const subjectData   = @json($subjectAverages);
-    const gradeDistData = @json($gradeDistribution);
-    const classAvgData  = @json($classroomAverages);
-    const teacherData   = @json($teacherPerformance);
+    // DATA DARI CONTROLLER
+    const subjectData    = @json($subjectAverages);
+    const gradeDistData  = @json($gradeDistribution);
+    const classAvgData   = @json($classroomAverages);
+    const teacherData    = @json($teacherPerformance);
+    const todayAttData   = @json($todayAttendanceDistribution);
 
+    // 0. CHART PRESENSI HARIAN (DOUGHNUT CHART)
+    const ctxTodayAtt = document.getElementById('todayAttendanceChart').getContext('2d');
+    new Chart(ctxTodayAtt, {
+        type: 'doughnut',
+        data: {
+            labels: ['Hadir', 'Izin', 'Sakit', 'Alpha'],
+            datasets: [{
+                data: [todayAttData.hadir, todayAttData.izin, todayAttData.sakit, todayAttData.alpha],
+                backgroundColor: ['#10b981', '#f59e0b', '#0ea5e9', '#ef4444'],
+                borderWidth: 2,
+                borderColor: '#ffffff'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false }
+            }
+        }
+    });
+
+    // 1. CHART RATA-RATA MAPEL (BAR CHART)
     const ctxSubject = document.getElementById('subjectChart').getContext('2d');
     new Chart(ctxSubject, {
         type: 'bar',
@@ -248,6 +362,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // 2. CHART DISTRIBUSI PREDIKAT (DOUGHNUT CHART)
     const ctxDist = document.getElementById('gradeDistChart').getContext('2d');
     new Chart(ctxDist, {
         type: 'doughnut',
@@ -269,6 +384,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // 3. CHART RATA-RATA PER KELAS (BAR CHART)
     const ctxClass = document.getElementById('classAvgChart').getContext('2d');
     new Chart(ctxClass, {
         type: 'bar',
@@ -292,6 +408,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // 4. CHART KEAKTIFAN GURU (BAR CHART)
     const ctxTeacher = document.getElementById('teacherPerfChart').getContext('2d');
     new Chart(ctxTeacher, {
         type: 'bar',

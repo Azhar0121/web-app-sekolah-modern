@@ -168,10 +168,12 @@ Route::middleware(['auth', 'role:guru'])->prefix('guru')->name('guru.')->group(f
     Route::get('/siswa', [GuruStudentProfileController::class, 'index'])->name('student-profile.index');
     Route::get('/siswa/{student}/biodata', [GuruStudentProfileController::class, 'show'])->name('student-profile.show');
 
-    // Presensi/Absensi QR Code
+    // Presensi/Absensi — Guru tampilkan QR
     Route::get('/presensi', [GuruAttendanceController::class, 'index'])->name('attendance.index');
     Route::get('/presensi/{schedule}/kelola', [GuruAttendanceController::class, 'session'])->name('attendance.session');
-    Route::post('/presensi/sesi/{attendanceSession}/scan', [GuruAttendanceController::class, 'scan'])->name('attendance.scan');
+    Route::get('/presensi/sesi/{attendanceSession}/qr', [GuruAttendanceController::class, 'showQr'])->name('attendance.show-qr');
+    Route::post('/presensi/sesi/{attendanceSession}/qr/refresh', [GuruAttendanceController::class, 'refreshQr'])->name('attendance.refresh-qr');
+    Route::get('/presensi/sesi/{attendanceSession}/hadir-count', [GuruAttendanceController::class, 'hadirCount'])->name('attendance.hadir-count');
     Route::put('/presensi/sesi/{attendanceSession}/siswa/{student}/status', [GuruAttendanceController::class, 'updateStatus'])->name('attendance.update-status');
     Route::post('/presensi/sesi/{attendanceSession}/tutup', [GuruAttendanceController::class, 'close'])->name('attendance.close');
     Route::post('/presensi/sesi/{attendanceSession}/buka-kembali', [GuruAttendanceController::class, 'reopen'])->name('attendance.reopen');
@@ -198,10 +200,14 @@ Route::middleware(['auth', 'role:siswa'])->prefix('siswa')->name('siswa.')->grou
     Route::put('/biodata', [SiswaProfileController::class, 'update'])->name('profile.update');
     Route::post('/biodata/ganti-password', [SiswaProfileController::class, 'updatePassword'])->name('profile.update-password');
 
-    // Presensi/Absensi QR Code
+    // Kartu Pelajar Digital (informasi siswa)
     Route::get('/kartu-pelajar', [SiswaQrCodeController::class, 'show'])->name('qr-code.show');
     Route::post('/kartu-pelajar/refresh', [SiswaQrCodeController::class, 'refresh'])->name('qr-code.refresh');
+
+    // Presensi — Siswa scan QR Guru
     Route::get('/presensi', [SiswaAttendanceController::class, 'index'])->name('attendance.index');
+    Route::get('/presensi/scan', [SiswaAttendanceController::class, 'scan'])->name('attendance.scan');
+    Route::post('/presensi/scan', [SiswaAttendanceController::class, 'submitScan'])->name('attendance.submit-scan');
 
     // Materi Pembelajaran
     Route::get('/materi', [SiswaMaterialController::class, 'index'])->name('materials.index');

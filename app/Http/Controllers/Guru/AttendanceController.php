@@ -14,9 +14,12 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\View\View;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class AttendanceController extends Controller
 {
+    private const QR_TTL_MINUTES = 5;
+
     public function index(): View
     {
         $activeYear = AcademicYear::active();
@@ -70,65 +73,50 @@ class AttendanceController extends Controller
         return view('guru.attendance.session', compact('schedule', 'attendanceSession', 'students', 'attendances'));
     }
 
-    public function scan(AttendanceSession $attendanceSession, Request $request): JsonResponse
+    public function showQr(AttendanceSession $attendanceSession): View
+    {
+        $this->authorizeTeacher($attendanceSession->schedule);
+
+        abort_if(! $attendanceSession->isOpen(), 403, 'Sesi presensi sudah ditutup.');
+
+        // Generate QR token baru setiap kali halaman ini dibuka
+        $token = $attendanceSession->generateSessionQr(self::QR_TTL_MINUTES);
+
+        // Buat URL yang akan di-encode ke QR (siswa akan diarahkan ke URL ini)
+        $scanUrl = route('siswa.attendance.scan') . '?token=' . $token;
+
+        // Generate QR sebagai SVG
+        $qrSvg = QrCode::size(350)->style('round')->eye('circle')->generate($scanUrl);
+
+        $attendanceSession->load('schedule.teachingAssignment.classroom', 'schedule.teachingAssignment.subject');
+
+        return view('guru.attendance.qr-display', [
+            'attendanceSession' => $attendanceSession,
+            'qrSvg'             => $qrSvg,
+            'ttlMinutes'        => self::QR_TTL_MINUTES,
+            'expiresAt'         => $attendanceSession->session_qr_expires_at,
+            'scanUrl'           => $scanUrl,
+        ]);
+    }
+
+    public function refreshQr(AttendanceSession $attendanceSession): JsonResponse
     {
         $this->authorizeTeacher($attendanceSession->schedule);
 
         if (! $attendanceSession->isOpen()) {
-            return response()->json(['success' => false, 'message' => 'Sesi presensi ini sudah ditutup.'], 422);
+            return response()->json(['success' => false, 'message' => 'Sesi sudah ditutup.'], 422);
         }
 
-        $request->validate(['token' => ['required', 'string']]);
+        $token   = $attendanceSession->generateSessionQr(self::QR_TTL_MINUTES);
+        $scanUrl = route('siswa.attendance.scan') . '?token=' . $token;
 
-        $student = User::where('qr_token', $request->token)
-            ->whereHas('role', fn ($q) => $q->where('slug', 'siswa'))
-            ->first();
-
-        if (! $student) {
-            return response()->json(['success' => false, 'message' => 'QR tidak dikenali / bukan kartu pelajar yang valid.'], 404);
-        }
-
-        if (! $student->isQrTokenValid()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'QR sudah kedaluwarsa. Minta siswa membuka ulang halaman Kartu Pelajar lalu scan lagi.',
-            ], 422);
-        }
-
-        $enrolled = ClassroomStudent::where('classroom_id', $attendanceSession->schedule->teachingAssignment->classroom_id)
-            ->where('student_id', $student->id)
-            ->exists();
-
-        if (! $enrolled) {
-            return response()->json([
-                'success' => false,
-                'message' => "{$student->name} bukan siswa di kelas ini.",
-            ], 422);
-        }
-
-        $existing = Attendance::where('attendance_session_id', $attendanceSession->id)
-            ->where('student_id', $student->id)
-            ->first();
-
-        if ($existing && $existing->status === 'hadir') {
-            return response()->json([
-                'success' => true,
-                'already' => true,
-                'message' => "{$student->name} sudah tercatat hadir sebelumnya.",
-                'student_name' => $student->name,
-            ]);
-        }
-
-        Attendance::updateOrCreate(
-            ['attendance_session_id' => $attendanceSession->id, 'student_id' => $student->id],
-            ['status' => 'hadir', 'scanned_at' => now(), 'recorded_by' => null, 'note' => null]
-        );
+        $qrSvg = QrCode::size(350)->style('round')->eye('circle')->generate($scanUrl);
 
         return response()->json([
-            'success' => true,
-            'already' => false,
-            'message' => "{$student->name} berhasil tercatat hadir.",
-            'student_name' => $student->name,
+            'success'    => true,
+            'qrSvg'      => (string) $qrSvg,
+            'expiresAt'  => $attendanceSession->fresh()->session_qr_expires_at->toIso8601String(),
+            'ttlSeconds' => self::QR_TTL_MINUTES * 60,
         ]);
     }
 
@@ -138,15 +126,15 @@ class AttendanceController extends Controller
 
         $validated = $request->validate([
             'status' => ['required', 'in:hadir,izin,sakit,alpha'],
-            'note' => ['nullable', 'string', 'max:255'],
+            'note'   => ['nullable', 'string', 'max:255'],
         ]);
 
         Attendance::updateOrCreate(
             ['attendance_session_id' => $attendanceSession->id, 'student_id' => $student->id],
             [
-                'status' => $validated['status'],
-                'note' => $validated['note'] ?? null,
-                'scanned_at' => null,
+                'status'      => $validated['status'],
+                'note'        => $validated['note'] ?? null,
+                'scanned_at'  => null,
                 'recorded_by' => auth()->id(),
             ]
         );
@@ -170,8 +158,8 @@ class AttendanceController extends Controller
         foreach ($studentIds->diff($alreadyRecorded) as $studentId) {
             Attendance::create([
                 'attendance_session_id' => $attendanceSession->id,
-                'student_id' => $studentId,
-                'status' => 'alpha',
+                'student_id'            => $studentId,
+                'status'                => 'alpha',
             ]);
         }
 
@@ -181,13 +169,24 @@ class AttendanceController extends Controller
             ->with('success', 'Sesi presensi berhasil ditutup. Siswa yang belum tercatat otomatis ditandai Alpha.');
     }
 
+    public function hadirCount(AttendanceSession $attendanceSession): JsonResponse
+    {
+        $this->authorizeTeacher($attendanceSession->schedule);
+
+        $count = Attendance::where('attendance_session_id', $attendanceSession->id)
+            ->where('status', 'hadir')
+            ->count();
+
+        return response()->json(['count' => $count]);
+    }
+
     public function reopen(AttendanceSession $attendanceSession): RedirectResponse
     {
         $this->authorizeTeacher($attendanceSession->schedule);
 
         $attendanceSession->update(['closed_at' => null]);
 
-        return back()->with('success', 'Sesi presensi berhasil dibuka kembali. Anda dapat melakukan scan QR lagi.');
+        return back()->with('success', 'Sesi presensi berhasil dibuka kembali.');
     }
 
     private function authorizeTeacher(Schedule $schedule): void
