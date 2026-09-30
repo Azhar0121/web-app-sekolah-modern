@@ -59,13 +59,23 @@
 
                     <div class="hero-actions">
 
-                        <a
-                            href="{{ url('/login') }}"
-                            class="hero-primary-button"
-                        >
-                            <i class="bi bi-box-arrow-in-right"></i>
-                            Masuk Portal
-                        </a>
+                        @auth
+                            <a
+                                href="{{ auth()->user()->dashboardUrl() }}"
+                                class="hero-primary-button"
+                            >
+                                <i class="bi bi-speedometer2"></i>
+                                Ke Dashboard Saya
+                            </a>
+                        @else
+                            <a
+                                href="{{ url('/login') }}"
+                                class="hero-primary-button"
+                            >
+                                <i class="bi bi-box-arrow-in-right"></i>
+                                Masuk Portal
+                            </a>
+                        @endauth
 
                         <a
                             href="{{ route('ppdb.index') }}"

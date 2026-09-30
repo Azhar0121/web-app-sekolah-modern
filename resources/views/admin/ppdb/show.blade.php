@@ -407,95 +407,101 @@
 
                     @if (! in_array($registration->status, ['accepted', 'registered_ulang']))
 
-                        <form
-                            method="POST"
-                            action="{{ route('admin.ppdb.update-status', $registration) }}"
-                        >
-
-                            @csrf
-                            @method('PUT')
-
-
-                            <div class="ppdb-detail-form-group">
-
-                                <label
-                                    class="ppdb-detail-form-label"
-                                    for="status"
-                                >
-                                    Ubah Status
-                                </label>
-
-                                <select
-                                    name="status"
-                                    id="status"
-                                    class="form-select ppdb-detail-form-control"
-                                    required
-                                >
-
-                                    <option
-                                        value="verified"
-                                        @selected($registration->status === 'verified')
-                                    >
-                                        Terverifikasi
-                                    </option>
-
-                                    <option
-                                        value="accepted"
-                                        @selected($registration->status === 'accepted')
-                                    >
-                                        Diterima
-                                    </option>
-
-                                    <option
-                                        value="rejected"
-                                        @selected($registration->status === 'rejected')
-                                    >
-                                        Ditolak
-                                    </option>
-
-                                </select>
-
-
-                                <small class="ppdb-detail-form-help">
-
-                                    Kalau dipilih "Diterima", batas waktu daftar ulang akan otomatis
-                                    dihitung
-                                    ({{ $registration->period->re_registration_days ?? 7 }}
-                                    hari dari hari ini) dan email notifikasi otomatis terkirim
-                                    ke calon siswa.
-
-                                </small>
-
-                            </div>
-
-
-                            <div class="ppdb-detail-form-group">
-
-                                <label
-                                    class="ppdb-detail-form-label"
-                                    for="notes"
-                                >
-                                    Catatan (opsional)
-                                </label>
-
-                                <textarea
-                                    name="notes"
-                                    id="notes"
-                                    class="form-control ppdb-detail-form-control ppdb-detail-textarea"
-                                    rows="3"
-                                >{{ $registration->notes }}</textarea>
-
-                            </div>
-
-
-                            <button
-                                type="submit"
-                                class="ppdb-save-status-button"
+                        @if (auth()->user()->hasPermission('ppdb.manage'))
+                            <form
+                                method="POST"
+                                action="{{ route('admin.ppdb.update-status', $registration) }}"
                             >
-                                Simpan Perubahan Status
-                            </button>
 
-                        </form>
+                                @csrf
+                                @method('PUT')
+
+
+                                <div class="ppdb-detail-form-group">
+
+                                    <label
+                                        class="ppdb-detail-form-label"
+                                        for="status"
+                                    >
+                                        Ubah Status
+                                    </label>
+
+                                    <select
+                                        name="status"
+                                        id="status"
+                                        class="form-select ppdb-detail-form-control"
+                                        required
+                                    >
+
+                                        <option
+                                            value="verified"
+                                            @selected($registration->status === 'verified')
+                                        >
+                                            Terverifikasi
+                                        </option>
+
+                                        <option
+                                            value="accepted"
+                                            @selected($registration->status === 'accepted')
+                                        >
+                                            Diterima
+                                        </option>
+
+                                        <option
+                                            value="rejected"
+                                            @selected($registration->status === 'rejected')
+                                        >
+                                            Ditolak
+                                        </option>
+
+                                    </select>
+
+
+                                    <small class="ppdb-detail-form-help">
+
+                                        Kalau dipilih "Diterima", batas waktu daftar ulang akan otomatis
+                                        dihitung
+                                        ({{ $registration->period->re_registration_days ?? 7 }}
+                                        hari dari hari ini) dan email notifikasi otomatis terkirim
+                                        ke calon siswa.
+
+                                    </small>
+
+                                </div>
+
+
+                                <div class="ppdb-detail-form-group">
+
+                                    <label
+                                        class="ppdb-detail-form-label"
+                                        for="notes"
+                                    >
+                                        Catatan (opsional)
+                                    </label>
+
+                                    <textarea
+                                        name="notes"
+                                        id="notes"
+                                        class="form-control ppdb-detail-form-control ppdb-detail-textarea"
+                                        rows="3"
+                                    >{{ $registration->notes }}</textarea>
+
+                                </div>
+
+
+                                <button
+                                    type="submit"
+                                    class="ppdb-save-status-button"
+                                >
+                                    Simpan Perubahan Status
+                                </button>
+
+                            </form>
+                        @else
+                            <div class="alert alert-info py-2 px-3 small mt-3 mb-0">
+                                Akses Read-Only: Perubahan status pendaftar hanya dapat dilakukan oleh Panitia PPDB / TU.
+                            </div>
+                        @endif
 
                     @elseif ($registration->notes)
 
@@ -786,63 +792,69 @@
 
                         @else
 
-                            <form
-                                method="POST"
-                                action="{{ route('admin.ppdb.confirm-re-registration', $registration) }}"
-                            >
-
-                                @csrf
-                                @method('PUT')
-
-
-                                <div class="ppdb-detail-form-group">
-
-                                    <label
-                                        class="ppdb-detail-form-label"
-                                        for="re_registration_reference"
-                                    >
-                                        No. Bukti Pembayaran / Kwitansi
-                                    </label>
-
-                                    <input
-                                        type="text"
-                                        name="re_registration_reference"
-                                        id="re_registration_reference"
-                                        class="form-control ppdb-detail-form-control"
-                                        placeholder="Contoh: KW-2026-0142"
-                                        required
-                                    >
-
-                                </div>
-
-
-                                <div class="ppdb-detail-form-group">
-
-                                    <label
-                                        class="ppdb-detail-form-label"
-                                        for="re_registration_notes"
-                                    >
-                                        Catatan (opsional)
-                                    </label>
-
-                                    <textarea
-                                        name="re_registration_notes"
-                                        id="re_registration_notes"
-                                        class="form-control ppdb-detail-form-control ppdb-detail-textarea"
-                                        rows="2"
-                                    ></textarea>
-
-                                </div>
-
-
-                                <button
-                                    type="submit"
-                                    class="ppdb-confirm-button"
+                            @if (auth()->user()->hasPermission('ppdb.manage'))
+                                <form
+                                    method="POST"
+                                    action="{{ route('admin.ppdb.confirm-re-registration', $registration) }}"
                                 >
-                                    Konfirmasi Daftar Ulang & Pembayaran
-                                </button>
 
-                            </form>
+                                    @csrf
+                                    @method('PUT')
+
+
+                                    <div class="ppdb-detail-form-group">
+
+                                        <label
+                                            class="ppdb-detail-form-label"
+                                            for="re_registration_reference"
+                                        >
+                                            No. Bukti Pembayaran / Kwitansi
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            name="re_registration_reference"
+                                            id="re_registration_reference"
+                                            class="form-control ppdb-detail-form-control"
+                                            placeholder="Contoh: KW-2026-0142"
+                                            required
+                                        >
+
+                                    </div>
+
+
+                                    <div class="ppdb-detail-form-group">
+
+                                        <label
+                                            class="ppdb-detail-form-label"
+                                            for="re_registration_notes"
+                                        >
+                                            Catatan (opsional)
+                                        </label>
+
+                                        <textarea
+                                            name="re_registration_notes"
+                                            id="re_registration_notes"
+                                            class="form-control ppdb-detail-form-control ppdb-detail-textarea"
+                                            rows="2"
+                                        ></textarea>
+
+                                    </div>
+
+
+                                    <button
+                                        type="submit"
+                                        class="ppdb-confirm-button"
+                                    >
+                                        Konfirmasi Daftar Ulang & Pembayaran
+                                    </button>
+
+                                </form>
+                            @else
+                                <div class="alert alert-info py-2 px-3 small mt-3 mb-0">
+                                    Akses Read-Only: Konfirmasi daftar ulang & pembayaran hanya dapat dilakukan oleh Panitia PPDB / TU.
+                                </div>
+                            @endif
 
                         @endif
 

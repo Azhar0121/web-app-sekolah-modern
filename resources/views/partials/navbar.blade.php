@@ -132,11 +132,18 @@
         </ul>
 
 
-        {{-- LOGIN --}}
-        <a href="{{ url('/login') }}" class="nav-login">
-            <span>Masuk ke Portal</span>
-            <span class="nav-arrow">&rarr;</span>
-        </a>
+        {{-- LOGIN / DASHBOARD --}}
+        @auth
+            <a href="{{ auth()->user()->dashboardUrl() }}" class="nav-login">
+                <span>Dashboard {{ auth()->user()->role?->name ?? '' }}</span>
+                <span class="nav-arrow">&rarr;</span>
+            </a>
+        @else
+            <a href="{{ url('/login') }}" class="nav-login">
+                <span>Masuk ke Portal</span>
+                <span class="nav-arrow">&rarr;</span>
+            </a>
+        @endauth
 
     </div>
 </nav>

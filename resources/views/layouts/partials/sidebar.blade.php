@@ -52,13 +52,12 @@
         [
             'label' => 'PPDB',
             'items' => [
-                ['label' => 'Kelola Pendaftaran', 'route' => 'admin.ppdb.index', 'pattern' => 'admin.ppdb.*', 'icon' => 'file-text', 'show' => $user->hasRole('super-admin')],
+                ['label' => 'Pendaftaran PPDB', 'route' => 'admin.ppdb.index', 'pattern' => 'admin.ppdb.*', 'icon' => 'file-text', 'show' => $user->hasPermission('ppdb.view') || $user->hasPermission('ppdb.manage')],
             ],
         ],
         [
             'label' => 'Tata Usaha',
             'items' => [
-                ['label' => 'Kelola PPDB', 'route' => 'admin.ppdb.index', 'pattern' => 'admin.ppdb.*', 'icon' => 'file-text', 'show' => $user->hasRole('tu')],
                 ['label' => 'Persuratan Digital', 'route' => 'admin.correspondences.index', 'pattern' => 'admin.correspondences.*', 'icon' => 'file-text', 'show' => $user->hasRole('tu')],
                 ['label' => 'Biodata Siswa', 'route' => 'admin.student-profiles.index', 'pattern' => 'admin.student-profiles.*', 'icon' => 'user-check', 'show' => $user->hasRole('tu')],
                 ['label' => 'Tagihan Siswa', 'route' => 'admin.billing.index', 'pattern' => 'admin.billing.*', 'icon' => 'clipboard-list', 'show' => $user->hasRole('tu')],

@@ -18,6 +18,10 @@ return Application::configure(basePath: dirname(__DIR__))
             'role' => CheckRole::class,
             'permission' => CheckPermission::class,
         ]);
+
+        $middleware->redirectUsersTo(function (Request $request) {
+            return $request->user()?->dashboardUrl() ?? route('login');
+        });
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

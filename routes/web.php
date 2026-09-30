@@ -57,6 +57,7 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
+    Route::get('/ping', fn () => response()->json(['status' => 'ok']))->name('ping');
 });
 
 // ================= PPDB ONLINE (PUBLIK, TANPA LOGIN) =================
@@ -112,12 +113,17 @@ Route::middleware(['auth', 'role:super-admin'])->prefix('admin')->name('admin.')
     Route::resource('schedules', AdminScheduleController::class)->except(['show']);
 });
 
-// ================= KELOLA PPDB (SUPER ADMIN & TU, by permission) =================
-Route::middleware(['auth', 'permission:ppdb.manage'])->prefix('admin/ppdb')->name('admin.ppdb.')->group(function () {
-    Route::get('/', [AdminPpdbController::class, 'index'])->name('index');
-    Route::get('/{ppdbRegistration}', [AdminPpdbController::class, 'show'])->name('show');
-    Route::put('/{ppdbRegistration}/status', [AdminPpdbController::class, 'updateStatus'])->name('update-status');
-    Route::put('/{ppdbRegistration}/re-registration', [AdminPpdbController::class, 'confirmReRegistration'])->name('confirm-re-registration');
+// ================= KELOLA PPDB (SUPER ADMIN, TU & KEPSEK, by permission) =================
+Route::prefix('admin/ppdb')->name('admin.ppdb.')->group(function () {
+    Route::middleware(['auth', 'permission:ppdb.view,ppdb.manage'])->group(function () {
+        Route::get('/', [AdminPpdbController::class, 'index'])->name('index');
+        Route::get('/{ppdbRegistration}', [AdminPpdbController::class, 'show'])->name('show');
+    });
+
+    Route::middleware(['auth', 'permission:ppdb.manage'])->group(function () {
+        Route::put('/{ppdbRegistration}/status', [AdminPpdbController::class, 'updateStatus'])->name('update-status');
+        Route::put('/{ppdbRegistration}/re-registration', [AdminPpdbController::class, 'confirmReRegistration'])->name('confirm-re-registration');
+    });
 });
 
 // ================= PERSURATAN DIGITAL & KEARSIPAN (SUPER ADMIN & TU, by permission) =================

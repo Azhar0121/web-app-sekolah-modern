@@ -50,6 +50,7 @@
     </script>
 
     @stack('scripts')
+    @include('partials.keep-alive')
 
 </body>
 </html>

@@ -43,16 +43,6 @@ class DashboardController extends Controller
             return ['name' => $subject->name, 'score' => round($avg, 1)];
         })->filter(fn ($i) => $i['score'] > 0)->values();
 
-        if ($subjectAverages->isEmpty()) {
-            $subjectAverages = collect([
-                ['name' => 'Matematika',       'score' => 78.5],
-                ['name' => 'Bahasa Indonesia', 'score' => 84.2],
-                ['name' => 'Bahasa Inggris',   'score' => 81.0],
-                ['name' => 'IPA / Fisika',     'score' => 76.8],
-                ['name' => 'IPS / Sejarah',    'score' => 82.4],
-            ]);
-        }
-
         $allScores = Grade::pluck('score');
         if ($allScores->isNotEmpty()) {
             $gradeA = $allScores->filter(fn ($s) => $s >= 85)->count();
@@ -60,7 +50,7 @@ class DashboardController extends Controller
             $gradeC = $allScores->filter(fn ($s) => $s >= 65 && $s < 75)->count();
             $gradeD = $allScores->filter(fn ($s) => $s < 65)->count();
         } else {
-            [$gradeA, $gradeB, $gradeC, $gradeD] = [35, 45, 15, 5];
+            [$gradeA, $gradeB, $gradeC, $gradeD] = [0, 0, 0, 0];
         }
         $gradeDistribution = ['A' => $gradeA, 'B' => $gradeB, 'C' => $gradeC, 'D' => $gradeD];
 
@@ -69,16 +59,6 @@ class DashboardController extends Controller
                 ->avg('score') ?? 0;
             return ['name' => $classroom->name, 'score' => round($avg, 1)];
         })->filter(fn ($i) => $i['score'] > 0)->values();
-
-        if ($classroomAverages->isEmpty()) {
-            $classroomAverages = collect([
-                ['name' => 'Kelas X-A',       'score' => 80.2],
-                ['name' => 'Kelas X-B',       'score' => 78.6],
-                ['name' => 'Kelas XI-IPA 1',  'score' => 83.5],
-                ['name' => 'Kelas XI-IPS 1',  'score' => 79.1],
-                ['name' => 'Kelas XII-IPA 1', 'score' => 86.0],
-            ]);
-        }
 
         $teachers = User::whereHas('role', fn ($q) => $q->where('slug', 'guru'))
             ->with(['teachingAssignments.subject', 'teachingAssignments.classroom'])
@@ -110,7 +90,7 @@ class DashboardController extends Controller
             ];
         });
 
-        $todayDate       = now()->format('Y-m-d');
+        $todayDate        = now()->format('Y-m-d');
         $todayAttendances = Attendance::whereHas('session', fn ($q) => $q->whereDate('date', $todayDate))->get();
 
         if ($todayAttendances->isNotEmpty()) {
@@ -120,16 +100,7 @@ class DashboardController extends Controller
             $todayAlpha = $todayAttendances->where('status', 'alpha')->count();
             $todayTotal = $todayAttendances->count();
         } else {
-            $allAtt = Attendance::all();
-            if ($allAtt->isNotEmpty()) {
-                $todayHadir = $allAtt->where('status', 'hadir')->count();
-                $todayIzin  = $allAtt->where('status', 'izin')->count();
-                $todaySakit = $allAtt->where('status', 'sakit')->count();
-                $todayAlpha = $allAtt->where('status', 'alpha')->count();
-                $todayTotal = $allAtt->count();
-            } else {
-                [$todayHadir, $todayIzin, $todaySakit, $todayAlpha, $todayTotal] = [185, 12, 8, 5, 210];
-            }
+            [$todayHadir, $todayIzin, $todaySakit, $todayAlpha, $todayTotal] = [0, 0, 0, 0, 0];
         }
 
         $todayAttendanceRate         = $todayTotal > 0 ? round(($todayHadir / $todayTotal) * 100, 1) : 0;

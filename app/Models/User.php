@@ -51,6 +51,19 @@ class User extends Authenticatable
         return $this->role && $this->role->hasPermission($permissionSlug);
     }
 
+    public function dashboardUrl(): string
+    {
+        return match ($this->role?->slug) {
+            'super-admin' => route('admin.dashboard'),
+            'guru'        => route('guru.dashboard'),
+            'siswa'       => route('siswa.dashboard'),
+            'ortu'        => route('ortu.dashboard'),
+            'tu'          => route('tu.dashboard'),
+            'kepsek'      => route('kepsek.dashboard'),
+            default       => url('/login'),
+        };
+    }
+
     public function teachingAssignments(): HasMany
     {
         return $this->hasMany(TeachingAssignment::class, 'teacher_id');
