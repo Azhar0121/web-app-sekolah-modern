@@ -1,0 +1,1052 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root {
+    --scan-blue: #1769d5;
+    --scan-blue-dark: #125bb9;
+    --scan-blue-soft: #eef6ff;
+    --scan-blue-light: #e3efff;
+
+    --scan-green: #198754;
+    --scan-yellow: #a87500;
+    --scan-red: #dc3545;
+
+    --scan-text: #10223d;
+    --scan-muted: #66758a;
+
+    --scan-border: #dce5ef;
+    --scan-border-light: #edf1f5;
+
+    --scan-bg: #f7f9fc;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.student-attendance-scan-page {
+    width: 100%;
+    min-height: 100%;
+
+    padding: 26px 18px 45px;
+
+    background: var(--scan-bg);
+
+    color: var(--scan-text);
+
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.student-attendance-scan-wrapper {
+    width: 100%;
+    max-width: 720px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.student-attendance-scan-header {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 145px;
+
+    padding: 27px 30px;
+
+    margin-bottom: 18px;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background: var(--scan-blue);
+
+    color: #fff;
+
+    box-shadow: 0 8px 22px rgba(23, 105, 213, .15);
+}
+
+.student-attendance-scan-header::before {
+    content: '';
+
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    right: -65px;
+    top: -105px;
+
+    border: 1px solid rgba(255, 255, 255, .12);
+
+    border-radius: 50%;
+}
+
+.student-attendance-scan-header::after {
+    content: '';
+
+    position: absolute;
+
+    width: 150px;
+    height: 150px;
+
+    right: 100px;
+    bottom: -105px;
+
+    border: 1px solid rgba(255, 255, 255, .1);
+
+    border-radius: 50%;
+}
+
+.student-attendance-scan-header-content {
+    position: relative;
+    z-index: 2;
+}
+
+.student-attendance-scan-label {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 7px;
+
+    margin-bottom: 8px;
+
+    color: rgba(255, 255, 255, .8);
+
+    font-size: .59rem;
+    font-weight: 800;
+
+    letter-spacing: .1em;
+}
+
+.student-attendance-scan-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #fff;
+}
+
+.student-attendance-scan-header h1 {
+    margin: 0;
+
+    color: #fff;
+
+    font-size: 1.65rem;
+    font-weight: 800;
+
+    line-height: 1.2;
+
+    letter-spacing: -.025em;
+}
+
+.student-attendance-scan-header p {
+    margin: 7px 0 0;
+
+    color: rgba(255, 255, 255, .77);
+
+    font-size: .7rem;
+
+    line-height: 1.55;
+}
+
+.student-attendance-scan-header-back {
+    position: relative;
+    z-index: 3;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    min-height: 34px;
+
+    padding: 8px 12px;
+
+    border: 1px solid rgba(255, 255, 255, .3);
+    border-radius: 7px;
+
+    background: rgba(255, 255, 255, .1);
+
+    color: #fff;
+
+    font-size: .67rem;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+}
+
+.student-attendance-scan-header-back:hover {
+    background: rgba(255, 255, 255, .18);
+
+    color: #fff;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   SCANNER CARD
+========================================================= */
+
+.student-attendance-scanner-card {
+    padding: 18px;
+
+    border: 1px solid var(--scan-border);
+
+    border-radius: 9px;
+
+    background: #fff;
+
+    box-shadow: 0 4px 15px rgba(16, 34, 61, .045);
+}
+
+
+/* =========================================================
+   SCANNER TOP
+========================================================= */
+
+.student-attendance-scanner-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 2px 2px 16px;
+
+    border-bottom: 1px solid var(--scan-border-light);
+
+    margin-bottom: 16px;
+}
+
+.student-attendance-scanner-title {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    min-width: 0;
+}
+
+.student-attendance-scanner-title-icon {
+    width: 39px;
+    height: 39px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 7px;
+
+    background: var(--scan-blue);
+
+    color: #fff;
+
+    box-shadow: 0 4px 10px rgba(23, 105, 213, .14);
+}
+
+.student-attendance-scanner-title-icon i {
+    font-size: .95rem;
+}
+
+.student-attendance-scanner-title span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: var(--scan-blue);
+
+    font-size: .53rem;
+    font-weight: 800;
+
+    letter-spacing: .09em;
+}
+
+.student-attendance-scanner-title h2 {
+    margin: 0;
+
+    color: var(--scan-text);
+
+    font-size: .95rem;
+    font-weight: 800;
+}
+
+.student-attendance-scanner-status {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 6px 9px;
+
+    border: 1px solid #cfe5d8;
+    border-radius: 6px;
+
+    background: #f1faf4;
+
+    color: var(--scan-green);
+
+    font-size: .57rem;
+    font-weight: 800;
+
+    white-space: nowrap;
+}
+
+.student-attendance-scanner-status span {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: var(--scan-green);
+}
+
+
+/* =========================================================
+   CAMERA
+========================================================= */
+
+.student-attendance-camera {
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 1 / .82;
+
+    overflow: hidden;
+
+    border-radius: 7px;
+
+    background: #101820;
+
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .08);
+}
+
+.student-attendance-video {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* =========================================================
+   SCAN OVERLAY
+========================================================= */
+
+.student-attendance-scan-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   SCAN CORNERS
+========================================================= */
+
+.scan-corner {
+    position: absolute;
+
+    width: 42px;
+    height: 42px;
+
+    border-color: #fff;
+    border-style: solid;
+
+    filter: drop-shadow(0 1px 4px rgba(0, 0, 0, .25));
+}
+
+.scan-corner.top-left {
+    top: 13%;
+    left: 13%;
+
+    border-width: 4px 0 0 4px;
+
+    border-radius: 4px 0 0 0;
+}
+
+.scan-corner.top-right {
+    top: 13%;
+    right: 13%;
+
+    border-width: 4px 4px 0 0;
+
+    border-radius: 0 4px 0 0;
+}
+
+.scan-corner.bottom-left {
+    bottom: 13%;
+    left: 13%;
+
+    border-width: 0 0 4px 4px;
+
+    border-radius: 0 0 0 4px;
+}
+
+.scan-corner.bottom-right {
+    right: 13%;
+    bottom: 13%;
+
+    border-width: 0 4px 4px 0;
+
+    border-radius: 0 0 4px 0;
+}
+
+
+/* =========================================================
+   SCAN LINE
+========================================================= */
+
+.scan-line {
+    position: absolute;
+
+    top: 13%;
+    left: 14%;
+    right: 14%;
+
+    height: 2px;
+
+    background: #fff;
+
+    opacity: .85;
+
+    box-shadow:
+        0 0 5px rgba(255, 255, 255, .75),
+        0 0 10px rgba(23, 105, 213, .55);
+
+    animation: scanMove 2s ease-in-out infinite;
+}
+
+@keyframes scanMove {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(calc(100% * 4.8));
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   CAMERA LABEL
+========================================================= */
+
+.student-attendance-camera-label {
+    position: absolute;
+
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    min-height: 31px;
+
+    padding: 6px 10px;
+
+    border: 1px solid rgba(255, 255, 255, .16);
+    border-radius: 5px;
+
+    background: rgba(10, 20, 30, .62);
+
+    color: rgba(255, 255, 255, .9);
+
+    font-size: .58rem;
+
+    backdrop-filter: blur(5px);
+}
+
+.student-attendance-camera-label i {
+    font-size: .68rem;
+}
+
+
+/* =========================================================
+   CAMERA ERROR
+========================================================= */
+
+.student-attendance-camera-error {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 5;
+
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    padding: 25px;
+
+    background: #17202b;
+
+    color: #fff;
+
+    text-align: center;
+}
+
+.student-attendance-camera-error-icon {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 12px;
+
+    border: 1px solid rgba(220, 53, 69, .35);
+    border-radius: 8px;
+
+    background: rgba(220, 53, 69, .12);
+
+    color: #ff6b78;
+}
+
+.student-attendance-camera-error-icon i {
+    font-size: 1.3rem;
+}
+
+.student-attendance-camera-error strong {
+    font-size: .78rem;
+    font-weight: 800;
+}
+
+.student-attendance-camera-error small {
+    max-width: 300px;
+
+    margin-top: 6px;
+
+    color: rgba(255, 255, 255, .65);
+
+    font-size: .62rem;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   FEEDBACK
+========================================================= */
+
+.student-attendance-feedback {
+    margin-top: 14px;
+}
+
+.student-attendance-feedback-box {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    min-height: 55px;
+
+    padding: 9px 11px;
+
+    border: 1px solid var(--scan-border);
+
+    border-radius: 7px;
+
+    background: #f8fafc;
+
+    color: var(--scan-text);
+}
+
+.student-attendance-feedback-icon {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 6px;
+
+    background: #e9eef4;
+
+    color: var(--scan-muted);
+}
+
+.student-attendance-feedback-icon i {
+    font-size: .85rem;
+}
+
+.student-attendance-feedback-content {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+.student-attendance-feedback-content strong {
+    color: var(--scan-text);
+
+    font-size: .68rem;
+    font-weight: 800;
+}
+
+.student-attendance-feedback-content span {
+    color: var(--scan-muted);
+
+    font-size: .59rem;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   FEEDBACK STATES
+========================================================= */
+
+.student-attendance-feedback-box.success {
+    border-color: #c8e5d2;
+
+    background: #f2faf5;
+}
+
+.student-attendance-feedback-box.success
+.student-attendance-feedback-icon {
+    background: #dff3e6;
+
+    color: var(--scan-green);
+}
+
+.student-attendance-feedback-box.success
+.student-attendance-feedback-content strong {
+    color: var(--scan-green);
+}
+
+
+.student-attendance-feedback-box.warning {
+    border-color: #eddda9;
+
+    background: #fffaf0;
+}
+
+.student-attendance-feedback-box.warning
+.student-attendance-feedback-icon {
+    background: #fff1c9;
+
+    color: var(--scan-yellow);
+}
+
+.student-attendance-feedback-box.warning
+.student-attendance-feedback-content strong {
+    color: var(--scan-yellow);
+}
+
+
+.student-attendance-feedback-box.danger {
+    border-color: #efcdd1;
+
+    background: #fff5f6;
+}
+
+.student-attendance-feedback-box.danger
+.student-attendance-feedback-icon {
+    background: #fde5e7;
+
+    color: var(--scan-red);
+}
+
+.student-attendance-feedback-box.danger
+.student-attendance-feedback-content strong {
+    color: var(--scan-red);
+}
+
+
+.student-attendance-feedback-box.loading {
+    border-color: #cbdcf1;
+
+    background: var(--scan-blue-soft);
+}
+
+.student-attendance-feedback-box.loading
+.student-attendance-feedback-icon {
+    background: #dcecff;
+
+    color: var(--scan-blue);
+
+    animation: feedbackPulse 1.2s ease-in-out infinite;
+}
+
+.student-attendance-feedback-box.loading
+.student-attendance-feedback-content strong {
+    color: var(--scan-blue);
+}
+
+@keyframes feedbackPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(.92);
+    }
+}
+
+
+/* =========================================================
+   CAMERA BUTTON
+========================================================= */
+
+.student-attendance-camera-button {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    min-height: 42px;
+
+    margin-top: 12px;
+
+    padding: 9px 14px;
+
+    border: 1px solid var(--scan-blue);
+    border-radius: 7px;
+
+    background: var(--scan-blue);
+
+    color: #fff;
+
+    font-family: inherit;
+
+    font-size: .68rem;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.student-attendance-camera-button:hover {
+    border-color: var(--scan-blue-dark);
+
+    background: var(--scan-blue-dark);
+
+    color: #fff;
+
+    box-shadow: 0 5px 12px rgba(23, 105, 213, .17);
+
+    transform: translateY(-1px);
+}
+
+.student-attendance-camera-button i {
+    font-size: .85rem;
+}
+
+.student-attendance-camera-button small {
+    padding-left: 3px;
+
+    color: rgba(255, 255, 255, .68);
+
+    font-size: .55rem;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.student-attendance-scan-footer {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 18px;
+}
+
+.student-attendance-back-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 9px 13px;
+
+    border: 1px solid var(--scan-border);
+    border-radius: 7px;
+
+    background: #fff;
+
+    color: var(--scan-text);
+
+    font-size: .68rem;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        color .2s ease;
+}
+
+.student-attendance-back-button:hover {
+    border-color: #bdd5ed;
+
+    background: var(--scan-blue-soft);
+
+    color: var(--scan-blue);
+}
+
+.student-attendance-back-button i {
+    font-size: .75rem;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .student-attendance-scan-wrapper {
+        max-width: 650px;
+    }
+
+    .student-attendance-scan-header {
+        min-height: 135px;
+
+        padding: 25px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 576px) {
+
+    .student-attendance-scan-page {
+        padding: 18px 12px 35px;
+    }
+
+    .student-attendance-scan-header {
+        align-items: flex-start;
+
+        min-height: 155px;
+
+        padding: 21px 19px;
+
+        margin-bottom: 15px;
+    }
+
+    .student-attendance-scan-header h1 {
+        font-size: 1.4rem;
+    }
+
+    .student-attendance-scan-header p {
+        max-width: 230px;
+
+        font-size: .63rem;
+    }
+
+    .student-attendance-scan-header-back {
+        min-height: 32px;
+
+        padding: 7px 9px;
+    }
+
+    .student-attendance-scan-header-back span {
+        display: none;
+    }
+
+
+    /* SCANNER CARD */
+
+    .student-attendance-scanner-card {
+        padding: 13px;
+
+        border-radius: 8px;
+    }
+
+
+    /* TOP */
+
+    .student-attendance-scanner-top {
+        align-items: flex-start;
+
+        padding-bottom: 13px;
+
+        margin-bottom: 13px;
+    }
+
+    .student-attendance-scanner-title-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .student-attendance-scanner-title span {
+        font-size: .49rem;
+    }
+
+    .student-attendance-scanner-title h2 {
+        font-size: .86rem;
+    }
+
+    .student-attendance-scanner-status {
+        padding: 5px 7px;
+
+        font-size: .51rem;
+    }
+
+    .student-attendance-scanner-status span {
+        width: 5px;
+        height: 5px;
+    }
+
+
+    /* CAMERA */
+
+    .student-attendance-camera {
+        aspect-ratio: 1 / 1;
+    }
+
+    .student-attendance-camera-label {
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+
+        font-size: .53rem;
+    }
+
+
+    /* FEEDBACK */
+
+    .student-attendance-feedback-box {
+        min-height: 51px;
+
+        padding: 8px;
+    }
+
+    .student-attendance-feedback-icon {
+        width: 31px;
+        height: 31px;
+    }
+
+    .student-attendance-feedback-content strong {
+        font-size: .63rem;
+    }
+
+    .student-attendance-feedback-content span {
+        font-size: .55rem;
+    }
+
+
+    /* BUTTON */
+
+    .student-attendance-camera-button {
+        min-height: 40px;
+
+        font-size: .64rem;
+    }
+
+    .student-attendance-camera-button small {
+        font-size: .52rem;
+    }
+
+
+    /* FOOTER */
+
+    .student-attendance-scan-footer {
+        margin-top: 15px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .student-attendance-scan-page {
+        padding-left: 9px;
+        padding-right: 9px;
+    }
+
+    .student-attendance-scan-header {
+        padding: 19px 16px;
+    }
+
+    .student-attendance-scan-header h1 {
+        font-size: 1.28rem;
+    }
+
+    .student-attendance-scanner-card {
+        padding: 11px;
+    }
+
+    .student-attendance-scanner-status {
+        display: none;
+    }
+
+    .student-attendance-camera-label span {
+        max-width: 190px;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+
+        white-space: nowrap;
+    }
+
+    .student-attendance-camera-button {
+        gap: 6px;
+    }
+
+}

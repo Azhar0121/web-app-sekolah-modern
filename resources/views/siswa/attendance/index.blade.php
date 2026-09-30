@@ -1,123 +1,364 @@
 @extends('layouts.app')
+
 @section('title', 'Riwayat Presensi')
+
 @section('content')
 
-{{-- Tombol Scan Presensi — Posisi Pertama & Paling Menonjol --}}
-<a href="{{ route('siswa.attendance.scan') }}"
-   class="btn btn-success fw-bold w-100 py-3 mb-4 d-flex align-items-center justify-content-center gap-2 fs-6">
-    <i class="bi bi-qr-code-scan fs-5"></i>
-    Scan Presensi Sekarang
-    <i class="bi bi-arrow-right-circle-fill ms-auto"></i>
-</a>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="{{ asset('css/siswa/attendance/index.css') }}">
 
-{{-- Rekap Statistik --}}
-<div class="row g-3 mb-4">
-    <div class="col-6 col-md-3">
-        <div class="card border-0 shadow-sm text-center py-3 h-100" style="border-top: 3px solid #198754 !important;">
-            <div class="card-body p-2">
-                <div class="fs-3 fw-bold text-success">{{ $recap['hadir'] }}</div>
-                <div class="small text-muted fw-semibold text-uppercase" style="font-size:.7rem; letter-spacing:.05em;">Hadir</div>
+<div class="student-attendance-page">
+
+    <div class="student-attendance-wrapper">
+
+        {{-- =====================================================
+            HERO
+        ====================================================== --}}
+        <div class="student-attendance-hero">
+
+            <div class="student-attendance-hero-content">
+
+                <div class="student-attendance-hero-label">
+                    <span class="student-attendance-hero-dot"></span>
+                    PRESENSI SISWA
+                </div>
+
+                <h1>Riwayat Presensi</h1>
+
+                <p>
+                    Lihat rekap dan riwayat kehadiran kamu selama kegiatan belajar.
+                </p>
+
             </div>
+
+            <a href="{{ route('siswa.dashboard') }}"
+               class="student-attendance-hero-back">
+
+                <i class="bi bi-arrow-left"></i>
+                <span>Kembali</span>
+
+            </a>
+
         </div>
-    </div>
-    <div class="col-6 col-md-3">
-        <div class="card border-0 shadow-sm text-center py-3 h-100" style="border-top: 3px solid #0dcaf0 !important;">
-            <div class="card-body p-2">
-                <div class="fs-3 fw-bold text-info">{{ $recap['izin'] }}</div>
-                <div class="small text-muted fw-semibold text-uppercase" style="font-size:.7rem; letter-spacing:.05em;">Izin</div>
+
+
+        {{-- =====================================================
+            SCAN PRESENSI
+        ====================================================== --}}
+        {{-- SCAN PRESENSI --}}
+        <a href="{{ route('siswa.attendance.scan') }}"
+        class="student-attendance-scan">
+
+            <div class="student-attendance-scan-icon">
+                <i class="bi bi-qr-code-scan"></i>
             </div>
-        </div>
-    </div>
-    <div class="col-6 col-md-3">
-        <div class="card border-0 shadow-sm text-center py-3 h-100" style="border-top: 3px solid #ffc107 !important;">
-            <div class="card-body p-2">
-                <div class="fs-3 fw-bold text-warning">{{ $recap['sakit'] }}</div>
-                <div class="small text-muted fw-semibold text-uppercase" style="font-size:.7rem; letter-spacing:.05em;">Sakit</div>
+
+            <div class="student-attendance-scan-content">
+
+                <strong>Scan Presensi Sekarang</strong>
+
+                <span>
+                    Gunakan QR Code untuk mencatat kehadiran
+                </span>
+
             </div>
-        </div>
-    </div>
-    <div class="col-6 col-md-3">
-        <div class="card border-0 shadow-sm text-center py-3 h-100" style="border-top: 3px solid #dc3545 !important;">
-            <div class="card-body p-2">
-                <div class="fs-3 fw-bold text-danger">{{ $recap['alpha'] }}</div>
-                <div class="small text-muted fw-semibold text-uppercase" style="font-size:.7rem; letter-spacing:.05em;">Alpha</div>
+
+            <div class="student-attendance-scan-action">
+
+                <span>Mulai Scan</span>
+
+                <i class="bi bi-arrow-right"></i>
+
             </div>
+
+        </a>
+
+
+        {{-- =====================================================
+            REKAP KEHADIRAN
+        ====================================================== --}}
+        <div class="student-attendance-summary-card">
+
+            <div class="student-attendance-section-heading">
+
+                <div>
+
+                    <span>RINGKASAN</span>
+
+                    <h2>Rekap Kehadiran</h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="student-attendance-stats">
+
+                {{-- HADIR --}}
+                <div class="student-attendance-stat present">
+
+                    <div class="student-attendance-stat-icon">
+                        <i class="bi bi-check-circle-fill"></i>
+                    </div>
+
+                    <div class="student-attendance-stat-info">
+
+                        <span>HADIR</span>
+
+                        <strong>{{ $recap['hadir'] }}</strong>
+
+                        <small>Kehadiran</small>
+
+                    </div>
+
+                </div>
+
+
+                {{-- IZIN --}}
+                <div class="student-attendance-stat permit">
+
+                    <div class="student-attendance-stat-icon">
+                        <i class="bi bi-file-earmark-check-fill"></i>
+                    </div>
+
+                    <div class="student-attendance-stat-info">
+
+                        <span>IZIN</span>
+
+                        <strong>{{ $recap['izin'] }}</strong>
+
+                        <small>Dengan izin</small>
+
+                    </div>
+
+                </div>
+
+
+                {{-- SAKIT --}}
+                <div class="student-attendance-stat sick">
+
+                    <div class="student-attendance-stat-icon">
+                        <i class="bi bi-heart-pulse-fill"></i>
+                    </div>
+
+                    <div class="student-attendance-stat-info">
+
+                        <span>SAKIT</span>
+
+                        <strong>{{ $recap['sakit'] }}</strong>
+
+                        <small>Keterangan sakit</small>
+
+                    </div>
+
+                </div>
+
+
+                {{-- ALPHA --}}
+                <div class="student-attendance-stat alpha">
+
+                    <div class="student-attendance-stat-icon">
+                        <i class="bi bi-x-circle-fill"></i>
+                    </div>
+
+                    <div class="student-attendance-stat-info">
+
+                        <span>ALPHA</span>
+
+                        <strong>{{ $recap['alpha'] }}</strong>
+
+                        <small>Tanpa keterangan</small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
+
+
+        {{-- =====================================================
+            RIWAYAT KEHADIRAN
+        ====================================================== --}}
+        <div class="student-attendance-history-card">
+
+            <div class="student-attendance-history-heading">
+
+                <div class="student-attendance-history-heading-icon">
+                    <i class="bi bi-calendar2-check-fill"></i>
+                </div>
+
+                <div class="student-attendance-history-heading-content">
+
+                    <span>AKTIVITAS PRESENSI</span>
+
+                    <h2>Riwayat Kehadiran</h2>
+
+                    <p>
+                        Daftar kehadiran berdasarkan tanggal dan mata pelajaran.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            {{-- =================================================
+                RIWAYAT PER TANGGAL
+            ================================================== --}}
+            @forelse ($attendances as $date => $items)
+
+                <div class="student-attendance-history">
+
+                    {{-- DATE HEADER --}}
+                    <div class="student-attendance-date">
+
+                        <div class="student-attendance-date-icon">
+                            <i class="bi bi-calendar3"></i>
+                        </div>
+
+                        <div class="student-attendance-date-info">
+
+                            <span>TANGGAL PRESENSI</span>
+
+                            <strong>
+                                {{ \Illuminate\Support\Carbon::parse($date)->translatedFormat('l, d F Y') }}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    {{-- TABLE --}}
+                    <div class="table-responsive">
+
+                        <table class="student-attendance-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Mata Pelajaran
+                                    </th>
+
+                                    <th>
+                                        Status
+                                    </th>
+
+                                    <th>
+                                        Waktu Scan
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                @foreach ($items as $attendance)
+
+                                    <tr>
+
+                                        {{-- MATA PELAJARAN --}}
+                                        <td>
+
+                                            <div class="student-attendance-subject">
+
+                                                <div class="student-attendance-subject-icon">
+                                                    <i class="bi bi-book-fill"></i>
+                                                </div>
+
+                                                <div class="student-attendance-subject-info">
+
+                                                    <strong>
+                                                        {{ $attendance->session->schedule->teachingAssignment->subject->name }}
+                                                    </strong>
+
+                                                    <span>
+                                                        Mata Pelajaran
+                                                    </span>
+
+                                                </div>
+
+                                            </div>
+
+                                        </td>
+
+
+                                        {{-- STATUS --}}
+                                        <td>
+
+                                            <span class="student-attendance-status {{ $attendance->statusBadgeClass() }}">
+                                                {{ $attendance->statusLabel() }}
+                                            </span>
+
+                                        </td>
+
+
+                                        {{-- WAKTU SCAN --}}
+                                        <td>
+
+                                            <span class="student-attendance-time">
+
+                                                <i class="bi bi-clock"></i>
+
+                                                {{ $attendance->scanned_at?->format('H:i') ?? '—' }}
+
+                                            </span>
+
+                                        </td>
+
+                                    </tr>
+
+                                @endforeach
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            @empty
+
+                {{-- EMPTY STATE --}}
+                <div class="student-attendance-empty">
+
+                    <div class="student-attendance-empty-icon">
+                        <i class="bi bi-calendar-x"></i>
+                    </div>
+
+                    <h3>Belum Ada Catatan Presensi</h3>
+
+                    <p>
+                        Belum ada riwayat kehadiran yang tercatat.
+                    </p>
+
+                </div>
+
+            @endforelse
+
+        </div>
+
     </div>
+
 </div>
 
-{{-- Riwayat Per Tanggal --}}
-@forelse ($attendances as $date => $items)
-    <div class="card border-0 shadow-sm mb-3">
-        <div class="card-header bg-light border-bottom py-2 px-3 d-flex align-items-center gap-2">
-            <i class="bi bi-calendar3 text-primary small"></i>
-            <span class="fw-semibold small">{{ \Illuminate\Support\Carbon::parse($date)->translatedFormat('l, d F Y') }}</span>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-hover align-middle mb-0">
-                <thead class="table-light">
-                    <tr>
-                        <th class="ps-3 small">Mata Pelajaran</th>
-                        <th class="small" style="width:130px;">Status</th>
-                        <th class="small" style="width:110px;">Waktu Scan</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($items as $attendance)
-                    <tr>
-                        <td class="ps-3">
-                            <div class="d-flex align-items-center gap-2">
-                                <div class="bg-primary bg-opacity-10 text-primary rounded-2 p-1 d-flex flex-shrink-0">
-                                    <i class="bi bi-book-fill small"></i>
-                                </div>
-                                <span class="fw-semibold small">
-                                    {{ $attendance->session->schedule->teachingAssignment->subject->name }}
-                                </span>
-                            </div>
-                        </td>
-                        <td>
-                            <span class="badge {{ $attendance->statusBadgeClass() }}">
-                                {{ $attendance->statusLabel() }}
-                            </span>
-                        </td>
-                        <td class="text-muted small">
-                            <i class="bi bi-clock me-1"></i>
-                            {{ $attendance->scanned_at?->format('H:i') ?? '—' }}
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-    </div>
-@empty
-    <div class="card border-0 shadow-sm">
-        <div class="card-body text-center py-5">
-            <i class="bi bi-calendar-x display-4 text-muted mb-3 d-block"></i>
-            <h6 class="fw-bold">Belum Ada Catatan Presensi</h6>
-            <p class="text-muted small mb-0">Belum ada riwayat kehadiran yang tercatat.</p>
-        </div>
-    </div>
-@endforelse
 
-<div class="mt-3 pt-2">
-    <a href="{{ route('siswa.dashboard') }}" class="btn btn-outline-secondary btn-sm">
-        <i class="bi bi-arrow-left me-1"></i> Kembali ke Dashboard
-    </a>
-</div>
-
-{{-- FAB Scan — Mobile only --}}
+{{-- =========================================================
+    MOBILE FAB
+========================================================= --}}
 <a href="{{ route('siswa.attendance.scan') }}"
-   class="d-md-none position-fixed bottom-0 end-0 m-4 btn btn-success rounded-pill px-4 py-3 shadow fw-bold d-flex align-items-center gap-2"
-   style="z-index:1050; animation: fabPop .4s cubic-bezier(.34,1.56,.64,1) forwards;">
-    <i class="bi bi-qr-code-scan fs-5"></i> Scan
-</a>
+   class="student-attendance-fab">
 
-<style>
-@keyframes fabPop {
-    from { transform: scale(.5) translateY(20px); opacity: 0; }
-    to   { transform: scale(1) translateY(0);     opacity: 1; }
-}
-</style>
+    <i class="bi bi-qr-code-scan"></i>
+
+    <span>Scan</span>
+
+</a>
 
 @endsection

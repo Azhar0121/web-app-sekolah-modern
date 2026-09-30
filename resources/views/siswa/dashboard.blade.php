@@ -155,7 +155,9 @@ try {
 
             @endif
 
+
             <div class="hero-info-divider"></div>
+
 
             <div class="hero-info-item">
                 <div class="hero-info-icon">
@@ -167,6 +169,27 @@ try {
                     <strong>{{ $dayName }}, {{ $today->format('d M Y') }}</strong>
                 </div>
             </div>
+
+
+            <div class="hero-info-divider"></div>
+
+
+            {{-- KELOLA BIODATA --}}
+            <a href="{{ route('siswa.profile.edit') }}"
+            class="hero-profile-button">
+
+                <div class="hero-profile-icon">
+                    <i class="bi bi-person-vcard"></i>
+                </div>
+
+                <div class="hero-profile-content">
+                    <small>PROFIL SISWA</small>
+                    <strong>Kelola Biodata</strong>
+                </div>
+
+                <i class="bi bi-arrow-up-right hero-profile-arrow"></i>
+
+            </a>
 
         </div>
 
@@ -537,11 +560,6 @@ try {
                 rekap nilai akademik Anda.
             </p>
 
-            <div class="grade-action">
-                Lihat Nilai Lengkap
-                <i class="bi bi-arrow-right"></i>
-            </div>
-
         </div>
 
         <div class="grade-visual">
@@ -576,12 +594,6 @@ try {
 
 </section>
 
-
-<div class="container mt-3">
-    <a href="{{ route('siswa.profile.edit') }}" class="btn btn-outline-primary btn-sm">
-        🧾 Kelola Biodata Saya
-    </a>
-</div>
 
 </div>
 
