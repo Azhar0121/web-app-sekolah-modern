@@ -34,16 +34,26 @@
             'label' => 'Master Data Akademik',
             'items' => [
                 ['label' => 'Tahun Ajaran & Semester', 'route' => 'admin.academic-years.index', 'pattern' => 'admin.academic-years.*', 'icon' => 'calendar', 'show' => $user->hasRole('super-admin')],
-                ['label' => 'Mata Pelajaran', 'route' => 'admin.subjects.index', 'pattern' => 'admin.subjects.*', 'icon' => 'book', 'show' => $user->hasRole('super-admin')],
-                ['label' => 'Kelas', 'route' => 'admin.classrooms.index', 'pattern' => 'admin.classrooms.*', 'icon' => 'building', 'show' => $user->hasRole('super-admin')],
+                ['label' => 'Jurusan / Keahlian', 'route' => 'admin.departments.index', 'pattern' => 'admin.departments.*', 'icon' => 'book', 'show' => $user->hasRole('super-admin')],
+                ['label' => 'Ruangan & Fasilitas', 'route' => 'admin.rooms.index', 'pattern' => 'admin.rooms.*', 'icon' => 'building', 'show' => $user->hasRole('super-admin')],
+                ['label' => 'Mata Pelajaran', 'route' => 'admin.subjects.index', 'pattern' => 'admin.subjects.*', 'icon' => 'clipboard-list', 'show' => $user->hasRole('super-admin')],
+                ['label' => 'Kelas', 'route' => 'admin.classrooms.index', 'pattern' => 'admin.classrooms.*', 'icon' => 'user-group', 'show' => $user->hasRole('super-admin')],
                 ['label' => 'Penugasan Mengajar', 'route' => 'admin.teaching-assignments.index', 'pattern' => 'admin.teaching-assignments.*', 'icon' => 'user-check', 'show' => $user->hasRole('super-admin')],
-                ['label' => 'Penempatan Siswa', 'route' => 'admin.student-placements.index', 'pattern' => 'admin.student-placements.*', 'icon' => 'user-group', 'show' => $user->hasRole('super-admin')],
-                ['label' => 'Jadwal Pelajaran', 'route' => 'admin.schedules.index', 'pattern' => 'admin.schedules.*', 'icon' => 'clipboard-list', 'show' => $user->hasRole('super-admin')],
+                ['label' => 'Penempatan Siswa', 'route' => 'admin.student-placements.index', 'pattern' => 'admin.student-placements.*', 'icon' => 'users', 'show' => $user->hasRole('super-admin')],
+                ['label' => 'Jadwal Pelajaran', 'route' => 'admin.schedules.index', 'pattern' => 'admin.schedules.*', 'icon' => 'calendar', 'show' => $user->hasRole('super-admin')],
             ],
         ],
         [
-            // Pengumuman: semua yang punya permission pengumuman.manage (super-admin, TU, kepsek)
-            // Ditampilkan sebagai grup terpisah hanya untuk super-admin & kepsek (TU punya di bawah)
+            'label' => 'System & Core Engine',
+            'items' => [
+                ['label' => 'Pengaturan Global', 'route' => 'admin.settings.index', 'pattern' => 'admin.settings.*', 'icon' => 'shield', 'show' => $user->hasRole('super-admin')],
+                ['label' => 'Media Library', 'route' => 'admin.media.index', 'pattern' => 'admin.media.*', 'icon' => 'file-text', 'show' => $user->hasRole('super-admin')],
+                ['label' => 'Konfigurasi SEO', 'route' => 'admin.seo.index', 'pattern' => 'admin.seo.*', 'icon' => 'file-text', 'show' => $user->hasRole('super-admin')],
+                ['label' => 'Audit Log & Security', 'route' => 'admin.audit-logs.index', 'pattern' => 'admin.audit-logs.*', 'icon' => 'shield', 'show' => $user->hasRole('super-admin') || $user->hasPermission('audit.view')],
+                ['label' => 'Backup & Pemulihan', 'route' => 'admin.backups.index', 'pattern' => 'admin.backups.*', 'icon' => 'clipboard-list', 'show' => $user->hasRole('super-admin')],
+            ],
+        ],
+        [
             'label' => 'Pengumuman',
             'items' => [
                 ['label' => 'Kelola Pengumuman', 'route' => 'admin.announcements.index', 'pattern' => 'admin.announcements.*', 'icon' => 'megaphone', 'show' => $user->hasRole('super-admin') || $user->hasRole('kepsek')],

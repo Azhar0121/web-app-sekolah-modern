@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', config('app.name'))</title>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
 
@@ -34,6 +35,23 @@
         document.addEventListener('DOMContentLoaded', () => {
             const sidebar = document.querySelector('[data-sidebar]');
             const backdrop = document.querySelector('[data-sidebar-backdrop]');
+
+            if (sidebar) {
+                const savedScroll = sessionStorage.getItem('admin_sidebar_scroll');
+                if (savedScroll !== null) {
+                    sidebar.scrollTop = parseInt(savedScroll, 10);
+                }
+
+                sidebar.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        sessionStorage.setItem('admin_sidebar_scroll', sidebar.scrollTop);
+                    });
+                });
+
+                sidebar.addEventListener('scroll', () => {
+                    sessionStorage.setItem('admin_sidebar_scroll', sidebar.scrollTop);
+                });
+            }
 
             document.querySelectorAll('[data-sidebar-toggle]').forEach((btn) => {
                 btn.addEventListener('click', () => {

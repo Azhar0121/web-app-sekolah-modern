@@ -42,11 +42,36 @@ use App\Http\Controllers\Siswa\ProfileController as SiswaProfileController;
 use App\Http\Controllers\Siswa\QrCodeController as SiswaQrCodeController;
 use App\Http\Controllers\Siswa\ScheduleController as SiswaScheduleController;
 use App\Http\Controllers\Siswa\TaskController as SiswaTaskController;
+use App\Http\Controllers\Admin\AuditLogController;
+use App\Http\Controllers\Admin\BackupController;
+use App\Http\Controllers\Admin\DepartmentController;
+use App\Http\Controllers\Admin\MediaLibraryController;
+use App\Http\Controllers\Admin\RoomController;
+use App\Http\Controllers\Admin\SeoSettingController;
+use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Tu\DashboardController as TuDashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+// ================= PUBLIC SEO ENDPOINTS =================
+Route::get('/sitemap.xml', function () {
+    $xml = '<?xml version="1.0" encoding="UTF-8"?>';
+    $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+    $xml .= '<url><loc>' . url('/') . '</loc><lastmod>' . now()->toAtomString() . '</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>';
+    $xml .= '<url><loc>' . url('/ppdb') . '</loc><lastmod>' . now()->toAtomString() . '</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>';
+    $xml .= '</urlset>';
+
+    return response($xml, 200, ['Content-Type' => 'application/xml']);
+});
+
+Route::get('/robots.txt', function () {
+    $seo = \App\Models\SeoSetting::first();
+    $content = $seo?->robots_txt ?? "User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /guru/\nDisallow: /siswa/\n\nSitemap: " . url('/sitemap.xml');
+    return response($content, 200, ['Content-Type' => 'text/plain']);
 });
 
 // ================= AUTH =================
@@ -58,6 +83,11 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
     Route::get('/ping', fn () => response()->json(['status' => 'ok']))->name('ping');
+
+    // Internal Notification Center
+    Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');
+    Route::post('/notifications/{id}/read', [NotificationController::class, 'markAsRead'])->name('notifications.read');
+    Route::post('/notifications/read-all', [NotificationController::class, 'markAllAsRead'])->name('notifications.read-all');
 });
 
 // ================= PPDB ONLINE (PUBLIK, TANPA LOGIN) =================
@@ -109,8 +139,39 @@ Route::middleware(['auth', 'role:super-admin'])->prefix('admin')->name('admin.')
     Route::post('student-placements/{classroom}', [StudentPlacementController::class, 'store'])->name('student-placements.store');
     Route::delete('student-placements/entry/{classroomStudent}', [StudentPlacementController::class, 'destroy'])->name('student-placements.destroy');
 
+    // Master Data Akademik: Jurusan / Program Keahlian
+    Route::resource('departments', DepartmentController::class)->except(['show']);
+
+    // Master Data Akademik: Alokasi Ruangan (Kelas, Lab, Perpustakaan, Aula)
+    Route::resource('rooms', RoomController::class)->except(['show']);
+
     // Jadwal Pelajaran
     Route::resource('schedules', AdminScheduleController::class)->except(['show']);
+
+    // Pengaturan Global Sistem (Identitas, Tema, SMTP, Maps API)
+    Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
+    Route::post('settings', [SettingController::class, 'update'])->name('settings.update');
+
+    // Audit Log & Rekam Jejak Digital
+    Route::get('audit-logs', [AuditLogController::class, 'index'])->name('audit-logs.index');
+
+    // Backup & Sistem Pemulihan Data
+    Route::get('backups', [BackupController::class, 'index'])->name('backups.index');
+    Route::post('backups', [BackupController::class, 'create'])->name('backups.create');
+    Route::get('backups/{backup}/download', [BackupController::class, 'download'])->name('backups.download');
+    Route::delete('backups/{backup}', [BackupController::class, 'destroy'])->name('backups.destroy');
+
+    // Pusat Konfigurasi SEO & Redirects
+    Route::get('seo', [SeoSettingController::class, 'index'])->name('seo.index');
+    Route::post('seo', [SeoSettingController::class, 'update'])->name('seo.update');
+    Route::post('seo/redirects', [SeoSettingController::class, 'storeRedirect'])->name('seo.redirects.store');
+    Route::delete('seo/redirects/{redirect}', [SeoSettingController::class, 'destroyRedirect'])->name('seo.redirects.destroy');
+
+    // Media Library (Asymmetric File Manager)
+    Route::get('media', [MediaLibraryController::class, 'index'])->name('media.index');
+    Route::post('media', [MediaLibraryController::class, 'store'])->name('media.store');
+    Route::put('media/{media}', [MediaLibraryController::class, 'update'])->name('media.update');
+    Route::delete('media/{media}', [MediaLibraryController::class, 'destroy'])->name('media.destroy');
 });
 
 // ================= KELOLA PPDB (SUPER ADMIN, TU & KEPSEK, by permission) =================
