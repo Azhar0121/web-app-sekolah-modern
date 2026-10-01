@@ -1,0 +1,1480 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --profile-blue: #1769d5;
+    --profile-blue-dark: #125bb9;
+    --profile-blue-soft: #eaf3ff;
+    --profile-blue-light: #f5f9ff;
+
+    --profile-navy: #071b35;
+    --profile-navy-light: #0f315b;
+
+    --profile-text: #10223d;
+    --profile-muted: #66758a;
+
+    --profile-border: #dce6f1;
+    --profile-bg: #f7f9fc;
+    --profile-white: #ffffff;
+
+    --profile-success: #16845b;
+    --profile-warning: #c99600;
+}
+
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--profile-bg);
+    color: var(--profile-text);
+}
+
+body,
+body * {
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+}
+
+.text-primary {
+    color: var(--profile-blue) !important;
+}
+
+.text-secondary {
+    color: var(--profile-muted) !important;
+}
+
+.text-dark {
+    color: var(--profile-text) !important;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+section.bg-dark.text-white.py-5.shadow-sm {
+    position: relative;
+    overflow: hidden;
+
+    padding-top: 42px !important;
+    padding-bottom: 44px !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #071b35 0%,
+            #0d2c50 52%,
+            #1769d5 100%
+        ) !important;
+
+    box-shadow: none !important;
+}
+
+section.bg-dark.text-white.py-5.shadow-sm::after {
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    right: -120px;
+    top: -150px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    pointer-events: none;
+}
+
+section.bg-dark.text-white.py-5.shadow-sm .container {
+    position: relative;
+    z-index: 2;
+
+    max-width: 1180px;
+}
+
+section.bg-dark.text-white.py-5.shadow-sm .breadcrumb {
+    margin-bottom: 18px !important;
+}
+
+section.bg-dark.text-white.py-5.shadow-sm .breadcrumb-item {
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+section.bg-dark.text-white.py-5.shadow-sm .breadcrumb-item a {
+    color: #ffd45c !important;
+}
+
+section.bg-dark.text-white.py-5.shadow-sm .breadcrumb-item.active {
+    color: rgba(255, 255, 255, 0.65) !important;
+}
+
+section.bg-dark.text-white.py-5.shadow-sm h1 {
+    margin-bottom: 10px !important;
+
+    font-size: clamp(2rem, 4vw, 2.7rem);
+    font-weight: 800 !important;
+
+    line-height: 1.2;
+    letter-spacing: -0.035em;
+}
+
+section.bg-dark.text-white.py-5.shadow-sm p {
+    max-width: 760px;
+
+    margin-bottom: 0 !important;
+
+    font-size: 0.93rem !important;
+    line-height: 1.8;
+
+    opacity: 0.82 !important;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
+.container.py-5 {
+    max-width: 1180px;
+
+    padding-top: 44px !important;
+    padding-bottom: 54px !important;
+}
+
+
+/* =========================================================
+   SECTION SPACING
+   ========================================================= */
+
+.container.py-5 > section {
+    margin-bottom: 48px !important;
+    padding-top: 0 !important;
+}
+
+.container.py-5 > section:last-child {
+    margin-bottom: 0 !important;
+}
+
+
+/* =========================================================
+   SECTION HEADER
+   ========================================================= */
+
+.container.py-5 section .d-flex.align-items-center.gap-3.mb-3,
+.container.py-5 section .d-flex.align-items-center.gap-3.mb-4,
+.container.py-5 section .d-flex.align-items-center.justify-content-between.mb-4 {
+    margin-bottom: 20px !important;
+}
+
+.container.py-5 section .d-inline-flex.align-items-center.justify-content-center.bg-primary.bg-opacity-10,
+.container.py-5 section .d-inline-flex.align-items-center.justify-content-center.bg-primary.text-white {
+    width: 44px !important;
+    height: 44px !important;
+
+    flex-shrink: 0;
+
+    border-radius: 8px !important;
+}
+
+.container.py-5 section .d-inline-flex i {
+    font-size: 1.15rem !important;
+}
+
+.container.py-5 section .text-warning.fw-bold.small.text-uppercase {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: var(--profile-blue) !important;
+
+    font-size: 0.65rem;
+    font-weight: 800 !important;
+
+    letter-spacing: 0.09em;
+    line-height: 1.4;
+}
+
+.container.py-5 section h3 {
+    margin-bottom: 0 !important;
+
+    color: var(--profile-text) !important;
+
+    font-size: 1.28rem;
+    font-weight: 800 !important;
+
+    line-height: 1.35;
+    letter-spacing: -0.025em;
+}
+
+.container.py-5 section h4 {
+    color: var(--profile-text) !important;
+}
+
+
+/* =========================================================
+   SECTION 1 — SEJARAH & VISI MISI
+   ========================================================= */
+
+#sejarah-visi > .row {
+    --bs-gutter-x: 32px;
+    --bs-gutter-y: 28px;
+}
+
+
+/* =========================================================
+   CARD SEJARAH
+   ========================================================= */
+
+#sejarah-visi > .row > .col-lg-6:first-child {
+    display: flex;
+    flex-direction: column;
+
+    padding: 25px !important;
+
+    background: var(--profile-white);
+
+    border: 1px solid var(--profile-border);
+    border-top: 3px solid var(--profile-blue);
+
+    border-radius: 9px;
+
+    box-shadow: 0 7px 22px rgba(16, 34, 61, 0.055);
+
+    height: 100%;
+}
+
+#sejarah-visi > .row > .col-lg-6:first-child > .d-flex {
+    margin-bottom: 18px !important;
+}
+
+#sejarah-visi > .row > .col-lg-6:first-child
+.d-inline-flex {
+    background: var(--profile-blue-soft) !important;
+    color: var(--profile-blue) !important;
+}
+
+#sejarah-visi > .row > .col-lg-6:first-child > p {
+    margin-bottom: 22px !important;
+
+    color: var(--profile-muted) !important;
+
+    font-size: 0.88rem;
+    line-height: 1.85;
+}
+
+#sejarah-visi > .row > .col-lg-6:first-child > p strong {
+    color: var(--profile-text);
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   TIMELINE SEJARAH
+   ========================================================= */
+
+#sejarah-visi > .row > .col-lg-6:first-child
+.border-start {
+    margin-top: 20px !important;
+    margin-bottom: 0 !important;
+
+    padding-left: 18px !important;
+
+    border-left: 2px solid #c9dcef !important;
+}
+
+#sejarah-visi > .row > .col-lg-6:first-child
+.border-start > div {
+    position: relative;
+
+    padding: 11px 12px;
+
+    margin-bottom: 9px !important;
+
+    background: #f7faff;
+
+    border: 1px solid #e3edf8;
+    border-radius: 6px;
+}
+
+#sejarah-visi > .row > .col-lg-6:first-child
+.border-start > div:last-child {
+    margin-bottom: 0 !important;
+}
+
+#sejarah-visi > .row > .col-lg-6:first-child
+.border-start strong {
+    font-size: 0.84rem;
+    line-height: 1.5;
+}
+
+#sejarah-visi > .row > .col-lg-6:first-child
+.border-start strong i {
+    font-size: 0.85rem;
+}
+
+#sejarah-visi > .row > .col-lg-6:first-child
+.border-start small {
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--profile-muted) !important;
+
+    font-size: 0.73rem;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   CARD VISI & MISI
+   ========================================================= */
+
+#sejarah-visi > .row > .col-lg-6:last-child {
+    display: flex;
+}
+
+#sejarah-visi > .row > .col-lg-6:last-child .card {
+    width: 100%;
+    height: 100% !important;
+
+    padding: 25px !important;
+
+    border: 1px solid var(--profile-border) !important;
+    border-top: 3px solid var(--profile-blue) !important;
+
+    border-radius: 9px !important;
+
+    background: var(--profile-white);
+
+    box-shadow: 0 7px 22px rgba(16, 34, 61, 0.055) !important;
+}
+
+#sejarah-visi .card > .d-flex {
+    margin-bottom: 20px !important;
+}
+
+#sejarah-visi .card > .d-flex .d-inline-flex {
+    width: 44px !important;
+    height: 44px !important;
+
+    border-radius: 8px !important;
+}
+
+#sejarah-visi .card > .d-flex .d-inline-flex i {
+    font-size: 1.15rem !important;
+}
+
+#sejarah-visi .card > .d-flex span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 0.65rem;
+
+    letter-spacing: 0.08em;
+}
+
+#sejarah-visi .card h4 {
+    font-size: 1.03rem;
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   VISI
+   ========================================================= */
+
+#sejarah-visi .card .bg-primary-subtle {
+    padding: 17px !important;
+
+    background: var(--profile-blue-soft) !important;
+
+    border: 1px solid #d4e5f8 !important;
+    border-radius: 8px !important;
+}
+
+#sejarah-visi .card .bg-primary-subtle h6 {
+    margin-bottom: 7px !important;
+
+    color: var(--profile-blue) !important;
+
+    font-size: 0.72rem;
+    font-weight: 800 !important;
+}
+
+#sejarah-visi .card .bg-primary-subtle p {
+    color: var(--profile-text) !important;
+
+    font-size: 0.82rem !important;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   MISI
+   ========================================================= */
+
+#sejarah-visi .card > h6 {
+    font-size: 0.78rem;
+}
+
+#sejarah-visi .card ul {
+    margin-top: 8px;
+}
+
+#sejarah-visi .card ul li {
+    margin-bottom: 9px !important;
+
+    color: var(--profile-muted) !important;
+
+    font-size: 0.76rem;
+
+    line-height: 1.65;
+}
+
+#sejarah-visi .card ul li:last-child {
+    margin-bottom: 0 !important;
+}
+
+#sejarah-visi .card ul li i {
+    margin-top: 3px !important;
+
+    color: var(--profile-success) !important;
+
+    font-size: 0.75rem;
+}
+
+
+/* =========================================================
+   SECTION 2 — NILAI
+   ========================================================= */
+
+#nilai-logo .row {
+    --bs-gutter-x: 16px;
+    --bs-gutter-y: 16px;
+}
+
+#nilai-logo .row > div {
+    display: flex;
+}
+
+#nilai-logo .row .card {
+    width: 100%;
+    height: 100%;
+
+    padding: 22px !important;
+
+    border: 1px solid var(--profile-border) !important;
+    border-radius: 8px !important;
+
+    background: var(--profile-white);
+
+    box-shadow: 0 5px 17px rgba(16, 34, 61, 0.045) !important;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+#nilai-logo .row .card:hover {
+    border-color: #c7dcef !important;
+
+    box-shadow: 0 8px 22px rgba(16, 34, 61, 0.07) !important;
+
+    transform: translateY(-2px);
+}
+
+#nilai-logo .row .card > .d-inline-flex {
+    width: 42px !important;
+    height: 42px !important;
+
+    border-radius: 8px !important;
+}
+
+#nilai-logo .row .card > .d-inline-flex i {
+    font-size: 1rem !important;
+}
+
+#nilai-logo .row .card h5 {
+    margin-bottom: 8px !important;
+
+    font-size: 0.91rem;
+    line-height: 1.5;
+}
+
+#nilai-logo .row .card p {
+    color: var(--profile-muted) !important;
+
+    font-size: 0.75rem !important;
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   SECTION 3 — PENGAJAR
+   ========================================================= */
+
+#pengajar .badge.text-bg-primary {
+    flex-shrink: 0;
+
+    padding: 7px 10px;
+
+    background: var(--profile-blue) !important;
+
+    border-radius: 5px !important;
+
+    font-size: 0.64rem !important;
+    font-weight: 700;
+}
+
+#pengajar .row {
+    --bs-gutter-x: 14px;
+    --bs-gutter-y: 14px;
+}
+
+#pengajar .row > div {
+    display: flex;
+}
+
+#pengajar .row > div > .card {
+    width: 100%;
+    height: 100%;
+
+    padding: 19px 14px !important;
+
+    border: 1px solid var(--profile-border) !important;
+    border-radius: 8px !important;
+
+    background: var(--profile-white);
+
+    box-shadow: 0 5px 16px rgba(16, 34, 61, 0.045) !important;
+}
+
+#pengajar .row > div > .card > .rounded-circle {
+    width: 64px !important;
+    height: 64px !important;
+
+    margin-bottom: 12px !important;
+
+    background: var(--profile-blue) !important;
+
+    font-size: 1.3rem !important;
+
+    box-shadow: none !important;
+}
+
+#pengajar .row > div > .card h6 {
+    width: 100%;
+
+    margin-bottom: 5px !important;
+
+    font-size: 0.79rem;
+    line-height: 1.45;
+}
+
+#pengajar .row > div > .card small.text-primary {
+    width: 100%;
+
+    margin-bottom: 7px !important;
+
+    color: var(--profile-blue) !important;
+
+    font-size: 0.65rem;
+    line-height: 1.5;
+}
+
+#pengajar .row > div > .card .badge {
+    display: block;
+
+    max-width: 100%;
+
+    padding: 5px 8px;
+
+    overflow: hidden;
+
+    background: #f4f7fb !important;
+
+    border: 1px solid var(--profile-border) !important;
+    border-radius: 5px !important;
+
+    color: var(--profile-muted) !important;
+
+    font-size: 0.61rem !important;
+    font-weight: 600;
+
+    line-height: 1.4;
+}
+
+
+/* Empty guru */
+
+#pengajar .card.p-5.text-center {
+    padding: 38px 20px !important;
+
+    border: 1px solid var(--profile-border) !important;
+    border-radius: 8px !important;
+
+    background: #fff;
+
+    box-shadow: 0 5px 16px rgba(16, 34, 61, 0.04) !important;
+}
+
+#pengajar .card.p-5.text-center > div {
+    width: 58px !important;
+    height: 58px !important;
+}
+
+#pengajar .card.p-5.text-center h5 {
+    font-size: 0.95rem;
+}
+
+#pengajar .card.p-5.text-center p {
+    font-size: 0.75rem;
+}
+
+
+/* =========================================================
+   SECTION 4 — STRUKTUR
+   ========================================================= */
+
+#struktur > .card {
+    padding: 24px !important;
+
+    border: 1px solid var(--profile-border) !important;
+    border-radius: 8px !important;
+
+    background: var(--profile-white);
+
+    box-shadow: 0 6px 18px rgba(16, 34, 61, 0.045) !important;
+}
+
+#struktur .row {
+    --bs-gutter-x: 14px;
+    --bs-gutter-y: 14px;
+}
+
+#struktur .bg-dark {
+    width: min(100%, 360px);
+
+    padding: 16px !important;
+
+    background: var(--profile-navy) !important;
+
+    border-radius: 7px !important;
+}
+
+#struktur .bg-dark small {
+    margin-bottom: 3px;
+
+    color: #ffd45c !important;
+
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+}
+
+#struktur .bg-dark strong {
+    font-size: 0.82rem !important;
+    line-height: 1.45;
+}
+
+#struktur .bg-light {
+    height: 100%;
+
+    padding: 15px !important;
+
+    background: #f7f9fc !important;
+
+    border-color: var(--profile-border) !important;
+    border-radius: 7px !important;
+}
+
+#struktur .bg-light small {
+    margin-bottom: 4px;
+
+    color: var(--profile-blue) !important;
+
+    font-size: 0.62rem;
+    letter-spacing: 0.03em;
+}
+
+#struktur .bg-light span {
+    font-size: 0.72rem !important;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   SECTION 5 — AKREDITASI
+   ========================================================= */
+
+#akreditasi > .card {
+    padding: 24px !important;
+
+    border: 1px solid #efd98e !important;
+    border-radius: 9px !important;
+
+    background: #fff9e8 !important;
+
+    box-shadow: 0 5px 16px rgba(16, 34, 61, 0.04) !important;
+}
+
+#akreditasi .display-1 {
+    margin-bottom: 3px;
+
+    color: #c99600 !important;
+
+    font-size: 3.8rem;
+
+    line-height: 1;
+}
+
+#akreditasi .badge {
+    padding: 6px 11px !important;
+
+    border-radius: 5px !important;
+
+    font-size: 0.61rem;
+    font-weight: 800 !important;
+}
+
+#akreditasi h4 {
+    font-size: 0.97rem;
+
+    line-height: 1.5;
+}
+
+#akreditasi h4 i {
+    font-size: 0.9rem;
+}
+
+#akreditasi p {
+    color: var(--profile-muted) !important;
+
+    font-size: 0.74rem !important;
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   SECTION 6 — FASILITAS
+   ========================================================= */
+
+#fasilitas .badge.text-bg-secondary {
+    flex-shrink: 0;
+
+    padding: 7px 10px;
+
+    background: #f1f4f8 !important;
+
+    border: 1px solid var(--profile-border) !important;
+    border-radius: 5px !important;
+
+    color: var(--profile-muted) !important;
+
+    font-size: 0.64rem !important;
+}
+
+#fasilitas .row {
+    --bs-gutter-x: 14px;
+    --bs-gutter-y: 14px;
+}
+
+#fasilitas .row > div {
+    display: flex;
+}
+
+#fasilitas .row > div > .card {
+    width: 100%;
+    height: 100%;
+
+    padding: 15px !important;
+
+    border: 1px solid var(--profile-border) !important;
+    border-radius: 8px !important;
+
+    background: var(--profile-white);
+
+    box-shadow: 0 4px 14px rgba(16, 34, 61, 0.04) !important;
+}
+
+#fasilitas .row > div > .card .d-inline-flex {
+    width: 40px !important;
+    height: 40px !important;
+
+    flex-shrink: 0;
+
+    border-radius: 7px !important;
+}
+
+#fasilitas .row > div > .card .d-inline-flex i {
+    font-size: 1rem !important;
+}
+
+#fasilitas .row > div > .card h6 {
+    margin-bottom: 3px !important;
+
+    font-size: 0.74rem !important;
+    line-height: 1.45;
+}
+
+#fasilitas .row > div > .card small {
+    color: var(--profile-muted) !important;
+
+    font-size: 0.64rem !important;
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   GLOBAL CARD
+   ========================================================= */
+
+.container.py-5 .card {
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+
+    section.bg-dark.text-white.py-5.shadow-sm {
+        padding-top: 36px !important;
+        padding-bottom: 38px !important;
+    }
+
+    .container.py-5 {
+        padding-top: 36px !important;
+        padding-bottom: 44px !important;
+    }
+
+    .container.py-5 > section {
+        margin-bottom: 42px !important;
+    }
+
+    /* Sejarah & Visi Misi kembali menjadi block */
+    #sejarah-visi > .row > .col-lg-6 {
+        display: block;
+    }
+
+    #sejarah-visi > .row > .col-lg-6:first-child {
+        padding: 23px 24px !important;
+    }
+
+    #sejarah-visi > .row > .col-lg-6:last-child .card {
+        padding: 22px !important;
+    }
+
+    #nilai-logo .row .card {
+        padding: 20px !important;
+    }
+
+    #pengajar .row > div > .card {
+        padding: 18px 12px !important;
+    }
+
+    #struktur > .card {
+        padding: 20px !important;
+    }
+
+    #akreditasi > .card {
+        padding: 22px !important;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 767.98px) {
+
+    section.bg-dark.text-white.py-5.shadow-sm {
+        padding-top: 30px !important;
+        padding-bottom: 32px !important;
+    }
+
+    section.bg-dark.text-white.py-5.shadow-sm h1 {
+        font-size: 1.8rem;
+    }
+
+    section.bg-dark.text-white.py-5.shadow-sm p {
+        font-size: 0.84rem !important;
+        line-height: 1.7;
+    }
+
+    .container.py-5 {
+        padding-top: 28px !important;
+        padding-bottom: 38px !important;
+    }
+
+    .container.py-5 > section {
+        margin-bottom: 36px !important;
+    }
+
+    .container.py-5 section h3 {
+        font-size: 1.08rem;
+    }
+
+    .container.py-5 section .d-inline-flex.align-items-center.justify-content-center.bg-primary.bg-opacity-10,
+    .container.py-5 section .d-inline-flex.align-items-center.justify-content-center.bg-primary.text-white {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .container.py-5 section .d-inline-flex i {
+        font-size: 1rem !important;
+    }
+
+    /* Sejarah */
+    #sejarah-visi > .row > .col-lg-6:first-child {
+        padding: 20px !important;
+    }
+
+    #sejarah-visi > .row > .col-lg-6:first-child > p {
+        font-size: 0.82rem;
+    }
+
+    #sejarah-visi > .row > .col-lg-6:last-child .card {
+        padding: 20px !important;
+    }
+
+    #sejarah-visi .card .bg-primary-subtle {
+        padding: 15px !important;
+    }
+
+    /* Header section */
+    #pengajar .d-flex.align-items-center.justify-content-between,
+    #fasilitas .d-flex.align-items-center.justify-content-between {
+        align-items: flex-start !important;
+        gap: 12px;
+    }
+
+    #pengajar .badge,
+    #fasilitas .badge {
+        flex-shrink: 0;
+    }
+
+    /* Pengajar */
+    #pengajar .row {
+        --bs-gutter-x: 10px;
+        --bs-gutter-y: 10px;
+    }
+
+    #pengajar .row > div > .card {
+        padding: 16px 9px !important;
+    }
+
+    #pengajar .row > div > .card > .rounded-circle {
+        width: 56px !important;
+        height: 56px !important;
+
+        font-size: 1.15rem !important;
+    }
+
+    #pengajar .row > div > .card h6 {
+        font-size: 0.72rem;
+    }
+
+    #pengajar .row > div > .card small.text-primary {
+        font-size: 0.59rem;
+    }
+
+    #pengajar .row > div > .card .badge {
+        font-size: 0.56rem !important;
+    }
+
+    /* Struktur */
+    #struktur > .card {
+        padding: 15px !important;
+    }
+
+    #struktur .bg-dark {
+        width: 100%;
+    }
+
+    /* Akreditasi */
+    #akreditasi > .card {
+        padding: 20px !important;
+    }
+
+    #akreditasi .display-1 {
+        font-size: 3.2rem;
+    }
+
+    #akreditasi h4 {
+        font-size: 0.9rem;
+    }
+
+    /* Fasilitas */
+    #fasilitas .row {
+        --bs-gutter-x: 10px;
+        --bs-gutter-y: 10px;
+    }
+
+    #fasilitas .row > div > .card {
+        padding: 13px !important;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 575.98px) {
+
+    section.bg-dark.text-white.py-5.shadow-sm .container,
+    .container.py-5 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    section.bg-dark.text-white.py-5.shadow-sm h1 {
+        font-size: 1.65rem;
+    }
+
+    section.bg-dark.text-white.py-5.shadow-sm .breadcrumb-item {
+        font-size: 0.68rem;
+    }
+
+    .container.py-5 section .d-flex.align-items-center.gap-3 {
+        gap: 10px !important;
+    }
+
+    .container.py-5 section .text-warning.fw-bold.small.text-uppercase {
+        font-size: 0.56rem;
+    }
+
+    .container.py-5 section h3 {
+        font-size: 1rem;
+    }
+
+    /* Sejarah & Visi */
+    #sejarah-visi > .row > .col-lg-6:first-child {
+        padding: 18px !important;
+    }
+
+    #sejarah-visi > .row > .col-lg-6:last-child .card {
+        padding: 18px !important;
+    }
+
+    #sejarah-visi .border-start {
+        margin-left: 5px !important;
+        padding-left: 13px !important;
+    }
+
+    #sejarah-visi .border-start small {
+        font-size: 0.68rem;
+    }
+
+    /* Nilai */
+    #nilai-logo .row {
+        --bs-gutter-y: 10px;
+    }
+
+    #nilai-logo .row .card {
+        padding: 18px !important;
+    }
+
+    #nilai-logo .row .card p {
+        font-size: 0.71rem !important;
+    }
+
+    /* Pengajar */
+    #pengajar .row > div > .card {
+        padding: 15px 8px !important;
+    }
+
+    #pengajar .row > div > .card > .rounded-circle {
+        width: 52px !important;
+        height: 52px !important;
+
+        font-size: 1.05rem !important;
+    }
+
+    /* Struktur */
+    #struktur > .card {
+        padding: 12px !important;
+    }
+
+    #struktur .bg-dark,
+    #struktur .bg-light {
+        padding: 13px !important;
+    }
+
+    /* Akreditasi */
+    #akreditasi > .card {
+        padding: 18px !important;
+    }
+
+    /* Fasilitas */
+    #fasilitas .row > div > .card {
+        padding: 12px !important;
+    }
+
+    #fasilitas .row > div > .card .d-inline-flex {
+        width: 36px !important;
+        height: 36px !important;
+    }
+
+    #fasilitas .row > div > .card h6 {
+        font-size: 0.69rem !important;
+    }
+
+    #fasilitas .row > div > .card small {
+        font-size: 0.59rem !important;
+    }
+}
+
+/* =========================================================
+   SECTION 1 — SEJARAH & VISI MISI
+   ========================================================= */
+
+#sejarah-visi > .row {
+    --bs-gutter-x: 32px;
+    --bs-gutter-y: 28px;
+
+    align-items: stretch !important;
+}
+
+
+/* =========================================================
+   CARD SEJARAH
+   ========================================================= */
+
+#sejarah-visi > .row > .col-lg-6:first-child {
+    position: relative;
+
+    height: 590px !important;
+
+    padding: 25px !important;
+
+    background: #ffffff;
+
+    border: 1px solid var(--profile-border);
+    border-top: 3px solid var(--profile-blue);
+
+    border-radius: 9px;
+
+    box-shadow: 0 7px 22px rgba(16, 34, 61, 0.055);
+}
+
+
+/* =========================================================
+   CARD VISI & MISI
+   ========================================================= */
+
+#sejarah-visi > .row > .col-lg-6:last-child {
+    height: 590px !important;
+
+    display: block !important;
+}
+
+#sejarah-visi > .row > .col-lg-6:last-child > .card {
+    width: 100% !important;
+    height: 590px !important;
+
+    margin: 0 !important;
+
+    padding: 25px !important;
+
+    border: 1px solid var(--profile-border) !important;
+    border-top: 3px solid var(--profile-blue) !important;
+
+    border-radius: 9px !important;
+
+    background: var(--profile-white);
+
+    box-shadow: 0 7px 22px rgba(16, 34, 61, 0.055) !important;
+}
+
+
+/* =========================================================
+   HEADER SEJARAH
+   ========================================================= */
+
+#sejarah-visi > .row > .col-lg-6:first-child > .d-flex {
+    margin-bottom: 18px !important;
+}
+
+#sejarah-visi > .row > .col-lg-6:first-child
+.d-inline-flex {
+    background: var(--profile-blue-soft) !important;
+    color: var(--profile-blue) !important;
+}
+
+
+/* =========================================================
+   DESKRIPSI SEJARAH
+   ========================================================= */
+
+#sejarah-visi > .row > .col-lg-6:first-child > p {
+    margin-bottom: 22px !important;
+
+    color: var(--profile-muted) !important;
+
+    font-size: 0.88rem;
+    line-height: 1.85;
+}
+
+#sejarah-visi > .row > .col-lg-6:first-child > p strong {
+    color: var(--profile-text);
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   TIMELINE SEJARAH
+   ========================================================= */
+
+#sejarah-visi > .row > .col-lg-6:first-child
+.border-start {
+    margin-top: 20px !important;
+    margin-bottom: 0 !important;
+
+    padding-left: 18px !important;
+
+    border-left: 2px solid #c9dcef !important;
+}
+
+#sejarah-visi > .row > .col-lg-6:first-child
+.border-start > div {
+    position: relative;
+
+    padding: 11px 12px;
+
+    margin-bottom: 9px !important;
+
+    background: #f7faff;
+
+    border: 1px solid #e3edf8;
+
+    border-radius: 6px;
+}
+
+#sejarah-visi > .row > .col-lg-6:first-child
+.border-start > div:last-child {
+    margin-bottom: 0 !important;
+}
+
+#sejarah-visi > .row > .col-lg-6:first-child
+.border-start strong {
+    font-size: 0.84rem;
+    line-height: 1.5;
+}
+
+#sejarah-visi > .row > .col-lg-6:first-child
+.border-start strong i {
+    font-size: 0.85rem;
+}
+
+#sejarah-visi > .row > .col-lg-6:first-child
+.border-start small {
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--profile-muted) !important;
+
+    font-size: 0.73rem;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   HEADER VISI & MISI
+   ========================================================= */
+
+#sejarah-visi > .row > .col-lg-6:last-child
+.card > .d-flex {
+    margin-bottom: 20px !important;
+}
+
+#sejarah-visi > .row > .col-lg-6:last-child
+.card > .d-flex .d-inline-flex {
+    width: 44px !important;
+    height: 44px !important;
+
+    border-radius: 8px !important;
+}
+
+#sejarah-visi > .row > .col-lg-6:last-child
+.card > .d-flex .d-inline-flex i {
+    font-size: 1.15rem !important;
+}
+
+#sejarah-visi > .row > .col-lg-6:last-child
+.card > .d-flex span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 0.65rem;
+
+    letter-spacing: 0.08em;
+}
+
+#sejarah-visi > .row > .col-lg-6:last-child
+.card h4 {
+    font-size: 1.03rem;
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   VISI
+   ========================================================= */
+
+#sejarah-visi > .row > .col-lg-6:last-child
+.card .bg-primary-subtle {
+    padding: 17px !important;
+
+    background: var(--profile-blue-soft) !important;
+
+    border: 1px solid #d4e5f8 !important;
+
+    border-radius: 8px !important;
+}
+
+#sejarah-visi > .row > .col-lg-6:last-child
+.card .bg-primary-subtle h6 {
+    margin-bottom: 7px !important;
+
+    color: var(--profile-blue) !important;
+
+    font-size: 0.72rem;
+    font-weight: 800 !important;
+}
+
+#sejarah-visi > .row > .col-lg-6:last-child
+.card .bg-primary-subtle p {
+    color: var(--profile-text) !important;
+
+    font-size: 0.82rem !important;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   MISI
+   ========================================================= */
+
+#sejarah-visi > .row > .col-lg-6:last-child
+.card > h6 {
+    font-size: 0.78rem;
+}
+
+#sejarah-visi > .row > .col-lg-6:last-child
+.card ul {
+    margin-top: 8px;
+}
+
+#sejarah-visi > .row > .col-lg-6:last-child
+.card ul li {
+    margin-bottom: 9px !important;
+
+    color: var(--profile-muted) !important;
+
+    font-size: 0.76rem;
+
+    line-height: 1.65;
+}
+
+#sejarah-visi > .row > .col-lg-6:last-child
+.card ul li:last-child {
+    margin-bottom: 0 !important;
+}
+
+#sejarah-visi > .row > .col-lg-6:last-child
+.card ul li i {
+    margin-top: 3px !important;
+
+    color: var(--profile-success) !important;
+
+    font-size: 0.75rem;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+
+    #sejarah-visi > .row > .col-lg-6:first-child {
+        height: auto !important;
+    }
+
+    #sejarah-visi > .row > .col-lg-6:last-child {
+        height: auto !important;
+    }
+
+    #sejarah-visi > .row > .col-lg-6:last-child > .card {
+        height: auto !important;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767.98px) {
+
+    #sejarah-visi > .row > .col-lg-6:first-child {
+        height: auto !important;
+
+        padding: 20px !important;
+    }
+
+    #sejarah-visi > .row > .col-lg-6:last-child {
+        height: auto !important;
+    }
+
+    #sejarah-visi > .row > .col-lg-6:last-child > .card {
+        height: auto !important;
+
+        padding: 20px !important;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 575.98px) {
+
+    #sejarah-visi > .row > .col-lg-6:first-child {
+        padding: 18px !important;
+    }
+
+    #sejarah-visi > .row > .col-lg-6:last-child > .card {
+        padding: 18px !important;
+    }
+
+    #sejarah-visi > .row > .col-lg-6:first-child
+    .border-start {
+        margin-left: 5px !important;
+
+        padding-left: 13px !important;
+    }
+
+    #sejarah-visi > .row > .col-lg-6:first-child
+    .border-start small {
+        font-size: 0.68rem;
+    }
+}
