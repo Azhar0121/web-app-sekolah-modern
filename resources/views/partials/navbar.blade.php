@@ -91,9 +91,8 @@
             </li>
 
             <li>
-                <a href="#"
-                   class="nav-disabled"
-                   title="Segera hadir">
+                <a href="{{ route('profile.show') }}"
+                   class="{{ request()->routeIs('profile.*') ? 'active' : '' }}">
                     Profil Sekolah
                 </a>
             </li>
@@ -122,9 +121,8 @@
             </li>
 
             <li>
-                <a href="#"
-                   class="nav-disabled"
-                   title="Segera hadir">
+                <a href="{{ route('contact.show') }}"
+                   class="{{ request()->routeIs('contact.*') ? 'active' : '' }}">
                     Media & Kontak
                 </a>
             </li>

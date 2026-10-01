@@ -53,9 +53,17 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Tu\DashboardController as TuDashboardController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Public\ProfileController as PublicProfileController;
+use App\Http\Controllers\Public\ContactController as PublicContactController;
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+// ================= PUBLIC PAGES =================
+Route::get('/profil', [PublicProfileController::class, 'index'])->name('profile.show');
+Route::get('/kontak', [PublicContactController::class, 'index'])->name('contact.show');
+Route::post('/kontak', [PublicContactController::class, 'store'])->name('contact.store');
 
 // ================= PUBLIC SEO ENDPOINTS =================
 Route::get('/sitemap.xml', function () {
