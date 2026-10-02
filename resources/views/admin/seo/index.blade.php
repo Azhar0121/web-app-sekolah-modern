@@ -3,131 +3,465 @@
 @section('title', 'Pusat Konfigurasi SEO')
 
 @section('content')
-<div class="container-fluid py-3">
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-            <h5 class="fw-bold text-dark mb-0">
-                <i class="bi bi-search-heart text-primary me-2"></i>Pusat Konfigurasi SEO & Pengalihan Link
-            </h5>
-            <small class="text-muted">Pengaturan Meta Title, Description, Open Graph (Share Sosmed), Robots.txt, Sitemap, dan Redirects Manager.</small>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="{{ asset('css/admin/seo/index.css') }}">
+
+<div class="seo-page">
+
+
+{{-- HEADER --}}
+<div class="seo-header">
+    <div class="seo-header-content">
+
+        <div class="seo-header-icon">
+            <i class="bi bi-search"></i>
         </div>
+
+        <div>
+            <span class="seo-header-label">KONFIGURASI WEBSITE</span>
+
+            <h1>Pusat Konfigurasi SEO</h1>
+
+            <p>
+                Kelola Meta Title, Description, Open Graph, Robots.txt,
+                Sitemap, dan pengalihan URL website.
+            </p>
+        </div>
+
+    </div>
+</div>
+
+
+{{-- MAIN CONTENT --}}
+<div class="seo-layout">
+
+    {{-- LEFT COLUMN --}}
+    <div class="seo-main-column">
+
+        {{-- GLOBAL SEO --}}
+        <div class="seo-section-card">
+
+            <div class="seo-section-header">
+                <div class="seo-section-header-icon">
+                    <i class="bi bi-globe2"></i>
+                </div>
+
+                <div>
+                    <h2>Global Meta Tags & Open Graph</h2>
+                    <p>
+                        Pengaturan informasi SEO utama dan tampilan
+                        ketika halaman dibagikan ke media sosial.
+                    </p>
+                </div>
+            </div>
+
+            <div class="seo-section-body">
+
+                <form action="{{ route('admin.seo.update') }}"
+                      method="POST"
+                      enctype="multipart/form-data">
+
+                    @csrf
+
+                    {{-- META TITLE --}}
+                    <div class="seo-form-group">
+
+                        <label for="meta_title">
+                            Default Meta Title
+                        </label>
+
+                        <input
+                            type="text"
+                            name="meta_title"
+                            id="meta_title"
+                            class="seo-input"
+                            value="{{ old('meta_title', $seo->meta_title ?? config('app.name')) }}"
+                            placeholder="Sekolah Modern — Portal Edukasi & Layanan Digital"
+                        >
+
+                    </div>
+
+
+                    {{-- META DESCRIPTION --}}
+                    <div class="seo-form-group">
+
+                        <label for="meta_description">
+                            Default Meta Description
+                        </label>
+
+                        <textarea
+                            name="meta_description"
+                            id="meta_description"
+                            class="seo-textarea"
+                            rows="4"
+                            placeholder="Website resmi Sekolah Modern menyediakan informasi akademik, PPDB online, profil pengajar..."
+                        >{{ old('meta_description', $seo->meta_description ?? '') }}</textarea>
+
+                    </div>
+
+
+                    {{-- META KEYWORDS --}}
+                    <div class="seo-form-group">
+
+                        <label for="meta_keywords">
+                            Meta Keywords
+                        </label>
+
+                        <input
+                            type="text"
+                            name="meta_keywords"
+                            id="meta_keywords"
+                            class="seo-input"
+                            value="{{ old('meta_keywords', $seo->meta_keywords ?? '') }}"
+                            placeholder="sekolah modern, smk, sma, ppdb online, pendidikan"
+                        >
+
+                        <span class="seo-help-text">
+                            Pisahkan setiap keyword menggunakan koma.
+                        </span>
+
+                    </div>
+
+
+                    {{-- OG TITLE + CANONICAL --}}
+                    <div class="seo-form-grid">
+
+                        <div class="seo-form-group">
+
+                            <label for="og_title">
+                                Open Graph Title
+                            </label>
+
+                            <input
+                                type="text"
+                                name="og_title"
+                                id="og_title"
+                                class="seo-input"
+                                value="{{ old('og_title', $seo->og_title ?? '') }}"
+                                placeholder="Judul ketika dibagikan ke Facebook / WhatsApp"
+                            >
+
+                        </div>
+
+
+                        <div class="seo-form-group">
+
+                            <label for="canonical_url">
+                                Canonical URL
+                            </label>
+
+                            <input
+                                type="text"
+                                name="canonical_url"
+                                id="canonical_url"
+                                class="seo-input"
+                                value="{{ old('canonical_url', $seo->canonical_url ?? config('app.url')) }}"
+                                placeholder="https://domainsekolah.sch.id"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    {{-- OG IMAGE --}}
+                    <div class="seo-form-group">
+
+                        <label for="og_image">
+                            Open Graph Image
+                        </label>
+
+                        <input
+                            type="file"
+                            name="og_image"
+                            id="og_image"
+                            class="seo-file-input"
+                        >
+
+                        <span class="seo-help-text">
+                            Gambar yang digunakan ketika halaman dibagikan ke media sosial.
+                        </span>
+
+                    </div>
+
+
+                    {{-- ROBOTS TXT --}}
+                    <div class="seo-form-group">
+
+                        <label for="robots_txt">
+                            Isi File Robots.txt
+                        </label>
+
+                        <textarea
+                            name="robots_txt"
+                            id="robots_txt"
+                            class="seo-textarea seo-code-textarea"
+                            rows="8"
+                            placeholder="User-agent: *
+
+
+Allow: /
+Disallow: /admin/
+Disallow: /guru/
+Disallow: /siswa/"
+>{{ old('robots_txt', $seo->robots_txt ?? '') }}</textarea>
+
+
+                        <span class="seo-help-text">
+                            Masukkan aturan crawler yang ingin digunakan oleh website.
+                        </span>
+
+                    </div>
+
+
+                    {{-- SUBMIT --}}
+                    <div class="seo-form-footer">
+
+                        <button type="submit" class="seo-primary-button">
+                            <i class="bi bi-check2-circle"></i>
+                            <span>Simpan Konfigurasi SEO</span>
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
     </div>
 
-    <div class="row g-4">
 
-        <div class="col-lg-7">
-            <div class="card border-0 shadow-sm rounded-3">
-                <div class="card-header bg-white py-3">
-                    <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-globe me-2 text-primary"></i>Global Meta Tags & Open Graph (Social Share)</h6>
+    {{-- RIGHT COLUMN --}}
+    <div class="seo-side-column">
+
+        {{-- REDIRECT --}}
+        <div class="seo-section-card">
+
+            <div class="seo-section-header">
+
+                <div class="seo-section-header-icon">
+                    <i class="bi bi-diagram-3"></i>
                 </div>
-                <div class="card-body">
-                    <form action="{{ route('admin.seo.update') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="mb-3">
-                            <label class="form-label small fw-semibold">Default Meta Title</label>
-                            <input type="text" name="meta_title" class="form-control" value="{{ old('meta_title', $seo->meta_title ?? config('app.name')) }}" placeholder="Sekolah Modern — Portal Edukasi & Layanan Digital">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label small fw-semibold">Default Meta Description</label>
-                            <textarea name="meta_description" class="form-control" rows="3" placeholder="Website resmi Sekolah Modern menyediakan informasi akademik, PPDB online, profil pengajar...">{{ old('meta_description', $seo->meta_description ?? '') }}</textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label small fw-semibold">Meta Keywords (Pisahkan koma)</label>
-                            <input type="text" name="meta_keywords" class="form-control" value="{{ old('meta_keywords', $seo->meta_keywords ?? '') }}" placeholder="sekolah modern, smk, sma, ppdb online, pendidikan">
-                        </div>
-                        <div class="row g-2 mb-3">
-                            <div class="col-md-6">
-                                <label class="form-label small fw-semibold">Open Graph Title (Facebook/WA)</label>
-                                <input type="text" name="og_title" class="form-control" value="{{ old('og_title', $seo->og_title ?? '') }}">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label small fw-semibold">Canonical URL</label>
-                                <input type="text" name="canonical_url" class="form-control" value="{{ old('canonical_url', $seo->canonical_url ?? config('app.url')) }}">
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label small fw-semibold">Open Graph Image (Gambar Share Media Sosial)</label>
-                            <input type="file" name="og_image" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label small fw-semibold">Isi File Robots.txt</label>
-                            <textarea name="robots_txt" class="form-control font-monospace small" rows="4">{{ old('robots_txt', $seo->robots_txt ?? "User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /guru/\nDisallow: /siswa/\n\nSitemap: " . url('/sitemap.xml')) }}</textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-sm">
-                            <i class="bi bi-check-circle me-1"></i>Simpan Konfigurasi SEO
-                        </button>
-                    </form>
+
+                <div>
+                    <h2>Manajemen Pengalihan Link</h2>
+                    <p>
+                        Kelola pengalihan URL lama ke URL tujuan.
+                    </p>
                 </div>
+
             </div>
-        </div>
 
-        <div class="col-lg-5">
-            <div class="card border-0 shadow-sm rounded-3 mb-4">
-                <div class="card-header bg-white py-3">
-                    <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-diagram-3 me-2 text-primary"></i>Manajemen Pengalihan Link (URL Redirects)</h6>
-                </div>
-                <div class="card-body">
-                    <form action="{{ route('admin.seo.redirects.store') }}" method="POST" class="mb-3">
-                        @csrf
-                        <div class="mb-2">
-                            <input type="text" name="source_url" class="form-control form-control-sm" placeholder="URL Asal (Contoh: /pendaftaran-lama)" required>
-                        </div>
-                        <div class="mb-2">
-                            <input type="text" name="target_url" class="form-control form-control-sm" placeholder="URL Tujuan (Contoh: /ppdb)" required>
-                        </div>
-                        <div class="d-flex gap-2">
-                            <select name="status_code" class="form-select form-select-sm" style="width:140px;">
-                                <option value="301">301 (Permanen)</option>
-                                <option value="302">302 (Sementara)</option>
-                            </select>
-                            <button type="submit" class="btn btn-primary btn-sm flex-grow-1">+ Tambah Redirect</button>
-                        </div>
-                    </form>
 
-                    <div class="table-responsive">
-                        <table class="table table-hover align-middle table-sm mb-0">
-                            <thead class="table-light">
+            <div class="seo-section-body">
+
+                <form
+                    action="{{ route('admin.seo.redirects.store') }}"
+                    method="POST"
+                    class="seo-redirect-form"
+                >
+
+                    @csrf
+
+                    <div class="seo-form-group">
+
+                        <label for="source_url">
+                            URL Asal
+                        </label>
+
+                        <input
+                            type="text"
+                            name="source_url"
+                            id="source_url"
+                            class="seo-input"
+                            placeholder="/pendaftaran-lama"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="seo-form-group">
+
+                        <label for="target_url">
+                            URL Tujuan
+                        </label>
+
+                        <input
+                            type="text"
+                            name="target_url"
+                            id="target_url"
+                            class="seo-input"
+                            placeholder="/ppdb"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="seo-redirect-action">
+
+                        <select
+                            name="status_code"
+                            class="seo-select"
+                        >
+                            <option value="301">
+                                301 (Permanen)
+                            </option>
+
+                            <option value="302">
+                                302 (Sementara)
+                            </option>
+                        </select>
+
+                        <button
+                            type="submit"
+                            class="seo-primary-button seo-add-button"
+                        >
+                            <i class="bi bi-plus-lg"></i>
+                            <span>Tambah Redirect</span>
+                        </button>
+
+                    </div>
+
+                </form>
+
+
+                {{-- REDIRECT TABLE --}}
+                <div class="seo-table-wrapper">
+
+                    <table class="seo-table">
+
+                        <thead>
+                            <tr>
+                                <th>Asal</th>
+                                <th>Tujuan</th>
+                                <th class="seo-center">Tipe</th>
+                                <th class="seo-right">Aksi</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            @forelse ($redirects as $red)
+
                                 <tr>
-                                    <th>Asal</th>
-                                    <th>Tujuan</th>
-                                    <th class="text-center">Tipe</th>
-                                    <th class="text-end">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($redirects as $red)
-                                <tr>
-                                    <td class="small font-monospace">{{ $red->source_url }}</td>
-                                    <td class="small font-monospace text-primary">{{ $red->target_url }}</td>
-                                    <td class="text-center"><span class="badge bg-secondary-subtle text-secondary">{{ $red->status_code }}</span></td>
-                                    <td class="text-end">
-                                        <form action="{{ route('admin.seo.redirects.destroy', $red) }}" method="POST" class="d-inline">
+
+                                    <td>
+                                        <span class="seo-url">
+                                            {{ $red->source_url }}
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <span class="seo-url seo-url-target">
+                                            {{ $red->target_url }}
+                                        </span>
+                                    </td>
+
+                                    <td class="seo-center">
+
+                                        <span class="seo-status-badge">
+                                            {{ $red->status_code }}
+                                        </span>
+
+                                    </td>
+
+                                    <td class="seo-right">
+
+                                        <form
+                                            action="{{ route('admin.seo.redirects.destroy', $red) }}"
+                                            method="POST"
+                                            class="seo-delete-form"
+                                        >
+
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-link text-danger p-0"><i class="bi bi-trash"></i></button>
+
+                                            <button
+                                                type="submit"
+                                                class="seo-delete-button"
+                                                title="Hapus Redirect"
+                                            >
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+
                                         </form>
+
                                     </td>
+
                                 </tr>
-                                @empty
-                                <tr><td colspan="4" class="text-center py-3 text-muted small">Belum ada pengalihan URL.</td></tr>
-                                @endforelse
-                            </tbody>
-                        </table>
-                    </div>
+
+                            @empty
+
+                                <tr>
+
+                                    <td
+                                        colspan="4"
+                                        class="seo-empty-table"
+                                    >
+                                        Belum ada pengalihan URL.
+                                    </td>
+
+                                </tr>
+
+                            @endforelse
+
+                        </tbody>
+
+                    </table>
+
                 </div>
+
             </div>
 
-            <div class="card border-0 shadow-sm rounded-3">
-                <div class="card-body">
-                    <h6 class="fw-bold text-dark mb-2"><i class="bi bi-file-earmark-code me-2 text-success"></i>Sitemap.xml Otomatis</h6>
-                    <p class="small text-muted mb-2">Sitemap XML dibuat otomatis oleh sistem untuk mendaftarkan halaman web ke Google Search Console.</p>
-                    <a href="{{ url('/sitemap.xml') }}" target="_blank" class="btn btn-outline-success btn-sm"><i class="bi bi-box-arrow-up-right me-1"></i>Buka Sitemap.xml</a>
-                </div>
+        </div>
+
+
+        {{-- SITEMAP --}}
+        <div class="seo-sitemap-card">
+
+            <div class="seo-sitemap-icon">
+                <i class="bi bi-file-earmark-code"></i>
             </div>
+
+            <div class="seo-sitemap-content">
+
+                <span class="seo-sitemap-label">
+                    SITEMAP WEBSITE
+                </span>
+
+                <h2>Sitemap.xml Otomatis</h2>
+
+                <p>
+                    Sitemap XML dibuat otomatis oleh sistem untuk
+                    membantu mesin pencari menemukan halaman website.
+                </p>
+
+                <a
+                    href="{{ url('/sitemap.xml') }}"
+                    target="_blank"
+                    class="seo-sitemap-button"
+                >
+                    <i class="bi bi-box-arrow-up-right"></i>
+                    <span>Buka Sitemap.xml</span>
+                </a>
+
+            </div>
+
         </div>
 
     </div>
 
 </div>
+
+
+</div>
+
 @endsection

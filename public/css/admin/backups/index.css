@@ -1,0 +1,469 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+/* =========================================================
+   BACKUP & PEMULIHAN
+========================================================= */
+
+.backup-page,
+.backup-page * {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    box-sizing: border-box;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container-fluid.py-3 {
+    padding-top: 24px !important;
+    padding-bottom: 28px !important;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.container-fluid.py-3 > .d-flex {
+    position: relative;
+    min-height: 125px;
+    margin-bottom: 20px !important;
+    padding: 26px 30px;
+    background: #071b35;
+    border-radius: 7px;
+    overflow: hidden;
+    align-items: center !important;
+}
+
+.container-fluid.py-3 > .d-flex::before {
+    content: "";
+    position: absolute;
+    width: 190px;
+    height: 190px;
+    right: -65px;
+    top: -105px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+}
+
+.container-fluid.py-3 > .d-flex::after {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    right: 40px;
+    bottom: -78px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 50%;
+}
+
+/* Header text */
+
+.container-fluid.py-3 > .d-flex > div {
+    position: relative;
+    z-index: 2;
+    min-width: 0;
+}
+
+.container-fluid.py-3 h5 {
+    margin: 0 !important;
+    color: #ffffff !important;
+    font-size: 20px;
+    line-height: 1.35;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+}
+
+.container-fluid.py-3 h5 .bi {
+    margin-right: 8px !important;
+    color: #d7e0ea !important;
+    font-size: 19px;
+}
+
+.container-fluid.py-3 h5 + small {
+    display: block;
+    max-width: 780px;
+    margin-top: 8px;
+    color: #c1cad5 !important;
+    font-size: 12.5px;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   BACKUP BUTTON
+========================================================= */
+
+.container-fluid.py-3 > .d-flex > form {
+    position: relative;
+    z-index: 3;
+    flex-shrink: 0;
+}
+
+.container-fluid.py-3 .btn-primary {
+    min-height: 40px;
+    padding: 0 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #071b35;
+    font-size: 12px;
+    font-weight: 700;
+    box-shadow: none;
+    transition: all 0.2s ease;
+}
+
+.container-fluid.py-3 .btn-primary:hover {
+    background: #e8edf3;
+    border-color: #e8edf3;
+    color: #071b35;
+    transform: translateY(-1px);
+}
+
+.container-fluid.py-3 .btn-primary .bi {
+    font-size: 14px;
+}
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
+
+.container-fluid.py-3 > .card {
+    border: 1px solid #e1e6ed !important;
+    border-radius: 7px !important;
+    background: #ffffff;
+    box-shadow: none !important;
+    overflow: hidden;
+}
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.container-fluid.py-3 .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.container-fluid.py-3 table {
+    width: 100%;
+    min-width: 980px;
+    margin: 0 !important;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+/* Table header */
+
+.container-fluid.py-3 .table thead {
+    background: #071b35;
+}
+
+.container-fluid.py-3 .table thead th {
+    padding: 12px 14px;
+    border: 0 !important;
+    background: #071b35 !important;
+    color: #ffffff !important;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.4;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.container-fluid.py-3 .table thead th:first-child {
+    padding-left: 18px;
+}
+
+.container-fluid.py-3 .table thead th:last-child {
+    padding-right: 18px;
+}
+
+/* Table body */
+
+.container-fluid.py-3 .table tbody td {
+    padding: 13px 14px;
+    border-top: 1px solid #e8edf2 !important;
+    color: #38475a;
+    font-size: 12px;
+    line-height: 1.5;
+    vertical-align: middle;
+}
+
+.container-fluid.py-3 .table tbody td:first-child {
+    padding-left: 18px;
+    color: #66758a;
+    font-weight: 600;
+}
+
+.container-fluid.py-3 .table tbody tr {
+    background: #ffffff;
+    transition: background 0.15s ease;
+}
+
+.container-fluid.py-3 .table tbody tr:hover {
+    background: #f7f8fa;
+}
+
+/* =========================================================
+   FILE NAME
+========================================================= */
+
+.container-fluid.py-3 .font-monospace {
+    display: inline-flex;
+    align-items: center;
+    max-width: 100%;
+    color: #26364a !important;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-size: 11.5px !important;
+    font-weight: 600 !important;
+    line-height: 1.45;
+    word-break: break-word;
+}
+
+.container-fluid.py-3 .font-monospace .bi {
+    flex-shrink: 0;
+    margin-right: 7px !important;
+    color: #071b35 !important;
+    font-size: 14px;
+}
+
+/* =========================================================
+   GENERAL TEXT
+========================================================= */
+
+.container-fluid.py-3 .small {
+    font-size: 11.5px !important;
+}
+
+.container-fluid.py-3 .text-muted {
+    color: #66758a !important;
+}
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.container-fluid.py-3 .badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 72px;
+    min-height: 26px;
+    padding: 5px 9px;
+    border: 1px solid #cfe6d7;
+    border-radius: 5px;
+    background: #edf8f1 !important;
+    color: #287a49 !important;
+    font-size: 10.5px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.container-fluid.py-3 td.text-end {
+    white-space: nowrap;
+}
+
+.container-fluid.py-3 td.text-end form {
+    display: inline-block;
+    margin: 0;
+}
+
+.container-fluid.py-3 .btn-sm {
+    min-height: 32px;
+    padding: 0 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    border-radius: 5px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 10.5px;
+    font-weight: 600;
+    line-height: 1;
+    box-shadow: none !important;
+    transition: all 0.2s ease;
+}
+
+.container-fluid.py-3 .btn-outline-primary {
+    border: 1px solid #071b35;
+    background: #ffffff;
+    color: #071b35;
+}
+
+.container-fluid.py-3 .btn-outline-primary:hover {
+    border-color: #071b35;
+    background: #071b35;
+    color: #ffffff;
+}
+
+.container-fluid.py-3 .btn-outline-danger {
+    border: 1px solid #d7a4a4;
+    background: #ffffff;
+    color: #a33a3a;
+}
+
+.container-fluid.py-3 .btn-outline-danger:hover {
+    border-color: #a33a3a;
+    background: #a33a3a;
+    color: #ffffff;
+}
+
+.container-fluid.py-3 .btn-sm .bi {
+    font-size: 12px;
+}
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.container-fluid.py-3 .table tbody td.text-center.py-4 {
+    min-height: 100px;
+    padding: 38px 20px !important;
+    color: #7a8798 !important;
+    font-size: 12px !important;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   CARD FOOTER / PAGINATION
+========================================================= */
+
+.container-fluid.py-3 .card-footer {
+    padding: 12px 18px !important;
+    border-top: 1px solid #e1e6ed;
+    background: #ffffff !important;
+}
+
+.container-fluid.py-3 .pagination {
+    margin: 0;
+    gap: 4px;
+}
+
+.container-fluid.py-3 .page-link {
+    min-width: 32px;
+    height: 32px;
+    padding: 0 9px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #d8dfe7;
+    border-radius: 5px !important;
+    background: #ffffff;
+    color: #4d5d70;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    box-shadow: none;
+}
+
+.container-fluid.py-3 .page-link:hover {
+    border-color: #071b35;
+    background: #f7f8fa;
+    color: #071b35;
+}
+
+.container-fluid.py-3 .page-item.active .page-link {
+    border-color: #071b35;
+    background: #071b35;
+    color: #ffffff;
+}
+
+.container-fluid.py-3 .page-item.disabled .page-link {
+    background: #f7f8fa;
+    color: #a0a9b5;
+    border-color: #e1e6ed;
+}
+
+/* =========================================================
+   REMOVE BOOTSTRAP FONT DIFFERENCES
+========================================================= */
+
+.container-fluid.py-3 button,
+.container-fluid.py-3 input,
+.container-fluid.py-3 select,
+.container-fluid.py-3 textarea,
+.container-fluid.py-3 table,
+.container-fluid.py-3 .btn,
+.container-fluid.py-3 .badge,
+.container-fluid.py-3 .page-link {
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .container-fluid.py-3 > .d-flex {
+        align-items: flex-start !important;
+        flex-direction: column;
+        gap: 18px !important;
+    }
+
+    .container-fluid.py-3 > .d-flex > form {
+        width: 100%;
+    }
+
+    .container-fluid.py-3 .btn-primary {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .container-fluid.py-3 {
+        padding: 16px 12px 24px !important;
+    }
+
+    .container-fluid.py-3 > .d-flex {
+        min-height: auto;
+        padding: 22px 20px;
+        margin-bottom: 16px !important;
+    }
+
+    .container-fluid.py-3 h5 {
+        font-size: 17px;
+    }
+
+    .container-fluid.py-3 h5 + small {
+        font-size: 11.5px;
+    }
+
+    .container-fluid.py-3 .table thead th {
+        padding: 11px 12px;
+    }
+
+    .container-fluid.py-3 .table tbody td {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 430px) {
+
+    .container-fluid.py-3 {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    .container-fluid.py-3 > .d-flex {
+        padding: 20px 17px;
+    }
+
+    .container-fluid.py-3 h5 {
+        font-size: 16px;
+    }
+
+    .container-fluid.py-3 .btn-sm {
+        min-height: 31px;
+        padding: 0 9px;
+        font-size: 10px;
+    }
+}

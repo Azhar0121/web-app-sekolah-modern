@@ -1,0 +1,1163 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+/* =========================================================
+SEO CONFIGURATION
+========================================================= */
+
+.seo-page,
+.seo-page * {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    box-sizing: border-box;
+}
+
+.seo-page {
+    width: 100%;
+    color: #172033;
+}
+
+
+/* =========================================================
+HERO
+========================================================= */
+
+.seo-header {
+    position: relative;
+    overflow: hidden;
+
+    width: 100%;
+    min-height: 155px;
+
+    margin-bottom: 20px;
+    padding: 29px 32px;
+
+    background: #071b35;
+    border: 1px solid #071b35;
+    border-radius: 7px;
+}
+
+.seo-header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    right: -65px;
+    top: -80px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+}
+
+.seo-header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 110px;
+    height: 110px;
+
+    right: 55px;
+    bottom: -70px;
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 50%;
+}
+
+.seo-header-content {
+    position: relative;
+    z-index: 2;
+
+    min-height: 97px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 17px;
+}
+
+.seo-header-icon {
+    position: relative;
+    z-index: 3;
+
+    width: 48px;
+    height: 48px;
+
+    flex: 0 0 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #d7e0ea;
+    border: 1px solid #cbd5df;
+    border-radius: 6px;
+
+    color: #071b35;
+    font-size: 21px;
+}
+
+.seo-header-content > div:last-child {
+    min-width: 0;
+}
+
+.seo-header-label {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #cbd3dd;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 1.3px;
+    line-height: 1.2;
+}
+
+.seo-header h1 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 27px;
+    font-weight: 700;
+
+    line-height: 1.25;
+}
+
+.seo-header p {
+    max-width: 750px;
+
+    margin: 7px 0 0;
+
+    color: #c1cad5;
+
+    font-size: 13px;
+    font-weight: 400;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+LAYOUT
+========================================================= */
+
+.seo-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.35fr)
+        minmax(360px, 0.95fr);
+
+    gap: 20px;
+
+    width: 100%;
+}
+
+.seo-main-column,
+.seo-side-column {
+    min-width: 0;
+}
+
+.seo-side-column {
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+SECTION CARD
+========================================================= */
+
+.seo-section-card {
+    width: 100%;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border: 1px solid #e1e6ed;
+    border-radius: 7px;
+}
+
+
+/* =========================================================
+SECTION HEADER
+========================================================= */
+
+.seo-section-header {
+    min-height: 82px;
+
+    padding: 17px 20px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    background: #e8edf3;
+
+    border-bottom: 1px solid #dbe2e9;
+}
+
+.seo-section-header-icon {
+    width: 39px;
+    height: 39px;
+
+    flex: 0 0 39px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #d7e0ea;
+
+    border: 1px solid #cbd5df;
+    border-radius: 6px;
+
+    color: #071b35;
+
+    font-size: 17px;
+}
+
+.seo-section-header > div:last-child {
+    min-width: 0;
+}
+
+.seo-section-header h2 {
+    margin: 0;
+
+    color: #172033;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    line-height: 1.45;
+}
+
+.seo-section-header p {
+    margin: 3px 0 0;
+
+    color: #66758a;
+
+    font-size: 11.5px;
+    font-weight: 400;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+SECTION BODY
+========================================================= */
+
+.seo-section-body {
+    padding: 22px 20px;
+}
+
+
+/* =========================================================
+FORM
+========================================================= */
+
+.seo-form-group {
+    margin-bottom: 17px;
+}
+
+.seo-form-group:last-child {
+    margin-bottom: 0;
+}
+
+.seo-form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #172033;
+
+    font-size: 11.5px;
+    font-weight: 600;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+FORM GRID
+========================================================= */
+
+.seo-form-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 13px;
+}
+
+
+/* =========================================================
+INPUT / TEXTAREA / SELECT / FILE
+========================================================= */
+
+.seo-input,
+.seo-textarea,
+.seo-select,
+.seo-file-input {
+    width: 100%;
+
+    color: #172033;
+
+    background: #ffffff;
+
+    border: 1px solid #d8dfe7;
+    border-radius: 5px;
+
+    outline: none;
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+
+    font-size: 12px;
+    font-weight: 400;
+
+    transition:
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.seo-input {
+    height: 40px;
+
+    padding: 0 12px;
+}
+
+.seo-textarea {
+    min-height: 100px;
+
+    padding: 10px 12px;
+
+    resize: vertical;
+
+    line-height: 1.65;
+}
+
+.seo-code-textarea {
+    min-height: 170px;
+
+    /*
+     * Tetap menggunakan Plus Jakarta Sans
+     * agar seluruh halaman SEO konsisten.
+     */
+
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+
+    font-size: 11.5px;
+    line-height: 1.7;
+}
+
+.seo-select {
+    height: 40px;
+
+    padding: 0 11px;
+
+    cursor: pointer;
+}
+
+.seo-file-input {
+    min-height: 40px;
+
+    padding: 9px 11px;
+
+    cursor: pointer;
+}
+
+.seo-input::placeholder,
+.seo-textarea::placeholder {
+    color: #9aa6b5;
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+
+    font-weight: 400;
+}
+
+.seo-input:focus,
+.seo-textarea:focus,
+.seo-select:focus,
+.seo-file-input:focus {
+    border-color: #071b35;
+
+    box-shadow:
+        0 0 0 2px rgba(7, 27, 53, 0.08);
+}
+
+
+/* =========================================================
+FILE INPUT
+========================================================= */
+
+.seo-file-input::file-selector-button {
+    margin-right: 9px;
+
+    padding: 6px 10px;
+
+    color: #071b35;
+
+    background: #e8edf3;
+
+    border: 1px solid #d7dfe8;
+    border-radius: 4px;
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+HELP TEXT
+========================================================= */
+
+.seo-help-text {
+    display: block;
+
+    margin-top: 6px;
+
+    color: #7b8797;
+
+    font-size: 10px;
+    font-weight: 400;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+FORM FOOTER
+========================================================= */
+
+.seo-form-footer {
+    display: flex;
+
+    align-items: center;
+    justify-content: flex-start;
+
+    margin-top: 21px;
+    padding-top: 18px;
+
+    border-top: 1px solid #e8edf2;
+}
+
+
+/* =========================================================
+PRIMARY BUTTON
+========================================================= */
+
+.seo-primary-button {
+    min-height: 40px;
+
+    padding: 0 15px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    color: #ffffff;
+
+    background: #071b35;
+
+    border: 1px solid #071b35;
+    border-radius: 5px;
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+
+    font-size: 11.5px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease;
+}
+
+.seo-primary-button:hover {
+    background: #0b294d;
+
+    border-color: #0b294d;
+
+    color: #ffffff;
+}
+
+.seo-primary-button i {
+    font-size: 14px;
+}
+
+
+/* =========================================================
+REDIRECT FORM
+========================================================= */
+
+.seo-redirect-form {
+    margin-bottom: 21px;
+    padding-bottom: 19px;
+
+    border-bottom: 1px solid #e8edf2;
+}
+
+.seo-redirect-action {
+    display: grid;
+
+    grid-template-columns:
+        142px minmax(0, 1fr);
+
+    gap: 8px;
+}
+
+.seo-add-button {
+    width: 100%;
+
+    min-height: 40px;
+}
+
+
+/* =========================================================
+TABLE
+========================================================= */
+
+.seo-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+
+    border: 1px solid #e1e6ed;
+    border-radius: 5px;
+}
+
+.seo-table {
+    width: 100%;
+
+    min-width: 430px;
+
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    background: #ffffff;
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.seo-table th {
+    padding: 11px 10px;
+
+    color: #ffffff;
+
+    background: #071b35;
+
+    border: 0;
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    line-height: 1.4;
+
+    text-align: left;
+
+    white-space: nowrap;
+}
+
+.seo-table td {
+    padding: 11px 10px;
+
+    color: #172033;
+
+    border-bottom: 1px solid #e8edf2;
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+
+    font-size: 10.5px;
+    font-weight: 400;
+
+    vertical-align: middle;
+}
+
+.seo-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.seo-table tbody tr:hover {
+    background: #f7f8fa;
+}
+
+
+/* =========================================================
+TABLE ALIGNMENT
+========================================================= */
+
+.seo-center {
+    text-align: center !important;
+}
+
+.seo-right {
+    text-align: right !important;
+}
+
+
+/* =========================================================
+URL
+========================================================= */
+
+.seo-url {
+    display: inline-block;
+
+    max-width: 150px;
+
+    color: #39475a;
+
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+
+    font-size: 10px;
+    font-weight: 500;
+
+    line-height: 1.45;
+
+    word-break: break-word;
+}
+
+.seo-url-target {
+    color: #1769d5;
+}
+
+
+/* =========================================================
+STATUS BADGE
+========================================================= */
+
+.seo-status-badge {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 38px;
+    min-height: 24px;
+
+    padding: 3px 7px;
+
+    background: #e8edf3;
+
+    color: #3e4b5d;
+
+    border: 1px solid #d7dfe8;
+    border-radius: 5px;
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+
+    font-size: 9.5px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+EMPTY TABLE
+========================================================= */
+
+.seo-empty-table {
+    padding: 22px 10px !important;
+
+    color: #7b8797 !important;
+
+    text-align: center !important;
+
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+
+    font-size: 10.5px !important;
+    font-weight: 500 !important;
+}
+
+
+/* =========================================================
+DELETE BUTTON
+========================================================= */
+
+.seo-delete-form {
+    margin: 0;
+    padding: 0;
+}
+
+.seo-delete-button {
+    width: 29px;
+    height: 29px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #ead5d5;
+    border-radius: 5px;
+
+    background: #fff7f7;
+
+    color: #b42318;
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
+}
+
+.seo-delete-button:hover {
+    background: #fce8e8;
+
+    border-color: #e7bcbc;
+
+    color: #991b1b;
+}
+
+
+/* =========================================================
+SITEMAP
+========================================================= */
+
+.seo-sitemap-card {
+    width: 100%;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 15px;
+
+    padding: 20px;
+
+    background: #ffffff;
+
+    border: 1px solid #e1e6ed;
+    border-radius: 7px;
+}
+
+.seo-sitemap-icon {
+    width: 42px;
+    height: 42px;
+
+    flex: 0 0 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #d7e0ea;
+
+    border: 1px solid #cbd5df;
+    border-radius: 6px;
+
+    color: #071b35;
+
+    font-size: 17px;
+}
+
+.seo-sitemap-content {
+    min-width: 0;
+
+    flex: 1;
+}
+
+.seo-sitemap-label {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #66758a;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 0.7px;
+
+    line-height: 1.4;
+}
+
+.seo-sitemap-content h2 {
+    margin: 0;
+
+    color: #172033;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    line-height: 1.45;
+}
+
+.seo-sitemap-content p {
+    margin: 7px 0 14px;
+
+    color: #66758a;
+
+    font-size: 11px;
+    font-weight: 400;
+
+    line-height: 1.65;
+}
+
+.seo-sitemap-button {
+    min-height: 36px;
+
+    padding: 0 12px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    border: 1px solid #071b35;
+    border-radius: 5px;
+
+    background: #ffffff;
+
+    color: #071b35;
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+
+    font-size: 10.5px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        background 0.15s ease,
+        color 0.15s ease,
+        border-color 0.15s ease;
+}
+
+.seo-sitemap-button:hover {
+    background: #071b35;
+
+    border-color: #071b35;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+BOOTSTRAP OVERRIDE
+========================================================= */
+
+.seo-page button,
+.seo-page input,
+.seo-page textarea,
+.seo-page select,
+.seo-page option,
+.seo-page label,
+.seo-page table,
+.seo-page th,
+.seo-page td,
+.seo-page a,
+.seo-page span,
+.seo-page p,
+.seo-page h1,
+.seo-page h2,
+.seo-page h3,
+.seo-page h4,
+.seo-page h5,
+.seo-page h6,
+.seo-page div {
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+}
+
+.seo-page .bi {
+    font-family: "bootstrap-icons" !important;
+}
+
+
+/* =========================================================
+RESPONSIVE
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    .seo-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .seo-side-column {
+        display: grid;
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(300px, 0.65fr);
+
+        align-items: start;
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .seo-header {
+        padding: 25px;
+    }
+
+    .seo-header-content {
+        min-height: 105px;
+    }
+
+    .seo-header h1 {
+        font-size: 23px;
+    }
+
+    .seo-layout {
+        gap: 16px;
+    }
+
+    .seo-side-column {
+        display: flex;
+
+        flex-direction: column;
+    }
+
+    .seo-section-body {
+        padding: 18px 16px;
+    }
+
+    .seo-form-grid {
+        grid-template-columns: 1fr;
+
+        gap: 0;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .seo-header {
+        padding: 23px 20px;
+    }
+
+    .seo-header-content {
+        gap: 15px;
+    }
+
+    .seo-header h1 {
+        font-size: 23px;
+    }
+
+    .seo-header p {
+        font-size: 12px;
+    }
+
+    .seo-header-icon {
+        width: 45px;
+        height: 45px;
+
+        flex-basis: 45px;
+
+        font-size: 19px;
+    }
+
+    .seo-section-header {
+        padding: 16px;
+    }
+
+    .seo-section-header-icon {
+        width: 37px;
+        height: 37px;
+
+        flex-basis: 37px;
+
+        font-size: 16px;
+    }
+
+    .seo-section-header h2 {
+        font-size: 13px;
+    }
+
+    .seo-section-header p {
+        font-size: 10.5px;
+    }
+
+    .seo-section-body {
+        padding: 17px;
+    }
+
+    .seo-redirect-action {
+        grid-template-columns: 1fr;
+    }
+
+    .seo-add-button {
+        width: 100%;
+    }
+
+    .seo-sitemap-card {
+        padding: 17px;
+    }
+
+}
+
+
+@media (max-width: 430px) {
+
+    .seo-header {
+        padding: 21px 17px;
+    }
+
+    .seo-header-content {
+        display: block;
+    }
+
+    .seo-header-icon {
+        margin-bottom: 12px;
+    }
+
+    .seo-header h1 {
+        font-size: 21px;
+    }
+
+    .seo-header p {
+        font-size: 11.5px;
+    }
+
+    .seo-section-body {
+        padding: 16px 13px;
+    }
+
+    .seo-table th,
+    .seo-table td {
+        padding: 9px 8px;
+    }
+
+    .seo-url {
+        max-width: 115px;
+    }
+
+    .seo-sitemap-card {
+        display: block;
+    }
+
+    .seo-sitemap-icon {
+        margin-bottom: 12px;
+    }
+
+}
+
+/* =========================================================
+   SEO HEADER
+========================================================= */
+
+.seo-header {
+    position: relative;
+    min-height: 155px;
+    padding: 29px 32px;
+    background: #071b35;
+    border-radius: 7px;
+    overflow: hidden;
+    color: #ffffff;
+}
+
+.seo-header::before {
+    content: "";
+    position: absolute;
+    width: 190px;
+    height: 190px;
+    right: -70px;
+    top: -105px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+}
+
+.seo-header::after {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    right: 35px;
+    bottom: -75px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 50%;
+}
+
+.seo-header-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.seo-header-content > div:last-child {
+    flex: 1;
+}
+
+.seo-header-icon {
+    order: 2;
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #cbd5df;
+    border-radius: 6px;
+    background: #071b35;
+    color: #cbd5df;
+    font-size: 22px;
+}
+
+.seo-header-icon i {
+    line-height: 1;
+}
+
+.seo-header-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #cbd3dd;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+}
+
+.seo-header h1 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 26px;
+    line-height: 1.25;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+.seo-header p {
+    margin: 7px 0 0;
+    max-width: 760px;
+    color: #c1cad5;
+    font-size: 13px;
+    line-height: 1.6;
+    font-weight: 400;
+}

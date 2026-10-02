@@ -3,6 +3,9 @@
 @section('title', 'Backup & Sistem Pemulihan')
 
 @section('content')
+
+<link rel="stylesheet" href="{{ asset('css/admin/backups/index.css') }}">
+
 <div class="container-fluid py-3">
 
     <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
