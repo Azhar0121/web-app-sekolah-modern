@@ -1,24 +1,45 @@
 <!DOCTYPE html>
+
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>PPDB Online - {{ config('app.name') }}</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>PPDB Online - {{ config('app.name') }}</title>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet"
-    >
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="stylesheet" href="{{ asset('css/base.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/ppdb.css') }}">
+<link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+>
+
+{{-- Bootstrap Icons --}}
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+>
+
+{{-- Global --}}
+<link rel="stylesheet" href="{{ asset('css/base.css') }}">
+
+{{-- Navbar / halaman publik --}}
+<link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
+
+{{-- PPDB --}}
+<link rel="stylesheet" href="{{ asset('css/ppdb.css') }}">
+
+
 </head>
 
 <body>
+
+
+{{-- NAVBAR PUBLIK --}}
+@include('partials.navbar')
+
 
 <main class="ppdb-page">
 
@@ -44,13 +65,18 @@
                 secara mudah, cepat, dan terintegrasi.
             </p>
 
-            <a href="{{ url('/') }}" class="ppdb-dashboard-link">
+            <a
+                href="{{ url('/') }}"
+                class="ppdb-dashboard-link"
+            >
                 ← Kembali ke Dashboard
             </a>
 
         </div>
 
+
         <div class="ppdb-hero-image">
+
             <img
                 src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1400&q=85"
                 alt="Gedung sekolah"
@@ -58,6 +84,7 @@
                 decoding="async"
                 referrerpolicy="no-referrer"
             >
+
         </div>
 
     </section>
@@ -68,9 +95,11 @@
 
         {{-- ERROR --}}
         @if (session('error'))
+
             <div class="ppdb-alert ppdb-alert-error">
                 {{ session('error') }}
             </div>
+
         @endif
 
 
@@ -81,9 +110,12 @@
                 $isOpen = $activePeriod->isOpenForRegistration();
             @endphp
 
+
             <div class="ppdb-period-card">
 
+                {{-- HEADING --}}
                 <div class="ppdb-period-heading">
+
                     <span class="ppdb-period-label">
                         PERIODE PENDAFTARAN
                     </span>
@@ -91,9 +123,11 @@
                     <h2>
                         Periode PPDB Aktif
                     </h2>
+
                 </div>
 
 
+                {{-- STATUS --}}
                 <div class="ppdb-period-status {{ $isOpen ? 'is-open' : 'is-closed' }}">
 
                     <span class="ppdb-status-dot"></span>
@@ -103,6 +137,7 @@
                 </div>
 
 
+                {{-- DATE --}}
                 <div class="ppdb-period-date">
 
                     <span>
@@ -118,6 +153,7 @@
                 </div>
 
 
+                {{-- ACTIONS --}}
                 <div class="ppdb-actions">
 
                     @if ($isOpen)
@@ -167,14 +203,12 @@
 
     </section>
 
-
-    {{-- FOOTER --}}
-    <footer class="ppdb-footer">
-        &copy; {{ date('Y') }} {{ config('app.name') }}
-        • Sistem PPDB Online
-    </footer>
-
 </main>
+
+
+{{-- FOOTER PUBLIK --}}
+@include('partials.footer')
+
 
 </body>
 </html>

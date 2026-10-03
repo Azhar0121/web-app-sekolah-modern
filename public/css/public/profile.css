@@ -1,1480 +1,1985 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+/* =========================================================
+WEB SEKOLAH MODERN
+PROFIL SEKOLAH
+VISUAL REFRESH
+========================================================= */
 
 :root {
-    --profile-blue: #1769d5;
-    --profile-blue-dark: #125bb9;
-    --profile-blue-soft: #eaf3ff;
-    --profile-blue-light: #f5f9ff;
+--profile-blue: #1769d5;
+--profile-blue-dark: #0f55ad;
+--profile-blue-deep: #0b3d80;
+--profile-blue-soft: #eaf3ff;
+--profile-blue-pale: #f6faff;
 
-    --profile-navy: #071b35;
-    --profile-navy-light: #0f315b;
 
-    --profile-text: #10223d;
-    --profile-muted: #66758a;
+--profile-navy: #071b35;
+--profile-navy-2: #0d294d;
 
-    --profile-border: #dce6f1;
-    --profile-bg: #f7f9fc;
-    --profile-white: #ffffff;
+--profile-bg: #f4f7fb;
+--profile-white: #ffffff;
 
-    --profile-success: #16845b;
-    --profile-warning: #c99600;
+--profile-text: #10223d;
+--profile-muted: #66758a;
+
+--profile-border: #d9e3ef;
+
+--profile-green: #16865a;
+--profile-green-soft: #eaf8f1;
+
+--profile-yellow: #d99a00;
+--profile-yellow-soft: #fff7df;
+
+--profile-cyan: #0786a8;
+--profile-cyan-soft: #e9f9fc;
+
+--profile-shadow-sm: 0 5px 16px rgba(16, 34, 61, 0.05);
+--profile-shadow: 0 14px 35px rgba(16, 34, 61, 0.08);
+--profile-shadow-lg: 0 20px 50px rgba(7, 27, 53, 0.12);
+
+
 }
-
 
 /* =========================================================
-   BASE
-   ========================================================= */
+BASE
+========================================================= */
 
-body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background: var(--profile-bg);
-    color: var(--profile-text);
+.profile-container,
+.profile-container * {
+font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-body,
-body * {
-    box-sizing: border-box;
+.profile-container {
+padding-top: 58px;
+padding-bottom: 45px;
 }
 
-.container {
-    width: 100%;
+.profile-section {
+position: relative;
+margin-bottom: 78px;
+scroll-margin-top: 90px;
 }
 
-.text-primary {
-    color: var(--profile-blue) !important;
+.profile-section-last {
+margin-bottom: 20px;
 }
-
-.text-secondary {
-    color: var(--profile-muted) !important;
-}
-
-.text-dark {
-    color: var(--profile-text) !important;
-}
-
 
 /* =========================================================
-   HERO
-   ========================================================= */
+HERO
+========================================================= */
 
-section.bg-dark.text-white.py-5.shadow-sm {
-    position: relative;
-    overflow: hidden;
+.profile-hero {
+position: relative;
+overflow: hidden;
 
-    padding-top: 42px !important;
-    padding-bottom: 44px !important;
 
-    background:
-        linear-gradient(
-            135deg,
-            #071b35 0%,
-            #0d2c50 52%,
-            #1769d5 100%
-        ) !important;
+padding: 48px 0 62px;
 
-    box-shadow: none !important;
+color: #ffffff;
+
+background:
+    radial-gradient(
+        circle at 87% 18%,
+        rgba(59, 130, 246, 0.32),
+        transparent 28%
+    ),
+    radial-gradient(
+        circle at 65% 100%,
+        rgba(23, 105, 213, 0.28),
+        transparent 30%
+    ),
+    linear-gradient(
+        125deg,
+        #061a33 0%,
+        #0b2a4e 46%,
+        #125bb9 100%
+    );
+
+
 }
 
-section.bg-dark.text-white.py-5.shadow-sm::after {
-    content: "";
+.profile-hero::before {
+content: "";
 
-    position: absolute;
 
-    width: 280px;
-    height: 280px;
+position: absolute;
 
-    right: -120px;
-    top: -150px;
+width: 500px;
+height: 500px;
 
-    border-radius: 50%;
+right: -170px;
+bottom: -340px;
 
-    background: rgba(255, 255, 255, 0.05);
+border: 75px solid rgba(255, 255, 255, 0.035);
+border-radius: 50%;
 
-    pointer-events: none;
+
 }
 
-section.bg-dark.text-white.py-5.shadow-sm .container {
-    position: relative;
-    z-index: 2;
+.profile-hero::after {
+content: "";
 
-    max-width: 1180px;
+
+position: absolute;
+
+width: 260px;
+height: 260px;
+
+left: -150px;
+top: -180px;
+
+border: 45px solid rgba(255, 255, 255, 0.035);
+border-radius: 50%;
+
+
 }
 
-section.bg-dark.text-white.py-5.shadow-sm .breadcrumb {
-    margin-bottom: 18px !important;
+.profile-hero .container {
+position: relative;
+z-index: 2;
 }
 
-section.bg-dark.text-white.py-5.shadow-sm .breadcrumb-item {
-    font-size: 0.75rem;
-    font-weight: 600;
+.profile-breadcrumb {
+margin-bottom: 45px;
 }
 
-section.bg-dark.text-white.py-5.shadow-sm .breadcrumb-item a {
-    color: #ffd45c !important;
+.profile-breadcrumb .breadcrumb {
+font-size: 11px;
 }
 
-section.bg-dark.text-white.py-5.shadow-sm .breadcrumb-item.active {
-    color: rgba(255, 255, 255, 0.65) !important;
+.profile-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+color: rgba(255, 255, 255, 0.35);
 }
 
-section.bg-dark.text-white.py-5.shadow-sm h1 {
-    margin-bottom: 10px !important;
-
-    font-size: clamp(2rem, 4vw, 2.7rem);
-    font-weight: 800 !important;
-
-    line-height: 1.2;
-    letter-spacing: -0.035em;
+.profile-breadcrumb a {
+color: #dcecff;
+text-decoration: none;
+font-weight: 700;
 }
 
-section.bg-dark.text-white.py-5.shadow-sm p {
-    max-width: 760px;
-
-    margin-bottom: 0 !important;
-
-    font-size: 0.93rem !important;
-    line-height: 1.8;
-
-    opacity: 0.82 !important;
+.profile-breadcrumb a:hover {
+color: #ffffff;
 }
 
+.profile-breadcrumb .active {
+color: rgba(255, 255, 255, 0.55) !important;
+}
+
+.profile-breadcrumb i {
+margin-right: 5px;
+}
+
+.profile-hero-content {
+max-width: 900px;
+}
+
+.profile-hero-label {
+display: inline-flex;
+align-items: center;
+
+
+min-height: 32px;
+
+margin-bottom: 17px;
+padding: 0 12px;
+
+border: 1px solid rgba(255, 255, 255, 0.2);
+border-radius: 5px;
+
+background: rgba(255, 255, 255, 0.08);
+
+color: #e8f2ff;
+
+font-size: 10px;
+font-weight: 800;
+letter-spacing: 0.11em;
+
+
+}
+
+.profile-hero h1 {
+margin: 0;
+
+
+color: #ffffff;
+
+font-size: clamp(34px, 4.2vw, 54px);
+line-height: 1.08;
+font-weight: 800;
+letter-spacing: -0.045em;
+
+
+}
+
+.profile-hero-line {
+width: 72px;
+height: 4px;
+
+
+margin-top: 20px;
+
+border-radius: 2px;
+
+background: #5ea2ff;
+
+
+}
+
+.profile-hero p {
+max-width: 760px;
+
+
+margin: 20px 0 0;
+
+color: rgba(255, 255, 255, 0.78);
+
+font-size: 14px;
+line-height: 1.85;
+
+
+}
 
 /* =========================================================
-   MAIN CONTAINER
-   ========================================================= */
+SECTION HEADING
+========================================================= */
 
-.container.py-5 {
-    max-width: 1180px;
+.profile-section-heading {
+display: flex;
+align-items: center;
+gap: 15px;
 
-    padding-top: 44px !important;
-    padding-bottom: 54px !important;
+
+margin-bottom: 30px;
+
+
 }
 
+.profile-heading-icon {
+position: relative;
+
+
+width: 50px;
+height: 50px;
+flex: 0 0 50px;
+
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
+border: 1px solid #c7dcf5;
+border-radius: 9px;
+
+background: linear-gradient(
+    145deg,
+    #f1f7ff,
+    #e2efff
+);
+
+color: var(--profile-blue);
+
+font-size: 20px;
+
+box-shadow:
+    0 7px 18px rgba(23, 105, 213, 0.09);
+
+
+}
+
+.profile-heading-icon::after {
+content: "";
+
+
+position: absolute;
+
+width: 7px;
+height: 7px;
+
+right: -3px;
+top: -3px;
+
+border: 2px solid #ffffff;
+border-radius: 50%;
+
+background: var(--profile-blue);
+
+
+}
+
+.profile-eyebrow {
+display: block;
+
+
+margin-bottom: 5px;
+
+color: var(--profile-blue);
+
+font-size: 10px;
+line-height: 1.3;
+font-weight: 800;
+letter-spacing: 0.11em;
+
+
+}
+
+.profile-section-heading h2 {
+margin: 0;
+
+
+color: var(--profile-text);
+
+font-size: 24px;
+line-height: 1.25;
+font-weight: 800;
+letter-spacing: -0.025em;
+
+
+}
+
+.profile-section-header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 24px;
+
+
+margin-bottom: 30px;
+
+
+}
+
+.profile-section-header .profile-section-heading {
+margin-bottom: 0;
+}
+
+.profile-count-badge {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
+
+min-height: 34px;
+
+padding: 0 13px;
+
+border: 1px solid #bfd7f4;
+border-radius: 6px;
+
+background: var(--profile-blue-soft);
+color: var(--profile-blue);
+
+font-size: 10px;
+font-weight: 800;
+
+white-space: nowrap;
+
+
+}
+
+.profile-count-gray {
+border-color: #d5dde6;
+background: #f1f4f7;
+color: #66758a;
+}
 
 /* =========================================================
-   SECTION SPACING
-   ========================================================= */
+SECTION 1 — HISTORY
+========================================================= */
 
-.container.py-5 > section {
-    margin-bottom: 48px !important;
-    padding-top: 0 !important;
+.profile-history-section {
+padding: 35px;
+
+
+border: 1px solid #e0e8f1;
+border-radius: 14px;
+
+background:
+    linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #f8fbff 100%
+    );
+
+box-shadow: var(--profile-shadow);
+
+
 }
 
-.container.py-5 > section:last-child {
-    margin-bottom: 0 !important;
-}
+.profile-history-section::before {
+content: "01";
 
+
+position: absolute;
+
+right: 28px;
+top: 20px;
+
+color: #edf3fa;
+
+font-size: 78px;
+line-height: 1;
+font-weight: 800;
+letter-spacing: -0.08em;
+
+
+}
 
 /* =========================================================
-   SECTION HEADER
-   ========================================================= */
+HISTORY PANEL
+========================================================= */
 
-.container.py-5 section .d-flex.align-items-center.gap-3.mb-3,
-.container.py-5 section .d-flex.align-items-center.gap-3.mb-4,
-.container.py-5 section .d-flex.align-items-center.justify-content-between.mb-4 {
-    margin-bottom: 20px !important;
+.history-panel {
+position: relative;
+
+
+height: 100%;
+
+padding: 25px 28px;
+
+border: 1px solid #dce6f1;
+border-radius: 11px;
+
+background: #ffffff;
+
+box-shadow: var(--profile-shadow-sm);
+
+
 }
 
-.container.py-5 section .d-inline-flex.align-items-center.justify-content-center.bg-primary.bg-opacity-10,
-.container.py-5 section .d-inline-flex.align-items-center.justify-content-center.bg-primary.text-white {
-    width: 44px !important;
-    height: 44px !important;
+.history-panel-number {
+position: absolute;
 
-    flex-shrink: 0;
 
-    border-radius: 8px !important;
+top: 18px;
+right: 22px;
+
+color: #e8f0f8;
+
+font-size: 58px;
+line-height: 1;
+font-weight: 800;
+
+
 }
 
-.container.py-5 section .d-inline-flex i {
-    font-size: 1.15rem !important;
+.history-label {
+position: relative;
+
+
+display: block;
+
+margin-bottom: 7px;
+
+color: var(--profile-blue);
+
+font-size: 9px;
+font-weight: 800;
+letter-spacing: 0.1em;
+
+
 }
 
-.container.py-5 section .text-warning.fw-bold.small.text-uppercase {
+.history-panel h3 {
+position: relative;
+
+
+margin: 0 0 14px;
+
+color: var(--profile-text);
+
+font-size: 21px;
+font-weight: 800;
+
+
+}
+
+.history-intro {
+position: relative;
+
+
+margin: 0 0 28px;
+
+color: var(--profile-muted);
+
+font-size: 12px;
+line-height: 1.85;
+
+
+}
+
+.history-intro strong {
+color: var(--profile-text);
+}
+
+/* =========================================================
+HISTORY TIMELINE
+========================================================= */
+
+.history-timeline {
+position: relative;
+
+
+margin-left: 3px;
+padding-left: 30px;
+
+
+}
+
+.history-timeline::before {
+content: "";
+
+
+position: absolute;
+
+left: 8px;
+top: 6px;
+bottom: 10px;
+
+width: 2px;
+
+background: #dce8f5;
+
+
+}
+
+.history-timeline-item {
+position: relative;
+
+
+display: flex;
+gap: 12px;
+
+margin-bottom: 22px;
+
+
+}
+
+.history-timeline-item:last-child {
+margin-bottom: 0;
+}
+
+.history-timeline-marker {
+position: absolute;
+
+
+left: -30px;
+top: 0;
+
+width: 19px;
+height: 19px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border: 3px solid #ffffff;
+border-radius: 50%;
+
+background: var(--profile-blue);
+
+color: #ffffff;
+
+font-size: 8px;
+
+box-shadow:
+    0 0 0 1px #bcd3ec;
+
+
+}
+
+.history-timeline-marker.yellow {
+background: var(--profile-yellow);
+
+
+box-shadow:
+    0 0 0 1px #ead49b;
+
+
+}
+
+.history-timeline-marker.cyan {
+background: var(--profile-cyan);
+
+
+box-shadow:
+    0 0 0 1px #b8e1ea;
+
+
+}
+
+.history-timeline-item strong {
+display: block;
+
+
+margin-bottom: 4px;
+
+color: var(--profile-text);
+
+font-size: 11px;
+font-weight: 750;
+
+
+}
+
+.history-timeline-item p {
+margin: 0;
+
+
+color: var(--profile-muted);
+
+font-size: 10px;
+line-height: 1.7;
+
+
+}
+
+/* =========================================================
+VISION PANEL
+========================================================= */
+
+.vision-panel {
+position: relative;
+overflow: hidden;
+
+
+height: 100%;
+
+padding: 27px;
+
+border: 1px solid #d6e2ef;
+border-radius: 11px;
+
+background: #ffffff;
+
+box-shadow: var(--profile-shadow);
+
+
+}
+
+.vision-panel::before {
+content: "";
+
+
+position: absolute;
+
+width: 190px;
+height: 190px;
+
+right: -100px;
+top: -100px;
+
+border-radius: 50%;
+
+background: var(--profile-blue-soft);
+
+
+}
+
+.vision-panel::after {
+content: "";
+
+
+position: absolute;
+
+left: 0;
+top: 0;
+
+width: 4px;
+height: 100%;
+
+background: linear-gradient(
+    to bottom,
+    var(--profile-blue),
+    #5d9ef0
+);
+
+
+}
+
+.vision-panel-top {
+position: relative;
+z-index: 1;
+
+
+display: flex;
+align-items: center;
+gap: 12px;
+
+margin-bottom: 22px;
+
+
+}
+
+.vision-icon {
+width: 43px;
+height: 43px;
+
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border-radius: 8px;
+
+background: var(--profile-blue);
+
+color: #ffffff;
+
+font-size: 18px;
+
+
+}
+
+.vision-panel-top span {
+display: block;
+
+
+margin-bottom: 3px;
+
+color: var(--profile-blue);
+
+font-size: 9px;
+font-weight: 800;
+letter-spacing: 0.1em;
+
+
+}
+
+.vision-panel-top h3 {
+margin: 0;
+
+
+color: var(--profile-text);
+
+font-size: 17px;
+font-weight: 800;
+
+
+}
+
+/* =========================================================
+VISION BOX
+========================================================= */
+
+.vision-box {
+position: relative;
+z-index: 1;
+
+
+margin-bottom: 22px;
+padding: 18px;
+
+border: 1px solid #c9def6;
+border-radius: 9px;
+
+background:
+    linear-gradient(
+        135deg,
+        #edf6ff,
+        #f7fbff
+    );
+
+
+}
+
+.vision-box-label {
+display: flex;
+align-items: center;
+gap: 7px;
+
+
+margin-bottom: 8px;
+
+color: var(--profile-blue);
+
+font-size: 10px;
+font-weight: 800;
+
+
+}
+
+.vision-box p {
+margin: 0;
+
+
+color: var(--profile-text);
+
+font-size: 12px;
+line-height: 1.7;
+font-weight: 650;
+
+
+}
+
+.mission-heading {
+position: relative;
+z-index: 1;
+
+
+display: flex;
+align-items: center;
+gap: 7px;
+
+margin-bottom: 11px;
+
+color: var(--profile-text);
+
+font-size: 11px;
+font-weight: 800;
+
+
+}
+
+.mission-heading i {
+color: var(--profile-green);
+}
+
+.mission-list {
+position: relative;
+z-index: 1;
+
+
+margin: 0;
+padding: 0;
+
+list-style: none;
+
+
+}
+
+.mission-list li {
+display: flex;
+align-items: flex-start;
+gap: 9px;
+
+
+margin-bottom: 10px;
+
+color: var(--profile-muted);
+
+font-size: 10.5px;
+line-height: 1.65;
+
+
+}
+
+.mission-list li:last-child {
+margin-bottom: 0;
+}
+
+.mission-list li i {
+flex: 0 0 auto;
+
+
+margin-top: 3px;
+
+color: var(--profile-green);
+
+font-size: 12px;
+
+
+}
+
+/* =========================================================
+SECTION 2 — VALUES
+========================================================= */
+
+.value-card {
+position: relative;
+overflow: hidden;
+
+
+height: 100%;
+
+padding: 27px;
+
+border: 1px solid var(--profile-border);
+border-radius: 11px;
+
+background: #ffffff;
+
+box-shadow: var(--profile-shadow-sm);
+
+transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+
+}
+
+.value-card:hover {
+transform: translateY(-5px);
+box-shadow: var(--profile-shadow);
+}
+
+.value-card::after {
+content: "";
+
+
+position: absolute;
+
+right: -45px;
+bottom: -50px;
+
+width: 125px;
+height: 125px;
+
+border-radius: 50%;
+
+background: #f3f7fb;
+
+
+}
+
+.value-number {
+position: absolute;
+
+
+top: 18px;
+right: 20px;
+
+color: #edf2f7;
+
+font-size: 50px;
+line-height: 1;
+font-weight: 800;
+
+
+}
+
+.value-icon {
+position: relative;
+z-index: 1;
+
+
+width: 48px;
+height: 48px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+margin-bottom: 20px;
+
+border-radius: 9px;
+
+font-size: 19px;
+
+
+}
+
+.value-green {
+border-top: 4px solid var(--profile-green);
+}
+
+.value-green .value-icon {
+background: var(--profile-green-soft);
+color: var(--profile-green);
+}
+
+.value-blue {
+border-top: 4px solid var(--profile-blue);
+}
+
+.value-blue .value-icon {
+background: var(--profile-blue-soft);
+color: var(--profile-blue);
+}
+
+.value-yellow {
+border-top: 4px solid var(--profile-yellow);
+}
+
+.value-yellow .value-icon {
+background: var(--profile-yellow-soft);
+color: var(--profile-yellow);
+}
+
+.value-label {
+position: relative;
+z-index: 1;
+
+
+display: block;
+
+margin-bottom: 5px;
+
+font-size: 9px;
+font-weight: 800;
+letter-spacing: 0.1em;
+
+
+}
+
+.value-green .value-label {
+color: var(--profile-green);
+}
+
+.value-blue .value-label {
+color: var(--profile-blue);
+}
+
+.value-yellow .value-label {
+color: var(--profile-yellow);
+}
+
+.value-card h3 {
+position: relative;
+z-index: 1;
+
+
+margin: 0 0 9px;
+
+color: var(--profile-text);
+
+font-size: 15px;
+font-weight: 800;
+
+
+}
+
+.value-card p {
+position: relative;
+z-index: 1;
+
+
+margin: 0;
+
+color: var(--profile-muted);
+
+font-size: 10.5px;
+line-height: 1.75;
+
+
+}
+
+/* =========================================================
+SECTION 3 — TEACHERS
+========================================================= */
+
+.teacher-card {
+position: relative;
+overflow: hidden;
+
+
+height: 100%;
+
+padding: 18px;
+
+border: 1px solid var(--profile-border);
+border-radius: 10px;
+
+background: #ffffff;
+
+text-align: center;
+
+box-shadow: var(--profile-shadow-sm);
+
+transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+
+
+}
+
+.teacher-card::before {
+content: "";
+
+
+position: absolute;
+
+left: 0;
+top: 0;
+
+width: 100%;
+height: 3px;
+
+background: var(--profile-blue);
+
+
+}
+
+.teacher-card:hover {
+transform: translateY(-4px);
+
+
+border-color: #bfd5ee;
+
+box-shadow: var(--profile-shadow);
+
+
+}
+
+.teacher-card-top {
+display: flex;
+justify-content: flex-end;
+
+
+min-height: 18px;
+
+
+}
+
+.teacher-index {
+color: #b4c0cd;
+
+
+font-size: 9px;
+font-weight: 800;
+
+
+}
+
+.teacher-avatar {
+width: 76px;
+height: 76px;
+
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+margin: 5px auto 15px;
+
+border: 4px solid #ffffff;
+border-radius: 50%;
+
+background:
+    linear-gradient(
+        145deg,
+        var(--profile-blue),
+        var(--profile-blue-dark)
+    );
+
+color: #ffffff;
+
+font-size: 28px;
+font-weight: 800;
+
+box-shadow:
+    0 7px 20px rgba(23, 105, 213, 0.18),
+    0 0 0 1px #cfe0f2;
+
+
+}
+
+.teacher-name {
+overflow: hidden;
+
+
+margin: 0 0 8px;
+
+color: var(--profile-text);
+
+font-size: 12px;
+font-weight: 800;
+
+text-overflow: ellipsis;
+white-space: nowrap;
+
+
+}
+
+.teacher-email {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 5px;
+
+
+margin-bottom: 10px;
+
+overflow: hidden;
+
+color: var(--profile-blue);
+
+font-size: 9px;
+font-weight: 650;
+
+text-overflow: ellipsis;
+white-space: nowrap;
+
+
+}
+
+.teacher-email i {
+flex: 0 0 auto;
+}
+
+.teacher-subject {
+display: block;
+
+
+max-width: 100%;
+
+overflow: hidden;
+
+padding: 6px 8px;
+
+border: 1px solid #dce3ea;
+border-radius: 5px;
+
+background: #f5f7f9;
+color: var(--profile-muted);
+
+font-size: 8px;
+font-weight: 650;
+
+text-overflow: ellipsis;
+white-space: nowrap;
+
+
+}
+
+.teacher-empty {
+padding: 55px 25px;
+
+
+border: 1px solid var(--profile-border);
+border-radius: 11px;
+
+background: #ffffff;
+
+text-align: center;
+
+box-shadow: var(--profile-shadow-sm);
+
+
+}
+
+.teacher-empty-icon {
+width: 62px;
+height: 62px;
+
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+margin: 0 auto 17px;
+
+border: 1px solid #d9e2eb;
+border-radius: 10px;
+
+background: #f3f6f9;
+color: #7c8998;
+
+font-size: 24px;
+
+
+}
+
+.teacher-empty h3 {
+margin: 0 0 7px;
+
+
+color: var(--profile-text);
+
+font-size: 15px;
+font-weight: 750;
+
+
+}
+
+.teacher-empty p {
+max-width: 550px;
+
+
+margin: 0 auto;
+
+color: var(--profile-muted);
+
+font-size: 11px;
+line-height: 1.7;
+
+
+}
+
+/* =========================================================
+SECTION 4 — ORGANIZATION
+========================================================= */
+
+.organization-panel {
+position: relative;
+
+
+padding: 34px;
+
+border-radius: 13px;
+
+background:
+    linear-gradient(
+        135deg,
+        #071b35 0%,
+        #0d2d54 100%
+    );
+
+box-shadow: var(--profile-shadow-lg);
+
+
+}
+
+.organization-principal {
+position: relative;
+
+
+max-width: 360px;
+
+margin: 0 auto;
+
+padding: 19px 22px;
+
+border: 1px solid rgba(255, 255, 255, 0.14);
+border-radius: 9px;
+
+background:
+    linear-gradient(
+        135deg,
+        #1769d5,
+        #1254a8
+    );
+
+color: #ffffff;
+
+text-align: center;
+
+box-shadow:
+    0 12px 25px rgba(0, 0, 0, 0.18);
+
+
+}
+
+.organization-principal span {
+display: block;
+
+
+margin-bottom: 5px;
+
+color: #a9d0ff;
+
+font-size: 9px;
+font-weight: 800;
+letter-spacing: 0.1em;
+
+
+}
+
+.organization-principal strong {
+display: block;
+
+
+font-size: 13px;
+font-weight: 750;
+
+
+}
+
+.organization-line {
+width: 2px;
+height: 27px;
+
+
+margin: 0 auto;
+
+background: rgba(255, 255, 255, 0.22);
+
+
+}
+
+.organization-card {
+position: relative;
+
+
+min-height: 85px;
+
+display: flex;
+flex-direction: column;
+justify-content: center;
+
+padding: 17px;
+
+border: 1px solid rgba(255, 255, 255, 0.1);
+border-radius: 8px;
+
+background: rgba(255, 255, 255, 0.065);
+
+text-align: center;
+
+transition:
+    background 0.18s ease,
+    transform 0.18s ease;
+
+
+}
+
+.organization-card:hover {
+transform: translateY(-2px);
+
+
+background: rgba(255, 255, 255, 0.1);
+
+
+}
+
+.organization-card::before {
+content: "";
+
+
+position: absolute;
+
+width: 6px;
+height: 6px;
+
+top: -4px;
+left: 50%;
+
+border: 2px solid var(--profile-navy);
+
+border-radius: 50%;
+
+background: #5ea4fa;
+
+transform: translateX(-50%);
+
+
+}
+
+.organization-card span {
+display: block;
+
+
+margin-bottom: 5px;
+
+color: #75b2ff;
+
+font-size: 8px;
+font-weight: 800;
+letter-spacing: 0.08em;
+
+
+}
+
+.organization-card strong {
+color: #ffffff;
+
+
+font-size: 11px;
+font-weight: 650;
+
+
+}
+
+/* =========================================================
+SECTION 5 — ACCREDITATION
+========================================================= */
+
+.accreditation-panel {
+position: relative;
+overflow: hidden;
+
+
+display: flex;
+align-items: center;
+gap: 34px;
+
+padding: 31px 36px;
+
+border: 1px solid #e6cf8a;
+border-radius: 13px;
+
+background:
+    radial-gradient(
+        circle at 90% 30%,
+        rgba(255, 213, 79, 0.28),
+        transparent 28%
+    ),
+    linear-gradient(
+        135deg,
+        #fffaf0,
+        #fff3c9
+    );
+
+box-shadow: var(--profile-shadow-sm);
+
+
+}
+
+.accreditation-panel::before {
+content: "";
+
+
+position: absolute;
+
+width: 190px;
+height: 190px;
+
+right: -80px;
+bottom: -100px;
+
+border: 28px solid rgba(217, 154, 0, 0.08);
+border-radius: 50%;
+
+
+}
+
+.accreditation-grade {
+position: relative;
+z-index: 1;
+
+
+width: 105px;
+height: 105px;
+flex: 0 0 105px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border: 7px solid #ffffff;
+border-radius: 50%;
+
+background:
+    linear-gradient(
+        145deg,
+        #f2b900,
+        #d28e00
+    );
+
+color: #ffffff;
+
+font-size: 58px;
+line-height: 1;
+font-weight: 800;
+
+box-shadow:
+    0 10px 25px rgba(178, 126, 0, 0.2),
+    0 0 0 1px #dfbf65;
+
+
+}
+
+.accreditation-content {
+position: relative;
+z-index: 1;
+}
+
+.accreditation-label {
+display: inline-flex;
+
+
+margin-bottom: 7px;
+padding: 5px 8px;
+
+border-radius: 4px;
+
+background: #f4c84c;
+color: #684900;
+
+font-size: 8px;
+font-weight: 800;
+letter-spacing: 0.08em;
+
+
+}
+
+.accreditation-content h2 {
+margin: 0 0 8px;
+
+
+color: var(--profile-text);
+
+font-size: 18px;
+line-height: 1.4;
+font-weight: 800;
+
+
+}
+
+.accreditation-content h2 i {
+color: #d99a00;
+}
+
+.accreditation-content p {
+max-width: 780px;
+
+
+margin: 0;
+
+color: #6e6249;
+
+font-size: 10.5px;
+line-height: 1.75;
+
+
+}
+
+/* =========================================================
+SECTION 6 — FACILITIES
+========================================================= */
+
+.facility-card {
+display: flex;
+align-items: center;
+gap: 13px;
+
+
+min-height: 79px;
+
+padding: 15px;
+
+border: 1px solid var(--profile-border);
+border-radius: 9px;
+
+background: #ffffff;
+
+box-shadow: var(--profile-shadow-sm);
+
+transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+
+
+}
+
+.facility-card:hover {
+transform: translateY(-3px);
+
+
+border-color: #bfd5ee;
+
+box-shadow: var(--profile-shadow);
+
+
+}
+
+.facility-icon {
+width: 43px;
+height: 43px;
+flex: 0 0 43px;
+
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border-radius: 8px;
+
+background: var(--profile-blue-soft);
+color: var(--profile-blue);
+
+font-size: 18px;
+
+
+}
+
+.facility-green .facility-icon {
+background: var(--profile-green-soft);
+color: var(--profile-green);
+}
+
+.facility-yellow .facility-icon {
+background: var(--profile-yellow-soft);
+color: var(--profile-yellow);
+}
+
+.facility-content {
+min-width: 0;
+}
+
+.facility-content h3 {
+overflow: hidden;
+
+
+margin: 0 0 4px;
+
+color: var(--profile-text);
+
+font-size: 11px;
+line-height: 1.45;
+font-weight: 750;
+
+text-overflow: ellipsis;
+white-space: nowrap;
+
+
+}
+
+.facility-content span {
+display: block;
+
+
+overflow: hidden;
+
+color: var(--profile-muted);
+
+font-size: 9px;
+
+text-overflow: ellipsis;
+white-space: nowrap;
+
+
+}
+
+/* =========================================================
+TABLET
+========================================================= */
+
+@media (max-width: 991.98px) {
+
+
+.profile-container {
+    padding-top: 43px;
+}
+
+.profile-section {
+    margin-bottom: 60px;
+}
+
+.profile-history-section {
+    padding: 28px;
+}
+
+.profile-section-header {
+    align-items: flex-start;
+}
+
+.accreditation-panel {
+    gap: 25px;
+    padding: 27px;
+}
+
+
+}
+
+/* =========================================================
+MOBILE
+========================================================= */
+
+@media (max-width: 767.98px) {
+
+
+.profile-hero {
+    padding: 32px 0 42px;
+}
+
+.profile-breadcrumb {
+    margin-bottom: 32px;
+}
+
+.profile-hero h1 {
+    font-size: 32px;
+}
+
+.profile-hero p {
+    font-size: 12px;
+    line-height: 1.75;
+}
+
+.profile-container {
+    padding-top: 32px;
+    padding-bottom: 20px;
+}
+
+.profile-section {
+    margin-bottom: 48px;
+}
+
+.profile-history-section {
+    padding: 23px 18px;
+    border-radius: 11px;
+}
+
+.profile-history-section::before {
+    font-size: 55px;
+}
+
+.profile-section-heading {
+    gap: 11px;
+    margin-bottom: 21px;
+}
+
+.profile-heading-icon {
+    width: 43px;
+    height: 43px;
+    flex-basis: 43px;
+    font-size: 17px;
+}
+
+.profile-section-heading h2 {
+    font-size: 19px;
+}
+
+.profile-eyebrow {
+    font-size: 9px;
+}
+
+.profile-section-header {
     display: block;
-
-    margin-bottom: 3px;
-
-    color: var(--profile-blue) !important;
-
-    font-size: 0.65rem;
-    font-weight: 800 !important;
-
-    letter-spacing: 0.09em;
-    line-height: 1.4;
 }
 
-.container.py-5 section h3 {
-    margin-bottom: 0 !important;
-
-    color: var(--profile-text) !important;
-
-    font-size: 1.28rem;
-    font-weight: 800 !important;
-
-    line-height: 1.35;
-    letter-spacing: -0.025em;
+.profile-section-header .profile-section-heading {
+    margin-bottom: 18px;
 }
 
-.container.py-5 section h4 {
-    color: var(--profile-text) !important;
+.profile-count-badge {
+    margin-left: 54px;
 }
 
-
-/* =========================================================
-   SECTION 1 — SEJARAH & VISI MISI
-   ========================================================= */
-
-#sejarah-visi > .row {
-    --bs-gutter-x: 32px;
-    --bs-gutter-y: 28px;
+.history-panel,
+.vision-panel {
+    padding: 21px;
 }
 
+.history-panel h3 {
+    font-size: 19px;
+}
 
-/* =========================================================
-   CARD SEJARAH
-   ========================================================= */
+.value-card {
+    padding: 22px;
+}
 
-#sejarah-visi > .row > .col-lg-6:first-child {
-    display: flex;
+.teacher-card {
+    padding: 15px;
+}
+
+.teacher-avatar {
+    width: 68px;
+    height: 68px;
+    font-size: 24px;
+}
+
+.organization-panel {
+    padding: 25px 17px;
+}
+
+.accreditation-panel {
+    align-items: flex-start;
     flex-direction: column;
+    gap: 20px;
 
-    padding: 25px !important;
-
-    background: var(--profile-white);
-
-    border: 1px solid var(--profile-border);
-    border-top: 3px solid var(--profile-blue);
-
-    border-radius: 9px;
-
-    box-shadow: 0 7px 22px rgba(16, 34, 61, 0.055);
-
-    height: 100%;
-}
-
-#sejarah-visi > .row > .col-lg-6:first-child > .d-flex {
-    margin-bottom: 18px !important;
-}
-
-#sejarah-visi > .row > .col-lg-6:first-child
-.d-inline-flex {
-    background: var(--profile-blue-soft) !important;
-    color: var(--profile-blue) !important;
-}
-
-#sejarah-visi > .row > .col-lg-6:first-child > p {
-    margin-bottom: 22px !important;
-
-    color: var(--profile-muted) !important;
-
-    font-size: 0.88rem;
-    line-height: 1.85;
-}
-
-#sejarah-visi > .row > .col-lg-6:first-child > p strong {
-    color: var(--profile-text);
-    font-weight: 700;
-}
-
-
-/* =========================================================
-   TIMELINE SEJARAH
-   ========================================================= */
-
-#sejarah-visi > .row > .col-lg-6:first-child
-.border-start {
-    margin-top: 20px !important;
-    margin-bottom: 0 !important;
-
-    padding-left: 18px !important;
-
-    border-left: 2px solid #c9dcef !important;
-}
-
-#sejarah-visi > .row > .col-lg-6:first-child
-.border-start > div {
-    position: relative;
-
-    padding: 11px 12px;
-
-    margin-bottom: 9px !important;
-
-    background: #f7faff;
-
-    border: 1px solid #e3edf8;
-    border-radius: 6px;
-}
-
-#sejarah-visi > .row > .col-lg-6:first-child
-.border-start > div:last-child {
-    margin-bottom: 0 !important;
-}
-
-#sejarah-visi > .row > .col-lg-6:first-child
-.border-start strong {
-    font-size: 0.84rem;
-    line-height: 1.5;
-}
-
-#sejarah-visi > .row > .col-lg-6:first-child
-.border-start strong i {
-    font-size: 0.85rem;
-}
-
-#sejarah-visi > .row > .col-lg-6:first-child
-.border-start small {
-    display: block;
-
-    margin-top: 5px;
-
-    color: var(--profile-muted) !important;
-
-    font-size: 0.73rem;
-    line-height: 1.7;
-}
-
-
-/* =========================================================
-   CARD VISI & MISI
-   ========================================================= */
-
-#sejarah-visi > .row > .col-lg-6:last-child {
-    display: flex;
-}
-
-#sejarah-visi > .row > .col-lg-6:last-child .card {
-    width: 100%;
-    height: 100% !important;
-
-    padding: 25px !important;
-
-    border: 1px solid var(--profile-border) !important;
-    border-top: 3px solid var(--profile-blue) !important;
-
-    border-radius: 9px !important;
-
-    background: var(--profile-white);
-
-    box-shadow: 0 7px 22px rgba(16, 34, 61, 0.055) !important;
-}
-
-#sejarah-visi .card > .d-flex {
-    margin-bottom: 20px !important;
-}
-
-#sejarah-visi .card > .d-flex .d-inline-flex {
-    width: 44px !important;
-    height: 44px !important;
-
-    border-radius: 8px !important;
-}
-
-#sejarah-visi .card > .d-flex .d-inline-flex i {
-    font-size: 1.15rem !important;
-}
-
-#sejarah-visi .card > .d-flex span {
-    display: block;
-
-    margin-bottom: 3px;
-
-    font-size: 0.65rem;
-
-    letter-spacing: 0.08em;
-}
-
-#sejarah-visi .card h4 {
-    font-size: 1.03rem;
-    line-height: 1.4;
-}
-
-
-/* =========================================================
-   VISI
-   ========================================================= */
-
-#sejarah-visi .card .bg-primary-subtle {
-    padding: 17px !important;
-
-    background: var(--profile-blue-soft) !important;
-
-    border: 1px solid #d4e5f8 !important;
-    border-radius: 8px !important;
-}
-
-#sejarah-visi .card .bg-primary-subtle h6 {
-    margin-bottom: 7px !important;
-
-    color: var(--profile-blue) !important;
-
-    font-size: 0.72rem;
-    font-weight: 800 !important;
-}
-
-#sejarah-visi .card .bg-primary-subtle p {
-    color: var(--profile-text) !important;
-
-    font-size: 0.82rem !important;
-    line-height: 1.7;
-}
-
-
-/* =========================================================
-   MISI
-   ========================================================= */
-
-#sejarah-visi .card > h6 {
-    font-size: 0.78rem;
-}
-
-#sejarah-visi .card ul {
-    margin-top: 8px;
-}
-
-#sejarah-visi .card ul li {
-    margin-bottom: 9px !important;
-
-    color: var(--profile-muted) !important;
-
-    font-size: 0.76rem;
-
-    line-height: 1.65;
-}
-
-#sejarah-visi .card ul li:last-child {
-    margin-bottom: 0 !important;
-}
-
-#sejarah-visi .card ul li i {
-    margin-top: 3px !important;
-
-    color: var(--profile-success) !important;
-
-    font-size: 0.75rem;
-}
-
-
-/* =========================================================
-   SECTION 2 — NILAI
-   ========================================================= */
-
-#nilai-logo .row {
-    --bs-gutter-x: 16px;
-    --bs-gutter-y: 16px;
-}
-
-#nilai-logo .row > div {
-    display: flex;
-}
-
-#nilai-logo .row .card {
-    width: 100%;
-    height: 100%;
-
-    padding: 22px !important;
-
-    border: 1px solid var(--profile-border) !important;
-    border-radius: 8px !important;
-
-    background: var(--profile-white);
-
-    box-shadow: 0 5px 17px rgba(16, 34, 61, 0.045) !important;
-
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease,
-        transform 0.2s ease;
-}
-
-#nilai-logo .row .card:hover {
-    border-color: #c7dcef !important;
-
-    box-shadow: 0 8px 22px rgba(16, 34, 61, 0.07) !important;
-
-    transform: translateY(-2px);
-}
-
-#nilai-logo .row .card > .d-inline-flex {
-    width: 42px !important;
-    height: 42px !important;
-
-    border-radius: 8px !important;
-}
-
-#nilai-logo .row .card > .d-inline-flex i {
-    font-size: 1rem !important;
-}
-
-#nilai-logo .row .card h5 {
-    margin-bottom: 8px !important;
-
-    font-size: 0.91rem;
-    line-height: 1.5;
-}
-
-#nilai-logo .row .card p {
-    color: var(--profile-muted) !important;
-
-    font-size: 0.75rem !important;
-    line-height: 1.75;
-}
-
-
-/* =========================================================
-   SECTION 3 — PENGAJAR
-   ========================================================= */
-
-#pengajar .badge.text-bg-primary {
-    flex-shrink: 0;
-
-    padding: 7px 10px;
-
-    background: var(--profile-blue) !important;
-
-    border-radius: 5px !important;
-
-    font-size: 0.64rem !important;
-    font-weight: 700;
-}
-
-#pengajar .row {
-    --bs-gutter-x: 14px;
-    --bs-gutter-y: 14px;
-}
-
-#pengajar .row > div {
-    display: flex;
-}
-
-#pengajar .row > div > .card {
-    width: 100%;
-    height: 100%;
-
-    padding: 19px 14px !important;
-
-    border: 1px solid var(--profile-border) !important;
-    border-radius: 8px !important;
-
-    background: var(--profile-white);
-
-    box-shadow: 0 5px 16px rgba(16, 34, 61, 0.045) !important;
-}
-
-#pengajar .row > div > .card > .rounded-circle {
-    width: 64px !important;
-    height: 64px !important;
-
-    margin-bottom: 12px !important;
-
-    background: var(--profile-blue) !important;
-
-    font-size: 1.3rem !important;
-
-    box-shadow: none !important;
-}
-
-#pengajar .row > div > .card h6 {
-    width: 100%;
-
-    margin-bottom: 5px !important;
-
-    font-size: 0.79rem;
-    line-height: 1.45;
-}
-
-#pengajar .row > div > .card small.text-primary {
-    width: 100%;
-
-    margin-bottom: 7px !important;
-
-    color: var(--profile-blue) !important;
-
-    font-size: 0.65rem;
-    line-height: 1.5;
-}
-
-#pengajar .row > div > .card .badge {
-    display: block;
-
-    max-width: 100%;
-
-    padding: 5px 8px;
-
-    overflow: hidden;
-
-    background: #f4f7fb !important;
-
-    border: 1px solid var(--profile-border) !important;
-    border-radius: 5px !important;
-
-    color: var(--profile-muted) !important;
-
-    font-size: 0.61rem !important;
-    font-weight: 600;
-
-    line-height: 1.4;
-}
-
-
-/* Empty guru */
-
-#pengajar .card.p-5.text-center {
-    padding: 38px 20px !important;
-
-    border: 1px solid var(--profile-border) !important;
-    border-radius: 8px !important;
-
-    background: #fff;
-
-    box-shadow: 0 5px 16px rgba(16, 34, 61, 0.04) !important;
-}
-
-#pengajar .card.p-5.text-center > div {
-    width: 58px !important;
-    height: 58px !important;
-}
-
-#pengajar .card.p-5.text-center h5 {
-    font-size: 0.95rem;
-}
-
-#pengajar .card.p-5.text-center p {
-    font-size: 0.75rem;
-}
-
-
-/* =========================================================
-   SECTION 4 — STRUKTUR
-   ========================================================= */
-
-#struktur > .card {
-    padding: 24px !important;
-
-    border: 1px solid var(--profile-border) !important;
-    border-radius: 8px !important;
-
-    background: var(--profile-white);
-
-    box-shadow: 0 6px 18px rgba(16, 34, 61, 0.045) !important;
-}
-
-#struktur .row {
-    --bs-gutter-x: 14px;
-    --bs-gutter-y: 14px;
-}
-
-#struktur .bg-dark {
-    width: min(100%, 360px);
-
-    padding: 16px !important;
-
-    background: var(--profile-navy) !important;
-
-    border-radius: 7px !important;
-}
-
-#struktur .bg-dark small {
-    margin-bottom: 3px;
-
-    color: #ffd45c !important;
-
-    font-size: 0.62rem;
-    letter-spacing: 0.06em;
-}
-
-#struktur .bg-dark strong {
-    font-size: 0.82rem !important;
-    line-height: 1.45;
-}
-
-#struktur .bg-light {
-    height: 100%;
-
-    padding: 15px !important;
-
-    background: #f7f9fc !important;
-
-    border-color: var(--profile-border) !important;
-    border-radius: 7px !important;
-}
-
-#struktur .bg-light small {
-    margin-bottom: 4px;
-
-    color: var(--profile-blue) !important;
-
-    font-size: 0.62rem;
-    letter-spacing: 0.03em;
-}
-
-#struktur .bg-light span {
-    font-size: 0.72rem !important;
-    line-height: 1.5;
-}
-
-
-/* =========================================================
-   SECTION 5 — AKREDITASI
-   ========================================================= */
-
-#akreditasi > .card {
-    padding: 24px !important;
-
-    border: 1px solid #efd98e !important;
-    border-radius: 9px !important;
-
-    background: #fff9e8 !important;
-
-    box-shadow: 0 5px 16px rgba(16, 34, 61, 0.04) !important;
-}
-
-#akreditasi .display-1 {
-    margin-bottom: 3px;
-
-    color: #c99600 !important;
-
-    font-size: 3.8rem;
-
-    line-height: 1;
-}
-
-#akreditasi .badge {
-    padding: 6px 11px !important;
-
-    border-radius: 5px !important;
-
-    font-size: 0.61rem;
-    font-weight: 800 !important;
-}
-
-#akreditasi h4 {
-    font-size: 0.97rem;
-
-    line-height: 1.5;
-}
-
-#akreditasi h4 i {
-    font-size: 0.9rem;
-}
-
-#akreditasi p {
-    color: var(--profile-muted) !important;
-
-    font-size: 0.74rem !important;
-    line-height: 1.75;
-}
-
-
-/* =========================================================
-   SECTION 6 — FASILITAS
-   ========================================================= */
-
-#fasilitas .badge.text-bg-secondary {
-    flex-shrink: 0;
-
-    padding: 7px 10px;
-
-    background: #f1f4f8 !important;
-
-    border: 1px solid var(--profile-border) !important;
-    border-radius: 5px !important;
-
-    color: var(--profile-muted) !important;
-
-    font-size: 0.64rem !important;
-}
-
-#fasilitas .row {
-    --bs-gutter-x: 14px;
-    --bs-gutter-y: 14px;
-}
-
-#fasilitas .row > div {
-    display: flex;
-}
-
-#fasilitas .row > div > .card {
-    width: 100%;
-    height: 100%;
-
-    padding: 15px !important;
-
-    border: 1px solid var(--profile-border) !important;
-    border-radius: 8px !important;
-
-    background: var(--profile-white);
-
-    box-shadow: 0 4px 14px rgba(16, 34, 61, 0.04) !important;
-}
-
-#fasilitas .row > div > .card .d-inline-flex {
-    width: 40px !important;
-    height: 40px !important;
-
-    flex-shrink: 0;
-
-    border-radius: 7px !important;
-}
-
-#fasilitas .row > div > .card .d-inline-flex i {
-    font-size: 1rem !important;
-}
-
-#fasilitas .row > div > .card h6 {
-    margin-bottom: 3px !important;
-
-    font-size: 0.74rem !important;
-    line-height: 1.45;
-}
-
-#fasilitas .row > div > .card small {
-    color: var(--profile-muted) !important;
-
-    font-size: 0.64rem !important;
-    line-height: 1.45;
-}
-
-
-/* =========================================================
-   GLOBAL CARD
-   ========================================================= */
-
-.container.py-5 .card {
-    overflow: hidden;
+    padding: 25px;
 }
-
-
-/* =========================================================
-   RESPONSIVE — TABLET
-   ========================================================= */
 
-@media (max-width: 991.98px) {
+.accreditation-grade {
+    width: 88px;
+    height: 88px;
+    flex-basis: 88px;
 
-    section.bg-dark.text-white.py-5.shadow-sm {
-        padding-top: 36px !important;
-        padding-bottom: 38px !important;
-    }
-
-    .container.py-5 {
-        padding-top: 36px !important;
-        padding-bottom: 44px !important;
-    }
-
-    .container.py-5 > section {
-        margin-bottom: 42px !important;
-    }
-
-    /* Sejarah & Visi Misi kembali menjadi block */
-    #sejarah-visi > .row > .col-lg-6 {
-        display: block;
-    }
-
-    #sejarah-visi > .row > .col-lg-6:first-child {
-        padding: 23px 24px !important;
-    }
-
-    #sejarah-visi > .row > .col-lg-6:last-child .card {
-        padding: 22px !important;
-    }
-
-    #nilai-logo .row .card {
-        padding: 20px !important;
-    }
-
-    #pengajar .row > div > .card {
-        padding: 18px 12px !important;
-    }
-
-    #struktur > .card {
-        padding: 20px !important;
-    }
-
-    #akreditasi > .card {
-        padding: 22px !important;
-    }
+    font-size: 48px;
 }
-
-
-/* =========================================================
-   RESPONSIVE — MOBILE
-   ========================================================= */
-
-@media (max-width: 767.98px) {
-
-    section.bg-dark.text-white.py-5.shadow-sm {
-        padding-top: 30px !important;
-        padding-bottom: 32px !important;
-    }
-
-    section.bg-dark.text-white.py-5.shadow-sm h1 {
-        font-size: 1.8rem;
-    }
-
-    section.bg-dark.text-white.py-5.shadow-sm p {
-        font-size: 0.84rem !important;
-        line-height: 1.7;
-    }
-
-    .container.py-5 {
-        padding-top: 28px !important;
-        padding-bottom: 38px !important;
-    }
-
-    .container.py-5 > section {
-        margin-bottom: 36px !important;
-    }
-
-    .container.py-5 section h3 {
-        font-size: 1.08rem;
-    }
-
-    .container.py-5 section .d-inline-flex.align-items-center.justify-content-center.bg-primary.bg-opacity-10,
-    .container.py-5 section .d-inline-flex.align-items-center.justify-content-center.bg-primary.text-white {
-        width: 40px !important;
-        height: 40px !important;
-    }
-
-    .container.py-5 section .d-inline-flex i {
-        font-size: 1rem !important;
-    }
-
-    /* Sejarah */
-    #sejarah-visi > .row > .col-lg-6:first-child {
-        padding: 20px !important;
-    }
 
-    #sejarah-visi > .row > .col-lg-6:first-child > p {
-        font-size: 0.82rem;
-    }
-
-    #sejarah-visi > .row > .col-lg-6:last-child .card {
-        padding: 20px !important;
-    }
-
-    #sejarah-visi .card .bg-primary-subtle {
-        padding: 15px !important;
-    }
-
-    /* Header section */
-    #pengajar .d-flex.align-items-center.justify-content-between,
-    #fasilitas .d-flex.align-items-center.justify-content-between {
-        align-items: flex-start !important;
-        gap: 12px;
-    }
-
-    #pengajar .badge,
-    #fasilitas .badge {
-        flex-shrink: 0;
-    }
-
-    /* Pengajar */
-    #pengajar .row {
-        --bs-gutter-x: 10px;
-        --bs-gutter-y: 10px;
-    }
-
-    #pengajar .row > div > .card {
-        padding: 16px 9px !important;
-    }
-
-    #pengajar .row > div > .card > .rounded-circle {
-        width: 56px !important;
-        height: 56px !important;
-
-        font-size: 1.15rem !important;
-    }
-
-    #pengajar .row > div > .card h6 {
-        font-size: 0.72rem;
-    }
-
-    #pengajar .row > div > .card small.text-primary {
-        font-size: 0.59rem;
-    }
-
-    #pengajar .row > div > .card .badge {
-        font-size: 0.56rem !important;
-    }
-
-    /* Struktur */
-    #struktur > .card {
-        padding: 15px !important;
-    }
-
-    #struktur .bg-dark {
-        width: 100%;
-    }
-
-    /* Akreditasi */
-    #akreditasi > .card {
-        padding: 20px !important;
-    }
-
-    #akreditasi .display-1 {
-        font-size: 3.2rem;
-    }
-
-    #akreditasi h4 {
-        font-size: 0.9rem;
-    }
-
-    /* Fasilitas */
-    #fasilitas .row {
-        --bs-gutter-x: 10px;
-        --bs-gutter-y: 10px;
-    }
-
-    #fasilitas .row > div > .card {
-        padding: 13px !important;
-    }
+.accreditation-content h2 {
+    font-size: 16px;
 }
-
-
-/* =========================================================
-   RESPONSIVE — SMALL MOBILE
-   ========================================================= */
-
-@media (max-width: 575.98px) {
-
-    section.bg-dark.text-white.py-5.shadow-sm .container,
-    .container.py-5 {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-
-    section.bg-dark.text-white.py-5.shadow-sm h1 {
-        font-size: 1.65rem;
-    }
-
-    section.bg-dark.text-white.py-5.shadow-sm .breadcrumb-item {
-        font-size: 0.68rem;
-    }
-
-    .container.py-5 section .d-flex.align-items-center.gap-3 {
-        gap: 10px !important;
-    }
-
-    .container.py-5 section .text-warning.fw-bold.small.text-uppercase {
-        font-size: 0.56rem;
-    }
-
-    .container.py-5 section h3 {
-        font-size: 1rem;
-    }
-
-    /* Sejarah & Visi */
-    #sejarah-visi > .row > .col-lg-6:first-child {
-        padding: 18px !important;
-    }
-
-    #sejarah-visi > .row > .col-lg-6:last-child .card {
-        padding: 18px !important;
-    }
-
-    #sejarah-visi .border-start {
-        margin-left: 5px !important;
-        padding-left: 13px !important;
-    }
-
-    #sejarah-visi .border-start small {
-        font-size: 0.68rem;
-    }
-
-    /* Nilai */
-    #nilai-logo .row {
-        --bs-gutter-y: 10px;
-    }
-
-    #nilai-logo .row .card {
-        padding: 18px !important;
-    }
-
-    #nilai-logo .row .card p {
-        font-size: 0.71rem !important;
-    }
-
-    /* Pengajar */
-    #pengajar .row > div > .card {
-        padding: 15px 8px !important;
-    }
-
-    #pengajar .row > div > .card > .rounded-circle {
-        width: 52px !important;
-        height: 52px !important;
-
-        font-size: 1.05rem !important;
-    }
-
-    /* Struktur */
-    #struktur > .card {
-        padding: 12px !important;
-    }
-
-    #struktur .bg-dark,
-    #struktur .bg-light {
-        padding: 13px !important;
-    }
-
-    /* Akreditasi */
-    #akreditasi > .card {
-        padding: 18px !important;
-    }
-
-    /* Fasilitas */
-    #fasilitas .row > div > .card {
-        padding: 12px !important;
-    }
-
-    #fasilitas .row > div > .card .d-inline-flex {
-        width: 36px !important;
-        height: 36px !important;
-    }
 
-    #fasilitas .row > div > .card h6 {
-        font-size: 0.69rem !important;
-    }
 
-    #fasilitas .row > div > .card small {
-        font-size: 0.59rem !important;
-    }
 }
 
 /* =========================================================
-   SECTION 1 — SEJARAH & VISI MISI
-   ========================================================= */
+SMALL MOBILE
+========================================================= */
 
-#sejarah-visi > .row {
-    --bs-gutter-x: 32px;
-    --bs-gutter-y: 28px;
+@media (max-width: 480px) {
 
-    align-items: stretch !important;
+
+.profile-hero {
+    padding: 27px 0 34px;
+}
+
+.profile-hero h1 {
+    font-size: 28px;
+}
+
+.profile-hero-line {
+    width: 58px;
+    height: 3px;
+}
+
+.profile-hero p {
+    font-size: 11px;
+}
+
+.profile-section-heading h2 {
+    font-size: 18px;
+}
+
+.profile-count-badge {
+    font-size: 9px;
+}
+
+.history-panel,
+.vision-panel {
+    padding: 18px;
+}
+
+.history-panel h3 {
+    font-size: 18px;
+}
+
+.history-intro {
+    font-size: 11px;
+}
+
+.value-card {
+    padding: 20px;
+}
+
+.value-card h3 {
+    font-size: 14px;
+}
+
+.value-card p {
+    font-size: 10px;
+}
+
+.teacher-name {
+    font-size: 11px;
+}
+
+.teacher-email {
+    font-size: 8px;
+}
+
+.teacher-subject {
+    font-size: 7.5px;
+}
+
+.organization-panel {
+    padding: 22px 13px;
+}
+
+.organization-principal strong {
+    font-size: 11px;
+}
+
+.organization-card {
+    min-height: 76px;
+    padding: 13px;
+}
+
+.organization-card strong {
+    font-size: 10px;
+}
+
+.accreditation-panel {
+    padding: 21px;
+}
+
+.accreditation-grade {
+    width: 80px;
+    height: 80px;
+    flex-basis: 80px;
+
+    font-size: 43px;
+}
+
+.accreditation-content h2 {
+    font-size: 15px;
+}
+
+.accreditation-content p {
+    font-size: 10px;
 }
 
 
-/* =========================================================
-   CARD SEJARAH
-   ========================================================= */
-
-#sejarah-visi > .row > .col-lg-6:first-child {
-    position: relative;
-
-    height: 590px !important;
-
-    padding: 25px !important;
-
-    background: #ffffff;
-
-    border: 1px solid var(--profile-border);
-    border-top: 3px solid var(--profile-blue);
-
-    border-radius: 9px;
-
-    box-shadow: 0 7px 22px rgba(16, 34, 61, 0.055);
-}
-
-
-/* =========================================================
-   CARD VISI & MISI
-   ========================================================= */
-
-#sejarah-visi > .row > .col-lg-6:last-child {
-    height: 590px !important;
-
-    display: block !important;
-}
-
-#sejarah-visi > .row > .col-lg-6:last-child > .card {
-    width: 100% !important;
-    height: 590px !important;
-
-    margin: 0 !important;
-
-    padding: 25px !important;
-
-    border: 1px solid var(--profile-border) !important;
-    border-top: 3px solid var(--profile-blue) !important;
-
-    border-radius: 9px !important;
-
-    background: var(--profile-white);
-
-    box-shadow: 0 7px 22px rgba(16, 34, 61, 0.055) !important;
-}
-
-
-/* =========================================================
-   HEADER SEJARAH
-   ========================================================= */
-
-#sejarah-visi > .row > .col-lg-6:first-child > .d-flex {
-    margin-bottom: 18px !important;
-}
-
-#sejarah-visi > .row > .col-lg-6:first-child
-.d-inline-flex {
-    background: var(--profile-blue-soft) !important;
-    color: var(--profile-blue) !important;
-}
-
-
-/* =========================================================
-   DESKRIPSI SEJARAH
-   ========================================================= */
-
-#sejarah-visi > .row > .col-lg-6:first-child > p {
-    margin-bottom: 22px !important;
-
-    color: var(--profile-muted) !important;
-
-    font-size: 0.88rem;
-    line-height: 1.85;
-}
-
-#sejarah-visi > .row > .col-lg-6:first-child > p strong {
-    color: var(--profile-text);
-    font-weight: 700;
-}
-
-
-/* =========================================================
-   TIMELINE SEJARAH
-   ========================================================= */
-
-#sejarah-visi > .row > .col-lg-6:first-child
-.border-start {
-    margin-top: 20px !important;
-    margin-bottom: 0 !important;
-
-    padding-left: 18px !important;
-
-    border-left: 2px solid #c9dcef !important;
-}
-
-#sejarah-visi > .row > .col-lg-6:first-child
-.border-start > div {
-    position: relative;
-
-    padding: 11px 12px;
-
-    margin-bottom: 9px !important;
-
-    background: #f7faff;
-
-    border: 1px solid #e3edf8;
-
-    border-radius: 6px;
-}
-
-#sejarah-visi > .row > .col-lg-6:first-child
-.border-start > div:last-child {
-    margin-bottom: 0 !important;
-}
-
-#sejarah-visi > .row > .col-lg-6:first-child
-.border-start strong {
-    font-size: 0.84rem;
-    line-height: 1.5;
-}
-
-#sejarah-visi > .row > .col-lg-6:first-child
-.border-start strong i {
-    font-size: 0.85rem;
-}
-
-#sejarah-visi > .row > .col-lg-6:first-child
-.border-start small {
-    display: block;
-
-    margin-top: 5px;
-
-    color: var(--profile-muted) !important;
-
-    font-size: 0.73rem;
-    line-height: 1.7;
-}
-
-
-/* =========================================================
-   HEADER VISI & MISI
-   ========================================================= */
-
-#sejarah-visi > .row > .col-lg-6:last-child
-.card > .d-flex {
-    margin-bottom: 20px !important;
-}
-
-#sejarah-visi > .row > .col-lg-6:last-child
-.card > .d-flex .d-inline-flex {
-    width: 44px !important;
-    height: 44px !important;
-
-    border-radius: 8px !important;
-}
-
-#sejarah-visi > .row > .col-lg-6:last-child
-.card > .d-flex .d-inline-flex i {
-    font-size: 1.15rem !important;
-}
-
-#sejarah-visi > .row > .col-lg-6:last-child
-.card > .d-flex span {
-    display: block;
-
-    margin-bottom: 3px;
-
-    font-size: 0.65rem;
-
-    letter-spacing: 0.08em;
-}
-
-#sejarah-visi > .row > .col-lg-6:last-child
-.card h4 {
-    font-size: 1.03rem;
-    line-height: 1.4;
-}
-
-
-/* =========================================================
-   VISI
-   ========================================================= */
-
-#sejarah-visi > .row > .col-lg-6:last-child
-.card .bg-primary-subtle {
-    padding: 17px !important;
-
-    background: var(--profile-blue-soft) !important;
-
-    border: 1px solid #d4e5f8 !important;
-
-    border-radius: 8px !important;
-}
-
-#sejarah-visi > .row > .col-lg-6:last-child
-.card .bg-primary-subtle h6 {
-    margin-bottom: 7px !important;
-
-    color: var(--profile-blue) !important;
-
-    font-size: 0.72rem;
-    font-weight: 800 !important;
-}
-
-#sejarah-visi > .row > .col-lg-6:last-child
-.card .bg-primary-subtle p {
-    color: var(--profile-text) !important;
-
-    font-size: 0.82rem !important;
-    line-height: 1.7;
-}
-
-
-/* =========================================================
-   MISI
-   ========================================================= */
-
-#sejarah-visi > .row > .col-lg-6:last-child
-.card > h6 {
-    font-size: 0.78rem;
-}
-
-#sejarah-visi > .row > .col-lg-6:last-child
-.card ul {
-    margin-top: 8px;
-}
-
-#sejarah-visi > .row > .col-lg-6:last-child
-.card ul li {
-    margin-bottom: 9px !important;
-
-    color: var(--profile-muted) !important;
-
-    font-size: 0.76rem;
-
-    line-height: 1.65;
-}
-
-#sejarah-visi > .row > .col-lg-6:last-child
-.card ul li:last-child {
-    margin-bottom: 0 !important;
-}
-
-#sejarah-visi > .row > .col-lg-6:last-child
-.card ul li i {
-    margin-top: 3px !important;
-
-    color: var(--profile-success) !important;
-
-    font-size: 0.75rem;
-}
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media (max-width: 991.98px) {
-
-    #sejarah-visi > .row > .col-lg-6:first-child {
-        height: auto !important;
-    }
-
-    #sejarah-visi > .row > .col-lg-6:last-child {
-        height: auto !important;
-    }
-
-    #sejarah-visi > .row > .col-lg-6:last-child > .card {
-        height: auto !important;
-    }
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 767.98px) {
-
-    #sejarah-visi > .row > .col-lg-6:first-child {
-        height: auto !important;
-
-        padding: 20px !important;
-    }
-
-    #sejarah-visi > .row > .col-lg-6:last-child {
-        height: auto !important;
-    }
-
-    #sejarah-visi > .row > .col-lg-6:last-child > .card {
-        height: auto !important;
-
-        padding: 20px !important;
-    }
-}
-
-
-/* =========================================================
-   SMALL MOBILE
-   ========================================================= */
-
-@media (max-width: 575.98px) {
-
-    #sejarah-visi > .row > .col-lg-6:first-child {
-        padding: 18px !important;
-    }
-
-    #sejarah-visi > .row > .col-lg-6:last-child > .card {
-        padding: 18px !important;
-    }
-
-    #sejarah-visi > .row > .col-lg-6:first-child
-    .border-start {
-        margin-left: 5px !important;
-
-        padding-left: 13px !important;
-    }
-
-    #sejarah-visi > .row > .col-lg-6:first-child
-    .border-start small {
-        font-size: 0.68rem;
-    }
 }
