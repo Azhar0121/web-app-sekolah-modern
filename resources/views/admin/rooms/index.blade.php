@@ -3,179 +3,473 @@
 @section('title', 'Master Data Ruangan & Fasilitas')
 
 @section('content')
-<div class="container-fluid py-3">
 
-    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
-        <div>
-            <h5 class="fw-bold text-dark mb-0">
-                <i class="bi bi-door-open-fill text-primary me-2"></i>Alokasi Ruangan & Fasilitas
-            </h5>
-            <small class="text-muted">Kelola data ruang kelas, laboratorium, perpustakaan, dan fasilitas sekolah.</small>
-        </div>
-        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createModal">
-            <i class="bi bi-plus-lg me-1"></i>Tambah Ruangan
-        </button>
+<link rel="stylesheet" href="{{ asset('css/admin/rooms/index.css') }}">
+
+<div class="rooms-page">
+
+
+{{-- HERO --}}
+<div class="rooms-hero">
+    <div class="rooms-hero-content">
+        <span class="rooms-hero-label">MASTER DATA</span>
+        <h1>Ruangan & Fasilitas</h1>
+        <p>Kelola data ruang kelas, laboratorium, perpustakaan, dan fasilitas sekolah.</p>
     </div>
 
-    <div class="card border-0 shadow-sm rounded-3">
-        <div class="table-responsive">
-            <table class="table table-hover align-middle mb-0">
-                <thead class="table-light">
+    <button type="button"
+            class="rooms-add-btn"
+            data-bs-toggle="modal"
+            data-bs-target="#createModal">
+        <i class="bi bi-plus-lg"></i>
+        <span>Tambah Ruangan</span>
+    </button>
+</div>
+
+{{-- DATA RUANGAN --}}
+<div class="rooms-section">
+
+    <div class="rooms-section-header">
+        <div>
+            <span class="rooms-section-label">DATA RUANGAN</span>
+
+            <h2>
+                <i class="bi bi-grid-1x2-fill"></i>
+                Daftar Ruangan & Fasilitas
+            </h2>
+        </div>
+
+        <div class="rooms-count">
+            {{ $rooms->total() }} Data
+        </div>
+    </div>
+
+    {{-- TABLE --}}
+    <div class="rooms-table-wrapper">
+        <table class="rooms-table">
+            <thead>
+                <tr>
+                    <th class="col-no">No.</th>
+                    <th>Kode</th>
+                    <th>Nama Ruangan / Fasilitas</th>
+                    <th>Tipe</th>
+                    <th>Kapasitas</th>
+                    <th>Lokasi</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-end col-action">Aksi</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @forelse ($rooms as $room)
                     <tr>
-                        <th style="width:50px;">No.</th>
-                        <th>Kode</th>
-                        <th>Nama Ruangan / Fasilitas</th>
-                        <th>Tipe</th>
-                        <th>Kapasitas</th>
-                        <th>Lokasi</th>
-                        <th class="text-center">Status</th>
-                        <th class="text-end" style="width:120px;">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($rooms as $room)
-                    <tr>
-                        <td>{{ $loop->iteration + $rooms->firstItem() - 1 }}</td>
-                        <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle fw-bold">{{ $room->code }}</span></td>
-                        <td class="fw-semibold">{{ $room->name }}</td>
-                        <td><span class="badge bg-info-subtle text-info">{{ $room->typeLabel() }}</span></td>
-                        <td>{{ $room->capacity ? $room->capacity . ' Kursi' : '—' }}</td>
-                        <td class="small text-muted">{{ $room->location ?? '—' }}</td>
+                        <td class="room-number">
+                            {{ $loop->iteration + $rooms->firstItem() - 1 }}
+                        </td>
+
+                        <td>
+                            <span class="room-code">
+                                {{ $room->code }}
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="room-name">
+                                {{ $room->name }}
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="room-type">
+                                {{ $room->typeLabel() }}
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="room-capacity">
+                                {{ $room->capacity ? $room->capacity . ' Kursi' : '—' }}
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="room-location">
+                                {{ $room->location ?? '—' }}
+                            </span>
+                        </td>
+
                         <td class="text-center">
                             @if ($room->is_active)
-                                <span class="badge bg-success-subtle text-success">Siap Pakai</span>
+                                <span class="room-status status-active">
+                                    Siap Pakai
+                                </span>
                             @else
-                                <span class="badge bg-secondary-subtle text-secondary">Non-Aktif</span>
+                                <span class="room-status status-inactive">
+                                    Non-Aktif
+                                </span>
                             @endif
                         </td>
+
                         <td class="text-end">
-                            <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ $room->id }}">
-                                <i class="bi bi-pencil"></i>
-                            </button>
-                            <form action="{{ route('admin.rooms.destroy', $room) }}" method="POST" class="d-inline" onsubmit="return confirm('Hapus ruangan ini?')">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-                            </form>
+                            <div class="room-actions">
+
+                                <button type="button"
+                                        class="room-action-btn edit"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#editModal{{ $room->id }}"
+                                        title="Edit">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <form action="{{ route('admin.rooms.destroy', $room) }}"
+                                      method="POST"
+                                      class="d-inline"
+                                      onsubmit="return confirm('Hapus ruangan ini?')">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit"
+                                            class="room-action-btn delete"
+                                            title="Hapus">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+
+                            </div>
                         </td>
                     </tr>
 
-                    <div class="modal fade" id="editModal{{ $room->id }}" tabindex="-1">
-                        <div class="modal-dialog">
-                            <form action="{{ route('admin.rooms.update', $room) }}" method="POST">
+                    {{-- EDIT MODAL --}}
+                    <div class="modal fade room-modal"
+                         id="editModal{{ $room->id }}"
+                         tabindex="-1"
+                         aria-hidden="true">
+
+                        <div class="modal-dialog modal-dialog-centered">
+
+                            <form action="{{ route('admin.rooms.update', $room) }}"
+                                  method="POST"
+                                  class="modal-content">
+
                                 @csrf
                                 @method('PUT')
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h6 class="modal-title fw-bold">Edit Data Ruangan</h6>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+                                <div class="modal-header">
+                                    <div>
+                                        <span class="modal-label">DATA RUANGAN</span>
+                                        <h5 class="modal-title">
+                                            Edit Data Ruangan
+                                        </h5>
                                     </div>
-                                    <div class="modal-body">
-                                        <div class="row g-2 mb-3">
-                                            <div class="col-6">
-                                                <label class="form-label small fw-semibold">Kode Ruangan</label>
-                                                <input type="text" name="code" class="form-control" value="{{ $room->code }}" required>
-                                            </div>
-                                            <div class="col-6">
-                                                <label class="form-label small fw-semibold">Tipe Ruangan</label>
-                                                <select name="type" class="form-select" required>
-                                                    <option value="kelas" @selected($room->type==='kelas')>Ruang Kelas</option>
-                                                    <option value="laboratorium" @selected($room->type==='laboratorium')>Laboratorium</option>
-                                                    <option value="perpustakaan" @selected($room->type==='perpustakaan')>Perpustakaan</option>
-                                                    <option value="aula" @selected($room->type==='aula')>Aula</option>
-                                                    <option value="lapangan" @selected($room->type==='lapangan')>Lapangan</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label small fw-semibold">Nama Ruangan</label>
-                                            <input type="text" name="name" class="form-control" value="{{ $room->name }}" required>
-                                        </div>
-                                        <div class="row g-2 mb-3">
-                                            <div class="col-6">
-                                                <label class="form-label small fw-semibold">Kapasitas (Kursi)</label>
-                                                <input type="number" name="capacity" class="form-control" value="{{ $room->capacity }}">
-                                            </div>
-                                            <div class="col-6">
-                                                <label class="form-label small fw-semibold">Lokasi / Gedung</label>
-                                                <input type="text" name="location" class="form-control" value="{{ $room->location }}">
-                                            </div>
-                                        </div>
-                                        <div class="form-check">
-                                            <input type="checkbox" name="is_active" value="1" class="form-check-input" id="actR{{ $room->id }}" @checked($room->is_active)>
-                                            <label class="form-check-label small" for="actR{{ $room->id }}">Ruangan Aktif</label>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-light btn-sm" data-bs-dismiss="modal">Batal</button>
-                                        <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
-                                    </div>
+
+                                    <button type="button"
+                                            class="btn-close"
+                                            data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
                                 </div>
+
+                                <div class="modal-body">
+
+                                    <div class="form-grid">
+
+                                        <div class="form-group">
+                                            <label for="code{{ $room->id }}">
+                                                Kode Ruangan
+                                            </label>
+
+                                            <input type="text"
+                                                   id="code{{ $room->id }}"
+                                                   name="code"
+                                                   class="form-control"
+                                                   value="{{ $room->code }}"
+                                                   required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="type{{ $room->id }}">
+                                                Tipe Ruangan
+                                            </label>
+
+                                            <select name="type"
+                                                    id="type{{ $room->id }}"
+                                                    class="form-select"
+                                                    required>
+                                                <option value="kelas" @selected($room->type === 'kelas')>
+                                                    Ruang Kelas
+                                                </option>
+
+                                                <option value="laboratorium" @selected($room->type === 'laboratorium')>
+                                                    Laboratorium
+                                                </option>
+
+                                                <option value="perpustakaan" @selected($room->type === 'perpustakaan')>
+                                                    Perpustakaan
+                                                </option>
+
+                                                <option value="aula" @selected($room->type === 'aula')>
+                                                    Aula
+                                                </option>
+
+                                                <option value="lapangan" @selected($room->type === 'lapangan')>
+                                                    Lapangan
+                                                </option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="name{{ $room->id }}">
+                                            Nama Ruangan
+                                        </label>
+
+                                        <input type="text"
+                                               id="name{{ $room->id }}"
+                                               name="name"
+                                               class="form-control"
+                                               value="{{ $room->name }}"
+                                               required>
+                                    </div>
+
+                                    <div class="form-grid">
+
+                                        <div class="form-group">
+                                            <label for="capacity{{ $room->id }}">
+                                                Kapasitas (Kursi)
+                                            </label>
+
+                                            <input type="number"
+                                                   id="capacity{{ $room->id }}"
+                                                   name="capacity"
+                                                   class="form-control"
+                                                   value="{{ $room->capacity }}">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="location{{ $room->id }}">
+                                                Lokasi / Gedung
+                                            </label>
+
+                                            <input type="text"
+                                                   id="location{{ $room->id }}"
+                                                   name="location"
+                                                   class="form-control"
+                                                   value="{{ $room->location }}">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="active-option">
+                                        <input type="checkbox"
+                                               name="is_active"
+                                               value="1"
+                                               class="form-check-input"
+                                               id="actR{{ $room->id }}"
+                                               @checked($room->is_active)>
+
+                                        <label for="actR{{ $room->id }}">
+                                            <strong>Ruangan Aktif</strong>
+                                            <span>
+                                                Ruangan dapat digunakan dalam sistem.
+                                            </span>
+                                        </label>
+                                    </div>
+
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button"
+                                            class="modal-cancel"
+                                            data-bs-dismiss="modal">
+                                        Batal
+                                    </button>
+
+                                    <button type="submit"
+                                            class="modal-save">
+                                        Simpan Perubahan
+                                    </button>
+                                </div>
+
                             </form>
+
                         </div>
                     </div>
-                    @empty
-                    <tr><td colspan="8" class="text-center py-4 text-muted">Belum ada data ruangan.</td></tr>
-                    @endforelse
-                </tbody>
-            </table>
-        </div>
-        @if ($rooms->hasPages())
-        <div class="card-footer bg-white py-2">
+
+                @empty
+
+                    <tr>
+                        <td colspan="8">
+                            <div class="rooms-empty">
+                                <i class="bi bi-door-open"></i>
+
+                                <strong>
+                                    Belum ada data ruangan
+                                </strong>
+
+                                <span>
+                                    Tambahkan ruangan atau fasilitas untuk mulai mengelola data.
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+
+    {{-- PAGINATION --}}
+    @if ($rooms->hasPages())
+        <div class="rooms-pagination">
             {{ $rooms->links() }}
         </div>
-        @endif
-    </div>
+    @endif
 
 </div>
 
-<div class="modal fade" id="createModal" tabindex="-1">
-    <div class="modal-dialog">
-        <form action="{{ route('admin.rooms.store') }}" method="POST">
-            @csrf
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h6 class="modal-title fw-bold">Tambah Ruangan Baru</h6>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row g-2 mb-3">
-                        <div class="col-6">
-                            <label class="form-label small fw-semibold">Kode (Contoh: R-101)</label>
-                            <input type="text" name="code" class="form-control" placeholder="R-101" required>
-                        </div>
-                        <div class="col-6">
-                            <label class="form-label small fw-semibold">Tipe Ruangan</label>
-                            <select name="type" class="form-select" required>
-                                <option value="kelas">Ruang Kelas</option>
-                                <option value="laboratorium">Laboratorium</option>
-                                <option value="perpustakaan">Perpustakaan</option>
-                                <option value="aula">Aula</option>
-                                <option value="lapangan">Lapangan</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label small fw-semibold">Nama Ruangan</label>
-                        <input type="text" name="name" class="form-control" placeholder="Laboratorium Komputer 1" required>
-                    </div>
-                    <div class="row g-2 mb-3">
-                        <div class="col-6">
-                            <label class="form-label small fw-semibold">Kapasitas (Kursi)</label>
-                            <input type="number" name="capacity" class="form-control" placeholder="36">
-                        </div>
-                        <div class="col-6">
-                            <label class="form-label small fw-semibold">Lokasi / Gedung</label>
-                            <input type="text" name="location" class="form-control" placeholder="Lantai 2 Gedung B">
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-light btn-sm" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
-                </div>
+
+</div>
+
+{{-- CREATE MODAL --}}
+
+<div class="modal fade room-modal"
+     id="createModal"
+     tabindex="-1"
+     aria-hidden="true">
+
+
+<div class="modal-dialog modal-dialog-centered">
+
+    <form action="{{ route('admin.rooms.store') }}"
+          method="POST"
+          class="modal-content">
+
+        @csrf
+
+        <div class="modal-header">
+            <div>
+                <span class="modal-label">MASTER DATA</span>
+
+                <h5 class="modal-title">
+                    Tambah Ruangan Baru
+                </h5>
             </div>
-        </form>
-    </div>
+
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="createCode">
+                        Kode Ruangan
+                    </label>
+
+                    <input type="text"
+                           id="createCode"
+                           name="code"
+                           class="form-control"
+                           placeholder="R-101"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="createType">
+                        Tipe Ruangan
+                    </label>
+
+                    <select name="type"
+                            id="createType"
+                            class="form-select"
+                            required>
+                        <option value="kelas">
+                            Ruang Kelas
+                        </option>
+
+                        <option value="laboratorium">
+                            Laboratorium
+                        </option>
+
+                        <option value="perpustakaan">
+                            Perpustakaan
+                        </option>
+
+                        <option value="aula">
+                            Aula
+                        </option>
+
+                        <option value="lapangan">
+                            Lapangan
+                        </option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="createName">
+                    Nama Ruangan
+                </label>
+
+                <input type="text"
+                       id="createName"
+                       name="name"
+                       class="form-control"
+                       placeholder="Laboratorium Komputer 1"
+                       required>
+            </div>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="createCapacity">
+                        Kapasitas (Kursi)
+                    </label>
+
+                    <input type="number"
+                           id="createCapacity"
+                           name="capacity"
+                           class="form-control"
+                           placeholder="36">
+                </div>
+
+                <div class="form-group">
+                    <label for="createLocation">
+                        Lokasi / Gedung
+                    </label>
+
+                    <input type="text"
+                           id="createLocation"
+                           name="location"
+                           class="form-control"
+                           placeholder="Lantai 2 Gedung B">
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+            <button type="button"
+                    class="modal-cancel"
+                    data-bs-dismiss="modal">
+                Batal
+            </button>
+
+            <button type="submit"
+                    class="modal-save">
+                Simpan Ruangan
+            </button>
+        </div>
+
+    </form>
+
+</div>
+
+
 </div>
 @endsection
