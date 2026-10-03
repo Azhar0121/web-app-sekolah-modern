@@ -90,7 +90,17 @@
 
         <form method="GET"
               action="{{ route('admin.subjects.index') }}"
-              class="subjects-search-form">
+              class="subjects-search-form d-flex align-items-center gap-2 flex-wrap">
+
+            <select name="department" class="form-select form-select-sm" style="max-width: 220px;" onchange="this.form.submit()">
+                <option value="all">Semua Jurusan</option>
+                <option value="umum" @selected($departmentFilter === 'umum')>Khusus Umum (Semua Jurusan)</option>
+                @foreach ($departments as $dept)
+                    <option value="{{ $dept->id }}" @selected($departmentFilter == $dept->id)>
+                        {{ $dept->name }} ({{ $dept->code }})
+                    </option>
+                @endforeach
+            </select>
 
             <input
                 type="text"
@@ -198,6 +208,8 @@
 
                         <th>Nama Mata Pelajaran</th>
 
+                        <th>Jurusan / Peminatan</th>
+
                         <th class="text-center">
                             Status
                         </th>
@@ -229,6 +241,25 @@
                                 <div class="subject-name">
                                     {{ $subject->name }}
                                 </div>
+                                @if ($subject->description)
+                                    <small class="text-muted d-block text-truncate" style="max-width: 280px;">
+                                        {{ $subject->description }}
+                                    </small>
+                                @endif
+
+                            </td>
+
+                            <td>
+
+                                @if ($subject->department)
+                                    <span class="badge bg-primary text-white border border-primary px-2 py-1 small">
+                                        <i class="bi bi-mortarboard-fill me-1"></i>{{ $subject->department->name }} ({{ $subject->department->code }})
+                                    </span>
+                                @else
+                                    <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle px-2 py-1 small">
+                                        <i class="bi bi-globe me-1"></i>Umum (Semua Jurusan)
+                                    </span>
+                                @endif
 
                             </td>
 
@@ -318,7 +349,7 @@
 
                         <tr>
 
-                            <td colspan="4"
+                            <td colspan="5"
                                 class="subjects-empty">
 
                                 <div class="subjects-empty-icon">

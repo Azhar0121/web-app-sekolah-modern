@@ -98,17 +98,15 @@
             </li>
 
             <li>
-                <a href="#"
-                   class="nav-disabled"
-                   title="Segera hadir">
+                <a href="{{ route('academic.show') }}"
+                   class="{{ request()->routeIs('academic.*') ? 'active' : '' }}">
                     Akademik
                 </a>
             </li>
 
             <li>
-                <a href="#"
-                   class="nav-disabled"
-                   title="Segera hadir">
+                <a href="{{ route('student-activity.show') }}"
+                   class="{{ request()->routeIs('student-activity.*') ? 'active' : '' }}">
                     Kesiswaan & Alumni
                 </a>
             </li>

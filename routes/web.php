@@ -55,6 +55,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Public\ProfileController as PublicProfileController;
 use App\Http\Controllers\Public\ContactController as PublicContactController;
+use App\Http\Controllers\Public\AcademicController as PublicAcademicController;
+use App\Http\Controllers\Public\StudentActivityController as PublicStudentActivityController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -62,6 +64,8 @@ Route::get('/', function () {
 
 // ================= PUBLIC PAGES =================
 Route::get('/profil', [PublicProfileController::class, 'index'])->name('profile.show');
+Route::get('/akademik', [PublicAcademicController::class, 'index'])->name('academic.show');
+Route::get('/kesiswaan', [PublicStudentActivityController::class, 'index'])->name('student-activity.show');
 Route::get('/kontak', [PublicContactController::class, 'index'])->name('contact.show');
 Route::post('/kontak', [PublicContactController::class, 'store'])->name('contact.store');
 
