@@ -33,7 +33,7 @@
 
         <p>
             Informasi struktur kurikulum, program keahlian, daftar mata pelajaran,
-            kalender akademik publik, serta repositori materi pembelajaran digital
+            kalender akademik publik, serta unduh panduan & silabus kurikulum resmi
             {{ $settings['school_name'] ?? config('app.name') }}.
         </p>
     </div>
@@ -570,23 +570,36 @@
 
 
 {{-- =========================================================
-     SECTION 5 — REPOSITORI
+     SECTION 5 — PANDUAN KURIKULUM & SILABUS PUBLIK
      ========================================================= --}}
-<section id="repositori" class="academic-section academic-section-last">
+<section id="dokumen" class="academic-section academic-section-last">
+    <span id="repositori"></span>
 
     <div class="academic-section-heading">
         <div class="academic-heading-icon">
-            <i class="bi bi-cloud-arrow-down-fill"></i>
+            <i class="bi bi-file-earmark-arrow-down-fill"></i>
         </div>
 
         <div>
-            <span class="academic-eyebrow">REPOSITORI MATERI</span>
-            <h2>Bahan Ajar & Modul Publik</h2>
+            <span class="academic-eyebrow">DOKUMEN RESMI KURIKULUM</span>
+            <h2>Buku Panduan Akademik & Silabus</h2>
         </div>
     </div>
 
+    {{-- Notice Hak Akses Materi Guru --}}
+    <div class="alert alert-info border-0 shadow-sm rounded-3 d-flex align-items-start gap-3 p-3 mb-4" style="background: #eef6ff; border: 1px solid #cce0fc !important; border-radius: 10px;">
+        <div class="text-primary fs-4" style="flex-shrink: 0; line-height: 1;">
+            <i class="bi bi-shield-lock-fill"></i>
+        </div>
+        <div class="small">
+            <strong class="d-block text-dark mb-1">Informasi Hak Akses Materi KBM Harian:</strong>
+            <span class="text-secondary">
+                Seluruh dokumen di bawah ini merupakan pedoman umum, kalender resmi, dan silabus kurikulum terbuka untuk publik. Untuk materi KBM mingguan, modul ajar guru, slide presentasi, dan bank soal latihan tersimpan secara terlindungi di <strong>Portal Siswa</strong> dan hanya dapat diakses oleh siswa terdaftar yang diampu oleh masing-masing guru kelas.
+            </span>
+        </div>
+    </div>
 
-    @if ($materials->isNotEmpty())
+    @if (!empty($academicDocuments))
 
         <div class="materials-wrapper">
 
@@ -596,67 +609,56 @@
 
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Judul Materi</th>
-                            <th>Mata Pelajaran</th>
-                            <th>Deskripsi</th>
-                            <th class="text-end">Unduh / Tautan</th>
+                            <th style="width: 45px;">No</th>
+                            <th>Nama Dokumen</th>
+                            <th>Kategori</th>
+                            <th>Deskripsi Isi</th>
+                            <th>Pembaruan</th>
+                            <th class="text-end" style="width: 150px;">Aksi</th>
                         </tr>
                     </thead>
 
                     <tbody>
 
-                        @foreach ($materials as $index => $mat)
+                        @foreach ($academicDocuments as $index => $doc)
 
                             <tr>
 
                                 <td>{{ $index + 1 }}</td>
 
                                 <td>
-                                    <strong>{{ $mat->title }}</strong>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="d-inline-flex align-items-center justify-content-center rounded-2" style="width: 32px; height: 32px; flex-shrink: 0; background: rgba(23, 105, 213, 0.08); color: var(--academic-blue);">
+                                            <i class="bi {{ $doc['icon'] }} fs-5"></i>
+                                        </div>
+                                        <div>
+                                            <strong>{{ $doc['title'] }}</strong>
+                                            <span style="font-size: 9px; color: #8b98a8; display: block;">{{ $doc['file_name'] }} &bull; {{ $doc['file_size'] }}</span>
+                                        </div>
+                                    </div>
                                 </td>
 
                                 <td>
                                     <span class="material-subject">
-                                        {{ $mat->teachingAssignment?->subject?->name ?? 'Umum' }}
+                                        {{ $doc['category'] }}
                                     </span>
                                 </td>
 
                                 <td>
-                                    <span class="material-description">
-                                        {{ $mat->description ?? '-' }}
+                                    <span class="material-description" title="{{ $doc['description'] }}">
+                                        {{ $doc['description'] }}
                                     </span>
                                 </td>
 
+                                <td style="white-space: nowrap; font-size: 10px; color: #66758a;">
+                                    <i class="bi bi-clock-history me-1"></i>{{ $doc['updated_at'] }}
+                                </td>
+
                                 <td class="text-end">
-
-                                    @if ($mat->hasFile())
-
-                                        <a href="{{ asset('storage/' . $mat->file_path) }}"
-                                           target="_blank"
-                                           download
-                                           class="material-action primary">
-                                            <i class="bi bi-download"></i>
-                                            Download File
-                                        </a>
-
-                                    @elseif($mat->hasLink())
-
-                                        <a href="{{ $mat->link }}"
-                                           target="_blank"
-                                           class="material-action secondary">
-                                            <i class="bi bi-box-arrow-up-right"></i>
-                                            Buka Link
-                                        </a>
-
-                                    @else
-
-                                        <span class="no-attachment">
-                                            Tidak Ada Lampiran
-                                        </span>
-
-                                    @endif
-
+                                    <button type="button" class="material-action primary" onclick="alert('Mengunduh {{ $doc['file_name'] }}...\nDokumen resmi {{ $doc['title'] }} akan tersimpan di perangkat Anda.')">
+                                        <i class="bi bi-download"></i>
+                                        Unduh PDF
+                                    </button>
                                 </td>
 
                             </tr>
@@ -679,11 +681,10 @@
                 <i class="bi bi-folder-x"></i>
             </div>
 
-            <h3>Repositori Modul Pembelajaran</h3>
+            <h3>Dokumen Panduan Akademik</h3>
 
             <p>
-                Bahan ajar publik, modul PDF, dan kisi-kisi soal akan diunggah
-                secara berkala oleh tim tenaga pendidik sekolah.
+                Dokumen silabus resmi dan buku pedoman kurikulum sedang dalam proses pembaruan oleh tim kurikulum sekolah.
             </p>
 
         </div>

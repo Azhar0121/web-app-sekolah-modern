@@ -54,24 +54,13 @@
             ],
         ],
         [
-            'label' => 'Pengumuman',
+            'label' => 'Operasional & Tata Usaha',
             'items' => [
-                ['label' => 'Kelola Pengumuman', 'route' => 'admin.announcements.index', 'pattern' => 'admin.announcements.*', 'icon' => 'megaphone', 'show' => $user->hasRole('super-admin') || $user->hasRole('kepsek')],
-            ],
-        ],
-        [
-            'label' => 'PPDB',
-            'items' => [
-                ['label' => 'Pendaftaran PPDB', 'route' => 'admin.ppdb.index', 'pattern' => 'admin.ppdb.*', 'icon' => 'file-text', 'show' => $user->hasPermission('ppdb.view') || $user->hasPermission('ppdb.manage')],
-            ],
-        ],
-        [
-            'label' => 'Tata Usaha',
-            'items' => [
-                ['label' => 'Persuratan Digital', 'route' => 'admin.correspondences.index', 'pattern' => 'admin.correspondences.*', 'icon' => 'file-text', 'show' => $user->hasRole('tu')],
-                ['label' => 'Biodata Siswa', 'route' => 'admin.student-profiles.index', 'pattern' => 'admin.student-profiles.*', 'icon' => 'user-check', 'show' => $user->hasRole('tu')],
-                ['label' => 'Tagihan Siswa', 'route' => 'admin.billing.index', 'pattern' => 'admin.billing.*', 'icon' => 'clipboard-list', 'show' => $user->hasRole('tu')],
-                ['label' => 'Pengumuman', 'route' => 'admin.announcements.index', 'pattern' => 'admin.announcements.*', 'icon' => 'megaphone', 'show' => $user->hasRole('tu')],
+                ['label' => 'Pendaftaran PPDB', 'route' => 'admin.ppdb.index', 'pattern' => 'admin.ppdb.*', 'icon' => 'file-text', 'show' => $user->hasRole('super-admin') || $user->hasPermission('ppdb.view') || $user->hasPermission('ppdb.manage')],
+                ['label' => 'Kelola Pengumuman', 'route' => 'admin.announcements.index', 'pattern' => 'admin.announcements.*', 'icon' => 'megaphone', 'show' => $user->hasRole('super-admin') || $user->hasRole('kepsek') || $user->hasRole('tu')],
+                ['label' => 'Persuratan Digital', 'route' => 'admin.correspondences.index', 'pattern' => 'admin.correspondences.*', 'icon' => 'file-text', 'show' => $user->hasRole('super-admin') || $user->hasRole('tu') || $user->hasPermission('persuratan.manage')],
+                ['label' => 'Biodata Siswa', 'route' => 'admin.student-profiles.index', 'pattern' => 'admin.student-profiles.*', 'icon' => 'user-check', 'show' => $user->hasRole('super-admin') || $user->hasRole('tu') || $user->hasPermission('siswa.manage')],
+                ['label' => 'Tagihan Siswa', 'route' => 'admin.billing.index', 'pattern' => 'admin.billing.*', 'icon' => 'clipboard-list', 'show' => $user->hasRole('super-admin') || $user->hasRole('tu') || $user->hasPermission('billing.manage')],
             ],
         ],
     ];
