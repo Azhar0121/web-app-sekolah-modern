@@ -233,11 +233,23 @@
 
 
                             <td>
-
-                                <span class="badge bg-light text-dark border px-2 py-1">
-                                    {{ $registration->first_major ?: '-' }}
-                                </span>
-
+                                @if ($registration->accepted_major)
+                                    <span class="badge bg-success text-white px-2 py-1 d-inline-block text-truncate" style="max-width: 220px;" title="{{ $registration->accepted_major }}">
+                                        &#10003; {{ $registration->accepted_major }}
+                                    </span>
+                                    <small class="text-success d-block fw-semibold" style="font-size: 0.72rem;">
+                                        ({{ $registration->acceptedMajorChoiceLabel() ?? 'Diterima' }})
+                                    </small>
+                                @else
+                                    <span class="badge bg-light text-dark border px-2 py-1 d-inline-block text-truncate" style="max-width: 220px;" title="{{ $registration->first_major }}">
+                                        {{ $registration->first_major ?: '-' }}
+                                    </span>
+                                    @if ($registration->second_major)
+                                        <small class="text-muted d-block text-truncate" style="font-size: 0.72rem; max-width: 220px;" title="Pilihan 2: {{ $registration->second_major }}">
+                                            P2: {{ $registration->second_major }}
+                                        </small>
+                                    @endif
+                                @endif
                             </td>
 
 

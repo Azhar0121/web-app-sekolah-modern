@@ -346,6 +346,19 @@
                         </tr>
                     @endif
 
+                    @if ($registration->accepted_major)
+                        <tr style="background: #f0fdf4;">
+                            <td class="label" style="color: #15803d; font-weight: 700;">Jurusan Diterima</td>
+                            <td class="sep" style="color: #15803d;">:</td>
+                            <td class="value">
+                                <strong style="color: #166534; font-size: 14px;">{{ $registration->accepted_major }}</strong>
+                                <span style="font-size: 11px; background: #22c55e; color: #ffffff; padding: 1px 6px; border-radius: 3px; margin-left: 4px; font-weight: 600;">
+                                    Lolos {{ $registration->acceptedMajorChoiceLabel() ?? 'Pilihan Resmi' }}
+                                </span>
+                            </td>
+                        </tr>
+                    @endif
+
                     <tr>
                         <td class="label">Sekolah Asal (SMP)</td>
                         <td class="sep">:</td>

@@ -6,7 +6,19 @@
 <body style="font-family: sans-serif; color: #222; max-width: 600px; margin: 0 auto;">
     <h2 style="color: #198754;">Selamat, {{ $registration->full_name }}!</h2>
 
-    <p>Kami dengan senang hati menginformasikan bahwa Anda <strong>DITERIMA</strong> sebagai calon siswa baru di {{ config('app.name') }}.</p>
+    <p>Kami dengan senang hati menginformasikan bahwa Anda dinyatakan <strong>DITERIMA</strong> sebagai calon siswa baru di {{ config('app.name') }}.</p>
+
+    <div style="background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 8px; padding: 14px 16px; margin: 16px 0;">
+        <p style="margin: 0; font-size: 12px; color: #166534; font-weight: bold; text-transform: uppercase;">Program Keahlian / Jurusan Diterima:</p>
+        <p style="margin: 4px 0 0; font-size: 17px; font-weight: bold; color: #15803d;">
+            {{ $registration->accepted_major ?: $registration->first_major }}
+            @if ($registration->acceptedMajorChoiceLabel())
+                <span style="font-size: 12px; background: #22c55e; color: #ffffff; padding: 2px 8px; border-radius: 4px; font-weight: 600; margin-left: 6px;">
+                    Lolos {{ $registration->acceptedMajorChoiceLabel() }}
+                </span>
+            @endif
+        </p>
+    </div>
 
     <p><strong>Nomor Pendaftaran:</strong> {{ $registration->registration_number }}</p>
 

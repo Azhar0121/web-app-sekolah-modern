@@ -156,21 +156,37 @@
                         </div>
 
 
-                        <div class="data-item">
-                            <span class="data-label">
-                                Pilihan Jurusan
-                            </span>
+                        @if ($registration->accepted_major)
+                            <div class="data-item full" style="background: #f0fdf4; border: 2px solid #22c55e; border-radius: 10px; padding: 16px; margin: 10px 0;">
+                                <span class="data-label" style="color: #15803d; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.5px;">
+                                    &#127891; KELULUSAN PROGRAM KEAHLIAN / JURUSAN
+                                </span>
+                                <div style="color: #166534; font-weight: 800; font-size: 1.15rem; margin-top: 4px;">
+                                    DITERIMA PADA: {{ $registration->accepted_major }}
+                                </div>
+                                <div style="margin-top: 4px;">
+                                    <span style="display: inline-block; background: #22c55e; color: #ffffff; font-size: 0.8rem; font-weight: 700; padding: 2px 10px; border-radius: 20px;">
+                                        Lolos Seleksi {{ $registration->acceptedMajorChoiceLabel() ?? 'Pilihan Resmi' }}
+                                    </span>
+                                </div>
+                            </div>
+                        @else
+                            <div class="data-item">
+                                <span class="data-label">
+                                    Pilihan Jurusan
+                                </span>
 
-                            <strong>
-                                {{ $registration->first_major ?: '-' }}
-                            </strong>
+                                <strong>
+                                    {{ $registration->first_major ?: '-' }}
+                                </strong>
 
-                            @if ($registration->second_major)
-                                <small class="secondary-note">
-                                    Pilihan 2: {{ $registration->second_major }}
-                                </small>
-                            @endif
-                        </div>
+                                @if ($registration->second_major)
+                                    <small class="secondary-note">
+                                        Pilihan 2: {{ $registration->second_major }}
+                                    </small>
+                                @endif
+                            </div>
+                        @endif
 
 
                         <div class="data-item">

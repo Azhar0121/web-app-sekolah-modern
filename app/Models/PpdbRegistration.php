@@ -15,7 +15,7 @@ class PpdbRegistration extends Model
     protected $fillable = [
         'user_id', 'parent_user_id', 'ppdb_period_id', 'registration_number', 'full_name', 'nisn', 'nik',
         'gender', 'birth_place', 'birth_date', 'address', 'phone', 'email',
-        'parent_name', 'parent_phone', 'parent_email', 'previous_school', 'first_major', 'second_major',
+        'parent_name', 'parent_phone', 'parent_email', 'previous_school', 'first_major', 'second_major', 'accepted_major',
         'nilai_rapor', 'nilai_ijazah',
         'status', 'notes', 'verified_by', 'verified_at',
         'accepted_at', 're_registration_deadline',
@@ -135,5 +135,22 @@ class PpdbRegistration extends Model
     public function reRegistrationDeadlineLabel(): ?string
     {
         return $this->re_registration_deadline?->translatedFormat('d F Y');
+    }
+
+    public function acceptedMajorChoiceLabel(): ?string
+    {
+        if (! $this->accepted_major) {
+            return null;
+        }
+
+        if ($this->first_major && $this->accepted_major === $this->first_major) {
+            return 'Pilihan 1';
+        }
+
+        if ($this->second_major && $this->accepted_major === $this->second_major) {
+            return 'Pilihan 2';
+        }
+
+        return 'Penetapan Sekolah';
     }
 }

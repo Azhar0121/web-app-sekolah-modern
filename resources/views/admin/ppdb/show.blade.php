@@ -207,6 +207,20 @@
                             </tr>
                         @endif
 
+                        @if ($registration->accepted_major)
+                            <tr style="background-color: #f0fdf4;">
+                                <th><span class="text-success fw-bold">&#10003; Jurusan Diterima</span></th>
+                                <td>
+                                    <span class="badge bg-success fs-6 fw-bold">
+                                        {{ $registration->accepted_major }}
+                                    </span>
+                                    <small class="text-success fw-semibold ms-2">
+                                        ({{ $registration->acceptedMajorChoiceLabel() ?? 'Pilihan Resmi' }})
+                                    </small>
+                                </td>
+                            </tr>
+                        @endif
+
                         <tr>
                             <th>Asal Sekolah</th>
                             <td>{{ $registration->previous_school }}</td>
@@ -415,6 +429,20 @@
 
                     </div>
 
+                    @if ($registration->accepted_major)
+                        <div class="p-3 my-3 rounded-3" style="background: #f0fdf4; border: 1.5px solid #86efac;">
+                            <span class="d-block text-success small fw-bold text-uppercase" style="letter-spacing: 0.5px;">
+                                &#10003; Diterima pada Jurusan:
+                            </span>
+                            <div class="fs-6 fw-bold text-dark mt-1">
+                                {{ $registration->accepted_major }}
+                            </div>
+                            <span class="badge bg-success mt-1">
+                                Lolos {{ $registration->acceptedMajorChoiceLabel() ?? 'Pilihan Resmi' }}
+                            </span>
+                        </div>
+                    @endif
+
 
                     @if ($registration->verifiedBy)
 
@@ -456,6 +484,7 @@
                                         id="status"
                                         class="form-select ppdb-detail-form-control"
                                         required
+                                        onchange="toggleAcceptedMajorField(this.value)"
                                     >
 
                                         <option
@@ -492,6 +521,39 @@
 
                                     </small>
 
+                                </div>
+
+                                {{-- PILIH JURUSAN YANG DITERIMA --}}
+                                <div class="ppdb-detail-form-group" id="accepted-major-group" style="display: none; background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 8px; padding: 14px;">
+                                    <label class="ppdb-detail-form-label fw-bold text-success mb-2" style="font-size: 0.9rem;">
+                                        Tentukan Jurusan yang Diterima
+                                    </label>
+
+                                    <div class="d-flex flex-column gap-2">
+                                        @if ($registration->first_major)
+                                            <div class="form-check p-2 rounded" style="background: #ffffff; border: 1px solid #dcfce7;">
+                                                <input class="form-check-input" type="radio" name="accepted_major" id="major_opt_1" value="{{ $registration->first_major }}" {{ old('accepted_major', $registration->accepted_major) === $registration->first_major || !old('accepted_major') ? 'checked' : '' }}>
+                                                <label class="form-check-label fw-semibold text-dark" for="major_opt_1" style="cursor: pointer;">
+                                                    <span class="badge bg-primary me-1">Pilihan 1</span>
+                                                    {{ $registration->first_major }}
+                                                </label>
+                                            </div>
+                                        @endif
+
+                                        @if ($registration->second_major)
+                                            <div class="form-check p-2 rounded" style="background: #ffffff; border: 1px solid #dcfce7;">
+                                                <input class="form-check-input" type="radio" name="accepted_major" id="major_opt_2" value="{{ $registration->second_major }}" {{ old('accepted_major', $registration->accepted_major) === $registration->second_major ? 'checked' : '' }}>
+                                                <label class="form-check-label fw-semibold text-dark" for="major_opt_2" style="cursor: pointer;">
+                                                    <span class="badge bg-secondary me-1">Pilihan 2</span>
+                                                    {{ $registration->second_major }}
+                                                </label>
+                                            </div>
+                                        @endif
+                                    </div>
+
+                                    <small class="text-muted d-block mt-2" style="font-size: 0.78rem;">
+                                        Nama jurusan yang dipilih akan dicantumkan secara resmi di status kelulusan siswa, bukti cetak, dan email notifikasi.
+                                    </small>
                                 </div>
 
 
@@ -615,16 +677,25 @@
 
                         <div class="ppdb-schedule-box">
 
-                            <div class="ppdb-schedule-row">
+                            @if ($registration->accepted_major)
+                                <div class="ppdb-schedule-row">
+                                    <span class="ppdb-schedule-label">
+                                        Jurusan Diterima
+                                    </span>
+                                    <strong class="ppdb-schedule-value text-success">
+                                        {{ $registration->accepted_major }}
+                                        <span class="badge bg-success bg-opacity-25 text-success small ms-1">({{ $registration->acceptedMajorChoiceLabel() ?? 'Pilihan Resmi' }})</span>
+                                    </strong>
+                                </div>
+                            @endif
 
+                            <div class="ppdb-schedule-row">
                                 <span class="ppdb-schedule-label">
                                     Diterima pada
                                 </span>
-
                                 <strong class="ppdb-schedule-value">
                                     {{ $registration->accepted_at?->format('d M Y') }}
                                 </strong>
-
                             </div>
 
 
@@ -894,5 +965,21 @@
     </div>
 
 </div>
+
+<script>
+    function toggleAcceptedMajorField(status) {
+        var group = document.getElementById('accepted-major-group');
+        if (group) {
+            group.style.display = (status === 'accepted') ? 'block' : 'none';
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var statusSelect = document.getElementById('status');
+        if (statusSelect) {
+            toggleAcceptedMajorField(statusSelect.value);
+        }
+    });
+</script>
 
 @endsection

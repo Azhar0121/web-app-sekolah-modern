@@ -56,8 +56,11 @@ class PpdbController extends Controller
     public function updateStatus(Request $request, PpdbRegistration $ppdbRegistration): RedirectResponse
     {
         $validated = $request->validate([
-            'status' => ['required', 'in:verified,accepted,rejected'],
-            'notes'  => ['nullable', 'string', 'max:1000'],
+            'status'         => ['required', 'in:verified,accepted,rejected'],
+            'accepted_major' => ['required_if:status,accepted', 'nullable', 'string', 'max:100'],
+            'notes'          => ['nullable', 'string', 'max:1000'],
+        ], [
+            'accepted_major.required_if' => 'Jurusan yang diterima wajib ditentukan saat mengubah status menjadi Diterima.',
         ]);
 
         $ppdbRegistration->status = $validated['status'];
@@ -67,10 +70,21 @@ class PpdbController extends Controller
         if ($validated['status'] === 'verified') {
             $ppdbRegistration->verified_by = auth()->id();
             $ppdbRegistration->verified_at = now();
+            $ppdbRegistration->accepted_major = null;
+            $ppdbRegistration->accepted_at = null;
+            $ppdbRegistration->re_registration_deadline = null;
         }
 
-        // Jika status diubah ke "accepted", hitung deadline daftar ulang & kirim email
+        // Jika status diubah ke "rejected"
+        if ($validated['status'] === 'rejected') {
+            $ppdbRegistration->accepted_major = null;
+            $ppdbRegistration->accepted_at = null;
+            $ppdbRegistration->re_registration_deadline = null;
+        }
+
+        // Jika status diubah ke "accepted", simpan jurusan yang diterima & hitung deadline daftar ulang
         if ($validated['status'] === 'accepted') {
+            $ppdbRegistration->accepted_major = $validated['accepted_major'] ?: ($ppdbRegistration->first_major ?: null);
             $ppdbRegistration->accepted_at = now();
 
             $reRegistrationDays = $ppdbRegistration->period->re_registration_days ?? 7;
