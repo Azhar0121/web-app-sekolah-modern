@@ -16,6 +16,10 @@ class CheckPermission
             abort(403, 'Anda tidak memiliki izin untuk melakukan aksi ini.');
         }
 
+        if ($user->hasRole('super-admin')) {
+            return $next($request);
+        }
+
         foreach ($permissions as $perm) {
             $slugs = explode(',', $perm);
             foreach ($slugs as $slug) {

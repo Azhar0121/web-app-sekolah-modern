@@ -72,42 +72,67 @@
 
                 <div class="card-body">
 
-                    <div class="ppdb-detail-card-header">
+                    @php
+                        $fotoDoc = $registration->documents->firstWhere('document_type', 'foto');
+                    @endphp
 
-                        <div class="ppdb-detail-card-icon">
+                    <div class="ppdb-detail-card-header d-flex align-items-center justify-content-between">
 
-                            <svg
-                                width="20"
-                                height="20"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
-                            </svg>
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="ppdb-detail-card-icon">
+                                <svg
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
 
+                            <div>
+                                <h6 class="ppdb-detail-card-title mb-0">
+                                    Data Calon Siswa
+                                </h6>
+
+                                <p class="ppdb-detail-card-subtitle mb-0">
+                                    Informasi pribadi dan data pendaftaran calon siswa.
+                                </p>
+                            </div>
                         </div>
 
-                        <div>
-
-                            <h6 class="ppdb-detail-card-title">
-                                Data Calon Siswa
-                            </h6>
-
-                            <p class="ppdb-detail-card-subtitle">
-                                Informasi pribadi dan data pendaftaran calon siswa.
-                            </p>
-
-                        </div>
+                        @if ($fotoDoc && \Illuminate\Support\Facades\Storage::disk('public')->exists($fotoDoc->file_path))
+                            <a href="{{ \Illuminate\Support\Facades\Storage::url($fotoDoc->file_path) }}" target="_blank" title="Klik untuk memperbesar pas foto">
+                                <img src="{{ \Illuminate\Support\Facades\Storage::url($fotoDoc->file_path) }}" alt="Pas Foto" style="width: 48px; height: 62px; object-fit: cover; border-radius: 6px; border: 2px solid #cbd5e1; box-shadow: 0 1px 4px rgba(0,0,0,0.12);">
+                            </a>
+                        @endif
 
                     </div>
 
 
                     <table class="ppdb-data-table">
+
+                        @if ($fotoDoc && \Illuminate\Support\Facades\Storage::disk('public')->exists($fotoDoc->file_path))
+                            <tr>
+                                <th>Pas Foto (3x4)</th>
+                                <td>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <img src="{{ \Illuminate\Support\Facades\Storage::url($fotoDoc->file_path) }}" alt="Pas Foto Siswa" style="width: 75px; height: 98px; object-fit: cover; border-radius: 6px; border: 1.5px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                                        <div>
+                                            <a href="{{ \Illuminate\Support\Facades\Storage::url($fotoDoc->file_path) }}" target="_blank" class="btn btn-sm btn-outline-primary py-1 px-2" style="font-size: 0.8rem;">
+                                                Lihat Ukuran Penuh
+                                            </a>
+                                            <small class="d-block text-muted mt-1" style="font-size: 0.75rem;">Gunakan untuk mencocokkan wajah saat daftar ulang offline.</small>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endif
 
                         <tr>
                             <th>No. Pendaftaran</th>

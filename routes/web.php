@@ -164,9 +164,6 @@ Route::middleware(['auth', 'role:super-admin'])->prefix('admin')->name('admin.')
     Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
     Route::post('settings', [SettingController::class, 'update'])->name('settings.update');
 
-    // Audit Log & Rekam Jejak Digital
-    Route::get('audit-logs', [AuditLogController::class, 'index'])->name('audit-logs.index');
-
     // Backup & Sistem Pemulihan Data
     Route::get('backups', [BackupController::class, 'index'])->name('backups.index');
     Route::post('backups', [BackupController::class, 'create'])->name('backups.create');
@@ -184,6 +181,11 @@ Route::middleware(['auth', 'role:super-admin'])->prefix('admin')->name('admin.')
     Route::post('media', [MediaLibraryController::class, 'store'])->name('media.store');
     Route::put('media/{media}', [MediaLibraryController::class, 'update'])->name('media.update');
     Route::delete('media/{media}', [MediaLibraryController::class, 'destroy'])->name('media.destroy');
+});
+
+// ================= AUDIT LOG & KEAMANAN (SUPER ADMIN & KEPSEK, by permission) =================
+Route::middleware(['auth', 'permission:audit.view'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('audit-logs', [AuditLogController::class, 'index'])->name('audit-logs.index');
 });
 
 // ================= KELOLA PPDB (SUPER ADMIN, TU & KEPSEK, by permission) =================

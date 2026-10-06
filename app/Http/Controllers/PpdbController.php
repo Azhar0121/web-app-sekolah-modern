@@ -47,8 +47,18 @@ class PpdbController extends Controller
 
         $validated = $request->validate([
             'full_name' => ['required', 'string', 'max:255'],
-            'nisn' => ['nullable', 'string', 'max:20'],
-            'nik' => ['nullable', 'string', 'max:20'],
+            'nisn' => [
+                'nullable', 'string', 'max:20',
+                Rule::unique('ppdb_registrations', 'nisn')
+                    ->where('ppdb_period_id', $activePeriod->id)
+                    ->where('status', '!=', 'rejected'),
+            ],
+            'nik' => [
+                'nullable', 'string', 'max:20',
+                Rule::unique('ppdb_registrations', 'nik')
+                    ->where('ppdb_period_id', $activePeriod->id)
+                    ->where('status', '!=', 'rejected'),
+            ],
             'gender' => ['required', 'in:L,P'],
             'birth_place' => ['required', 'string', 'max:255'],
             'birth_date' => ['required', 'date'],
@@ -67,14 +77,21 @@ class PpdbController extends Controller
             'first_major' => ['required', 'string', 'max:100'],
             'second_major' => ['nullable', 'string', 'max:100'],
             'nilai_rapor' => ['required', 'numeric', 'min:0', 'max:100'],
-            'nilai_ijazah' => ['required', 'numeric', 'min:0', 'max:100'],
+            'nilai_ijazah' => ['nullable', 'numeric', 'min:0', 'max:100'],
             'documents' => ['nullable', 'array'],
+            'documents.foto' => ['nullable', 'file', 'max:2048', 'mimes:jpg,jpeg,png'],
             'documents.*' => ['nullable', 'file', 'max:2048', 'mimes:pdf,jpg,jpeg,png'],
         ], [
+            'nisn.unique' => 'NISN ini sudah terdaftar pada periode PPDB yang sedang berjalan. '
+                .'Jika Anda sebelumnya sudah mendaftar, silakan gunakan menu "Cek Status" atau "Lupa Nomor Pendaftaran".',
+            'nik.unique' => 'NIK ini sudah terdaftar pada periode PPDB yang sedang berjalan. '
+                .'Jika Anda sebelumnya sudah mendaftar, silakan gunakan menu "Cek Status" atau "Lupa Nomor Pendaftaran".',
             'email.unique' => 'Email ini sudah terdaftar pada periode PPDB yang sedang berjalan. '
                 .'Jika Anda sebelumnya sudah mendaftar, gunakan menu "Cek Status" atau "Lupa Nomor Pendaftaran". '
                 .'Jika ini bukan pendaftaran Anda, gunakan email pribadi lain.',
             'first_major.required' => 'Pilihan Jurusan 1 wajib dipilih.',
+            'documents.foto.mimes' => 'Format pas foto calon siswa harus berupa gambar (JPG, JPEG, atau PNG).',
+            'documents.foto.max' => 'Ukuran pas foto calon siswa maksimal 2MB.',
         ]);
 
         $registration = PpdbRegistration::create([

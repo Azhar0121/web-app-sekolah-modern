@@ -38,8 +38,16 @@ class PpdbRegistration extends Model
 
     public function academicScore(): ?float
     {
-        if ($this->nilai_rapor === null || $this->nilai_ijazah === null) {
+        if ($this->nilai_rapor === null && $this->nilai_ijazah === null) {
             return null;
+        }
+
+        if ($this->nilai_ijazah === null) {
+            return round((float) $this->nilai_rapor, 2);
+        }
+
+        if ($this->nilai_rapor === null) {
+            return round((float) $this->nilai_ijazah, 2);
         }
 
         return round(((float) $this->nilai_rapor + (float) $this->nilai_ijazah) / 2, 2);

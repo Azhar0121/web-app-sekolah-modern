@@ -147,7 +147,13 @@
                     Data Calon Siswa
                 </h3>
 
-                <table class="data-table">
+                @php
+                    $fotoDoc = $registration->documents->firstWhere('document_type', 'foto');
+                @endphp
+
+                <div style="display: flex; gap: 18px; align-items: flex-start;">
+                    <div style="flex: 1;">
+                        <table class="data-table">
 
                     <tr>
                         <td class="label">
@@ -262,7 +268,20 @@
                         </td>
                     </tr>
 
-                </table>
+                        </table>
+                    </div>
+
+                    <div style="width: 110px; flex-shrink: 0; text-align: center; padding-top: 4px;">
+                        <div style="width: 105px; height: 140px; border: 1.5px solid #aebdca; border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: #f8fafc; margin: 0 auto 6px;">
+                            @if ($fotoDoc && \Illuminate\Support\Facades\Storage::disk('public')->exists($fotoDoc->file_path))
+                                <img src="{{ \Illuminate\Support\Facades\Storage::url($fotoDoc->file_path) }}" alt="Foto Calon Siswa" style="width: 100%; height: 100%; object-fit: cover;">
+                            @else
+                                <span style="font-size: 11px; color: #64748b; font-weight: 600; text-align: center; line-height: 1.4;">PAS FOTO<br>3 x 4</span>
+                            @endif
+                        </div>
+                        <span style="font-size: 10px; color: #687887; font-weight: 600; text-transform: uppercase;">Pas Foto Calon Siswa</span>
+                    </div>
+                </div>
 
             </div>
 
@@ -338,40 +357,6 @@
             </div>
 
 
-            {{-- DOKUMEN TERLAMPIR --}}
-            @if ($registration->documents->isNotEmpty())
-
-                <div class="data-section">
-
-                    <h3>
-                        Dokumen Terlampir
-                    </h3>
-
-                    <table class="data-table">
-
-                        @foreach ($registration->documents as $document)
-
-                            <tr>
-                                <td class="label">
-                                    {{ $document->documentTypeLabel() }}
-                                </td>
-
-                                <td class="sep">
-                                    :
-                                </td>
-
-                                <td class="value">
-                                    {{ $document->original_name }}
-                                </td>
-                            </tr>
-
-                        @endforeach
-
-                    </table>
-
-                </div>
-
-            @endif
 
 
             {{-- INSTRUKSI DAFTAR ULANG --}}
