@@ -1,0 +1,811 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+
+.kepsek-dashboard {
+    --ks-navy: #071b35;
+    --ks-navy-2: #0b294d;
+    --ks-blue: #1769d5;
+    --ks-blue-dark: #1054b3;
+    --ks-blue-light: #eaf3ff;
+
+    --ks-bg: #eef3f8;
+    --ks-white: #ffffff;
+
+    --ks-border: #d5e0eb;
+
+    --ks-text: #172b4d;
+    --ks-muted: #6c7c90;
+
+    --ks-green: #198754;
+    --ks-red: #dc3545;
+    --ks-yellow: #e2a900;
+
+    font-family: 'Plus Jakarta Sans', sans-serif;
+
+    color: var(--ks-text);
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.kepsek-header {
+    position: relative;
+
+    overflow: hidden;
+
+    background: var(--ks-navy);
+
+    border-radius: 8px;
+
+    padding: 30px 34px;
+
+    margin-bottom: 20px;
+
+    min-height: 150px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    box-shadow:
+        0 8px 22px rgba(7, 27, 53, .12);
+}
+
+
+.kepsek-header::before {
+    content: '';
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 6px;
+    height: 100%;
+
+    background: var(--ks-blue);
+}
+
+
+.kepsek-header-content {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    max-width: 820px;
+}
+
+
+.kepsek-header-icon {
+    width: 58px;
+    height: 58px;
+
+    flex: 0 0 58px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: var(--ks-blue);
+
+    color: #ffffff;
+
+    border-radius: 8px;
+
+    font-size: 26px;
+
+    box-shadow:
+        0 8px 18px rgba(23, 105, 213, .24);
+}
+
+
+.kepsek-header-text {
+    min-width: 0;
+}
+
+
+.kepsek-header-label {
+    display: inline-block;
+
+    color: #8fc0ff;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: .14em;
+
+    margin-bottom: 7px;
+}
+
+
+.kepsek-header h1 {
+    margin: 0 0 7px;
+
+    color: #ffffff;
+
+    font-size: 25px;
+
+    font-weight: 800;
+
+    line-height: 1.25;
+}
+
+
+.kepsek-header p {
+    margin: 0;
+
+    color: #c7d5e5;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    max-width: 700px;
+}
+
+
+.kepsek-header-decoration {
+    position: absolute;
+
+    right: 35px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    opacity: .8;
+}
+
+
+.kepsek-header-decoration span {
+    display: block;
+
+    width: 7px;
+    height: 72px;
+
+    background: #1769d5;
+
+    border-radius: 4px;
+}
+
+
+.kepsek-header-decoration span:nth-child(1) {
+    height: 38px;
+
+    background: #4d91e8;
+}
+
+
+.kepsek-header-decoration span:nth-child(2) {
+    height: 64px;
+
+    background: #2d7bdd;
+}
+
+
+.kepsek-header-decoration span:nth-child(3) {
+    height: 88px;
+
+    background: #1769d5;
+}
+
+
+/* =========================================================
+   MONITORING WRAPPER
+========================================================= */
+
+.kepsek-monitoring {
+    background: #ffffff;
+
+    border: 1px solid var(--ks-border);
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 5px 18px rgba(7, 27, 53, .06);
+}
+
+
+.monitoring-heading {
+    padding: 22px 24px;
+
+    background: #f5f8fc;
+
+    border-bottom: 1px solid var(--ks-border);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+.section-kicker {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--ks-blue);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: .14em;
+}
+
+
+.monitoring-heading h2 {
+    margin: 0;
+
+    color: var(--ks-navy);
+
+    font-size: 19px;
+
+    font-weight: 800;
+}
+
+
+.monitoring-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 9px 13px;
+
+    background: #e7f0fc;
+
+    border: 1px solid #cbdcf2;
+
+    color: var(--ks-blue-dark);
+
+    border-radius: 6px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+.monitoring-badge i {
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   TABS
+========================================================= */
+
+.kepsek-tabs-wrapper {
+    background: #ffffff;
+}
+
+
+.kepsek-tabs {
+    display: flex;
+
+    align-items: stretch;
+
+    border-bottom: 1px solid var(--ks-border);
+
+    background: var(--ks-navy);
+
+    padding: 0;
+
+    margin: 0;
+
+    gap: 0;
+}
+
+
+.kepsek-tabs .nav-item {
+    flex: 1 1 0;
+}
+
+
+.kepsek-tabs .nav-link {
+    width: 100%;
+
+    min-height: 57px;
+
+    border: 0;
+
+    border-radius: 0;
+
+    background: transparent;
+
+    color: #b9c9dc;
+
+    padding: 13px 14px;
+
+    font-family: 'Plus Jakarta Sans', sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    transition:
+        background .18s ease,
+        color .18s ease;
+}
+
+
+.kepsek-tabs .nav-link i {
+    font-size: 16px;
+}
+
+
+.kepsek-tabs .nav-link:hover {
+    background: #0c315b;
+
+    color: #ffffff;
+}
+
+
+.kepsek-tabs .nav-link.active {
+    background: #ffffff;
+
+    color: var(--ks-navy);
+
+    position: relative;
+}
+
+
+.kepsek-tabs .nav-link.active::after {
+    content: '';
+
+    position: absolute;
+
+    left: 18px;
+    right: 18px;
+
+    bottom: 0;
+
+    height: 3px;
+
+    background: var(--ks-blue);
+}
+
+
+/* =========================================================
+   TAB CONTENT
+========================================================= */
+
+.kepsek-tab-content {
+    background: #ffffff;
+}
+
+
+.kepsek-tab-content > .tab-pane {
+    padding: 25px;
+}
+
+
+/* =========================================================
+   GENERIC CARD INSIDE PARTIALS
+========================================================= */
+
+.kepsek-dashboard .card {
+    border: 1px solid var(--ks-border);
+
+    border-radius: 7px;
+
+    box-shadow:
+        0 4px 14px rgba(7, 27, 53, .045);
+
+    overflow: hidden;
+}
+
+
+.kepsek-dashboard .card-header {
+    background: #f1f5fa;
+
+    border-bottom: 1px solid var(--ks-border);
+
+    color: var(--ks-navy);
+
+    font-family: 'Plus Jakarta Sans', sans-serif;
+
+    font-weight: 700;
+
+    padding: 14px 17px;
+}
+
+
+.kepsek-dashboard .card-body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+
+    color: var(--ks-text);
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.kepsek-dashboard table {
+    width: 100%;
+
+    font-family: 'Plus Jakarta Sans', sans-serif;
+
+    margin-bottom: 0;
+}
+
+
+.kepsek-dashboard .table thead th {
+    background: var(--ks-navy) !important;
+
+    color: #ffffff !important;
+
+    border-color: #19395d !important;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: .025em;
+
+    padding: 12px 13px;
+
+    white-space: nowrap;
+}
+
+
+.kepsek-dashboard .table tbody td {
+    color: #34465d;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    padding: 12px 13px;
+
+    border-color: #e1e8f0;
+
+    vertical-align: middle;
+}
+
+
+.kepsek-dashboard .table tbody tr:nth-child(even) {
+    background: #f5f8fc;
+}
+
+
+.kepsek-dashboard .table tbody tr:nth-child(odd) {
+    background: #ffffff;
+}
+
+
+.kepsek-dashboard .table tbody tr:hover {
+    background: #eaf3ff;
+}
+
+
+.kepsek-dashboard .table-responsive {
+    border: 1px solid var(--ks-border);
+
+    border-radius: 7px;
+
+    overflow-x: auto;
+}
+
+
+/* =========================================================
+   BADGE
+========================================================= */
+
+.kepsek-dashboard .badge {
+    border-radius: 5px;
+
+    font-family: 'Plus Jakarta Sans', sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    padding: 6px 8px;
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.kepsek-dashboard .btn {
+    border-radius: 6px;
+
+    font-family: 'Plus Jakarta Sans', sans-serif;
+
+    font-weight: 700;
+}
+
+
+.kepsek-dashboard .btn-primary {
+    background: var(--ks-blue);
+
+    border-color: var(--ks-blue);
+}
+
+
+.kepsek-dashboard .btn-primary:hover {
+    background: var(--ks-blue-dark);
+
+    border-color: var(--ks-blue-dark);
+}
+
+
+/* =========================================================
+   CHART CONTAINER
+========================================================= */
+
+.kepsek-dashboard canvas {
+    max-width: 100%;
+}
+
+
+.kepsek-dashboard [id*="Chart"] {
+    min-height: 280px;
+}
+
+
+.kepsek-dashboard .chart-container {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 280px;
+}
+
+
+/* =========================================================
+   TEXT
+========================================================= */
+
+.kepsek-dashboard h1,
+.kepsek-dashboard h2,
+.kepsek-dashboard h3,
+.kepsek-dashboard h4,
+.kepsek-dashboard h5,
+.kepsek-dashboard h6,
+.kepsek-dashboard p,
+.kepsek-dashboard span,
+.kepsek-dashboard label,
+.kepsek-dashboard td,
+.kepsek-dashboard th,
+.kepsek-dashboard button {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+
+/* =========================================================
+   FORM ELEMENT
+========================================================= */
+
+.kepsek-dashboard .form-control,
+.kepsek-dashboard .form-select {
+    border: 1px solid #ccd8e5;
+
+    border-radius: 6px;
+
+    font-family: 'Plus Jakarta Sans', sans-serif;
+
+    font-size: 12px;
+
+    min-height: 40px;
+}
+
+
+.kepsek-dashboard .form-control:focus,
+.kepsek-dashboard .form-select:focus {
+    border-color: var(--ks-blue);
+
+    box-shadow:
+        0 0 0 3px rgba(23, 105, 213, .10);
+}
+
+
+/* =========================================================
+   ALERT
+========================================================= */
+
+.kepsek-dashboard .alert {
+    border-radius: 6px;
+
+    font-family: 'Plus Jakarta Sans', sans-serif;
+
+    font-size: 12px;
+
+    border-width: 1px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 992px) {
+
+    .kepsek-header {
+        padding: 25px 27px;
+    }
+
+
+    .kepsek-header-decoration {
+        right: 20px;
+
+        opacity: .45;
+    }
+
+
+    .monitoring-heading {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .monitoring-badge {
+        align-self: flex-start;
+    }
+
+
+    .kepsek-tabs {
+        overflow-x: auto;
+
+        justify-content: flex-start;
+    }
+
+
+    .kepsek-tabs .nav-item {
+        flex: 0 0 auto;
+
+        min-width: 145px;
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    .kepsek-header {
+        min-height: auto;
+
+        padding: 23px 22px;
+    }
+
+
+    .kepsek-header-content {
+        align-items: flex-start;
+
+        gap: 14px;
+    }
+
+
+    .kepsek-header-icon {
+        width: 48px;
+        height: 48px;
+
+        flex-basis: 48px;
+
+        font-size: 21px;
+    }
+
+
+    .kepsek-header h1 {
+        font-size: 20px;
+    }
+
+
+    .kepsek-header p {
+        font-size: 12px;
+
+        line-height: 1.6;
+    }
+
+
+    .kepsek-header-decoration {
+        display: none;
+    }
+
+
+    .monitoring-heading {
+        padding: 18px;
+    }
+
+
+    .monitoring-heading h2 {
+        font-size: 17px;
+    }
+
+
+    .kepsek-tab-content > .tab-pane {
+        padding: 17px;
+    }
+
+
+    .kepsek-tabs .nav-link {
+        min-height: 52px;
+
+        padding: 11px 12px;
+
+        font-size: 11px;
+    }
+
+}
+
+
+@media (max-width: 576px) {
+
+    .kepsek-header-content {
+        display: block;
+    }
+
+
+    .kepsek-header-icon {
+        margin-bottom: 14px;
+    }
+
+
+    .kepsek-header h1 {
+        font-size: 19px;
+    }
+
+
+    .kepsek-tabs .nav-item {
+        min-width: 132px;
+    }
+
+
+    .kepsek-tabs .nav-link {
+        gap: 5px;
+    }
+
+
+    .kepsek-tabs .nav-link i {
+        font-size: 14px;
+    }
+
+
+    .kepsek-tab-content > .tab-pane {
+        padding: 13px;
+    }
+
+}
