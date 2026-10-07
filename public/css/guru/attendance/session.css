@@ -1,0 +1,1191 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+.guru-attendance-session {
+    --session-blue: #1677d2;
+    --session-blue-dark: #0f62b2;
+    --session-cyan: #18a7d8;
+
+    --session-text: #20364d;
+    --session-muted: #718399;
+
+    --session-border: #dce7f1;
+    --session-bg: #f5f9fd;
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+
+    color: var(--session-text);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.session-page-header {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    min-height: 155px;
+
+    margin-bottom: 24px;
+    padding: 27px 30px;
+
+    overflow: hidden;
+
+    border-radius: 14px;
+
+    background: linear-gradient(
+        135deg,
+        #116bd0 0%,
+        #1688d6 52%,
+        #18a7d8 100%
+    );
+
+    box-shadow: 0 12px 30px rgba(22, 119, 210, .15);
+}
+
+.session-page-header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 230px;
+    height: 230px;
+
+    right: -65px;
+    top: -125px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, .08);
+}
+
+.session-page-header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 155px;
+    height: 155px;
+
+    right: 105px;
+    bottom: -120px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, .06);
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.session-header-content {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+
+    min-width: 0;
+}
+
+.session-header-icon {
+    width: 52px;
+    height: 52px;
+
+    flex: 0 0 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, .22);
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, .15);
+
+    color: #fff;
+
+    font-size: 22px;
+}
+
+.session-header-info {
+    min-width: 0;
+}
+
+.session-header-label {
+    margin-bottom: 5px;
+
+    color: rgba(255, 255, 255, .76);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1.3px;
+}
+
+.session-header-info h1 {
+    margin: 0;
+
+    color: #fff;
+
+    font-size: 24px;
+    line-height: 1.3;
+
+    font-weight: 800;
+}
+
+.session-header-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-top: 6px;
+
+    color: rgba(255, 255, 255, .86);
+
+    font-size: 11px;
+
+    line-height: 1.6;
+}
+
+.session-header-meta span {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 4px;
+}
+
+.session-header-meta i {
+    font-size: 10px;
+}
+
+.session-meta-separator {
+    color: rgba(255, 255, 255, .45);
+}
+
+
+/* =========================================================
+   SESSION STATUS
+========================================================= */
+
+.session-status {
+    position: relative;
+
+    z-index: 2;
+
+    display: inline-flex;
+    align-items: center;
+
+    gap: 7px;
+
+    min-height: 36px;
+
+    padding: 8px 12px;
+
+    border-radius: 7px;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    white-space: nowrap;
+}
+
+.session-status.active {
+    border: 1px solid rgba(255, 255, 255, .28);
+
+    background: rgba(255, 255, 255, .14);
+
+    color: #fff;
+}
+
+.session-status.closed {
+    border: 1px solid rgba(255, 255, 255, .24);
+
+    background: rgba(255, 255, 255, .11);
+
+    color: rgba(255, 255, 255, .92);
+}
+
+.session-status-dot {
+    width: 7px;
+    height: 7px;
+
+    flex: 0 0 7px;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    animation: session-status-blink 1.2s ease infinite;
+}
+
+.session-status.closed i {
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   HERO DECORATION
+========================================================= */
+
+.session-hero-decoration {
+    position: absolute;
+
+    z-index: 1;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.session-hero-decoration.one {
+    width: 100px;
+    height: 100px;
+
+    right: 180px;
+    top: 25px;
+
+    background: rgba(255, 255, 255, .035);
+}
+
+.session-hero-decoration.two {
+    width: 55px;
+    height: 55px;
+
+    right: 275px;
+    bottom: 20px;
+
+    background: rgba(255, 255, 255, .045);
+}
+
+@keyframes session-status-blink {
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .3;
+    }
+}
+
+
+/* =========================================================
+   OPEN SESSION GRID
+========================================================= */
+
+.session-open-grid {
+    display: grid;
+
+    grid-template-columns: minmax(280px, .8fr) minmax(0, 1.2fr);
+
+    gap: 20px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   QR CARD
+========================================================= */
+
+.session-qr-card,
+.session-roster-card {
+    overflow: hidden;
+
+    border: 1px solid var(--session-border);
+    border-radius: 11px;
+
+    background: #fff;
+
+    box-shadow: 0 6px 20px rgba(31, 69, 105, .06);
+}
+
+
+/* =========================================================
+   CARD HEADER
+========================================================= */
+
+.session-card-header {
+    padding: 18px 20px;
+
+    border-bottom: 1px solid #dfe8f0;
+
+    background: #f8fbfe;
+}
+
+.session-card-title {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.session-section-icon {
+    width: 39px;
+    height: 39px;
+
+    flex: 0 0 39px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: #e8f4ff;
+    color: var(--session-blue);
+
+    font-size: 17px;
+}
+
+.session-card-eyebrow {
+    margin-bottom: 3px;
+
+    color: var(--session-blue);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.session-card-title h2 {
+    margin: 0;
+
+    color: var(--session-text);
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.session-card-title p {
+    margin: 3px 0 0;
+
+    color: var(--session-muted);
+
+    font-size: 10px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   QR BODY
+========================================================= */
+
+.session-qr-body {
+    padding: 30px 25px;
+
+    text-align: center;
+}
+
+.session-qr-visual {
+    width: 94px;
+    height: 94px;
+
+    margin: 0 auto 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #cce5f7;
+    border-radius: 11px;
+
+    background: linear-gradient(
+        135deg,
+        #e8f4ff 0%,
+        #e9faff 100%
+    );
+
+    color: var(--session-blue);
+
+    box-shadow:
+        0 5px 15px rgba(22, 119, 210, .08),
+        0 0 0 5px #f7fbfe;
+}
+
+.session-qr-icon {
+    width: 57px;
+    height: 57px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #c7e2f4;
+    border-radius: 9px;
+
+    background: #fff;
+
+    color: var(--session-blue);
+
+    font-size: 29px;
+}
+
+.session-qr-body h3 {
+    margin: 0 0 7px;
+
+    color: var(--session-text);
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.session-qr-description {
+    max-width: 360px;
+
+    margin: 0 auto 20px;
+
+    color: var(--session-muted);
+
+    font-size: 10px;
+
+    line-height: 1.7;
+}
+
+.session-qr-description strong {
+    color: #4d687f;
+}
+
+
+/* =========================================================
+   QR BUTTON
+========================================================= */
+
+.session-show-qr-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    min-height: 40px;
+
+    padding: 9px 16px;
+
+    border: 1px solid var(--session-blue);
+    border-radius: 7px;
+
+    background: var(--session-blue);
+    color: #fff;
+
+    text-decoration: none;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    box-shadow: 0 4px 10px rgba(22, 119, 210, .14);
+
+    transition: all .2s ease;
+}
+
+.session-show-qr-button:hover {
+    border-color: var(--session-blue-dark);
+
+    background: var(--session-blue-dark);
+
+    color: #fff;
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 6px 14px rgba(22, 119, 210, .18);
+}
+
+.session-show-qr-button i {
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   QR NOTE
+========================================================= */
+
+.session-qr-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    margin-top: 15px;
+
+    color: #71869a;
+
+    font-size: 9px;
+}
+
+.session-qr-note i {
+    color: #16834b;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   ROSTER
+========================================================= */
+
+.session-roster-card {
+    min-width: 0;
+}
+
+.session-roster-heading {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 18px 20px;
+
+    border-bottom: 1px solid #dfe8f0;
+
+    background: #f8fbfe;
+}
+
+.session-roster-heading-icon {
+    width: 39px;
+    height: 39px;
+
+    flex: 0 0 39px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: #e8f4ff;
+    color: var(--session-blue);
+
+    font-size: 16px;
+}
+
+.session-roster-heading h2 {
+    margin: 0;
+
+    color: var(--session-text);
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.session-roster-heading p {
+    margin: 3px 0 0;
+
+    color: var(--session-muted);
+
+    font-size: 10px;
+}
+
+.session-roster-content {
+    min-width: 0;
+}
+
+
+/*
+   Supaya partial roster tidak memiliki jarak
+   berlebihan ketika dimasukkan ke card.
+*/
+
+.session-roster-content > .card {
+    margin: 0 !important;
+
+    border: 0 !important;
+
+    border-radius: 0 !important;
+
+    box-shadow: none !important;
+}
+
+.session-roster-content > .card .card-header {
+    border-radius: 0 !important;
+}
+
+
+/* =========================================================
+   CLOSE SESSION
+========================================================= */
+
+.session-close-area {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 15px 17px;
+
+    border: 1px solid #f0d6d8;
+    border-radius: 9px;
+
+    background: #fff8f8;
+}
+
+.session-close-info {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.session-close-icon {
+    width: 34px;
+    height: 34px;
+
+    flex: 0 0 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 7px;
+
+    background: #ffe9eb;
+    color: #c84651;
+
+    font-size: 13px;
+}
+
+.session-close-info strong {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #70434a;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.session-close-info span {
+    display: block;
+
+    color: #9a7278;
+
+    font-size: 9px;
+}
+
+.session-close-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    min-height: 37px;
+
+    padding: 8px 13px;
+
+    border: 1px solid #d34b57;
+    border-radius: 6px;
+
+    background: #d9535f;
+    color: #fff;
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: all .2s ease;
+}
+
+.session-close-button:hover {
+    border-color: #b93d49;
+
+    background: #c84450;
+
+    box-shadow: 0 4px 10px rgba(201, 68, 80, .15);
+}
+
+.session-close-button i {
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   CLOSED ALERT
+========================================================= */
+
+.session-closed-alert {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 11px;
+
+    margin-bottom: 20px;
+
+    padding: 15px 17px;
+
+    border: 1px solid #cfe4f3;
+    border-radius: 9px;
+
+    background: #f3faff;
+}
+
+.session-closed-alert-icon {
+    width: 32px;
+    height: 32px;
+
+    flex: 0 0 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 7px;
+
+    background: #e3f3ff;
+    color: var(--session-blue);
+
+    font-size: 14px;
+}
+
+.session-closed-alert-content {
+    min-width: 0;
+}
+
+.session-closed-alert-content strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #365b78;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.session-closed-alert-content p {
+    margin: 0;
+
+    color: #6e8294;
+
+    font-size: 10px;
+
+    line-height: 1.65;
+}
+
+.session-closed-alert-content p strong {
+    display: inline;
+
+    margin: 0;
+
+    color: #4c6980;
+
+    font-size: inherit;
+}
+
+
+/* =========================================================
+   CLOSED ROSTER
+========================================================= */
+
+.session-roster-closed {
+    margin-bottom: 18px;
+}
+
+
+/* =========================================================
+   REOPEN
+========================================================= */
+
+.session-reopen-area {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-bottom: 20px;
+}
+
+.session-reopen-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    min-height: 39px;
+
+    padding: 9px 15px;
+
+    border: 1px solid #20a45f;
+    border-radius: 7px;
+
+    background: #20a45f;
+    color: #fff;
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow: 0 4px 10px rgba(32, 164, 95, .13);
+
+    transition: all .2s ease;
+}
+
+.session-reopen-button:hover {
+    border-color: #16834b;
+
+    background: #16834b;
+
+    box-shadow: 0 6px 14px rgba(32, 164, 95, .17);
+}
+
+.session-reopen-button i {
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   BACK
+========================================================= */
+
+.session-back-area {
+    padding-top: 18px;
+
+    border-top: 1px solid #e4edf3;
+}
+
+.session-back-button {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 7px;
+
+    color: #667e93;
+
+    text-decoration: none;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    transition: color .2s ease;
+}
+
+.session-back-button:hover {
+    color: var(--session-blue);
+}
+
+.session-back-button i {
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .session-open-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .session-page-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        min-height: auto;
+
+        padding: 22px;
+    }
+
+    .session-header-icon {
+        width: 44px;
+        height: 44px;
+
+        flex-basis: 44px;
+
+        font-size: 19px;
+    }
+
+    .session-header-info h1 {
+        font-size: 21px;
+    }
+
+    .session-header-meta {
+        font-size: 10px;
+    }
+
+    .session-status {
+        align-self: flex-start;
+    }
+
+    .session-card-header,
+    .session-roster-heading {
+        padding: 17px;
+    }
+
+    .session-card-title p,
+    .session-roster-heading p {
+        display: none;
+    }
+
+    .session-qr-body {
+        padding: 25px 20px;
+    }
+
+    .session-close-area {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .session-close-button {
+        width: 100%;
+    }
+
+    .session-close-area form {
+        width: 100%;
+    }
+
+    .session-reopen-area {
+        justify-content: stretch;
+    }
+
+    .session-reopen-area form {
+        width: 100%;
+    }
+
+    .session-reopen-button {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .session-page-header {
+        margin-bottom: 18px;
+
+        padding: 18px;
+
+        border-radius: 10px;
+    }
+
+    .session-header-content {
+        align-items: flex-start;
+
+        gap: 11px;
+    }
+
+    .session-header-icon {
+        width: 40px;
+        height: 40px;
+
+        flex-basis: 40px;
+
+        border-radius: 8px;
+
+        font-size: 17px;
+    }
+
+    .session-header-label {
+        font-size: 8px;
+    }
+
+    .session-header-info h1 {
+        font-size: 18px;
+    }
+
+    .session-header-meta {
+        display: block;
+
+        margin-top: 5px;
+
+        font-size: 9px;
+
+        line-height: 1.9;
+    }
+
+    .session-header-meta span {
+        display: inline-flex;
+
+        margin-right: 5px;
+    }
+
+    .session-meta-separator {
+        display: none !important;
+    }
+
+    .session-status {
+        min-height: 33px;
+
+        padding: 7px 10px;
+
+        font-size: 9px;
+    }
+
+    .session-open-grid {
+        gap: 15px;
+    }
+
+    .session-qr-card,
+    .session-roster-card {
+        border-radius: 9px;
+    }
+
+    .session-card-header,
+    .session-roster-heading {
+        padding: 15px;
+    }
+
+    .session-card-title,
+    .session-roster-heading {
+        gap: 9px;
+    }
+
+    .session-section-icon,
+    .session-roster-heading-icon {
+        width: 35px;
+        height: 35px;
+
+        flex-basis: 35px;
+
+        border-radius: 7px;
+
+        font-size: 14px;
+    }
+
+    .session-card-eyebrow {
+        font-size: 8px;
+    }
+
+    .session-card-title h2,
+    .session-roster-heading h2 {
+        font-size: 14px;
+    }
+
+    .session-qr-body {
+        padding: 22px 15px;
+    }
+
+    .session-qr-visual {
+        width: 82px;
+        height: 82px;
+
+        margin-bottom: 16px;
+    }
+
+    .session-qr-icon {
+        width: 50px;
+        height: 50px;
+
+        font-size: 25px;
+    }
+
+    .session-qr-body h3 {
+        font-size: 14px;
+    }
+
+    .session-qr-description {
+        font-size: 9px;
+    }
+
+    .session-show-qr-button {
+        width: 100%;
+
+        min-height: 38px;
+
+        font-size: 10px;
+    }
+
+    .session-qr-note {
+        font-size: 8px;
+    }
+
+    .session-closed-alert {
+        padding: 12px;
+    }
+
+    .session-closed-alert-content strong {
+        font-size: 10px;
+    }
+
+    .session-closed-alert-content p {
+        font-size: 9px;
+    }
+
+    .session-close-area {
+        padding: 12px;
+    }
+
+    .session-close-info {
+        align-items: flex-start;
+    }
+
+    .session-close-info strong {
+        font-size: 9px;
+    }
+
+    .session-close-info span {
+        font-size: 8px;
+        line-height: 1.5;
+    }
+
+    .session-back-area {
+        padding-top: 15px;
+    }
+
+}
+
+
+/* =========================================================
+   EXTRA SMALL
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .session-page-header {
+        padding: 16px;
+    }
+
+    .session-header-info h1 {
+        font-size: 17px;
+    }
+
+    .session-qr-body {
+        padding: 20px 12px;
+    }
+
+}

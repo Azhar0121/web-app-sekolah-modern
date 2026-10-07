@@ -1,75 +1,240 @@
 @extends('layouts.admin')
+
 @section('title', 'QR Presensi — ' . $attendanceSession->schedule->teachingAssignment->subject->name)
+
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/guru/attendance/qr.css') }}">
 
-<div class="text-center mb-4">
-    <span class="badge bg-primary-subtle text-primary fw-semibold mb-2">
-        <i class="bi bi-book-fill me-1"></i>
-        {{ $attendanceSession->schedule->teachingAssignment->subject->name }}
-    </span>
-    <h4 class="fw-bold mb-1">{{ $attendanceSession->schedule->teachingAssignment->classroom->name }}</h4>
-    <p class="text-muted small mb-0">
-        <i class="bi bi-calendar3 me-1"></i>{{ $attendanceSession->date->translatedFormat('l, d F Y') }}
-        &nbsp;•&nbsp;
-        <i class="bi bi-clock me-1"></i>{{ $attendanceSession->schedule->start_time->format('H:i') }} – {{ $attendanceSession->schedule->end_time->format('H:i') }}
-    </p>
-</div>
+<div class="guru-attendance-qr">
 
-<div class="row justify-content-center">
-    <div class="col-md-7 col-lg-5">
-        <div class="card border-0 shadow text-center">
-            <div class="card-body p-4">
+    {{-- HERO --}}
+    <div class="qr-page-header">
 
-                <small class="text-muted text-uppercase fw-bold letter-spacing-1 d-flex align-items-center justify-content-center gap-1 mb-3">
-                    <i class="bi bi-qr-code text-primary"></i> Scan untuk Presensi
-                </small>
+        <div class="qr-header-content">
 
-                <div class="position-relative d-inline-block mb-3">
-                    <div id="qr-svg-container" class="border rounded-3 p-2 bg-white shadow-sm d-inline-block">
-                        {!! $qrSvg !!}
-                    </div>
-                    <div id="expired-overlay"
-                         class="position-absolute top-0 start-0 w-100 h-100 d-none flex-column align-items-center justify-content-center bg-white bg-opacity-90 rounded-3">
-                        <i class="bi bi-hourglass-bottom text-danger fs-1 mb-1"></i>
-                        <span class="fw-bold text-danger small">QR Kadaluarsa</span>
-                        <span class="text-muted" style="font-size:.7rem;">Klik Refresh untuk lanjutkan</span>
-                    </div>
+            <div class="qr-header-icon">
+                <i class="bi bi-qr-code"></i>
+            </div>
+
+            <div class="qr-header-info">
+
+                <div class="qr-header-label">
+                    PRESENSI KELAS
                 </div>
 
-                <div class="mb-3">
-                    <div class="d-flex justify-content-between small text-muted mb-1">
-                        <span>Waktu berlaku QR</span>
-                        <span id="qr-countdown" class="fw-bold text-dark">{{ $ttlMinutes }}:00</span>
-                    </div>
-                    <div class="progress" style="height:8px;">
-                        <div id="qr-progress" class="progress-bar bg-success progress-bar-animated" style="width:100%;transition:width 1s linear;"></div>
-                    </div>
+                <h1>
+                    {{ $attendanceSession->schedule->teachingAssignment->subject->name }}
+                </h1>
+
+                <p>
+                    <span>
+                        <i class="bi bi-door-open-fill"></i>
+                        {{ $attendanceSession->schedule->teachingAssignment->classroom->name }}
+                    </span>
+
+                    <span class="qr-header-separator">•</span>
+
+                    <span>
+                        <i class="bi bi-calendar3"></i>
+                        {{ $attendanceSession->date->translatedFormat('l, d F Y') }}
+                    </span>
+
+                    <span class="qr-header-separator">•</span>
+
+                    <span>
+                        <i class="bi bi-clock"></i>
+                        {{ $attendanceSession->schedule->start_time->format('H:i') }}
+                        –
+                        {{ $attendanceSession->schedule->end_time->format('H:i') }}
+                    </span>
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="qr-header-badge">
+            <i class="bi bi-broadcast-pin"></i>
+            Sesi Presensi
+        </div>
+
+        <div class="qr-hero-decoration one"></div>
+        <div class="qr-hero-decoration two"></div>
+
+    </div>
+
+
+    {{-- QR CARD --}}
+    <div class="qr-main-card">
+
+        <div class="qr-card-header">
+
+            <div class="qr-card-title">
+
+                <div class="qr-section-icon">
+                    <i class="bi bi-qr-code-scan"></i>
                 </div>
 
-                <div class="alert alert-success py-2 mb-3 d-flex align-items-center gap-2">
-                    <i class="bi bi-person-check-fill text-success"></i>
-                    <span id="scan-count-text" class="small fw-semibold">Memuat jumlah hadir...</span>
-                </div>
+                <div>
+                    <div class="qr-card-eyebrow">
+                        KODE PRESENSI
+                    </div>
 
-                <div class="d-grid gap-2">
-                    <button class="btn btn-primary fw-bold" id="refresh-btn" onclick="refreshQr()">
-                        <i class="bi bi-arrow-clockwise me-2"></i>Refresh QR
-                    </button>
-                    <a href="{{ route('guru.attendance.session', $attendanceSession->schedule) }}"
-                       class="btn btn-outline-secondary">
-                        <i class="bi bi-list-ul me-2"></i>Lihat Daftar Siswa
-                    </a>
+                    <h2>
+                        Scan untuk Presensi
+                    </h2>
+
+                    <p>
+                        Siswa dapat memindai kode ini melalui portal presensi.
+                    </p>
                 </div>
 
             </div>
+
         </div>
 
-        <div class="alert alert-light border mt-3 text-center small">
-            <strong>Cara presensi siswa:</strong> Buka portal → menu <strong>Presensi</strong> →
-            <strong>Scan QR Guru</strong> → arahkan kamera ke QR ini.
+
+        <div class="qr-card-body">
+
+            {{-- QR CODE --}}
+            <div class="qr-code-area">
+
+                <div class="qr-code-frame">
+
+                    <div id="qr-svg-container">
+                        {!! $qrSvg !!}
+                    </div>
+
+                    <div
+                        id="expired-overlay"
+                        class="qr-expired-overlay d-none"
+                    >
+                        <div class="qr-expired-icon">
+                            <i class="bi bi-hourglass-bottom"></i>
+                        </div>
+
+                        <strong>
+                            QR Kadaluarsa
+                        </strong>
+
+                        <span>
+                            Klik Refresh untuk melanjutkan.
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            {{-- TIMER --}}
+            <div class="qr-timer-section">
+
+                <div class="qr-timer-heading">
+
+                    <span>
+                        <i class="bi bi-clock-history"></i>
+                        Waktu berlaku QR
+                    </span>
+
+                    <strong id="qr-countdown">
+                        {{ $ttlMinutes }}:00
+                    </strong>
+
+                </div>
+
+                <div class="qr-progress">
+                    <div
+                        id="qr-progress"
+                        class="qr-progress-bar"
+                        style="width:100%;"
+                    ></div>
+                </div>
+
+                <div class="qr-timer-note">
+                    Kode akan diperbarui setelah waktu berakhir.
+                </div>
+
+            </div>
+
+
+            {{-- ATTENDANCE COUNT --}}
+            <div class="qr-attendance-count">
+
+                <div class="qr-attendance-icon">
+                    <i class="bi bi-person-check-fill"></i>
+                </div>
+
+                <div>
+                    <div class="qr-attendance-label">
+                        Kehadiran Siswa
+                    </div>
+
+                    <span id="scan-count-text">
+                        Memuat jumlah hadir...
+                    </span>
+                </div>
+
+            </div>
+
+
+            {{-- ACTIONS --}}
+            <div class="qr-actions">
+
+                <button
+                    type="button"
+                    class="qr-refresh-button"
+                    id="refresh-btn"
+                    onclick="refreshQr()"
+                >
+                    <i class="bi bi-arrow-clockwise"></i>
+                    <span>Refresh QR</span>
+                </button>
+
+                <a
+                    href="{{ route('guru.attendance.session', $attendanceSession->schedule) }}"
+                    class="qr-student-button"
+                >
+                    <i class="bi bi-list-ul"></i>
+                    <span>Lihat Daftar Siswa</span>
+                </a>
+
+            </div>
+
         </div>
+
     </div>
+
+
+    {{-- INSTRUCTION --}}
+    <div class="qr-instruction">
+
+        <div class="qr-instruction-icon">
+            <i class="bi bi-info-circle-fill"></i>
+        </div>
+
+        <div class="qr-instruction-content">
+
+            <strong>
+                Cara presensi siswa
+            </strong>
+
+            <p>
+                Buka portal siswa
+                <span>→</span>
+                menu <strong>Presensi</strong>
+                <span>→</span>
+                <strong>Scan QR Guru</strong>
+                <span>→</span>
+                arahkan kamera ke QR ini.
+            </p>
+
+        </div>
+
+    </div>
+
 </div>
+
 
 @push('scripts')
 <script>
@@ -83,84 +248,195 @@ let secondsLeft  = ttlSeconds;
 let isRefreshing = false;
 let countInterval;
 
+
+/*
+|--------------------------------------------------------------------------
+| FORMAT TIME
+|--------------------------------------------------------------------------
+*/
+
 function formatTime(s) {
-    return `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`;
+    return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
 }
 
+
+/*
+|--------------------------------------------------------------------------
+| UPDATE TIMER
+|--------------------------------------------------------------------------
+*/
+
 function updateTimer() {
+
     const countdown = document.getElementById('qr-countdown');
     const progress  = document.getElementById('qr-progress');
     const overlay   = document.getElementById('expired-overlay');
 
     if (secondsLeft <= 0) {
+
         clearInterval(countInterval);
+
         countdown.textContent = '0:00';
-        countdown.classList.add('text-danger');
+
+        countdown.classList.add('expired');
+
         progress.style.width = '0%';
-        progress.classList.remove('bg-success');
-        progress.classList.add('bg-danger');
+
+        progress.classList.remove('warning');
+        progress.classList.add('expired');
+
         overlay.classList.remove('d-none');
-        overlay.classList.add('d-flex');
+        overlay.classList.add('active');
+
         return;
     }
+
     secondsLeft--;
+
     countdown.textContent = formatTime(secondsLeft);
-    progress.style.width = ((secondsLeft / ttlSeconds) * 100) + '%';
+
+    progress.style.width =
+        ((secondsLeft / ttlSeconds) * 100) + '%';
+
     if (secondsLeft <= 30) {
-        countdown.classList.add('text-danger');
-        progress.classList.replace('bg-success','bg-danger');
+
+        countdown.classList.add('warning');
+
+        progress.classList.remove('normal');
+        progress.classList.add('warning');
+
     }
 }
 
 countInterval = setInterval(updateTimer, 1000);
 
+
+/*
+|--------------------------------------------------------------------------
+| REFRESH QR
+|--------------------------------------------------------------------------
+*/
+
 async function refreshQr() {
-    if (isRefreshing) return;
+
+    if (isRefreshing) {
+        return;
+    }
+
     isRefreshing = true;
+
     const btn = document.getElementById('refresh-btn');
+
     btn.disabled = true;
-    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Memperbarui...';
+
+    btn.innerHTML =
+        '<span class="qr-spinner"></span>' +
+        '<span>Memperbarui...</span>';
 
     try {
-        const res  = await fetch(refreshUrl, {
+
+        const res = await fetch(refreshUrl, {
             method: 'POST',
-            headers: { 'X-CSRF-TOKEN': csrfToken, 'Accept': 'application/json' }
+            headers: {
+                'X-CSRF-TOKEN': csrfToken,
+                'Accept': 'application/json'
+            }
         });
+
         const data = await res.json();
+
         if (data.success) {
-            document.getElementById('qr-svg-container').innerHTML = data.qrSvg;
-            const overlay = document.getElementById('expired-overlay');
+
+            document.getElementById('qr-svg-container').innerHTML =
+                data.qrSvg;
+
+            const overlay =
+                document.getElementById('expired-overlay');
+
             overlay.classList.add('d-none');
-            overlay.classList.remove('d-flex');
-            secondsLeft = data.ttlSeconds ?? ttlSeconds;
-            const countdown = document.getElementById('qr-countdown');
-            countdown.classList.remove('text-danger');
-            const progress = document.getElementById('qr-progress');
-            progress.classList.replace('bg-danger','bg-success');
+            overlay.classList.remove('active');
+
+            secondsLeft =
+                data.ttlSeconds ?? ttlSeconds;
+
+            const countdown =
+                document.getElementById('qr-countdown');
+
+            countdown.classList.remove('warning');
+            countdown.classList.remove('expired');
+
+            const progress =
+                document.getElementById('qr-progress');
+
+            progress.classList.remove('warning');
+            progress.classList.remove('expired');
+
+            progress.classList.add('normal');
+
             progress.style.width = '100%';
+
             clearInterval(countInterval);
-            countInterval = setInterval(updateTimer, 1000);
+
+            countInterval =
+                setInterval(updateTimer, 1000);
         }
-    } catch(e) {
-        alert('Gagal memperbarui QR. Periksa koneksi dan coba lagi.');
+
+    } catch (e) {
+
+        alert(
+            'Gagal memperbarui QR. Periksa koneksi dan coba lagi.'
+        );
+
     } finally {
+
         isRefreshing = false;
+
         btn.disabled = false;
-        btn.innerHTML = '<i class="bi bi-arrow-clockwise me-2"></i>Refresh QR';
+
+        btn.innerHTML =
+            '<i class="bi bi-arrow-clockwise"></i>' +
+            '<span>Refresh QR</span>';
     }
 }
 
+
+/*
+|--------------------------------------------------------------------------
+| FETCH SCAN COUNT
+|--------------------------------------------------------------------------
+*/
+
 async function fetchScanCount() {
+
     try {
-        const res  = await fetch(`/guru/presensi/sesi/${sessionId}/hadir-count`, {
-            headers: { 'Accept': 'application/json', 'X-CSRF-TOKEN': csrfToken }
-        });
-        if (!res.ok) return;
+
+        const res = await fetch(
+            `/guru/presensi/sesi/${sessionId}/hadir-count`,
+            {
+                headers: {
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken
+                }
+            }
+        );
+
+        if (!res.ok) {
+            return;
+        }
+
         const data = await res.json();
-        document.getElementById('scan-count-text').textContent = `${data.count} siswa sudah tercatat Hadir`;
-    } catch(e) {}
+
+        document.getElementById('scan-count-text').textContent =
+            `${data.count} siswa sudah tercatat Hadir`;
+
+    } catch (e) {
+        // Silent fail agar polling tidak mengganggu halaman.
+    }
 }
+
+
 fetchScanCount();
+
 setInterval(fetchScanCount, 8000);
 </script>
 @endpush

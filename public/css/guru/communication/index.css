@@ -1,0 +1,2107 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root {
+    --comm-blue: #1769d5;
+    --comm-blue-dark: #0d4fa8;
+    --comm-blue-light: #2782e8;
+    --comm-blue-soft: #eaf3ff;
+
+    --comm-cyan: #087ea4;
+    --comm-cyan-soft: #e8f7fa;
+
+    --comm-green: #15956b;
+    --comm-green-soft: #eaf9f3;
+
+    --comm-orange: #e58a2b;
+    --comm-orange-soft: #fff4e6;
+
+    --comm-bg: #f4f7fb;
+    --comm-white: #ffffff;
+
+    --comm-text: #152b46;
+    --comm-muted: #718198;
+    --comm-light: #94a3b8;
+
+    --comm-border: #dfe8f2;
+
+    --comm-shadow:
+        0 8px 22px rgba(26, 72, 119, 0.06);
+}
+
+
+/* =========================================================
+   FONT
+========================================================= */
+
+.guru-communication,
+.guru-communication *,
+.guru-communication button,
+.guru-communication input,
+.guru-communication select,
+.guru-communication textarea,
+.communication-modal,
+.communication-modal * {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+
+/* =========================================================
+   MAIN WRAPPER
+========================================================= */
+
+.guru-communication {
+    width: 100%;
+    min-height: 100%;
+
+    padding: 6px 0 35px;
+
+    color: var(--comm-text);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.communication-page-header {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    min-height: 175px;
+
+    margin-bottom: 22px;
+    padding: 30px 32px;
+
+    overflow: hidden;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0d4fa8 0%,
+            #1769d5 48%,
+            #087ea4 100%
+        );
+
+    box-shadow:
+        0 14px 32px rgba(23, 105, 213, 0.17);
+}
+
+
+.communication-page-header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    right: -75px;
+    top: -105px;
+
+    border: 45px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+.communication-page-header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 120px;
+    height: 120px;
+
+    left: 42%;
+    bottom: -75px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    pointer-events: none;
+}
+
+
+.communication-header-decoration {
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+.communication-decoration-one {
+    width: 80px;
+    height: 80px;
+
+    right: 24%;
+    top: -42px;
+
+    background: rgba(255, 255, 255, 0.045);
+}
+
+
+.communication-decoration-two {
+    width: 45px;
+    height: 45px;
+
+    right: 8%;
+    bottom: 18px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+
+.communication-header-content {
+    position: relative;
+    z-index: 5;
+
+    min-width: 0;
+    max-width: 720px;
+}
+
+
+.communication-label {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 9px;
+
+    color: rgba(255, 255, 255, 0.82);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 1.6px;
+}
+
+
+.communication-label::before {
+    content: "";
+
+    width: 24px;
+    height: 4px;
+
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.8);
+}
+
+
+.communication-page-header h1 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 27px;
+    font-weight: 800;
+
+    line-height: 1.25;
+
+    letter-spacing: -0.6px;
+}
+
+
+.communication-page-header p {
+    max-width: 680px;
+
+    margin: 9px 0 0;
+
+    color: rgba(255, 255, 255, 0.76);
+
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   NEW CONSULTATION BUTTON
+========================================================= */
+
+.communication-new-btn {
+    position: relative;
+    z-index: 10;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    flex-shrink: 0;
+
+    min-height: 43px;
+
+    padding: 0 17px;
+
+    border: 0;
+    border-radius: 8px;
+
+    color: #ffffff !important;
+
+    background: var(--comm-blue);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 7px 16px rgba(23, 105, 213, 0.18);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.communication-new-btn i {
+    font-size: 14px;
+}
+
+
+.communication-new-btn:hover {
+    color: #ffffff !important;
+
+    background: var(--comm-blue-dark);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 11px 22px rgba(23, 105, 213, 0.22);
+}
+
+
+/* =========================================================
+   FLASH MESSAGE
+========================================================= */
+
+.communication-alert {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 18px;
+
+    padding: 12px 15px;
+
+    border: 1px solid transparent;
+
+    border-radius: 8px;
+
+    font-size: 11px;
+}
+
+
+.communication-alert-success {
+    color: #116b4e;
+
+    background: var(--comm-green-soft);
+
+    border-color: #ccefe2;
+}
+
+
+.communication-alert-danger {
+    color: #a33b45;
+
+    background: #fff0f1;
+
+    border-color: #f4d2d5;
+}
+
+
+/* =========================================================
+   COMMUNICATION GRID
+========================================================= */
+
+.communication-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(300px, 0.88fr)
+        minmax(0, 1.75fr);
+
+    gap: 18px;
+
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.communication-card {
+    position: relative;
+
+    overflow: hidden;
+
+    border: 1px solid var(--comm-border);
+
+    border-radius: 11px;
+
+    background: var(--comm-white);
+
+    box-shadow: var(--comm-shadow);
+}
+
+
+/* =========================================================
+   LIST HEADER
+========================================================= */
+
+.communication-list-header {
+    padding: 18px 19px 16px;
+
+    border-bottom: 1px solid #e6edf5;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #f9fbfe
+        );
+}
+
+
+.communication-list-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-bottom: 14px;
+}
+
+
+.communication-list-heading {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.communication-section-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    border-radius: 8px;
+
+    color: var(--comm-blue);
+
+    background: var(--comm-blue-soft);
+
+    font-size: 14px;
+}
+
+
+.communication-list-title h2 {
+    margin: 0;
+
+    color: var(--comm-text);
+
+    font-size: 14px;
+    font-weight: 800;
+}
+
+
+.communication-list-subtitle {
+    display: block;
+
+    margin-top: 2px;
+
+    color: var(--comm-muted);
+
+    font-size: 8px;
+}
+
+
+.communication-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 27px;
+    height: 27px;
+
+    padding: 0 8px;
+
+    border-radius: 7px;
+
+    color: var(--comm-blue);
+
+    background: var(--comm-blue-soft);
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+.communication-filter {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 5px;
+
+    padding: 4px;
+
+    border: 1px solid #e1eaf4;
+
+    border-radius: 8px;
+
+    background: #f5f8fc;
+}
+
+
+.communication-filter a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 31px;
+
+    border-radius: 6px;
+
+    color: var(--comm-muted);
+
+    font-size: 9px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        color 0.18s ease,
+        background 0.18s ease;
+}
+
+
+.communication-filter a:hover {
+    color: var(--comm-blue);
+
+    background: #ffffff;
+}
+
+
+.communication-filter a.active {
+    color: #ffffff;
+
+    background: var(--comm-blue);
+
+    box-shadow:
+        0 4px 10px rgba(23, 105, 213, 0.16);
+}
+
+
+/* =========================================================
+   THREAD LIST
+========================================================= */
+
+.communication-thread-list {
+    max-height: 600px;
+
+    overflow-y: auto;
+}
+
+
+.communication-thread-list::-webkit-scrollbar,
+.communication-messages::-webkit-scrollbar {
+    width: 5px;
+}
+
+
+.communication-thread-list::-webkit-scrollbar-track,
+.communication-messages::-webkit-scrollbar-track {
+    background: #f6f8fb;
+}
+
+
+.communication-thread-list::-webkit-scrollbar-thumb,
+.communication-messages::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+
+    background: #cbd8e7;
+}
+
+
+/* =========================================================
+   THREAD
+========================================================= */
+
+.communication-thread {
+    position: relative;
+
+    display: block;
+
+    padding: 15px 17px;
+
+    border-bottom: 1px solid #edf1f6;
+
+    color: inherit;
+
+    background: #ffffff;
+
+    text-decoration: none;
+
+    transition:
+        background 0.2s ease;
+}
+
+
+.communication-thread:last-child {
+    border-bottom: 0;
+}
+
+
+.communication-thread::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    width: 3px;
+
+    background: var(--comm-blue);
+
+    opacity: 0;
+
+    transition: opacity 0.2s ease;
+}
+
+
+.communication-thread:hover {
+    color: inherit;
+
+    background: #f8fbff;
+}
+
+
+.communication-thread:hover::before,
+.communication-thread.active::before {
+    opacity: 1;
+}
+
+
+.communication-thread.active {
+    background: #f1f7ff;
+}
+
+
+/* =========================================================
+   THREAD TOP
+========================================================= */
+
+.communication-thread-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 8px;
+
+    margin-bottom: 7px;
+}
+
+
+.communication-category {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 22px;
+
+    padding: 0 8px;
+
+    border-radius: 5px;
+
+    font-size: 8px;
+    font-weight: 800;
+}
+
+
+.communication-category.academic {
+    color: var(--comm-blue);
+
+    background: var(--comm-blue-soft);
+}
+
+
+.communication-category.discipline {
+    color: #b56b13;
+
+    background: var(--comm-orange-soft);
+}
+
+
+.communication-category.attendance {
+    color: var(--comm-cyan);
+
+    background: var(--comm-cyan-soft);
+}
+
+
+.communication-category.other {
+    color: #6554c0;
+
+    background: #f0edff;
+}
+
+
+.communication-time {
+    flex-shrink: 0;
+
+    color: #9aa8b8;
+
+    font-size: 8px;
+}
+
+
+.communication-thread h3 {
+    overflow: hidden;
+
+    margin: 0 0 7px;
+
+    color: var(--comm-text);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+.communication-person {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    margin-bottom: 4px;
+
+    color: var(--comm-muted);
+
+    font-size: 9px;
+}
+
+
+.communication-person i {
+    width: 13px;
+
+    color: #91a0b2;
+
+    text-align: center;
+}
+
+
+.communication-person strong {
+    color: var(--comm-text);
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   THREAD BOTTOM
+========================================================= */
+
+.communication-thread-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 10px;
+}
+
+
+.communication-status {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 5px;
+
+    min-height: 21px;
+
+    padding: 0 8px;
+
+    border-radius: 5px;
+
+    font-size: 8px;
+    font-weight: 800;
+}
+
+
+.communication-status.open {
+    color: #9a6900;
+
+    background: #fff5dc;
+}
+
+
+.communication-status.resolved {
+    color: var(--comm-green);
+
+    background: var(--comm-green-soft);
+}
+
+
+.communication-unread {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 21px;
+
+    padding: 0 7px;
+
+    border-radius: 5px;
+
+    color: #ffffff;
+
+    background: #dc5361;
+
+    font-size: 8px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.communication-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    min-height: 260px;
+
+    padding: 30px;
+
+    text-align: center;
+}
+
+
+.communication-empty-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 52px;
+    height: 52px;
+
+    margin-bottom: 13px;
+
+    border: 1px solid #d7e7f8;
+
+    border-radius: 10px;
+
+    color: var(--comm-blue);
+
+    background: var(--comm-blue-soft);
+
+    font-size: 20px;
+}
+
+
+.communication-empty h3 {
+    margin: 0 0 6px;
+
+    color: var(--comm-text);
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+
+.communication-empty p {
+    max-width: 260px;
+
+    margin: 0;
+
+    color: var(--comm-muted);
+
+    font-size: 9px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   DETAIL HEADER
+========================================================= */
+
+.communication-detail-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 18px;
+
+    padding: 20px 22px;
+
+    border-bottom: 1px solid #e5ecf4;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #fbfdff
+        );
+}
+
+
+.communication-detail-info {
+    min-width: 0;
+}
+
+
+.communication-detail-meta {
+    display: flex;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 6px;
+
+    margin-bottom: 8px;
+}
+
+
+.communication-detail-status {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 5px;
+
+    min-height: 22px;
+
+    padding: 0 8px;
+
+    border-radius: 5px;
+
+    font-size: 8px;
+    font-weight: 800;
+}
+
+
+.communication-detail-status.open {
+    color: #9a6900;
+
+    background: #fff5dc;
+}
+
+
+.communication-detail-status.resolved {
+    color: var(--comm-green);
+
+    background: var(--comm-green-soft);
+}
+
+
+.communication-detail-header h2 {
+    overflow: hidden;
+
+    margin: 0 0 8px;
+
+    color: var(--comm-text);
+
+    font-size: 15px;
+    font-weight: 800;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+.communication-detail-students {
+    display: flex;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    color: var(--comm-muted);
+
+    font-size: 9px;
+}
+
+
+.communication-detail-students span {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 5px;
+}
+
+
+.communication-detail-students i {
+    color: var(--comm-blue);
+}
+
+
+.communication-detail-divider {
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: #b9c6d4;
+}
+
+
+.communication-detail-students strong {
+    color: var(--comm-text);
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   STATUS BUTTON
+========================================================= */
+
+.communication-status-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    flex-shrink: 0;
+
+    min-height: 35px;
+
+    padding: 0 13px;
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.communication-status-btn:hover {
+    transform: translateY(-1px);
+}
+
+
+.communication-status-btn.finish {
+    color: var(--comm-green);
+
+    border: 1px solid #bfe7d7;
+}
+
+
+.communication-status-btn.finish:hover {
+    color: #ffffff;
+
+    background: var(--comm-green);
+}
+
+
+.communication-status-btn.reopen {
+    color: #ad7310;
+
+    border: 1px solid #efd8a7;
+}
+
+
+.communication-status-btn.reopen:hover {
+    color: #ffffff;
+
+    background: var(--comm-orange);
+}
+
+
+/* =========================================================
+   MESSAGE AREA
+========================================================= */
+
+.communication-messages {
+    height: 440px;
+
+    overflow-y: auto;
+
+    padding: 22px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f5f8fc 0%,
+            #f8fafc 100%
+        );
+}
+
+
+/* =========================================================
+   MESSAGE ROW
+========================================================= */
+
+.communication-message-row {
+    display: flex;
+
+    margin-bottom: 14px;
+}
+
+
+.communication-message-row.mine {
+    justify-content: flex-end;
+}
+
+
+.communication-message-row.other {
+    justify-content: flex-start;
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.communication-message {
+    max-width: 78%;
+
+    padding: 12px 14px;
+
+    border: 1px solid #e1e8f0;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 4px 12px rgba(25, 65, 105, 0.04);
+}
+
+
+.communication-message.mine {
+    border-color: var(--comm-blue);
+
+    background: var(--comm-blue);
+}
+
+
+.communication-message-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 6px;
+}
+
+
+.communication-message-sender {
+    color: var(--comm-blue);
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+
+.communication-message.mine .communication-message-sender {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+
+.communication-message-time {
+    color: #9aa8b8;
+
+    font-size: 7px;
+
+    white-space: nowrap;
+}
+
+
+.communication-message.mine .communication-message-time {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+
+.communication-message-text {
+    margin: 0;
+
+    color: var(--comm-text);
+
+    font-size: 10px;
+    line-height: 1.7;
+
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+
+.communication-message.mine .communication-message-text {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   ATTACHMENT - REPLY
+========================================================= */
+
+.communication-file {
+    display: flex;
+    align-items: stretch;
+
+    width: 100%;
+    max-width: 330px;
+}
+
+
+.communication-file label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    min-width: 38px;
+    height: 36px;
+
+    border: 1px solid #d6e1ec;
+
+    border-right: 0;
+
+    border-radius: 7px 0 0 7px;
+
+    color: var(--comm-blue);
+
+    background: #f3f7fb;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.communication-file label:hover {
+    color: #ffffff;
+
+    background: var(--comm-blue);
+}
+
+
+.communication-file input {
+    width: 100%;
+    min-width: 0;
+
+    height: 36px;
+
+    padding: 0 9px;
+
+    border: 1px solid #d6e1ec;
+
+    border-radius: 0 7px 7px 0;
+
+    color: var(--comm-muted);
+
+    background: #ffffff;
+
+    font-size: 8px;
+
+    outline: none;
+}
+
+
+.communication-file input:focus {
+    border-color: #9dbfe5;
+
+    box-shadow:
+        0 0 0 2px rgba(23, 105, 213, 0.06);
+}
+
+
+/* =========================================================
+   ATTACHMENT MESSAGE
+========================================================= */
+
+.communication-attachment {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 6px;
+
+    margin-top: 10px;
+
+    padding-top: 9px;
+
+    border-top: 1px solid #edf1f5;
+
+    color: var(--comm-blue);
+
+    font-size: 8px;
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+
+.communication-message.mine .communication-attachment {
+    border-color: rgba(255, 255, 255, 0.2);
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   REPLY AREA
+========================================================= */
+
+.communication-reply {
+    padding: 16px 20px;
+
+    border-top: 1px solid #e4ebf3;
+
+    background: #ffffff;
+}
+
+
+.communication-reply textarea {
+    width: 100%;
+
+    min-height: 68px;
+
+    padding: 11px 13px;
+
+    border: 1px solid #d8e3ee;
+
+    border-radius: 8px;
+
+    color: var(--comm-text);
+
+    background: #f9fbfd;
+
+    font-size: 10px;
+    line-height: 1.6;
+
+    resize: vertical;
+
+    outline: none;
+}
+
+
+.communication-reply textarea:focus {
+    border-color: #8bb7e8;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 3px rgba(23, 105, 213, 0.08);
+}
+
+
+.communication-reply-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-top: 10px;
+}
+
+
+.communication-send-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    min-height: 36px;
+
+    padding: 0 15px;
+
+    border: 0;
+
+    border-radius: 7px;
+
+    color: #ffffff;
+
+    background: var(--comm-blue);
+
+    font-size: 9px;
+    font-weight: 700;
+
+    box-shadow:
+        0 5px 12px rgba(23, 105, 213, 0.14);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.communication-send-btn:hover {
+    color: #ffffff;
+
+    background: var(--comm-blue-dark);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   NO ACTIVE THREAD
+========================================================= */
+
+.communication-no-thread {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    min-height: 500px;
+
+    padding: 40px;
+
+    text-align: center;
+}
+
+
+.communication-no-thread-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 65px;
+    height: 65px;
+
+    margin-bottom: 17px;
+
+    border: 1px solid #d7e7f8;
+
+    border-radius: 12px;
+
+    color: var(--comm-blue);
+
+    background: var(--comm-blue-soft);
+
+    font-size: 25px;
+}
+
+
+.communication-no-thread h2 {
+    margin: 0 0 7px;
+
+    color: var(--comm-text);
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+
+.communication-no-thread p {
+    max-width: 360px;
+
+    margin: 0 0 18px;
+
+    color: var(--comm-muted);
+
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.communication-modal {
+    overflow: hidden;
+
+    border: 1px solid #dce7f2 !important;
+
+    border-radius: 11px !important;
+
+    box-shadow:
+        0 22px 50px rgba(17, 48, 80, 0.16) !important;
+}
+
+
+.communication-modal-header {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 17px 21px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #125bbd,
+            #1769d5
+        );
+}
+
+
+.communication-modal-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    border-radius: 7px;
+
+    color: #ffffff;
+
+    background: rgba(255, 255, 255, 0.13);
+
+    font-size: 13px;
+}
+
+
+.communication-modal-header h2 {
+    margin: 0;
+
+    font-size: 14px;
+    font-weight: 800;
+}
+
+
+.communication-modal-body {
+    padding: 21px;
+
+    background: #ffffff;
+}
+
+
+.communication-form-group {
+    margin-bottom: 16px;
+}
+
+
+.communication-form-group:last-child {
+    margin-bottom: 0;
+}
+
+
+.communication-form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--comm-text);
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+
+.communication-form-group select,
+.communication-form-group input,
+.communication-form-group textarea {
+    width: 100%;
+
+    border: 1px solid #d8e3ee;
+
+    border-radius: 7px;
+
+    color: var(--comm-text);
+
+    background: #fbfcfe;
+
+    font-size: 10px;
+
+    box-shadow: none;
+
+    outline: none;
+}
+
+
+.communication-form-group select,
+.communication-form-group input {
+    min-height: 38px;
+
+    padding: 0 11px;
+}
+
+
+.communication-form-group textarea {
+    min-height: 110px;
+
+    padding: 10px 11px;
+
+    line-height: 1.6;
+
+    resize: vertical;
+}
+
+
+.communication-form-group select:focus,
+.communication-form-group input:focus,
+.communication-form-group textarea:focus {
+    border-color: #8bb7e8;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 3px rgba(23, 105, 213, 0.07);
+}
+
+
+.communication-help {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #94a3b8;
+
+    font-size: 8px;
+    line-height: 1.5;
+}
+
+
+.communication-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 8px;
+
+    padding: 13px 21px;
+
+    border-top: 1px solid #e6edf4;
+
+    background: #f8fafc;
+}
+
+
+.communication-modal-cancel,
+.communication-modal-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    min-height: 34px;
+
+    padding: 0 14px;
+
+    border-radius: 7px;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.communication-modal-cancel {
+    border: 1px solid #d7e0ea;
+
+    color: var(--comm-muted);
+
+    background: #ffffff;
+}
+
+
+.communication-modal-submit {
+    border: 0;
+
+    color: #ffffff;
+
+    background: var(--comm-blue);
+}
+
+
+.communication-modal-submit:hover {
+    color: #ffffff;
+
+    background: var(--comm-blue-dark);
+}
+
+
+/* =========================================================
+   BOOTSTRAP OVERRIDE
+========================================================= */
+
+.guru-communication .mb-0 {
+    margin-bottom: 0 !important;
+}
+
+
+.guru-communication .mx-1 {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .communication-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .communication-thread-list {
+        max-height: 430px;
+    }
+
+    .communication-detail-header {
+        align-items: flex-start;
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    .communication-page-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        min-height: auto;
+
+        padding: 25px;
+    }
+
+    .communication-page-header h1 {
+        font-size: 22px;
+    }
+
+    .communication-page-header p {
+        max-width: 100%;
+    }
+
+    .communication-new-btn {
+        width: 100%;
+    }
+
+    .communication-detail-header {
+        flex-direction: column;
+    }
+
+    .communication-status-btn {
+        width: 100%;
+    }
+
+    .communication-detail-info {
+        width: 100%;
+    }
+
+    .communication-message {
+        max-width: 88%;
+    }
+
+    .communication-reply-bottom {
+        align-items: stretch;
+
+        flex-direction: column;
+    }
+
+    .communication-file {
+        max-width: none;
+
+        width: 100%;
+    }
+
+    .communication-send-btn {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .guru-communication {
+        padding-top: 0;
+    }
+
+    .communication-page-header {
+        margin-bottom: 15px;
+
+        padding: 22px 18px;
+
+        border-radius: 11px;
+    }
+
+    .communication-page-header h1 {
+        font-size: 19px;
+    }
+
+    .communication-page-header p {
+        font-size: 10px;
+    }
+
+    .communication-card {
+        border-radius: 9px;
+    }
+
+    .communication-detail-header,
+    .communication-list-header {
+        padding: 16px;
+    }
+
+    .communication-messages {
+        height: 400px;
+
+        padding: 15px;
+    }
+
+    .communication-message {
+        max-width: 92%;
+    }
+
+    .communication-reply {
+        padding: 14px;
+    }
+
+    .communication-no-thread {
+        min-height: 400px;
+
+        padding: 25px;
+    }
+
+    .communication-new-btn {
+        min-height: 42px;
+
+        padding: 0 14px;
+
+        font-size: 10px;
+    }
+
+    .communication-modal-body {
+        padding: 17px;
+    }
+
+    .communication-modal-footer {
+        padding: 12px 17px;
+    }
+
+}
+
+/* =========================================================
+   MODAL MULAI KONSULTASI BARU
+   ========================================================= */
+
+.communication-modal {
+    border: 0;
+    border-radius: 11px;
+    overflow: hidden;
+    box-shadow: 0 18px 50px rgba(15, 55, 95, 0.18);
+}
+
+.communication-modal .modal-dialog {
+    max-width: 650px;
+}
+
+.communication-modal-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid #e5edf5;
+    background: #1677d2;
+}
+
+.communication-modal-header .modal-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    color: #123b63;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.communication-modal-icon {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: #e7f3ff;
+    color: #1677d2;
+    font-size: 17px;
+}
+
+.communication-modal-header .btn-close {
+    margin: 0;
+    padding: 8px;
+    opacity: .6;
+}
+
+.communication-modal-header .btn-close:hover {
+    opacity: 1;
+}
+
+.communication-modal-body {
+    padding: 24px;
+    background: #ffffff;
+}
+
+.communication-form-group {
+    margin-bottom: 18px;
+}
+
+.communication-form-group:last-child {
+    margin-bottom: 0;
+}
+
+.communication-form-group label {
+    display: block;
+    margin-bottom: 7px;
+    color: #263d54;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.communication-form-group label .text-danger {
+    margin-left: 2px;
+}
+
+.communication-form-group input,
+.communication-form-group select,
+.communication-form-group textarea {
+    width: 100%;
+    border: 1px solid #d7e2ed;
+    border-radius: 7px;
+    background: #fff;
+    color: #263d54;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease,
+        background-color .2s ease;
+}
+
+.communication-form-group input,
+.communication-form-group select {
+    min-height: 42px;
+    padding: 9px 12px;
+}
+
+.communication-form-group textarea {
+    min-height: 110px;
+    padding: 11px 12px;
+    resize: vertical;
+}
+
+.communication-form-group input::placeholder,
+.communication-form-group textarea::placeholder {
+    color: #9aaabd;
+}
+
+.communication-form-group input:focus,
+.communication-form-group select:focus,
+.communication-form-group textarea:focus {
+    border-color: #3d98e5;
+    outline: none;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(61, 152, 229, 0.10);
+}
+
+.communication-form-group select {
+    cursor: pointer;
+}
+
+.communication-form-group input[type="file"] {
+    min-height: 42px;
+    padding: 7px 9px;
+    cursor: pointer;
+    color: #687b8f;
+    background: #f8fbfe;
+}
+
+.communication-form-group input[type="file"]::file-selector-button {
+    margin-right: 10px;
+    padding: 7px 11px;
+    border: 0;
+    border-radius: 6px;
+    background: #e8f3ff;
+    color: #1677d2;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.communication-form-group input[type="file"]::file-selector-button:hover {
+    background: #dceeff;
+}
+
+.communication-help {
+    margin-top: 6px;
+    color: #8a9aac;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* Dua kolom pada field yang memang berpasangan */
+.communication-modal-body .communication-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+/* Footer modal */
+.communication-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 16px 24px;
+    border-top: 1px solid #e5edf5;
+    background: #f8fbff;
+}
+
+.communication-modal-cancel,
+.communication-modal-submit {
+    min-height: 40px;
+    padding: 9px 16px;
+    border-radius: 7px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    transition: all .2s ease;
+}
+
+.communication-modal-cancel {
+    border: 1px solid #d7e2ed;
+    background: #fff;
+    color: #60758b;
+}
+
+.communication-modal-cancel:hover {
+    border-color: #c5d4e2;
+    background: #f4f8fb;
+    color: #40566d;
+}
+
+.communication-modal-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    border: 1px solid #1677d2;
+    background: #1677d2;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(22, 119, 210, 0.16);
+}
+
+.communication-modal-submit:hover {
+    border-color: #1268b9;
+    background: #1268b9;
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   RESPONSIVE MODAL
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    .communication-modal .modal-dialog {
+        margin: 12px;
+    }
+
+    .communication-modal-header {
+        padding: 17px 18px;
+    }
+
+    .communication-modal-body {
+        padding: 19px 18px;
+    }
+
+    .communication-modal-footer {
+        padding: 14px 18px;
+    }
+
+    .communication-modal-body .communication-form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .communication-form-group {
+        margin-bottom: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .communication-modal .modal-dialog {
+        margin: 8px;
+    }
+
+    .communication-modal-header {
+        padding: 15px;
+    }
+
+    .communication-modal-body {
+        padding: 16px 15px;
+    }
+
+    .communication-modal-footer {
+        padding: 13px 15px;
+        flex-direction: column-reverse;
+    }
+
+    .communication-modal-cancel,
+    .communication-modal-submit {
+        width: 100%;
+    }
+}

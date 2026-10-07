@@ -1,115 +1,266 @@
 @extends('layouts.admin')
+
 @section('title', 'Presensi Kelas')
+
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/guru/attendance/index.css') }}">
 
-<div class="d-flex align-items-center justify-content-between mb-4">
-    <div>
-        <span class="badge bg-primary-subtle text-primary fw-semibold mb-1">KEGIATAN GURU</span>
-        <h4 class="mb-0 fw-bold">Presensi Kelas</h4>
-        <p class="text-muted small mb-0">
-            Jadwal hari <strong>{{ $todayName }}</strong>
-            @if($activeYear) &middot; TA <strong>{{ $activeYear->name }}</strong> @endif
-        </p>
-    </div>
-    <a href="{{ route('guru.dashboard') }}" class="btn btn-outline-secondary btn-sm">
-        <i class="bi bi-arrow-left me-1"></i> Dashboard
-    </a>
-</div>
+<div class="guru-attendance-page">
 
-@if ($schedules->isEmpty())
+    {{-- HERO --}}
+    <div class="attendance-page-header">
 
-    <div class="card border-0 shadow-sm text-center py-5">
-        <div class="card-body">
-            <div class="mb-3">
-                <span class="display-4 text-muted"><i class="bi bi-calendar-x"></i></span>
+        <div class="attendance-header-content">
+
+            <div class="attendance-header-icon">
+                <i class="bi bi-calendar-check-fill"></i>
             </div>
-            <h5 class="fw-bold">Tidak Ada Jadwal Hari Ini</h5>
-            <p class="text-muted">Tidak ada jadwal mengajar untuk Anda hari ini.</p>
-        </div>
-    </div>
 
-@else
-
-    <div class="card border-0 shadow-sm">
-        <div class="card-header bg-white border-bottom py-3 d-flex align-items-center gap-2">
-            <div class="bg-success bg-opacity-10 text-success rounded-2 p-2 d-flex">
-                <i class="bi bi-calendar-check-fill fs-5"></i>
-            </div>
             <div>
-                <h6 class="mb-0 fw-bold">Jadwal Presensi Hari Ini</h6>
-                <small class="text-muted">Kelola sesi presensi berdasarkan jadwal mengajar Anda.</small>
+                <div class="attendance-header-label">
+                    KEGIATAN GURU
+                </div>
+
+                <h1>
+                    Presensi Kelas
+                </h1>
+
+                <p>
+                    Jadwal hari <strong>{{ $todayName }}</strong>
+
+                    @if($activeYear)
+                        <span class="attendance-separator">•</span>
+                        TA <strong>{{ $activeYear->name }}</strong>
+                    @endif
+                </p>
             </div>
+
         </div>
 
-        <div class="table-responsive">
-            <table class="table table-hover align-middle mb-0">
-                <thead class="table-light">
-                    <tr>
-                        <th class="ps-4" style="width:120px;">Jam</th>
-                        <th>Mata Pelajaran</th>
-                        <th>Kelas</th>
-                        <th style="width:160px;">Status Sesi</th>
-                        <th style="width:120px;">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($schedules as $schedule)
-                    <tr>
-                        <td class="ps-4">
-                            <span class="fw-semibold text-dark">{{ $schedule->start_time->format('H:i') }}</span>
-                            <span class="text-muted mx-1">–</span>
-                            <span class="text-muted">{{ $schedule->end_time->format('H:i') }}</span>
-                        </td>
-                        <td>
-                            <div class="d-flex align-items-center gap-2">
-                                <div class="bg-primary bg-opacity-10 text-primary rounded-2 p-1 d-flex">
-                                    <i class="bi bi-book-fill small"></i>
-                                </div>
-                                <span class="fw-semibold">{{ $schedule->teachingAssignment->subject->name }}</span>
-                            </div>
-                        </td>
-                        <td>
-                            <span class="badge bg-secondary-subtle text-secondary fw-semibold">
-                                {{ $schedule->teachingAssignment->classroom->name }}
-                            </span>
-                        </td>
-                        <td>
-                            @if (! $schedule->todaySession)
-                                <span class="badge bg-warning-subtle text-warning fw-semibold">
-                                    <i class="bi bi-clock me-1"></i> Belum Dibuka
-                                </span>
-                            @elseif ($schedule->todaySession->isOpen())
-                                <span class="badge bg-success-subtle text-success fw-semibold">
-                                    <span class="me-1" style="display:inline-block;width:7px;height:7px;background:currentColor;border-radius:50%;animation:blink 1.2s ease infinite;"></span>
-                                    Berlangsung
-                                </span>
-                            @else
-                                <span class="badge bg-secondary-subtle text-secondary fw-semibold">
-                                    <i class="bi bi-check-circle me-1"></i> Selesai
-                                </span>
-                            @endif
-                        </td>
-                        <td>
-                            <a href="{{ route('guru.attendance.session', $schedule) }}"
-                               class="btn btn-sm {{ $schedule->todaySession?->isOpen() ? 'btn-success' : 'btn-primary' }} fw-semibold">
-                                @if (! $schedule->todaySession)
-                                    <i class="bi bi-play-fill me-1"></i> Buka Sesi
-                                @else
-                                    <i class="bi bi-pencil-fill me-1"></i> Kelola
-                                @endif
-                            </a>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+        <a href="{{ route('guru.dashboard') }}" class="attendance-dashboard-button">
+            <i class="bi bi-arrow-left"></i>
+            <span>Dashboard</span>
+        </a>
+
+        <div class="attendance-hero-decoration one"></div>
+        <div class="attendance-hero-decoration two"></div>
+
     </div>
 
-@endif
 
-<style>
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
-</style>
+    @if ($schedules->isEmpty())
 
+        {{-- EMPTY STATE --}}
+        <div class="attendance-empty-card">
+
+            <div class="attendance-empty-icon">
+                <i class="bi bi-calendar-x"></i>
+            </div>
+
+            <h2>
+                Tidak Ada Jadwal Hari Ini
+            </h2>
+
+            <p>
+                Tidak ada jadwal mengajar untuk Anda hari ini.
+            </p>
+
+        </div>
+
+    @else
+
+        {{-- SCHEDULE CARD --}}
+        <div class="attendance-schedule-card">
+
+            {{-- CARD HEADER --}}
+            <div class="attendance-card-header">
+
+                <div class="attendance-card-title">
+
+                    <div class="attendance-section-icon">
+                        <i class="bi bi-calendar-check-fill"></i>
+                    </div>
+
+                    <div>
+                        <div class="attendance-card-eyebrow">
+                            PRESENSI HARIAN
+                        </div>
+
+                        <h2>
+                            Jadwal Presensi Hari Ini
+                        </h2>
+
+                        <p>
+                            Kelola sesi presensi berdasarkan jadwal mengajar Anda.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="attendance-total">
+                    <strong>{{ $schedules->count() }}</strong>
+                    <span>Jadwal</span>
+                </div>
+
+            </div>
+
+
+            {{-- TABLE --}}
+            <div class="attendance-table-wrapper">
+
+                <table class="attendance-table">
+
+                    <thead>
+                        <tr>
+                            <th class="attendance-time-column">
+                                Jam
+                            </th>
+
+                            <th>
+                                Mata Pelajaran
+                            </th>
+
+                            <th>
+                                Kelas
+                            </th>
+
+                            <th class="attendance-status-column">
+                                Status Sesi
+                            </th>
+
+                            <th class="attendance-action-column">
+                                Aksi
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @foreach ($schedules as $schedule)
+
+                            <tr>
+
+                                {{-- JAM --}}
+                                <td class="attendance-time-cell">
+
+                                    <div class="attendance-time">
+                                        <strong>
+                                            {{ $schedule->start_time->format('H:i') }}
+                                        </strong>
+
+                                        <span>
+                                            –
+                                        </span>
+
+                                        <small>
+                                            {{ $schedule->end_time->format('H:i') }}
+                                        </small>
+                                    </div>
+
+                                </td>
+
+
+                                {{-- MATA PELAJARAN --}}
+                                <td>
+
+                                    <div class="attendance-subject">
+
+                                        <div class="attendance-subject-icon">
+                                            <i class="bi bi-book-fill"></i>
+                                        </div>
+
+                                        <div class="attendance-subject-info">
+                                            <strong>
+                                                {{ $schedule->teachingAssignment->subject->name }}
+                                            </strong>
+
+                                            <span>
+                                                Jadwal mengajar
+                                            </span>
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                {{-- KELAS --}}
+                                <td>
+
+                                    <span class="attendance-class">
+                                        <i class="bi bi-door-open-fill"></i>
+                                        {{ $schedule->teachingAssignment->classroom->name }}
+                                    </span>
+
+                                </td>
+
+
+                                {{-- STATUS --}}
+                                <td>
+
+                                    @if (! $schedule->todaySession)
+
+                                        <span class="attendance-status pending">
+                                            <i class="bi bi-clock"></i>
+                                            Belum Dibuka
+                                        </span>
+
+                                    @elseif ($schedule->todaySession->isOpen())
+
+                                        <span class="attendance-status active">
+                                            <span class="attendance-status-dot"></span>
+                                            Berlangsung
+                                        </span>
+
+                                    @else
+
+                                        <span class="attendance-status completed">
+                                            <i class="bi bi-check-circle-fill"></i>
+                                            Selesai
+                                        </span>
+
+                                    @endif
+
+                                </td>
+
+
+                                {{-- AKSI --}}
+                                <td class="attendance-action-cell">
+
+                                    <a
+                                        href="{{ route('guru.attendance.session', $schedule) }}"
+                                        class="attendance-action-button {{ $schedule->todaySession?->isOpen() ? 'active' : '' }}"
+                                    >
+
+                                        @if (! $schedule->todaySession)
+
+                                            <i class="bi bi-play-fill"></i>
+                                            <span>Buka Sesi</span>
+
+                                        @else
+
+                                            <i class="bi bi-pencil-fill"></i>
+                                            <span>Kelola</span>
+
+                                        @endif
+
+                                    </a>
+
+                                </td>
+
+                            </tr>
+
+                        @endforeach
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    @endif
+
+</div>
 @endsection

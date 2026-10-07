@@ -1,0 +1,768 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+.guru-students-page {
+    --students-blue: #1677d2;
+    --students-blue-dark: #0f62b2;
+    --students-cyan: #18a7d8;
+    --students-bg: #f5f9fd;
+    --students-border: #dce7f1;
+    --students-text: #20364d;
+    --students-muted: #718399;
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+    color: var(--students-text);
+}
+
+
+/* =========================================================
+   HERO — MODEL HALAMAN KOMUNIKASI
+   ========================================================= */
+
+.students-page-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    min-height: 148px;
+    margin-bottom: 24px;
+    padding: 27px 30px;
+    overflow: hidden;
+    border-radius: 14px;
+    background: linear-gradient(
+        135deg,
+        #116bd0 0%,
+        #1688d6 52%,
+        #18a7d8 100%
+    );
+    box-shadow: 0 12px 30px rgba(22, 119, 210, .15);
+}
+
+.students-page-header::before {
+    content: "";
+    position: absolute;
+    width: 230px;
+    height: 230px;
+    right: -65px;
+    top: -125px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .08);
+}
+
+.students-page-header::after {
+    content: "";
+    position: absolute;
+    width: 155px;
+    height: 155px;
+    right: 105px;
+    bottom: -120px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .06);
+}
+
+.students-header-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.students-header-icon {
+    width: 50px;
+    height: 50px;
+    flex: 0 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, .22);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, .15);
+    color: #fff;
+    font-size: 21px;
+}
+
+.students-header-label {
+    margin-bottom: 5px;
+    color: rgba(255, 255, 255, .76);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+}
+
+.students-page-header h1 {
+    margin: 0;
+    color: #fff;
+    font-size: 24px;
+    line-height: 1.3;
+    font-weight: 800;
+}
+
+.students-page-header p {
+    margin: 5px 0 0;
+    color: rgba(255, 255, 255, .86);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.students-year {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    flex-shrink: 0;
+    padding: 9px 13px;
+    border: 1px solid rgba(255, 255, 255, .22);
+    border-radius: 7px;
+    background: rgba(255, 255, 255, .13);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.students-empty-card {
+    padding: 55px 25px;
+    border: 1px solid var(--students-border);
+    border-radius: 11px;
+    background: #fff;
+    text-align: center;
+    box-shadow: 0 5px 18px rgba(31, 69, 105, .05);
+}
+
+.students-empty-icon {
+    width: 62px;
+    height: 62px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #eaf6ff;
+    color: var(--students-blue);
+    font-size: 27px;
+}
+
+.students-empty-card h3 {
+    margin: 0 0 7px;
+    color: var(--students-text);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.students-empty-card p {
+    max-width: 450px;
+    margin: 0 auto;
+    color: var(--students-muted);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   CARD PILIH KELAS
+   ========================================================= */
+
+.students-class-card {
+    margin-bottom: 22px;
+    border: 1px solid var(--students-border);
+    border-radius: 11px;
+    background: #fff;
+    box-shadow: 0 5px 18px rgba(31, 69, 105, .05);
+    overflow: hidden;
+}
+
+
+/* Header Pilih Kelas — warna sama dengan Hero */
+
+.students-class-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 21px;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255, 255, 255, .15);
+    background: linear-gradient(
+        135deg,
+        #116bd0 0%,
+        #1688d6 52%,
+        #18a7d8 100%
+    );
+}
+
+.students-class-header::before {
+    content: "";
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    right: 100px;
+    bottom: -70px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .05);
+}
+
+.students-class-header::after {
+    content: "";
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    right: -45px;
+    top: -75px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .08);
+}
+
+.students-class-header > * {
+    position: relative;
+    z-index: 1;
+}
+
+.students-class-header h2 {
+    margin: 0;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.students-class-header p {
+    margin: 3px 0 0;
+    color: rgba(255, 255, 255, .82);
+    font-size: 11px;
+}
+
+.students-class-header .students-section-icon {
+    background: rgba(255, 255, 255, .15);
+    border: 1px solid rgba(255, 255, 255, .18);
+    color: #fff;
+}
+
+.students-section-icon {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: #e8f4ff;
+    color: var(--students-blue);
+    font-size: 16px;
+}
+
+.students-section-icon.blue {
+    background: #e8f4ff;
+    color: #1677d2;
+}
+
+.students-class-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    padding: 18px 21px;
+    background: #fff;
+}
+
+.students-class-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 38px;
+    padding: 7px 12px 7px 8px;
+    border: 1px solid #d7e3ee;
+    border-radius: 7px;
+    background: #fff;
+    color: #536b82;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    transition: all .2s ease;
+}
+
+.students-class-item:hover {
+    border-color: #91c7ec;
+    background: #f2f9ff;
+    color: var(--students-blue);
+}
+
+.students-class-item.active {
+    border-color: #1677d2;
+    background: #1677d2;
+    color: #fff;
+    box-shadow: 0 4px 11px rgba(22, 119, 210, .18);
+}
+
+.students-class-item-icon {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background: #edf6fd;
+    color: var(--students-blue);
+    font-size: 11px;
+}
+
+.students-class-item.active .students-class-item-icon {
+    background: rgba(255, 255, 255, .17);
+    color: #fff;
+}
+
+.students-class-check {
+    margin-left: 2px;
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   TABLE CARD
+   ========================================================= */
+
+.students-table-card {
+    border: 1px solid var(--students-border);
+    border-radius: 11px;
+    background: #fff;
+    box-shadow: 0 6px 20px rgba(31, 69, 105, .06);
+    overflow: hidden;
+}
+
+.students-table-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 19px 21px;
+    border-bottom: 1px solid #dce7f0;
+    background: #fff;
+}
+
+.students-table-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.students-table-eyebrow {
+    margin-bottom: 3px;
+    color: var(--students-blue);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.students-table-title h2 {
+    margin: 0;
+    color: var(--students-text);
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.students-table-title p {
+    margin: 3px 0 0;
+    color: var(--students-muted);
+    font-size: 11px;
+}
+
+.students-total {
+    min-width: 76px;
+    padding: 8px 12px;
+    border: 1px solid #d4e8f8;
+    border-radius: 7px;
+    background: #eef8ff;
+    text-align: center;
+}
+
+.students-total strong {
+    display: block;
+    color: #1677d2;
+    font-size: 17px;
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.students-total span {
+    color: #71869a;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.students-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.students-table {
+    width: 100%;
+    min-width: 800px;
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.students-table thead th {
+    position: relative;
+    padding: 13px 15px;
+    border-bottom: 1px solid #d6e4ef;
+    background: #eef7fd;
+    color: #46657f;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .35px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.students-table thead th:first-child {
+    border-left: 3px solid #1677d2;
+}
+
+.students-table tbody td {
+    padding: 14px 15px;
+    border-bottom: 1px solid #e8eff5;
+    background: #fff;
+    color: #40576d;
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+.students-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.students-table tbody tr {
+    transition: all .18s ease;
+}
+
+.students-table tbody tr:hover td {
+    background: #f4faff;
+}
+
+.students-table tbody tr:hover .student-avatar {
+    background: #dff1ff;
+    transform: translateY(-1px);
+}
+
+.students-number {
+    width: 48px;
+    color: #8b9cad !important;
+    font-size: 11px !important;
+    font-weight: 700;
+    text-align: center;
+}
+
+.students-action-heading {
+    width: 150px;
+    text-align: right;
+}
+
+
+/* =========================================================
+   IDENTITAS SISWA
+   ========================================================= */
+
+.student-identity {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-width: 240px;
+}
+
+.student-avatar {
+    width: 39px;
+    height: 39px;
+    flex: 0 0 39px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #cce6f8;
+    border-radius: 8px;
+    background: #eaf6ff;
+    color: #1677d2;
+    font-size: 13px;
+    font-weight: 800;
+    transition: all .18s ease;
+}
+
+.student-information {
+    min-width: 0;
+}
+
+.student-name {
+    margin-bottom: 3px;
+    color: #243e56;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+.student-email {
+    max-width: 240px;
+    overflow: hidden;
+    color: #899bab;
+    font-size: 10px;
+    line-height: 1.4;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.student-nisn {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 5px 8px;
+    border: 1px solid #e1eaf1;
+    border-radius: 5px;
+    background: #f7fafc;
+    color: #61778c;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   GENDER
+   ========================================================= */
+
+.student-gender {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 28px;
+    padding: 5px 9px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.student-gender.male {
+    border: 1px solid #cde7f8;
+    background: #eaf6ff;
+    color: #1677d2;
+}
+
+.student-gender.female {
+    border: 1px solid #f2ddc4;
+    background: #fff6ec;
+    color: #d17a1d;
+}
+
+.student-gender i {
+    font-size: 11px;
+}
+
+.student-empty-value {
+    color: #9aa8b6;
+}
+
+
+/* =========================================================
+   ACTION BUTTON
+   ========================================================= */
+
+.students-action {
+    text-align: right;
+}
+
+.students-view-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 34px;
+    padding: 7px 11px;
+    border: 1px solid #c8e0f2;
+    border-radius: 6px;
+    background: #f3faff;
+    color: #1677d2;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 800;
+    white-space: nowrap;
+    transition: all .2s ease;
+}
+
+.students-view-button:hover {
+    border-color: #1677d2;
+    background: #1677d2;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(22, 119, 210, .15);
+}
+
+.students-view-button i {
+    font-size: 11px;
+    transition: transform .2s ease;
+}
+
+.students-view-button:hover i {
+    transform: translateX(2px);
+}
+
+
+/* =========================================================
+   NO DATA
+   ========================================================= */
+
+.students-no-data {
+    padding: 50px 20px;
+    background: #fff;
+    text-align: center;
+}
+
+.students-no-data-icon {
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dce8f1;
+    border-radius: 9px;
+    background: #f2f7fb;
+    color: #8195a8;
+    font-size: 23px;
+}
+
+.students-no-data h3 {
+    margin: 0 0 6px;
+    color: var(--students-text);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.students-no-data p {
+    margin: 0;
+    color: var(--students-muted);
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .students-page-header {
+        align-items: flex-start;
+    }
+
+    .students-table-header {
+        align-items: flex-start;
+    }
+
+    .students-total {
+        flex-shrink: 0;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .students-page-header {
+        flex-direction: column;
+        min-height: auto;
+        padding: 22px;
+    }
+
+    .students-year {
+        align-self: flex-start;
+    }
+
+    .students-header-icon {
+        width: 44px;
+        height: 44px;
+        flex-basis: 44px;
+        font-size: 19px;
+    }
+
+    .students-page-header h1 {
+        font-size: 21px;
+    }
+
+    .students-page-header p {
+        font-size: 11px;
+    }
+
+    .students-class-header {
+        padding: 16px;
+    }
+
+    .students-class-list {
+        padding: 15px 16px;
+    }
+
+    .students-table-header {
+        padding: 16px;
+    }
+
+    .students-table-title p {
+        display: none;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .students-page-header {
+        margin-bottom: 18px;
+        border-radius: 10px;
+    }
+
+    .students-header-content {
+        align-items: flex-start;
+    }
+
+    .students-page-header h1 {
+        font-size: 19px;
+    }
+
+    .students-class-card,
+    .students-table-card,
+    .students-empty-card {
+        border-radius: 9px;
+    }
+
+    .students-table-header {
+        gap: 12px;
+    }
+
+    .students-table-title {
+        gap: 9px;
+    }
+
+    .students-section-icon {
+        width: 34px;
+        height: 34px;
+        flex-basis: 34px;
+        font-size: 14px;
+    }
+
+    .students-table-title h2 {
+        font-size: 14px;
+    }
+
+    .students-total {
+        min-width: 62px;
+        padding: 7px 9px;
+    }
+
+    .students-total strong {
+        font-size: 15px;
+    }
+
+    .students-class-item {
+        font-size: 11px;
+    }
+}

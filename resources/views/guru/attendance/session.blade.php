@@ -1,128 +1,361 @@
 @extends('layouts.admin')
+
 @section('title', 'Kelola Presensi — ' . $schedule->teachingAssignment->subject->name)
+
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/guru/attendance/session.css') }}">
 
-{{-- Header --}}
-<div class="card border-0 shadow-sm mb-4">
-    <div class="card-body py-3">
-        <div class="d-flex align-items-start justify-content-between flex-wrap gap-2">
-            <div>
-                <span class="badge bg-primary-subtle text-primary fw-semibold mb-1">PRESENSI KELAS</span>
-                <h5 class="mb-1 fw-bold">{{ $schedule->teachingAssignment->subject->name }}</h5>
-                <div class="d-flex flex-wrap gap-2 text-muted small">
-                    <span><i class="bi bi-people me-1"></i>{{ $schedule->teachingAssignment->classroom->name }}</span>
-                    <span>•</span>
-                    <span><i class="bi bi-calendar3 me-1"></i>{{ $attendanceSession->date->translatedFormat('l, d F Y') }}</span>
-                    <span>•</span>
-                    <span><i class="bi bi-clock me-1"></i>{{ $schedule->start_time->format('H:i') }} – {{ $schedule->end_time->format('H:i') }}</span>
+<div class="guru-attendance-session">
+
+    {{-- HERO --}}
+    <div class="session-page-header">
+
+        <div class="session-header-content">
+
+            <div class="session-header-icon">
+                <i class="bi bi-calendar-check-fill"></i>
+            </div>
+
+            <div class="session-header-info">
+
+                <div class="session-header-label">
+                    PRESENSI KELAS
                 </div>
-            </div>
-            <div>
-                @if ($attendanceSession->isOpen())
-                    <span class="badge bg-success fs-6 fw-semibold">
-                        <span class="me-1" style="display:inline-block;width:8px;height:8px;background:#fff;border-radius:50%;animation:blink 1.2s ease infinite;"></span>
-                        Sesi Berlangsung
+
+                <h1>
+                    {{ $schedule->teachingAssignment->subject->name }}
+                </h1>
+
+                <div class="session-header-meta">
+
+                    <span>
+                        <i class="bi bi-people-fill"></i>
+                        {{ $schedule->teachingAssignment->classroom->name }}
                     </span>
-                @else
-                    <span class="badge bg-secondary fs-6 fw-semibold">
-                        <i class="bi bi-stop-circle me-1"></i> Sesi Selesai
+
+                    <span class="session-meta-separator">•</span>
+
+                    <span>
+                        <i class="bi bi-calendar3"></i>
+                        {{ $attendanceSession->date->translatedFormat('l, d F Y') }}
                     </span>
-                @endif
+
+                    <span class="session-meta-separator">•</span>
+
+                    <span>
+                        <i class="bi bi-clock"></i>
+                        {{ $schedule->start_time->format('H:i') }}
+                        –
+                        {{ $schedule->end_time->format('H:i') }}
+                    </span>
+
+                </div>
+
             </div>
+
         </div>
+
+
+        {{-- STATUS --}}
+        @if ($attendanceSession->isOpen())
+
+            <div class="session-status active">
+
+                <span class="session-status-dot"></span>
+
+                <span>Sesi Berlangsung</span>
+
+            </div>
+
+        @else
+
+            <div class="session-status closed">
+
+                <i class="bi bi-stop-circle-fill"></i>
+
+                <span>Sesi Selesai</span>
+
+            </div>
+
+        @endif
+
+
+        <div class="session-hero-decoration one"></div>
+        <div class="session-hero-decoration two"></div>
+
     </div>
-</div>
 
-@if ($attendanceSession->isOpen())
 
-    <div class="row g-4 mb-4">
+    {{-- =====================================================
+        SESI MASIH TERBUKA
+    ====================================================== --}}
 
-        {{-- Panel QR --}}
-        <div class="col-lg-5">
-            <div class="card border-0 shadow-sm h-100">
-                <div class="card-header bg-white border-bottom py-3 d-flex align-items-center gap-2">
-                    <div class="bg-primary bg-opacity-10 text-primary rounded-2 p-2 d-flex">
-                        <i class="bi bi-qr-code fs-5"></i>
+    @if ($attendanceSession->isOpen())
+
+        <div class="session-open-grid">
+
+            {{-- QR PANEL --}}
+            <div class="session-qr-card">
+
+                <div class="session-card-header">
+
+                    <div class="session-card-title">
+
+                        <div class="session-section-icon">
+                            <i class="bi bi-qr-code"></i>
+                        </div>
+
+                        <div>
+
+                            <div class="session-card-eyebrow">
+                                PRESENSI DIGITAL
+                            </div>
+
+                            <h2>
+                                QR Presensi Kelas
+                            </h2>
+
+                            <p>
+                                Tampilkan QR kepada siswa untuk melakukan scan.
+                            </p>
+
+                        </div>
+
                     </div>
-                    <div>
-                        <h6 class="mb-0 fw-bold">QR Presensi Kelas</h6>
-                        <small class="text-muted">Tampilkan QR ke siswa untuk scan mandiri</small>
-                    </div>
+
                 </div>
-                <div class="card-body text-center py-5">
-                    <div class="mx-auto mb-4 rounded-4 d-flex align-items-center justify-content-center"
-                         style="width:90px;height:90px;background:linear-gradient(135deg,#6366f1,#10b981);">
-                        <i class="bi bi-qr-code text-white" style="font-size:2.5rem;"></i>
+
+
+                <div class="session-qr-body">
+
+                    <div class="session-qr-visual">
+
+                        <div class="session-qr-icon">
+                            <i class="bi bi-qr-code"></i>
+                        </div>
+
                     </div>
-                    <p class="text-muted small mb-4">
-                        Tampilkan <strong>QR besar</strong> yang dapat diproyeksikan ke papan tulis.<br>
-                        Siswa scan QR dari HP masing-masing.
+
+
+                    <h3>
+                        Scan QR untuk Presensi
+                    </h3>
+
+                    <p class="session-qr-description">
+                        Tampilkan <strong>QR besar</strong> yang dapat
+                        diproyeksikan ke papan tulis. Siswa dapat memindai
+                        QR menggunakan HP masing-masing.
                     </p>
-                    <a href="{{ route('guru.attendance.show-qr', $attendanceSession) }}"
-                       class="btn btn-primary fw-bold px-4 py-2 mb-3">
-                        <i class="bi bi-fullscreen me-2"></i>Tampilkan QR Presensi
+
+
+                    <a
+                        href="{{ route('guru.attendance.show-qr', $attendanceSession) }}"
+                        class="session-show-qr-button"
+                    >
+                        <i class="bi bi-fullscreen"></i>
+                        <span>Tampilkan QR Presensi</span>
                     </a>
-                    <div class="text-muted small">
-                        <i class="bi bi-shield-check text-success me-1"></i>
-                        QR berlaku 5 menit, dapat diperbarui
+
+
+                    <div class="session-qr-note">
+
+                        <i class="bi bi-shield-check"></i>
+
+                        <span>
+                            QR berlaku 5 menit dan dapat diperbarui.
+                        </span>
+
                     </div>
+
                 </div>
+
             </div>
+
+
+            {{-- DAFTAR SISWA --}}
+            <div class="session-roster-card">
+
+                <div class="session-roster-heading">
+
+                    <div class="session-roster-heading-icon">
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+
+                    <div>
+
+                        <div class="session-card-eyebrow">
+                            KEHADIRAN SISWA
+                        </div>
+
+                        <h2>
+                            Daftar Siswa
+                        </h2>
+
+                        <p>
+                            Pantau status kehadiran siswa pada sesi ini.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="session-roster-content">
+                    @include('guru.attendance.partials.roster')
+                </div>
+
+            </div>
+
         </div>
 
-        {{-- Daftar Siswa --}}
-        <div class="col-lg-7">
-            @include('guru.attendance.partials.roster')
+
+        {{-- TUTUP SESI --}}
+        <div class="session-close-area">
+
+            <div class="session-close-info">
+
+                <div class="session-close-icon">
+                    <i class="bi bi-info-circle"></i>
+                </div>
+
+                <div>
+
+                    <strong>
+                        Sesi presensi masih berlangsung
+                    </strong>
+
+                    <span>
+                        Tutup sesi setelah proses presensi selesai.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <form
+                method="POST"
+                action="{{ route('guru.attendance.close', $attendanceSession) }}"
+                onsubmit="return confirm('Tutup sesi presensi? Siswa yang belum tercatat akan otomatis ditandai Alpha.');"
+            >
+                @csrf
+
+                <button
+                    type="submit"
+                    class="session-close-button"
+                >
+                    <i class="bi bi-stop-circle"></i>
+                    <span>Tutup Sesi Presensi</span>
+                </button>
+
+            </form>
+
         </div>
 
-    </div>
 
-    {{-- Tutup Sesi --}}
-    <div class="d-flex justify-content-end">
-        <form method="POST"
-              action="{{ route('guru.attendance.close', $attendanceSession) }}"
-              onsubmit="return confirm('Tutup sesi presensi? Siswa yang belum tercatat akan otomatis ditandai Alpha.');">
-            @csrf
-            <button type="submit" class="btn btn-danger fw-bold px-4 py-2">
-                <i class="bi bi-stop-circle me-2"></i>Tutup Sesi Presensi
-            </button>
-        </form>
-    </div>
+    {{-- =====================================================
+        SESI SUDAH DITUTUP
+    ====================================================== --}}
 
-@else
+    @else
 
-    <div class="alert alert-info d-flex align-items-start gap-3 mb-4" role="alert">
-        <i class="bi bi-info-circle-fill fs-4 flex-shrink-0 mt-1"></i>
-        <div>
-            <strong class="d-block">Sesi presensi telah ditutup.</strong>
-            <span class="small">Anda masih dapat mengedit status kehadiran siswa secara manual pada tabel di bawah ini.
-            Klik <strong>Buka Kembali Sesi</strong> untuk mengaktifkan QR kembali.</span>
+        {{-- INFO CLOSED --}}
+        <div class="session-closed-alert">
+
+            <div class="session-closed-alert-icon">
+                <i class="bi bi-info-circle-fill"></i>
+            </div>
+
+            <div class="session-closed-alert-content">
+
+                <strong>
+                    Sesi presensi telah ditutup.
+                </strong>
+
+                <p>
+                    Anda masih dapat mengedit status kehadiran siswa
+                    secara manual pada tabel di bawah ini.
+                    Klik <strong>Buka Kembali Sesi</strong> untuk
+                    mengaktifkan QR kembali.
+                </p>
+
+            </div>
+
         </div>
+
+
+        {{-- ROSTER --}}
+        <div class="session-roster-card session-roster-closed">
+
+            <div class="session-roster-heading">
+
+                <div class="session-roster-heading-icon">
+                    <i class="bi bi-clipboard-check-fill"></i>
+                </div>
+
+                <div>
+
+                    <div class="session-card-eyebrow">
+                        REKAP KEHADIRAN
+                    </div>
+
+                    <h2>
+                        Daftar Siswa
+                    </h2>
+
+                    <p>
+                        Periksa dan edit status kehadiran siswa secara manual.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="session-roster-content">
+                @include('guru.attendance.partials.roster')
+            </div>
+
+        </div>
+
+
+        {{-- BUKA KEMBALI --}}
+        <div class="session-reopen-area">
+
+            <form
+                method="POST"
+                action="{{ route('guru.attendance.reopen', $attendanceSession) }}"
+                onsubmit="return confirm('Buka kembali sesi presensi ini?');"
+            >
+                @csrf
+
+                <button
+                    type="submit"
+                    class="session-reopen-button"
+                >
+                    <i class="bi bi-play-circle"></i>
+                    <span>Buka Kembali Sesi</span>
+                </button>
+
+            </form>
+
+        </div>
+
+    @endif
+
+
+    {{-- BACK --}}
+    <div class="session-back-area">
+
+        <a
+            href="{{ route('guru.attendance.index') }}"
+            class="session-back-button"
+        >
+            <i class="bi bi-arrow-left"></i>
+            <span>Kembali ke Presensi Kelas</span>
+        </a>
+
     </div>
 
-    <div class="mb-4">
-        @include('guru.attendance.partials.roster')
-    </div>
-
-    <form method="POST"
-          action="{{ route('guru.attendance.reopen', $attendanceSession) }}"
-          onsubmit="return confirm('Buka kembali sesi presensi ini?');">
-        @csrf
-        <button type="submit" class="btn btn-success fw-bold px-4 py-2">
-            <i class="bi bi-play-circle me-2"></i>Buka Kembali Sesi
-        </button>
-    </form>
-
-@endif
-
-<div class="mt-4 pt-2 border-top">
-    <a href="{{ route('guru.attendance.index') }}" class="btn btn-outline-secondary btn-sm">
-        <i class="bi bi-arrow-left me-1"></i> Kembali ke Presensi Kelas
-    </a>
 </div>
-
-<style>
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
-</style>
-
 @endsection
