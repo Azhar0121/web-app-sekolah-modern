@@ -54,6 +54,19 @@ class TaskController extends Controller
 
         $task->save();
 
+        if ($task->is_published) {
+            $students = ClassroomStudent::where('academic_year_id', $teachingAssignment->academic_year_id)
+                ->where('classroom_id', $teachingAssignment->classroom_id)
+                ->with('student')
+                ->get()
+                ->pluck('student')
+                ->filter();
+
+            foreach ($students as $student) {
+                $student->notify(new \App\Notifications\NewTaskNotification($task));
+            }
+        }
+
         return redirect()
             ->route('guru.teaching-assignments.tasks.index', $teachingAssignment)
             ->with('success', 'Tugas berhasil dibuat.');
@@ -154,6 +167,11 @@ class TaskController extends Controller
             'feedback' => $validated['feedback'] ?? null,
             'graded_at' => now(),
         ]);
+
+        // Notifikasi ke Siswa
+        if ($submission->student) {
+            $submission->student->notify(new \App\Notifications\TaskGradedNotification($submission));
+        }
 
         return back()->with('success', "Nilai untuk {$submission->student->name} berhasil disimpan.");
     }

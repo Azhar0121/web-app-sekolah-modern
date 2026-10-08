@@ -152,6 +152,31 @@ class CommunicationController extends Controller
         return back()->with('success', 'Pesan berhasil dikirim.');
     }
 
+    public function show(CommunicationThread $thread): RedirectResponse
+    {
+        abort_unless($thread->teacher_id === auth()->id(), 403);
+
+        return redirect()->route('guru.communication.index', ['thread' => $thread->id]);
+    }
+
+    public function resolve(CommunicationThread $thread): RedirectResponse
+    {
+        abort_unless($thread->teacher_id === auth()->id(), 403);
+
+        $thread->update(['status' => 'resolved']);
+
+        return back()->with('success', 'Ruang komunikasi berhasil ditandai Selesai.');
+    }
+
+    public function reopen(CommunicationThread $thread): RedirectResponse
+    {
+        abort_unless($thread->teacher_id === auth()->id(), 403);
+
+        $thread->update(['status' => 'open']);
+
+        return back()->with('success', 'Ruang komunikasi berhasil dibuka kembali.');
+    }
+
     public function toggleStatus(CommunicationThread $thread): RedirectResponse
     {
         abort_unless($thread->teacher_id === auth()->id(), 403);

@@ -139,7 +139,7 @@
 
                             <thead>
                                 <tr>
-                                    <th class="students-number">#</th>
+                                    <th class="students-number">No</th>
                                     <th>Nama Siswa</th>
                                     <th>NISN</th>
                                     <th>Jenis Kelamin</th>

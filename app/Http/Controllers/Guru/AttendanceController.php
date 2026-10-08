@@ -129,7 +129,7 @@ class AttendanceController extends Controller
             'note'   => ['nullable', 'string', 'max:255'],
         ]);
 
-        Attendance::updateOrCreate(
+        $attendance = Attendance::updateOrCreate(
             ['attendance_session_id' => $attendanceSession->id, 'student_id' => $student->id],
             [
                 'status'      => $validated['status'],
@@ -138,6 +138,11 @@ class AttendanceController extends Controller
                 'recorded_by' => auth()->id(),
             ]
         );
+
+        // Notifikasi ke Orang Tua siswa
+        foreach ($student->parents as $parent) {
+            $parent->notify(new \App\Notifications\AttendanceRecordedNotification($attendance));
+        }
 
         return back()->with('success', "Status kehadiran {$student->name} berhasil diperbarui.");
     }
@@ -156,11 +161,18 @@ class AttendanceController extends Controller
             ->pluck('student_id');
 
         foreach ($studentIds->diff($alreadyRecorded) as $studentId) {
-            Attendance::create([
+            $alphaAtt = Attendance::create([
                 'attendance_session_id' => $attendanceSession->id,
                 'student_id'            => $studentId,
                 'status'                => 'alpha',
             ]);
+
+            $studentModel = User::find($studentId);
+            if ($studentModel) {
+                foreach ($studentModel->parents as $parent) {
+                    $parent->notify(new \App\Notifications\AttendanceRecordedNotification($alphaAtt));
+                }
+            }
         }
 
         $attendanceSession->update(['closed_at' => now()]);

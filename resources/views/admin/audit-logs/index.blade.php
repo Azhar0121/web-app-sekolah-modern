@@ -92,6 +92,32 @@
           action="{{ route('admin.audit-logs.index') }}"
           class="audit-logs-filter-form">
 
+        <div class="audit-logs-filter-field role-field">
+
+            <label for="audit-role">
+                Peran Pengguna (Role)
+            </label>
+
+            <select name="role"
+                    id="audit-role"
+                    class="audit-logs-select"
+                    onchange="this.form.submit()">
+
+                <option value="">
+                    Semua Peran / Role
+                </option>
+
+                @foreach ($roles as $role)
+                    <option value="{{ $role->slug }}"
+                            @selected($roleFilter === $role->slug)>
+                        {{ $role->name }}
+                    </option>
+                @endforeach
+
+            </select>
+
+        </div>
+
         <div class="audit-logs-filter-field event-field">
 
             <label for="audit-event">
@@ -184,6 +210,14 @@
             Terapkan
 
         </button>
+
+        @if ($roleFilter || $eventFilter || $search)
+            <a href="{{ route('admin.audit-logs.index') }}"
+               class="audit-logs-reset-button"
+               title="Bersihkan filter">
+                Reset
+            </a>
+        @endif
 
     </form>
 

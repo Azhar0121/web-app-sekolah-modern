@@ -77,11 +77,16 @@ class BillingController extends Controller
             'notes'            => ['nullable', 'string', 'max:1000'],
         ]);
 
-        BillingRecord::create(array_merge($validated, [
+        $billing = BillingRecord::create(array_merge($validated, [
             'student_id' => $student->id,
             'status'     => 'unpaid',
             'created_by' => auth()->id(),
         ]));
+
+        // Notifikasi ke Orang Tua: tagihan baru diterbitkan
+        foreach ($student->parents as $parent) {
+            $parent->notify(new \App\Notifications\BillingStatusNotification($billing, 'created'));
+        }
 
         return back()->with('success', 'Tagihan berhasil ditambahkan.');
     }
@@ -106,6 +111,14 @@ class BillingController extends Controller
         }
 
         $billing->update($data);
+
+        // Notifikasi ke Orang Tua: pembayaran dikonfirmasi Lunas
+        $student = $billing->student;
+        if ($student) {
+            foreach ($student->parents as $parent) {
+                $parent->notify(new \App\Notifications\BillingStatusNotification($billing, 'confirmed'));
+            }
+        }
 
         return back()->with('success', 'Pembayaran berhasil dikonfirmasi.');
     }

@@ -59,7 +59,14 @@ class LeaveRequestController extends Controller
             $data['attachment_original_name'] = $file->getClientOriginalName();
         }
 
-        LeaveRequest::create($data);
+        $leaveRequest = LeaveRequest::create($data);
+
+        // Notifikasi otomatis ke Wali Kelas
+        $student = User::find($validated['student_id']);
+        $classroom = $student?->currentClassroom();
+        if ($classroom && $classroom->homeroomTeacher) {
+            $classroom->homeroomTeacher->notify(new \App\Notifications\LeaveRequestSubmittedNotification($leaveRequest));
+        }
 
         return redirect()->route('ortu.leave-requests.index')
             ->with('success', 'Pengajuan izin berhasil dikirim. Menunggu persetujuan guru.');

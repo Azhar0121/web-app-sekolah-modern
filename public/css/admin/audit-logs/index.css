@@ -275,9 +275,14 @@ padding: 20px;
 min-width: 0;
 }
 
+.audit-logs-filter-field.role-field {
+width: 210px;
+flex: 0 0 210px;
+}
+
 .audit-logs-filter-field.event-field {
-width: 270px;
-flex: 0 0 270px;
+width: 210px;
+flex: 0 0 210px;
 }
 
 .audit-logs-filter-field.search-field {
@@ -431,6 +436,35 @@ transition:
 .audit-logs-filter-button:hover {
 background: #0b294d;
 border-color: #0b294d;
+}
+
+.audit-logs-reset-button {
+height: 40px;
+flex: 0 0 auto;
+padding: 0 16px;
+color: #4b5563;
+background: #eef2f6;
+border: 1px solid #d8dfe7;
+border-radius: 5px;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+text-decoration: none;
+font-family: "Plus Jakarta Sans", sans-serif;
+font-size: 11.5px;
+font-weight: 700;
+white-space: nowrap;
+cursor: pointer;
+transition:
+    background-color 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.audit-logs-reset-button:hover {
+background: #dce5ef;
+border-color: #cbd5df;
+color: #071b35;
 }
 
 /* =========================================================
@@ -1102,13 +1136,15 @@ RESPONSIVE
 }
 
 
+.audit-logs-filter-field.role-field,
 .audit-logs-filter-field.event-field {
     width: 100%;
     flex: none;
 }
 
 
-.audit-logs-filter-button {
+.audit-logs-filter-button,
+.audit-logs-reset-button {
     width: 100%;
 }
 

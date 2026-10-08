@@ -56,6 +56,16 @@ class LeaveRequestController extends Controller
             'processed_at'  => now(),
         ]);
 
+        // Notifikasi otomatis ke Orang Tua
+        if ($leaveRequest->parent) {
+            $leaveRequest->parent->notify(new \App\Notifications\LeaveRequestStatusNotification($leaveRequest, 'ortu'));
+        }
+
+        // Notifikasi otomatis ke Siswa
+        if ($leaveRequest->student) {
+            $leaveRequest->student->notify(new \App\Notifications\LeaveRequestStatusNotification($leaveRequest, 'siswa'));
+        }
+
         $label = $validated['decision'] === 'approved' ? 'disetujui' : 'ditolak';
 
         return back()->with('success', "Pengajuan izin berhasil {$label}.");

@@ -99,10 +99,15 @@ class AttendanceController extends Controller
             ]);
         }
 
-        Attendance::updateOrCreate(
+        $attendance = Attendance::updateOrCreate(
             ['attendance_session_id' => $session->id, 'student_id' => $student->id],
             ['status' => 'hadir', 'scanned_at' => now(), 'recorded_by' => null, 'note' => null]
         );
+
+        // Notifikasi ke Orang Tua
+        foreach ($student->parents as $parent) {
+            $parent->notify(new \App\Notifications\AttendanceRecordedNotification($attendance));
+        }
 
         return response()->json([
             'success'   => true,

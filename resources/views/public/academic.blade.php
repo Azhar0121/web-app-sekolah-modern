@@ -586,19 +586,6 @@
         </div>
     </div>
 
-    {{-- Notice Hak Akses Materi Guru --}}
-    <div class="alert alert-info border-0 shadow-sm rounded-3 d-flex align-items-start gap-3 p-3 mb-4" style="background: #eef6ff; border: 1px solid #cce0fc !important; border-radius: 10px;">
-        <div class="text-primary fs-4" style="flex-shrink: 0; line-height: 1;">
-            <i class="bi bi-shield-lock-fill"></i>
-        </div>
-        <div class="small">
-            <strong class="d-block text-dark mb-1">Informasi Hak Akses Materi KBM Harian:</strong>
-            <span class="text-secondary">
-                Seluruh dokumen di bawah ini merupakan pedoman umum, kalender resmi, dan silabus kurikulum terbuka untuk publik. Untuk materi KBM mingguan, modul ajar guru, slide presentasi, dan bank soal latihan tersimpan secara terlindungi di <strong>Portal Siswa</strong> dan hanya dapat diakses oleh siswa terdaftar yang diampu oleh masing-masing guru kelas.
-            </span>
-        </div>
-    </div>
-
     @if (!empty($academicDocuments))
 
         <div class="materials-wrapper">

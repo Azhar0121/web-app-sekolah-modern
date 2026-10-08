@@ -262,8 +262,11 @@ Route::middleware(['auth', 'role:guru'])->prefix('guru')->name('guru.')->group(f
     // Ruang Komunikasi Terarah (Orang Tua)
     Route::get('/komunikasi', [GuruCommunicationController::class, 'index'])->name('communication.index');
     Route::post('/komunikasi', [GuruCommunicationController::class, 'store'])->name('communication.store');
+    Route::get('/komunikasi/{thread}', [GuruCommunicationController::class, 'show'])->name('communication.show');
     Route::post('/komunikasi/{thread}/balas', [GuruCommunicationController::class, 'reply'])->name('communication.reply');
     Route::post('/komunikasi/{thread}/toggle-status', [GuruCommunicationController::class, 'toggleStatus'])->name('communication.toggle-status');
+    Route::patch('/komunikasi/{thread}/resolve', [GuruCommunicationController::class, 'resolve'])->name('communication.resolve');
+    Route::patch('/komunikasi/{thread}/reopen', [GuruCommunicationController::class, 'reopen'])->name('communication.reopen');
 });
 
 // ================= PORTAL SISWA =================
