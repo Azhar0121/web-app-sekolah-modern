@@ -4,111 +4,128 @@
 
 @section('content')
 
-<link rel="stylesheet" href="{{ asset('css/admin-dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}?v=4">
 
-<div class="dashboard-page">
+    <div class="dashboard-page">
 
-    {{-- HEADER --}}
-    @include('admin.partials.admin-header')
+        {{-- HERO SUPER ADMIN --}}
+        <section class="dashboard-hero">
+            <div class="dashboard-hero-content">
+                <div class="dashboard-hero-text">
+                    <span class="dashboard-eyebrow">
+                        <x-icon name="shield" :size="15" />
+                        SUPER ADMINISTRATOR
+                    </span>
 
+                    <h1>Dashboard Super Admin</h1>
 
-    {{-- STATISTICS --}}
-    <div class="dashboard-stats">
-
-        <div class="dashboard-stat-card">
-
-            <div class="dashboard-stat-icon">
-                <x-icon name="user-group" :size="22" />
-            </div>
-
-            <div class="dashboard-stat-content">
-                <div class="dashboard-stat-value">
-                    {{ \App\Models\User::count() }}
+                    <p>
+                        Pusat pengelolaan sistem informasi sekolah
+                        untuk memantau pengguna dan hak akses.
+                    </p>
                 </div>
 
-                <div class="dashboard-stat-label">
-                    Total User Terdaftar
-                </div>
-            </div>
-
-            <div class="dashboard-stat-decoration"></div>
-
-        </div>
-
-
-        <div class="dashboard-stat-card">
-
-            <div class="dashboard-stat-icon">
-                <x-icon name="shield" :size="22" />
-            </div>
-
-            <div class="dashboard-stat-content">
-                <div class="dashboard-stat-value">
-                    {{ \App\Models\Role::count() }}
-                </div>
-
-                <div class="dashboard-stat-label">
-                    Role dalam Sistem
+                <div class="dashboard-hero-symbol">
+                    <div class="hero-symbol-inner">
+                        <x-icon name="shield" :size="44" />
+                    </div>
                 </div>
             </div>
 
-            <div class="dashboard-stat-decoration"></div>
-
-        </div>
-
-
-        <div class="dashboard-stat-card">
-
-            <div class="dashboard-stat-icon">
-                <x-icon name="clipboard-list" :size="22" />
+            <div class="dashboard-hero-footer">
+                <span class="hero-status-dot"></span>
+                Sistem Informasi Sekolah Modern
             </div>
+        </section>
 
-            <div class="dashboard-stat-content">
-                <div class="dashboard-stat-value">
-                    {{ \App\Models\Permission::count() }}
-                </div>
-
-                <div class="dashboard-stat-label">
-                    Hak Akses (Permission)
+        {{-- RINGKASAN SISTEM --}}
+        <section class="dashboard-overview">
+            <div class="dashboard-section-title">
+                <div>
+                    <h2>Ringkasan Sistem</h2>
+                    <p>Jumlah data utama yang tercatat saat ini.</p>
                 </div>
             </div>
 
-            <div class="dashboard-stat-decoration"></div>
+            <div class="dashboard-stats">
 
-        </div>
+                {{-- TOTAL PENGGUNA --}}
+                <article class="dashboard-stat-card stat-users">
+                    <div class="stat-heading">
+                        <div class="stat-icon">
+                            <x-icon name="user-group" :size="23" />
+                        </div>
+                        <span class="stat-category">PENGGUNA</span>
+                    </div>
+
+                    <div class="stat-number">
+                        {{ \App\Models\User::count() }}
+                    </div>
+
+                    <h3>Total User Terdaftar</h3>
+                    <div class="stat-bottom-line"></div>
+                </article>
+
+                {{-- TOTAL ROLE --}}
+                <article class="dashboard-stat-card stat-roles">
+                    <div class="stat-heading">
+                        <div class="stat-icon">
+                            <x-icon name="shield" :size="23" />
+                        </div>
+                        <span class="stat-category">PERAN</span>
+                    </div>
+
+                    <div class="stat-number">
+                        {{ \App\Models\Role::count() }}
+                    </div>
+
+                    <h3>Role dalam Sistem</h3>
+                    <div class="stat-bottom-line"></div>
+                </article>
+
+                {{-- TOTAL PERMISSION --}}
+                <article class="dashboard-stat-card stat-permissions">
+                    <div class="stat-heading">
+                        <div class="stat-icon">
+                            <x-icon name="clipboard-list" :size="23" />
+                        </div>
+                        <span class="stat-category">HAK AKSES</span>
+                    </div>
+
+                    <div class="stat-number">
+                        {{ \App\Models\Permission::count() }}
+                    </div>
+
+                    <h3>Permission Sistem</h3>
+                    <div class="stat-bottom-line"></div>
+                </article>
+
+            </div>
+        </section>
+
+        {{-- SELAMAT DATANG --}}
+        <section class="dashboard-welcome">
+            <div class="welcome-icon">
+                <x-icon name="graduation-cap" :size="29" />
+            </div>
+
+            <div class="welcome-content">
+                <span class="welcome-eyebrow">SELAMAT DATANG</span>
+
+                <h2>{{ auth()->user()->name }}!</h2>
+
+                <p>
+                    Kelola pengguna, role, hak akses, data akademik,
+                    dan pendaftaran PPDB melalui menu navigasi di samping.
+                </p>
+            </div>
+
+            <div class="welcome-side">
+                <span class="welcome-side-line"></span>
+                <span>ADMIN PANEL</span>
+            </div>
+        </section>
 
     </div>
-
-
-    {{-- WELCOME CARD --}}
-    <div class="dashboard-welcome-card">
-
-        <div class="dashboard-welcome-decoration"></div>
-
-        <div class="dashboard-welcome-icon">
-            <x-icon name="graduation-cap" :size="25" />
-        </div>
-
-        <div class="dashboard-welcome-content">
-
-            <span class="dashboard-welcome-label">
-                SISTEM INFORMASI SEKOLAH
-            </span>
-
-            <h2>
-                Selamat datang, {{ auth()->user()->name }}!
-            </h2>
-
-            <p>
-                Gunakan menu di samping untuk mengelola user, permission,
-                master data akademik, dan pendaftaran PPDB.
-                Modul lain akan menyusul sesuai roadmap.
-            </p>
-
-        </div>
-
-    </div>
-
-</div>
 
 @endsection

@@ -1,686 +1,704 @@
-/* =========================================================
-   WEB SEKOLAH MODERN
-   ADMIN DASHBOARD
-   ========================================================= */
-
-:root {
-    --admin-navy: #071b35;
-    --admin-navy-2: #0b294d;
-
-    --admin-blue: #1769d5;
-    --admin-blue-dark: #0d4fa8;
-
-    --admin-cyan: #087ea4;
-
-    --admin-bg: #eef4fb;
-    --admin-white: #ffffff;
-
-    --admin-text: #10223d;
-    --admin-muted: #66758a;
-
-    --admin-border: #dbe5f0;
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 /* =========================================================
-   DASHBOARD
+   DASHBOARD SUPER ADMIN
    ========================================================= */
 
-.admin-dashboard {
+.dashboard-page {
+    --dashboard-navy: #071b35;
+    --dashboard-navy-2: #0b294d;
+    --dashboard-navy-3: #164a79;
+    --dashboard-blue: #1769d5;
+    --dashboard-purple: #6857d9;
+    --dashboard-green: #15956b;
+    --dashboard-text: #10223d;
+    --dashboard-muted: #6f7f95;
+    --dashboard-border: #dce5ef;
+
     width: 100%;
-    padding: 4px 0 30px;
+    min-width: 0;
+    padding: 4px 0 24px;
+    color: var(--dashboard-text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
+.dashboard-page *,
+.dashboard-page *::before,
+.dashboard-page *::after {
+    box-sizing: border-box;
+}
 
 /* =========================================================
-   HEADER
+   HERO
    ========================================================= */
 
-.dashboard-header {
+.dashboard-page .dashboard-hero {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    margin-bottom: 25px;
+    padding: 27px 30px 17px;
+    overflow: hidden;
+    color: #fff;
+    background: linear-gradient(
+        115deg,
+        #071b35 0%,
+        #0b294d 56%,
+        #164a79 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 9px 24px rgba(7, 27, 53, 0.13);
+}
+
+.dashboard-page .dashboard-hero::before {
+    position: absolute;
+    z-index: -1;
+    top: -105px;
+    right: 105px;
+    width: 260px;
+    height: 260px;
+    content: "";
+    pointer-events: none;
+    background: rgba(74, 144, 226, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 50%;
+}
+
+.dashboard-page .dashboard-hero::after {
+    position: absolute;
+    z-index: -1;
+    right: -75px;
+    bottom: -145px;
+    width: 290px;
+    height: 290px;
+    content: "";
+    pointer-events: none;
+    background: rgba(87, 173, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+}
+
+.dashboard-page .dashboard-hero-content {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    gap: 30px;
-
-    margin-bottom: 28px;
-    padding: 28px 30px;
-
-    border-radius: 18px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--admin-navy),
-            var(--admin-navy-2)
-        );
-
-    box-shadow:
-        0 12px 30px rgba(7, 27, 53, 0.16);
-
-    position: relative;
-    overflow: hidden;
+    gap: 24px;
+    min-width: 0;
 }
 
-
-/* Dekorasi header */
-
-.dashboard-header::after {
-    content: "";
-
-    position: absolute;
-
-    width: 220px;
-    height: 220px;
-
-    right: -70px;
-    top: -100px;
-
-    border-radius: 50%;
-
-    background: rgba(23, 105, 213, 0.28);
+.dashboard-page .dashboard-hero-text {
+    flex: 1;
+    min-width: 0;
 }
 
-
-.dashboard-header-text {
-    position: relative;
-    z-index: 2;
-}
-
-
-.dashboard-eyebrow {
-    display: inline-block;
-
-    margin-bottom: 8px;
-
-    color: #75b5ff;
-
-    font-size: 12px;
+.dashboard-page .dashboard-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 13px;
+    padding: 7px 11px;
+    color: #e6f1ff;
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    font-size: 10px;
     font-weight: 800;
-
-    letter-spacing: 1.4px;
+    letter-spacing: 1.15px;
+    line-height: 1.4;
 }
 
+.dashboard-page .dashboard-eyebrow svg {
+    flex-shrink: 0;
+}
 
-.dashboard-header h1 {
-    margin: 0 0 8px;
-
-    color: white;
-
-    font-size: 28px;
+.dashboard-page .dashboard-hero h1 {
+    margin: 0 0 10px;
+    color: #fff;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(25px, 3vw, 32px);
+    font-weight: 800;
     line-height: 1.25;
-
-    font-weight: 800;
+    letter-spacing: -0.9px;
 }
 
-
-.dashboard-header p {
+.dashboard-page .dashboard-hero-text p {
+    max-width: 570px;
     margin: 0;
+    color: #d2dfef;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.85;
+}
 
-    color: rgba(255, 255, 255, 0.75);
+.dashboard-page .dashboard-hero-symbol {
+    display: flex;
+    flex: 0 0 105px;
+    align-items: center;
+    justify-content: center;
+    width: 105px;
+    height: 105px;
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 12px;
+}
 
-    font-size: 15px;
+.dashboard-page .hero-symbol-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 10px;
+}
+
+.dashboard-page .hero-symbol-inner svg {
+    width: 39px;
+    height: 39px;
+}
+
+.dashboard-page .dashboard-hero-footer {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 23px;
+    padding-top: 14px;
+    color: #c6d7e9;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    font-size: 10px;
+    font-weight: 500;
     line-height: 1.5;
 }
 
-
-/* =========================================================
-   USER WELCOME
-   ========================================================= */
-
-.dashboard-user {
-    position: relative;
-    z-index: 2;
-
-    display: flex;
-    align-items: center;
-
-    gap: 12px;
-
-    min-width: 190px;
-
-    padding: 11px 15px;
-
-    border: 1px solid rgba(255, 255, 255, 0.14);
-
-    border-radius: 12px;
-
-    background: rgba(255, 255, 255, 0.08);
-
-    backdrop-filter: blur(8px);
-}
-
-
-.dashboard-user-avatar {
-    width: 42px;
-    height: 42px;
-
-    flex-shrink: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 11px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--admin-blue),
-            #3c8df2
-        );
-
-    color: white;
-
-    font-size: 17px;
-    font-weight: 800;
-}
-
-
-.dashboard-user-info span {
-    display: block;
-
-    margin-bottom: 2px;
-
-    color: rgba(255, 255, 255, 0.62);
-
-    font-size: 11px;
-}
-
-
-.dashboard-user-info strong {
-    display: block;
-
-    max-width: 140px;
-
-    overflow: hidden;
-
-    color: white;
-
-    font-size: 14px;
-    font-weight: 700;
-
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-
-/* =========================================================
-   STAT GRID
-   ========================================================= */
-
-.dashboard-stat-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
-    gap: 18px;
-
-    margin-bottom: 22px;
-}
-
-
-/* =========================================================
-   STAT CARD
-   ========================================================= */
-
-.dashboard-stat-card {
-    position: relative;
-
-    min-height: 120px;
-
-    padding: 20px 24px;
-
-    overflow: hidden;
-
-    border-radius: 16px;
-
-    color: white;
-
-    box-shadow:
-        0 10px 25px rgba(7, 27, 53, 0.12);
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-
-.dashboard-stat-card:hover {
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 15px 30px rgba(7, 27, 53, 0.17);
-}
-
-
-/* =========================================================
-   WARNA STAT CARD
-   ========================================================= */
-
-.stat-blue {
-    background:
-        linear-gradient(
-            135deg,
-            #0d4fa8,
-            #1769d5
-        );
-}
-
-
-.stat-navy {
-    background:
-        linear-gradient(
-            135deg,
-            #071b35,
-            #12385f
-        );
-}
-
-
-.stat-cyan {
-    background:
-        linear-gradient(
-            135deg,
-            #05647f,
-            #0a91b8
-        );
-}
-
-
-/* =========================================================
-   DEKORASI LINGKARAN
-   ========================================================= */
-
-.dashboard-stat-card::after {
-    content: "";
-
-    position: absolute;
-
-    width: 150px;
-    height: 150px;
-
-    right: -60px;
-    bottom: -65px;
-
+.dashboard-page .hero-status-dot {
+    flex: 0 0 7px;
+    width: 7px;
+    height: 7px;
+    background: #55d6a1;
     border-radius: 50%;
-
-    background: rgba(255, 255, 255, 0.09);
+    box-shadow: 0 0 0 4px rgba(85, 214, 161, 0.12);
 }
-
-
-.dashboard-stat-card::before {
-    content: "";
-
-    position: absolute;
-
-    width: 80px;
-    height: 80px;
-
-    right: 35px;
-    top: -45px;
-
-    border-radius: 50%;
-
-    background: rgba(255, 255, 255, 0.06);
-}
-
 
 /* =========================================================
-   STAT TOP
+   RINGKASAN SISTEM — SECTION HEADER
    ========================================================= */
 
-.stat-card-top {
-    position: relative;
-    z-index: 2;
-
-    display: flex;
-
-    align-items: flex-start;
-    justify-content: space-between;
-
-    gap: 15px;
-}
-
-
-/* =========================================================
-   STAT ICON
-   ========================================================= */
-
-.stat-icon {
-    width: 48px;
-    height: 48px;
-
-    flex-shrink: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 12px;
-
-    background: rgba(255, 255, 255, 0.15);
-
-    color: white;
-}
-
-
-/* =========================================================
-   STAT CARD INFO
-   TOTAL + ANGKA
-   ========================================================= */
-
-.stat-card-info {
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: flex-end;
-
+.dashboard-page .dashboard-overview {
+    width: 100%;
     min-width: 0;
+    margin: 0 0 25px;
+}
 
+.dashboard-page .dashboard-section-title {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+    margin: 0 0 16px;
+    padding: 15px 19px;
+    background: linear-gradient(110deg, #ffffff 0%, #f4f8fd 100%);
+    border: 1px solid #dce6f1;
+    border-left: 4px solid var(--dashboard-blue);
+    border-radius: 9px;
+    box-shadow: 0 3px 10px rgba(7, 27, 53, 0.035);
+}
+
+.dashboard-page .dashboard-section-title > div {
+    min-width: 0;
+}
+
+.dashboard-page .dashboard-section-title h2 {
+    margin: 0 0 5px;
+    color: var(--dashboard-navy);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.4;
+    letter-spacing: -0.45px;
+}
+
+.dashboard-page .dashboard-section-title p {
+    margin: 0;
+    color: var(--dashboard-muted);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.65;
+}
+
+/* =========================================================
+   STATISTIC CARDS
+   ========================================================= */
+
+.dashboard-page .dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 16px;
+    width: 100%;
+    min-width: 0;
+}
+
+.dashboard-page .dashboard-stat-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    padding: 17px 19px 15px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid var(--dashboard-border);
+    border-radius: 9px;
+    box-shadow: 0 3px 11px rgba(7, 27, 53, 0.045);
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.dashboard-page .dashboard-stat-card:hover {
+    transform: translateY(-2px);
+    border-color: #bfd1e6;
+    box-shadow: 0 8px 19px rgba(7, 27, 53, 0.08);
+}
+
+.dashboard-page .stat-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 11px;
+}
+
+.dashboard-page .stat-icon {
+    display: flex;
+    flex: 0 0 39px;
+    align-items: center;
+    justify-content: center;
+    width: 39px;
+    height: 39px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+}
+
+.dashboard-page .stat-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.dashboard-page .stat-category {
+    color: #7d8ba0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.85px;
+    line-height: 1.5;
     text-align: right;
 }
 
+.dashboard-page .stat-number {
+    margin: 0 0 4px;
+    color: var(--dashboard-navy);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.8px;
+    overflow-wrap: anywhere;
+}
 
-/* =========================================================
-   STAT LABEL
-   ========================================================= */
-
-.stat-label {
-    display: block;
-
-    color: rgba(255, 255, 255, 0.78);
-
+.dashboard-page .dashboard-stat-card h3 {
+    margin: 0 0 13px;
+    color: #66768c;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 11px;
-    font-weight: 800;
-
-    letter-spacing: 1px;
-
-    white-space: nowrap;
+    font-weight: 600;
+    line-height: 1.6;
 }
 
-
-/* =========================================================
-   STAT NUMBER
-   ========================================================= */
-
-.stat-number {
-    position: relative;
-    z-index: 2;
-
-    margin-top: 5px;
-
-    color: white;
-
-    font-size: 34px;
-    line-height: 1;
-
-    font-weight: 800;
+.dashboard-page .stat-bottom-line {
+    width: 100%;
+    height: 3px;
+    margin-top: auto;
+    border-radius: 4px;
 }
 
+/* TOTAL PENGGUNA */
 
-/* =========================================================
-   STAT DESCRIPTION
-   ========================================================= */
-
-.stat-description {
-    position: absolute;
-
-    left: 24px;
-    bottom: 21px;
-
-    z-index: 2;
-
-    color: rgba(255, 255, 255, 0.72);
-
-    font-size: 13px;
+.dashboard-page .stat-users {
+    background: linear-gradient(145deg, #ffffff 0%, #f7faff 100%);
 }
 
+.dashboard-page .stat-users .stat-icon {
+    color: var(--dashboard-blue);
+    background: #eaf2ff;
+    border-color: #dce8ff;
+}
+
+.dashboard-page .stat-users .stat-number {
+    color: #1558ae;
+}
+
+.dashboard-page .stat-users .stat-bottom-line {
+    background: var(--dashboard-blue);
+}
+
+/* TOTAL ROLE */
+
+.dashboard-page .stat-roles {
+    background: linear-gradient(145deg, #ffffff 0%, #faf9ff 100%);
+}
+
+.dashboard-page .stat-roles .stat-icon {
+    color: var(--dashboard-purple);
+    background: #f0edff;
+    border-color: #e5e0ff;
+}
+
+.dashboard-page .stat-roles .stat-number {
+    color: #5745c4;
+}
+
+.dashboard-page .stat-roles .stat-bottom-line {
+    background: var(--dashboard-purple);
+}
+
+/* TOTAL PERMISSION */
+
+.dashboard-page .stat-permissions {
+    background: linear-gradient(145deg, #ffffff 0%, #f5fbf8 100%);
+}
+
+.dashboard-page .stat-permissions .stat-icon {
+    color: var(--dashboard-green);
+    background: #e6f7f0;
+    border-color: #d4f0e4;
+}
+
+.dashboard-page .stat-permissions .stat-number {
+    color: #107a58;
+}
+
+.dashboard-page .stat-permissions .stat-bottom-line {
+    background: var(--dashboard-green);
+}
 
 /* =========================================================
    WELCOME CARD
    ========================================================= */
 
-.dashboard-welcome-card {
+.dashboard-page .dashboard-welcome {
     position: relative;
-
     display: flex;
     align-items: center;
-
-    gap: 20px;
-
-    min-height: 145px;
-
-    padding: 26px 30px;
-
+    gap: 17px;
+    width: 100%;
+    min-width: 0;
+    padding: 20px 22px;
     overflow: hidden;
-
-    border-radius: 17px;
-
-    background: white;
-
-    border: 1px solid var(--admin-border);
-
-    box-shadow:
-        0 8px 22px rgba(7, 27, 53, 0.07);
+    background: #fff;
+    border: 1px solid var(--dashboard-border);
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(7, 27, 53, 0.04);
 }
 
-
-/* =========================================================
-   AKSEN KIRI
-   ========================================================= */
-
-.welcome-accent {
-    position: absolute;
-
-    left: 0;
-    top: 0;
-    bottom: 0;
-
-    width: 6px;
-
-    background:
-        linear-gradient(
-            180deg,
-            var(--admin-blue),
-            var(--admin-navy)
-        );
-}
-
-
-/* =========================================================
-   WELCOME ICON
-   ========================================================= */
-
-.welcome-icon {
-    width: 58px;
-    height: 58px;
-
-    flex-shrink: 0;
-
+.dashboard-page .welcome-icon {
     display: flex;
+    flex: 0 0 52px;
     align-items: center;
     justify-content: center;
-
-    border-radius: 14px;
-
-    background: var(--admin-blue);
-
-    color: white;
-
-    box-shadow:
-        0 8px 18px rgba(23, 105, 213, 0.22);
+    width: 52px;
+    height: 52px;
+    color: #fff;
+    background: linear-gradient(145deg, #0b294d, #1769d5);
+    border-radius: 9px;
 }
 
+.dashboard-page .welcome-icon svg {
+    width: 28px;
+    height: 28px;
+}
 
-/* =========================================================
-   WELCOME CONTENT
-   ========================================================= */
-
-.welcome-content {
+.dashboard-page .welcome-content {
+    flex: 1;
     min-width: 0;
 }
 
-
-.welcome-content > span {
+.dashboard-page .welcome-eyebrow {
     display: block;
-
-    margin-bottom: 6px;
-
-    color: var(--admin-blue);
-
-    font-size: 11px;
+    margin-bottom: 5px;
+    color: var(--dashboard-blue);
+    font-size: 9px;
     font-weight: 800;
-
     letter-spacing: 1.1px;
+    line-height: 1.5;
 }
 
-
-.welcome-content h2 {
-    margin: 0 0 7px;
-
-    color: var(--admin-navy);
-
-    font-size: 21px;
-    line-height: 1.3;
-
+.dashboard-page .welcome-content h2 {
+    margin: 0 0 6px;
+    color: var(--dashboard-navy);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 19px;
     font-weight: 800;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
 }
 
-
-.welcome-content p {
-    max-width: 850px;
-
+.dashboard-page .welcome-content p {
+    max-width: 680px;
     margin: 0;
-
-    color: var(--admin-muted);
-
-    font-size: 14px;
-    line-height: 1.65;
+    color: var(--dashboard-muted);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.8;
 }
 
+.dashboard-page .welcome-side {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+    padding-left: 18px;
+    color: #73849a;
+    border-left: 1px solid #e2e9f1;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+}
+
+.dashboard-page .welcome-side-line {
+    width: 7px;
+    height: 7px;
+    background: #1769d5;
+    border-radius: 50%;
+}
 
 /* =========================================================
-   TABLET
+   RESPONSIVE — TABLET
    ========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
+    .dashboard-page .dashboard-stats {
+        gap: 12px;
+    }
 
-    .dashboard-header {
+    .dashboard-page .dashboard-stat-card {
+        padding: 16px;
+    }
+
+    .dashboard-page .stat-number {
+        font-size: 28px;
+    }
+
+    .dashboard-page .dashboard-hero {
+        padding: 24px 25px 16px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+    .dashboard-page .dashboard-hero {
+        margin-bottom: 21px;
+        padding: 22px 19px 15px;
+        border-radius: 10px;
+    }
+
+    .dashboard-page .dashboard-hero-content {
+        gap: 15px;
+    }
+
+    .dashboard-page .dashboard-hero h1 {
+        font-size: 25px;
+    }
+
+    .dashboard-page .dashboard-hero-text p {
+        font-size: 11px;
+    }
+
+    .dashboard-page .dashboard-hero-symbol {
+        flex-basis: 75px;
+        width: 75px;
+        height: 75px;
+    }
+
+    .dashboard-page .hero-symbol-inner {
+        width: 53px;
+        height: 53px;
+    }
+
+    .dashboard-page .hero-symbol-inner svg {
+        width: 31px;
+        height: 31px;
+    }
+
+    .dashboard-page .dashboard-section-title {
+        margin-bottom: 13px;
+        padding: 13px 15px;
+    }
+
+    .dashboard-page .dashboard-section-title h2 {
+        font-size: 17px;
+    }
+
+    .dashboard-page .dashboard-section-title p {
+        font-size: 11px;
+    }
+
+    .dashboard-page .dashboard-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 11px;
+    }
+
+    .dashboard-page .dashboard-stat-card {
+        padding: 15px;
+    }
+
+    .dashboard-page .stat-icon {
+        flex-basis: 36px;
+        width: 36px;
+        height: 36px;
+    }
+
+    .dashboard-page .stat-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .dashboard-page .stat-number {
+        font-size: 27px;
+    }
+
+    .dashboard-page .dashboard-welcome {
         align-items: flex-start;
-
-        flex-direction: column;
+        gap: 13px;
+        padding: 17px;
     }
 
-
-    .dashboard-user {
-        width: 100%;
+    .dashboard-page .welcome-icon {
+        flex-basis: 43px;
+        width: 43px;
+        height: 43px;
     }
 
-
-    .dashboard-stat-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
+    .dashboard-page .welcome-content h2 {
+        font-size: 17px;
     }
 
+    .dashboard-page .welcome-side {
+        display: none;
+    }
 }
 
-
 /* =========================================================
-   MOBILE
+   RESPONSIVE — SMALL MOBILE
    ========================================================= */
 
-@media (max-width: 600px) {
-
-    .admin-dashboard {
-        padding-bottom: 20px;
+@media (max-width: 480px) {
+    .dashboard-page {
+        padding-top: 0;
     }
 
-
-    .dashboard-header {
-        margin-bottom: 18px;
-
-        padding: 22px 20px;
-
-        border-radius: 15px;
+    .dashboard-page .dashboard-hero {
+        padding: 19px 16px 14px;
     }
 
-
-    .dashboard-header h1 {
-        font-size: 23px;
+    .dashboard-page .dashboard-hero-content {
+        gap: 10px;
     }
 
-
-    .dashboard-header p {
-        font-size: 13px;
+    .dashboard-page .dashboard-eyebrow {
+        gap: 6px;
+        margin-bottom: 10px;
+        padding: 6px 8px;
+        font-size: 8px;
+        letter-spacing: 0.8px;
     }
 
+    .dashboard-page .dashboard-hero h1 {
+        font-size: 22px;
+        letter-spacing: -0.6px;
+    }
 
-    .dashboard-eyebrow {
+    .dashboard-page .dashboard-hero-text p {
+        font-size: 10px;
+        line-height: 1.75;
+    }
+
+    .dashboard-page .dashboard-hero-symbol {
+        flex-basis: 53px;
+        width: 53px;
+        height: 53px;
+        border-radius: 8px;
+    }
+
+    .dashboard-page .hero-symbol-inner {
+        width: 40px;
+        height: 40px;
+        border-radius: 6px;
+    }
+
+    .dashboard-page .hero-symbol-inner svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .dashboard-page .dashboard-hero-footer {
+        margin-top: 17px;
+        padding-top: 12px;
+        font-size: 9px;
+    }
+
+    .dashboard-page .dashboard-stats {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px;
+    }
+
+    .dashboard-page .dashboard-stat-card {
+        padding: 15px 17px 13px;
+    }
+
+    .dashboard-page .stat-heading {
+        margin-bottom: 9px;
+    }
+
+    .dashboard-page .stat-number {
+        font-size: 28px;
+    }
+
+    .dashboard-page .dashboard-stat-card h3 {
+        margin-bottom: 11px;
+    }
+
+    .dashboard-page .dashboard-welcome {
+        padding: 15px;
+    }
+
+    .dashboard-page .welcome-icon {
+        flex-basis: 39px;
+        width: 39px;
+        height: 39px;
+    }
+
+    .dashboard-page .welcome-icon svg {
+        width: 23px;
+        height: 23px;
+    }
+
+    .dashboard-page .welcome-content h2 {
+        font-size: 16px;
+    }
+
+    .dashboard-page .welcome-content p {
         font-size: 10px;
     }
-
-
-    .dashboard-user {
-        min-width: 0;
-
-        padding: 9px 12px;
-    }
-
-
-    .dashboard-stat-grid {
-        grid-template-columns: 1fr;
-
-        gap: 13px;
-
-        margin-bottom: 18px;
-    }
-
-
-    .dashboard-stat-card {
-        min-height: 135px;
-
-        padding: 19px 21px;
-    }
-
-
-    .stat-description {
-        left: 21px;
-        bottom: 19px;
-
-        font-size: 13px;
-    }
-
-
-    .stat-number {
-        font-size: 32px;
-    }
-
-
-    .dashboard-welcome-card {
-        align-items: flex-start;
-
-        padding: 22px 20px;
-
-        gap: 14px;
-    }
-
-
-    .welcome-icon {
-        width: 48px;
-        height: 48px;
-    }
-
-
-    .welcome-content h2 {
-        font-size: 18px;
-    }
-
-
-    .welcome-content p {
-        font-size: 13px;
-    }
-
 }
