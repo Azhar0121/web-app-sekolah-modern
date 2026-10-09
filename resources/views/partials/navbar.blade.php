@@ -114,7 +114,7 @@
             <li>
                 <a href="{{ route('student-activity.show') }}"
                    class="{{ request()->routeIs('student-activity.*') ? 'active' : '' }}">
-                    Kesiswaan & Alumni
+                    Kesiswaan
                 </a>
             </li>
 

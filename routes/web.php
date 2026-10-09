@@ -191,6 +191,31 @@ Route::middleware(['auth', 'role:super-admin'])->prefix('admin')->name('admin.')
     Route::delete('media/{media}', [MediaLibraryController::class, 'destroy'])->name('media.destroy');
 });
 
+// ================= AKTIVITAS KESISWAAN (OSIS, EKSKUL, PRESTASI) =================
+Route::middleware(['auth'])->prefix('admin/kesiswaan')->name('admin.student-activities.')->group(function () {
+    Route::get('/', [\App\Http\Controllers\Admin\StudentActivity\StudentActivityHubController::class, 'index'])->name('index');
+
+    // OSIS Kegiatan
+    Route::post('/osis/kegiatan', [\App\Http\Controllers\Admin\StudentActivity\OsisController::class, 'storeActivity'])->name('osis.activities.store');
+    Route::put('/osis/kegiatan/{activity}', [\App\Http\Controllers\Admin\StudentActivity\OsisController::class, 'updateActivity'])->name('osis.activities.update');
+    Route::delete('/osis/kegiatan/{activity}', [\App\Http\Controllers\Admin\StudentActivity\OsisController::class, 'destroyActivity'])->name('osis.activities.destroy');
+
+    // OSIS Pengurus
+    Route::post('/osis/pengurus', [\App\Http\Controllers\Admin\StudentActivity\OsisController::class, 'storeMember'])->name('osis.members.store');
+    Route::put('/osis/pengurus/{member}', [\App\Http\Controllers\Admin\StudentActivity\OsisController::class, 'updateMember'])->name('osis.members.update');
+    Route::delete('/osis/pengurus/{member}', [\App\Http\Controllers\Admin\StudentActivity\OsisController::class, 'destroyMember'])->name('osis.members.destroy');
+
+    // Ekstrakurikuler
+    Route::post('/ekskul', [\App\Http\Controllers\Admin\StudentActivity\ExtracurricularController::class, 'store'])->name('extracurriculars.store');
+    Route::put('/ekskul/{extracurricular}', [\App\Http\Controllers\Admin\StudentActivity\ExtracurricularController::class, 'update'])->name('extracurriculars.update');
+    Route::delete('/ekskul/{extracurricular}', [\App\Http\Controllers\Admin\StudentActivity\ExtracurricularController::class, 'destroy'])->name('extracurriculars.destroy');
+
+    // Prestasi Siswa
+    Route::post('/prestasi', [\App\Http\Controllers\Admin\StudentActivity\AchievementController::class, 'store'])->name('achievements.store');
+    Route::put('/prestasi/{achievement}', [\App\Http\Controllers\Admin\StudentActivity\AchievementController::class, 'update'])->name('achievements.update');
+    Route::delete('/prestasi/{achievement}', [\App\Http\Controllers\Admin\StudentActivity\AchievementController::class, 'destroy'])->name('achievements.destroy');
+});
+
 // ================= AUDIT LOG & KEAMANAN (SUPER ADMIN & KEPSEK, by permission) =================
 Route::middleware(['auth', 'permission:audit.view'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('audit-logs', [AuditLogController::class, 'index'])->name('audit-logs.index');
