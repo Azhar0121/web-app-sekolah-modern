@@ -30,8 +30,8 @@ class LeaveRequestStatusNotification extends Notification
         $icon        = $isApproved ? 'bi-check-circle-fill' : 'bi-x-circle-fill';
 
         $url = $this->targetRole === 'ortu'
-            ? route('ortu.leave-requests.index')
-            : route('siswa.dashboard');
+            ? route('ortu.leave-requests.index', [], false)
+            : route('siswa.dashboard', [], false);
 
         $message = $this->targetRole === 'ortu'
             ? "Pengajuan izin {$typeLabel} untuk {$studentName} telah {$statusText} oleh guru."

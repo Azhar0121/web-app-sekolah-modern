@@ -38,7 +38,7 @@ class ReportCardController extends Controller
         $file = $request->file('file');
         $path = $file->store('rapor/' . $student->id, 'public');
 
-        ReportCard::updateOrCreate(
+        $reportCard = ReportCard::updateOrCreate(
             ['student_id' => $student->id, 'semester_id' => $validated['semester_id']],
             [
                 'file_path'           => $path,
@@ -47,6 +47,14 @@ class ReportCardController extends Controller
                 'uploaded_by'         => auth()->id(),
             ]
         );
+
+        // Notifikasi ke Orang Tua
+        foreach ($student->parents as $parent) {
+            $parent->notify(new \App\Notifications\ReportCardUploadedNotification($reportCard, 'ortu'));
+        }
+
+        // Notifikasi ke Siswa
+        $student->notify(new \App\Notifications\ReportCardUploadedNotification($reportCard, 'siswa'));
 
         return back()->with('success', 'Rapor berhasil diupload.');
     }

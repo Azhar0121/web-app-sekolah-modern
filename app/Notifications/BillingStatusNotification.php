@@ -32,7 +32,7 @@ class BillingStatusNotification extends Notification
             return [
                 'title'   => 'Pembayaran Berhasil Dikonfirmasi',
                 'message' => "Pembayaran {$desc} untuk {$studentName} sebesar {$amount} telah diverifikasi Lunas oleh Tata Usaha.",
-                'url'     => $student ? route('ortu.billing.index', $student->id) : route('ortu.dashboard'),
+                'url'     => $student ? route('ortu.billing.index', $student->id, false) : route('ortu.dashboard', [], false),
                 'icon'    => 'bi-patch-check-fill',
             ];
         }
@@ -40,7 +40,7 @@ class BillingStatusNotification extends Notification
         return [
             'title'   => 'Tagihan Baru Diterbitkan',
             'message' => "Tagihan baru: {$desc} untuk {$studentName} sebesar {$amount} telah diterbitkan.",
-            'url'     => $student ? route('ortu.billing.index', $student->id) : route('ortu.dashboard'),
+            'url'     => $student ? route('ortu.billing.index', $student->id, false) : route('ortu.dashboard', [], false),
             'icon'    => 'bi-cash-coin',
         ];
     }

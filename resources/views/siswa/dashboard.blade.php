@@ -115,10 +115,18 @@ try {
             PORTAL SISWA
         </div>
 
-        <h1>
-            Selamat datang,
-            <span>{{ $student->name }}</span>
-        </h1>
+        <div class="d-flex align-items-center gap-3 mb-2">
+            <x-avatar :user="$student" :size="56" class="border border-2 border-white shadow-sm" />
+            <div>
+                <h1 class="mb-0 text-white" style="font-size: 1.5rem;">
+                    Selamat datang,
+                    <span>{{ $student->name }}</span>
+                </h1>
+                <a href="{{ route('siswa.profile.edit') }}" class="text-white-50 small text-decoration-none" style="font-size: 0.72rem;">
+                    <i class="bi bi-person-gear me-1"></i>Kelola Biodata & Foto
+                </a>
+            </div>
+        </div>
 
         <p>
             Pantau jadwal, tugas, presensi, materi,

@@ -318,8 +318,12 @@
 
                         <div class="child-profile">
 
-                            <div class="child-avatar">
-                                {{ strtoupper(substr($child->name, 0, 1)) }}
+                            <div class="child-avatar overflow-hidden">
+                                @if ($child->photo_url)
+                                    <img src="{{ $child->photo_url }}" alt="{{ $child->name }}" style="width: 100%; height: 100%; object-fit: cover;">
+                                @else
+                                    {{ strtoupper(substr($child->name, 0, 1)) }}
+                                @endif
                             </div>
 
                             <div class="child-info">

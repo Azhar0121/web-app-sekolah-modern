@@ -98,6 +98,13 @@
             </li>
 
             <li>
+                <a href="{{ route('teachers.show') }}"
+                   class="{{ request()->routeIs('teachers.*') ? 'active' : '' }}">
+                    Pengajar & Staf
+                </a>
+            </li>
+
+            <li>
                 <a href="{{ route('academic.show') }}"
                    class="{{ request()->routeIs('academic.*') ? 'active' : '' }}">
                     Akademik

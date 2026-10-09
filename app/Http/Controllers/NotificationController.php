@@ -32,6 +32,31 @@ class NotificationController extends Controller
         ]);
     }
 
+    public function readAndRedirect(string $id): RedirectResponse
+    {
+        $user = auth()->user();
+        if (! $user) {
+            return redirect()->route('login');
+        }
+
+        $notification = $user->notifications()->where('id', $id)->first();
+        if (! $notification) {
+            return redirect()->back();
+        }
+
+        if (is_null($notification->read_at)) {
+            $notification->markAsRead();
+        }
+
+        $targetUrl = $notification->data['url'] ?? '/';
+        $parsed = parse_url($targetUrl);
+        $relativeUrl = isset($parsed['path'])
+            ? $parsed['path'] . (isset($parsed['query']) ? '?' . $parsed['query'] : '') . (isset($parsed['fragment']) ? '#' . $parsed['fragment'] : '')
+            : '/';
+
+        return redirect($relativeUrl);
+    }
+
     public function markAsRead(string $id): JsonResponse
     {
         $user = auth()->user();

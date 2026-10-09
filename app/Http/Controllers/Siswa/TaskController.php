@@ -95,6 +95,12 @@ class TaskController extends Controller
         $submission->submitted_at = now();
         $submission->save();
 
+        // Notifikasi ke Guru Pengampu
+        $teacher = $task->teachingAssignment?->teacher;
+        if ($teacher) {
+            $teacher->notify(new \App\Notifications\TaskSubmittedNotification($submission));
+        }
+
         $message = $submission->isLate()
             ? 'Tugas berhasil dikumpulkan (terlambat dari batas waktu).'
             : 'Tugas berhasil dikumpulkan.';

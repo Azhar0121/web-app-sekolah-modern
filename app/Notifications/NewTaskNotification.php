@@ -28,7 +28,7 @@ class NewTaskNotification extends Notification
         return [
             'title'   => "Tugas Baru: {$this->task->title}",
             'message' => "Guru {$teacher} ({$subject}) memberikan tugas baru. Batas pengumpulan: {$deadline}.",
-            'url'     => route('siswa.tasks.show', $this->task->id),
+            'url'     => route('siswa.tasks.show', $this->task->id, false),
             'icon'    => 'bi-journal-check',
         ];
     }

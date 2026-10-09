@@ -29,7 +29,7 @@ class LeaveRequestSubmittedNotification extends Notification
         return [
             'title'   => 'Pengajuan Izin Siswa Baru',
             'message' => "Orang tua {$studentName} mengajukan izin {$typeLabel} ({$startDate} s/d {$endDate}).",
-            'url'     => route('admin.leave-requests.index'),
+            'url'     => route('guru.leave-requests.index', [], false),
             'icon'    => 'bi-file-earmark-medical',
         ];
     }

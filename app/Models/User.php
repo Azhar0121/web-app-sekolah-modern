@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-#[Fillable(['name', 'email', 'password', 'role_id', 'is_active'])]
+#[Fillable(['name', 'email', 'photo', 'password', 'role_id', 'is_active'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
@@ -154,5 +154,26 @@ class User extends Authenticatable
         return $this->qr_token
             && $this->qr_token_expires_at
             && now()->lessThan($this->qr_token_expires_at);
+    }
+
+    public function photoUrl(): ?string
+    {
+        if ($this->photo && \Illuminate\Support\Facades\Storage::disk('public')->exists($this->photo)) {
+            return \Illuminate\Support\Facades\Storage::url($this->photo);
+        }
+
+        if ($this->relationLoaded('studentProfile')) {
+            $studentPhoto = $this->studentProfile?->photo_path;
+            if ($studentPhoto && \Illuminate\Support\Facades\Storage::disk('public')->exists($studentPhoto)) {
+                return \Illuminate\Support\Facades\Storage::url($studentPhoto);
+            }
+        }
+
+        return null;
+    }
+
+    public function getPhotoUrlAttribute(): ?string
+    {
+        return $this->photoUrl();
     }
 }

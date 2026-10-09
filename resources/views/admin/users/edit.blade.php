@@ -74,6 +74,7 @@
             <form
                 method="POST"
                 action="{{ route('admin.users.update', $user) }}"
+                enctype="multipart/form-data"
             >
 
                 @csrf

@@ -45,7 +45,7 @@ class AttendanceRecordedNotification extends Notification
 
         $dateStr = $session?->date ? \Carbon\Carbon::parse($session->date)->translatedFormat('d M Y') : now()->translatedFormat('d M Y');
 
-        $url = $student ? route('ortu.attendance.index', $student->id) : route('ortu.dashboard');
+        $url = $student ? route('ortu.attendance.index', $student->id, false) : route('ortu.dashboard', [], false);
 
         return [
             'title'   => "Presensi: {$studentName} ({$statusText})",

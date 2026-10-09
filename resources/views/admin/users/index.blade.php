@@ -213,8 +213,12 @@
 
                                 <div class="user-name">
 
-                                    <div class="user-avatar">
-                                        {{ strtoupper(substr($user->name, 0, 1)) }}
+                                    <div class="user-avatar overflow-hidden">
+                                        @if ($user->photo_url)
+                                            <img src="{{ $user->photo_url }}" alt="{{ $user->name }}" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+                                        @else
+                                            {{ strtoupper(substr($user->name, 0, 1)) }}
+                                        @endif
                                     </div>
 
                                     <div>

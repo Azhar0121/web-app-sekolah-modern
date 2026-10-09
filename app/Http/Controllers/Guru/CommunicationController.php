@@ -116,6 +116,9 @@ class CommunicationController extends Controller
 
         CommunicationMessage::create($data);
 
+        // Notifikasi ke Orang Tua
+        $parent->notify(new \App\Notifications\CommunicationMessageNotification($thread, auth()->user(), 'ortu'));
+
         return redirect()->route('guru.communication.index', ['thread' => $thread->id])
             ->with('success', 'Ruang komunikasi berhasil dibuat dan pesan pertama telah terkirim.');
     }
@@ -148,6 +151,11 @@ class CommunicationController extends Controller
             'last_message_at' => now(),
             'status'          => 'open',
         ]);
+
+        // Notifikasi ke Orang Tua
+        if ($thread->parent) {
+            $thread->parent->notify(new \App\Notifications\CommunicationMessageNotification($thread, auth()->user(), 'ortu'));
+        }
 
         return back()->with('success', 'Pesan berhasil dikirim.');
     }

@@ -9,32 +9,7 @@
 <div class="kepsek-dashboard">
 
     {{-- HEADER DASHBOARD --}}
-    <section class="kepsek-header">
-        <div class="kepsek-header-content">
-            <div class="kepsek-header-icon">
-                <i class="bi bi-building"></i>
-            </div>
-
-            <div class="kepsek-header-text">
-                <span class="kepsek-header-label">
-                    MONITORING SEKOLAH
-                </span>
-
-                <h1>Ringkasan Sekolah</h1>
-
-                <p>
-                    Pantau kondisi akademik, kehadiran, guru, PPDB,
-                    alumni, dan finansial sekolah dalam satu halaman.
-                </p>
-            </div>
-        </div>
-
-        <div class="kepsek-header-decoration">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </section>
+    @include('kepsek.partials.header')
 
 
     {{-- TAB NAVIGATION --}}

@@ -13,31 +13,7 @@
     {{-- =====================================================
         HEADER
     ====================================================== --}}
-    <div class="tu-header">
-
-        <div class="tu-header-content">
-
-            <span class="tu-eyebrow">
-                PORTAL TATA USAHA
-            </span>
-
-            <h1>
-                Dashboard Tata Usaha
-            </h1>
-
-            <p>
-                Selamat datang,
-                <strong>{{ auth()->user()->name }}</strong>.
-                Kelola administrasi sekolah melalui dashboard ini.
-            </p>
-
-        </div>
-
-        <div class="tu-header-icon">
-            <x-icon name="layout-dashboard" :size="28" />
-        </div>
-
-    </div>
+    @include('tu.partials.staff-header')
 
     {{-- =====================================================
         PPDB

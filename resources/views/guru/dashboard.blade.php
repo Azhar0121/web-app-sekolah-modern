@@ -15,61 +15,7 @@
      ========================= --}}
 <section class="guru-hero">
 
-    <div class="guru-hero-main">
-        <div class="guru-hero-content">
-
-            <span class="guru-hero-label">
-                PORTAL GURU & WALI KELAS
-            </span>
-
-            <h1>
-                Selamat datang,
-                <span>{{ auth()->user()->name }}</span>
-            </h1>
-
-            <p>
-                Kelola aktivitas mengajar, presensi, materi,
-                dan tugas kelas Anda dari satu tempat.
-            </p>
-
-            @if ($activeYear)
-                <div class="guru-year-info">
-                    <div class="guru-year-icon">
-                        A
-                    </div>
-
-                    <div>
-                        <small>TAHUN AJARAN AKTIF</small>
-                        <strong>{{ $activeYear->name }}</strong>
-                    </div>
-                </div>
-            @else
-                <div class="guru-year-warning">
-                    <strong>Belum ada tahun ajaran aktif</strong>
-                    <span>Hubungi Super Admin untuk pengaturan tahun ajaran.</span>
-                </div>
-            @endif
-
-        </div>
-
-        <div class="guru-hero-illustration">
-            <div class="guru-orbit guru-orbit-one"></div>
-            <div class="guru-orbit guru-orbit-two"></div>
-
-            <div class="guru-dot guru-dot-one"></div>
-            <div class="guru-dot guru-dot-two"></div>
-            <div class="guru-dot guru-dot-three"></div>
-            <div class="guru-dot guru-dot-four"></div>
-
-            <div class="guru-teacher-shape">
-                <div class="guru-circle-decoration">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('guru.partials.profile-hero')
 
     {{-- Quick Actions --}}
     <div class="guru-quick-actions">

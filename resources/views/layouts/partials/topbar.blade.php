@@ -67,7 +67,7 @@
 
                     <div class="list-group list-group-flush small">
                         @forelse (auth()->user()?->notifications()->take(5)->get() ?? [] as $notif)
-                            <a href="{{ $notif->data['url'] ?? '#' }}" class="list-group-item list-group-item-action p-3 {{ is_null($notif->read_at) ? 'bg-primary bg-opacity-10 border-start border-3 border-primary' : '' }}">
+                            <a href="{{ route('notifications.go', $notif->id) }}" class="list-group-item list-group-item-action p-3 {{ is_null($notif->read_at) ? 'bg-primary bg-opacity-10 border-start border-3 border-primary' : '' }}">
                                 <div class="d-flex justify-content-between mb-1">
                                     <strong class="text-dark">{{ $notif->data['title'] ?? 'Notifikasi' }}</strong>
                                     <small class="text-muted" style="font-size:0.68rem;">{{ $notif->created_at->diffForHumans() }}</small>
@@ -87,10 +87,7 @@
             <div class="dropdown">
                 <button class="btn btn-light dropdown-toggle d-flex align-items-center gap-2 py-1 px-2 rounded-pill border bg-white topbar-user-btn"
                         type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <span class="d-flex align-items-center justify-content-center text-white fw-bold rounded-circle shadow-sm"
-                          style="width: 32px; height: 32px; background: linear-gradient(135deg, #071b35, #1769d5); font-size: 0.85rem;">
-                        {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
-                    </span>
+                    <x-avatar :user="auth()->user()" :size="32" />
                     <span class="d-none d-md-flex flex-column align-items-start lh-sm pe-1">
                         <span class="fw-semibold text-dark text-truncate" style="max-width: 130px; font-size: 0.825rem;">
                             {{ auth()->user()->name }}
@@ -101,10 +98,24 @@
                     </span>
                 </button>
 
-                <ul class="dropdown-menu dropdown-menu-end shadow-lg border border-slate-200 rounded-3 mt-1 py-1" style="min-width: 220px;">
-                    <li class="px-3 py-2 bg-light border-bottom">
-                        <div class="fw-bold text-dark small">{{ auth()->user()->name }}</div>
-                        <div class="text-muted" style="font-size: 0.72rem;">{{ auth()->user()->email }}</div>
+                <ul class="dropdown-menu dropdown-menu-end shadow-lg border border-slate-200 rounded-3 mt-1 py-1" style="min-width: 240px;">
+                    <li class="px-3 py-3 bg-light border-bottom">
+                        <div class="d-flex align-items-center gap-3">
+                            <x-avatar :user="auth()->user()" :size="42" />
+                            <div class="lh-sm overflow-hidden">
+                                <div class="fw-bold text-dark small text-truncate">{{ auth()->user()->name }}</div>
+                                <div class="text-muted text-truncate" style="font-size: 0.72rem;">{{ auth()->user()->email }}</div>
+                                <span class="badge mt-1" style="background-color: #eaf3ff; color: #1769d5; border: 1px solid #bfdbfe; font-size: 0.65rem;">
+                                    {{ auth()->user()->role->name ?? 'User' }}
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="{{ route('account.profile.edit') }}" class="dropdown-item d-flex align-items-center gap-2 small py-2">
+                            <i class="bi bi-person-gear fs-6 text-primary"></i>
+                            <span>Profil & Akun Saya</span>
+                        </a>
                     </li>
                     <li><hr class="dropdown-divider my-1"></li>
                     <li>

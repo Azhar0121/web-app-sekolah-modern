@@ -450,8 +450,12 @@ HERO
                         </div>
 
 
-                        <div class="teacher-avatar">
-                            {{ strtoupper(substr($teacher->name, 0, 1)) }}
+                        <div class="teacher-avatar overflow-hidden">
+                            @if ($teacher->photo_url)
+                                <img src="{{ $teacher->photo_url }}" alt="{{ $teacher->name }}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                            @else
+                                {{ strtoupper(substr($teacher->name, 0, 1)) }}
+                            @endif
                         </div>
 
 
@@ -496,6 +500,12 @@ HERO
 
         </div>
 
+        <div class="text-center mt-4">
+            <a href="{{ route('teachers.show') }}" class="btn btn-outline-primary px-4 py-2 rounded-pill shadow-sm" style="font-size: 0.85rem; font-weight: 600;">
+                <i class="bi bi-people-fill me-2"></i>Lihat Seluruh Direktori Pengajar & Staf Sekolah &rarr;
+            </a>
+        </div>
+
     @else
 
         <div class="teacher-empty">
@@ -512,6 +522,12 @@ HERO
                 Daftar staf pendidik profesional sekolah akan muncul
                 di bagian ini secara otomatis.
             </p>
+
+            <div class="mt-3">
+                <a href="{{ route('teachers.show') }}" class="btn btn-sm btn-outline-primary rounded-pill px-3">
+                    Buka Direktori Pengajar
+                </a>
+            </div>
 
         </div>
 
@@ -658,157 +674,7 @@ HERO
 </section>
 
 
-{{-- =========================================================
-     SECTION 6 — FASILITAS
-     ========================================================= --}}
-<section id="fasilitas" class="profile-section profile-section-last">
-
-    <div class="profile-section-header">
-
-        <div class="profile-section-heading">
-
-            <div class="profile-heading-icon">
-                <i class="bi bi-building-gear"></i>
-            </div>
-
-            <div>
-                <span class="profile-eyebrow">
-                    SARANA & PRASARANA
-                </span>
-
-                <h2>
-                    Fasilitas Kampus & Laboratorium
-                </h2>
-            </div>
-
-        </div>
-
-        <span class="profile-count-badge profile-count-gray">
-            {{ $facilities->count() }} Ruangan Aktif
-        </span>
-
-    </div>
-
-
-    @if ($facilities->isNotEmpty())
-
-        <div class="row g-3">
-
-            @foreach ($facilities as $facility)
-
-                <div class="col-md-4 col-lg-3">
-
-                    <div class="facility-card">
-
-                        <div class="facility-icon">
-                            <i class="bi bi-door-open-fill"></i>
-                        </div>
-
-                        <div class="facility-content">
-
-                            <h3>
-                                {{ $facility->name }}
-                            </h3>
-
-                            <span>
-                                Kapasitas:
-                                {{ $facility->capacity ?? 36 }}
-                                Siswa
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            @endforeach
-
-        </div>
-
-    @else
-
-        <div class="row g-3">
-
-            <div class="col-md-4">
-
-                <div class="facility-card">
-
-                    <div class="facility-icon">
-                        <i class="bi bi-pc-display"></i>
-                    </div>
-
-                    <div class="facility-content">
-
-                        <h3>
-                            Laboratorium Komputer CBT
-                        </h3>
-
-                        <span>
-                            AC & Internet High Speed
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="col-md-4">
-
-                <div class="facility-card facility-green">
-
-                    <div class="facility-icon">
-                        <i class="bi bi-book-half"></i>
-                    </div>
-
-                    <div class="facility-content">
-
-                        <h3>
-                            Perpustakaan Digital
-                        </h3>
-
-                        <span>
-                            Koleksi E-Book & Ruang Baca
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="col-md-4">
-
-                <div class="facility-card facility-yellow">
-
-                    <div class="facility-icon">
-                        <i class="bi bi-dribbble"></i>
-                    </div>
-
-                    <div class="facility-content">
-
-                        <h3>
-                            Lapangan Olahraga Outdoor
-                        </h3>
-
-                        <span>
-                            Basket, Futsal & Voli
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    @endif
-
-</section>
+    @include('public.profile.partials.facilities-section')
 
 
 </div>

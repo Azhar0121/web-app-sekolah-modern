@@ -9,33 +9,7 @@
 <div class="dashboard-page">
 
     {{-- HEADER --}}
-    <div class="dashboard-header">
-
-        <div class="dashboard-header-content">
-
-            <div class="dashboard-title-area">
-
-                <span class="dashboard-label">
-                    ADMINISTRATOR
-                </span>
-
-                <h1>
-                    Dashboard Super Admin
-                </h1>
-
-                <p>
-                    Kelola dan pantau sistem informasi sekolah dari satu tempat.
-                </p>
-
-            </div>
-
-            <div class="dashboard-header-icon">
-                <x-icon name="shield" :size="28" />
-            </div>
-
-        </div>
-
-    </div>
+    @include('admin.partials.admin-header')
 
 
     {{-- STATISTICS --}}

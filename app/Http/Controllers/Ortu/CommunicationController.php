@@ -131,6 +131,12 @@ class CommunicationController extends Controller
 
         CommunicationMessage::create($data);
 
+        // Notifikasi ke Guru
+        $teacher = User::find($validated['teacher_id']);
+        if ($teacher) {
+            $teacher->notify(new \App\Notifications\CommunicationMessageNotification($thread, auth()->user(), 'guru'));
+        }
+
         return redirect()->route('ortu.communication.index', ['thread' => $thread->id])
             ->with('success', 'Pesan konsultasi berhasil terkirim ke guru.');
     }
@@ -163,6 +169,11 @@ class CommunicationController extends Controller
             'last_message_at' => now(),
             'status'          => 'open',
         ]);
+
+        // Notifikasi ke Guru
+        if ($thread->teacher) {
+            $thread->teacher->notify(new \App\Notifications\CommunicationMessageNotification($thread, auth()->user(), 'guru'));
+        }
 
         return back()->with('success', 'Pesan berhasil dikirim.');
     }

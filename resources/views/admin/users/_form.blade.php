@@ -31,6 +31,29 @@
 </div>
 
 <div class="mb-3">
+    <label for="photo" class="form-label">Foto Profil (Guru / Staff / Pengguna)</label>
+    @if ($user?->photo_url)
+        <div class="d-flex align-items-center gap-3 mb-2 p-2 border rounded bg-light">
+            <img src="{{ $user->photo_url }}" alt="{{ $user->name }}" class="rounded-circle object-fit-cover border" style="width: 56px; height: 56px;">
+            <div>
+                <div class="small fw-semibold text-secondary">Foto saat ini aktif</div>
+                <div class="form-check mt-1">
+                    <input class="form-check-input" type="checkbox" name="remove_photo" id="remove_photo" value="1">
+                    <label class="form-check-label small text-danger" for="remove_photo">
+                        Hapus foto profil ini (gunakan inisial nama)
+                    </label>
+                </div>
+            </div>
+        </div>
+    @endif
+    <input type="file" name="photo" id="photo" class="form-control @error('photo') is-invalid @enderror" accept="image/png,image/jpeg,image/webp">
+    <div class="form-text small">Format didukung: JPG, PNG, WEBP (maks. 2MB). Disarankan foto rasio 1:1 atau portrait rapi.</div>
+    @error('photo')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
+
+<div class="mb-3">
     <label for="password" class="form-label">
         Password {{ $user ? '(kosongkan jika tidak ingin mengubah)' : '' }}
     </label>

@@ -64,6 +64,8 @@ Route::get('/', function () {
 
 // ================= PUBLIC PAGES =================
 Route::get('/profil', [PublicProfileController::class, 'index'])->name('profile.show');
+Route::get('/pengajar', [\App\Http\Controllers\Public\TeacherStaffController::class, 'index'])->name('teachers.show');
+Route::get('/guru-dan-staf', fn () => redirect()->route('teachers.show'));
 Route::get('/akademik', [PublicAcademicController::class, 'index'])->name('academic.show');
 Route::get('/kesiswaan', [PublicStudentActivityController::class, 'index'])->name('student-activity.show');
 Route::get('/kontak', [PublicContactController::class, 'index'])->name('contact.show');
@@ -98,8 +100,14 @@ Route::middleware('auth')->group(function () {
 
     // Internal Notification Center
     Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');
+    Route::get('/notifications/{id}/go', [NotificationController::class, 'readAndRedirect'])->name('notifications.go');
     Route::post('/notifications/{id}/read', [NotificationController::class, 'markAsRead'])->name('notifications.read');
     Route::post('/notifications/read-all', [NotificationController::class, 'markAllAsRead'])->name('notifications.read-all');
+
+    // Profil & Akun Pengguna (Mandiri untuk semua role)
+    Route::get('/akun/profil', [\App\Http\Controllers\Account\ProfileController::class, 'edit'])->name('account.profile.edit');
+    Route::put('/akun/profil', [\App\Http\Controllers\Account\ProfileController::class, 'update'])->name('account.profile.update');
+    Route::put('/akun/password', [\App\Http\Controllers\Account\ProfileController::class, 'updatePassword'])->name('account.profile.password');
 });
 
 // ================= PPDB ONLINE (PUBLIK, TANPA LOGIN) =================

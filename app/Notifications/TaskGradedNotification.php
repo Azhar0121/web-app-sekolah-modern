@@ -29,7 +29,7 @@ class TaskGradedNotification extends Notification
         return [
             'title'   => "Tugas Dinilai: {$taskTitle}",
             'message' => "Tugas {$taskTitle} ({$subject}) telah dinilai dengan skor {$score}/100.",
-            'url'     => $task ? route('siswa.tasks.show', $task->id) : route('siswa.dashboard'),
+            'url'     => $task ? route('siswa.tasks.show', $task->id, false) : route('siswa.dashboard', [], false),
             'icon'    => 'bi-award-fill',
         ];
     }
