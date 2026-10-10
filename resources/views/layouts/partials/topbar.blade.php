@@ -1,133 +1,273 @@
-<header class="app-topbar bg-white border-bottom sticky-top shadow-sm px-3 py-2" style="position: sticky; top: 0; z-index: 1030; height: 62px;">
-    <div class="d-flex align-items-center justify-content-between h-100">
+<header class="admin-topbar">
+<link rel="stylesheet" href="{{ asset('css/admin/topbar.css') }}?v={{ filemtime(public_path('css/admin/topbar.css')) }}">
+    <div class="admin-topbar-inner">
 
-        {{-- LEFT: TOGGLE & BRAND --}}
-        <div class="d-flex align-items-center gap-3">
+        {{-- LEFT: SIDEBAR TOGGLE & BRAND --}}
+        <div class="admin-topbar-left">
+
             @isset($showSidebarToggle)
-                <button type="button" class="btn btn-sm btn-light border-0 text-secondary p-2 rounded-2 topbar-btn d-lg-none" data-sidebar-toggle aria-label="Toggle Sidebar">
-                    <i class="bi bi-list fs-5"></i>
+                <button
+                    type="button"
+                    class="admin-icon-btn sidebar-toggle-btn d-lg-none"
+                    data-sidebar-toggle
+                    aria-label="Buka atau tutup sidebar"
+                >
+                    <i class="bi bi-list"></i>
                 </button>
             @endisset
 
-            <a href="{{ route('admin.dashboard') }}" class="d-flex align-items-center gap-2 text-decoration-none">
-                <div class="d-flex align-items-center justify-content-center text-white fw-bold shadow-sm"
-                     style="width: 36px; height: 36px; border-radius: 9px; background: linear-gradient(135deg, #071b35 0%, #1769d5 100%); font-size: 1rem;">
-                    {{ strtoupper(substr(config('app.name'), 0, 1)) }}
+            {{-- BRAND SEKOLAH MODERN --}}
+            <a href="{{ route('admin.dashboard') }}" class="admin-brand">
+
+                <div class="admin-brand-logo">
+                    <svg
+                        viewBox="0 0 64 64"
+                        xmlns="http://www.w3.org/2000/svg"
+                        role="img"
+                        aria-label="Logo Sekolah Modern"
+                    >
+                        <path
+                            d="M32 3 L56 11 V29
+                               C56 44 46 55 32 61
+                               C18 55 8 44 8 29 V11 Z"
+                            fill="#ffffff"
+                        />
+
+                        <path
+                            d="M32 9 L50 15 V29
+                               C50 40 42 49 32 54
+                               C22 49 14 40 14 29 V15 Z"
+                            fill="#0f2747"
+                        />
+
+                        <path
+                            d="M32 14 L34.5 20.5
+                               L41.5 20.5 L36 25
+                               L38 31.5 L32 27.5
+                               L26 31.5 L28 25
+                               L22.5 20.5 L29.5 20.5 Z"
+                            fill="#ffffff"
+                        />
+
+                        <path
+                            d="M19 34
+                               C23 32 27 33 32 36
+                               C37 33 41 32 45 34
+                               V44 C40 42 36 42 32 45
+                               C28 42 24 42 19 44 Z"
+                            fill="#ffffff"
+                        />
+
+                        <path
+                            d="M32 36 V45"
+                            stroke="#0f2747"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                        />
+                    </svg>
                 </div>
 
-                <div class="d-none d-sm-block lh-sm">
-                    <div class="fw-bold text-dark text-truncate" style="max-width: 240px; font-size: 0.95rem;">
-                        {{ config('app.name') }}
-                    </div>
-                    <div class="text-muted" style="font-size: 0.72rem; letter-spacing: 0.02em;">
-                        Sistem Informasi Manajemen Sekolah
-                    </div>
+                <div class="admin-brand-info">
+                    <strong>SEKOLAH MODERN</strong>
+                    <span>Modern School Management System</span>
                 </div>
+
             </a>
 
-            <div class="vr mx-2 d-none d-md-block opacity-25" style="height: 24px;"></div>
+            <div class="admin-topbar-divider"></div>
 
-            <a href="{{ url('/') }}" target="_blank" class="btn btn-sm btn-light text-secondary d-none d-md-inline-flex align-items-center gap-2 rounded-pill px-3 py-1 border topbar-btn" style="font-size: 0.78rem;">
-                <i class="bi bi-globe2 text-primary"></i>
+            {{-- LINK WEBSITE --}}
+            <a
+                href="{{ url('/') }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="admin-website-link"
+            >
+                <i class="bi bi-globe2"></i>
                 <span>Lihat Website</span>
-                <i class="bi bi-box-arrow-up-right text-muted" style="font-size: 0.7rem;"></i>
+                <i class="bi bi-box-arrow-up-right website-external-icon"></i>
             </a>
+
         </div>
 
-        {{-- RIGHT: NOTIFICATIONS & USER PROFILE --}}
-        <div class="d-flex align-items-center gap-2">
 
-            <div class="dropdown">
-                <button type="button" class="btn btn-light rounded-circle text-secondary position-relative p-2 d-flex align-items-center justify-content-center border topbar-btn"
-                        id="notifBellDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="width: 38px; height: 38px;">
-                    <i class="bi bi-bell fs-6"></i>
-                    @php($unreadNotifs = auth()->user()?->unreadNotifications?->count() ?? 0)
+        {{-- RIGHT: NOTIFICATIONS & USER --}}
+        <div class="admin-topbar-right">
+
+            {{-- NOTIFIKASI --}}
+            <div class="dropdown admin-notification-dropdown">
+
+                <button
+                    type="button"
+                    class="admin-icon-btn notification-trigger"
+                    id="notifBellDropdown"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    aria-label="Buka notifikasi"
+                >
+                    <i class="bi bi-bell"></i>
+
+                    @php
+                        $unreadNotifs = auth()->user()?->unreadNotifications?->count() ?? 0;
+                    @endphp
+
                     @if ($unreadNotifs > 0)
-                        <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
-                            <span class="visually-hidden">Notifikasi Baru</span>
+                        <span class="notification-dot"></span>
+                        <span class="visually-hidden">
+                            {{ $unreadNotifs }} notifikasi belum dibaca
                         </span>
                     @endif
                 </button>
 
-                <div class="dropdown-menu dropdown-menu-end shadow-lg p-0 border border-slate-200 rounded-3" style="width: 320px; max-height: 420px; overflow-y: auto;">
-                    <div class="p-3 bg-light border-bottom d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center gap-2">
-                            <strong class="small text-dark mb-0">Notifikasi</strong>
-                            @if ($unreadNotifs > 0)
-                                <span class="badge bg-danger rounded-pill" style="font-size: 0.65rem;">{{ $unreadNotifs }} baru</span>
-                            @endif
+                <div
+                    class="dropdown-menu dropdown-menu-end admin-notification-menu"
+                    aria-labelledby="notifBellDropdown"
+                >
+                    <div class="admin-dropdown-heading">
+                        <div>
+                            <strong>Notifikasi</strong>
+                            <span>Informasi terbaru akun kamu</span>
                         </div>
+
                         @if ($unreadNotifs > 0)
-                            <form action="{{ route('notifications.read-all') }}" method="POST" class="d-inline">
-                                @csrf
-                                <button type="submit" class="btn btn-link p-0 text-decoration-none text-primary fw-medium" style="font-size: 0.75rem;">Tandai dibaca</button>
-                            </form>
+                            <span class="admin-notification-count">
+                                {{ $unreadNotifs }} baru
+                            </span>
                         @endif
                     </div>
 
-                    <div class="list-group list-group-flush small">
+                    @if ($unreadNotifs > 0)
+                        <div class="admin-notification-actions">
+                            <form
+                                action="{{ route('notifications.read-all') }}"
+                                method="POST"
+                            >
+                                @csrf
+
+                                <button type="submit">
+                                    <i class="bi bi-check2-all"></i>
+                                    Tandai semua dibaca
+                                </button>
+                            </form>
+                        </div>
+                    @endif
+
+                    <div class="admin-notification-list">
+
                         @forelse (auth()->user()?->notifications()->take(5)->get() ?? [] as $notif)
-                            <a href="{{ route('notifications.go', $notif->id) }}" class="list-group-item list-group-item-action p-3 {{ is_null($notif->read_at) ? 'bg-primary bg-opacity-10 border-start border-3 border-primary' : '' }}">
-                                <div class="d-flex justify-content-between mb-1">
-                                    <strong class="text-dark">{{ $notif->data['title'] ?? 'Notifikasi' }}</strong>
-                                    <small class="text-muted" style="font-size:0.68rem;">{{ $notif->created_at->diffForHumans() }}</small>
-                                </div>
-                                <div class="small text-muted mb-0">{{ $notif->data['message'] ?? '' }}</div>
+
+                            <a
+                                href="{{ route('notifications.go', $notif->id) }}"
+                                class="admin-notification-item {{ is_null($notif->read_at) ? 'is-unread' : '' }}"
+                            >
+                                <span class="notification-item-icon">
+                                    <i class="bi bi-bell"></i>
+                                </span>
+
+                                <span class="notification-item-content">
+                                    <span class="notification-item-top">
+                                        <strong>
+                                            {{ $notif->data['title'] ?? 'Notifikasi' }}
+                                        </strong>
+
+                                        <small>
+                                            {{ $notif->created_at->diffForHumans() }}
+                                        </small>
+                                    </span>
+
+                                    <span class="notification-item-message">
+                                        {{ $notif->data['message'] ?? '' }}
+                                    </span>
+                                </span>
                             </a>
+
                         @empty
-                            <div class="p-4 text-center text-muted small">
-                                <i class="bi bi-bell-slash fs-3 d-block mb-1 text-secondary opacity-50"></i>
-                                Belum ada notifikasi baru
+
+                            <div class="admin-notification-empty">
+                                <i class="bi bi-bell-slash"></i>
+                                <strong>Belum ada notifikasi</strong>
+                                <span>Notifikasi terbaru akan muncul di sini.</span>
                             </div>
+
                         @endforelse
+
                     </div>
+
                 </div>
             </div>
 
-            <div class="dropdown">
-                <button class="btn btn-light dropdown-toggle d-flex align-items-center gap-2 py-1 px-2 rounded-pill border bg-white topbar-user-btn"
-                        type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <x-avatar :user="auth()->user()" :size="32" />
-                    <span class="d-none d-md-flex flex-column align-items-start lh-sm pe-1">
-                        <span class="fw-semibold text-dark text-truncate" style="max-width: 130px; font-size: 0.825rem;">
-                            {{ auth()->user()->name }}
-                        </span>
-                        <span class="badge" style="background-color: #eaf3ff; color: #1769d5; border: 1px solid #bfdbfe; font-size: 0.65rem; font-weight: 600;">
-                            {{ auth()->user()->role->name ?? 'User' }}
+
+            {{-- PROFIL PENGGUNA --}}
+            <div class="dropdown admin-user-dropdown">
+
+                <button
+                    type="button"
+                    class="admin-user-trigger"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                >
+                    <span class="admin-user-avatar">
+                        <x-avatar :user="auth()->user()" :size="36" />
+                    </span>
+
+                    <span class="admin-user-info">
+                        <strong>{{ auth()->user()->name }}</strong>
+
+                        <span class="admin-user-role">
+                            {{ auth()->user()->role?->name ?? 'User' }}
                         </span>
                     </span>
+
+                    <i class="bi bi-chevron-down admin-user-chevron"></i>
                 </button>
 
-                <ul class="dropdown-menu dropdown-menu-end shadow-lg border border-slate-200 rounded-3 mt-1 py-1" style="min-width: 240px;">
-                    <li class="px-3 py-3 bg-light border-bottom">
-                        <div class="d-flex align-items-center gap-3">
-                            <x-avatar :user="auth()->user()" :size="42" />
-                            <div class="lh-sm overflow-hidden">
-                                <div class="fw-bold text-dark small text-truncate">{{ auth()->user()->name }}</div>
-                                <div class="text-muted text-truncate" style="font-size: 0.72rem;">{{ auth()->user()->email }}</div>
-                                <span class="badge mt-1" style="background-color: #eaf3ff; color: #1769d5; border: 1px solid #bfdbfe; font-size: 0.65rem;">
-                                    {{ auth()->user()->role->name ?? 'User' }}
-                                </span>
-                            </div>
-                        </div>
+                <ul class="dropdown-menu dropdown-menu-end admin-user-menu">
+
+                    <li class="admin-user-menu-header">
+                        <span class="admin-user-menu-avatar">
+                            <x-avatar :user="auth()->user()" :size="44" />
+                        </span>
+
+                        <span class="admin-user-menu-details">
+                            <strong>{{ auth()->user()->name }}</strong>
+                            <small>{{ auth()->user()->email }}</small>
+
+                            <span class="admin-user-role">
+                                {{ auth()->user()->role?->name ?? 'User' }}
+                            </span>
+                        </span>
                     </li>
+
                     <li>
-                        <a href="{{ route('account.profile.edit') }}" class="dropdown-item d-flex align-items-center gap-2 small py-2">
-                            <i class="bi bi-person-gear fs-6 text-primary"></i>
+                        <a
+                            href="{{ route('account.profile.edit') }}"
+                            class="dropdown-item admin-user-menu-item"
+                        >
+                            <i class="bi bi-person-gear"></i>
                             <span>Profil & Akun Saya</span>
                         </a>
                     </li>
-                    <li><hr class="dropdown-divider my-1"></li>
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
                     <li>
                         <form method="POST" action="{{ url('/logout') }}">
                             @csrf
-                            <button type="submit" class="dropdown-item dropdown-item-danger d-flex align-items-center gap-2 small py-2">
-                                <i class="bi bi-box-arrow-right fs-6"></i>
+
+                            <button
+                                type="submit"
+                                class="dropdown-item admin-user-menu-item admin-logout-item"
+                            >
+                                <i class="bi bi-box-arrow-right"></i>
                                 <span>Keluar Sistem</span>
                             </button>
                         </form>
                     </li>
+
                 </ul>
+
             </div>
 
         </div>

@@ -1,0 +1,1817 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* =========================================================
+   DIREKTORI PENGAJAR & TENAGA KEPENDIDIKAN
+   File: public/css/public/teachers/index.css
+   ========================================================= */
+
+:root {
+    --directory-navy: #0b2340;
+    --directory-navy-dark: #07182d;
+    --directory-navy-soft: #12385f;
+    --directory-blue: #1769d5;
+    --directory-blue-light: #e7f0fc;
+    --directory-purple: #6857d9;
+    --directory-teal: #087f8c;
+    --directory-text: #172b45;
+    --directory-muted: #687991;
+    --directory-page: #edf2f8;
+    --directory-surface: #f8fafd;
+    --directory-border: #d9e3ef;
+    --directory-shadow: 0 12px 34px rgba(11, 35, 64, 0.07);
+}
+
+.directory-hero,
+.directory-main {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.directory-hero *,
+.directory-main * {
+    box-sizing: border-box;
+}
+
+.directory-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    color: #fff;
+    background: linear-gradient(118deg, #07182d 0%, #0b2340 58%, #12385f 100%);
+}
+
+.directory-hero-container {
+    position: relative;
+    z-index: 2;
+    padding-top: 30px;
+    padding-bottom: 66px;
+}
+
+.directory-hero-decoration {
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 50%;
+}
+
+.directory-decoration-one {
+    width: 420px;
+    height: 420px;
+    top: -245px;
+    right: -65px;
+    box-shadow:
+        0 0 0 42px rgba(255, 255, 255, 0.018),
+        0 0 0 88px rgba(255, 255, 255, 0.015);
+}
+
+.directory-decoration-two {
+    width: 330px;
+    height: 330px;
+    bottom: -240px;
+    left: 38%;
+    box-shadow: 0 0 0 55px rgba(255, 255, 255, 0.018);
+}
+
+/* Breadcrumb */
+
+.directory-breadcrumb {
+    margin-bottom: 46px;
+}
+
+.directory-breadcrumb .breadcrumb {
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    font-size: 12px;
+}
+
+.directory-breadcrumb .breadcrumb-item,
+.directory-breadcrumb .breadcrumb-item.active {
+    color: rgba(255, 255, 255, 0.64);
+}
+
+.directory-breadcrumb .breadcrumb-item a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: rgba(255, 255, 255, 0.78);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.directory-breadcrumb .breadcrumb-item a:hover {
+    color: #fff;
+}
+
+.directory-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.directory-breadcrumb .breadcrumb-item i {
+    font-size: 13px;
+}
+
+/* Hero layout */
+
+.directory-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(310px, 0.8fr);
+    align-items: center;
+    gap: clamp(36px, 6vw, 88px);
+}
+
+.directory-hero-copy {
+    max-width: 680px;
+}
+
+.directory-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+    color: #a9ccff;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+}
+
+.directory-eyebrow-dot {
+    width: 8px;
+    height: 8px;
+    flex: 0 0 8px;
+    border-radius: 50%;
+    background: #69b5ff;
+    box-shadow: 0 0 0 5px rgba(105, 181, 255, 0.12);
+}
+
+.directory-hero-copy h1 {
+    max-width: 650px;
+    margin: 0 0 22px;
+    color: #fff;
+    font-size: clamp(35px, 4.4vw, 57px);
+    font-weight: 800;
+    line-height: 1.17;
+    letter-spacing: -1.9px;
+}
+
+.directory-hero-copy h1 span {
+    display: block;
+    color: #8fc4ff;
+}
+
+.directory-hero-copy > p {
+    max-width: 550px;
+    margin: 0;
+    color: rgba(241, 247, 255, 0.77);
+    font-size: 14px;
+    line-height: 1.95;
+}
+
+.directory-hero-copy > p strong {
+    color: #fff;
+    font-weight: 700;
+}
+
+.directory-hero-points {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    margin-top: 26px;
+}
+
+.directory-hero-points span {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.directory-hero-points i {
+    color: #82baff;
+    font-size: 16px;
+}
+
+.directory-hero-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    min-height: 48px;
+    margin-top: 32px;
+    padding: 0 21px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    background: #1769d5;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.directory-hero-button:hover {
+    transform: translateY(-2px);
+    background: #287ce8;
+    color: #fff;
+}
+
+.directory-hero-button i {
+    font-size: 15px;
+}
+
+/* Hero statistics */
+
+.directory-hero-stats {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    padding: 17px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.055);
+    box-shadow: 0 24px 55px rgba(0, 0, 0, 0.13);
+}
+
+.directory-stat-card {
+    min-width: 0;
+    padding: 21px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.065);
+}
+
+.directory-stat-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.directory-stat-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 39px;
+    height: 39px;
+    flex: 0 0 39px;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 9px;
+    background: rgba(91, 157, 238, 0.17);
+    color: #a6d0ff;
+    font-size: 19px;
+}
+
+.directory-stat-label {
+    color: rgba(255, 255, 255, 0.58);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-align: right;
+}
+
+.directory-stat-number {
+    margin-top: 24px;
+    color: #fff;
+    font-size: clamp(35px, 4vw, 45px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+.directory-stat-title {
+    margin-top: 10px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.directory-stat-card p {
+    margin: 8px 0 0;
+    color: rgba(239, 246, 255, 0.63);
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+.directory-stat-staff .directory-stat-icon {
+    background: rgba(48, 189, 174, 0.13);
+    color: #81e2d8;
+}
+
+.directory-stat-footer {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 12px 5px 2px;
+    color: rgba(255, 255, 255, 0.66);
+    font-size: 10px;
+}
+
+.directory-stat-footer i {
+    color: #8fc4ff;
+    font-size: 14px;
+}
+
+/* Hero bottom strip */
+
+.directory-hero-bottom {
+    position: relative;
+    z-index: 2;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(3, 15, 29, 0.24);
+}
+
+.directory-bottom-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 14px 24px;
+    padding-top: 17px;
+    padding-bottom: 17px;
+}
+
+.directory-bottom-inner span {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.directory-bottom-inner i {
+    color: #8fc4ff;
+    font-size: 15px;
+}
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.directory-main {
+    min-height: 500px;
+    padding: 42px 0 65px;
+    background:
+        linear-gradient(180deg, #eaf0f8 0%, #f1f5fa 250px, #edf2f8 100%);
+    color: var(--directory-text);
+}
+
+.directory-main > .container {
+    max-width: 1240px;
+}
+
+/* Search and tabs panel */
+
+.directory-control-panel {
+    position: relative;
+    z-index: 3;
+    margin-bottom: 27px;
+    padding: 27px;
+    border: 1px solid var(--directory-border);
+    border-radius: 13px;
+    background: #f8fafd;
+    box-shadow: var(--directory-shadow);
+}
+
+.directory-control-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 23px;
+}
+
+.directory-section-kicker {
+    display: block;
+    margin-bottom: 9px;
+    color: var(--directory-blue);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.directory-control-heading h2 {
+    margin: 0;
+    color: var(--directory-navy);
+    font-size: clamp(22px, 2.4vw, 29px);
+    font-weight: 800;
+    line-height: 1.35;
+    letter-spacing: -0.6px;
+}
+
+.directory-control-heading p {
+    margin: 8px 0 0;
+    color: var(--directory-muted);
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.directory-control-symbol {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 53px;
+    height: 53px;
+    flex: 0 0 53px;
+    border: 1px solid #d8e6f8;
+    border-radius: 11px;
+    background: #e7f0fc;
+    color: var(--directory-blue);
+    font-size: 25px;
+}
+
+.directory-control-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding-top: 20px;
+    border-top: 1px solid var(--directory-border);
+}
+
+/* Tabs */
+
+.directory-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.directory-tabs .nav-item {
+    margin: 0;
+}
+
+.directory-tabs .nav-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 43px;
+    padding: 10px 13px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    background: transparent;
+    color: #5f7087;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.directory-tabs .nav-link > i {
+    font-size: 15px;
+}
+
+.directory-tabs .nav-link:hover {
+    border-color: #d4e2f3;
+    background: #edf3fb;
+    color: var(--directory-navy);
+}
+
+.directory-tabs .nav-link.active {
+    border-color: var(--directory-navy);
+    background: var(--directory-navy);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(11, 35, 64, 0.13);
+}
+
+.directory-tab-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    border-radius: 5px;
+    background: #e2ebf7;
+    color: var(--directory-navy);
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.directory-tabs .nav-link.active .directory-tab-count {
+    background: rgba(255, 255, 255, 0.16);
+    color: #fff;
+}
+
+/* Search */
+
+.directory-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: min(100%, 315px);
+    min-width: 225px;
+    min-height: 43px;
+    padding: 0 10px 0 13px;
+    border: 1px solid #d4dfec;
+    border-radius: 7px;
+    background: #fff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.directory-search:focus-within {
+    border-color: #7ca9e7;
+    box-shadow: 0 0 0 3px rgba(23, 105, 213, 0.09);
+}
+
+.directory-search > i {
+    flex: 0 0 auto;
+    color: #71839a;
+    font-size: 15px;
+}
+
+.directory-search input {
+    width: 100%;
+    min-width: 0;
+    height: 41px;
+    padding: 0 10px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--directory-text);
+    font-family: inherit;
+    font-size: 11px;
+    box-shadow: none;
+}
+
+.directory-search input::placeholder {
+    color: #93a0b1;
+}
+
+.directory-search input:focus {
+    outline: 0;
+    box-shadow: none;
+}
+
+.directory-search-shortcut {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 27px;
+    height: 27px;
+    flex: 0 0 27px;
+    border-radius: 5px;
+    background: #edf3fa;
+    color: #6e8097;
+    font-size: 12px;
+}
+
+/* =========================================================
+   TAB PANELS AND SECTION HEADINGS
+   ========================================================= */
+
+.directory-tab-content {
+    min-width: 0;
+}
+
+.directory-tab-content > .tab-pane {
+    outline: none;
+}
+
+.directory-content-section {
+    overflow: hidden;
+    margin-bottom: 26px;
+    border: 1px solid var(--directory-border);
+    border-radius: 13px;
+    background: #f8fafd;
+    box-shadow: var(--directory-shadow);
+}
+
+.directory-section-heading {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-height: 140px;
+    overflow: hidden;
+    padding: 26px 29px;
+    border-bottom: 1px solid var(--directory-border);
+}
+
+.directory-heading-blue {
+    background: linear-gradient(110deg, #e2edfc 0%, #edf4fd 70%, #e7effa 100%);
+}
+
+.directory-heading-purple {
+    background: linear-gradient(110deg, #e9e7fb 0%, #f2f0fc 70%, #eae9f9 100%);
+}
+
+.directory-heading-teal {
+    background: linear-gradient(110deg, #def2f1 0%, #edf8f7 70%, #e3f2f1 100%);
+}
+
+.directory-section-icon {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 55px;
+    height: 55px;
+    flex: 0 0 55px;
+    border: 1px solid rgba(23, 105, 213, 0.13);
+    border-radius: 11px;
+    background: #fff;
+    color: var(--directory-blue);
+    font-size: 24px;
+    box-shadow: 0 5px 15px rgba(20, 59, 105, 0.07);
+}
+
+.directory-heading-purple .directory-section-icon {
+    border-color: rgba(104, 87, 217, 0.14);
+    background: #fff;
+    color: var(--directory-purple);
+}
+
+.directory-heading-teal .directory-section-icon {
+    border-color: rgba(8, 127, 140, 0.14);
+    color: var(--directory-teal);
+}
+
+.directory-section-copy {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+}
+
+.directory-section-copy .directory-section-kicker {
+    margin-bottom: 7px;
+}
+
+.directory-section-copy h2 {
+    margin: 0;
+    color: var(--directory-navy);
+    font-size: clamp(20px, 2.5vw, 27px);
+    font-weight: 800;
+    line-height: 1.4;
+    letter-spacing: -0.6px;
+}
+
+.directory-section-copy p {
+    max-width: 610px;
+    margin: 8px 0 0;
+    color: #63748b;
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+.directory-heading-decoration {
+    position: absolute;
+    right: 25px;
+    bottom: -26px;
+    color: rgba(23, 105, 213, 0.07);
+    font-size: 125px;
+    line-height: 1;
+    pointer-events: none;
+}
+
+.directory-heading-purple ~ .directory-heading-decoration {
+    color: rgba(104, 87, 217, 0.07);
+}
+
+.directory-heading-total {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 105px;
+    margin-left: auto;
+    padding: 13px 15px;
+    border: 1px solid rgba(23, 105, 213, 0.12);
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.72);
+}
+
+.directory-heading-purple .directory-heading-total {
+    border-color: rgba(104, 87, 217, 0.13);
+}
+
+.directory-heading-teal .directory-heading-total {
+    border-color: rgba(8, 127, 140, 0.13);
+}
+
+.directory-heading-total strong {
+    color: var(--directory-navy);
+    font-size: 25px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.directory-heading-total span {
+    margin-top: 4px;
+    color: var(--directory-muted);
+    font-size: 9px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.directory-panel-body {
+    min-width: 0;
+    padding: 27px;
+    background: #f8fafd;
+}
+
+.directory-org-body {
+    padding: 30px;
+}
+
+/* =========================================================
+   ORGANIZATION CHART
+   Generic styling for the included org-chart partial
+   ========================================================= */
+
+.directory-org-body img {
+    max-width: 100%;
+}
+
+.directory-org-body .card {
+    border-color: var(--directory-border);
+    border-radius: 9px;
+    box-shadow: 0 5px 16px rgba(11, 35, 64, 0.045);
+}
+
+.directory-org-body .card-header {
+    border-bottom-color: var(--directory-border);
+    background: #eaf1fa;
+    color: var(--directory-navy);
+    font-weight: 700;
+}
+
+.directory-org-body .table {
+    --bs-table-bg: transparent;
+    --bs-table-color: var(--directory-text);
+    margin-bottom: 0;
+}
+
+.directory-org-body .table thead th {
+    background: #e8eff8;
+    color: var(--directory-navy);
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.directory-org-body .table td,
+.directory-org-body .table th {
+    padding: 12px;
+    border-color: var(--directory-border);
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+.directory-org-body .badge {
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+/* =========================================================
+   TEACHER AND STAFF GRIDS
+   Shared styling for included partials
+   ========================================================= */
+
+.directory-panel-body .row {
+    --bs-gutter-x: 20px;
+    --bs-gutter-y: 20px;
+}
+
+.directory-panel-body .teacher-search-item,
+.directory-panel-body .staff-search-item {
+    min-width: 0;
+}
+
+.directory-panel-body .card {
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid var(--directory-border);
+    border-radius: 11px;
+    background: #fff;
+    box-shadow: 0 5px 17px rgba(11, 35, 64, 0.045);
+    transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.directory-panel-body .card:hover {
+    transform: translateY(-4px);
+    border-color: #bfd2e9;
+    box-shadow: 0 13px 28px rgba(11, 35, 64, 0.09);
+}
+
+.directory-panel-body .card-img-top {
+    display: block;
+    width: 100%;
+    height: 225px;
+    object-fit: cover;
+    object-position: center top;
+    background: #e6edf6;
+}
+
+.directory-panel-body .card-body {
+    padding: 20px;
+}
+
+.directory-panel-body .card-title {
+    margin-bottom: 7px;
+    color: var(--directory-navy);
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.5;
+}
+
+.directory-panel-body .card-text {
+    color: var(--directory-muted);
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+.directory-panel-body .card-body .text-muted {
+    color: var(--directory-muted) !important;
+}
+
+.directory-panel-body .card-body .badge {
+    padding: 6px 9px;
+    border-radius: 5px;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.directory-panel-body .card-footer {
+    padding: 13px 18px;
+    border-top: 1px solid #e7edf5;
+    background: #f3f7fc;
+    color: #60738c;
+    font-size: 10px;
+}
+
+.directory-panel-body .card .btn {
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.directory-panel-body .btn-primary {
+    border-color: var(--directory-blue);
+    background: var(--directory-blue);
+}
+
+.directory-panel-body .btn-primary:hover {
+    border-color: #0f55ad;
+    background: #0f55ad;
+}
+
+.directory-panel-body .btn-outline-primary {
+    border-color: #b9cfe9;
+    color: var(--directory-blue);
+}
+
+.directory-panel-body .btn-outline-primary:hover {
+    border-color: var(--directory-blue);
+    background: var(--directory-blue);
+    color: #fff;
+}
+
+/* Avatar and profile images */
+
+.directory-panel-body .rounded-circle {
+    object-fit: cover;
+}
+
+.directory-panel-body .teacher-photo,
+.directory-panel-body .staff-photo {
+    max-width: 100%;
+    object-fit: cover;
+}
+
+/* Empty search results */
+
+.directory-panel-body #noTeacherFound,
+.directory-panel-body #noStaffFound {
+    margin-top: 20px;
+    padding: 28px 18px;
+    border: 1px dashed #cbd8e8;
+    border-radius: 9px;
+    background: #f0f5fb;
+    color: var(--directory-muted);
+    text-align: center;
+    font-size: 12px;
+}
+
+.directory-panel-body #noTeacherFound i,
+.directory-panel-body #noStaffFound i {
+    display: block;
+    margin-bottom: 10px;
+    color: #7b95b5;
+    font-size: 28px;
+}
+
+/* =========================================================
+   BOTTOM INFORMATION
+   ========================================================= */
+
+.directory-bottom-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 17px;
+    margin-top: 30px;
+    padding: 23px 25px;
+    border: 1px solid #d1dfef;
+    border-radius: 11px;
+    background: #e5eef9;
+}
+
+.directory-bottom-note-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    border: 1px solid #d2e2f5;
+    border-radius: 9px;
+    background: #f8fbff;
+    color: var(--directory-blue);
+    font-size: 19px;
+}
+
+.directory-bottom-note h3 {
+    margin: 1px 0 7px;
+    color: var(--directory-navy);
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.directory-bottom-note p {
+    max-width: 850px;
+    margin: 0;
+    color: #60738b;
+    font-size: 11px;
+    line-height: 1.9;
+}
+
+/* =========================================================
+   BOOTSTRAP ICONS
+   Keep Bootstrap Icons font intact
+   ========================================================= */
+
+.directory-hero .bi,
+.directory-main .bi {
+    display: inline-block;
+    font-family: "bootstrap-icons" !important;
+    font-style: normal;
+    font-weight: normal !important;
+    line-height: 1;
+    vertical-align: -0.1em;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* =========================================================
+   ACCESSIBILITY AND INTERACTION
+   ========================================================= */
+
+.directory-hero-button:focus-visible,
+.directory-tabs .nav-link:focus-visible,
+.directory-search input:focus-visible {
+    outline: 3px solid rgba(77, 151, 244, 0.5);
+    outline-offset: 3px;
+}
+
+.directory-tabs .nav-link:focus {
+    box-shadow: none;
+}
+
+.directory-tabs .nav-link.active:focus {
+    box-shadow: 0 0 0 3px rgba(23, 105, 213, 0.14);
+}
+
+.directory-main .tab-pane {
+    animation: directoryPanelIn 0.24s ease both;
+}
+
+@keyframes directoryPanelIn {
+    from {
+        opacity: 0.5;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================================
+   RESPONSIVE: TABLET
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+    .directory-hero-container {
+        padding-top: 25px;
+        padding-bottom: 48px;
+    }
+
+    .directory-breadcrumb {
+        margin-bottom: 35px;
+    }
+
+    .directory-hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 35px;
+    }
+
+    .directory-hero-copy {
+        max-width: 720px;
+    }
+
+    .directory-hero-stats {
+        max-width: 650px;
+    }
+
+    .directory-control-panel {
+        padding: 22px;
+    }
+
+    .directory-control-row {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .directory-tabs {
+        width: 100%;
+    }
+
+    .directory-tabs .nav-link {
+        flex: 1 1 auto;
+    }
+
+    .directory-search {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .directory-section-heading {
+        min-height: 125px;
+        padding: 23px;
+    }
+
+    .directory-panel-body {
+        padding: 22px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE: MOBILE
+   ========================================================= */
+
+@media (max-width: 575.98px) {
+    .directory-hero-container {
+        padding-top: 20px;
+        padding-bottom: 35px;
+    }
+
+    .directory-breadcrumb {
+        margin-bottom: 29px;
+    }
+
+    .directory-breadcrumb .breadcrumb {
+        font-size: 10px;
+    }
+
+    .directory-hero-copy h1 {
+        margin-bottom: 17px;
+        font-size: clamp(32px, 9vw, 43px);
+        letter-spacing: -1.2px;
+    }
+
+    .directory-hero-copy > p {
+        font-size: 12px;
+        line-height: 1.9;
+    }
+
+    .directory-eyebrow {
+        margin-bottom: 17px;
+        font-size: 9px;
+        letter-spacing: 1.4px;
+    }
+
+    .directory-hero-points {
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 21px;
+    }
+
+    .directory-hero-button {
+        width: 100%;
+        margin-top: 25px;
+    }
+
+    .directory-hero-stats {
+        gap: 9px;
+        padding: 10px;
+        border-radius: 11px;
+    }
+
+    .directory-stat-card {
+        padding: 15px 12px;
+        border-radius: 8px;
+    }
+
+    .directory-stat-icon {
+        width: 33px;
+        height: 33px;
+        flex-basis: 33px;
+        font-size: 16px;
+    }
+
+    .directory-stat-label {
+        font-size: 8px;
+        letter-spacing: 0.4px;
+    }
+
+    .directory-stat-number {
+        margin-top: 20px;
+        font-size: 35px;
+    }
+
+    .directory-stat-title {
+        font-size: 11px;
+    }
+
+    .directory-stat-card p {
+        font-size: 10px;
+        line-height: 1.7;
+    }
+
+    .directory-stat-footer {
+        font-size: 9px;
+    }
+
+    .directory-bottom-inner {
+        justify-content: flex-start;
+        gap: 12px 20px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .directory-bottom-inner span {
+        font-size: 10px;
+    }
+
+    .directory-main {
+        padding: 24px 0 40px;
+    }
+
+    .directory-control-panel {
+        margin-bottom: 20px;
+        padding: 18px 15px;
+        border-radius: 10px;
+    }
+
+    .directory-control-heading {
+        gap: 12px;
+        margin-bottom: 19px;
+    }
+
+    .directory-control-heading h2 {
+        font-size: 21px;
+    }
+
+    .directory-control-heading p {
+        font-size: 11px;
+    }
+
+    .directory-control-symbol {
+        width: 42px;
+        height: 42px;
+        flex-basis: 42px;
+        border-radius: 8px;
+        font-size: 20px;
+    }
+
+    .directory-control-row {
+        gap: 15px;
+        padding-top: 16px;
+    }
+
+    .directory-tabs {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 7px;
+    }
+
+    .directory-tabs .nav-link {
+        justify-content: flex-start;
+        width: 100%;
+        min-height: 42px;
+        padding: 10px 12px;
+        font-size: 11px;
+    }
+
+    .directory-tabs .nav-link > span:nth-child(2) {
+        flex: 1;
+        text-align: left;
+    }
+
+    .directory-search,
+    .directory-search input {
+        min-height: 42px;
+    }
+
+    .directory-section-heading {
+        min-height: 0;
+        flex-wrap: wrap;
+        gap: 13px;
+        padding: 20px 16px;
+    }
+
+    .directory-section-icon {
+        width: 43px;
+        height: 43px;
+        flex-basis: 43px;
+        border-radius: 9px;
+        font-size: 20px;
+    }
+
+    .directory-section-copy {
+        flex: 1 1 calc(100% - 60px);
+    }
+
+    .directory-section-copy .directory-section-kicker {
+        font-size: 9px;
+        letter-spacing: 1.1px;
+    }
+
+    .directory-section-copy h2 {
+        font-size: 19px;
+        letter-spacing: -0.4px;
+    }
+
+    .directory-section-copy p {
+        font-size: 10px;
+    }
+
+    .directory-heading-decoration {
+        right: 4px;
+        bottom: -17px;
+        font-size: 85px;
+    }
+
+    .directory-heading-total {
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 9px;
+        width: 100%;
+        min-width: 0;
+        margin: 3px 0 0;
+        padding: 10px 12px;
+    }
+
+    .directory-heading-total strong {
+        font-size: 20px;
+    }
+
+    .directory-heading-total span {
+        margin-top: 0;
+        font-size: 10px;
+    }
+
+    .directory-panel-body,
+    .directory-org-body {
+        padding: 15px;
+    }
+
+    .directory-panel-body .row {
+        --bs-gutter-x: 12px;
+        --bs-gutter-y: 14px;
+    }
+
+    .directory-panel-body .card-img-top {
+        height: 190px;
+    }
+
+    .directory-panel-body .card-body {
+        padding: 14px;
+    }
+
+    .directory-panel-body .card-title {
+        font-size: 13px;
+    }
+
+    .directory-panel-body .card-text {
+        font-size: 10px;
+    }
+
+    .directory-bottom-note {
+        gap: 12px;
+        margin-top: 21px;
+        padding: 17px 14px;
+    }
+
+    .directory-bottom-note-icon {
+        width: 36px;
+        height: 36px;
+        flex-basis: 36px;
+        font-size: 16px;
+    }
+
+    .directory-bottom-note h3 {
+        font-size: 12px;
+    }
+
+    .directory-bottom-note p {
+        font-size: 10px;
+        line-height: 1.8;
+    }
+}
+
+/* Respect reduced motion settings */
+
+@media (prefers-reduced-motion: reduce) {
+    .directory-hero *,
+    .directory-main *,
+    .directory-main .tab-pane {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+
+/* =========================================================
+   TATA KELOLA SEKOLAH — WARNA BIRU LEBIH DOMINAN
+   ========================================================= */
+
+.directory-section-heading.directory-heading-blue {
+    position: relative;
+    overflow: hidden;
+    background: #174f91;
+    border-bottom: 0;
+}
+
+.directory-heading-blue .directory-section-icon {
+    background: #ffffff;
+    border: 1px solid #ffffff;
+    color: #174f91;
+    box-shadow: none;
+}
+
+.directory-heading-blue .directory-section-copy .directory-section-kicker {
+    color: #c8e0ff;
+}
+
+.directory-heading-blue .directory-section-copy h2 {
+    color: #ffffff;
+}
+
+.directory-heading-blue .directory-section-copy p {
+    color: #e0edff;
+}
+
+.directory-heading-blue .directory-heading-decoration {
+    color: rgba(255, 255, 255, 0.10);
+}
+
+/* Area isi bagan */
+.directory-content-section:has(.directory-heading-blue) .directory-org-body {
+    background: #eaf1fa;
+}
+
+/* Card bagan organisasi */
+.directory-org-body .card {
+    border: 1px solid #cbd9eb;
+    background: #ffffff;
+    box-shadow: 0 5px 16px rgba(11, 35, 64, 0.08);
+}
+
+.directory-org-body .card-header {
+    background: #d8e8fc;
+    border-bottom: 1px solid #c2d8f2;
+    color: #12345a;
+}
+
+
+/* =========================================================
+   TENAGA PENDIDIK — JAJARAN DEWAN GURU
+   ========================================================= */
+
+.directory-section-heading.directory-heading-purple {
+    background: #5946bd;
+    border-bottom: 0;
+}
+
+.directory-heading-purple .directory-section-icon {
+    background: #ffffff;
+    border: 1px solid #ffffff;
+    color: #5946bd;
+    box-shadow: none;
+}
+
+.directory-heading-purple .directory-section-copy .directory-section-kicker {
+    color: #e0d9ff;
+}
+
+.directory-heading-purple .directory-section-copy h2 {
+    color: #ffffff;
+}
+
+.directory-heading-purple .directory-section-copy p {
+    color: #eeeaff;
+}
+
+.directory-heading-purple .directory-heading-decoration {
+    color: rgba(255, 255, 255, 0.11);
+}
+
+.directory-heading-purple .directory-heading-total {
+    background: #4937a5;
+    border: 1px solid #7565ce;
+}
+
+.directory-heading-purple .directory-heading-total strong {
+    color: #ffffff;
+}
+
+.directory-heading-purple .directory-heading-total span {
+    color: #e0d9ff;
+}
+
+/* =========================================================
+   TENAGA KEPENDIDIKAN — STAF & TATA USAHA
+   ========================================================= */
+
+.directory-section-heading.directory-heading-teal {
+    background: #087985;
+    border-bottom: 0;
+}
+
+.directory-heading-teal .directory-section-icon {
+    background: #ffffff;
+    border: 1px solid #ffffff;
+    color: #087985;
+    box-shadow: none;
+}
+
+.directory-heading-teal .directory-section-copy .directory-section-kicker {
+    color: #bff5ef;
+}
+
+.directory-heading-teal .directory-section-copy h2 {
+    color: #ffffff;
+}
+
+.directory-heading-teal .directory-section-copy p {
+    color: #e0fffb;
+}
+
+.directory-heading-teal .directory-heading-decoration {
+    color: rgba(255, 255, 255, 0.11);
+}
+
+.directory-heading-teal .directory-heading-total {
+    background: #066671;
+    border: 1px solid #29949d;
+}
+
+.directory-heading-teal .directory-heading-total strong {
+    color: #ffffff;
+}
+
+.directory-heading-teal .directory-heading-total span {
+    color: #c8f5f1;
+}
+
+
+/* =========================================================
+   ORGANIZATION CHART — BAGAN STRUKTUR ORGANISASI
+   ========================================================= */
+
+.directory-org-body {
+    background: #e8eff8 !important;
+}
+
+.directory-org-body .org-chart-wrapper {
+    padding: 8px;
+}
+
+.directory-org-body .org-node {
+    overflow: hidden;
+    height: 100%;
+    border: 1px solid #cbd9eb !important;
+    border-radius: 11px !important;
+    background: #ffffff !important;
+    box-shadow: 0 5px 16px rgba(11, 35, 64, 0.07) !important;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.directory-org-body .org-node:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(11, 35, 64, 0.12) !important;
+}
+
+/* Kepala sekolah */
+.directory-org-body .org-node-principal {
+    border: 2px solid #1769d5 !important;
+    background: linear-gradient(145deg, #ffffff, #edf5ff) !important;
+}
+
+.directory-org-body .org-node-principal h5 {
+    color: #0b2340 !important;
+    line-height: 1.5;
+}
+
+.directory-org-body .org-node-principal > span.badge {
+    background: #174f91 !important;
+    color: #ffffff !important;
+}
+
+.directory-org-body .org-node-principal img {
+    border-color: #1769d5 !important;
+}
+
+/* Garis struktur */
+.directory-org-body .org-connector-v {
+    width: 3px;
+    height: 30px;
+    margin: 0 auto 14px;
+    border-radius: 3px;
+    background: #4d83c4;
+}
+
+/* Inisial avatar */
+.directory-org-body .org-avatar-mini > div {
+    border: 3px solid #e4edf9;
+    box-shadow: 0 3px 10px rgba(11, 35, 64, 0.08);
+}
+
+/* Label jabatan */
+.directory-org-body .org-node .badge {
+    display: inline-block;
+    max-width: 100%;
+    white-space: normal;
+    line-height: 1.5;
+    font-size: 9px !important;
+    font-weight: 800;
+    letter-spacing: 0.25px;
+}
+
+.directory-org-body .org-node h6 {
+    color: #12345a !important;
+    line-height: 1.6;
+}
+
+.directory-org-body .org-node small {
+    display: block;
+    color: #667991 !important;
+    line-height: 1.7;
+}
+
+/* Area dewan pendidik dan staf operasional */
+.directory-org-body .org-chart-wrapper > .bg-light {
+    border: 1px solid #c8d9ee !important;
+    border-radius: 11px !important;
+    background: #dce9f8 !important;
+}
+
+.directory-org-body .org-chart-wrapper > .bg-light h6 {
+    color: #12345a !important;
+}
+
+.directory-org-body .org-chart-wrapper > .bg-light p {
+    color: #506781 !important;
+    line-height: 1.8;
+}
+
+.directory-org-body .org-chart-wrapper > .bg-light p strong {
+    color: #12345a;
+}
+
+.directory-org-body .org-chart-wrapper > .bg-light .btn {
+    min-height: 36px;
+    border-radius: 7px !important;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.directory-org-body .org-chart-wrapper > .bg-light .btn-primary {
+    border-color: #174f91;
+    background: #174f91;
+}
+
+.directory-org-body .org-chart-wrapper > .bg-light .btn-primary:hover {
+    border-color: #0b376b;
+    background: #0b376b;
+}
+
+.directory-org-body .org-chart-wrapper > .bg-light .btn-outline-secondary {
+    border-color: #a8bbd2;
+    background: #f8fbff;
+    color: #344e6c;
+}
+
+.directory-org-body .org-chart-wrapper > .bg-light .btn-outline-secondary:hover {
+    border-color: #174f91;
+    background: #174f91;
+    color: #ffffff;
+}
+
+/* =========================================================
+   TEACHER & STAFF CARDS
+   ========================================================= */
+
+.directory-panel-body .teacher-card-modern {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+    padding: 24px 17px !important;
+    overflow: hidden;
+    border: 1px solid #d4dfed !important;
+    border-radius: 12px !important;
+    background: #ffffff;
+    box-shadow: 0 5px 16px rgba(11, 35, 64, 0.055) !important;
+    transition: transform 0.22s ease, box-shadow 0.22s ease,
+        border-color 0.22s ease;
+}
+
+.directory-panel-body .teacher-card-modern:hover {
+    transform: translateY(-5px);
+    border-color: #8bb8ee !important;
+    box-shadow: 0 13px 27px rgba(11, 35, 64, 0.11) !important;
+}
+
+/* Foto guru dan staf */
+.directory-panel-body .teacher-card-modern img.rounded-circle,
+.directory-panel-body .teacher-card-modern .position-relative > div.rounded-circle {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.directory-panel-body .teacher-card-modern img.rounded-circle {
+    border: 3px solid #dce9f9 !important;
+    box-shadow: 0 4px 12px rgba(11, 35, 64, 0.09) !important;
+}
+
+.directory-panel-body .teacher-card-modern .position-relative > div.rounded-circle {
+    border: 3px solid #dce9f9 !important;
+}
+
+/* Indikator status aktif */
+.directory-panel-body .teacher-card-modern .position-absolute.bottom-0.end-0 {
+    width: 16px;
+    height: 16px;
+    padding: 0.2rem !important;
+    background: #15956b !important;
+}
+
+/* Nama guru dan staf */
+.directory-panel-body .teacher-card-modern h5 {
+    width: 100%;
+    margin-top: 2px;
+    color: #0b2340 !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    line-height: 1.65;
+}
+
+/* Badge bidang pelajaran */
+.directory-panel-body .teacher-card-modern .badge.bg-primary-subtle {
+    max-width: 100%;
+    border-color: #c8dcf7 !important;
+    background: #e5effd !important;
+    color: #174f91 !important;
+    font-size: 10px !important;
+    font-weight: 700;
+    line-height: 1.6;
+}
+
+/* Badge staf tata usaha */
+.directory-panel-body .teacher-card-modern .badge.bg-secondary-subtle {
+    max-width: 100%;
+    border-color: #d5deea !important;
+    background: #e9eef5 !important;
+    color: #344b67 !important;
+    font-size: 10px !important;
+    font-weight: 700;
+    line-height: 1.6;
+}
+
+/* Keterangan kelas dan email */
+.directory-panel-body .teacher-card-modern .text-muted {
+    color: #6a7c93 !important;
+}
+
+.directory-panel-body .teacher-card-modern .border-top {
+    width: 100%;
+    margin-top: auto !important;
+    padding-top: 13px !important;
+    border-color: #e0e8f2 !important;
+}
+
+.directory-panel-body .teacher-card-modern .border-top > span {
+    justify-content: center;
+    max-width: 100%;
+    font-size: 10px !important;
+}
+
+.directory-panel-body .teacher-card-modern .border-top i {
+    flex: 0 0 auto;
+    color: #1769d5;
+}
+
+/* =========================================================
+   EMPTY STATES — DATA KOSONG / PENCARIAN
+   ========================================================= */
+
+.directory-panel-body #noTeacherFound,
+.directory-panel-body #noStaffFound,
+.directory-panel-body .teachers-grid-wrapper > .text-center,
+.directory-panel-body .staff-grid-wrapper > .text-center {
+    padding: 38px 20px !important;
+    border: 1px dashed #c6d6e9 !important;
+    border-radius: 11px !important;
+    background: #edf3fa !important;
+}
+
+.directory-panel-body #noTeacherFound > i,
+.directory-panel-body #noStaffFound > i,
+.directory-panel-body .teachers-grid-wrapper > .text-center > i,
+.directory-panel-body .staff-grid-wrapper > .text-center > i {
+    color: #527da9 !important;
+    opacity: 0.8 !important;
+}
+
+.directory-panel-body #noTeacherFound h6,
+.directory-panel-body #noStaffFound h6,
+.directory-panel-body .teachers-grid-wrapper > .text-center h5,
+.directory-panel-body .staff-grid-wrapper > .text-center h5 {
+    color: #12345a !important;
+    font-weight: 800;
+}
+
+.directory-panel-body #noTeacherFound p,
+.directory-panel-body #noStaffFound p,
+.directory-panel-body .teachers-grid-wrapper > .text-center p,
+.directory-panel-body .staff-grid-wrapper > .text-center p {
+    color: #667991 !important;
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 767.98px) {
+    .directory-org-body {
+        padding: 15px !important;
+    }
+
+    .directory-org-body .org-chart-wrapper {
+        padding: 0;
+    }
+
+    .directory-org-body .org-node-principal {
+        max-width: 100% !important;
+    }
+
+    .directory-org-body .org-chart-wrapper > .bg-light {
+        padding: 18px !important;
+    }
+
+    .directory-org-body .org-chart-wrapper > .bg-light .text-md-end {
+        text-align: left !important;
+    }
+
+    .directory-org-body .org-chart-wrapper > .bg-light .btn {
+        margin: 4px 4px 4px 0 !important;
+    }
+
+    .directory-panel-body .teacher-card-modern {
+        padding: 20px 13px !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .directory-panel-body .teacher-card-modern img.rounded-circle,
+    .directory-panel-body .teacher-card-modern .position-relative > div.rounded-circle {
+        width: 86px;
+        height: 86px;
+    }
+
+    .directory-panel-body .teacher-card-modern h5 {
+        font-size: 12px !important;
+    }
+}

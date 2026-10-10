@@ -10,7 +10,8 @@
 @section('content')
 
 <section class="academic-hero">
-    <div class="container">
+    <div class="container academic-hero-container">
+
         <nav aria-label="breadcrumb" class="academic-breadcrumb">
             <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item">
@@ -25,22 +26,110 @@
             </ol>
         </nav>
 
+        <div class="academic-hero-content">
+            <div class="academic-hero-text">
+                <span class="academic-hero-label">
+                    <i class="bi bi-mortarboard-fill"></i>
+                    AKADEMIK & PEMBELAJARAN
+                </span>
 
-    <div class="academic-hero-content">
-        <span class="academic-hero-label">AKADEMIK & PEMBELAJARAN</span>
+                <h1>
+                    Akademik & Program
+                    <span>Pembelajaran</span>
+                </h1>
 
-        <h1>Akademik & Program Pembelajaran</h1>
+                <p>
+                    Informasi struktur kurikulum, program keahlian, daftar mata
+                    pelajaran, kalender akademik publik, serta panduan dan silabus
+                    resmi {{ $settings['school_name'] ?? config('app.name') }}.
+                </p>
 
-        <p>
-            Informasi struktur kurikulum, program keahlian, daftar mata pelajaran,
-            kalender akademik publik, serta unduh panduan & silabus kurikulum resmi
-            {{ $settings['school_name'] ?? config('app.name') }}.
-        </p>
+                <a href="#kurikulum" class="academic-hero-button">
+                    Jelajahi Program Akademik
+                    <i class="bi bi-arrow-down-right"></i>
+                </a>
+            </div>
+
+            {{-- ILUSTRASI AKADEMIK --}}
+            <div class="academic-hero-visual" aria-hidden="true">
+
+                <div class="academic-visual-orbit"></div>
+                <div class="academic-visual-orbit orbit-two"></div>
+
+                <div class="academic-floating-icon icon-book">
+                    <i class="bi bi-journal-bookmark-fill"></i>
+                </div>
+
+                <div class="academic-floating-icon icon-award">
+                    <i class="bi bi-award-fill"></i>
+                </div>
+
+                <div class="academic-floating-icon icon-pencil">
+                    <i class="bi bi-pencil-square"></i>
+                </div>
+
+                <div class="academic-illustration-card">
+                    <div class="academic-illustration-top">
+                        <span class="academic-illustration-dot"></span>
+                        <span class="academic-illustration-dot"></span>
+                        <span class="academic-illustration-dot"></span>
+                        <span class="academic-illustration-caption">
+                            ACADEMIC EXCELLENCE
+                        </span>
+                    </div>
+
+                    <div class="academic-graduation-cap">
+                        <i class="bi bi-mortarboard-fill"></i>
+                    </div>
+
+                    <div class="academic-open-book">
+                        <div class="academic-book-page left-page">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                        <div class="academic-book-spine"></div>
+
+                        <div class="academic-book-page right-page">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <div class="academic-illustration-footer">
+                        <div class="academic-footer-symbol">
+                            <i class="bi bi-book-half"></i>
+                        </div>
+                        <div>
+                            <strong>Learning & Growth</strong>
+                            <span>Explore your potential</span>
+                        </div>
+                        <i class="bi bi-patch-check-fill academic-footer-check"></i>
+                    </div>
+                </div>
+
+                <div class="academic-visual-spark spark-one">✦</div>
+                <div class="academic-visual-spark spark-two">✧</div>
+                <div class="academic-visual-circle circle-one"></div>
+                <div class="academic-visual-circle circle-two"></div>
+
+            </div>
+        </div>
+
+        <div class="academic-hero-bottom">
+            <span><i class="bi bi-book-half"></i> Kurikulum Terarah</span>
+            <span><i class="bi bi-lightbulb-fill"></i> Pembelajaran Inovatif</span>
+            <span><i class="bi bi-mortarboard-fill"></i> Pengembangan Potensi</span>
+        </div>
+
     </div>
-</div>
-
-
 </section>
+
+
 
 <div class="container academic-container">
 
