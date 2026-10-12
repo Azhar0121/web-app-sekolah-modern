@@ -1,0 +1,985 @@
+
+@import url('https://fonts.googleapis.com/2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+.ortu-leave-page {
+    --olp-blue: #1769d5;
+    --olp-blue-dark: #1054b5;
+    --olp-text: #172b4d;
+    --olp-muted: #718096;
+    --olp-border: #e1e9f2;
+
+    width: 100%;
+    padding: 28px 0 45px;
+    color: var(--olp-text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.ortu-leave-page,
+.ortu-leave-page * {
+    box-sizing: border-box;
+}
+
+.ortu-leave-page .olp-container {
+    width: min(100% - 40px, 1440px);
+    margin: 0 auto;
+}
+
+/* ==============================
+   HERO
+============================== */
+
+.ortu-leave-page .olp-hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 250px;
+    margin: 22px 0 35px;
+    padding: 35px 44px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: linear-gradient(115deg, #1053b0 0%, #1769d5 57%, #168fc5 100%);
+    color: #fff;
+    isolation: isolate;
+    box-shadow: 0 12px 28px rgba(23, 105, 213, 0.15);
+}
+
+.ortu-leave-page .olp-hero::before {
+    position: absolute;
+    z-index: -1;
+    top: -150px;
+    right: 120px;
+    width: 350px;
+    height: 350px;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 50%;
+    content: "";
+}
+
+.ortu-leave-page .olp-hero::after {
+    position: absolute;
+    z-index: -1;
+    right: -100px;
+    bottom: -220px;
+    width: 410px;
+    height: 410px;
+    border: 65px solid rgba(255, 255, 255, 0.07);
+    border-radius: 50%;
+    content: "";
+}
+
+.ortu-leave-page .olp-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 690px;
+}
+
+.ortu-leave-page .olp-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 16px;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.1px;
+}
+
+.ortu-leave-page .olp-eyebrow i {
+    font-size: 14px;
+}
+
+.ortu-leave-page .olp-hero h1 {
+    margin: 0 0 13px;
+    color: #fff;
+    font-size: clamp(27px, 3vw, 36px);
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.3;
+}
+
+.ortu-leave-page .olp-hero-content > p {
+    max-width: 610px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.ortu-leave-page .olp-hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 22px;
+}
+
+.ortu-leave-page .olp-hero-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.ortu-leave-page .olp-hero-meta i {
+    font-size: 15px;
+}
+
+/* Ilustrasi hero */
+
+.ortu-leave-page .olp-hero-visual {
+    position: relative;
+    display: flex;
+    flex: 0 0 250px;
+    align-items: center;
+    justify-content: center;
+    height: 205px;
+}
+
+.ortu-leave-page .olp-visual-circle {
+    position: absolute;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+}
+
+.ortu-leave-page .olp-circle-one {
+    width: 190px;
+    height: 190px;
+}
+
+.ortu-leave-page .olp-circle-two {
+    width: 145px;
+    height: 145px;
+    border-style: dashed;
+}
+
+.ortu-leave-page .olp-illustration-card {
+    position: relative;
+    z-index: 1;
+    width: 125px;
+    height: 151px;
+    padding: 16px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 15px 35px rgba(5, 36, 83, 0.2);
+    transform: rotate(-5deg);
+}
+
+.ortu-leave-page .olp-illustration-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 43px;
+    height: 43px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background: #e8f1ff;
+    color: var(--olp-blue);
+    font-size: 24px;
+}
+
+.ortu-leave-page .olp-illustration-line {
+    height: 5px;
+    margin-bottom: 8px;
+    border-radius: 3px;
+    background: #dfe8f3;
+}
+
+.ortu-leave-page .olp-line-wide {
+    width: 100%;
+}
+
+.ortu-leave-page .olp-line-medium {
+    width: 76%;
+}
+
+.ortu-leave-page .olp-line-short {
+    width: 53%;
+}
+
+.ortu-leave-page .olp-illustration-check {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 27px;
+    height: 27px;
+    border: 2px solid #1ca878;
+    border-radius: 50%;
+    color: #15956b;
+    font-size: 15px;
+}
+
+/* ==============================
+   JUDUL SECTION
+============================== */
+
+.ortu-leave-page .olp-history-section {
+    margin-bottom: 28px;
+}
+
+.ortu-leave-page .olp-section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+    margin-bottom: 23px;
+    padding: 23px 25px;
+    border: 1px solid #dce8f7;
+    border-left: 5px solid var(--olp-blue);
+    border-radius: 9px;
+    background: linear-gradient(110deg, #edf5ff 0%, #fff 80%);
+    box-shadow: 0 4px 15px rgba(23, 105, 213, 0.04);
+}
+
+.ortu-leave-page .olp-section-copy {
+    min-width: 0;
+}
+
+.ortu-leave-page .olp-section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 9px;
+    padding: 6px 10px;
+    border: 1px solid #d1e2fb;
+    border-radius: 5px;
+    background: #dfeeff;
+    color: #1458b0;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
+
+.ortu-leave-page .olp-section-label::before {
+    width: 7px;
+    height: 7px;
+    border-radius: 2px;
+    background: var(--olp-blue);
+    content: "";
+}
+
+.ortu-leave-page .olp-section-heading h2 {
+    margin: 0 0 9px;
+    color: #102c50;
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: -0.6px;
+    line-height: 1.4;
+}
+
+.ortu-leave-page .olp-section-heading p {
+    max-width: 650px;
+    margin: 0;
+    color: #62758e;
+    font-size: 11px;
+    line-height: 1.9;
+}
+
+/* Tombol ajukan izin */
+
+.ortu-leave-page .olp-create-button {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 44px;
+    padding: 12px 17px;
+    border: 1px solid var(--olp-blue);
+    border-radius: 7px;
+    background: var(--olp-blue);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(23, 105, 213, 0.12);
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ortu-leave-page .olp-create-button i {
+    font-size: 15px;
+}
+
+.ortu-leave-page .olp-create-button:hover {
+    border-color: var(--olp-blue-dark);
+    background: var(--olp-blue-dark);
+    color: #fff;
+    box-shadow: 0 6px 14px rgba(23, 105, 213, 0.2);
+}
+
+/* ==============================
+   ALERT SUKSES
+============================== */
+
+.ortu-leave-page .olp-alert-success {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 15px 17px;
+    border: 1px solid #bfe8d4;
+    border-radius: 8px;
+    background: #edfbf4;
+    color: #176c4b;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.8;
+}
+
+.ortu-leave-page .olp-alert-icon {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 7px;
+    background: #d5f5e5;
+    color: #15956b;
+    font-size: 17px;
+}
+
+/* ==============================
+   KARTU TABEL
+============================== */
+
+.ortu-leave-page .olp-table-card {
+    overflow: hidden;
+    border: 1px solid var(--olp-border);
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 5px 20px rgba(24, 54, 91, 0.045);
+}
+
+.ortu-leave-page .olp-table-heading {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 20px 23px;
+    border-bottom: 1px solid #e5edf6;
+    background: #fff;
+}
+
+.ortu-leave-page .olp-table-heading-icon {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 43px;
+    height: 43px;
+    border: 1px solid #d9e8ff;
+    border-radius: 8px;
+    background: #eaf2ff;
+    color: var(--olp-blue);
+    font-size: 20px;
+}
+
+.ortu-leave-page .olp-table-heading-copy h3 {
+    margin: 0 0 5px;
+    color: #173453;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.ortu-leave-page .olp-table-heading-copy p {
+    margin: 0;
+    color: #8190a4;
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+.ortu-leave-page .olp-record-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-left: auto;
+    padding: 8px 11px;
+    border: 1px solid #dce8f7;
+    border-radius: 6px;
+    background: #f4f8ff;
+    color: #41658e;
+    font-size: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.ortu-leave-page .olp-record-count i {
+    color: var(--olp-blue);
+    font-size: 13px;
+}
+
+/* Tabel */
+
+.ortu-leave-page .olp-table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.ortu-leave-page .olp-table {
+    width: 100%;
+    min-width: 1080px;
+    border-collapse: separate;
+    border-spacing: 0;
+    color: #40536d;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+}
+
+.ortu-leave-page .olp-table thead th {
+    padding: 15px 16px;
+    border: 0;
+    border-bottom: 1px solid #dbe6f2;
+    background: #eef4fb;
+    color: #355170;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+}
+
+.ortu-leave-page .olp-table tbody td {
+    padding: 17px 16px;
+    border-bottom: 1px solid #edf1f6;
+    background: #fff;
+    color: #52647b;
+    line-height: 1.8;
+    vertical-align: middle;
+}
+
+.ortu-leave-page .olp-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.ortu-leave-page .olp-table tbody tr:hover td {
+    background: #f8fbff;
+}
+
+/* Nama anak */
+
+.ortu-leave-page .olp-student-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 140px;
+}
+
+.ortu-leave-page .olp-student-icon {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border: 1px solid #dce9fc;
+    border-radius: 8px;
+    background: #edf5ff;
+    color: var(--olp-blue);
+    font-size: 16px;
+}
+
+.ortu-leave-page .olp-student-name {
+    color: #203b5b;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+/* Jenis izin */
+
+.ortu-leave-page .olp-type-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px 9px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.ortu-leave-page .olp-type-sick {
+    border-color: #f4d4d4;
+    background: #fff0f0;
+    color: #c44444;
+}
+
+.ortu-leave-page .olp-type-permission {
+    border-color: #f3e1b4;
+    background: #fff7e4;
+    color: #9b6a0b;
+}
+
+.ortu-leave-page .olp-type-badge i {
+    font-size: 12px;
+}
+
+/* Tanggal */
+
+.ortu-leave-page .olp-date-cell {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    min-width: 130px;
+    color: #526780;
+    font-size: 10px;
+}
+
+.ortu-leave-page .olp-date-cell > i {
+    margin-top: 3px;
+    color: var(--olp-blue);
+    font-size: 13px;
+}
+
+.ortu-leave-page .olp-date-cell > span {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.ortu-leave-page .olp-date-separator {
+    color: #94a1b2;
+    font-size: 9px;
+}
+
+/* Alasan */
+
+.ortu-leave-page .olp-reason-cell {
+    max-width: 200px;
+    color: #52647b;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+/* Status */
+
+.ortu-leave-page .olp-status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 7px 10px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.ortu-leave-page .olp-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.ortu-leave-page .olp-status-pending {
+    border-color: #f0dfb7;
+    background: #fff7e4;
+    color: #a57212;
+}
+
+.ortu-leave-page .olp-status-approved {
+    border-color: #c8ebda;
+    background: #eaf9f1;
+    color: #188457;
+}
+
+.ortu-leave-page .olp-status-rejected {
+    border-color: #f2d0d0;
+    background: #fff0f0;
+    color: #c14343;
+}
+
+.ortu-leave-page .olp-status-unknown {
+    border-color: #dce5ef;
+    background: #f1f5f9;
+    color: #607086;
+}
+
+/* Catatan guru */
+
+.ortu-leave-page .olp-notes-cell {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    min-width: 145px;
+    max-width: 230px;
+    color: #667991;
+    overflow-wrap: anywhere;
+}
+
+.ortu-leave-page .olp-notes-cell i {
+    flex-shrink: 0;
+    margin-top: 4px;
+    color: #7195c3;
+    font-size: 13px;
+}
+
+/* ==============================
+   EMPTY STATE
+============================== */
+
+.ortu-leave-page .olp-empty-state {
+    padding: 50px 25px;
+    text-align: center;
+}
+
+.ortu-leave-page .olp-empty-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 74px;
+    height: 74px;
+    margin: 0 auto 18px;
+    border: 1px solid #d9e8fc;
+    border-radius: 50%;
+    background: #edf5ff;
+    color: var(--olp-blue);
+    font-size: 30px;
+}
+
+.ortu-leave-page .olp-empty-state h4 {
+    margin: 0 0 10px;
+    color: #203b5b;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.ortu-leave-page .olp-empty-state p {
+    max-width: 510px;
+    margin: 0 auto 20px;
+    color: #718096;
+    font-size: 11px;
+    line-height: 1.9;
+}
+
+.ortu-leave-page .olp-empty-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 15px;
+    border: 1px solid var(--olp-blue);
+    border-radius: 6px;
+    background: var(--olp-blue);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.ortu-leave-page .olp-empty-button:hover {
+    background: var(--olp-blue-dark);
+    color: #fff;
+}
+
+/* ==============================
+   PAGINATION
+============================== */
+
+.ortu-leave-page .olp-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 17px 22px;
+    border-top: 1px solid #e7edf5;
+    background: #fbfcfe;
+}
+
+.ortu-leave-page .olp-pagination-info {
+    color: #7a899d;
+    font-size: 10px;
+    line-height: 1.8;
+}
+
+.ortu-leave-page .olp-pagination-info strong {
+    color: #355170;
+    font-weight: 800;
+}
+
+.ortu-leave-page .olp-pagination-links {
+    min-width: 0;
+}
+
+.ortu-leave-page .olp-pagination-links nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ortu-leave-page .olp-pagination-links nav > div:first-child {
+    display: none;
+}
+
+.ortu-leave-page .olp-pagination-links nav > div:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+}
+
+.ortu-leave-page .olp-pagination-links a,
+.ortu-leave-page .olp-pagination-links span[aria-current="page"] span,
+.ortu-leave-page .olp-pagination-links span[aria-disabled="true"] span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 34px;
+    min-height: 34px;
+    padding: 6px 10px;
+    border: 1px solid #dce5f0;
+    border-radius: 6px;
+    background: #fff;
+    color: #536a85;
+    font-size: 11px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.ortu-leave-page .olp-pagination-links a:hover {
+    border-color: var(--olp-blue);
+    background: #edf5ff;
+    color: var(--olp-blue);
+}
+
+.ortu-leave-page .olp-pagination-links span[aria-current="page"] span {
+    border-color: var(--olp-blue);
+    background: var(--olp-blue);
+    color: #fff;
+}
+
+.ortu-leave-page .olp-pagination-links span[aria-disabled="true"] span {
+    background: #f3f6fa;
+    color: #a2afbf;
+}
+
+/* ==============================
+   INFORMASI
+============================== */
+
+.ortu-leave-page .olp-information {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    padding: 18px 20px;
+    border: 1px solid #d9e8fc;
+    border-radius: 9px;
+    background: #edf5ff;
+}
+
+.ortu-leave-page .olp-information-icon {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: #dceaff;
+    color: var(--olp-blue);
+    font-size: 18px;
+}
+
+.ortu-leave-page .olp-information strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #204b83;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.ortu-leave-page .olp-information p {
+    margin: 0;
+    color: #526d8e;
+    font-size: 11px;
+    line-height: 1.9;
+}
+
+/* ==============================
+   TOMBOL KEMBALI DI BAWAH
+============================== */
+
+.ortu-leave-page .olp-bottom-actions {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #e1e9f2;
+}
+
+.ortu-leave-page .olp-bottom-actions .olp-back-button {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-width: 125px;
+    min-height: 43px;
+    padding: 11px 18px;
+    border: 1px solid #1769d5;
+    border-radius: 7px;
+    background: #1769d5;
+    color: #fff !important;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+    text-decoration: none !important;
+    box-shadow: 0 4px 10px rgba(23, 105, 213, 0.15);
+    cursor: pointer;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ortu-leave-page .olp-bottom-actions .olp-back-button i {
+    display: inline-block;
+    color: #fff;
+    font-size: 15px;
+    line-height: 1;
+}
+
+.ortu-leave-page .olp-bottom-actions .olp-back-button span {
+    color: #fff;
+}
+
+.ortu-leave-page .olp-bottom-actions .olp-back-button:hover {
+    border-color: #1054b5;
+    background: #1054b5;
+    color: #fff;
+    box-shadow: 0 6px 14px rgba(23, 105, 213, 0.22);
+}
+
+/* ==============================
+   RESPONSIVE
+============================== */
+
+@media (max-width: 1100px) {
+    .ortu-leave-page .olp-hero {
+        padding: 32px;
+    }
+
+    .ortu-leave-page .olp-hero-visual {
+        flex-basis: 205px;
+    }
+
+    .ortu-leave-page .olp-section-heading {
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 767px) {
+    .ortu-leave-page {
+        padding: 18px 0 35px;
+    }
+
+    .ortu-leave-page .olp-container {
+        width: calc(100% - 28px);
+    }
+
+    .ortu-leave-page .olp-hero {
+        min-height: auto;
+        margin: 18px 0 28px;
+        padding: 26px 22px;
+        border-radius: 10px;
+    }
+
+    .ortu-leave-page .olp-hero h1 {
+        font-size: 27px;
+    }
+
+    .ortu-leave-page .olp-hero-content > p {
+        font-size: 11px;
+    }
+
+    .ortu-leave-page .olp-hero-visual {
+        display: none;
+    }
+
+    .ortu-leave-page .olp-section-heading {
+        flex-direction: column;
+        gap: 18px;
+        padding: 21px 18px;
+        border-left-width: 4px;
+    }
+
+    .ortu-leave-page .olp-section-heading h2 {
+        font-size: 21px;
+    }
+
+    .ortu-leave-page .olp-create-button {
+        width: 100%;
+    }
+
+    .ortu-leave-page .olp-table-heading {
+        flex-wrap: wrap;
+        padding: 17px;
+    }
+
+    .ortu-leave-page .olp-record-count {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .ortu-leave-page .olp-pagination {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 16px;
+    }
+
+    .ortu-leave-page .olp-pagination-links,
+    .ortu-leave-page .olp-pagination-links nav {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .ortu-leave-page .olp-information {
+        padding: 15px;
+    }
+
+    .ortu-leave-page .olp-bottom-actions {
+        margin-top: 20px;
+        padding-top: 16px;
+    }
+}
+
+@media (max-width: 420px) {
+    .ortu-leave-page .olp-container {
+        width: calc(100% - 22px);
+    }
+
+    .ortu-leave-page .olp-hero {
+        padding: 23px 18px;
+    }
+
+    .ortu-leave-page .olp-eyebrow {
+        font-size: 9px;
+        letter-spacing: 0.7px;
+    }
+
+    .ortu-leave-page .olp-hero h1 {
+        font-size: 24px;
+    }
+
+    .ortu-leave-page .olp-hero-meta {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .ortu-leave-page .olp-empty-state {
+        padding: 38px 17px;
+    }
+
+    .ortu-leave-page .olp-bottom-actions .olp-back-button {
+        width: 100%;
+    }
+}

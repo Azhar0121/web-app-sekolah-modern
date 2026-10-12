@@ -1,14 +1,17 @@
 /* =========================================================
-   MODERN DASHBOARD LAYOUT (NAVY & BLUE THEME)
+   MODERN DASHBOARD LAYOUT — WHITE SIDEBAR
+   GRADASI NAVY + BLUE PADA TOMBOL MENU
    ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
     --sidebar-width: 260px;
     --topbar-height: 62px;
 
-    /* Theme Palette */
     --admin-navy: #071b35;
-    --admin-navy-dark: #0b294d;
+    --admin-navy-dark: #041329;
+    --admin-navy-2: #0b294d;
     --admin-blue: #1769d5;
     --admin-blue-light: #eaf3ff;
     --admin-blue-subtle: #dbeafe;
@@ -21,6 +24,10 @@
     --sidebar-border: #e2e8f0;
 }
 
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
 html {
     min-height: 100%;
 }
@@ -29,7 +36,7 @@ body {
     min-height: 100%;
     margin: 0;
     background-color: var(--app-bg);
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .app-shell {
@@ -40,8 +47,9 @@ body {
 }
 
 /* =========================================================
-   TOPBAR COMPONENT STYLES
+   TOPBAR
    ========================================================= */
+
 .app-topbar {
     position: sticky !important;
     top: 0 !important;
@@ -49,11 +57,12 @@ body {
     height: var(--topbar-height);
     background-color: #ffffff;
     border-bottom: 1px solid var(--sidebar-border);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 4px rgba(7, 27, 53, 0.05);
 }
 
-.topbar-btn {
-    transition: all 0.15s ease-in-out;
+.topbar-btn,
+.topbar-user-btn {
+    transition: all 0.2s ease;
 }
 
 .topbar-btn:hover {
@@ -66,17 +75,17 @@ body {
     color: var(--admin-blue) !important;
 }
 
-.topbar-user-btn {
-    transition: all 0.15s ease-in-out;
-}
-
 .topbar-user-btn:hover {
     background-color: #f8fafc !important;
     border-color: #cbd5e1 !important;
 }
 
-/* Dropdown Menu Customizations */
+/* =========================================================
+   DROPDOWN
+   ========================================================= */
+
 .dropdown-item {
+    font-family: 'Plus Jakarta Sans', sans-serif;
     transition: all 0.15s ease-in-out;
     border-radius: 6px;
     margin: 1px 4px;
@@ -89,10 +98,9 @@ body {
     color: var(--admin-navy) !important;
 }
 
-/* Logout Button (Tidak bertabrakan dengan background) */
 .dropdown-item-danger {
     color: #dc2626 !important;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .dropdown-item-danger i {
@@ -102,8 +110,8 @@ body {
 
 .dropdown-item-danger:hover,
 .dropdown-item-danger:focus {
-    background-color: #fef2f2 !important; /* Soft light red */
-    color: #b91c1c !important; /* Dark solid red */
+    background-color: #fef2f2 !important;
+    color: #b91c1c !important;
 }
 
 .dropdown-item-danger:hover i,
@@ -113,106 +121,183 @@ body {
 }
 
 /* =========================================================
-   SIDEBAR COMPONENT STYLES
+   SIDEBAR — BACKGROUND TETAP PUTIH
    ========================================================= */
+
 .app-sidebar {
     width: var(--sidebar-width);
     min-width: var(--sidebar-width);
     height: calc(100vh - var(--topbar-height));
+
     position: sticky;
     top: var(--topbar-height);
-    background: var(--sidebar-bg);
+
+    background: #ffffff !important;
     border-right: 1px solid var(--sidebar-border);
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
     padding: 0.85rem 0.75rem 1rem;
+
     overflow-y: auto;
     overflow-x: hidden;
+
     scrollbar-width: thin;
     scrollbar-color: #cbd5e1 transparent;
+
     z-index: 1020;
 }
+
+/* Scrollbar */
 
 .app-sidebar::-webkit-scrollbar {
     width: 5px;
 }
+
+.app-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
 .app-sidebar::-webkit-scrollbar-thumb {
     background: #cbd5e1;
     border-radius: 10px;
 }
+
 .app-sidebar::-webkit-scrollbar-thumb:hover {
     background: #94a3b8;
 }
 
+/* =========================================================
+   GROUP LABEL
+   ========================================================= */
+
 .sidebar-group-label {
     padding: 0.95rem 0.75rem 0.35rem;
+
     font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
+    font-weight: 800;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--sidebar-text-muted);
+
+    color: #94a3b8;
 }
 
-.sidebar-link {
+/* =========================================================
+   MENU NORMAL
+   ========================================================= */
+
+.app-sidebar .sidebar-link {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.55rem 0.75rem;
-    border-radius: 0.5rem;
-    color: var(--sidebar-text);
-    text-decoration: none;
-    font-size: 0.875rem;
-    font-weight: 500;
-    transition: all 0.15s ease-in-out;
+
+    padding: 0.6rem 0.75rem;
     margin-bottom: 2px;
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    background: transparent !important;
+    color: #334155 !important;
+
+    text-decoration: none;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-.sidebar-link i {
-    font-size: 1.1rem;
+.app-sidebar .sidebar-link i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 21px;
+    min-width: 21px;
+
+    font-size: 1.08rem;
     color: #64748b;
-    flex-shrink: 0;
-    transition: color 0.15s ease;
+
+    transition: color 0.2s ease;
 }
 
-/* Hover: Selaras dengan tema Navy & Blue Admin */
-.sidebar-link:hover {
-    background-color: var(--admin-blue-light);
-    color: var(--admin-navy);
-    font-weight: 600;
+/* =========================================================
+   HOVER MENU NORMAL
+   ========================================================= */
+
+.app-sidebar .sidebar-link:not(.active):hover {
+    background: linear-gradient(
+        100deg,
+        #edf3fb 0%,
+        #eaf3ff 100%
+    ) !important;
+
+    color: #0b294d !important;
+    border-color: #dbeafe;
 }
 
-.sidebar-link:hover i {
-    color: var(--admin-blue);
+.app-sidebar .sidebar-link:not(.active):hover i {
+    color: #1769d5 !important;
 }
 
-/* Active: Ketika menu diklik / sedang dibuka */
-.sidebar-link.active {
-    background-color: var(--admin-blue) !important;
+/* =========================================================
+   MENU AKTIF — GRADASI NAVY KE BIRU
+   ========================================================= */
+
+.app-sidebar .sidebar-link.active {
+    background: linear-gradient(
+        110deg,
+        #071b35 0%,
+        #0b294d 48%,
+        #1769d5 100%
+    ) !important;
+
     color: #ffffff !important;
-    font-weight: 600;
-    box-shadow: 0 2px 6px rgba(23, 105, 213, 0.3);
+    font-weight: 700 !important;
+
+    border: 1px solid rgba(23, 105, 213, 0.22) !important;
+
+    box-shadow:
+        0 4px 10px rgba(7, 27, 53, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
-.sidebar-link.active i,
-.sidebar-link.active svg {
+.app-sidebar .sidebar-link.active i,
+.app-sidebar .sidebar-link.active svg {
     color: #ffffff !important;
     opacity: 1 !important;
 }
 
-.sidebar-link.active:hover {
-    background-color: #1255b0 !important;
+/* Hover pada tombol aktif */
+
+.app-sidebar .sidebar-link.active:hover {
+    background: linear-gradient(
+        110deg,
+        #041329 0%,
+        #0b3564 48%,
+        #2582f0 100%
+    ) !important;
+
     color: #ffffff !important;
+    border-color: rgba(23, 105, 213, 0.35) !important;
 }
 
-.sidebar-link.active:hover i,
-.sidebar-link.active:hover svg {
+.app-sidebar .sidebar-link.active:hover i,
+.app-sidebar .sidebar-link.active:hover svg {
     color: #ffffff !important;
 }
 
 /* =========================================================
    MAIN CONTENT
    ========================================================= */
+
 .app-main {
     flex: 1;
     min-width: 0;
@@ -221,20 +306,29 @@ body {
 }
 
 /* =========================================================
-   MOBILE DRAWER (< 992px)
+   MOBILE DRAWER
    ========================================================= */
+
+.sidebar-backdrop {
+    display: none;
+}
+
 @media (max-width: 991.98px) {
     .app-sidebar {
         position: fixed;
         top: 0;
         left: 0;
+
         height: 100vh;
         width: 270px;
         min-width: 270px;
+
         z-index: 1050;
+
         transform: translateX(-100%);
         transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12);
     }
 
     .app-sidebar.is-open {
@@ -245,8 +339,10 @@ body {
         display: none;
         position: fixed;
         inset: 0;
+
         background: rgba(7, 27, 53, 0.45);
         backdrop-filter: blur(2px);
+
         z-index: 1040;
     }
 
@@ -257,4 +353,57 @@ body {
     .app-main {
         padding: 1rem;
     }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .sidebar-link,
+    .sidebar-link i,
+    .app-sidebar {
+        transition: none !important;
+    }
+}
+
+/* MENU AKTIF — GRADASI BIRU DAN NAVY SEIMBANG */
+
+.app-sidebar .sidebar-link.active {
+    background: linear-gradient(
+        110deg,
+        #1769d5 0%,
+        #145bb5 50%,
+        #0b294d 100%
+    ) !important;
+
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    border: 1px solid rgba(23, 105, 213, 0.2) !important;
+
+    box-shadow: 0 3px 8px rgba(23, 105, 213, 0.18);
+}
+
+.app-sidebar .sidebar-link.active i,
+.app-sidebar .sidebar-link.active svg {
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+/* HOVER MENU AKTIF */
+
+.app-sidebar .sidebar-link.active:hover {
+    background: linear-gradient(
+        110deg,
+        #2582f0 0%,
+        #1769d5 50%,
+        #10477e 100%
+    ) !important;
+
+    color: #ffffff !important;
+}
+
+.app-sidebar .sidebar-link.active:hover i,
+.app-sidebar .sidebar-link.active:hover svg {
+    color: #ffffff !important;
 }

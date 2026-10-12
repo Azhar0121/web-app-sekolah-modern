@@ -1,0 +1,1083 @@
+/* =========================================================
+   RIWAYAT PRESENSI ORANG TUA / WALI
+   File: public/css/ortu/attendance/index.css
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+.ortu-attendance-history {
+    --ah-blue: #1769d5;
+    --ah-blue-dark: #1054b3;
+    --ah-blue-light: #eaf3ff;
+    --ah-text: #182b45;
+    --ah-muted: #718198;
+    --ah-border: #e1e9f3;
+    --ah-page: #f5f8fd;
+
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 28px 30px 36px;
+    color: var(--ah-text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    box-sizing: border-box;
+}
+
+.ortu-attendance-history *,
+.ortu-attendance-history *::before,
+.ortu-attendance-history *::after {
+    box-sizing: border-box;
+}
+
+.ortu-attendance-history h1,
+.ortu-attendance-history h2,
+.ortu-attendance-history h3,
+.ortu-attendance-history p {
+    margin-top: 0;
+}
+
+.ortu-attendance-history a {
+    text-decoration: none;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.ortu-attendance-history .ah-hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    min-height: 230px;
+    padding: 35px 40px;
+    margin-bottom: 32px;
+    overflow: hidden;
+    color: #fff;
+    background: #1769d5;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 13px;
+    box-shadow: 0 12px 28px rgba(23, 105, 213, 0.16);
+}
+
+.ortu-attendance-history .ah-hero::before {
+    content: "";
+    position: absolute;
+    top: -95px;
+    right: 100px;
+    width: 250px;
+    height: 250px;
+    border: 35px solid rgba(255, 255, 255, 0.07);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.ortu-attendance-history .ah-hero::after {
+    content: "";
+    position: absolute;
+    right: 225px;
+    bottom: -105px;
+    width: 210px;
+    height: 210px;
+    border: 28px solid rgba(255, 255, 255, 0.07);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.ortu-attendance-history .ah-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+}
+
+.ortu-attendance-history .ah-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 17px;
+    padding: 8px 12px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.13);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.05px;
+}
+
+.ortu-attendance-history .ah-eyebrow i {
+    font-size: 14px;
+}
+
+.ortu-attendance-history .ah-hero h1 {
+    margin-bottom: 12px;
+    color: #fff;
+    font-size: clamp(27px, 3vw, 35px);
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -1px;
+}
+
+.ortu-attendance-history .ah-hero p {
+    max-width: 670px;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.ortu-attendance-history .ah-hero p strong {
+    color: #fff;
+    font-weight: 800;
+}
+
+.ortu-attendance-history .ah-hero-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.ortu-attendance-history .ah-hero-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.ortu-attendance-history .ah-hero-meta i {
+    font-size: 14px;
+}
+
+.ortu-attendance-history .ah-hero-decoration {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex: 0 0 125px;
+    align-items: center;
+    justify-content: center;
+    width: 125px;
+    height: 125px;
+    margin-right: 18px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 16px;
+    transform: rotate(3deg);
+}
+
+.ortu-attendance-history .ah-hero-decoration i {
+    font-size: 62px;
+}
+
+/* =========================================================
+   SECTION HEADING
+   ========================================================= */
+
+.ortu-attendance-history .ah-summary-section,
+.ortu-attendance-history .ah-history-section {
+    margin-bottom: 34px;
+}
+
+.ortu-attendance-history .ah-section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+    padding: 0 0 17px;
+    border-bottom: 1px solid var(--ah-border);
+}
+
+.ortu-attendance-history .ah-section-label {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: var(--ah-blue);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.25px;
+}
+
+.ortu-attendance-history .ah-section-heading h2 {
+    margin-bottom: 7px;
+    color: var(--ah-text);
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1.4;
+    letter-spacing: -0.45px;
+}
+
+.ortu-attendance-history .ah-section-heading p {
+    margin-bottom: 0;
+    color: var(--ah-muted);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.ortu-attendance-history .ah-heading-icon {
+    display: flex;
+    flex: 0 0 48px;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    color: var(--ah-blue);
+    background: #eaf3ff;
+    border: 1px solid #d8e8ff;
+    border-radius: 10px;
+}
+
+.ortu-attendance-history .ah-heading-icon i {
+    font-size: 22px;
+}
+
+/* =========================================================
+   SUMMARY CARDS
+   ========================================================= */
+
+.ortu-attendance-history .ah-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.ortu-attendance-history .ah-summary-card {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    min-width: 0;
+    min-height: 142px;
+    padding: 21px 19px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid var(--ah-border);
+    border-top: 3px solid var(--ah-card-color, var(--ah-blue));
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(28, 55, 90, 0.035);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ortu-attendance-history .ah-summary-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(28, 55, 90, 0.09);
+}
+
+.ortu-attendance-history .ah-hadir {
+    --ah-card-color: #15956b;
+    --ah-card-tint: #e5f7ef;
+    --ah-card-soft: #f4fbf7;
+}
+
+.ortu-attendance-history .ah-izin {
+    --ah-card-color: #1769d5;
+    --ah-card-tint: #e8f2ff;
+    --ah-card-soft: #f4f8ff;
+}
+
+.ortu-attendance-history .ah-sakit {
+    --ah-card-color: #c17a12;
+    --ah-card-tint: #fff2d9;
+    --ah-card-soft: #fffbf3;
+}
+
+.ortu-attendance-history .ah-alpha {
+    --ah-card-color: #d44c58;
+    --ah-card-tint: #ffeaed;
+    --ah-card-soft: #fff7f8;
+}
+
+.ortu-attendance-history .ah-summary-icon {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex: 0 0 43px;
+    align-items: center;
+    justify-content: center;
+    width: 43px;
+    height: 43px;
+    color: var(--ah-card-color);
+    background: var(--ah-card-tint);
+    border: 1px solid rgba(20, 45, 80, 0.04);
+    border-radius: 9px;
+}
+
+.ortu-attendance-history .ah-summary-icon i {
+    font-size: 20px;
+}
+
+.ortu-attendance-history .ah-summary-info {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding-top: 1px;
+}
+
+.ortu-attendance-history .ah-summary-label {
+    margin-bottom: 5px;
+    color: #61718a;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.ortu-attendance-history .ah-summary-info strong {
+    margin-bottom: 5px;
+    color: var(--ah-text);
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
+}
+
+.ortu-attendance-history .ah-summary-info small {
+    color: var(--ah-muted);
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.ortu-attendance-history .ah-summary-watermark {
+    position: absolute;
+    right: 12px;
+    bottom: 4px;
+    color: var(--ah-card-color);
+    opacity: 0.07;
+    pointer-events: none;
+}
+
+.ortu-attendance-history .ah-summary-watermark i {
+    font-size: 65px;
+}
+
+/* =========================================================
+   DATE CARD
+   ========================================================= */
+
+.ortu-attendance-history .ah-date-card {
+    margin-bottom: 20px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid var(--ah-border);
+    border-radius: 11px;
+    box-shadow: 0 5px 18px rgba(28, 55, 90, 0.045);
+}
+
+.ortu-attendance-history .ah-date-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 88px;
+    padding: 17px 22px;
+    background: #f0f6ff;
+    border-bottom: 1px solid #dce9fa;
+}
+
+.ortu-attendance-history .ah-date-icon {
+    display: flex;
+    flex: 0 0 45px;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    color: var(--ah-blue);
+    background: #fff;
+    border: 1px solid #d7e7ff;
+    border-radius: 9px;
+}
+
+.ortu-attendance-history .ah-date-icon i {
+    font-size: 20px;
+}
+
+.ortu-attendance-history .ah-date-info {
+    min-width: 0;
+}
+
+.ortu-attendance-history .ah-date-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #6380a4;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.ortu-attendance-history .ah-date-info h3 {
+    margin-bottom: 0;
+    color: #173a67;
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.5;
+}
+
+.ortu-attendance-history .ah-session-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    flex-shrink: 0;
+    margin-left: auto;
+    padding: 9px 12px;
+    color: #1559ad;
+    background: #fff;
+    border: 1px solid #d6e6fc;
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.ortu-attendance-history .ah-session-count i {
+    font-size: 14px;
+}
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.ortu-attendance-history .ah-table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.ortu-attendance-history .ah-table {
+    width: 100%;
+    min-width: 620px;
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    color: var(--ah-text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.ortu-attendance-history .ah-table thead th {
+    padding: 15px 18px;
+    color: #fff;
+    background: #1769d5;
+    border: 0;
+    border-bottom: 1px solid #125abd;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.65px;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+.ortu-attendance-history .ah-table thead th:first-child {
+    padding-left: 22px;
+}
+
+.ortu-attendance-history .ah-table tbody td {
+    padding: 15px 18px;
+    background: #fff;
+    border: 0;
+    border-bottom: 1px solid #edf1f7;
+    font-size: 12px;
+    vertical-align: middle;
+    transition: background 0.15s ease;
+}
+
+.ortu-attendance-history .ah-table tbody tr:nth-child(even) td {
+    background: #f8faff;
+}
+
+.ortu-attendance-history .ah-table tbody tr:hover td {
+    background: #edf5ff;
+}
+
+.ortu-attendance-history .ah-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.ortu-attendance-history .ah-table .ah-number-column {
+    width: 75px;
+    text-align: center;
+}
+
+.ortu-attendance-history .ah-row-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 29px;
+    height: 29px;
+    color: #37628f;
+    background: #edf4fd;
+    border: 1px solid #dfebfa;
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.ortu-attendance-history .ah-subject {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-width: 180px;
+}
+
+.ortu-attendance-history .ah-subject-icon {
+    display: inline-flex;
+    flex: 0 0 34px;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    color: var(--ah-blue);
+    background: #eaf3ff;
+    border: 1px solid #dceaff;
+    border-radius: 8px;
+}
+
+.ortu-attendance-history .ah-subject-icon i {
+    font-size: 15px;
+}
+
+.ortu-attendance-history .ah-subject-name {
+    color: #253b57;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.6;
+}
+
+/* Status badges: warna tetap mengikuti kelas dari Blade */
+
+.ortu-attendance-history .ah-status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 78px;
+    padding: 7px 11px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+/* Bootstrap background utility compatibility */
+
+.ortu-attendance-history .ah-status-badge.bg-success,
+.ortu-attendance-history .ah-status-badge.text-bg-success {
+    color: #11734e !important;
+    background: #e3f7ed !important;
+    border-color: #c8eedb;
+}
+
+.ortu-attendance-history .ah-status-badge.bg-warning,
+.ortu-attendance-history .ah-status-badge.text-bg-warning {
+    color: #95600c !important;
+    background: #fff3d8 !important;
+    border-color: #f4e3b7;
+}
+
+.ortu-attendance-history .ah-status-badge.bg-danger,
+.ortu-attendance-history .ah-status-badge.text-bg-danger {
+    color: #b52f3d !important;
+    background: #ffeaed !important;
+    border-color: #f8d2d8;
+}
+
+.ortu-attendance-history .ah-status-badge.bg-primary,
+.ortu-attendance-history .ah-status-badge.text-bg-primary {
+    color: #155bb6 !important;
+    background: #e8f2ff !important;
+    border-color: #d2e4ff;
+}
+
+.ortu-attendance-history .ah-status-badge.bg-secondary,
+.ortu-attendance-history .ah-status-badge.text-bg-secondary {
+    color: #53647b !important;
+    background: #edf1f6 !important;
+    border-color: #dfe5ed;
+}
+
+.ortu-attendance-history .ah-scan-time {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #586b83;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.ortu-attendance-history .ah-scan-time i {
+    color: #1769d5;
+    font-size: 14px;
+}
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.ortu-attendance-history .ah-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 290px;
+    padding: 38px 24px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid var(--ah-border);
+    border-radius: 11px;
+    box-shadow: 0 5px 18px rgba(28, 55, 90, 0.035);
+}
+
+.ortu-attendance-history .ah-empty-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 75px;
+    margin-bottom: 20px;
+    color: var(--ah-blue);
+    background: #eaf3ff;
+    border: 1px solid #d8e8ff;
+    border-radius: 17px;
+}
+
+.ortu-attendance-history .ah-empty-icon i {
+    font-size: 34px;
+}
+
+.ortu-attendance-history .ah-empty-state h3 {
+    margin-bottom: 10px;
+    color: var(--ah-text);
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.ortu-attendance-history .ah-empty-state p {
+    max-width: 480px;
+    margin-bottom: 0;
+    color: var(--ah-muted);
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.ortu-attendance-history .ah-empty-state p strong {
+    color: #314c6d;
+    font-weight: 800;
+}
+
+/* =========================================================
+   FOOTER / BACK BUTTON
+   ========================================================= */
+
+.ortu-attendance-history .ah-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 28px;
+    padding-top: 21px;
+    border-top: 1px solid var(--ah-border);
+}
+
+.ortu-attendance-history .ah-back-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 43px;
+    padding: 11px 16px;
+    color: #fff;
+    background: #1769d5;
+    border: 1px solid #1769d5;
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: 800;
+    transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.ortu-attendance-history .ah-back-button i {
+    font-size: 15px;
+}
+
+.ortu-attendance-history .ah-back-button:hover {
+    color: #fff;
+    background: #1054b3;
+    border-color: #1054b3;
+    box-shadow: 0 5px 13px rgba(23, 105, 213, 0.2);
+    transform: translateY(-1px);
+}
+
+.ortu-attendance-history .ah-footer-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #7b8ba0;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.ortu-attendance-history .ah-footer-note i {
+    color: #15956b;
+    font-size: 15px;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+    .ortu-attendance-history {
+        padding: 24px 22px 32px;
+    }
+
+    .ortu-attendance-history .ah-summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .ortu-attendance-history .ah-hero {
+        padding: 31px;
+    }
+
+    .ortu-attendance-history .ah-hero-decoration {
+        flex-basis: 100px;
+        width: 100px;
+        height: 100px;
+        margin-right: 4px;
+    }
+
+    .ortu-attendance-history .ah-hero-decoration i {
+        font-size: 49px;
+    }
+}
+
+@media (max-width: 700px) {
+    .ortu-attendance-history {
+        padding: 18px 14px 28px;
+    }
+
+    .ortu-attendance-history .ah-hero {
+        min-height: auto;
+        padding: 25px 22px;
+        margin-bottom: 27px;
+        border-radius: 10px;
+    }
+
+    .ortu-attendance-history .ah-hero-content {
+        max-width: 100%;
+    }
+
+    .ortu-attendance-history .ah-hero h1 {
+        font-size: 27px;
+    }
+
+    .ortu-attendance-history .ah-hero p {
+        font-size: 12px;
+    }
+
+    .ortu-attendance-history .ah-hero-decoration {
+        display: none;
+    }
+
+    .ortu-attendance-history .ah-hero-meta {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .ortu-attendance-history .ah-hero-meta span {
+        width: fit-content;
+        max-width: 100%;
+    }
+
+    .ortu-attendance-history .ah-section-heading {
+        gap: 12px;
+        margin-bottom: 16px;
+        padding-bottom: 15px;
+    }
+
+    .ortu-attendance-history .ah-section-heading h2 {
+        font-size: 18px;
+    }
+
+    .ortu-attendance-history .ah-section-heading p {
+        font-size: 11px;
+    }
+
+    .ortu-attendance-history .ah-heading-icon {
+        flex-basis: 40px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .ortu-attendance-history .ah-heading-icon i {
+        font-size: 19px;
+    }
+
+    .ortu-attendance-history .ah-summary-grid {
+        gap: 12px;
+    }
+
+    .ortu-attendance-history .ah-summary-card {
+        gap: 10px;
+        min-height: 125px;
+        padding: 16px 13px;
+    }
+
+    .ortu-attendance-history .ah-summary-icon {
+        flex-basis: 35px;
+        width: 35px;
+        height: 35px;
+    }
+
+    .ortu-attendance-history .ah-summary-icon i {
+        font-size: 17px;
+    }
+
+    .ortu-attendance-history .ah-summary-info strong {
+        font-size: 26px;
+    }
+
+    .ortu-attendance-history .ah-summary-label {
+        font-size: 11px;
+    }
+
+    .ortu-attendance-history .ah-summary-info small {
+        font-size: 9px;
+    }
+
+    .ortu-attendance-history .ah-date-header {
+        gap: 11px;
+        padding: 15px;
+    }
+
+    .ortu-attendance-history .ah-date-icon {
+        flex-basis: 38px;
+        width: 38px;
+        height: 38px;
+    }
+
+    .ortu-attendance-history .ah-date-info h3 {
+        font-size: 12px;
+    }
+
+    .ortu-attendance-history .ah-date-label {
+        font-size: 8px;
+    }
+
+    .ortu-attendance-history .ah-session-count {
+        gap: 5px;
+        padding: 7px 8px;
+        font-size: 9px;
+    }
+
+    .ortu-attendance-history .ah-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .ortu-attendance-history .ah-empty-state {
+        min-height: 250px;
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 380px) {
+    .ortu-attendance-history .ah-summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ortu-attendance-history .ah-summary-card {
+        min-height: 110px;
+    }
+
+    .ortu-attendance-history .ah-session-count {
+        align-self: flex-start;
+        margin-top: 2px;
+    }
+
+    .ortu-attendance-history .ah-date-header {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .ortu-attendance-history *,
+    .ortu-attendance-history *::before,
+    .ortu-attendance-history *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
+
+/* =========================================================
+   FIX SECTION HEADING — RINGKASAN & DETAIL RIWAYAT
+   ========================================================= */
+
+.ortu-attendance-history .ah-summary-section,
+.ortu-attendance-history .ah-history-section {
+    display: block;
+    width: 100%;
+    margin-bottom: 34px;
+}
+
+/* Heading dengan latar biru muda */
+.ortu-attendance-history .ah-section-heading {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    min-height: 112px;
+    margin: 0 0 20px;
+    padding: 22px 24px;
+    overflow: hidden;
+    background: #edf5ff;
+    border: 1px solid #d8e8fc;
+    border-left: 4px solid #1769d5;
+    border-bottom: 1px solid #d8e8fc;
+    border-radius: 10px;
+}
+
+/* Dekorasi halus di sisi kanan */
+.ortu-attendance-history .ah-section-heading::after {
+    content: "";
+    position: absolute;
+    top: -35px;
+    right: 75px;
+    width: 125px;
+    height: 125px;
+    background: rgba(23, 105, 213, 0.045);
+    border: 18px solid rgba(23, 105, 213, 0.035);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.ortu-attendance-history .ah-section-heading > div:first-child {
+    position: relative;
+    z-index: 1;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+/* Label kecil di atas judul */
+.ortu-attendance-history .ah-section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin: 0 0 8px;
+    padding: 6px 10px;
+    color: #155bb6;
+    background: #dcecff;
+    border: 1px solid #c9e0ff;
+    border-radius: 5px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.1px;
+    line-height: 1.4;
+}
+
+/* Judul section */
+.ortu-attendance-history .ah-section-heading h2 {
+    margin: 0 0 6px;
+    color: #16385f;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.4;
+    letter-spacing: -0.45px;
+}
+
+/* Deskripsi section */
+.ortu-attendance-history .ah-section-heading p {
+    margin: 0;
+    color: #657993;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.8;
+}
+
+/* Kotak ikon di sebelah kanan */
+.ortu-attendance-history .ah-section-heading .ah-heading-icon {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex: 0 0 49px;
+    align-items: center;
+    justify-content: center;
+    width: 49px;
+    height: 49px;
+    margin-left: 12px;
+    color: #fff;
+    background: #1769d5;
+    border: 1px solid #1769d5;
+    border-radius: 9px;
+    box-shadow: 0 5px 12px rgba(23, 105, 213, 0.15);
+}
+
+.ortu-attendance-history .ah-section-heading .ah-heading-icon i {
+    font-size: 22px;
+    line-height: 1;
+}
+
+/* Heading khusus detail riwayat */
+.ortu-attendance-history .ah-history-heading {
+    background: #f0f7ff;
+}
+
+/* Jarak heading dari kartu statistik */
+.ortu-attendance-history .ah-summary-grid {
+    margin-top: 0;
+}
+
+/* Responsif untuk HP */
+@media (max-width: 600px) {
+    .ortu-attendance-history .ah-section-heading {
+        min-height: 100px;
+        gap: 12px;
+        padding: 18px 15px;
+    }
+
+    .ortu-attendance-history .ah-section-heading::after {
+        right: 20px;
+    }
+
+    .ortu-attendance-history .ah-section-heading h2 {
+        font-size: 17px;
+    }
+
+    .ortu-attendance-history .ah-section-heading p {
+        font-size: 10px;
+    }
+
+    .ortu-attendance-history .ah-section-label {
+        font-size: 8px;
+        letter-spacing: 0.7px;
+    }
+
+    .ortu-attendance-history .ah-section-heading .ah-heading-icon {
+        flex-basis: 39px;
+        width: 39px;
+        height: 39px;
+        margin-left: 0;
+    }
+
+    .ortu-attendance-history .ah-section-heading .ah-heading-icon i {
+        font-size: 18px;
+    }
+}

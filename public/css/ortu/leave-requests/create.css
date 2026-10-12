@@ -1,0 +1,811 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+.ortu-leave-create {
+    --olc-blue: #1769d5;
+    --olc-blue-dark: #1053ad;
+    --olc-text: #1d3048;
+    --olc-muted: #748399;
+    --olc-border: #e0e8f2;
+    --olc-page: #f4f7fb;
+
+    min-height: 100vh;
+    padding: 30px 0 45px;
+    background: var(--olc-page);
+    color: var(--olc-text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.ortu-leave-create *,
+.ortu-leave-create *::before,
+.ortu-leave-create *::after {
+    box-sizing: border-box;
+}
+
+.ortu-leave-create input,
+.ortu-leave-create select,
+.ortu-leave-create textarea,
+.ortu-leave-create button {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.olc-container {
+    width: min(100% - 40px, 1100px);
+    margin: 0 auto;
+}
+
+/* HERO */
+
+.olc-hero {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    min-height: 230px;
+    overflow: hidden;
+    padding: 34px 38px;
+    border-radius: 12px;
+    background: linear-gradient(115deg, #124b94 0%, #1769d5 58%, #1686c4 100%);
+    color: #fff;
+    box-shadow: 0 12px 28px rgba(23, 105, 213, 0.13);
+}
+
+.olc-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
+}
+
+.olc-hero-decoration {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 50%;
+}
+
+.olc-decoration-one {
+    top: -150px;
+    right: 110px;
+    width: 290px;
+    height: 290px;
+}
+
+.olc-decoration-two {
+    right: -65px;
+    bottom: -145px;
+    width: 245px;
+    height: 245px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.olc-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 14px;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.olc-eyebrow i {
+    font-size: 14px;
+}
+
+.olc-hero h1 {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(27px, 3vw, 36px);
+    font-weight: 800;
+    letter-spacing: -0.9px;
+    line-height: 1.3;
+}
+
+.olc-hero-content > p {
+    max-width: 610px;
+    margin: 11px 0 16px;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.olc-hero-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 11px;
+}
+
+.olc-hero-note i {
+    font-size: 14px;
+}
+
+.olc-hero-note strong {
+    color: #fff;
+}
+
+.olc-hero-icon {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    flex: 0 0 90px;
+    width: 90px;
+    height: 90px;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.13);
+    color: #fff;
+    font-size: 42px;
+}
+
+/* ALERT */
+
+.olc-error-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    margin-top: 22px;
+    padding: 16px 19px;
+    border: 1px solid #f3c6c6;
+    border-radius: 9px;
+    background: #fff5f5;
+    color: #922e35;
+}
+
+.olc-alert-icon {
+    display: grid;
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    place-items: center;
+    border-radius: 8px;
+    background: #ffe4e4;
+    font-size: 16px;
+}
+
+.olc-error-alert strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.olc-error-alert p {
+    margin: 0;
+    color: #a25359;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+/* FORM CARD */
+
+.olc-form-card {
+    margin-top: 24px;
+    padding: 30px;
+    border: 1px solid var(--olc-border);
+    border-radius: 11px;
+    background: #fff;
+    box-shadow: 0 5px 22px rgba(28, 54, 86, 0.045);
+}
+
+.olc-form-heading {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 27px;
+    padding-bottom: 23px;
+    border-bottom: 1px solid #edf1f6;
+}
+
+.olc-form-heading-icon {
+    display: grid;
+    flex: 0 0 46px;
+    width: 46px;
+    height: 46px;
+    place-items: center;
+    border-radius: 9px;
+    background: #eaf2ff;
+    color: var(--olc-blue);
+    font-size: 21px;
+}
+
+.olc-form-heading h2 {
+    margin: 0 0 5px;
+    color: var(--olc-text);
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.olc-form-heading p {
+    margin: 0;
+    color: var(--olc-muted);
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+/* FIELD */
+
+.olc-field {
+    min-width: 0;
+    margin-bottom: 23px;
+}
+
+.olc-label {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 9px;
+    color: #34465e;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.olc-required {
+    color: #df4545;
+    font-weight: 800;
+}
+
+.olc-optional {
+    padding: 4px 7px;
+    border-radius: 4px;
+    background: #edf3fb;
+    color: #637a98;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.olc-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.olc-input-icon {
+    position: absolute;
+    z-index: 1;
+    left: 14px;
+    display: grid;
+    place-items: center;
+    color: #7e91aa;
+    font-size: 15px;
+    pointer-events: none;
+}
+
+.olc-control {
+    display: block;
+    width: 100%;
+    min-height: 47px;
+    padding: 11px 13px;
+    border: 1px solid #d8e2ed;
+    border-radius: 7px;
+    outline: none;
+    background-color: #fff;
+    color: #263951;
+    font-size: 12px;
+    line-height: 1.6;
+    box-shadow: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.olc-input-wrap .olc-control {
+    padding-left: 42px;
+}
+
+.olc-control:focus {
+    border-color: #7aaceb;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(23, 105, 213, 0.09);
+}
+
+.olc-control::placeholder {
+    color: #a0adbc;
+}
+
+.olc-control.is-invalid {
+    border-color: #dc555d;
+}
+
+.olc-control.is-invalid:focus {
+    box-shadow: 0 0 0 3px rgba(220, 85, 93, 0.09);
+}
+
+.olc-select {
+    appearance: auto;
+    cursor: pointer;
+}
+
+.olc-textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+.olc-field-error {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    margin-top: 7px;
+    color: #d33e48;
+    font-size: 11px;
+    line-height: 1.65;
+}
+
+.olc-field-error i {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.olc-field-hint {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    margin-top: 8px;
+    color: #8291a5;
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+.olc-field-hint i {
+    flex-shrink: 0;
+    margin-top: 1px;
+    color: var(--olc-blue);
+}
+
+/* PILIHAN JENIS IZIN */
+
+.olc-type-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px;
+}
+
+.olc-type-option {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid #dfe7f1;
+    border-radius: 9px;
+    background: #fff;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.olc-type-option:hover {
+    border-color: #a7c7f3;
+    background: #f9fbff;
+}
+
+.olc-type-option.is-selected {
+    border-color: #79a9eb;
+    background: #f0f6ff;
+}
+
+.olc-radio {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    margin: 0;
+    accent-color: var(--olc-blue);
+    cursor: pointer;
+}
+
+.olc-type-icon {
+    display: grid;
+    flex: 0 0 43px;
+    width: 43px;
+    height: 43px;
+    place-items: center;
+    border-radius: 9px;
+    font-size: 20px;
+}
+
+.olc-type-icon-sick {
+    background: #fff0ef;
+    color: #d65353;
+}
+
+.olc-type-icon-permission {
+    background: #eaf2ff;
+    color: #1769d5;
+}
+
+.olc-type-copy {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+    padding-right: 12px;
+}
+
+.olc-type-copy strong {
+    color: #263951;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.olc-type-copy small {
+    color: #7c8ba0;
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+.olc-type-check {
+    display: none;
+    color: var(--olc-blue);
+    font-size: 16px;
+}
+
+.olc-type-option.is-selected .olc-type-check {
+    display: inline-flex;
+}
+
+/* PEMISAH BAGIAN */
+
+.olc-section-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 30px 0 20px;
+    padding-top: 24px;
+    border-top: 1px solid #edf1f6;
+}
+
+.olc-section-number {
+    display: grid;
+    flex: 0 0 35px;
+    width: 35px;
+    height: 35px;
+    place-items: center;
+    border-radius: 8px;
+    background: #eaf2ff;
+    color: var(--olc-blue);
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.olc-section-divider h3 {
+    margin: 0 0 4px;
+    color: var(--olc-text);
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.olc-section-divider p {
+    margin: 0;
+    color: var(--olc-muted);
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+.olc-date-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 17px;
+}
+
+.olc-date-grid .olc-field {
+    margin-bottom: 4px;
+}
+
+/* UPLOAD LAMPIRAN */
+
+.olc-attachment-field {
+    margin-top: 24px;
+}
+
+.olc-upload-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-width: 0;
+    padding: 19px;
+    border: 1px dashed #b9cce2;
+    border-radius: 9px;
+    background: #f8faff;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.olc-upload-area:hover {
+    border-color: #76a8eb;
+    background: #f0f6ff;
+}
+
+.olc-upload-icon {
+    display: grid;
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+    border-radius: 9px;
+    background: #e5efff;
+    color: var(--olc-blue);
+    font-size: 24px;
+}
+
+.olc-upload-copy {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+}
+
+.olc-upload-copy strong {
+    color: #2b4059;
+    font-size: 12px;
+    font-weight: 800;
+    overflow-wrap: anywhere;
+}
+
+.olc-upload-copy small {
+    color: #7d8da2;
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+.olc-upload-format {
+    color: #8997a9;
+    font-size: 10px;
+}
+
+.olc-file-name {
+    margin-top: 3px;
+    color: #8a97a8;
+    font-size: 10px;
+    overflow-wrap: anywhere;
+}
+
+.olc-file-name.has-file {
+    color: #1769d5;
+    font-weight: 700;
+}
+
+.olc-upload-button {
+    flex-shrink: 0;
+    padding: 9px 12px;
+    border: 1px solid #cbdcf2;
+    border-radius: 6px;
+    background: #fff;
+    color: #195cae;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.olc-file-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+}
+
+.olc-file-input:focus-visible + .olc-field-error {
+    outline: 2px solid var(--olc-blue);
+}
+
+/* TOMBOL FORM */
+
+.olc-form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 13px;
+    margin-top: 29px;
+    padding-top: 22px;
+    border-top: 1px solid #edf1f6;
+}
+
+.olc-cancel-button,
+.olc-submit-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 44px;
+    padding: 11px 17px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.olc-cancel-button {
+    border-color: #dbe3ed;
+    background: #fff;
+    color: #65758a;
+}
+
+.olc-cancel-button:hover {
+    border-color: #b8c7d9;
+    background: #f5f7fa;
+    color: #33465e;
+}
+
+.olc-submit-button {
+    border-color: var(--olc-blue);
+    background: var(--olc-blue);
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(23, 105, 213, 0.15);
+}
+
+.olc-submit-button:hover {
+    transform: translateY(-1px);
+    border-color: var(--olc-blue-dark);
+    background: var(--olc-blue-dark);
+    color: #fff;
+}
+
+.olc-cancel-button:focus-visible,
+.olc-submit-button:focus-visible {
+    outline: 3px solid rgba(23, 105, 213, 0.2);
+    outline-offset: 2px;
+}
+
+/* CATATAN BAWAH */
+
+.olc-footer-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    margin-top: 19px;
+    padding: 15px 17px;
+    border: 1px solid #dce8f7;
+    border-radius: 8px;
+    background: #edf5ff;
+    color: #536c8b;
+}
+
+.olc-footer-note > i {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--olc-blue);
+    font-size: 16px;
+}
+
+.olc-footer-note p {
+    margin: 0;
+    font-size: 10px;
+    line-height: 1.8;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+    .ortu-leave-create {
+        padding: 20px 0 32px;
+    }
+
+    .olc-container {
+        width: calc(100% - 28px);
+    }
+
+    .olc-hero {
+        min-height: auto;
+        padding: 27px 22px;
+    }
+
+    .olc-hero-icon {
+        flex-basis: 65px;
+        width: 65px;
+        height: 65px;
+        border-radius: 13px;
+        font-size: 30px;
+    }
+
+    .olc-form-card {
+        padding: 23px 20px;
+    }
+
+    .olc-type-options {
+        grid-template-columns: 1fr;
+    }
+
+    .olc-type-option {
+        padding: 14px;
+    }
+}
+
+@media (max-width: 520px) {
+    .olc-hero {
+        padding: 24px 18px;
+    }
+
+    .olc-hero h1 {
+        font-size: 27px;
+    }
+
+    .olc-hero-content > p {
+        font-size: 11px;
+    }
+
+    .olc-hero-icon {
+        display: none;
+    }
+
+    .olc-form-card {
+        padding: 20px 15px;
+    }
+
+    .olc-form-heading {
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 23px;
+    }
+
+    .olc-form-heading-icon {
+        flex-basis: 40px;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .olc-form-heading h2 {
+        font-size: 15px;
+    }
+
+    .olc-date-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .olc-date-grid .olc-field {
+        margin-bottom: 18px;
+    }
+
+    .olc-upload-area {
+        flex-wrap: wrap;
+        gap: 11px;
+        padding: 14px;
+    }
+
+    .olc-upload-icon {
+        flex-basis: 40px;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .olc-upload-copy {
+        flex-basis: calc(100% - 55px);
+    }
+
+    .olc-upload-button {
+        margin-left: 51px;
+    }
+
+    .olc-form-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .olc-cancel-button,
+    .olc-submit-button {
+        width: 100%;
+        min-height: 45px;
+    }
+
+    .olc-footer-note {
+        padding: 13px;
+    }
+}

@@ -1,0 +1,853 @@
+/* =========================================================
+   INFO TAGIHAN ORANG TUA / WALI
+   File: public/css/ortu/billing/index.css
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+.ortu-billing-page {
+    --ob-blue: #1769d5;
+    --ob-blue-dark: #1054b3;
+    --ob-text: #182b45;
+    --ob-muted: #718198;
+    --ob-border: #e1e9f3;
+
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 28px 30px 36px;
+    color: var(--ob-text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.ortu-billing-page *,
+.ortu-billing-page *::before,
+.ortu-billing-page *::after {
+    box-sizing: border-box;
+}
+
+.ortu-billing-page h1,
+.ortu-billing-page h2,
+.ortu-billing-page h3,
+.ortu-billing-page p {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* HERO */
+
+.ortu-billing-page .ob-hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    min-height: 220px;
+    padding: 34px 38px;
+    margin: 22px 0 30px;
+    overflow: hidden;
+    color: #fff;
+    background: #1769d5;
+    border: 1px solid #1769d5;
+    border-radius: 12px;
+    box-shadow: 0 10px 26px rgba(23, 105, 213, 0.15);
+}
+
+.ortu-billing-page .ob-hero::before {
+    content: "";
+    position: absolute;
+    top: -100px;
+    right: 100px;
+    width: 250px;
+    height: 250px;
+    border: 35px solid rgba(255, 255, 255, 0.07);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.ortu-billing-page .ob-hero::after {
+    content: "";
+    position: absolute;
+    right: 190px;
+    bottom: -100px;
+    width: 180px;
+    height: 180px;
+    border: 25px solid rgba(255, 255, 255, 0.07);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.ortu-billing-page .ob-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+}
+
+.ortu-billing-page .ob-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    padding: 8px 12px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.13);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.ortu-billing-page .ob-eyebrow i {
+    font-size: 14px;
+}
+
+.ortu-billing-page .ob-hero h1 {
+    margin: 0 0 11px;
+    color: #fff;
+    font-size: clamp(28px, 3vw, 35px);
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: -0.8px;
+}
+
+.ortu-billing-page .ob-hero p {
+    max-width: 660px;
+    margin: 0 0 19px;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.ortu-billing-page .ob-hero p strong {
+    color: #fff;
+    font-weight: 800;
+}
+
+.ortu-billing-page .ob-hero-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.ortu-billing-page .ob-hero-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 11px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.17);
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.ortu-billing-page .ob-hero-meta i {
+    font-size: 14px;
+}
+
+.ortu-billing-page .ob-hero-icon {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex: 0 0 112px;
+    align-items: center;
+    justify-content: center;
+    width: 112px;
+    height: 112px;
+    margin-right: 12px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.13);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 15px;
+}
+
+.ortu-billing-page .ob-hero-icon i {
+    font-size: 54px;
+}
+
+/* SECTION HEADING */
+
+.ortu-billing-page .ob-section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: 105px;
+    margin-bottom: 19px;
+    padding: 20px 23px;
+    background: #edf5ff;
+    border: 1px solid #d8e8fc;
+    border-left: 4px solid var(--ob-blue);
+    border-radius: 10px;
+}
+
+.ortu-billing-page .ob-section-heading-copy {
+    min-width: 0;
+}
+
+.ortu-billing-page .ob-section-label {
+    display: inline-block;
+    margin-bottom: 7px;
+    color: var(--ob-blue);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.ortu-billing-page .ob-section-heading h2 {
+    margin: 0 0 6px;
+    color: #17385f;
+    font-size: 19px;
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+.ortu-billing-page .ob-section-heading p {
+    margin: 0;
+    color: #657993;
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+.ortu-billing-page .ob-heading-icon {
+    display: flex;
+    flex: 0 0 47px;
+    align-items: center;
+    justify-content: center;
+    width: 47px;
+    height: 47px;
+    color: #fff;
+    background: var(--ob-blue);
+    border-radius: 9px;
+}
+
+.ortu-billing-page .ob-heading-icon i {
+    font-size: 21px;
+}
+
+/* SUMMARY CARDS */
+
+.ortu-billing-page .ob-summary-section {
+    margin-bottom: 32px;
+}
+
+.ortu-billing-page .ob-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.ortu-billing-page .ob-summary-card {
+    position: relative;
+    min-width: 0;
+    padding: 23px 24px 20px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid var(--ob-border);
+    border-top: 4px solid var(--ob-card-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 18px rgba(28, 55, 90, 0.045);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ortu-billing-page .ob-summary-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(28, 55, 90, 0.09);
+}
+
+.ortu-billing-page .ob-unpaid {
+    --ob-card-color: #d84b58;
+    --ob-card-tint: #ffeaed;
+    --ob-card-border: #f8d2d8;
+}
+
+.ortu-billing-page .ob-paid {
+    --ob-card-color: #15956b;
+    --ob-card-tint: #e3f7ed;
+    --ob-card-border: #c8eedb;
+}
+
+.ortu-billing-page .ob-summary-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.ortu-billing-page .ob-summary-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    color: var(--ob-card-color);
+    background: var(--ob-card-tint);
+    border: 1px solid var(--ob-card-border);
+    border-radius: 10px;
+}
+
+.ortu-billing-page .ob-summary-icon i {
+    font-size: 22px;
+}
+
+.ortu-billing-page .ob-summary-status {
+    padding: 7px 10px;
+    color: var(--ob-card-color);
+    background: var(--ob-card-tint);
+    border: 1px solid var(--ob-card-border);
+    border-radius: 6px;
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.ortu-billing-page .ob-summary-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #62738a;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.ortu-billing-page .ob-summary-amount {
+    display: block;
+    overflow-wrap: anywhere;
+    color: var(--ob-text);
+    font-size: clamp(22px, 2.2vw, 29px);
+    font-weight: 800;
+    line-height: 1.5;
+    letter-spacing: -0.7px;
+    font-variant-numeric: tabular-nums;
+}
+
+.ortu-billing-page .ob-summary-foot {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 15px;
+    padding-top: 13px;
+    color: #74849a;
+    border-top: 1px solid #edf1f7;
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+.ortu-billing-page .ob-summary-foot i {
+    flex-shrink: 0;
+    color: var(--ob-card-color);
+    font-size: 14px;
+}
+
+/* TABLE CARD */
+
+.ortu-billing-page .ob-billing-section {
+    margin-bottom: 26px;
+}
+
+.ortu-billing-page .ob-table-card {
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid var(--ob-border);
+    border-radius: 11px;
+    box-shadow: 0 5px 18px rgba(28, 55, 90, 0.045);
+}
+
+.ortu-billing-page .ob-table-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    min-height: 105px;
+    padding: 21px 23px;
+    background: #edf5ff;
+    border-bottom: 1px solid #dce9fa;
+}
+
+.ortu-billing-page .ob-table-heading-main {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    min-width: 0;
+}
+
+.ortu-billing-page .ob-table-heading-icon {
+    display: flex;
+    flex: 0 0 45px;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    color: #fff;
+    background: var(--ob-blue);
+    border-radius: 9px;
+}
+
+.ortu-billing-page .ob-table-heading-icon i {
+    font-size: 21px;
+}
+
+.ortu-billing-page .ob-table-heading h2 {
+    margin: 0 0 5px;
+    color: #17385f;
+    font-size: 17px;
+    font-weight: 800;
+    line-height: 1.5;
+}
+
+.ortu-billing-page .ob-table-heading p {
+    margin: 0;
+    color: #6b7e96;
+    font-size: 10px;
+    line-height: 1.8;
+}
+
+.ortu-billing-page .ob-total-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    flex-shrink: 0;
+    padding: 9px 12px;
+    color: #155bb6;
+    background: #fff;
+    border: 1px solid #d6e6fc;
+    border-radius: 7px;
+    font-size: 10px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.ortu-billing-page .ob-table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.ortu-billing-page .ob-table {
+    width: 100%;
+    min-width: 850px;
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.ortu-billing-page .ob-table thead th {
+    padding: 15px 15px;
+    color: #fff;
+    background: #1769d5;
+    border: 0;
+    border-bottom: 1px solid #125abd;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.55px;
+    white-space: nowrap;
+}
+
+.ortu-billing-page .ob-table thead th:first-child {
+    padding-left: 20px;
+}
+
+.ortu-billing-page .ob-table tbody td {
+    padding: 15px;
+    color: #465a73;
+    background: #fff;
+    border: 0;
+    border-bottom: 1px solid #edf1f7;
+    font-size: 11px;
+    vertical-align: middle;
+}
+
+.ortu-billing-page .ob-table tbody tr:nth-child(even) td {
+    background: #f8faff;
+}
+
+.ortu-billing-page .ob-table tbody tr:hover td {
+    background: #edf5ff;
+}
+
+.ortu-billing-page .ob-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.ortu-billing-page .ob-number-column {
+    width: 65px;
+    text-align: center;
+}
+
+.ortu-billing-page .ob-row-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    color: #37628f;
+    background: #edf4fd;
+    border: 1px solid #dfebfa;
+    border-radius: 7px;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.ortu-billing-page .ob-description {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    min-width: 190px;
+}
+
+.ortu-billing-page .ob-description-icon {
+    display: inline-flex;
+    flex: 0 0 35px;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    color: var(--ob-blue);
+    background: #eaf3ff;
+    border: 1px solid #dceaff;
+    border-radius: 8px;
+}
+
+.ortu-billing-page .ob-description-icon i {
+    font-size: 16px;
+}
+
+.ortu-billing-page .ob-description-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+    padding-top: 2px;
+}
+
+.ortu-billing-page .ob-description-content strong {
+    color: #253b57;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1.7;
+}
+
+.ortu-billing-page .ob-description-content small {
+    color: #7a8aa0;
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+.ortu-billing-page .ob-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #586b83;
+    font-size: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.ortu-billing-page .ob-date i {
+    color: var(--ob-blue);
+    font-size: 13px;
+}
+
+.ortu-billing-page .ob-amount {
+    color: #253b57;
+    font-size: 11px;
+    font-weight: 800;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+.ortu-billing-page .ob-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 7px 10px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.ortu-billing-page .ob-status-paid {
+    color: #11734e;
+    background: #e3f7ed;
+    border-color: #c8eedb;
+}
+
+.ortu-billing-page .ob-status-unpaid {
+    color: #b52f3d;
+    background: #ffeaed;
+    border-color: #f8d2d8;
+}
+
+.ortu-billing-page .ob-status i {
+    font-size: 12px;
+}
+
+.ortu-billing-page .ob-paid-date {
+    color: #11734e;
+}
+
+.ortu-billing-page .ob-paid-date i {
+    color: #15956b;
+}
+
+.ortu-billing-page .ob-no-date {
+    color: #9aa6b6;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+/* EMPTY STATE */
+
+.ortu-billing-page .ob-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 260px;
+    padding: 35px 22px;
+    text-align: center;
+}
+
+.ortu-billing-page .ob-empty-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    margin-bottom: 17px;
+    color: var(--ob-blue);
+    background: #eaf3ff;
+    border: 1px solid #d8e8ff;
+    border-radius: 15px;
+}
+
+.ortu-billing-page .ob-empty-icon i {
+    font-size: 31px;
+}
+
+.ortu-billing-page .ob-empty-state h3 {
+    margin: 0 0 9px;
+    color: var(--ob-text);
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.ortu-billing-page .ob-empty-state p {
+    max-width: 460px;
+    margin: 0;
+    color: var(--ob-muted);
+    font-size: 11px;
+    line-height: 1.9;
+}
+
+.ortu-billing-page .ob-empty-state p strong {
+    color: #314c6d;
+}
+
+/* TABLE FOOTER */
+
+.ortu-billing-page .ob-table-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 20px;
+    color: #6b7e96;
+    background: #f8faff;
+    border-top: 1px solid #edf1f7;
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+.ortu-billing-page .ob-table-footer i {
+    color: #15956b;
+    font-size: 14px;
+}
+
+/* FOOTER */
+
+.ortu-billing-page .ob-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid var(--ob-border);
+}
+
+.ortu-billing-page .ob-back-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 42px;
+    padding: 11px 15px;
+    color: #fff;
+    background: var(--ob-blue);
+    border: 1px solid var(--ob-blue);
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.ortu-billing-page .ob-back-button:hover {
+    color: #fff;
+    background: var(--ob-blue-dark);
+    border-color: var(--ob-blue-dark);
+    transform: translateY(-1px);
+}
+
+.ortu-billing-page .ob-back-button i {
+    font-size: 15px;
+}
+
+.ortu-billing-page .ob-footer-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #7b8ba0;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.ortu-billing-page .ob-footer-note i {
+    color: #15956b;
+    font-size: 13px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+    .ortu-billing-page {
+        padding: 24px 20px 30px;
+    }
+
+    .ortu-billing-page .ob-hero {
+        padding: 30px;
+    }
+
+    .ortu-billing-page .ob-hero-icon {
+        flex-basis: 90px;
+        width: 90px;
+        height: 90px;
+    }
+
+    .ortu-billing-page .ob-hero-icon i {
+        font-size: 43px;
+    }
+
+    .ortu-billing-page .ob-summary-grid {
+        gap: 14px;
+    }
+
+    .ortu-billing-page .ob-summary-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 650px) {
+    .ortu-billing-page {
+        padding: 18px 13px 26px;
+    }
+
+    .ortu-billing-page .ob-hero {
+        min-height: auto;
+        padding: 24px 21px;
+        margin-top: 17px;
+    }
+
+    .ortu-billing-page .ob-hero-icon {
+        display: none;
+    }
+
+    .ortu-billing-page .ob-hero h1 {
+        font-size: 27px;
+    }
+
+    .ortu-billing-page .ob-hero p {
+        font-size: 11px;
+    }
+
+    .ortu-billing-page .ob-hero-meta {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .ortu-billing-page .ob-section-heading {
+        min-height: 95px;
+        padding: 17px 15px;
+    }
+
+    .ortu-billing-page .ob-section-heading h2 {
+        font-size: 16px;
+    }
+
+    .ortu-billing-page .ob-section-heading p {
+        font-size: 10px;
+    }
+
+    .ortu-billing-page .ob-heading-icon {
+        flex-basis: 39px;
+        width: 39px;
+        height: 39px;
+    }
+
+    .ortu-billing-page .ob-summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ortu-billing-page .ob-summary-card {
+        padding: 19px;
+    }
+
+    .ortu-billing-page .ob-summary-amount {
+        font-size: 25px;
+    }
+
+    .ortu-billing-page .ob-table-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 13px;
+        padding: 18px 15px;
+    }
+
+    .ortu-billing-page .ob-table-heading-main {
+        gap: 11px;
+    }
+
+    .ortu-billing-page .ob-table-heading-icon {
+        flex-basis: 39px;
+        width: 39px;
+        height: 39px;
+    }
+
+    .ortu-billing-page .ob-table-heading h2 {
+        font-size: 15px;
+    }
+
+    .ortu-billing-page .ob-table-heading p {
+        font-size: 10px;
+    }
+
+    .ortu-billing-page .ob-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ortu-billing-page *,
+    .ortu-billing-page *::before,
+    .ortu-billing-page *::after {
+        transition-duration: 0.01ms !important;
+    }
+}

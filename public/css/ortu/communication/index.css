@@ -1,0 +1,1808 @@
+@import url('https://fonts.googleapis.com/2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* =========================================================
+   RUANG KONSULTASI ORANG TUA / WALI
+========================================================= */
+
+.ortu-consultation {
+    --oc-blue: #1769d5;
+    --oc-blue-dark: #104b91;
+    --oc-navy: #12345b;
+    --oc-text: #203650;
+    --oc-muted: #718198;
+    --oc-border: #dce7f4;
+    --oc-page: #f5f8fd;
+
+    width: 100%;
+    padding: 10px 0 32px;
+    color: var(--oc-text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.ortu-consultation *,
+.ortu-consultation *::before,
+.ortu-consultation *::after {
+    box-sizing: border-box;
+}
+
+.ortu-consultation button,
+.ortu-consultation input,
+.ortu-consultation textarea,
+.ortu-consultation select {
+    font-family: inherit;
+}
+
+.ortu-consultation .oc-container {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.ortu-consultation .oc-hero {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    min-height: 220px;
+    margin-bottom: 25px;
+    padding: 30px 34px;
+    overflow: hidden;
+    color: #fff;
+    background: linear-gradient(
+        115deg,
+        #104b91 0%,
+        #1769d5 58%,
+        #0786a8 100%
+    );
+    border-radius: 15px;
+    box-shadow: 0 12px 28px rgba(23, 105, 213, .17);
+}
+
+.ortu-consultation .oc-hero::before,
+.ortu-consultation .oc-hero::after {
+    position: absolute;
+    z-index: -1;
+    content: "";
+    border: 1px solid rgba(255, 255, 255, .15);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.ortu-consultation .oc-hero::before {
+    top: -115px;
+    right: 55px;
+    width: 280px;
+    height: 280px;
+}
+
+.ortu-consultation .oc-hero::after {
+    right: -80px;
+    bottom: -180px;
+    width: 340px;
+    height: 340px;
+}
+
+.ortu-consultation .oc-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+}
+
+.ortu-consultation .oc-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    padding: 8px 12px;
+    color: #fff;
+    background: rgba(255, 255, 255, .15);
+    border: 1px solid rgba(255, 255, 255, .22);
+    border-radius: 7px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.ortu-consultation .oc-eyebrow i {
+    font-size: 14px;
+}
+
+.ortu-consultation .oc-hero h1 {
+    margin: 0 0 11px;
+    color: #fff;
+    font-size: clamp(25px, 3vw, 34px);
+    font-weight: 800;
+    letter-spacing: -.8px;
+}
+
+.ortu-consultation .oc-hero p {
+    max-width: 620px;
+    margin: 0;
+    color: rgba(255, 255, 255, .88);
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.ortu-consultation .oc-hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 22px;
+    margin-top: 20px;
+}
+
+.ortu-consultation .oc-hero-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, .95);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.ortu-consultation .oc-hero-meta i {
+    font-size: 14px;
+}
+
+.ortu-consultation .oc-hero-decoration {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 112px;
+    height: 112px;
+    margin-right: 10px;
+    color: #fff;
+    background: rgba(255, 255, 255, .13);
+    border: 1px solid rgba(255, 255, 255, .25);
+    border-radius: 23px;
+    transform: rotate(3deg);
+}
+
+.ortu-consultation .oc-hero-decoration i {
+    font-size: 54px;
+}
+
+/* =========================================================
+   ALERT
+========================================================= */
+
+.ortu-consultation .oc-alert-success,
+.ortu-consultation .oc-alert-error {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 15px 17px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.ortu-consultation .oc-alert-success {
+    color: #126b47;
+    background: #e6f8ee;
+    border-color: #c2ecd3;
+}
+
+.ortu-consultation .oc-alert-error {
+    color: #a52f42;
+    background: #fff0f1;
+    border-color: #f3cdd2;
+}
+
+.ortu-consultation .oc-alert-success > i,
+.ortu-consultation .oc-alert-error > i {
+    margin-top: 2px;
+    font-size: 17px;
+}
+
+.ortu-consultation .oc-alert-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    padding: 4px;
+    color: inherit;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.ortu-consultation .oc-alert-error ul {
+    margin: 6px 0 0;
+    padding-left: 18px;
+}
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.ortu-consultation .oc-layout {
+    display: grid;
+    grid-template-columns: minmax(280px, 350px) minmax(0, 1fr);
+    align-items: start;
+    gap: 22px;
+}
+
+.ortu-consultation .oc-sidebar,
+.ortu-consultation .oc-main {
+    min-width: 0;
+}
+
+.ortu-consultation .oc-panel {
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #e0e9f4;
+    border-radius: 13px;
+    box-shadow: 0 7px 24px rgba(21, 53, 91, .055);
+}
+
+/* =========================================================
+   PANEL HEADER
+========================================================= */
+
+.ortu-consultation .oc-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 20px;
+    background: linear-gradient(110deg, #e8f2ff, #f5f9ff);
+    border-bottom: 1px solid #dce8f7;
+}
+
+.ortu-consultation .oc-panel-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.ortu-consultation .oc-panel-icon {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 43px;
+    height: 43px;
+    color: #fff;
+    background: var(--oc-blue);
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.ortu-consultation .oc-panel-heading h2 {
+    margin: 0 0 5px;
+    color: var(--oc-navy);
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.ortu-consultation .oc-panel-heading p {
+    margin: 0;
+    color: var(--oc-muted);
+    font-size: 10px;
+}
+
+.ortu-consultation .oc-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    min-width: 31px;
+    height: 31px;
+    padding: 0 8px;
+    color: #fff;
+    background: var(--oc-blue);
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+/* =========================================================
+   DAFTAR KONSULTASI
+========================================================= */
+
+.ortu-consultation .oc-thread-list {
+    max-height: 690px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.ortu-consultation .oc-thread-list::-webkit-scrollbar,
+.ortu-consultation .oc-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ortu-consultation .oc-thread-list::-webkit-scrollbar-thumb,
+.ortu-consultation .oc-messages::-webkit-scrollbar-thumb {
+    background: #cbd9eb;
+    border-radius: 10px;
+}
+
+.ortu-consultation .oc-thread-item {
+    position: relative;
+    display: block;
+    padding: 18px;
+    color: var(--oc-text);
+    background: #fff;
+    border-bottom: 1px solid #edf1f7;
+    text-decoration: none;
+    transition: background .2s ease;
+}
+
+.ortu-consultation .oc-thread-item:last-child {
+    border-bottom: 0;
+}
+
+.ortu-consultation .oc-thread-item:hover {
+    background: #f5f9ff;
+}
+
+.ortu-consultation .oc-thread-item.is-active {
+    background: #eaf3ff;
+    box-shadow: inset 4px 0 0 var(--oc-blue);
+}
+
+.ortu-consultation .oc-thread-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 11px;
+}
+
+.ortu-consultation .oc-category-badge {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    max-width: 100%;
+    padding: 5px 9px;
+    border-radius: 6px !important;
+    font-family: inherit !important;
+    font-size: 9px !important;
+    font-weight: 800;
+    line-height: 1.4;
+    white-space: normal;
+}
+
+.ortu-consultation .oc-thread-time {
+    flex-shrink: 0;
+    color: #8593a6;
+    font-size: 9px;
+    font-weight: 600;
+}
+
+.ortu-consultation .oc-thread-item h3 {
+    margin: 0 0 12px;
+    overflow: hidden;
+    color: #17385f;
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.ortu-consultation .oc-thread-person {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 7px;
+    color: #718198;
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.ortu-consultation .oc-thread-person i {
+    flex-shrink: 0;
+    margin-top: 1px;
+    color: #4381c9;
+    font-size: 13px;
+}
+
+.ortu-consultation .oc-thread-person strong {
+    color: #344e6e;
+    font-weight: 700;
+}
+
+.ortu-consultation .oc-thread-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.ortu-consultation .oc-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    width: fit-content;
+    padding: 5px 8px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 9px;
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+.ortu-consultation .oc-status-done {
+    color: #087647;
+    background: #e0f8e9;
+    border-color: #c4edd4;
+}
+
+.ortu-consultation .oc-status-progress {
+    color: #946000;
+    background: #fff2d4;
+    border-color: #f4e0ad;
+}
+
+.ortu-consultation .oc-unread {
+    padding: 5px 8px;
+    color: #fff;
+    background: #dc4b60;
+    border-radius: 6px;
+    font-size: 9px;
+    font-weight: 800;
+}
+
+/* EMPTY LIST */
+
+.ortu-consultation .oc-thread-empty {
+    padding: 35px 22px;
+    text-align: center;
+}
+
+.ortu-consultation .oc-empty-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 62px;
+    height: 62px;
+    margin: 0 auto 15px;
+    color: var(--oc-blue);
+    background: #e8f2ff;
+    border-radius: 15px;
+    font-size: 27px;
+}
+
+.ortu-consultation .oc-thread-empty h3 {
+    margin: 0 0 9px;
+    color: var(--oc-navy);
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.ortu-consultation .oc-thread-empty p {
+    margin: 0 0 18px;
+    color: var(--oc-muted);
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.ortu-consultation .oc-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 10px 16px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+.ortu-consultation .oc-button-primary {
+    color: #fff;
+    background: var(--oc-blue);
+    border-color: var(--oc-blue);
+    box-shadow: 0 4px 10px rgba(23, 105, 213, .13);
+}
+
+.ortu-consultation .oc-button-primary:hover {
+    color: #fff;
+    background: #1058b6;
+    border-color: #1058b6;
+    box-shadow: 0 7px 15px rgba(23, 105, 213, .2);
+    transform: translateY(-1px);
+}
+
+.ortu-consultation .oc-button-light {
+    color: #53677f;
+    background: #f1f5fa;
+    border-color: #dce5ef;
+}
+
+.ortu-consultation .oc-button-light:hover {
+    color: #17385f;
+    background: #e5edf7;
+}
+
+/* =========================================================
+   CONVERSATION HEADER
+========================================================= */
+
+.ortu-consultation .oc-conversation-header {
+    padding: 23px 25px;
+    background: #fff;
+    border-bottom: 1px solid #e6edf6;
+}
+
+.ortu-consultation .oc-conversation-heading {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.ortu-consultation .oc-conversation-avatar {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    color: #fff;
+    background: linear-gradient(135deg, #1769d5, #0786a8);
+    border-radius: 12px;
+    font-size: 21px;
+}
+
+.ortu-consultation .oc-conversation-title {
+    min-width: 0;
+}
+
+.ortu-consultation .oc-conversation-badges {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 9px;
+}
+
+.ortu-consultation .oc-conversation-title h2 {
+    margin: 0 0 8px;
+    color: #153557;
+    font-size: 17px;
+    font-weight: 800;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.ortu-consultation .oc-conversation-title > p {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+    color: #718198;
+    font-size: 10px;
+    line-height: 1.8;
+}
+
+.ortu-consultation .oc-conversation-title > p i {
+    color: var(--oc-blue);
+}
+
+.ortu-consultation .oc-meta-separator {
+    margin: 0 3px;
+    color: #b0bdcc;
+}
+
+/* =========================================================
+   AREA PESAN
+========================================================= */
+
+.ortu-consultation .oc-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    height: 440px;
+    padding: 25px;
+    overflow-y: auto;
+    background:
+        radial-gradient(circle at 1px 1px, rgba(23, 105, 213, .055) 1px, transparent 0);
+    background-color: #f5f8fd;
+    background-size: 19px 19px;
+    overscroll-behavior: contain;
+}
+
+.ortu-consultation .oc-message-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    width: 100%;
+}
+
+.ortu-consultation .oc-message-row.is-mine {
+    flex-direction: row-reverse;
+}
+
+.ortu-consultation .oc-message-avatar {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 33px;
+    height: 33px;
+    color: #1769d5;
+    background: #e1edff;
+    border: 1px solid #cfe1fb;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+.ortu-consultation .oc-message-row.is-mine .oc-message-avatar {
+    color: #fff;
+    background: #1769d5;
+    border-color: #1769d5;
+}
+
+.ortu-consultation .oc-message-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: min(82%, 620px);
+    min-width: 0;
+}
+
+.ortu-consultation .oc-message-row.is-mine .oc-message-content {
+    align-items: flex-end;
+}
+
+.ortu-consultation .oc-message-sender {
+    margin: 0 5px 7px;
+    color: #536b86;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.ortu-consultation .oc-message-bubble {
+    padding: 14px 16px;
+    color: #273d57;
+    background: #fff;
+    border: 1px solid #e1e9f3;
+    border-radius: 13px 13px 13px 4px;
+    box-shadow: 0 4px 12px rgba(30, 57, 91, .045);
+}
+
+.ortu-consultation .oc-message-row.is-mine .oc-message-bubble {
+    color: #fff;
+    background: linear-gradient(135deg, #1769d5, #1558b0);
+    border-color: #1769d5;
+    border-radius: 13px 13px 4px 13px;
+}
+
+.ortu-consultation .oc-message-bubble > p {
+    margin: 0;
+    color: inherit;
+    font-size: 12px;
+    line-height: 1.9;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.ortu-consultation .oc-message-time {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin: 7px 4px 0;
+    color: #8a98aa;
+    font-size: 9px;
+}
+
+.ortu-consultation .oc-message-row.is-mine .oc-message-time {
+    justify-content: flex-end;
+}
+
+.ortu-consultation .oc-attachment {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 12px;
+    padding: 10px;
+    color: #1558a8;
+    background: #eef5ff;
+    border: 1px solid #d5e6fb;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.ortu-consultation .oc-message-row.is-mine .oc-attachment {
+    color: #fff;
+    background: rgba(255, 255, 255, .13);
+    border-color: rgba(255, 255, 255, .3);
+}
+
+.ortu-consultation .oc-attachment:hover {
+    filter: brightness(.97);
+}
+
+.ortu-consultation .oc-attachment-icon {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background: rgba(23, 105, 213, .1);
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+.ortu-consultation .oc-message-row.is-mine .oc-attachment-icon {
+    background: rgba(255, 255, 255, .15);
+}
+
+.ortu-consultation .oc-attachment-name {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.ortu-consultation .oc-no-messages {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    color: #8292a8;
+    text-align: center;
+}
+
+.ortu-consultation .oc-no-messages i {
+    margin-bottom: 12px;
+    color: #7ca9e5;
+    font-size: 37px;
+}
+
+.ortu-consultation .oc-no-messages p {
+    margin: 0;
+    font-size: 12px;
+}
+
+/* =========================================================
+   FORM BALASAN
+========================================================= */
+
+.ortu-consultation .oc-reply-area {
+    padding: 22px 24px;
+    background: #fff;
+    border-top: 1px solid #e2eaf4;
+}
+
+.ortu-consultation .oc-reply-title {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin-bottom: 16px;
+}
+
+.ortu-consultation .oc-reply-icon {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 39px;
+    height: 39px;
+    color: #1769d5;
+    background: #e7f1ff;
+    border-radius: 10px;
+    font-size: 17px;
+}
+
+.ortu-consultation .oc-reply-title h3 {
+    margin: 0 0 4px;
+    color: #17385f;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.ortu-consultation .oc-reply-title p {
+    margin: 0;
+    color: #8290a2;
+    font-size: 10px;
+}
+
+.ortu-consultation .oc-form-group {
+    margin-bottom: 17px;
+}
+
+.ortu-consultation .oc-form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #2c4360;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.ortu-consultation .oc-form-group label > i {
+    margin-right: 6px;
+    color: #1769d5;
+}
+
+.ortu-consultation .oc-form-group label > span {
+    color: #8391a4;
+    font-weight: 500;
+}
+
+.ortu-consultation .oc-textarea,
+.ortu-consultation .oc-input {
+    display: block;
+    width: 100%;
+    min-height: 43px;
+    padding: 12px 13px;
+    color: #253c57;
+    background: #f9fbfe;
+    border: 1px solid #d8e3f0;
+    border-radius: 8px;
+    outline: none;
+    font-size: 11px;
+    line-height: 1.7;
+    transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.ortu-consultation .oc-textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.ortu-consultation .oc-textarea::placeholder,
+.ortu-consultation .oc-input::placeholder {
+    color: #98a5b6;
+}
+
+.ortu-consultation .oc-textarea:focus,
+.ortu-consultation .oc-input:focus {
+    background: #fff;
+    border-color: #72a7ed;
+    box-shadow: 0 0 0 3px rgba(23, 105, 213, .1);
+}
+
+.ortu-consultation .oc-reply-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.ortu-consultation .oc-file-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    max-width: 100%;
+}
+
+.ortu-consultation .oc-file-field label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin: 0;
+    color: #5c6f87;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.ortu-consultation .oc-file-field label i {
+    color: #1769d5;
+    font-size: 14px;
+}
+
+.ortu-consultation .oc-file-field input {
+    max-width: 100%;
+    color: #61738a;
+    font-size: 10px;
+}
+
+/* =========================================================
+   WELCOME STATE
+========================================================= */
+
+.ortu-consultation .oc-welcome-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 520px;
+    padding: 40px;
+    text-align: center;
+    background:
+        radial-gradient(circle at 50% 25%, #e7f2ff 0, #f5f9ff 38%, #fff 75%);
+}
+
+.ortu-consultation .oc-welcome-illustration {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 170px;
+    height: 150px;
+    margin-bottom: 20px;
+}
+
+.ortu-consultation .oc-welcome-main-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 105px;
+    height: 105px;
+    color: #fff;
+    background: linear-gradient(135deg, #1769d5, #0786a8);
+    border: 8px solid #fff;
+    border-radius: 29px;
+    box-shadow: 0 12px 28px rgba(23, 105, 213, .19);
+    font-size: 43px;
+    transform: rotate(-4deg);
+}
+
+.ortu-consultation .oc-welcome-bubble {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border: 3px solid #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(28, 65, 110, .1);
+    font-size: 17px;
+}
+
+.ortu-consultation .oc-bubble-one {
+    top: 3px;
+    right: 9px;
+    color: #fff;
+    background: #7555d9;
+    transform: rotate(8deg);
+}
+
+.ortu-consultation .oc-bubble-two {
+    bottom: 4px;
+    left: 6px;
+    color: #fff;
+    background: #15956b;
+    transform: rotate(-9deg);
+}
+
+.ortu-consultation .oc-section-kicker {
+    margin-bottom: 10px;
+    color: #1769d5;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+}
+
+.ortu-consultation .oc-welcome-panel h2 {
+    margin: 0 0 12px;
+    color: #153557;
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.ortu-consultation .oc-welcome-panel > p {
+    max-width: 440px;
+    margin: 0 0 23px;
+    color: #718198;
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+/* =========================================================
+   MODAL KONSULTASI BARU
+========================================================= */
+
+.oc-modal .modal-dialog {
+    max-width: 680px;
+    padding: 12px;
+}
+
+.oc-modal .modal-content {
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #dce7f4;
+    border-radius: 14px;
+    box-shadow: 0 20px 65px rgba(15, 43, 78, .2);
+}
+
+.oc-modal .oc-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 22px 24px;
+    color: #fff;
+    background: linear-gradient(110deg, #104b91, #1769d5);
+}
+
+.oc-modal .oc-modal-title-icon {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    color: #fff;
+    background: rgba(255, 255, 255, .16);
+    border: 1px solid rgba(255, 255, 255, .22);
+    border-radius: 11px;
+    font-size: 20px;
+}
+
+.oc-modal .oc-modal-header h2 {
+    margin: 0 0 5px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.oc-modal .oc-modal-header p {
+    margin: 0;
+    color: rgba(255, 255, 255, .82);
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.oc-modal .oc-modal-close {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    margin-left: auto;
+    color: #fff;
+    background: rgba(255, 255, 255, .12);
+    border: 1px solid rgba(255, 255, 255, .2);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.oc-modal .oc-modal-close:hover {
+    background: rgba(255, 255, 255, .22);
+}
+
+.oc-modal .oc-modal-body {
+    padding: 25px;
+}
+
+.oc-modal .oc-form-group:last-child {
+    margin-bottom: 0;
+}
+
+.oc-modal .oc-input {
+    background-color: #f8faff;
+}
+
+.oc-modal .oc-modal-textarea {
+    min-height: 115px;
+    resize: vertical;
+}
+
+.oc-modal .oc-file-input {
+    padding: 9px 11px;
+}
+
+.oc-modal .oc-form-help {
+    display: block;
+    margin-top: 7px;
+    color: #8391a4;
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+.oc-modal .oc-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 16px 24px;
+    background: #f6f9fd;
+    border-top: 1px solid #e4ebf4;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+    .ortu-consultation .oc-layout {
+        grid-template-columns: minmax(250px, 310px) minmax(0, 1fr);
+        gap: 16px;
+    }
+
+    .ortu-consultation .oc-hero-decoration {
+        width: 90px;
+        height: 90px;
+    }
+
+    .ortu-consultation .oc-hero-decoration i {
+        font-size: 44px;
+    }
+
+    .ortu-consultation .oc-messages {
+        padding: 20px 16px;
+    }
+
+    .ortu-consultation .oc-reply-area {
+        padding: 19px;
+    }
+}
+
+@media (max-width: 767px) {
+    .ortu-consultation {
+        padding-top: 5px;
+    }
+
+    .ortu-consultation .oc-hero {
+        min-height: auto;
+        padding: 25px 22px;
+        border-radius: 12px;
+    }
+
+    .ortu-consultation .oc-hero h1 {
+        font-size: 26px;
+    }
+
+    .ortu-consultation .oc-hero p {
+        font-size: 12px;
+    }
+
+    .ortu-consultation .oc-hero-decoration {
+        display: none;
+    }
+
+    .ortu-consultation .oc-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+    }
+
+    .ortu-consultation .oc-thread-list {
+        max-height: 350px;
+    }
+
+    .ortu-consultation .oc-thread-item {
+        padding: 16px;
+    }
+
+    .ortu-consultation .oc-conversation-header {
+        padding: 19px 16px;
+    }
+
+    .ortu-consultation .oc-conversation-title h2 {
+        font-size: 15px;
+    }
+
+    .ortu-consultation .oc-messages {
+        height: 400px;
+        padding: 18px 12px;
+        gap: 18px;
+    }
+
+    .ortu-consultation .oc-message-content {
+        max-width: 86%;
+    }
+
+    .ortu-consultation .oc-message-bubble {
+        padding: 12px;
+    }
+
+    .ortu-consultation .oc-message-bubble > p {
+        font-size: 11px;
+    }
+
+    .ortu-consultation .oc-reply-area {
+        padding: 18px 15px;
+    }
+
+    .ortu-consultation .oc-reply-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .ortu-consultation .oc-reply-actions .oc-button {
+        align-self: flex-end;
+    }
+
+    .ortu-consultation .oc-welcome-panel {
+        min-height: 390px;
+        padding: 28px 20px;
+    }
+
+    .oc-modal .modal-dialog {
+        margin: 8px auto;
+        padding: 8px;
+    }
+
+    .oc-modal .oc-modal-header {
+        padding: 18px 16px;
+    }
+
+    .oc-modal .oc-modal-body {
+        padding: 19px 16px;
+    }
+
+    .oc-modal .oc-modal-footer {
+        padding: 14px 16px;
+    }
+}
+
+@media (max-width: 420px) {
+    .ortu-consultation .oc-hero-meta {
+        flex-direction: column;
+        gap: 9px;
+    }
+
+    .ortu-consultation .oc-thread-top {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .ortu-consultation .oc-conversation-heading {
+        gap: 10px;
+    }
+
+    .ortu-consultation .oc-conversation-avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 17px;
+    }
+
+    .ortu-consultation .oc-message-avatar {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+    }
+
+    .ortu-consultation .oc-message-content {
+        max-width: 88%;
+    }
+
+    .ortu-consultation .oc-button {
+        font-size: 10px;
+    }
+
+    .oc-modal .oc-modal-title-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 17px;
+    }
+
+    .oc-modal .oc-modal-header h2 {
+        font-size: 14px;
+    }
+}
+
+
+
+
+/* =========================================
+   KONSULTASI BARU
+========================================= */
+
+.ortu-consultation .consultation-create,
+.ortu-consultation .new-consultation,
+.ortu-consultation .consultation-form-card {
+    background: #ffffff;
+    border: 1px solid #dce7f4;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 18px rgba(20, 65, 120, 0.06);
+}
+
+/* Header section */
+.ortu-consultation .consultation-create-header,
+.ortu-consultation .new-consultation-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 22px;
+    background: linear-gradient(120deg, #edf5ff 0%, #f7faff 100%);
+    border-bottom: 1px solid #dce8f7;
+}
+
+.ortu-consultation .consultation-create-icon,
+.ortu-consultation .new-consultation-icon {
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #1769d5;
+    color: #ffffff;
+    font-size: 21px;
+    box-shadow: 0 4px 10px rgba(23, 105, 213, 0.18);
+}
+
+.ortu-consultation .consultation-create-heading,
+.ortu-consultation .new-consultation-heading {
+    min-width: 0;
+    flex: 1;
+}
+
+.ortu-consultation .consultation-create-heading h3,
+.ortu-consultation .new-consultation-heading h3,
+.ortu-consultation .consultation-create-header h3,
+.ortu-consultation .new-consultation-header h3 {
+    margin: 0;
+    color: #12345a;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.5;
+}
+
+.ortu-consultation .consultation-create-heading p,
+.ortu-consultation .new-consultation-heading p,
+.ortu-consultation .consultation-create-header p,
+.ortu-consultation .new-consultation-header p {
+    margin: 4px 0 0;
+    color: #657790;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+/* Form body */
+.ortu-consultation .consultation-create-body,
+.ortu-consultation .new-consultation-body {
+    padding: 22px;
+}
+
+.ortu-consultation .consultation-create-body .form-label,
+.ortu-consultation .new-consultation-body .form-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #243b57;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.ortu-consultation .consultation-create-body .form-control,
+.ortu-consultation .consultation-create-body .form-select,
+.ortu-consultation .new-consultation-body .form-control,
+.ortu-consultation .new-consultation-body .form-select {
+    width: 100%;
+    min-height: 44px;
+    padding: 11px 13px;
+    border: 1px solid #d6e1ef;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #243b57;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    box-shadow: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ortu-consultation .consultation-create-body textarea.form-control,
+.ortu-consultation .new-consultation-body textarea.form-control {
+    min-height: 125px;
+    resize: vertical;
+    line-height: 1.7;
+}
+
+.ortu-consultation .consultation-create-body .form-control:focus,
+.ortu-consultation .consultation-create-body .form-select:focus,
+.ortu-consultation .new-consultation-body .form-control:focus,
+.ortu-consultation .new-consultation-body .form-select:focus {
+    border-color: #1769d5;
+    box-shadow: 0 0 0 3px rgba(23, 105, 213, 0.10);
+    outline: none;
+}
+
+.ortu-consultation .consultation-create-body .mb-3,
+.ortu-consultation .new-consultation-body .mb-3 {
+    margin-bottom: 18px !important;
+}
+
+/* Tombol kirim */
+.ortu-consultation .consultation-create-body button[type="submit"],
+.ortu-consultation .new-consultation-body button[type="submit"] {
+    min-height: 43px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 19px;
+    border: 1px solid #1769d5;
+    border-radius: 8px;
+    background: #1769d5;
+    color: #ffffff;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.ortu-consultation .consultation-create-body button[type="submit"]:hover,
+.ortu-consultation .new-consultation-body button[type="submit"]:hover {
+    background: #1058b8;
+    border-color: #1058b8;
+    transform: translateY(-1px);
+}
+
+/* Tampilan layar kecil */
+@media (max-width: 576px) {
+    .ortu-consultation .consultation-create-header,
+    .ortu-consultation .new-consultation-header {
+        align-items: flex-start;
+        padding: 16px;
+        gap: 11px;
+    }
+
+    .ortu-consultation .consultation-create-icon,
+    .ortu-consultation .new-consultation-icon {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        font-size: 18px;
+    }
+
+    .ortu-consultation .consultation-create-body,
+    .ortu-consultation .new-consultation-body {
+        padding: 16px;
+    }
+}
+
+
+
+
+/* ==========================================
+   MODAL KONSULTASI BARU
+   Sesuai class pada Blade asli
+========================================== */
+
+.oc-modal {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.oc-modal .modal-dialog {
+    width: calc(100% - 28px);
+    max-width: 620px;
+    margin: 24px auto;
+}
+
+.oc-modal .modal-content {
+    overflow: hidden;
+    padding: 0;
+    border: 1px solid #dce7f4;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 24px 70px rgba(7, 27, 53, .24);
+}
+
+/* Header */
+.oc-modal .oc-modal-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 22px 24px;
+    background: linear-gradient(115deg, #084b91 0%, #096bc5 58%, #1688e5 100%);
+    color: #fff;
+}
+
+.oc-modal .oc-modal-title-icon {
+    display: flex;
+    flex: 0 0 46px;
+    width: 46px;
+    height: 46px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, .28);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, .15);
+    color: #fff;
+    font-size: 21px;
+}
+
+.oc-modal .oc-modal-header > div:nth-child(2) {
+    min-width: 0;
+    flex: 1;
+}
+
+.oc-modal .oc-modal-header h2 {
+    margin: 0;
+    color: #fff;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 17px;
+    font-weight: 800;
+    line-height: 1.5;
+}
+
+.oc-modal .oc-modal-header p {
+    margin: 4px 0 0;
+    color: rgba(255, 255, 255, .86);
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.oc-modal .oc-modal-close {
+    display: flex;
+    flex: 0 0 34px;
+    width: 34px;
+    height: 34px;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    border: 1px solid rgba(255, 255, 255, .32);
+    border-radius: 7px;
+    background: rgba(255, 255, 255, .12);
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background .2s ease;
+}
+
+.oc-modal .oc-modal-close:hover {
+    background: rgba(255, 255, 255, .24);
+}
+
+/* Body */
+.oc-modal .oc-modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+    padding: 24px;
+    background: #fff;
+}
+
+.oc-modal .oc-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+}
+
+.oc-modal .oc-form-group > label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    color: #203954;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.6;
+}
+
+.oc-modal .oc-form-group > label > i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #1769d5;
+    font-size: 14px;
+}
+
+.oc-modal .oc-form-group > label span {
+    color: #8594a8;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+/* Input dan dropdown */
+.oc-modal .oc-input {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    margin: 0;
+    padding: 11px 13px;
+    border: 1px solid #d5e1ef;
+    border-radius: 7px;
+    outline: none;
+    background-color: #fff;
+    color: #243b57;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.5;
+    box-shadow: none;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.oc-modal select.oc-input {
+    padding-right: 36px;
+    cursor: pointer;
+}
+
+.oc-modal .oc-input::placeholder {
+    color: #99a8ba;
+    opacity: 1;
+}
+
+.oc-modal .oc-input:focus {
+    border-color: #3988e5;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(23, 105, 213, .11);
+}
+
+.oc-modal .oc-input:hover:not(:focus) {
+    border-color: #b5c9e1;
+}
+
+/* Kolom pesan */
+.oc-modal .oc-modal-textarea {
+    min-height: 120px;
+    padding: 13px;
+    resize: vertical;
+    line-height: 1.75;
+}
+
+/* Lampiran */
+.oc-modal .oc-file-input {
+    min-height: 48px;
+    padding: 7px;
+    background: #f7faff;
+    color: #60748d;
+}
+
+.oc-modal .oc-file-input::file-selector-button {
+    margin: 0 12px 0 0;
+    padding: 9px 13px;
+    border: 0;
+    border-radius: 5px;
+    background: #e4efff;
+    color: #1556a0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.oc-modal .oc-file-input::file-selector-button:hover {
+    background: #d4e5ff;
+}
+
+.oc-modal .oc-form-help {
+    display: block;
+    margin: 0;
+    color: #8291a5;
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+/* Footer */
+.oc-modal .oc-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 17px 24px;
+    border-top: 1px solid #e5edf6;
+    background: #f7faff;
+}
+
+/* Tombol modal */
+.oc-modal .oc-modal-footer .oc-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 41px;
+    margin: 0;
+    padding: 10px 17px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+    cursor: pointer;
+    transition: background .2s ease, border-color .2s ease,
+                box-shadow .2s ease, transform .2s ease;
+}
+
+.oc-modal .oc-modal-footer .oc-button-primary {
+    border-color: #1264c0;
+    background: #1264c0;
+    color: #fff;
+    box-shadow: 0 3px 8px rgba(18, 100, 192, .16);
+}
+
+.oc-modal .oc-modal-footer .oc-button-primary:hover {
+    border-color: #0c4f9c;
+    background: #0c4f9c;
+    box-shadow: 0 5px 12px rgba(18, 100, 192, .2);
+    transform: translateY(-1px);
+}
+
+.oc-modal .oc-modal-footer .oc-button-light {
+    border-color: #d5e0ed;
+    background: #fff;
+    color: #53677f;
+}
+
+.oc-modal .oc-modal-footer .oc-button-light:hover {
+    border-color: #bdccdd;
+    background: #edf3f9;
+}
+
+/* Responsif */
+@media (max-width: 576px) {
+    .oc-modal .modal-dialog {
+        width: calc(100% - 20px);
+        margin: 10px auto;
+    }
+
+    .oc-modal .oc-modal-header {
+        gap: 10px;
+        padding: 17px;
+    }
+
+    .oc-modal .oc-modal-title-icon {
+        flex-basis: 40px;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .oc-modal .oc-modal-header h2 {
+        font-size: 15px;
+    }
+
+    .oc-modal .oc-modal-body {
+        gap: 16px;
+        padding: 19px 16px;
+    }
+
+    .oc-modal .oc-modal-footer {
+        gap: 8px;
+        padding: 14px 16px;
+    }
+
+    .oc-modal .oc-modal-footer .oc-button {
+        flex: 1;
+        padding: 10px 12px;
+    }
+}
+
+.oc-hero .oc-back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 8px;
+    padding: 10px 15px;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 8px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.oc-hero .oc-back-button:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.65);
+}
+
+.oc-hero .oc-back-button i {
+    font-size: 15px;
+}

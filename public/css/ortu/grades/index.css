@@ -1,0 +1,779 @@
+/* =========================================================
+   NILAI RAPOR ORANG TUA / WALI
+   File: public/css/ortu/grades/index.css
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+.ortu-grades-page {
+    --gr-blue: #1769d5;
+    --gr-blue-dark: #1054b3;
+    --gr-text: #182b45;
+    --gr-muted: #718198;
+    --gr-border: #e1e9f3;
+
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 28px 30px 36px;
+    color: var(--gr-text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.ortu-grades-page *,
+.ortu-grades-page *::before,
+.ortu-grades-page *::after {
+    box-sizing: border-box;
+}
+
+.ortu-grades-page h1,
+.ortu-grades-page h2,
+.ortu-grades-page h3,
+.ortu-grades-page p {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* HERO */
+
+.ortu-grades-page .gr-hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    min-height: 220px;
+    padding: 34px 38px;
+    margin-bottom: 26px;
+    overflow: hidden;
+    color: #fff;
+    background: #1769d5;
+    border: 1px solid #1769d5;
+    border-radius: 12px;
+    box-shadow: 0 10px 26px rgba(23, 105, 213, 0.15);
+}
+
+.ortu-grades-page .gr-hero::before {
+    content: "";
+    position: absolute;
+    top: -100px;
+    right: 100px;
+    width: 250px;
+    height: 250px;
+    border: 35px solid rgba(255, 255, 255, 0.07);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.ortu-grades-page .gr-hero::after {
+    content: "";
+    position: absolute;
+    right: 190px;
+    bottom: -100px;
+    width: 180px;
+    height: 180px;
+    border: 25px solid rgba(255, 255, 255, 0.07);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.ortu-grades-page .gr-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+}
+
+.ortu-grades-page .gr-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    padding: 8px 12px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.13);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.ortu-grades-page .gr-eyebrow i {
+    font-size: 14px;
+}
+
+.ortu-grades-page .gr-hero h1 {
+    margin: 0 0 11px;
+    color: #fff;
+    font-size: clamp(28px, 3vw, 35px);
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: -0.8px;
+}
+
+.ortu-grades-page .gr-hero p {
+    max-width: 650px;
+    margin: 0 0 19px;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.ortu-grades-page .gr-hero p strong {
+    color: #fff;
+    font-weight: 800;
+}
+
+.ortu-grades-page .gr-hero-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.ortu-grades-page .gr-hero-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 11px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.17);
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.ortu-grades-page .gr-hero-meta i {
+    font-size: 14px;
+}
+
+.ortu-grades-page .gr-hero-icon {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex: 0 0 112px;
+    align-items: center;
+    justify-content: center;
+    width: 112px;
+    height: 112px;
+    margin-right: 12px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.13);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 15px;
+}
+
+.ortu-grades-page .gr-hero-icon i {
+    font-size: 54px;
+}
+
+/* SEMESTER PANEL */
+
+.ortu-grades-page .gr-semester-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+    padding: 21px 24px;
+    margin-bottom: 25px;
+    background: #fff;
+    border: 1px solid var(--gr-border);
+    border-left: 4px solid var(--gr-blue);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(28, 55, 90, 0.035);
+}
+
+.ortu-grades-page .gr-panel-heading {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+}
+
+.ortu-grades-page .gr-panel-icon {
+    display: flex;
+    flex: 0 0 45px;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    color: var(--gr-blue);
+    background: #eaf3ff;
+    border: 1px solid #d9e9ff;
+    border-radius: 9px;
+}
+
+.ortu-grades-page .gr-panel-icon i {
+    font-size: 21px;
+}
+
+.ortu-grades-page .gr-section-label {
+    display: inline-block;
+    margin-bottom: 6px;
+    color: var(--gr-blue);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.ortu-grades-page .gr-panel-copy h2 {
+    margin: 0 0 5px;
+    color: var(--gr-text);
+    font-size: 17px;
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+.ortu-grades-page .gr-panel-copy p {
+    margin: 0;
+    color: var(--gr-muted);
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.ortu-grades-page .gr-semester-form {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    flex: 0 0 245px;
+    width: 245px;
+}
+
+.ortu-grades-page .gr-semester-form label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #415875;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.ortu-grades-page .gr-semester-form label i {
+    color: var(--gr-blue);
+    font-size: 13px;
+}
+
+.ortu-grades-page .gr-semester-select {
+    min-height: 42px;
+    padding: 10px 36px 10px 12px;
+    color: #253b57;
+    background-color: #f8faff;
+    border: 1px solid #dbe5f0;
+    border-radius: 7px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    box-shadow: none;
+}
+
+.ortu-grades-page .gr-semester-select:focus {
+    border-color: #7eb2f4;
+    box-shadow: 0 0 0 3px rgba(23, 105, 213, 0.1);
+}
+
+/* CARD HEADING */
+
+.ortu-grades-page .gr-chart-card,
+.ortu-grades-page .gr-table-card {
+    margin-bottom: 25px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid var(--gr-border);
+    border-radius: 11px;
+    box-shadow: 0 5px 18px rgba(28, 55, 90, 0.045);
+}
+
+.ortu-grades-page .gr-card-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: 105px;
+    padding: 21px 24px;
+    background: #edf5ff;
+    border-bottom: 1px solid #dce9fa;
+}
+
+.ortu-grades-page .gr-card-heading-main {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+}
+
+.ortu-grades-page .gr-card-icon {
+    display: flex;
+    flex: 0 0 46px;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    color: #fff;
+    background: var(--gr-blue);
+    border-radius: 9px;
+}
+
+.ortu-grades-page .gr-card-icon i {
+    font-size: 21px;
+}
+
+.ortu-grades-page .gr-card-heading h2 {
+    margin: 0 0 5px;
+    color: #17385f;
+    font-size: 17px;
+    font-weight: 800;
+    line-height: 1.5;
+}
+
+.ortu-grades-page .gr-card-heading p {
+    margin: 0;
+    color: #6b7e96;
+    font-size: 10px;
+    line-height: 1.8;
+}
+
+.ortu-grades-page .gr-chart-tag,
+.ortu-grades-page .gr-subject-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    flex-shrink: 0;
+    padding: 9px 12px;
+    color: #155bb6;
+    background: #fff;
+    border: 1px solid #d6e6fc;
+    border-radius: 7px;
+    font-size: 10px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.ortu-grades-page .gr-chart-tag i,
+.ortu-grades-page .gr-subject-count i {
+    font-size: 13px;
+}
+
+/* CHART */
+
+.ortu-grades-page .gr-chart-body {
+    padding: 25px 25px 22px;
+}
+
+.ortu-grades-page .gr-chart-body canvas {
+    display: block;
+    width: 100% !important;
+    max-width: 100%;
+}
+
+/* TABLE */
+
+.ortu-grades-page .gr-table-heading {
+    background: #f0f6ff;
+}
+
+.ortu-grades-page .gr-table-icon {
+    color: #1769d5;
+    background: #fff;
+    border: 1px solid #d8e8fc;
+}
+
+.ortu-grades-page .gr-table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.ortu-grades-page .gr-table {
+    width: 100%;
+    min-width: 760px;
+    border-collapse: separate;
+    border-spacing: 0;
+    color: var(--gr-text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.ortu-grades-page .gr-table thead th {
+    padding: 15px 15px;
+    color: #fff;
+    background: #1769d5;
+    border: 0;
+    border-bottom: 1px solid #125abd;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.65px;
+    white-space: nowrap;
+}
+
+.ortu-grades-page .gr-table thead th:first-child {
+    padding-left: 20px;
+}
+
+.ortu-grades-page .gr-table tbody td {
+    padding: 14px 15px;
+    background: #fff;
+    border: 0;
+    border-bottom: 1px solid #edf1f7;
+    font-size: 11px;
+    vertical-align: middle;
+    transition: background 0.15s ease;
+}
+
+.ortu-grades-page .gr-table tbody tr:nth-child(even) td {
+    background: #f8faff;
+}
+
+.ortu-grades-page .gr-table tbody tr:hover td {
+    background: #edf5ff;
+}
+
+.ortu-grades-page .gr-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.ortu-grades-page .gr-number-column {
+    width: 65px;
+    text-align: center;
+}
+
+.ortu-grades-page .gr-row-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    color: #37628f;
+    background: #edf4fd;
+    border: 1px solid #dfebfa;
+    border-radius: 7px;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.ortu-grades-page .gr-subject {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 190px;
+}
+
+.ortu-grades-page .gr-subject-icon {
+    display: inline-flex;
+    flex: 0 0 34px;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    color: var(--gr-blue);
+    background: #eaf3ff;
+    border: 1px solid #dceaff;
+    border-radius: 8px;
+}
+
+.ortu-grades-page .gr-subject-icon i {
+    font-size: 15px;
+}
+
+.ortu-grades-page .gr-subject-name {
+    color: #253b57;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.6;
+}
+
+.ortu-grades-page .gr-score-cell {
+    color: #526780;
+    font-size: 11px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+.ortu-grades-page .gr-final-score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.ortu-grades-page .gr-final-score strong {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 37px;
+    min-height: 32px;
+    padding: 5px 8px;
+    color: #155bb6;
+    background: #e7f1ff;
+    border: 1px solid #d4e5ff;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+}
+
+.ortu-grades-page .gr-temporary-badge {
+    display: inline-block;
+    padding: 5px 7px;
+    color: #95600c;
+    background: #fff3d8;
+    border: 1px solid #f4e3b7;
+    border-radius: 5px;
+    font-size: 9px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.ortu-grades-page .gr-no-score {
+    color: #98a5b7;
+    font-weight: 700;
+}
+
+.ortu-grades-page .gr-table-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 20px;
+    color: #6b7e96;
+    background: #f8faff;
+    border-top: 1px solid #edf1f7;
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+.ortu-grades-page .gr-table-footer i {
+    color: var(--gr-blue);
+    font-size: 14px;
+}
+
+/* EMPTY STATE */
+
+.ortu-grades-page .gr-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 280px;
+    padding: 36px 24px;
+    margin-bottom: 25px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid var(--gr-border);
+    border-radius: 11px;
+    box-shadow: 0 5px 18px rgba(28, 55, 90, 0.04);
+}
+
+.ortu-grades-page .gr-empty-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    margin-bottom: 18px;
+    color: var(--gr-blue);
+    background: #eaf3ff;
+    border: 1px solid #d8e8ff;
+    border-radius: 16px;
+}
+
+.ortu-grades-page .gr-empty-icon i {
+    font-size: 32px;
+}
+
+.ortu-grades-page .gr-empty-state h3 {
+    margin: 0 0 9px;
+    color: var(--gr-text);
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.ortu-grades-page .gr-empty-state p {
+    max-width: 470px;
+    margin: 0;
+    color: var(--gr-muted);
+    font-size: 11px;
+    line-height: 1.9;
+}
+
+/* FOOTER */
+
+.ortu-grades-page .gr-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding-top: 20px;
+    margin-top: 26px;
+    border-top: 1px solid var(--gr-border);
+}
+
+.ortu-grades-page .gr-back-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 42px;
+    padding: 11px 15px;
+    color: #fff;
+    background: var(--gr-blue);
+    border: 1px solid var(--gr-blue);
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.ortu-grades-page .gr-back-button i {
+    font-size: 15px;
+}
+
+.ortu-grades-page .gr-back-button:hover {
+    color: #fff;
+    background: var(--gr-blue-dark);
+    border-color: var(--gr-blue-dark);
+    transform: translateY(-1px);
+}
+
+.ortu-grades-page .gr-footer-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #7b8ba0;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.ortu-grades-page .gr-footer-note i {
+    color: #15956b;
+    font-size: 14px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+    .ortu-grades-page {
+        padding: 24px 20px 32px;
+    }
+
+    .ortu-grades-page .gr-hero {
+        padding: 30px;
+    }
+
+    .ortu-grades-page .gr-hero-icon {
+        flex-basis: 90px;
+        width: 90px;
+        height: 90px;
+    }
+
+    .ortu-grades-page .gr-hero-icon i {
+        font-size: 43px;
+    }
+
+    .ortu-grades-page .gr-semester-panel {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .ortu-grades-page .gr-semester-form {
+        flex-basis: auto;
+        width: 100%;
+        max-width: 360px;
+    }
+}
+
+@media (max-width: 650px) {
+    .ortu-grades-page {
+        padding: 18px 13px 26px;
+    }
+
+    .ortu-grades-page .gr-hero {
+        min-height: auto;
+        padding: 24px 21px;
+        border-radius: 10px;
+    }
+
+    .ortu-grades-page .gr-hero-icon {
+        display: none;
+    }
+
+    .ortu-grades-page .gr-hero h1 {
+        font-size: 27px;
+    }
+
+    .ortu-grades-page .gr-hero p {
+        font-size: 11px;
+    }
+
+    .ortu-grades-page .gr-hero-meta {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .ortu-grades-page .gr-semester-panel {
+        gap: 18px;
+        padding: 18px 15px;
+    }
+
+    .ortu-grades-page .gr-panel-heading {
+        align-items: flex-start;
+        gap: 11px;
+    }
+
+    .ortu-grades-page .gr-panel-icon {
+        flex-basis: 38px;
+        width: 38px;
+        height: 38px;
+    }
+
+    .ortu-grades-page .gr-panel-icon i {
+        font-size: 18px;
+    }
+
+    .ortu-grades-page .gr-panel-copy h2 {
+        font-size: 15px;
+    }
+
+    .ortu-grades-page .gr-card-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+        padding: 18px 15px;
+    }
+
+    .ortu-grades-page .gr-card-heading-main {
+        gap: 11px;
+    }
+
+    .ortu-grades-page .gr-card-icon {
+        flex-basis: 38px;
+        width: 38px;
+        height: 38px;
+    }
+
+    .ortu-grades-page .gr-card-icon i {
+        font-size: 18px;
+    }
+
+    .ortu-grades-page .gr-card-heading h2 {
+        font-size: 15px;
+    }
+
+    .ortu-grades-page .gr-chart-body {
+        padding: 18px 12px;
+    }
+
+    .ortu-grades-page .gr-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ortu-grades-page *,
+    .ortu-grades-page *::before,
+    .ortu-grades-page *::after {
+        transition-duration: 0.01ms !important;
+    }
+}

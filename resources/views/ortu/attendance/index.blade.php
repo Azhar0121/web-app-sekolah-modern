@@ -3,75 +3,228 @@
 @section('title', 'Riwayat Presensi — ' . $student->name)
 
 @section('content')
-<div class="card border-0 shadow-sm mb-4">
-    <div class="card-body p-4">
-        <h4 class="fw-bold mb-1">Riwayat Presensi</h4>
-        <p class="text-muted mb-0">Rekap kehadiran <strong>{{ $student->name }}</strong> dari seluruh sesi yang sudah tercatat.</p>
-    </div>
-</div>
+<link rel="stylesheet" href="{{ asset('css/ortu/attendance/index.css') }}">
 
-<div class="row g-3 mb-4">
-    <div class="col-6 col-md-3">
-        <div class="card border-0 shadow-sm text-center py-3">
-            <div class="fs-4 fw-bold text-success">{{ $recap['hadir'] }}</div>
-            <div class="text-muted small">Hadir</div>
-        </div>
-    </div>
-    <div class="col-6 col-md-3">
-        <div class="card border-0 shadow-sm text-center py-3">
-            <div class="fs-4 fw-bold text-info">{{ $recap['izin'] }}</div>
-            <div class="text-muted small">Izin</div>
-        </div>
-    </div>
-    <div class="col-6 col-md-3">
-        <div class="card border-0 shadow-sm text-center py-3">
-            <div class="fs-4 fw-bold text-warning">{{ $recap['sakit'] }}</div>
-            <div class="text-muted small">Sakit</div>
-        </div>
-    </div>
-    <div class="col-6 col-md-3">
-        <div class="card border-0 shadow-sm text-center py-3">
-            <div class="fs-4 fw-bold text-danger">{{ $recap['alpha'] }}</div>
-            <div class="text-muted small">Alpha</div>
-        </div>
-    </div>
-</div>
+<div class="ortu-attendance-history">
 
-@forelse ($attendances as $date => $items)
-    <div class="card border-0 shadow-sm mb-3">
-        <div class="card-header bg-white fw-semibold">
-            {{ \Illuminate\Support\Carbon::parse($date)->translatedFormat('l, d F Y') }}
-        </div>
-        <div class="table-responsive">
-            <table class="table table-hover align-middle mb-0">
-                <thead class="table-light">
-                    <tr>
-                        <th>Mata Pelajaran</th>
-                        <th style="width: 130px;">Status</th>
-                        <th style="width: 120px;">Waktu Scan</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($items as $attendance)
-                        <tr>
-                            <td>{{ $attendance->session->schedule->teachingAssignment->subject->name }}</td>
-                            <td><span class="badge {{ $attendance->statusBadgeClass() }}">{{ $attendance->statusLabel() }}</span></td>
-                            <td>{{ $attendance->scanned_at?->format('H:i') ?? '-' }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-    </div>
-@empty
-    <div class="card border-0 shadow-sm">
-        <div class="card-body text-center text-muted py-5">
-            Belum ada catatan presensi untuk {{ $student->name }}.
-        </div>
-    </div>
-@endforelse
+    {{-- HERO --}}
+    <section class="ah-hero">
+        <div class="ah-hero-content">
+            <div class="ah-eyebrow">
+                <i class="bi bi-calendar2-check"></i>
+                PORTAL ORANG TUA / WALI
+            </div>
 
-<div class="mt-3">
-    <a href="{{ route('ortu.dashboard') }}" class="text-decoration-none">&larr; Kembali ke Dashboard</a>
+            <h1>Riwayat Presensi</h1>
+
+            <p>
+                Pantau rekap kehadiran
+                <strong>{{ $student->name }}</strong>
+                dari seluruh sesi pembelajaran yang sudah tercatat.
+            </p>
+
+            <div class="ah-hero-meta">
+                <span>
+                    <i class="bi bi-person-check"></i>
+                    Data kehadiran siswa
+                </span>
+                <span>
+                    <i class="bi bi-journal-check"></i>
+                    Rekap seluruh sesi
+                </span>
+            </div>
+        </div>
+
+        <div class="ah-hero-decoration">
+            <i class="bi bi-calendar2-week"></i>
+        </div>
+    </section>
+
+    {{-- RINGKASAN PRESENSI --}}
+    <section class="ah-summary-section">
+        <div class="ah-section-heading">
+            <div>
+                <span class="ah-section-label">RINGKASAN KEHADIRAN</span>
+                <h2>Statistik Presensi</h2>
+                <p>Jumlah catatan berdasarkan status kehadiran siswa.</p>
+            </div>
+            <div class="ah-heading-icon">
+                <i class="bi bi-bar-chart-line"></i>
+            </div>
+        </div>
+
+        <div class="ah-summary-grid">
+            <article class="ah-summary-card ah-hadir">
+                <div class="ah-summary-icon">
+                    <i class="bi bi-check-circle-fill"></i>
+                </div>
+                <div class="ah-summary-info">
+                    <span class="ah-summary-label">Hadir</span>
+                    <strong>{{ $recap['hadir'] }}</strong>
+                    <small>Sesi kehadiran</small>
+                </div>
+                <div class="ah-summary-watermark">
+                    <i class="bi bi-check-circle"></i>
+                </div>
+            </article>
+
+            <article class="ah-summary-card ah-izin">
+                <div class="ah-summary-icon">
+                    <i class="bi bi-envelope-check-fill"></i>
+                </div>
+                <div class="ah-summary-info">
+                    <span class="ah-summary-label">Izin</span>
+                    <strong>{{ $recap['izin'] }}</strong>
+                    <small>Sesi izin</small>
+                </div>
+                <div class="ah-summary-watermark">
+                    <i class="bi bi-envelope-check"></i>
+                </div>
+            </article>
+
+            <article class="ah-summary-card ah-sakit">
+                <div class="ah-summary-icon">
+                    <i class="bi bi-heart-pulse-fill"></i>
+                </div>
+                <div class="ah-summary-info">
+                    <span class="ah-summary-label">Sakit</span>
+                    <strong>{{ $recap['sakit'] }}</strong>
+                    <small>Sesi sakit</small>
+                </div>
+                <div class="ah-summary-watermark">
+                    <i class="bi bi-heart-pulse"></i>
+                </div>
+            </article>
+
+            <article class="ah-summary-card ah-alpha">
+                <div class="ah-summary-icon">
+                    <i class="bi bi-x-circle-fill"></i>
+                </div>
+                <div class="ah-summary-info">
+                    <span class="ah-summary-label">Alpha</span>
+                    <strong>{{ $recap['alpha'] }}</strong>
+                    <small>Tanpa keterangan</small>
+                </div>
+                <div class="ah-summary-watermark">
+                    <i class="bi bi-x-circle"></i>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    {{-- DAFTAR RIWAYAT --}}
+    <section class="ah-history-section">
+        <div class="ah-section-heading ah-history-heading">
+            <div>
+                <span class="ah-section-label">CATATAN PEMBELAJARAN</span>
+                <h2>Detail Riwayat Kehadiran</h2>
+                <p>Presensi dikelompokkan berdasarkan tanggal pembelajaran.</p>
+            </div>
+
+            <div class="ah-heading-icon">
+                <i class="bi bi-clock-history"></i>
+            </div>
+        </div>
+
+        @forelse ($attendances as $date => $items)
+            <article class="ah-date-card">
+
+                <div class="ah-date-header">
+                    <div class="ah-date-icon">
+                        <i class="bi bi-calendar3"></i>
+                    </div>
+
+                    <div class="ah-date-info">
+                        <span class="ah-date-label">TANGGAL PRESENSI</span>
+                        <h3>
+                            {{ \Illuminate\Support\Carbon::parse($date)->translatedFormat('l, d F Y') }}
+                        </h3>
+                    </div>
+
+                    <div class="ah-session-count">
+                        <i class="bi bi-journal-check"></i>
+                        {{ $items->count() }} sesi
+                    </div>
+                </div>
+
+                <div class="table-responsive ah-table-responsive">
+                    <table class="table ah-table align-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th class="ah-number-column">NO.</th>
+                                <th>MATA PELAJARAN</th>
+                                <th>STATUS KEHADIRAN</th>
+                                <th>WAKTU SCAN</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach ($items as $attendance)
+                                <tr>
+                                    <td class="ah-number-column">
+                                        <span class="ah-row-number">
+                                            {{ $loop->iteration }}
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <div class="ah-subject">
+                                            <span class="ah-subject-icon">
+                                                <i class="bi bi-book"></i>
+                                            </span>
+                                            <span class="ah-subject-name">
+                                                {{ $attendance->session->schedule->teachingAssignment->subject->name }}
+                                            </span>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <span class="badge ah-status-badge {{ $attendance->statusBadgeClass() }}">
+                                            {{ $attendance->statusLabel() }}
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <span class="ah-scan-time">
+                                            <i class="bi bi-clock"></i>
+                                            {{ $attendance->scanned_at?->format('H:i') ?? '-' }}
+                                        </span>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        @empty
+            <div class="ah-empty-state">
+                <div class="ah-empty-icon">
+                    <i class="bi bi-calendar2-x"></i>
+                </div>
+
+                <h3>Belum Ada Catatan Presensi</h3>
+
+                <p>
+                    Belum ada catatan presensi untuk
+                    <strong>{{ $student->name }}</strong>.
+                    Riwayat kehadiran akan ditampilkan di sini setelah tersedia.
+                </p>
+            </div>
+        @endforelse
+    </section>
+
+    {{-- KEMBALI --}}
+    <div class="ah-footer">
+        <a href="{{ route('ortu.dashboard') }}" class="ah-back-button">
+            <i class="bi bi-arrow-left"></i>
+            <span>Kembali ke Dashboard</span>
+        </a>
+
+        <span class="ah-footer-note">
+            <i class="bi bi-shield-check"></i>
+            Informasi kehadiran siswa
+        </span>
+    </div>
+
 </div>
 @endsection

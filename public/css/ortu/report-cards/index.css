@@ -1,0 +1,965 @@
+@import url('https://fonts.googleapis.com/2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --orp-blue: #1769d5;
+    --orp-blue-dark: #1054b5;
+    --orp-blue-light: #eaf3ff;
+    --orp-cyan: #18a6d9;
+    --orp-text: #172b4d;
+    --orp-muted: #718096;
+    --orp-border: #e1e9f2;
+    --orp-page: #f5f8fd;
+    --orp-white: #ffffff;
+}
+
+.ortu-report-page,
+.ortu-report-page * {
+    box-sizing: border-box;
+}
+
+.ortu-report-page {
+    width: 100%;
+    padding: 28px 0 48px;
+    color: var(--orp-text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.ortu-report-page .orp-container {
+    width: min(100% - 40px, 1440px);
+    margin: 0 auto;
+}
+
+/* HERO */
+
+.ortu-report-page .orp-hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 255px;
+    margin: 22px 0 38px;
+    padding: 36px 46px;
+    overflow: hidden;
+    border-radius: 13px;
+    background: linear-gradient(115deg, #1053b0 0%, #1769d5 56%, #168fc5 100%);
+    color: #fff;
+    isolation: isolate;
+    box-shadow: 0 12px 28px rgba(23, 105, 213, 0.16);
+}
+
+.ortu-report-page .orp-hero::before {
+    position: absolute;
+    z-index: -1;
+    top: -130px;
+    right: 150px;
+    width: 330px;
+    height: 330px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+    content: "";
+}
+
+.ortu-report-page .orp-hero::after {
+    position: absolute;
+    z-index: -1;
+    right: -90px;
+    bottom: -190px;
+    width: 390px;
+    height: 390px;
+    border: 60px solid rgba(255, 255, 255, 0.07);
+    border-radius: 50%;
+    content: "";
+}
+
+.ortu-report-page .orp-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+}
+
+.ortu-report-page .orp-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 17px;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
+
+.ortu-report-page .orp-eyebrow i {
+    font-size: 14px;
+}
+
+.ortu-report-page .orp-hero h1 {
+    margin: 0 0 13px;
+    color: #fff;
+    font-size: clamp(27px, 3vw, 38px);
+    font-weight: 800;
+    letter-spacing: -1.1px;
+    line-height: 1.25;
+}
+
+.ortu-report-page .orp-hero p {
+    max-width: 620px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.ortu-report-page .orp-hero p strong {
+    color: #fff;
+    font-weight: 800;
+}
+
+.ortu-report-page .orp-hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 23px;
+}
+
+.ortu-report-page .orp-hero-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.94);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.ortu-report-page .orp-hero-meta i {
+    font-size: 15px;
+}
+
+/* HERO ILLUSTRATION */
+
+.ortu-report-page .orp-hero-visual {
+    position: relative;
+    display: flex;
+    flex: 0 0 260px;
+    align-items: center;
+    justify-content: center;
+    height: 210px;
+}
+
+.ortu-report-page .orp-visual-circle {
+    position: absolute;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+}
+
+.ortu-report-page .orp-circle-one {
+    width: 200px;
+    height: 200px;
+}
+
+.ortu-report-page .orp-circle-two {
+    width: 155px;
+    height: 155px;
+    border-style: dashed;
+}
+
+.ortu-report-page .orp-document-illustration {
+    position: relative;
+    z-index: 1;
+    width: 125px;
+    height: 153px;
+    padding: 17px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 15px 35px rgba(5, 36, 83, 0.2);
+    transform: rotate(-5deg);
+}
+
+.ortu-report-page .orp-document-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background: #eaf2ff;
+    color: var(--orp-blue);
+    font-size: 25px;
+}
+
+.ortu-report-page .orp-document-line {
+    height: 5px;
+    margin-bottom: 8px;
+    border-radius: 3px;
+    background: #dfe8f3;
+}
+
+.ortu-report-page .orp-line-long {
+    width: 100%;
+}
+
+.ortu-report-page .orp-line-medium {
+    width: 75%;
+}
+
+.ortu-report-page .orp-line-short {
+    width: 52%;
+}
+
+.ortu-report-page .orp-document-stamp {
+    position: absolute;
+    right: 12px;
+    bottom: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 27px;
+    height: 27px;
+    border: 2px solid #1ca878;
+    border-radius: 50%;
+    color: #1ca878;
+    font-size: 15px;
+}
+
+.ortu-report-page .orp-floating-badge {
+    position: absolute;
+    right: -2px;
+    bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 11px 13px;
+    border: 1px solid #e3edfa;
+    border-radius: 7px;
+    background: #fff;
+    color: #22507f;
+    font-size: 10px;
+    font-weight: 800;
+    box-shadow: 0 7px 20px rgba(5, 36, 83, 0.13);
+}
+
+.ortu-report-page .orp-floating-badge i {
+    color: var(--orp-blue);
+    font-size: 14px;
+}
+
+/* SECTION HEADING */
+
+.ortu-report-page .orp-section {
+    margin-bottom: 28px;
+}
+
+.ortu-report-page .orp-section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 23px;
+}
+
+.ortu-report-page .orp-section-label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--orp-blue);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+}
+
+.ortu-report-page .orp-section-heading h2 {
+    margin: 0 0 9px;
+    color: var(--orp-text);
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.ortu-report-page .orp-section-heading p {
+    max-width: 720px;
+    margin: 0;
+    color: var(--orp-muted);
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.ortu-report-page .orp-total-badge {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 17px;
+    border: 1px solid #dce9fb;
+    border-radius: 9px;
+    background: #fff;
+}
+
+.ortu-report-page .orp-total-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    background: var(--orp-blue-light);
+    color: var(--orp-blue);
+    font-size: 20px;
+}
+
+.ortu-report-page .orp-total-badge strong,
+.ortu-report-page .orp-total-badge small {
+    display: block;
+}
+
+.ortu-report-page .orp-total-badge strong {
+    color: var(--orp-text);
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+.ortu-report-page .orp-total-badge small {
+    color: var(--orp-muted);
+    font-size: 10px;
+    font-weight: 600;
+}
+
+/* REPORT GRID */
+
+.ortu-report-page .orp-report-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.ortu-report-page .orp-report-card {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--orp-border);
+    border-radius: 11px;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(24, 54, 91, 0.035);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.ortu-report-page .orp-report-card:hover {
+    border-color: #c4dcfb;
+    box-shadow: 0 12px 26px rgba(23, 105, 213, 0.09);
+    transform: translateY(-3px);
+}
+
+.ortu-report-page .orp-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 22px 17px;
+    border-bottom: 1px solid #edf2f8;
+    background: linear-gradient(180deg, #f2f7ff 0%, #fff 100%);
+}
+
+.ortu-report-page .orp-pdf-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 53px;
+    height: 53px;
+    border: 1px solid #d7e8ff;
+    border-radius: 10px;
+    background: #e6f0ff;
+    color: var(--orp-blue);
+    font-size: 29px;
+}
+
+.ortu-report-page .orp-document-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 9px;
+    border: 1px solid #f3d7d7;
+    border-radius: 5px;
+    background: #fff2f2;
+    color: #c44747;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.ortu-report-page .orp-card-content {
+    flex: 1;
+    padding: 21px 22px 24px;
+}
+
+.ortu-report-page .orp-card-label {
+    display: block;
+    margin-bottom: 9px;
+    color: #8494aa;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.1px;
+}
+
+.ortu-report-page .orp-card-content h3 {
+    margin: 0 0 13px;
+    color: var(--orp-text);
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.ortu-report-page .orp-academic-year {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    color: #647790;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.ortu-report-page .orp-academic-year i {
+    margin-top: 2px;
+    color: var(--orp-blue);
+    font-size: 14px;
+}
+
+.ortu-report-page .orp-report-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 17px;
+    padding: 10px 11px;
+    border: 1px solid #dceafe;
+    border-radius: 6px;
+    background: #f2f7ff;
+    color: #245da7;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.ortu-report-page .orp-report-label i {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--orp-blue);
+}
+
+.ortu-report-page .orp-card-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+    padding: 17px 22px 21px;
+    border-top: 1px solid #edf2f8;
+    background: #fff;
+}
+
+.ortu-report-page .orp-upload-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ortu-report-page .orp-upload-icon {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 7px;
+    background: #eaf8f2;
+    color: #15956b;
+    font-size: 17px;
+}
+
+.ortu-report-page .orp-upload-info small,
+.ortu-report-page .orp-upload-info strong {
+    display: block;
+}
+
+.ortu-report-page .orp-upload-info small {
+    margin-bottom: 3px;
+    color: #8290a4;
+    font-size: 10px;
+}
+
+.ortu-report-page .orp-upload-info strong {
+    color: #30445e;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.ortu-report-page .orp-download-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    min-height: 44px;
+    padding: 12px 15px;
+    border: 1px solid var(--orp-blue);
+    border-radius: 7px;
+    background: var(--orp-blue);
+    color: #fff;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 800;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ortu-report-page .orp-download-button:hover {
+    border-color: var(--orp-blue-dark);
+    background: var(--orp-blue-dark);
+    color: #fff;
+    box-shadow: 0 5px 13px rgba(23, 105, 213, 0.2);
+}
+
+.ortu-report-page .orp-download-button i {
+    font-size: 15px;
+}
+
+/* EMPTY STATE */
+
+.ortu-report-page .orp-empty-state {
+    grid-column: 1 / -1;
+    padding: 52px 25px;
+    border: 1px dashed #cbd9e9;
+    border-radius: 11px;
+    background: #fff;
+    text-align: center;
+}
+
+.ortu-report-page .orp-empty-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 19px;
+    border: 1px solid #d9e9fc;
+    border-radius: 50%;
+    background: #edf5ff;
+    color: var(--orp-blue);
+    font-size: 31px;
+}
+
+.ortu-report-page .orp-empty-state h3 {
+    margin: 0 0 11px;
+    color: var(--orp-text);
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.ortu-report-page .orp-empty-state p {
+    max-width: 560px;
+    margin: 0 auto;
+    color: var(--orp-muted);
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.ortu-report-page .orp-empty-state p strong {
+    color: #405675;
+}
+
+/* INFORMATION NOTE */
+
+.ortu-report-page .orp-information {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    padding: 19px 21px;
+    border: 1px solid #d9e8fc;
+    border-radius: 9px;
+    background: #edf5ff;
+}
+
+.ortu-report-page .orp-information-icon {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: #dceaff;
+    color: var(--orp-blue);
+    font-size: 18px;
+}
+
+.ortu-report-page .orp-information strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #204b83;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.ortu-report-page .orp-information p {
+    margin: 0;
+    color: #526d8e;
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+    .ortu-report-page .orp-report-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .ortu-report-page .orp-hero {
+        padding: 32px;
+    }
+
+    .ortu-report-page .orp-hero-visual {
+        flex-basis: 220px;
+    }
+}
+
+@media (max-width: 767px) {
+    .ortu-report-page {
+        padding-top: 18px;
+    }
+
+    .ortu-report-page .orp-container {
+        width: calc(100% - 28px);
+    }
+
+    .ortu-report-page .orp-hero {
+        min-height: auto;
+        margin: 18px 0 30px;
+        padding: 27px 23px;
+        border-radius: 10px;
+    }
+
+    .ortu-report-page .orp-hero-content {
+        max-width: 100%;
+    }
+
+    .ortu-report-page .orp-hero h1 {
+        font-size: 29px;
+    }
+
+    .ortu-report-page .orp-hero p {
+        font-size: 12px;
+    }
+
+    .ortu-report-page .orp-hero-meta {
+        gap: 12px;
+    }
+
+    .ortu-report-page .orp-hero-visual {
+        display: none;
+    }
+
+    .ortu-report-page .orp-section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 17px;
+    }
+
+    .ortu-report-page .orp-section-heading h2 {
+        font-size: 21px;
+    }
+
+    .ortu-report-page .orp-total-badge {
+        width: 100%;
+    }
+
+    .ortu-report-page .orp-report-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+    }
+
+    .ortu-report-page .orp-card-top {
+        padding: 19px 19px 15px;
+    }
+
+    .ortu-report-page .orp-card-content {
+        padding: 19px;
+    }
+
+    .ortu-report-page .orp-card-footer {
+        padding: 16px 19px 19px;
+    }
+
+    .ortu-report-page .orp-information {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 420px) {
+    .ortu-report-page .orp-container {
+        width: calc(100% - 22px);
+    }
+
+    .ortu-report-page .orp-hero {
+        padding: 24px 18px;
+    }
+
+    .ortu-report-page .orp-eyebrow {
+        font-size: 9px;
+        letter-spacing: 0.7px;
+    }
+
+    .ortu-report-page .orp-hero h1 {
+        font-size: 26px;
+    }
+
+    .ortu-report-page .orp-hero-meta {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+
+/* ==========================================
+   SECTION HEADING — ARSIP RAPOR SISWA
+========================================== */
+
+.ortu-report-page .orp-section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin: 0 0 25px;
+    padding: 24px 26px;
+    border: 1px solid #dce8f7;
+    border-left: 5px solid #1769d5;
+    border-radius: 10px;
+    background: linear-gradient(110deg, #edf5ff 0%, #ffffff 78%);
+    box-shadow: 0 5px 18px rgba(23, 105, 213, 0.06);
+}
+
+/* Label DOKUMEN AKADEMIK */
+
+.ortu-report-page .orp-section-heading .orp-section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    margin: 0 0 11px;
+    padding: 7px 11px;
+    border: 1px solid #cfe1fb;
+    border-radius: 5px;
+    background: #dceaff;
+    color: #1458b0;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+    line-height: 1.4;
+}
+
+.ortu-report-page .orp-section-heading .orp-section-label::before {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 2px;
+    background: #1769d5;
+    content: "";
+}
+
+/* Judul Arsip Rapor Siswa */
+
+.ortu-report-page .orp-section-heading h2 {
+    position: relative;
+    margin: 0 0 10px;
+    color: #102c50;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: -0.8px;
+    line-height: 1.4;
+}
+
+/* Deskripsi */
+
+.ortu-report-page .orp-section-heading p {
+    max-width: 650px;
+    margin: 0;
+    color: #62758e;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.9;
+}
+
+/* Badge jumlah dokumen */
+
+.ortu-report-page .orp-section-heading .orp-total-badge {
+    flex-shrink: 0;
+    gap: 12px;
+    min-width: 180px;
+    padding: 15px 17px;
+    border: 1px solid #d7e5f7;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(27, 70, 120, 0.05);
+}
+
+.ortu-report-page .orp-section-heading .orp-total-icon {
+    width: 44px;
+    height: 44px;
+    border: 1px solid #d5e5ff;
+    border-radius: 8px;
+    background: #eaf2ff;
+    color: #1769d5;
+    font-size: 20px;
+}
+
+.ortu-report-page .orp-section-heading .orp-total-badge strong {
+    color: #123a68;
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.ortu-report-page .orp-section-heading .orp-total-badge small {
+    margin-top: 2px;
+    color: #71839a;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+/* Tampilan tablet dan HP */
+
+@media (max-width: 767px) {
+    .ortu-report-page .orp-section-heading {
+        align-items: stretch;
+        gap: 19px;
+        padding: 21px 18px;
+        border-left-width: 4px;
+    }
+
+    .ortu-report-page .orp-section-heading h2 {
+        font-size: 21px;
+        letter-spacing: -0.5px;
+    }
+
+    .ortu-report-page .orp-section-heading p {
+        font-size: 11px;
+    }
+
+    .ortu-report-page .orp-section-heading .orp-total-badge {
+        min-width: 0;
+        width: 100%;
+    }
+}
+
+
+
+/* Perbaikan posisi badge PDF siap diunduh */
+.ortu-report-page .orp-hero-visual {
+    overflow: visible;
+    min-width: 0;
+}
+
+.ortu-report-page .orp-floating-badge {
+    right: -8px;
+    bottom: 2px;
+    z-index: 3;
+    gap: 8px;
+    max-width: 175px;
+    padding: 10px 12px;
+    white-space: nowrap;
+    line-height: 1.4;
+    font-size: 10px;
+}
+
+.ortu-report-page .orp-floating-badge i {
+    flex-shrink: 0;
+    font-size: 14px;
+}
+
+.ortu-report-page .orp-document-illustration {
+    z-index: 1;
+}
+
+@media (max-width: 1100px) {
+    .ortu-report-page .orp-floating-badge {
+        right: -4px;
+        bottom: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .ortu-report-page .orp-hero-visual {
+        display: none;
+    }
+}
+
+
+/* ======================================
+   TOMBOL KEMBALI — BAGIAN BAWAH
+====================================== */
+
+.ortu-report-page .orp-bottom-actions {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #dce5f0;
+}
+
+.ortu-report-page .orp-bottom-actions .orp-back-button {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-width: 125px;
+    min-height: 43px;
+    padding: 11px 18px;
+    border: 1px solid #1769d5 !important;
+    border-radius: 7px;
+    background: #1769d5 !important;
+    color: #ffffff !important;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+    text-decoration: none !important;
+    box-shadow: 0 4px 10px rgba(23, 105, 213, 0.15);
+    cursor: pointer;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ortu-report-page .orp-bottom-actions .orp-back-button i {
+    display: inline-block;
+    color: #ffffff !important;
+    font-size: 15px;
+    line-height: 1;
+}
+
+.ortu-report-page .orp-bottom-actions .orp-back-button span {
+    display: inline-block;
+    color: #ffffff !important;
+}
+
+.ortu-report-page .orp-bottom-actions .orp-back-button:hover {
+    border-color: #1054b5 !important;
+    background: #1054b5 !important;
+    color: #ffffff !important;
+    box-shadow: 0 6px 14px rgba(23, 105, 213, 0.22);
+}
+
+@media (max-width: 576px) {
+    .ortu-report-page .orp-bottom-actions {
+        margin-top: 20px;
+        padding-top: 16px;
+    }
+
+    .ortu-report-page .orp-bottom-actions .orp-back-button {
+        width: 100%;
+    }
+}
