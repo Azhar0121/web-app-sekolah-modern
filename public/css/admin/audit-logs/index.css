@@ -1262,3 +1262,147 @@ RESPONSIVE
 
 
 }
+
+/* =========================================================
+   RETENTION POLICY CARD
+   ========================================================= */
+.audit-logs-retention-card {
+    background: #ffffff;
+    border: 1px solid #dce5ef;
+    border-left: 4px solid #1769d5;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    box-shadow: 0 2px 6px rgba(16, 34, 61, 0.04);
+}
+
+.audit-retention-content {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.audit-retention-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    background: #eaf2ff;
+    color: #1769d5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.audit-retention-text strong {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #1e293b;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.audit-retention-text p {
+    font-size: 12px;
+    color: #64748b;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.audit-retention-action {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .audit-logs-retention-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+    .audit-retention-action {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+}
+
+/* RETENTION BUTTONS HOVER & ACTIVE (WHITE TEXT ON RED) */
+.btn-prune-audit {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #dc2626 !important;
+    background-color: #ffffff !important;
+    border: 1px solid #dc2626 !important;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+}
+
+.btn-prune-audit i {
+    color: #dc2626 !important;
+    transition: color 0.2s ease-in-out;
+}
+
+.btn-prune-audit:hover,
+.btn-prune-audit:focus,
+.btn-prune-audit:active,
+.btn-prune-audit:focus-visible,
+.audit-logs-page .btn-outline-danger:hover,
+.audit-logs-page .btn-outline-danger:focus,
+.audit-logs-page .btn-outline-danger:active,
+.audit-logs-page .btn-outline-danger:focus-visible {
+    color: #ffffff !important;
+    background-color: #dc2626 !important;
+    border-color: #dc2626 !important;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25) !important;
+    outline: none !important;
+}
+
+.btn-prune-audit:hover i,
+.btn-prune-audit:focus i,
+.btn-prune-audit:active i,
+.audit-logs-page .btn-outline-danger:hover i,
+.audit-logs-page .btn-outline-danger:focus i,
+.audit-logs-page .btn-outline-danger:active i,
+.audit-logs-page .btn-outline-danger:hover *,
+.audit-logs-page .btn-outline-danger:focus *,
+.audit-logs-page .btn-outline-danger:active * {
+    color: #ffffff !important;
+}
+
+.btn-prune-confirm {
+    background-color: #dc2626 !important;
+    color: #ffffff !important;
+    border: 1px solid #dc2626 !important;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-prune-confirm:hover,
+.btn-prune-confirm:focus,
+.btn-prune-confirm:active {
+    background-color: #b91c1c !important;
+    color: #ffffff !important;
+    border-color: #b91c1c !important;
+}
+
+.btn-prune-confirm:hover i,
+.btn-prune-confirm:focus i,
+.btn-prune-confirm:active i {
+    color: #ffffff !important;
+}
+
+

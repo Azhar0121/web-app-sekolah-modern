@@ -36,10 +36,6 @@
 
     </div>
 
-    <p class="text-muted small mb-4">
-        Klik pada salah satu kartu fasilitas di bawah ini untuk melihat detail foto galeri ruangan, kapasitas, dan spesifikasi sarana penunjang pembelajaran.
-    </p>
-
     @if ($facilities->isNotEmpty())
 
         <div class="row g-4">

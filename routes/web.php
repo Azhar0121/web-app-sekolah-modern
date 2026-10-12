@@ -219,6 +219,7 @@ Route::middleware(['auth'])->prefix('admin/kesiswaan')->name('admin.student-acti
 // ================= AUDIT LOG & KEAMANAN (SUPER ADMIN & KEPSEK, by permission) =================
 Route::middleware(['auth', 'permission:audit.view'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('audit-logs', [AuditLogController::class, 'index'])->name('audit-logs.index');
+    Route::post('audit-logs/prune', [AuditLogController::class, 'prune'])->name('audit-logs.prune');
 });
 
 // ================= KELOLA PPDB (SUPER ADMIN, TU & KEPSEK, by permission) =================

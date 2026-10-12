@@ -8,6 +8,22 @@
 
 <div class="audit-logs-page">
 
+{{-- ALERTS --}}
+@if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show d-flex align-items-center mb-3 shadow-sm" role="alert">
+        <i class="bi bi-check-circle-fill me-2 fs-5"></i>
+        <div>{{ session('success') }}</div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
+@if (session('info'))
+    <div class="alert alert-info alert-dismissible fade show d-flex align-items-center mb-3 shadow-sm" role="alert">
+        <i class="bi bi-info-circle-fill me-2 fs-5"></i>
+        <div>{{ session('info') }}</div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
 
 {{-- HEADER --}}
 <div class="audit-logs-header">
@@ -48,6 +64,40 @@
     </div>
 </div>
 
+{{-- KEBIJAKAN RETENSI 3 TAHUN & AKSI PEMBERSIHAN --}}
+<div class="audit-logs-retention-card">
+    <div class="audit-retention-content">
+        <div class="audit-retention-icon">
+            <i class="bi bi-shield-lock-fill"></i>
+        </div>
+        <div class="audit-retention-text">
+            <strong>Kebijakan Retensi Keamanan (3 Tahun)</strong>
+            <p>
+                Sistem secara otomatis menghapus riwayat audit log yang telah berusia lebih dari 3 tahun (sebelum <strong>{{ $cutoffDate->translatedFormat('d F Y') }}</strong>) dan mengirimkan notifikasi ke administrator.
+                @if ($lastPrunedAt)
+                    <span class="text-muted d-block mt-1">Pembersihan terakhir: {{ $lastPrunedAt->translatedFormat('d F Y, H:i') }} ({{ $lastPrunedAt->diffForHumans() }})</span>
+                @endif
+            </p>
+        </div>
+    </div>
+    <div class="audit-retention-action">
+        @if ($expiredLogsCount > 0)
+            <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle py-2 px-3">
+                <i class="bi bi-exclamation-triangle-fill me-1"></i> {{ $expiredLogsCount }} log usang siap dibersihkan
+            </span>
+        @else
+            <span class="badge bg-success-subtle text-success border border-success-subtle py-2 px-3">
+                <i class="bi bi-check-circle-fill me-1"></i> Log bersih (0 log usang)
+            </span>
+        @endif
+
+        @if (auth()->user()?->hasRole('super-admin'))
+            <button type="button" class="btn btn-outline-danger btn-sm btn-prune-audit d-inline-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#confirmPruneModal">
+                <i class="bi bi-trash3"></i> Bersihkan Log Usang Sekarang
+            </button>
+        @endif
+    </div>
+</div>
 
 {{-- FILTER --}}
 <div class="audit-logs-filter-card">
@@ -548,5 +598,44 @@
 
 
 </div>
+
+{{-- MODAL KONFIRMASI PEMBERSIHAN AUDIT LOG --}}
+@if (auth()->user()?->hasRole('super-admin'))
+<div class="modal fade" id="confirmPruneModal" tabindex="-1" aria-labelledby="confirmPruneModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+            <form action="{{ route('admin.audit-logs.prune') }}" method="POST">
+                @csrf
+                <div class="modal-header bg-danger text-white py-3 px-4">
+                    <h5 class="modal-title fs-6 fw-bold mb-0" id="confirmPruneModalLabel">
+                        <i class="bi bi-shield-exclamation me-2"></i>Konfirmasi Pembersihan Audit Log
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <p class="mb-2">
+                        Tindakan ini akan menghapus seluruh data audit log yang telah berusia <strong>lebih dari 3 tahun</strong> (sebelum <strong>{{ $cutoffDate->translatedFormat('d F Y') }}</strong>).
+                    </p>
+                    <div class="alert alert-warning d-flex align-items-center gap-2 mb-3 py-2 px-3 small">
+                        <i class="bi bi-info-circle-fill fs-5"></i>
+                        <div>
+                            Jumlah log kedaluwarsa saat ini: <strong>{{ $expiredLogsCount }} rekaman</strong>.
+                        </div>
+                    </div>
+                    <p class="text-muted small mb-0">
+                        Setelah penghapusan selesai, sistem akan otomatis mencatat riwayat pembersihan dan mengirimkan <strong>notifikasi resmi</strong> ke lonceng notifikasi akun administrator (Super Admin & Kepala Sekolah).
+                    </p>
+                </div>
+                <div class="modal-footer bg-light py-2 px-4">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger btn-sm btn-prune-confirm d-inline-flex align-items-center gap-1">
+                        <i class="bi bi-trash3"></i> Ya, Bersihkan Sekarang
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endif
 
 @endsection
