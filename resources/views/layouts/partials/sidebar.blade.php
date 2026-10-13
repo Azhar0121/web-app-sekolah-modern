@@ -49,6 +49,7 @@
                 ['label' => 'Pendaftaran PPDB', 'route' => 'admin.ppdb.index', 'pattern' => 'admin.ppdb.*', 'icon' => 'bi-person-lines-fill', 'show' => $user->hasRole('super-admin') || $user->hasPermission('ppdb.view') || $user->hasPermission('ppdb.manage')],
                 ['label' => 'Kelola Pengumuman', 'route' => 'admin.announcements.index', 'pattern' => 'admin.announcements.*', 'icon' => 'bi-megaphone-fill', 'show' => $user->hasRole('super-admin') || $user->hasRole('kepsek') || $user->hasRole('tu')],
                 ['label' => 'Persuratan Digital', 'route' => 'admin.correspondences.index', 'pattern' => 'admin.correspondences.*', 'icon' => 'bi-envelope-paper-fill', 'show' => $user->hasRole('super-admin') || $user->hasRole('tu') || $user->hasPermission('persuratan.manage')],
+                ['label' => 'Kotak Masuk Pesan', 'route' => 'admin.contact-messages.index', 'pattern' => 'admin.contact-messages.*', 'icon' => 'bi-chat-left-text-fill', 'show' => $user->hasRole('super-admin') || $user->hasRole('tu') || $user->hasPermission('persuratan.manage'), 'badge' => \App\Models\ContactMessage::where('is_read', false)->count()],
                 ['label' => 'Biodata Siswa', 'route' => 'admin.student-profiles.index', 'pattern' => 'admin.student-profiles.*', 'icon' => 'bi-person-vcard-fill', 'show' => $user->hasRole('super-admin') || $user->hasRole('tu') || $user->hasPermission('siswa.manage')],
                 ['label' => 'Tagihan Siswa', 'route' => 'admin.billing.index', 'pattern' => 'admin.billing.*', 'icon' => 'bi-credit-card-2-front-fill', 'show' => $user->hasRole('super-admin') || $user->hasRole('tu') || $user->hasPermission('billing.manage')],
                 ['label' => 'Aktivitas Kesiswaan', 'route' => 'admin.student-activities.index', 'pattern' => 'admin.student-activities.*', 'icon' => 'bi-stars', 'show' => $user->hasRole('super-admin') || $user->hasRole('tu')],
@@ -84,7 +85,12 @@
                     <a href="{{ route($item['route']) }}"
                        class="sidebar-link {{ request()->routeIs($item['pattern']) ? 'active' : '' }}">
                         <i class="bi {{ $item['icon'] }}"></i>
-                        <span>{{ $item['label'] }}</span>
+                        <span class="flex-grow-1">{{ $item['label'] }}</span>
+                        @if (!empty($item['badge']) && $item['badge'] > 0)
+                            <span class="badge rounded-pill bg-danger ms-auto" style="font-size: 10px; padding: 3px 7px;">
+                                {{ $item['badge'] }}
+                            </span>
+                        @endif
                     </a>
                 @endforeach
             @endforeach

@@ -115,16 +115,16 @@
                             <div class="hero-visual-item">
 
                                 <div class="hero-item-icon">
-                                    <i class="bi bi-images"></i>
+                                    <i class="bi bi-share"></i>
                                 </div>
 
                                 <div>
                                     <strong>
-                                        Dokumentasi Sekolah
+                                        Saluran Resmi
                                     </strong>
 
                                     <span>
-                                        Lihat kegiatan dan informasi visual
+                                        Media sosial & hotline komunikasi
                                     </span>
                                 </div>
 
@@ -583,89 +583,7 @@
 
 
     {{-- =========================================================
-        2. DOKUMENTASI VISUAL
-    ========================================================= --}}
-    <section id="galeri-media" class="contact-section">
-
-        <div class="contact-content-card">
-
-            <div class="section-heading">
-
-                <span>
-                    DOKUMENTASI VISUAL
-                </span>
-
-                <h2>
-                    Galeri Media & Dokumentasi
-                </h2>
-
-            </div>
-
-
-            @if(isset($galleryMedia) && $galleryMedia->count())
-
-                <div class="gallery-grid">
-
-                    @foreach($galleryMedia as $media)
-
-                        <div
-                            class="gallery-item"
-                            data-bs-toggle="modal"
-                            data-bs-target="#imageModal"
-                            data-image="{{ $media->image_url ?? asset('storage/' . $media->image) }}"
-                            data-caption="{{ $media->title ?? $media->caption ?? 'Dokumentasi Sekolah' }}"
-                        >
-
-                            <img
-                                src="{{ $media->image_url ?? asset('storage/' . $media->image) }}"
-                                alt="{{ $media->title ?? $media->caption ?? 'Dokumentasi Sekolah' }}"
-                                loading="lazy"
-                            >
-
-                            <div class="gallery-caption">
-
-                                <i class="bi bi-images"></i>
-
-                                <span>
-                                    {{ $media->title ?? $media->caption ?? 'Dokumentasi Sekolah' }}
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    @endforeach
-
-                </div>
-
-            @else
-
-                <div class="empty-gallery">
-
-                    <div class="empty-gallery-icon">
-                        <i class="bi bi-images"></i>
-                    </div>
-
-                    <h5>
-                        Galeri Belum Tersedia
-                    </h5>
-
-                    <p>
-                        Dokumentasi visual sekolah akan ditampilkan
-                        pada halaman ini.
-                    </p>
-
-                </div>
-
-            @endif
-
-        </div>
-
-    </section>
-
-
-    {{-- =========================================================
-        3. SALURAN RESMI
+        2. SALURAN RESMI
     ========================================================= --}}
     <section id="media-sosial" class="contact-section">
 
@@ -879,105 +797,4 @@
 
 </div>
 
-
-{{-- =========================================================
-    IMAGE MODAL
-========================================================= --}}
-<div
-    class="modal fade"
-    id="imageModal"
-    tabindex="-1"
-    aria-labelledby="imageModalLabel"
-    aria-hidden="true"
->
-
-    <div class="modal-dialog modal-dialog-centered">
-
-        <div class="modal-content">
-
-            <div class="modal-body text-center position-relative">
-
-                <button
-                    type="button"
-                    class="btn-close btn-close-white position-absolute top-0 end-0 m-3"
-                    data-bs-dismiss="modal"
-                    aria-label="Close">
-                </button>
-
-                <img
-                    id="modalPreviewImage"
-                    src=""
-                    alt="Preview Dokumentasi"
-                    class="img-fluid rounded"
-                >
-
-                <p
-                    id="modalImageCaption"
-                    class="mt-3">
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
 @endsection
-
-
-@push('scripts')
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-
-    const imageModal = document.getElementById('imageModal');
-
-    if (!imageModal) {
-        return;
-    }
-
-    imageModal.addEventListener('show.bs.modal', function (event) {
-
-        const trigger = event.relatedTarget;
-
-        if (!trigger) {
-            return;
-        }
-
-        const image = trigger.getAttribute('data-image');
-        const caption = trigger.getAttribute('data-caption');
-
-        const previewImage = document.getElementById('modalPreviewImage');
-        const previewCaption = document.getElementById('modalImageCaption');
-
-        if (previewImage) {
-            previewImage.src = image || '';
-        }
-
-        if (previewCaption) {
-            previewCaption.textContent = caption || '';
-        }
-
-    });
-
-    imageModal.addEventListener('hidden.bs.modal', function () {
-
-        const previewImage = document.getElementById('modalPreviewImage');
-        const previewCaption = document.getElementById('modalImageCaption');
-
-        if (previewImage) {
-            previewImage.src = '';
-        }
-
-        if (previewCaption) {
-            previewCaption.textContent = '';
-        }
-
-    });
-
-});
-</script>
-
-@endpush

@@ -10,9 +10,9 @@
 ========================================================= */
 
 .login-page {
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
-  margin-left: calc(50% - 50vw);
+  margin: 0;
 
   display: flex;
   align-items: center;
@@ -352,6 +352,35 @@
   font-size: 13px;
   transition: border-color .2s ease,box-shadow .2s ease,background .2s ease
 }
+.input-wrapper input#password {
+  padding-right: 44px;
+}
+.password-toggle-btn {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #8494a8;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: color .2s ease, background-color .2s ease;
+}
+.password-toggle-btn:hover {
+  color: var(--blue);
+  background-color: rgba(23, 105, 213, 0.08);
+}
+.password-toggle-btn:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 1px;
+}
 .input-wrapper input::placeholder {
   color: #9aa8b8;
   font-size: 12px
@@ -608,18 +637,19 @@
 }
 @media (max-height:700px) and (min-width:951px) {
   .login-page {
-    align-items: flex-start;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
     overflow-y: auto
   }
   .login-card {
     height: auto;
-    min-height: 0
+    min-height: 0;
+    margin: auto
   }
   .login-panel {
-    padding-top: 22px;
-    padding-bottom: 22px
+    padding-top: 24px;
+    padding-bottom: 24px
   }
   .school-logo {
     width: 48px;

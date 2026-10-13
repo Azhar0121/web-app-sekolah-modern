@@ -735,7 +735,11 @@ font-weight: 700;
 
 }
 
-.file-info span {
+.file-info strong span {
+display: inline;
+}
+
+.file-info > span {
 display: block;
 
 

@@ -196,6 +196,49 @@
                                 required
                             >
 
+                            <button
+                                type="button"
+                                id="togglePasswordBtn"
+                                class="password-toggle-btn"
+                                aria-label="Lihat atau sembunyikan password"
+                                title="Lihat password"
+                            >
+                                {{-- Ikon Mata Terbuka (Show) --}}
+                                <svg
+                                    id="eyeIconOpen"
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+
+                                {{-- Ikon Mata Tertutup / Silang (Hide) --}}
+                                <svg
+                                    id="eyeIconClosed"
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    style="display: none;"
+                                >
+                                    <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path>
+                                    <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path>
+                                    <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
+                                    <line x1="2" y1="2" x2="22" y2="22"></line>
+                                </svg>
+                            </button>
+
                         </div>
 
                     </div>
@@ -264,8 +307,40 @@
 
         </div>
 
-    </div>
-
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const passwordInput = document.getElementById('password');
+    const togglePasswordBtn = document.getElementById('togglePasswordBtn');
+    const eyeIconOpen = document.getElementById('eyeIconOpen');
+    const eyeIconClosed = document.getElementById('eyeIconClosed');
+
+    if (togglePasswordBtn && passwordInput) {
+        togglePasswordBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const isPassword = passwordInput.getAttribute('type') === 'password';
+
+            if (isPassword) {
+                passwordInput.setAttribute('type', 'text');
+                eyeIconOpen.style.display = 'none';
+                eyeIconClosed.style.display = 'block';
+                togglePasswordBtn.setAttribute('title', 'Sembunyikan password');
+                togglePasswordBtn.setAttribute('aria-label', 'Sembunyikan password');
+            } else {
+                passwordInput.setAttribute('type', 'password');
+                eyeIconOpen.style.display = 'block';
+                eyeIconClosed.style.display = 'none';
+                togglePasswordBtn.setAttribute('title', 'Lihat password');
+                togglePasswordBtn.setAttribute('aria-label', 'Lihat password');
+            }
+
+            // Tetap fokuskan kursor ke input password
+            passwordInput.focus();
+        });
+    }
+});
+</script>
 
 @endsection

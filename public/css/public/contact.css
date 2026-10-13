@@ -972,166 +972,7 @@
 
 
 /* =========================================================
-   2. GALERI MEDIA
-   JUDUL TETAP DI KIRI
-========================================================= */
-
-#galeri-media {
-    background: #f5f8fc;
-}
-
-#galeri-media .contact-content-card {
-    width: 100%;
-}
-
-#galeri-media .section-heading {
-    display: block;
-    width: 100%;
-    text-align: left !important;
-}
-
-#galeri-media .section-heading > span {
-    display: block;
-    text-align: left;
-}
-
-#galeri-media .section-heading > h2 {
-    display: block;
-    text-align: left;
-}
-
-#galeri-media .gallery-grid {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: 13px;
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 8px;
-    background: var(--contact-navy);
-    border-radius: 7px;
-}
-
-#galeri-media .gallery-item {
-    position: relative;
-    width: 100%;
-    height: 210px;
-    overflow: hidden;
-    background: #ffffff;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#galeri-media .gallery-item img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform .3s ease;
-}
-
-#galeri-media .gallery-item:hover img {
-    transform: scale(1.04);
-}
-
-#galeri-media .gallery-item::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(
-            to top,
-            rgba(7, 27, 53, .82),
-            rgba(7, 27, 53, .08) 65%,
-            transparent
-        );
-    opacity: 0;
-    transition: opacity .25s ease;
-}
-
-#galeri-media .gallery-item:hover::after {
-    opacity: 1;
-}
-
-#galeri-media .gallery-caption {
-    position: absolute;
-    z-index: 2;
-    left: 13px;
-    right: 13px;
-    bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    color: #ffffff;
-    font-size: 11px;
-    font-weight: 600;
-    opacity: 0;
-    transform: translateY(5px);
-    transition:
-        opacity .25s ease,
-        transform .25s ease;
-}
-
-#galeri-media .gallery-item:hover .gallery-caption {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-#galeri-media .gallery-caption i {
-    color: #9dccff;
-}
-
-#galeri-media .gallery-caption span {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-
-/* =========================================================
-   EMPTY GALLERY
-========================================================= */
-
-#galeri-media .empty-gallery {
-    min-height: 190px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background: #f7f9fc;
-    border: 1px solid var(--contact-border);
-    border-radius: 7px;
-    text-align: center;
-}
-
-#galeri-media .empty-gallery-icon {
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 11px;
-    border-radius: 6px;
-    background: var(--contact-navy);
-    color: #ffffff;
-}
-
-#galeri-media .empty-gallery h5 {
-    margin: 0 0 5px;
-    color: var(--contact-navy);
-    font-size: 14px;
-    font-weight: 800;
-}
-
-#galeri-media .empty-gallery p {
-    margin: 0;
-    color: var(--contact-muted);
-    font-size: 11px;
-}
-
-
-/* =========================================================
-   3. MEDIA SOSIAL
+   2. MEDIA SOSIAL
    CARD DIKEMBALIKAN LEBIH BESAR
 ========================================================= */
 
@@ -1271,37 +1112,6 @@
 
 
 /* =========================================================
-   MODAL
-========================================================= */
-
-#imageModal .modal-dialog {
-    max-width: 1000px;
-}
-
-#imageModal .modal-content {
-    background: transparent;
-    border: 0;
-}
-
-#imageModal .modal-body {
-    background: transparent;
-}
-
-#imageModal #modalPreviewImage {
-    max-width: 100%;
-    max-height: 78vh;
-    object-fit: contain;
-}
-
-#imageModal #modalImageCaption {
-    margin-bottom: 0;
-    color: #ffffff;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 12px;
-}
-
-
-/* =========================================================
    RESPONSIVE 1200PX
 ========================================================= */
 
@@ -1334,10 +1144,6 @@
             minmax(0, 1.4fr)
             minmax(300px, .8fr);
         gap: 14px;
-    }
-
-    #galeri-media .gallery-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
     #media-sosial .social-grid {
@@ -1398,10 +1204,6 @@
 
     .contact-content-card {
         padding: 25px;
-    }
-
-    #galeri-media .gallery-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     #media-sosial .social-grid {
@@ -1512,16 +1314,6 @@
         text-align: left;
     }
 
-    #galeri-media .gallery-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 7px;
-        padding: 10px;
-    }
-
-    #galeri-media .gallery-item {
-        height: 180px;
-    }
-
     #media-sosial .social-grid {
         grid-template-columns: 1fr;
         gap: 8px;
@@ -1630,15 +1422,6 @@
         text-align: left;
     }
 
-    #galeri-media .gallery-grid {
-        grid-template-columns: 1fr;
-        padding: 9px;
-    }
-
-    #galeri-media .gallery-item {
-        height: 205px;
-    }
-
     #media-sosial .social-grid {
         padding: 9px;
     }
@@ -1656,7 +1439,6 @@
     }
 }
 
-#galeri-media .section-heading,
 #media-sosial .section-heading,
 #peta-lokasi .section-heading {
     display: block;
@@ -1666,10 +1448,8 @@
     margin-right: 0;
 }
 
-#galeri-media .section-heading span,
 #media-sosial .section-heading span,
 #peta-lokasi .section-heading span,
-#galeri-media .section-heading h2,
 #media-sosial .section-heading h2,
 #peta-lokasi .section-heading h2 {
     text-align: left;
@@ -1677,14 +1457,12 @@
     margin-right: 0;
 }
 
-#galeri-media,
 #media-sosial,
 #peta-lokasi {
     padding-top: 32px;
     padding-bottom: 32px;
 }
 
-#galeri-media + #media-sosial,
 #media-sosial + #peta-lokasi {
     margin-top: 0;
 }

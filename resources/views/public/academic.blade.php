@@ -409,34 +409,45 @@
 
             <div class="subject-filter-container" id="subject-filter-container">
 
-                <button type="button"
-                        class="subject-filter-btn active"
-                        data-filter="all">
-                    Semua
-                    <span>{{ $subjects->count() }}</span>
-                </button>
+                @php
+                    $firstFilterActive = true;
+                @endphp
 
-                <button type="button"
-                        class="subject-filter-btn"
-                        data-filter="umum">
-                    Umum
-                    <span>{{ $subjects->whereNull('department_id')->count() }}</span>
-                </button>
-
-                @foreach ($departments as $dept)
+                @foreach ($departments as $index => $dept)
 
                     @php
                         $deptSubjectCount = $subjects->where('department_id', $dept->id)->count();
+                        $isCurrentActive = $firstFilterActive;
+                        if ($firstFilterActive) {
+                            $firstFilterActive = false;
+                        }
                     @endphp
 
                     <button type="button"
-                            class="subject-filter-btn"
-                            data-filter="{{ $dept->id }}">
+                            class="subject-filter-btn {{ $isCurrentActive ? 'active' : '' }}"
+                            data-filter="{{ $dept->id }}"
+                            title="Mata Pelajaran Jurusan {{ $dept->name }}">
+                        <i class="bi bi-briefcase me-1"></i>
                         {{ $dept->code ?? $dept->name }}
                         <span>{{ $deptSubjectCount }}</span>
                     </button>
 
                 @endforeach
+
+                @php
+                    $generalSubjectCount = $subjects->whereNull('department_id')->count();
+                @endphp
+
+                @if ($generalSubjectCount > 0)
+                    <button type="button"
+                            class="subject-filter-btn {{ $departments->isEmpty() ? 'active' : '' }}"
+                            data-filter="umum"
+                            title="Mata Pelajaran Muatan Umum / Nasional">
+                        <i class="bi bi-layers me-1"></i>
+                        Umum (Nasional)
+                        <span>{{ $generalSubjectCount }}</span>
+                    </button>
+                @endif
 
             </div>
 
@@ -449,12 +460,22 @@
 
         @if ($subjects->isNotEmpty())
 
+            @php
+                $initialDeptId = $departments->first()?->id ?? 'umum';
+            @endphp
+
             <div class="row g-3" id="subject-list-container">
 
                 @foreach ($subjects as $subj)
 
+                    @php
+                        $subjDeptKey = (string) ($subj->department_id ?? 'umum');
+                        $isInitiallyVisible = ($subjDeptKey === (string) $initialDeptId);
+                    @endphp
+
                     <div class="col-md-6 col-lg-4 subject-card-item"
-                         data-department="{{ $subj->department_id ?? 'umum' }}">
+                         data-department="{{ $subjDeptKey }}"
+                         style="{{ $isInitiallyVisible ? '' : 'display: none;' }}">
 
                         <div class="subject-card">
 
@@ -805,7 +826,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const cardDept = card.getAttribute('data-department');
 
-                if (filter === 'all' || cardDept === filter) {
+                if (cardDept === filter) {
                     card.style.display = '';
                     visibleCount++;
                 } else {

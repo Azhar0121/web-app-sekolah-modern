@@ -292,77 +292,77 @@
                 </div>
 
                 <div class="document-info">
-                    <strong>Dokumen bersifat fleksibel / opsional saat pendaftaran online</strong>
-                    <p>Format yang diterima: PDF, JPG, atau PNG dengan ukuran maksimal 2MB per file. Dokumen fisik asli dapat disusulkan saat proses verifikasi berkas di sekolah.</p>
+                    <strong>Ketentuan Unggah Dokumen Berkas PPDB</strong>
+                    <p>Format yang diterima: PDF, JPG, atau PNG dengan ukuran maksimal 2MB per file. Dokumen bertanda bintang (<span style="color: #dc2626; font-weight: bold;">*</span>) bersifat <strong>wajib diunggah</strong> untuk kelengkapan administrasi dan verifikasi data pendaftar.</p>
                 </div>
 
                 <div class="file-field">
                     <div class="file-info">
-                        <strong>Pas Foto Calon Siswa (3x4)</strong>
+                        <strong>Pas Foto Calon Siswa (3x4) <span style="color: #dc2626;">*</span></strong>
                         <span>JPG, JPEG, atau PNG — maks. 2MB (Pas foto resmi terbaru berlatar belakang merah/biru untuk verifikasi wajah saat daftar ulang offline)</span>
                     </div>
-                    <input type="file" name="documents[foto]" accept=".jpg,.jpeg,.png">
+                    <input type="file" name="documents[foto]" accept=".jpg,.jpeg,.png" required>
                 </div>
 
                 <div class="file-field">
                     <div class="file-info">
-                        <strong>Kartu Keluarga (KK)</strong>
+                        <strong>Kartu Keluarga (KK) <span style="color: #dc2626;">*</span></strong>
                         <span>PDF, JPG, atau PNG — maks. 2MB</span>
                     </div>
-                    <input type="file" name="documents[kartu_keluarga]" accept=".pdf,.jpg,.jpeg,.png">
+                    <input type="file" name="documents[kartu_keluarga]" accept=".pdf,.jpg,.jpeg,.png" required>
                 </div>
 
                 <div class="file-field">
                     <div class="file-info">
-                        <strong>Akta Kelahiran</strong>
+                        <strong>Akta Kelahiran <span style="color: #dc2626;">*</span></strong>
                         <span>PDF, JPG, atau PNG — maks. 2MB</span>
                     </div>
-                    <input type="file" name="documents[akta_lahir]" accept=".pdf,.jpg,.jpeg,.png">
+                    <input type="file" name="documents[akta_lahir]" accept=".pdf,.jpg,.jpeg,.png" required>
                 </div>
 
                 <div class="file-field">
                     <div class="file-info">
-                        <strong>Buku Rapor Semester 1 <span class="text-muted">(Opsional)</span></strong>
-                        <span>PDF, JPG, atau PNG — maks. 2MB</span>
+                        <strong>Buku Rapor Semester 1 <span style="color: #dc2626;">*</span></strong>
+                        <span>PDF, JPG, atau PNG — maks. 2MB (Lembar nilai rapor semester 1)</span>
                     </div>
-                    <input type="file" name="documents[rapor_1]" accept=".pdf,.jpg,.jpeg,.png">
+                    <input type="file" name="documents[rapor_1]" accept=".pdf,.jpg,.jpeg,.png" required>
                 </div>
 
                 <div class="file-field">
                     <div class="file-info">
-                        <strong>Buku Rapor Semester 2 <span class="text-muted">(Opsional)</span></strong>
-                        <span>PDF, JPG, atau PNG — maks. 2MB</span>
+                        <strong>Buku Rapor Semester 2 <span style="color: #dc2626;">*</span></strong>
+                        <span>PDF, JPG, atau PNG — maks. 2MB (Lembar nilai rapor semester 2)</span>
                     </div>
-                    <input type="file" name="documents[rapor_2]" accept=".pdf,.jpg,.jpeg,.png">
+                    <input type="file" name="documents[rapor_2]" accept=".pdf,.jpg,.jpeg,.png" required>
                 </div>
 
                 <div class="file-field">
                     <div class="file-info">
-                        <strong>Buku Rapor Semester 3 <span class="text-muted">(Opsional)</span></strong>
-                        <span>PDF, JPG, atau PNG — maks. 2MB</span>
+                        <strong>Buku Rapor Semester 3 <span style="color: #dc2626;">*</span></strong>
+                        <span>PDF, JPG, atau PNG — maks. 2MB (Lembar nilai rapor semester 3)</span>
                     </div>
-                    <input type="file" name="documents[rapor_3]" accept=".pdf,.jpg,.jpeg,.png">
+                    <input type="file" name="documents[rapor_3]" accept=".pdf,.jpg,.jpeg,.png" required>
                 </div>
 
                 <div class="file-field">
                     <div class="file-info">
-                        <strong>Buku Rapor Semester 4 <span class="text-muted">(Opsional)</span></strong>
-                        <span>PDF, JPG, atau PNG — maks. 2MB</span>
+                        <strong>Buku Rapor Semester 4 <span style="color: #dc2626;">*</span></strong>
+                        <span>PDF, JPG, atau PNG — maks. 2MB (Lembar nilai rapor semester 4)</span>
                     </div>
-                    <input type="file" name="documents[rapor_4]" accept=".pdf,.jpg,.jpeg,.png">
+                    <input type="file" name="documents[rapor_4]" accept=".pdf,.jpg,.jpeg,.png" required>
                 </div>
 
                 <div class="file-field">
                     <div class="file-info">
-                        <strong>Buku Rapor Semester 5 <span class="text-muted">(Opsional)</span></strong>
-                        <span>PDF, JPG, atau PNG — maks. 2MB</span>
+                        <strong>Buku Rapor Semester 5 <span style="color: #dc2626;">*</span></strong>
+                        <span>PDF, JPG, atau PNG — maks. 2MB (Lembar nilai rapor semester 5)</span>
                     </div>
-                    <input type="file" name="documents[rapor_5]" accept=".pdf,.jpg,.jpeg,.png">
+                    <input type="file" name="documents[rapor_5]" accept=".pdf,.jpg,.jpeg,.png" required>
                 </div>
 
                 <div class="file-field">
                     <div class="file-info">
-                        <strong>Sertifikat / Piagam Prestasi 1 <span class="text-muted">(Opsional)</span></strong>
+                        <strong>Sertifikat / Piagam Prestasi 1 <span class="text-muted" style="color: #64748b; font-weight: normal;">(Opsional)</span></strong>
                         <span>PDF, JPG, atau PNG — maks. 2MB</span>
                     </div>
                     <input type="file" name="documents[sertifikat_1]" accept=".pdf,.jpg,.jpeg,.png">
@@ -370,7 +370,7 @@
 
                 <div class="file-field">
                     <div class="file-info">
-                        <strong>Sertifikat / Piagam Prestasi 2 <span class="text-muted">(Opsional)</span></strong>
+                        <strong>Sertifikat / Piagam Prestasi 2 <span class="text-muted" style="color: #64748b; font-weight: normal;">(Opsional)</span></strong>
                         <span>PDF, JPG, atau PNG — maks. 2MB</span>
                     </div>
                     <input type="file" name="documents[sertifikat_2]" accept=".pdf,.jpg,.jpeg,.png">
@@ -378,7 +378,7 @@
 
                 <div class="file-field">
                     <div class="file-info">
-                        <strong>Surat Keterangan Lulus (SKL) / Ijazah Asli <span class="text-muted">(Opsional)</span></strong>
+                        <strong>Surat Keterangan Lulus (SKL) / Ijazah Asli <span class="text-muted" style="color: #64748b; font-weight: normal;">(Opsional)</span></strong>
                         <span>PDF, JPG, atau PNG — maks. 2MB (lampirkan salah satu bila sudah terbit)</span>
                     </div>
                     <input type="file" name="documents[surat_keterangan_lulus]" accept=".pdf,.jpg,.jpeg,.png">

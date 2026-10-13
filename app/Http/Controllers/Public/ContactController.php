@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
 use App\Models\ContactMessage;
-use App\Models\MediaFile;
 use App\Models\Setting;
+use App\Models\User;
+use App\Notifications\ContactMessageReceivedNotification;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\View\View;
 
 class ContactController extends Controller
@@ -16,9 +18,7 @@ class ContactController extends Controller
     {
         $settings = Setting::all()->pluck('value', 'key')->all();
 
-        $galleryMedia = MediaFile::orderByDesc('created_at')->take(12)->get();
-
-        return view('public.contact', compact('settings', 'galleryMedia'));
+        return view('public.contact', compact('settings'));
     }
 
     public function store(Request $request): RedirectResponse
@@ -31,7 +31,15 @@ class ContactController extends Controller
             'message' => ['required', 'string', 'max:2000'],
         ]);
 
-        ContactMessage::create($validated);
+        $contactMessage = ContactMessage::create($validated);
+
+        $recipients = User::whereHas('role', function ($query) {
+            $query->whereIn('slug', ['super-admin', 'tu']);
+        })->get();
+
+        if ($recipients->isNotEmpty()) {
+            Notification::send($recipients, new ContactMessageReceivedNotification($contactMessage));
+        }
 
         return back()->with('success', 'Pesan Anda telah berhasil terkirim. Tim staf sekolah akan segera menghubungi Anda.');
     }

@@ -48,6 +48,7 @@ use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\MediaLibraryController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\SeoSettingController;
+use App\Http\Controllers\Admin\ContactMessageController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Tu\DashboardController as TuDashboardController;
@@ -238,6 +239,14 @@ Route::prefix('admin/ppdb')->name('admin.ppdb.')->group(function () {
 // ================= PERSURATAN DIGITAL & KEARSIPAN (SUPER ADMIN & TU, by permission) =================
 Route::middleware(['auth', 'permission:persuratan.manage'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('correspondences', CorrespondenceController::class);
+});
+
+// ================= KOTAK MASUK PESAN PUBLIK (SUPER ADMIN & TU) =================
+Route::middleware(['auth', 'permission:persuratan.manage'])->prefix('admin/pesan-masuk')->name('admin.contact-messages.')->group(function () {
+    Route::get('/', [ContactMessageController::class, 'index'])->name('index');
+    Route::get('/{contactMessage}', [ContactMessageController::class, 'show'])->name('show');
+    Route::patch('/{contactMessage}/toggle-read', [ContactMessageController::class, 'toggleRead'])->name('toggle-read');
+    Route::delete('/{contactMessage}', [ContactMessageController::class, 'destroy'])->name('destroy');
 });
 
 // ================= BIODATA SISWA (TU & SUPER ADMIN, by permission) =================
