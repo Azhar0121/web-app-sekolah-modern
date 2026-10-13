@@ -76,7 +76,7 @@
 
 
 {{-- =====================================================
-    AKSES CEPAT
+    AKSES LAYANAN UTAMA ORANG TUA
 ====================================================== --}}
 <section class="ortu-section ortu-quick-section">
 
@@ -85,27 +85,27 @@
         <div class="ortu-section-title">
 
             <div class="ortu-section-title-icon">
-                <i class="bi bi-lightning-charge-fill"></i>
+                <i class="bi bi-shield-check"></i>
             </div>
 
             <div>
                 <span class="ortu-section-eyebrow">
-                    AKSES CEPAT
+                    LAYANAN WALI MURID
                 </span>
 
                 <h2>
-                    Akses layanan utama
+                    Akses Layanan Utama
                 </h2>
 
                 <p>
-                    Pilih layanan yang ingin Anda akses
+                    Layanan terpadu izin siswa, konsultasi guru, dan riwayat permohonan
                 </p>
             </div>
 
         </div>
 
         <span class="ortu-section-count">
-            {{ $children->isNotEmpty() ? 'Layanan tersedia' : '3 layanan tersedia' }}
+            3 layanan aktif
         </span>
 
     </div>
@@ -113,20 +113,20 @@
 
     <div class="ortu-quick-actions">
 
-        {{-- Ajukan Izin --}}
+        {{-- 1. Ajukan Izin --}}
         <a
-            href="{{ route('ortu.leave-requests.index') }}"
+            href="{{ route('ortu.leave-requests.create') }}"
             class="ortu-quick-card"
         >
             <div class="ortu-quick-icon">
-                <i class="bi bi-envelope-paper-fill"></i>
+                <i class="bi bi-envelope-plus-fill"></i>
             </div>
 
             <div class="ortu-quick-content">
-                <strong>Ajukan Izin</strong>
+                <strong>Ajukan Surat Izin</strong>
 
                 <small>
-                    Kirim surat izin anak
+                    Permohonan sakit atau izin anak
                 </small>
             </div>
 
@@ -134,7 +134,7 @@
         </a>
 
 
-        {{-- Konsultasi Guru --}}
+        {{-- 2. Konsultasi Guru --}}
         <a
             href="{{ route('ortu.communication.index') }}"
             class="ortu-quick-card"
@@ -144,10 +144,10 @@
             </div>
 
             <div class="ortu-quick-content">
-                <strong>Konsultasi Guru</strong>
+                <strong>Konsultasi Guru & Wali Kelas</strong>
 
                 <small>
-                    Pesan terarah dengan guru
+                    Komunikasi dua arah dengan sekolah
                 </small>
             </div>
 
@@ -155,92 +155,25 @@
         </a>
 
 
-        {{-- Riwayat Izin --}}
+        {{-- 3. Riwayat Izin --}}
         <a
             href="{{ route('ortu.leave-requests.index') }}"
             class="ortu-quick-card"
         >
             <div class="ortu-quick-icon">
-                <i class="bi bi-calendar-check-fill"></i>
+                <i class="bi bi-clock-history"></i>
             </div>
 
             <div class="ortu-quick-content">
-                <strong>Riwayat Izin</strong>
+                <strong>Riwayat Pengajuan Izin</strong>
 
                 <small>
-                    Lihat pengajuan izin
+                    Status verifikasi persetujuan guru
                 </small>
             </div>
 
             <i class="bi bi-arrow-up-right ortu-card-arrow"></i>
         </a>
-
-
-        @if ($children->isNotEmpty())
-
-            {{-- Jadwal --}}
-            <a
-                href="{{ route('ortu.schedule.index', $children->first()) }}"
-                class="ortu-quick-card"
-            >
-                <div class="ortu-quick-icon">
-                    <i class="bi bi-calendar3"></i>
-                </div>
-
-                <div class="ortu-quick-content">
-                    <strong>Jadwal</strong>
-
-                    <small>
-                        Jadwal pelajaran anak
-                    </small>
-                </div>
-
-                <i class="bi bi-arrow-up-right ortu-card-arrow"></i>
-            </a>
-
-
-            {{-- Presensi --}}
-            <a
-                href="{{ route('ortu.attendance.index', $children->first()) }}"
-                class="ortu-quick-card"
-            >
-                <div class="ortu-quick-icon">
-                    <i class="bi bi-person-check-fill"></i>
-                </div>
-
-                <div class="ortu-quick-content">
-                    <strong>Presensi</strong>
-
-                    <small>
-                        Riwayat kehadiran
-                    </small>
-                </div>
-
-                <i class="bi bi-arrow-up-right ortu-card-arrow"></i>
-            </a>
-
-
-            {{-- Nilai --}}
-            <a
-                href="{{ route('ortu.grades.index', $children->first()) }}"
-                class="ortu-quick-card"
-            >
-                <div class="ortu-quick-icon">
-                    <i class="bi bi-graph-up-arrow"></i>
-                </div>
-
-                <div class="ortu-quick-content">
-                    <strong>Nilai</strong>
-
-                    <small>
-                        Rapor akademik
-                    </small>
-                </div>
-
-                <i class="bi bi-arrow-up-right ortu-card-arrow"></i>
-            </a>
-
-        @endif
 
     </div>
 
@@ -387,7 +320,7 @@
 
                         <div class="child-action-grid">
 
-                            {{-- Jadwal --}}
+                            {{-- 1. Jadwal --}}
                             <a
                                 href="{{ route('ortu.schedule.index', $child) }}"
                                 class="child-action-btn"
@@ -398,14 +331,14 @@
 
                                 <span class="child-action-content">
                                     <strong>Jadwal Pelajaran</strong>
-                                    <small>Lihat jadwal siswa</small>
+                                    <small>Lihat jadwal mata pelajaran</small>
                                 </span>
 
                                 <i class="bi bi-chevron-right child-action-arrow"></i>
                             </a>
 
 
-                            {{-- Presensi --}}
+                            {{-- 2. Presensi --}}
                             <a
                                 href="{{ route('ortu.attendance.index', $child) }}"
                                 class="child-action-btn"
@@ -416,14 +349,14 @@
 
                                 <span class="child-action-content">
                                     <strong>Riwayat Presensi</strong>
-                                    <small>Lihat kehadiran siswa</small>
+                                    <small>Lihat persentase kehadiran</small>
                                 </span>
 
                                 <i class="bi bi-chevron-right child-action-arrow"></i>
                             </a>
 
 
-                            {{-- Nilai --}}
+                            {{-- 3. Nilai --}}
                             <a
                                 href="{{ route('ortu.grades.index', $child) }}"
                                 class="child-action-btn"
@@ -433,15 +366,15 @@
                                 </span>
 
                                 <span class="child-action-content">
-                                    <strong>Nilai Rapor</strong>
-                                    <small>Lihat perkembangan nilai</small>
+                                    <strong>Nilai Akademik</strong>
+                                    <small>Rekap nilai harian & ujian</small>
                                 </span>
 
                                 <i class="bi bi-chevron-right child-action-arrow"></i>
                             </a>
 
 
-                            {{-- Tagihan --}}
+                            {{-- 4. Tagihan --}}
                             <a
                                 href="{{ route('ortu.billing.index', $child) }}"
                                 class="child-action-btn"
@@ -455,10 +388,9 @@
 
                                     <small>
                                         @if ($child->unpaidBillingCount > 0)
-                                            {{ $child->unpaidBillingCount }}
-                                            tagihan perlu diperiksa
+                                            {{ $child->unpaidBillingCount }} tagihan perlu dibayar
                                         @else
-                                            Semua tagihan telah lunas
+                                            Semua tagihan lunas
                                         @endif
                                     </small>
                                 </span>
@@ -467,7 +399,7 @@
                             </a>
 
 
-                            {{-- Rapor --}}
+                            {{-- 5. Rapor --}}
                             <a
                                 href="{{ route('ortu.report-cards.index', $child) }}"
                                 class="child-action-btn"
@@ -478,43 +410,7 @@
 
                                 <span class="child-action-content">
                                     <strong>Rapor Digital</strong>
-                                    <small>Lihat dokumen rapor</small>
-                                </span>
-
-                                <i class="bi bi-chevron-right child-action-arrow"></i>
-                            </a>
-
-
-                            {{-- Konsultasi --}}
-                            <a
-                                href="{{ route('ortu.communication.index') }}"
-                                class="child-action-btn"
-                            >
-                                <span class="child-action-icon">
-                                    <i class="bi bi-chat-dots-fill"></i>
-                                </span>
-
-                                <span class="child-action-content">
-                                    <strong>Konsultasi Guru</strong>
-                                    <small>Hubungi guru siswa</small>
-                                </span>
-
-                                <i class="bi bi-chevron-right child-action-arrow"></i>
-                            </a>
-
-
-                            {{-- Izin --}}
-                            <a
-                                href="{{ route('ortu.leave-requests.create') }}"
-                                class="child-action-btn"
-                            >
-                                <span class="child-action-icon">
-                                    <i class="bi bi-envelope-paper"></i>
-                                </span>
-
-                                <span class="child-action-content">
-                                    <strong>Ajukan Izin</strong>
-                                    <small>Kirim pengajuan izin</small>
+                                    <small>Unduh salinan berkas rapor</small>
                                 </span>
 
                                 <i class="bi bi-chevron-right child-action-arrow"></i>
