@@ -1,195 +1,203 @@
 # Web Sekolah Modern
 
-Aplikasi Sistem Informasi Manajemen Sekolah dan Portal Akademik Terpadu berbasis web yang dibangun menggunakan framework **Laravel 13**. Aplikasi ini menyediakan website publik sekolah, portal pendaftaran siswa baru (PPDB Online), serta 6 portal khusus berbasis peran (*role-based access control*) untuk mendukung kegiatan akademik, keuangan, persuratan, dan komunikasi sekolah secara digital.
+Aplikasi Sistem Informasi Manajemen Sekolah, Portal Akademik Terpadu, dan Administrasi Digital berbasis web modern yang dibangun menggunakan framework **Laravel 11 / 12** (PHP 8.2+). Aplikasi ini menyediakan website publik sekolah yang informatif, portal pendaftaran siswa baru (PPDB Online), serta 6 portal khusus berbasis peran (*Role-Based Access Control*) untuk mendukung operasional akademik, kesiswaan, keuangan, persuratan, dan komunikasi sekolah secara digital.
 
 ---
 
-## Teknologi Utama
+## Nilai Utama & Keunggulan Sistem
 
-- **Framework**: Laravel 13.x (PHP 8.4+)
+1. **Website Publik Elegan & Informatif**: Beranda dinamis (*hero slider*, visi-misi, fasilitas, ekstrakurikuler, OSIS, prestasi), profil sekolah, daftar tenaga pendidik & staf, kurikulum akademik per jurusan, kesiswaan, dan formulir layanan pesan kontak publik.
+2. **PPDB Online Terintegrasi**: Pendaftaran mandiri, upload berkas digital berjenjang, pelacakan status seleksi real-time, cetak kartu bukti pendaftaran, hingga konfirmasi daftar ulang dan pembuatan akun siswa otomatis.
+3. **Presensi Digital Pintar Berbasis QR Code**: Presensi kelas real-time dengan kode QR dinamis berbasis TOTP (Time-Based One-Time Password dengan masa kedaluwarsa 25 detik dan auto-refresh AJAX) untuk mencegah pemalsuan presensi antar siswa.
+4. **Portal Orang Tua Tanpa Redundansi (Multi-Child Ready)**: Akses terpisah antara layanan mandiri wali murid (pengajuan izin sakit/keperluan keluarga, konsultasi guru) dengan kartu portofolio perkembangan masing-masing anak (jadwal, presensi, grafik nilai, tagihan SPP, rapor digital).
+5. **Manajemen Operasional & Persuratan Lengkap**: Penomoran surat otomatis, registrasi surat masuk/keluar, disposisi digital, penagihan SPP siswa dengan konfirmasi bukti bayar, dan kotak masuk pesan publik dengan notifikasi badge serta integrasi balas pesan via WhatsApp resmi.
+6. **Keamanan & Standar Enterprise**: Proteksi CSRF, sanitasi XSS otomatis, pencegahan SQL Injection via Eloquent ORM, otorisasi RBAC granular, Audit Log forensik digital, serta modul Backup & Pemulihan database.
+
+---
+
+## Tumpukan Teknologi (Tech Stack)
+
+- **Framework**: [Laravel 11 / 12](https://laravel.com/) (PHP 8.2+)
 - **Template Engine**: Laravel Blade & Bootstrap 5.3
-- **Asset Bundler**: Vite 6 & Sass
-- **Database**: MySQL / MariaDB (support Eloquent ORM)
-- **Visualisasi Data**: Chart.js (Grafik Performa Nilai)
-- **Ikonografi**: Bootstrap Icons v1.11
-- **Testing**: PHPUnit 12
+- **Asset Bundler**: Vite 6 & Sass / CSS3 Murni
+- **Database**: MySQL / MariaDB (dukungan penuh Eloquent ORM & 61 Database Migrations)
+- **Visualisasi Data**: Chart.js (Grafik Performa Nilai Siswa)
+- **Ikonografi**: Bootstrap Icons v1.11 & SVG Icons
+- **Pengujian (Testing)**: PHPUnit (100% Automated Test Suite Passing)
+- **Penyimpanan Berkas**: Laravel Storage Disk (dengan Symbolic Link `public/storage`)
 
 ---
 
-## Fitur Yang Sudah Tersedia (Implemented Features)
+## Fitur yang Sudah Diimplementasikan
 
-Semua fitur yang tercantum di bawah ini telah selesai diimplementasikan secara penuh pada codebase:
+Semua fitur di bawah ini telah terpasang, teruji, dan aktif di dalam sistem:
 
-### 1. Website Publik & PPDB Online (`/` & `/ppdb`)
-- **Beranda Sekolah**: Tampilan publik profil sekolah dan pengumuman resmi.
-- **Pendaftaran Siswa Baru (PPDB)**: Formulir pendaftaran calon siswa online lengkap (data diri, data orang tua, nilai rapor, sekolah asal, dan pilihan jurusan).
-- **Pengunggahan Berkas Digital**: Unggah berkas persyaratan (Kartu Keluarga, Akta Kelahiran, Rapor, Ijazah, dan Sertifikat Prestasi).
-- **Cek Status & Lupa Nomor Pendaftaran**: Pelacakan status seleksi dan fitur pemulihan nomor pendaftaran berdasarkan NIK/nama.
-- **Cetak Bukti Pendaftaran**: Cetak kartu bukti pendaftaran online siap simpan/print.
-- **Panel Pengelolaan PPDB (Admin/TU)**: Verifikasi dokumen pendaftar, pembaruan status (Diterima / Ditolak / Menunggu), konfirmasi daftar ulang, dan pembuatan akun siswa otomatis.
+### 1. Website Publik Sekolah (`/`)
+- **Beranda Sekolah**: Hero slider beranda, sambutan kepala sekolah, statistik sekolah, fasilitas ruangan, ekstrakurikuler unggulan, prestasi siswa, dan galeri kegiatan OSIS.
+- **Profil Sekolah (`/profil`)**: Sejarah, visi, misi, nilai budaya, struktur organisasi, dan fasilitas sarana prasarana.
+- **Guru & Tenaga Kependidikan (`/pengajar`)**: Direktori profil guru, staf tata usaha, mata pelajaran yang diampu, dan riwayat pendidikan.
+- **Kurikulum & Akademik (`/akademik`)**: Daftar kompetensi keahlian/jurusan, kalender akademik, dan daftar mata pelajaran yang tersusun rapi berdasarkan jurusan untuk kenyamanan pembaca.
+- **Kesiswaan (`/kesiswaan`)**: Dokumentasi program OSIS, agenda kegiatan kesiswaan, dan portofolio ekstrakurikuler.
+- **Layanan Kontak (`/kontak`)**: Informasi alamat, jam operasional, peta lokasi, serta formulir pesan masuk publik yang langsung terhubung ke panel administrasi sekolah.
 
-### 2. Autentikasi & Otorisasi Hak Akses
-- **Multi-Role Authentication**: Mendukung 6 peran pengguna (`super-admin`, `guru`, `siswa`, `ortu`, `tu`, dan `kepsek`).
-- **Middleware Proteksi Route**: Pengamanan route menggunakan `auth`, `role:*`, dan `permission:*`.
-- **Manajemen User, Role & Permission**: Pengelolaan pengguna, penetapan peran, dan konfigurasi izin akses modul (`/admin/users`, `/admin/roles`).
+### 2. PPDB Online Mandiri (`/ppdb`)
+- Formulir pendaftaran siswa baru secara daring (Biodata siswa, data orang tua/wali, sekolah asal, nilai rapor semester 1–5, dan pilihan kompetensi keahlian).
+- Pengunggahan berkas digital (Kartu Keluarga, Akta Kelahiran, Rapor, Ijazah, dan Sertifikat Prestasi).
+- Pelacakan status seleksi calon siswa (`/ppdb/cek-status`) dan fitur lupa nomor pendaftaran (`/ppdb/lupa-nomor`).
+- Cetak kartu tanda bukti pendaftaran online siap simpan PDF / print (`/ppdb/cetak/{nomor}`).
+- Panel verifikasi berkas PPDB oleh Admin/TU, pengumuman status kelulusan seleksi, konfirmasi daftar ulang, hingga penempatan kelas otomatis.
 
-### 3. Portal Guru (`/guru`)
-- **Dashboard Guru**: Ringkasan penugasan mengajar aktif dan pengumuman sekolah.
-- **Manajemen Jadwal Mengajar**: Jadwal mengajar pribadi per hari dan jam pelajaran.
-- **Presensi Kelas & Pemindaian QR Code**: Pembuatan sesi presensi, pemindaian QR Code Kartu Pelajar siswa secara *real-time*, penyesuaian manual status (Hadir, Sakit, Izin, Alpha), serta buka/tutup sesi.
-- **Input Nilai Akademik Batch**: Panel input nilai massal (Tugas, UH, UTS, UAS), pengaturan bobot persentase penilaian, dan kalkulasi nilai akhir dinamis via `GradeCalculator`.
-- **Upload & Manajemen Materi**: Unggah dokumen pembelajaran (PDF, Word, PPT, ZIP) dan tautan video pembelajaran.
-- **Modul Tugas & Koreksi Digital**: Pembuatan tugas digital, pengunduhan berkas jawaban siswa, serta pemberian nilai dan catatan umpan balik (*feedback*).
-- **Verifikasi & Persetujuan Izin Siswa**: Peninjauan dan pemrosesan pengajuan izin/sakit siswa perwalian dari orang tua (disertai lampiran surat dokter).
-- **Ruang Komunikasi Terarah Ortu**: Modul percakapan terurai (*threaded chat*) antara guru dengan orang tua siswa (kategori akademik, kedisiplinan, kehadiran), pengiriman lampiran, dan status penyelesaian.
+### 3. Autentikasi, Keamanan & Halaman Login (`/login`)
+- **Desain Login Modern & Responsif**: Terpusat sempurna (*vertically centered*) di seluruh tingkat zoom browser (100%, 90%, dan resolusi lainnya).
+- **Fitur Lihat/Sembunyikan Password**: Tombol interaktif toggle mata (SVG) untuk memudahkan pengguna memverifikasi ketikan kata sandi.
+- **Navigasi Cepat**: Tombol kembali ke Beranda Utama langsung dari form login.
+- **Proteksi Akun**: Pemeriksaan status aktif akun (`is_active`), regenerasi sesi login, dan pencatatan riwayat login ke modul Audit Log.
 
-### 4. Portal Siswa (`/siswa`)
-- **Dashboard Personal Siswa**: Ringkasan jadwal hari ini, tugas aktif, dan kartu QR pelajar.
-- **Kelola Biodata Diri & Keamanan Akun**: Pembaruan kontak/foto profil dan fitur ganti password mandiri (dengan verifikasi password lama & indikator kekuatan password).
-- **Jadwal Pelajaran Harian**: Tampilan jadwal pelajaran terurut per hari.
-- **Kartu Pelajar Digital & Dynamic TOTP QR Code**: Kartu pelajar digital dengan kode QR dinamis berbasis TOTP (TTL 25 detik + auto-refresh AJAX) untuk mencegah pemalsuan presensi.
-- **Akses & Unduh Materi Belajar**: Pengunduhan dokumen materi pembelajaran dari guru.
-- **Pengumpulan Tugas Digital**: Pengunggahan berkas jawaban tugas, pengunduhan lampiran soal, serta pemantauan nilai dan feedback guru.
-- **Rekapitulasi Nilai & Grafik Akademik**: Rekapitulasi nilai rapor per semester dan visualisasi grafik batang interaktif (Chart.js).
-- **Riwayat Presensi Harian**: Pemantauan statistik dan log kehadiran harian per mata pelajaran.
+### 4. Portal Guru & Wali Kelas (`/guru`)
+- **Dashboard Guru**: Ringkasan jadwal mengajar aktif hari ini, tugas yang perlu dinilai, dan banner pengumuman internal sekolah.
+- **Jadwal Mengajar Pribadi**: Pengorganisasian jadwal mengajar per hari, kelas, dan jam pelajaran.
+- **Presensi Kelas & Pemindaian QR Code**: Pembuatan sesi absensi per pertemuan kelas, pemindaian QR code dinamis siswa, dan penyesuaian manual status kehadiran (Hadir, Sakit, Izin, Alpha).
+- **Input Nilai Akademik Batch**: Pengisian nilai massal untuk Tugas, Ulangan Harian, PTS, dan PAS, disertai pengaturan bobot persentase penilaian dan kalkulasi otomatis.
+- **Manajemen Materi & Tugas Digital**: Unggah materi belajar (PDF, Word, PPT, link video) dan pemberian tugas digital dengan tenggat waktu pengumpulan.
+- **Koreksi Tugas Siswa**: Pemeriksaan berkas tugas siswa, pemberian nilai langsung, dan catatan feedback evaluasi guru.
+- **Verifikasi Izin Siswa**: Pemrosesan persetujuan atau penolakan surat izin sakit/keperluan keluarga yang diajukan oleh orang tua siswa.
+- **Komunikasi Wali Murid**: Ruang konsultasi terarah (*threaded discussion*) dengan orang tua perihal akademik maupun kedisiplinan siswa.
 
-### 5. Portal Orang Tua / Wali (`/ortu`)
-- **Dashboard Hub Orang Tua**: Dasbor berbasis kartu aksi cepat untuk setiap anak yang tertaut dengan akun orang tua.
-- **Pemantauan Grafik Nilai Akademik Anak**: Visualisasi grafik performa nilai per mata pelajaran dan tabel rekapitulasi nilai komponen.
-- **Pelacakan Riwayat Kehadiran Anak**: Indikator total Hadir, Sakit, Izin, Alpha dan log riwayat presensi harian anak.
-- **Jadwal Pelajaran Anak**: Tampilan jadwal pelajaran kelas anak terkelompok per hari.
-- **Status Tagihan Biaya Sekolah**: Pemantauan tagihan administrasi sekolah (Lunas / Tertunggak / Rincian nominal).
-- **Pengajuan Surat Izin Anak**: Formulir pengajuan izin ketidakhadiran (Sakit/Izin) beserta pengunggahan berkas surat keterangan dokter.
-- **Unduh Salinan Rapor Digital**: Pengunduhan berkas PDF rapor digital anak per semester.
-- **Ruang Konsultasi Terarah dengan Guru**: Diskusi interaktif dengan Wali Kelas atau Guru Mapel perihal perkembangan anak.
+### 5. Portal Siswa (`/siswa`)
+- **Dashboard Siswa**: Kartu pelajar digital, jadwal pelajaran hari ini, dan notifikasi tugas aktif.
+- **Kartu Pelajar Digital & Dynamic QR Code**: Kode QR presensi berbasis TOTP yang selalu berganti secara dinamis tiap 25 detik untuk menjamin kejujuran absensi.
+- **Jadwal Pelajaran & Riwayat Kehadiran**: Pemantauan jadwal mingguan dan statistik persentase kehadiran per mata pelajaran.
+- **Materi & Tugas Digital**: Akses materi yang diunggah guru dan modul pengumpulan tugas dengan upload dokumen digital.
+- **Rekap Nilai & Grafik Akademik**: Tampilan nilai tugas, ujian, dan visualisasi grafik performa capaian kompetensi per mata pelajaran via Chart.js.
+- **Biodata Diri & Keamanan**: Pembaruan kontak pribadi dan penggantian password mandiri dengan verifikasi password lama.
 
-### 6. Portal Tata Usaha / TU (`/tu` & `/admin`)
-- **Modul Persuratan Digital**: Pengelolaan Surat Masuk dan Surat Keluar, penomoran otomatis berformat dinamis (`SM-` / kode sekolah), pengunggahan berkas scan surat, dan lembar disposisi.
-- **Kelola Biodata Siswa**: Pengelolaan profil siswa terintegrasi dengan data hasil PPDB (`/admin/siswa-profiles`).
-- **Pencatatan & Manajemen Tagihan Siswa**: Penambahan tagihan per siswa, konfirmasi pembayaran (manual/bukti bayar), dan pengunggahan bukti bayar (`/admin/tagihan`).
-- **Upload Salinan Rapor Digital**: Pengunggahan berkas PDF rapor siswa per semester (`/admin/siswa-profiles/{id}/rapor`).
+### 6. Portal Orang Tua / Wali Murid (`/ortu`)
+- **Dashboard Bebas Redundansi**: Tata letak yang membedakan secara tegas antara layanan orang tua dan pemantauan siswa.
+- **Layanan Mandiri Wali Murid**: Akses cepat pengajuan surat izin sakit/izin, riwayat status verifikasi izin oleh guru, dan konsultasi dua arah dengan wali kelas.
+- **Kartu Portofolio Mandiri per Anak**: Mendukung orang tua dengan 1, 2, atau banyak anak sekaligus. Setiap anak memiliki panel mandiri untuk jadwal pelajaran, absensi, nilai akademik, status pelunasan SPP/tagihan, dan unduh rapor digital.
 
-### 7. Modul Pengumuman Internal (`/admin/pengumuman`)
-- Pembuatan pengumuman resmi sekolah oleh Super Admin, TU, atau Kepala Sekolah.
-- Penargetan granular per peran (Semua / Siswa / Guru / Ortu / TU / Kepsek).
-- Pengaturan prioritas (Normal, Penting, Urgent/Mendesak).
-- Banner pengumuman otomatis pada bagian atas dashboard pengguna.
+### 7. Portal Tata Usaha / TU (`/tu` & `/admin`)
+- **Persuratan Digital**: Manajemen surat masuk dan surat keluar, penomoran otomatis dengan kode dinamis (`SM-` / format instansi), unggah scan berkas, dan lembar disposisi.
+- **Kotak Masuk Pesan Publik**: Manajemen pesan dari halaman kontak publik, indikator belum dibaca (*unread badge*) di sidebar, serta tombol balas langsung via WhatsApp dengan format pesan otomatis.
+- **Pencatatan & Verifikasi Tagihan (SPP)**: Pembuatan tagihan per siswa atau massal, konfirmasi pembayaran, dan pengunggahan berkas bukti transfer.
+- **Pengunggahan Rapor Digital**: Distribusi salinan berkas PDF rapor resmi siswa per semester.
+- **Manajemen Biodata Siswa**: Sinkronisasi data siswa dari PPDB ke buku induk profil siswa.
 
-### 8. Master Data Akademik (`/admin`)
-- Pengelolaan Tahun Ajaran & Semester aktif.
-- Pengelolaan Mata Pelajaran & Kurikulum.
-- Pengelolaan Kelas & Penetapan Wali Kelas.
-- Penugasan Mengajar Guru ke Kelas & Mapel.
-- Penempatan / Plotting Siswa ke Kelas.
-- Pengaturan Jadwal Pelajaran Sekolah.
+### 8. Portal Kepala Sekolah (`/kepsek`)
+- **Dashboard Eksekutif**: Pemantauan indikator kinerja sekolah, jumlah siswa aktif, grafik kehadiran sekolah, dan pengumuman kedinasan.
+- **Penerbitan Pengumuman Resmi**: Pembuatan pengumuman internal sekolah dengan penargetan peran dan prioritas mendesak (*urgent*).
 
----
-
-## 👥 Peran Pengguna (User Roles)
-
-Aplikasi memiliki 6 peran pengguna yang sudah terkonfigurasi pada `RoleSeeder`:
-
-| Role | Slug | Deskripsi Akses |
-| --- | --- | --- |
-| **Super Admin** | `super-admin` | Akses penuh ke seluruh modul sistem, kelola user, role, permission, dan master data. |
-| **Guru / Wali Kelas** | `guru` | Akses modul jadwal, presensi QR, nilai, materi, tugas, persetujuan izin, dan komunikasi ortu. |
-| **Siswa** | `siswa` | Akses portal personal: jadwal, presensi QR, materi, tugas digital, nilai & grafik, dan profil. |
-| **Orang Tua / Wali** | `ortu` | Akses pemantauan anak: nilai & grafik, presensi, jadwal, tagihan, pengajuan izin, rapor, dan konsultasi guru. |
-| **Tata Usaha (TU)** | `tu` | Akses modul persuratan digital, tagihan keuangan, upload rapor PDF, biodata siswa, dan PPDB. |
-| **Kepala Sekolah** | `kepsek` | Akses pengawasan pengumuman sekolah dan pemantauan sistem. |
+### 9. Panel Super Admin & Sistem Inti (`/admin`)
+- **Manajemen User, Role & Permission**: Kontrol penuh atas seluruh pengguna sistem, penetapan peran, dan hak akses izin per modul.
+- **Master Data Akademik**: Pengelolaan Tahun Ajaran, Semester, Jurusan/Kompetensi Keahlian, Ruangan/Gedung, Mata Pelajaran, Kelas, Penugasan Guru, Penempatan Siswa, dan Jadwal Pelajaran.
+- **Pengaturan Global & SEO**: Konfigurasi identitas sekolah, favicon, meta description, robots.txt, dan generator sitemap.xml otomatis.
+- **Audit Log & Keamanan**: Pencatatan riwayat setiap aksi penting di sistem (login, logout, modifikasi data) beserta alamat IP dan user agent.
+- **Backup & Pemulihan**: Cadangan data otomatis dan manual untuk keandalan arsip sistem.
 
 ---
 
-## Kredensial Demo (Seeder)
+## Matriks Hak Akses Peran Pengguna
 
-`UserSeeder` menyediakan akun demo berikut untuk pengujian lokal. Seluruh akun menggunakan kata sandi: `password123`.
-
-| Peran Pengguna | Email Login |
-| --- | --- |
-| Super Admin | `admin@sekolah.test` |
-| Guru / Wali Kelas | `guru@sekolah.test` |
-| Siswa | `siswa@sekolah.test` |
-| Orang Tua / Wali | `ortu@sekolah.test` |
-| Tata Usaha (TU) | `tu@sekolah.test` |
-| Kepala Sekolah | `kepsek@sekolah.test` |
+| Peran (Role) | Slug | Tanggung Jawab Utama |
+| :--- | :--- | :--- |
+| **Super Admin** | `super-admin` | Kontrol penuh sistem, master data, user & role, izin, konfigurasi SEO, audit log, dan backup. |
+| **Guru / Wali Kelas** | `guru` | Mengajar, presensi QR, input nilai, materi & tugas, verifikasi izin, dan komunikasi ortu. |
+| **Siswa** | `siswa` | Pembelajaran daring, kumpul tugas, pantau nilai, cek jadwal, dan presensi via QR kartu pelajar. |
+| **Orang Tua / Wali** | `ortu` | Pengajuan izin anak, komunikasi guru, pantau kehadiran, nilai, status SPP, dan unduh rapor. |
+| **Tata Usaha (TU)** | `tu` | Administrasi persuratan digital, tagihan keuangan siswa, upload rapor, PPDB, dan kontak masuk. |
+| **Kepala Sekolah** | `kepsek` | Pengawasan dashboard eksekutif, rekapitulasi sekolah, dan pengumuman penting. |
 
 ---
 
-## Panduan Instalasi & Jalankan Aplikasi
+## Panduan Instalasi Lokal (Development Setup)
 
-### 1. Prasyarat Sistem
-- PHP >= 8.4
+### Prasyarat Sistem
+- PHP >= 8.2 (ekstensi: OpenSSL, PDO, Mbstring, Tokenizer, XML, Ctype, JSON, BCMath, Fileinfo, GD)
 - Composer >= 2.x
 - Node.js >= 18.x & NPM
-- MySQL / MariaDB
+- MySQL / MariaDB Server
 
-### 2. Langkah Instalasi
-Kloning repositori dan masuk ke direktori proyek:
-```bash
-cd web-sekolah-modern
-```
+### Langkah-Langkah Instalasi:
+1. **Pasang dependensi PHP & JavaScript**:
+   ```bash
+   composer install
+   npm install
+   ```
 
-Install dependensi PHP & Node.js:
-```bash
-composer install
-npm install
-```
+2. **Salin konfigurasi environment**:
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-Salin berkas lingkungan `.env` dan jalankan key generator:
-```bash
-cp .env.example .env
-php artisan key:generate
-```
+3. **Konfigurasi Database di `.env`**:
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=web_sekolah_modern
+   DB_USERNAME=root
+   DB_PASSWORD=
+   ```
 
-Konfigurasikan koneksi database pada berkas `.env` (`DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`), lalu jalankan migrasi dan seeder:
-```bash
-php artisan migrate --seed
-```
+4. **Jalankan Migrasi Database & Seeder**:
+   ```bash
+   php artisan migrate --seed
+   ```
 
-Buat symbolic link untuk penyimpanan berkas publik (upload lampiran, foto, & dokumen):
-```bash
-php artisan storage:link
-```
+5. **Hubungkan Symlink Penyimpanan Berkas**:
+   ```bash
+   php artisan storage:link
+   ```
 
-### 3. Menjalankan Server Pengembangan
-Jalankan server aplikasi Laravel:
-```bash
-php artisan serve
-```
+6. **Jalankan Aplikasi**:
+   ```bash
+   # Terminal 1 - Asset Watcher
+   npm run dev
 
-Pada terminal terpisah, jalankan Vite bundler:
-```bash
-npm run dev
-```
-
-Buka peramban dan akses alamat: `http://127.0.0.1:8000`.
+   # Terminal 2 - Local Web Server
+   php artisan serve
+   ```
+   Aplikasi siap diakses melalui browser di `http://127.0.0.1:8000`.
 
 ---
 
-## Struktur Direktori Proyek
+## Panduan Publikasi ke Server Produksi (Production Deployment)
 
-```text
-web-sekolah-modern/
-├── app/
-│   ├── Http/
-│   │   ├── Controllers/   # Controller untuk Auth, Admin, Guru, Siswa, Ortu, PPDB
-│   │   └── Middleware/    # Middleware autentikasi, role, dan permission
-│   ├── Models/            # Model Eloquent domain sekolah & relasi
-│   └── Services/          # Service layer (GradeCalculator, dll)
-├── database/
-│   ├── migrations/        # Struktur tabel database
-│   └── seeders/           # Seeder role, permission, user demo, & data awal
-├── public/
-│   └── css/               # Berkas CSS styling halaman & komponen
-├── resources/
-│   ├── views/             # Tampilan Blade (Admin, Guru, Siswa, Ortu, PPDB, Layouts)
-│   └── sass/              # Berkas SCSS Bootstrap 5
-├── routes/
-│   └── web.php            # Seluruh pendaftaran route web aplikasi
-└── design.md              # Panduan Sistem Desain & Antarmuka Aplikasi
+Sebelum merilis aplikasi ke server hosting/VPS publik:
+
+1. **Konfigurasi `.env` Produksi**:
+   ```env
+   APP_ENV=production
+   APP_DEBUG=false
+   APP_URL=https://sekolahanda.sch.id
+   ```
+2. **Kompilasi Aset Frontend**:
+   ```bash
+   npm run build
+   ```
+3. **Optimasi Cache Laravel**:
+   ```bash
+   php artisan config:cache
+   php artisan route:cache
+   php artisan view:cache
+   ```
+4. **Pastikan Symlink Aktif**:
+   ```bash
+   php artisan storage:link
+   ```
+5. **Gunakan SSL / HTTPS**: Pastikan sertifikat SSL (Let's Encrypt / Comodo) aktif agar transmisi kata sandi dan token QR terlindungi secara aman.
+
+---
+
+## Pengujian Otomatis (Automated Testing)
+
+Untuk memverifikasi integritas rute dan logika sistem:
+```bash
+php artisan test
 ```
 
 ---
 
 ## Lisensi
-Proyek ini dikembangkan di atas framework [Laravel](https://laravel.com) yang dirilis di bawah lisensi [MIT License](https://opensource.org/licenses/MIT).
+Sistem Informasi Web Sekolah Modern ini dilisensikan di bawah [MIT License](LICENSE).
