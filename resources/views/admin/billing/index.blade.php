@@ -34,6 +34,19 @@
 
     </div>
 
+    {{-- ACTION BUTTONS DI HERO (TERINTEGRASI & PROFESIONAL) --}}
+    <div class="billing-hero-actions">
+        <button type="button" class="btn-hero-action btn-hero-primary" data-bs-toggle="modal" data-bs-target="#batchBillingModal">
+            <i class="bi bi-collection-fill"></i>
+            <span>Terbitkan Tagihan Massal</span>
+        </button>
+
+        <a href="{{ route('admin.billing.export', request()->query()) }}" class="btn-hero-action btn-hero-secondary" title="Unduh data tagihan dalam format CSV/Excel">
+            <i class="bi bi-file-earmark-excel-fill"></i>
+            <span>Ekspor CSV</span>
+        </a>
+    </div>
+
 </div>
 
 
@@ -389,6 +402,127 @@
 
 @endif
 
+
+{{-- =========================================================
+     MODAL TERBITKAN TAGIHAN MASSAL PER KELAS / ANGKATAN
+========================================================= --}}
+<div class="modal fade" id="batchBillingModal" tabindex="-1" aria-labelledby="batchBillingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header bg-light border-bottom">
+                <div class="d-flex align-items-center gap-2">
+                    <div class="rounded p-2 text-white" style="background: #0b294d;">
+                        <i class="bi bi-collection-fill"></i>
+                    </div>
+                    <div>
+                        <h5 class="modal-title fw-bold mb-0" id="batchBillingModalLabel">Terbitkan Tagihan Massal</h5>
+                        <small class="text-muted">Buat tagihan sekaligus untuk seluruh siswa di kelas terpilih</small>
+                    </div>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form action="{{ route('admin.billing.batch-store') }}" method="POST">
+                @csrf
+                <div class="modal-body p-4">
+
+                    {{-- Target Kelas --}}
+                    <div class="mb-3">
+                        <label for="batch_classroom_id" class="form-label fw-semibold">Target Siswa / Kelas <span class="text-danger">*</span></label>
+                        <select name="classroom_id" id="batch_classroom_id" class="form-select" required>
+                            <option value="">-- Pilih Target Kelas --</option>
+                            <option value="all">★ Seluruh Siswa (Semua Kelas)</option>
+                            <optgroup label="Pilih Kelas Tertentu:">
+                                @foreach ($classrooms as $cls)
+                                    <option value="{{ $cls->id }}">{{ $cls->name }}</option>
+                                @endforeach
+                            </optgroup>
+                        </select>
+                        <div class="form-text">Tagihan akan otomatis dibuatkan untuk setiap siswa yang terdaftar di kelas ini.</div>
+                    </div>
+
+                    {{-- Tahun Ajaran --}}
+                    <div class="mb-3">
+                        <label for="batch_academic_year_id" class="form-label fw-semibold">Tahun Ajaran <span class="text-danger">*</span></label>
+                        <select name="academic_year_id" id="batch_academic_year_id" class="form-select" required>
+                            @if ($activeYear)
+                                <option value="{{ $activeYear->id }}" selected>{{ $activeYear->name }} (Tahun Ajaran Aktif)</option>
+                            @else
+                                <option value="">-- Pilih Tahun Ajaran --</option>
+                            @endif
+                        </select>
+                    </div>
+
+                    {{-- Uraian Tagihan --}}
+                    <div class="mb-3">
+                        <label for="batch_description" class="form-label fw-semibold">Uraian / Nama Tagihan <span class="text-danger">*</span></label>
+                        <input
+                            type="text"
+                            name="description"
+                            id="batch_description"
+                            class="form-control"
+                            placeholder="Contoh: SPP Bulan November 2026 atau Iuran Komite"
+                            required
+                            maxlength="255"
+                        >
+                    </div>
+
+                    {{-- Nominal --}}
+                    <div class="mb-3">
+                        <label for="batch_amount" class="form-label fw-semibold">Nominal per Siswa (Rp) <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light fw-bold">Rp</span>
+                            <input
+                                type="number"
+                                name="amount"
+                                id="batch_amount"
+                                class="form-control"
+                                placeholder="Contoh: 250000"
+                                min="1"
+                                step="1"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    {{-- Jatuh Tempo --}}
+                    <div class="mb-3">
+                        <label for="batch_due_date" class="form-label fw-semibold">Batas Jatuh Tempo <span class="text-muted fw-normal">(opsional)</span></label>
+                        <input
+                            type="date"
+                            name="due_date"
+                            id="batch_due_date"
+                            class="form-control"
+                            value="{{ date('Y-m-10', strtotime('+1 month')) }}"
+                        >
+                        <div class="form-text">Contoh standar: tanggal 10 bulan berikutnya.</div>
+                    </div>
+
+                    {{-- Catatan --}}
+                    <div class="mb-0">
+                        <label for="batch_notes" class="form-label fw-semibold">Catatan Tambahan <span class="text-muted fw-normal">(opsional)</span></label>
+                        <textarea
+                            name="notes"
+                            id="batch_notes"
+                            rows="2"
+                            class="form-control"
+                            placeholder="Informasi rekening bank atau catatan untuk orang tua..."
+                        ></textarea>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer bg-light border-top">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary d-inline-flex align-items-center gap-2" onclick="return confirm('Apakah Anda yakin ingin menerbitkan tagihan ini untuk semua siswa di target yang dipilih?');">
+                        <i class="bi bi-send-check-fill"></i>
+                        Terbitkan Tagihan Sekarang
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 </div>
 

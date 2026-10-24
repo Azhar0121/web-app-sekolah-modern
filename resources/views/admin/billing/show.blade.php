@@ -287,27 +287,36 @@
 
                                 @else
 
-                                    @if($billing->payment_proof_path)
+                                    <div class="d-flex align-items-center gap-2 flex-wrap">
 
+                                        {{-- CETAK KUITANSI --}}
                                         <a
-                                            href="{{ Storage::url($billing->payment_proof_path) }}"
+                                            href="{{ route('admin.billing.receipt', $billing->id) }}"
                                             target="_blank"
-                                            class="billing-proof-btn"
+                                            class="btn btn-sm btn-outline-primary d-inline-flex align-items-center gap-1"
+                                            title="Cetak Kuitansi Pembayaran Resmi"
                                         >
-
-                                            <i class="bi bi-file-earmark-check"></i>
-
-                                            Lihat Bukti
-
+                                            <i class="bi bi-printer"></i>
+                                            Cetak Kuitansi
                                         </a>
 
-                                    @else
+                                        @if($billing->payment_proof_path)
 
-                                        <span class="billing-no-proof">
-                                            Tidak ada bukti file
-                                        </span>
+                                            <a
+                                                href="{{ Storage::url($billing->payment_proof_path) }}"
+                                                target="_blank"
+                                                class="billing-proof-btn"
+                                            >
 
-                                    @endif
+                                                <i class="bi bi-file-earmark-check"></i>
+
+                                                Lihat Bukti
+
+                                            </a>
+
+                                        @endif
+
+                                    </div>
 
                                 @endif
 

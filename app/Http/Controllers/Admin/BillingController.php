@@ -4,9 +4,11 @@ use App\Http\Controllers\Controller;
 use App\Models\AcademicYear;
 use App\Models\BillingRecord;
 use App\Models\Classroom;
+use App\Models\ClassroomStudent;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class BillingController extends Controller
@@ -124,6 +126,152 @@ class BillingController extends Controller
         }
 
         return back()->with('success', 'Pembayaran berhasil dikonfirmasi.');
+    }
+
+    public function batchStore(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'classroom_id'     => ['required', 'string'], // ID kelas tertentu atau 'all'
+            'academic_year_id' => ['required', 'exists:academic_years,id'],
+            'description'      => ['required', 'string', 'max:255'],
+            'amount'           => ['required', 'numeric', 'min:1'],
+            'due_date'         => ['nullable', 'date'],
+            'notes'            => ['nullable', 'string', 'max:1000'],
+        ]);
+
+        $academicYearId = $validated['academic_year_id'];
+        $classroomId    = $validated['classroom_id'];
+
+        $query = ClassroomStudent::where('academic_year_id', $academicYearId)
+            ->with(['student.parents']);
+
+        if ($classroomId !== 'all') {
+            $query->where('classroom_id', $classroomId);
+        }
+
+        $enrollments = $query->get();
+
+        if ($enrollments->isEmpty()) {
+            return back()->with('error', 'Tidak ditemukan siswa pada kelas/tahun ajaran yang dipilih.');
+        }
+
+        $createdCount = 0;
+
+        DB::transaction(function () use ($enrollments, $validated, $academicYearId, &$createdCount) {
+            foreach ($enrollments as $enrollment) {
+                $student = $enrollment->student;
+                if (! $student || ! $student->hasRole('siswa')) {
+                    continue;
+                }
+
+                $billing = BillingRecord::create([
+                    'student_id'       => $student->id,
+                    'academic_year_id' => $academicYearId,
+                    'description'      => $validated['description'],
+                    'amount'           => $validated['amount'],
+                    'due_date'         => $validated['due_date'] ?? null,
+                    'notes'            => $validated['notes'] ?? null,
+                    'status'           => 'unpaid',
+                    'created_by'       => auth()->id(),
+                ]);
+
+                // Notifikasi ke Orang Tua siswa
+                foreach ($student->parents as $parent) {
+                    $parent->notify(new \App\Notifications\BillingStatusNotification($billing, 'created'));
+                }
+
+                $createdCount++;
+            }
+        });
+
+        return back()->with('success', "Berhasil menerbitkan tagihan massal untuk {$createdCount} siswa.");
+    }
+
+    public function receipt(BillingRecord $billing): View
+    {
+        abort_unless($billing->status === 'paid', 404, 'Kuitansi hanya dapat dicetak untuk tagihan yang sudah Lunas.');
+
+        $billing->load(['student.studentProfile', 'academicYear', 'confirmedBy']);
+
+        // Cari kelas siswa saat tahun ajaran tagihan
+        $classroom = null;
+        if ($billing->student) {
+            $classroom = $billing->student->classroomStudents()
+                ->when($billing->academic_year_id, fn ($q) => $q->where('academic_year_id', $billing->academic_year_id))
+                ->latest()
+                ->first()?->classroom;
+        }
+
+        return view('admin.billing.receipt', compact('billing', 'classroom'));
+    }
+
+    public function export(Request $request): \Symfony\Component\HttpFoundation\StreamedResponse
+    {
+        $classroomId  = $request->query('classroom_id');
+        $statusFilter = $request->query('status'); // 'all', 'unpaid', 'paid'
+        $activeYear   = AcademicYear::active();
+
+        $query = BillingRecord::with(['student.studentProfile', 'academicYear'])
+            ->when($statusFilter === 'unpaid', fn ($q) => $q->where('status', '!=', 'paid'))
+            ->when($statusFilter === 'paid', fn ($q) => $q->where('status', 'paid'))
+            ->when($classroomId, fn ($q) => $q->whereHas('student.classroomStudents', function ($sub) use ($classroomId, $activeYear) {
+                $sub->where('classroom_id', $classroomId)
+                    ->when($activeYear, fn ($s) => $s->where('academic_year_id', $activeYear->id));
+            }))
+            ->orderBy('student_id')
+            ->orderByDesc('due_date');
+
+        $filename = 'rekap-tagihan-siswa-' . date('Y-m-d-His') . '.csv';
+
+        return response()->streamDownload(function () use ($query, $activeYear) {
+            $handle = fopen('php://output', 'w');
+            // Menambahkan UTF-8 BOM untuk kompatibilitas Excel
+            fprintf($handle, chr(0xEF).chr(0xBB).chr(0xBF));
+
+            // Header Kolom
+            fputcsv($handle, [
+                'No',
+                'NISN',
+                'Nama Siswa',
+                'Kelas',
+                'Tahun Ajaran',
+                'Uraian Tagihan',
+                'Nominal (Rp)',
+                'Jatuh Tempo',
+                'Status',
+                'Tanggal Bayar',
+                'Catatan',
+            ]);
+
+            $no = 1;
+            $query->chunk(200, function ($records) use ($handle, &$no, $activeYear) {
+                foreach ($records as $row) {
+                    $student = $row->student;
+                    $profile = $student?->studentProfile;
+                    $classroom = $student?->classroomStudents()
+                        ->when($row->academic_year_id ?: $activeYear?->id, fn ($q, $yId) => $q->where('academic_year_id', $yId))
+                        ->first()?->classroom;
+
+                    fputcsv($handle, [
+                        $no++,
+                        $profile?->nisn ?? '-',
+                        $student?->name ?? '-',
+                        $classroom?->name ?? 'Belum ada kelas',
+                        $row->academicYear?->name ?? '-',
+                        $row->description,
+                        $row->amount,
+                        $row->due_date ? $row->due_date->format('d/m/Y') : '-',
+                        $row->statusLabel(),
+                        $row->paid_at ? $row->paid_at->format('d/m/Y H:i') : '-',
+                        $row->notes ?? '-',
+                    ]);
+                }
+            });
+
+            fclose($handle);
+        }, $filename, [
+            'Content-Type' => 'text/csv; charset=UTF-8',
+        ]);
     }
 
     public function destroy(BillingRecord $billing): RedirectResponse

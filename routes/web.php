@@ -413,6 +413,9 @@ Route::middleware(['auth', 'permission:billing.manage'])
     ->prefix('admin/tagihan')->name('admin.billing.')
     ->group(function () {
         Route::get('/', [AdminBillingController::class, 'index'])->name('index');
+        Route::post('/massal', [AdminBillingController::class, 'batchStore'])->name('batch-store');
+        Route::get('/ekspor', [AdminBillingController::class, 'export'])->name('export');
+        Route::get('/record/{billing}/kuitansi', [AdminBillingController::class, 'receipt'])->name('receipt');
         Route::get('/{student}', [AdminBillingController::class, 'show'])->name('show');
         Route::post('/{student}', [AdminBillingController::class, 'store'])->name('store');
         Route::post('/record/{billing}/konfirmasi', [AdminBillingController::class, 'confirm'])->name('confirm');
