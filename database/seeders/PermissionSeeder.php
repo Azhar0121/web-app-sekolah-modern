@@ -33,6 +33,8 @@ class PermissionSeeder extends Seeder
             ['name' => 'Kelola Inventaris', 'slug' => 'inventaris.manage', 'module' => 'TU'],
             ['name' => 'Kelola Tagihan Siswa', 'slug' => 'billing.manage', 'module' => 'TU'],
             ['name' => 'Kelola Rapor Digital', 'slug' => 'rapor.manage', 'module' => 'TU'],
+            ['name' => 'Kelola Keuangan Sekolah', 'slug' => 'keuangan.manage', 'module' => 'TU'],
+            ['name' => 'Lihat Laporan Keuangan', 'slug' => 'keuangan.view', 'module' => 'Laporan'],
 
             // Biodata Siswa
             ['name' => 'Kelola Biodata Siswa', 'slug' => 'siswa.manage', 'module' => 'Siswa'],
@@ -68,9 +70,10 @@ class PermissionSeeder extends Seeder
                 'siswa.manage',
                 'billing.manage',
                 'rapor.manage',
+                'keuangan.manage', 'keuangan.view',
                 'pengumuman.manage',
             ],
-            'kepsek'      => ['dashboard.report.view', 'nilai.approve', 'audit.view', 'ppdb.view', 'pengumuman.manage'],
+            'kepsek'      => ['dashboard.report.view', 'nilai.approve', 'audit.view', 'ppdb.view', 'pengumuman.manage', 'keuangan.view'],
         ];
 
         foreach ($map as $roleSlug => $permissionSlugs) {

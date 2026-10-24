@@ -112,6 +112,9 @@ class BillingController extends Controller
 
         $billing->update($data);
 
+        // Catat otomatis sebagai Kas Masuk di modul Keuangan Sekolah (idempoten)
+        \App\Models\FinanceTransaction::recordFromBilling($billing->fresh('student'));
+
         // Notifikasi ke Orang Tua: pembayaran dikonfirmasi Lunas
         $student = $billing->student;
         if ($student) {

@@ -52,6 +52,7 @@
                 ['label' => 'Kotak Masuk Pesan', 'route' => 'admin.contact-messages.index', 'pattern' => 'admin.contact-messages.*', 'icon' => 'bi-chat-left-text-fill', 'show' => $user->hasRole('super-admin') || $user->hasRole('tu') || $user->hasPermission('persuratan.manage'), 'badge' => \App\Models\ContactMessage::where('is_read', false)->count()],
                 ['label' => 'Biodata Siswa', 'route' => 'admin.student-profiles.index', 'pattern' => 'admin.student-profiles.*', 'icon' => 'bi-person-vcard-fill', 'show' => $user->hasRole('super-admin') || $user->hasRole('tu') || $user->hasPermission('siswa.manage')],
                 ['label' => 'Tagihan Siswa', 'route' => 'admin.billing.index', 'pattern' => 'admin.billing.*', 'icon' => 'bi-credit-card-2-front-fill', 'show' => $user->hasRole('super-admin') || $user->hasRole('tu') || $user->hasPermission('billing.manage')],
+                ['label' => 'Keuangan Sekolah', 'route' => 'admin.finance.index', 'pattern' => 'admin.finance.*', 'icon' => 'bi-wallet2', 'show' => $user->hasRole('super-admin') || $user->hasRole('tu') || $user->hasPermission('keuangan.manage') || $user->hasPermission('keuangan.view')],
                 ['label' => 'Aktivitas Kesiswaan', 'route' => 'admin.student-activities.index', 'pattern' => 'admin.student-activities.*', 'icon' => 'bi-stars', 'show' => $user->hasRole('super-admin') || $user->hasRole('tu')],
             ],
         ],

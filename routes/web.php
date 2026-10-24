@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\AcademicYearController;
 use App\Http\Controllers\Admin\AnnouncementController as AdminAnnouncementController;
 use App\Http\Controllers\Admin\BillingController as AdminBillingController;
 use App\Http\Controllers\Admin\ClassroomController;
+use App\Http\Controllers\Admin\FinanceCategoryController;
+use App\Http\Controllers\Admin\FinanceController;
 use App\Http\Controllers\Admin\CorrespondenceController;
 use App\Http\Controllers\Admin\LeaveRequestController as AdminLeaveRequestController;
 use App\Http\Controllers\Admin\PpdbController as AdminPpdbController;
@@ -416,6 +418,36 @@ Route::middleware(['auth', 'permission:billing.manage'])
         Route::post('/record/{billing}/konfirmasi', [AdminBillingController::class, 'confirm'])->name('confirm');
         Route::delete('/record/{billing}', [AdminBillingController::class, 'destroy'])->name('destroy');
     });
+
+// ================= KEUANGAN SEKOLAH (TU & SUPER ADMIN: kelola, KEPSEK: lihat saja) =================
+Route::middleware(['auth'])->prefix('admin/keuangan')->name('admin.finance.')->group(function () {
+
+    // Kelola (permission keuangan.manage) — didaftarkan lebih dulu agar /transaksi/buat tidak tertangkap {transaction}
+    Route::middleware('permission:keuangan.manage')->group(function () {
+        Route::get('/transaksi/buat', [FinanceController::class, 'create'])->name('create');
+        Route::post('/transaksi', [FinanceController::class, 'store'])->name('store');
+        Route::get('/transaksi/{transaction}/ubah', [FinanceController::class, 'edit'])->name('edit');
+        Route::put('/transaksi/{transaction}', [FinanceController::class, 'update'])->name('update');
+        Route::post('/transaksi/{transaction}/batalkan', [FinanceController::class, 'void'])->name('void');
+        Route::post('/sinkron-tagihan', [FinanceController::class, 'syncBilling'])->name('sync-billing');
+
+        Route::get('/kategori', [FinanceCategoryController::class, 'index'])->name('categories.index');
+        Route::post('/kategori', [FinanceCategoryController::class, 'store'])->name('categories.store');
+        Route::put('/kategori/{category}', [FinanceCategoryController::class, 'update'])->name('categories.update');
+        Route::patch('/kategori/{category}/toggle', [FinanceCategoryController::class, 'toggle'])->name('categories.toggle');
+        Route::delete('/kategori/{category}', [FinanceCategoryController::class, 'destroy'])->name('categories.destroy');
+    });
+
+    // Lihat (keuangan.manage ATAU keuangan.view)
+    Route::middleware('permission:keuangan.manage,keuangan.view')->group(function () {
+        Route::get('/', [FinanceController::class, 'index'])->name('index');
+        Route::get('/laporan', [FinanceController::class, 'report'])->name('report');
+        Route::get('/laporan/cetak', [FinanceController::class, 'print'])->name('report.print');
+        Route::get('/ekspor', [FinanceController::class, 'export'])->name('export');
+        Route::get('/transaksi/{transaction}', [FinanceController::class, 'show'])->name('show');
+        Route::get('/transaksi/{transaction}/bukti', [FinanceController::class, 'proof'])->name('proof');
+    });
+});
 
 // ================= RAPOR DIGITAL (TU) =================
 Route::middleware(['auth', 'permission:rapor.manage'])

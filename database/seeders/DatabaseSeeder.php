@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             TaskSeeder::class,
             PpdbPeriodSeeder::class,
             PpdbRegistrationSeeder::class,
+            FinanceSeeder::class,
         ]);
     }
 }
