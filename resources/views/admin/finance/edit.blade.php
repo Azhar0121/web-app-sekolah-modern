@@ -3,28 +3,119 @@
 @section('title', 'Ubah Transaksi ' . $transaction->number)
 
 @section('content')
-<div class="container-fluid px-0" style="max-width: 860px;">
+<link rel="stylesheet" href="{{ asset('css/admin/finance/edit.css') }}">
 
-    <div class="mb-4">
-        <a href="{{ route('admin.finance.show', $transaction) }}" class="text-decoration-none small">&larr; Kembali ke detail</a>
-        <h3 class="fw-bold mt-2 mb-1">Ubah Transaksi {{ $transaction->number }}</h3>
-        <p class="text-muted mb-0">Jenis transaksi ({{ $transaction->typeLabel() }}) dan nomor bukti tidak dapat diubah. Setiap perubahan tercatat di Audit Log.</p>
-    </div>
+<div class="finance-edit-page">
 
-    <div class="card border-0 shadow-sm">
-        <div class="card-body p-4">
-            <form method="POST" action="{{ route('admin.finance.update', $transaction) }}" enctype="multipart/form-data">
+    {{-- HERO --}}
+    <section class="finance-edit-hero">
+        <div class="finance-edit-hero-content">
+            <div class="finance-edit-eyebrow">
+                <i class="bi bi-wallet2"></i>
+                <span>KEUANGAN SEKOLAH</span>
+            </div>
+
+            <h1>Ubah Transaksi</h1>
+
+            <p>
+                Perbarui informasi transaksi dengan teliti.
+                Setiap perubahan akan tercatat dalam Audit Log.
+            </p>
+        </div>
+
+        <div class="finance-edit-hero-icon">
+            <i class="bi bi-pencil-square"></i>
+        </div>
+    </section>
+
+    {{-- INFORMASI TRANSAKSI --}}
+    <section class="finance-edit-summary">
+        <div class="finance-edit-summary-icon">
+            <i class="bi bi-receipt"></i>
+        </div>
+
+        <div class="finance-edit-summary-content">
+            <span class="finance-edit-summary-label">
+                Nomor Bukti Transaksi
+            </span>
+
+            <h2>{{ $transaction->number }}</h2>
+
+            <span class="finance-edit-type">
+                {{ $transaction->typeLabel() }}
+            </span>
+        </div>
+
+        <div class="finance-edit-summary-note">
+            <i class="bi bi-lock-fill"></i>
+            <span>
+                Jenis transaksi dan nomor bukti tidak dapat diubah.
+            </span>
+        </div>
+    </section>
+
+    {{-- FORM --}}
+    <section class="finance-edit-card">
+        <div class="finance-edit-card-header">
+            <div class="finance-edit-card-heading">
+                <span class="finance-edit-section-icon">
+                    <i class="bi bi-sliders"></i>
+                </span>
+
+                <div>
+                    <h3>Informasi Transaksi</h3>
+                    <p>
+                        Periksa kembali data sebelum menyimpan perubahan.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="finance-edit-card-body">
+            <form
+                method="POST"
+                action="{{ route('admin.finance.update', $transaction) }}"
+                enctype="multipart/form-data"
+            >
                 @csrf
                 @method('PUT')
+
                 @include('admin.finance._form')
 
-                <div class="d-flex gap-2">
-                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                    <a href="{{ route('admin.finance.show', $transaction) }}" class="btn btn-outline-secondary">Batal</a>
+                {{-- FOOTER FORM --}}
+                <div class="finance-edit-form-footer">
+
+                    <div class="finance-edit-audit-note">
+                        <i class="bi bi-shield-check"></i>
+                        <span>
+                            Perubahan akan tercatat di Audit Log.
+                        </span>
+                    </div>
+
+                    <div class="finance-edit-actions">
+
+                        {{-- BATAL --}}
+                        <a
+                            href="{{ route('admin.finance.show', $transaction) }}"
+                            class="finance-edit-btn finance-edit-btn-cancel"
+                        >
+                            Batal
+                        </a>
+
+                        {{-- SIMPAN --}}
+                        <button
+                            type="submit"
+                            class="finance-edit-btn finance-edit-btn-save"
+                        >
+                            <i class="bi bi-check2-circle"></i>
+                            Simpan Perubahan
+                        </button>
+
+                    </div>
                 </div>
             </form>
         </div>
-    </div>
+    </section>
 
 </div>
 @endsection

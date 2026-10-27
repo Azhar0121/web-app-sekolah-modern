@@ -1,0 +1,478 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* =========================================
+   FINANCE EDIT — TU / ADMIN
+   ========================================= */
+
+.finance-edit-page {
+    --fe-navy: #102a49;
+    --fe-navy-dark: #091c32;
+    --fe-blue: #245b91;
+    --fe-text: #24364b;
+    --fe-muted: #718096;
+    --fe-border: #e1e7ef;
+    --fe-bg: #f5f7fa;
+
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 8px 0 36px;
+    color: var(--fe-text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.finance-edit-page,
+.finance-edit-page * {
+    box-sizing: border-box;
+}
+
+/* Kembali */
+
+.finance-edit-back {
+    margin-bottom: 18px;
+}
+
+.finance-edit-back a {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: #52647a;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color .2s ease;
+}
+
+.finance-edit-back a:hover {
+    color: var(--fe-navy);
+}
+
+/* Hero */
+
+.finance-edit-hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    overflow: hidden;
+    padding: 28px 32px;
+    margin-bottom: 20px;
+    color: #fff;
+    background: linear-gradient(120deg, var(--fe-navy-dark), var(--fe-navy));
+    border: 1px solid rgba(255, 255, 255, .06);
+    border-radius: 10px;
+}
+
+.finance-edit-hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.finance-edit-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    color: #c4d5e8;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+}
+
+.finance-edit-hero h1 {
+    margin: 0 0 9px;
+    color: #fff;
+    font-size: clamp(23px, 3vw, 30px);
+    font-weight: 800;
+    letter-spacing: -.8px;
+}
+
+.finance-edit-hero p {
+    max-width: 560px;
+    margin: 0;
+    color: #d0dbe8;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.finance-edit-hero-icon {
+    display: flex;
+    flex: 0 0 66px;
+    align-items: center;
+    justify-content: center;
+    width: 66px;
+    height: 66px;
+    color: #fff;
+    background: rgba(255, 255, 255, .1);
+    border: 1px solid rgba(255, 255, 255, .15);
+    border-radius: 10px;
+    font-size: 29px;
+}
+
+/* Ringkasan transaksi */
+
+.finance-edit-summary {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 19px 22px;
+    margin-bottom: 20px;
+    background: #fff;
+    border: 1px solid var(--fe-border);
+    border-radius: 9px;
+}
+
+.finance-edit-summary-icon {
+    display: flex;
+    flex: 0 0 46px;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    color: var(--fe-navy);
+    background: #edf2f8;
+    border-radius: 8px;
+    font-size: 21px;
+}
+
+.finance-edit-summary-content {
+    min-width: 0;
+}
+
+.finance-edit-summary-label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--fe-muted);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .7px;
+}
+
+.finance-edit-summary-content h2 {
+    margin: 0 0 7px;
+    color: var(--fe-navy);
+    font-size: 17px;
+    font-weight: 800;
+    overflow-wrap: anywhere;
+}
+
+.finance-edit-type {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 9px;
+    color: var(--fe-navy);
+    background: #edf2f8;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.finance-edit-summary-note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+    padding-left: 18px;
+    color: #66768a;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.finance-edit-summary-note i {
+    color: var(--fe-blue);
+    font-size: 15px;
+}
+
+/* Form card */
+
+.finance-edit-card {
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid var(--fe-border);
+    border-radius: 9px;
+    box-shadow: 0 3px 12px rgba(15, 35, 60, .035);
+}
+
+.finance-edit-card-header {
+    padding: 20px 24px;
+    background: #fff;
+    border-bottom: 1px solid var(--fe-border);
+}
+
+.finance-edit-card-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.finance-edit-section-icon {
+    display: flex;
+    flex: 0 0 40px;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    background: var(--fe-navy);
+    border-radius: 8px;
+    font-size: 17px;
+}
+
+.finance-edit-card-heading h3 {
+    margin: 0 0 5px;
+    color: var(--fe-navy);
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.finance-edit-card-heading p {
+    margin: 0;
+    color: var(--fe-muted);
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.finance-edit-card-body {
+    padding: 24px;
+}
+
+/* Input bawaan dari partial _form */
+
+.finance-edit-page .form-label,
+.finance-edit-page label {
+    color: #34465b;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.finance-edit-page .form-control,
+.finance-edit-page .form-select {
+    min-height: 42px;
+    color: #26384d;
+    background-color: #fff;
+    border: 1px solid #d7e0ea;
+    border-radius: 6px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    box-shadow: none;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.finance-edit-page textarea.form-control {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.finance-edit-page .form-control:focus,
+.finance-edit-page .form-select:focus {
+    border-color: #58799d;
+    box-shadow: 0 0 0 3px rgba(36, 91, 145, .1);
+}
+
+.finance-edit-page .form-control::placeholder {
+    color: #a0acba;
+}
+
+.finance-edit-page .form-text,
+.finance-edit-page .text-muted {
+    font-size: 11px;
+}
+
+.finance-edit-page .invalid-feedback {
+    font-size: 11px;
+}
+
+.finance-edit-page .form-control.is-invalid,
+.finance-edit-page .form-select.is-invalid {
+    border-color: #dc6262;
+}
+
+/* Footer form */
+
+.finance-edit-form-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding-top: 21px;
+    margin-top: 24px;
+    border-top: 1px solid var(--fe-border);
+}
+
+.finance-edit-audit-note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #748196;
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+.finance-edit-audit-note i {
+    color: #48745d;
+    font-size: 15px;
+}
+
+.finance-edit-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 9px;
+    flex-wrap: wrap;
+}
+
+.finance-edit-btn {
+    display: inline-flex;
+    min-height: 39px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color .2s ease, border-color .2s ease;
+}
+
+.finance-edit-btn-cancel {
+    color: #526174;
+    background: #fff;
+    border-color: #d7e0ea;
+}
+
+.finance-edit-btn-cancel:hover {
+    color: var(--fe-navy);
+    background: #f5f7fa;
+    border-color: #b8c6d6;
+}
+
+.finance-edit-btn-save {
+    color: #fff;
+    background: var(--fe-navy);
+    border-color: var(--fe-navy);
+}
+
+.finance-edit-btn-save:hover {
+    color: #fff;
+    background: #1a3c60;
+    border-color: #1a3c60;
+}
+
+.finance-edit-btn:focus-visible {
+    outline: 3px solid rgba(36, 91, 145, .2);
+    outline-offset: 2px;
+}
+
+/* Responsif */
+
+@media (max-width: 768px) {
+    .finance-edit-page {
+        padding-top: 4px;
+    }
+
+    .finance-edit-hero {
+        padding: 23px 20px;
+    }
+
+    .finance-edit-hero-icon {
+        flex-basis: 50px;
+        width: 50px;
+        height: 50px;
+        font-size: 23px;
+    }
+
+    .finance-edit-summary {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        padding: 17px;
+    }
+
+    .finance-edit-summary-note {
+        width: 100%;
+        margin-left: 0;
+        padding: 12px 0 0;
+        border-top: 1px solid var(--fe-border);
+    }
+
+    .finance-edit-card-header {
+        padding: 18px;
+    }
+
+    .finance-edit-card-body {
+        padding: 18px;
+    }
+
+    .finance-edit-form-footer {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .finance-edit-actions {
+        width: 100%;
+    }
+
+    .finance-edit-btn {
+        flex: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .finance-edit-hero {
+        gap: 12px;
+        padding: 20px 16px;
+    }
+
+    .finance-edit-hero h1 {
+        font-size: 22px;
+    }
+
+    .finance-edit-hero p {
+        font-size: 11px;
+    }
+
+    .finance-edit-hero-icon {
+        display: none;
+    }
+
+    .finance-edit-summary-content h2 {
+        font-size: 14px;
+    }
+
+    .finance-edit-card-body {
+        padding: 15px;
+    }
+
+    .finance-edit-actions {
+        flex-direction: column-reverse;
+    }
+
+    .finance-edit-btn {
+        width: 100%;
+    }
+}
+
+/* Tombol Kembali */
+
+.finance-edit-btn-back {
+    color: #344b65;
+    background: #edf3fa;
+    border-color: #d5e1ef;
+}
+
+.finance-edit-btn-back:hover {
+    color: #fff;
+    background: var(--fe-navy);
+    border-color: var(--fe-navy);
+}
+
+/* Ikon tombol */
+
+.finance-edit-btn-back i {
+    font-size: 13px;
+}
