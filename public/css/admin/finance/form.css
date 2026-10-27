@@ -1,0 +1,394 @@
+/* =========================================
+   FINANCE TRANSACTION FORM
+========================================= */
+
+.finance-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: #24364b;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Section */
+.finance-form-section {
+    min-width: 0;
+    padding: 22px;
+    background: #ffffff;
+    border: 1px solid #e1e8f0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(15, 41, 72, 0.035);
+}
+
+.finance-form-section__heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #edf1f6;
+}
+
+.finance-form-section__icon {
+    display: flex;
+    flex: 0 0 42px;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    color: #1769d5;
+    background: #eaf3ff;
+    border: 1px solid #dceaff;
+    border-radius: 8px;
+    font-size: 19px;
+}
+
+.finance-form-section__heading h6 {
+    margin: 0 0 4px;
+    color: #102b4e;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.finance-form-section__heading p {
+    margin: 0;
+    color: #77869a;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* Variasi ikon */
+.finance-form-section__icon--items {
+    color: #b66b13;
+    background: #fff5e6;
+    border-color: #f6e6c9;
+}
+
+.finance-form-section__icon--amount {
+    color: #12805c;
+    background: #e9f8f1;
+    border-color: #d1f0e1;
+}
+
+.finance-form-section__icon--notes {
+    color: #6857d9;
+    background: #f0edff;
+    border-color: #e1dcff;
+}
+
+.finance-form-section__icon--proof {
+    color: #087ea4;
+    background: #e8f7fc;
+    border-color: #d3eff8;
+}
+
+/* Badge opsional */
+.finance-form-badge {
+    margin-left: auto;
+    padding: 5px 9px;
+    color: #7d651d;
+    background: #fff7df;
+    border: 1px solid #f1e6b9;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* Label dan kontrol */
+.finance-form-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #34465d;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.required-mark {
+    color: #dc4c4c;
+}
+
+.finance-form .finance-form-control {
+    width: 100%;
+    min-height: 43px;
+    padding: 10px 12px;
+    color: #24364b;
+    background-color: #ffffff;
+    border: 1px solid #d8e1ec;
+    border-radius: 6px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+    box-shadow: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.finance-form .finance-form-control::placeholder {
+    color: #a0acbb;
+    opacity: 1;
+}
+
+.finance-form .finance-form-control:focus {
+    border-color: #6da6ed;
+    outline: 0;
+    box-shadow: 0 0 0 3px rgba(23, 105, 213, 0.1);
+}
+
+.finance-form .finance-form-control:disabled {
+    background: #f3f6fa;
+    color: #7a8797;
+}
+
+.finance-form .finance-form-control--readonly,
+.finance-form .finance-form-control[readonly] {
+    color: #1762b7;
+    background: #eff6ff;
+    border-color: #c9def8;
+    font-weight: 700;
+}
+
+.finance-form textarea.finance-form-control {
+    min-height: 92px;
+    resize: vertical;
+}
+
+/* Input nominal dengan awalan Rupiah */
+.finance-form-input-group {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+}
+
+.finance-form-input-group > span {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    min-width: 43px;
+    padding: 0 12px;
+    color: #52657b;
+    background: #f3f6fa;
+    border: 1px solid #d8e1ec;
+    border-right: 0;
+    border-radius: 6px 0 0 6px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.finance-form-input-group .finance-form-control {
+    min-width: 0;
+    border-radius: 0 6px 6px 0;
+}
+
+/* Informasi dan petunjuk */
+.finance-form-hint {
+    margin-top: 7px;
+    color: #7b899b;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.finance-form-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    margin-top: 18px;
+    padding: 12px 14px;
+    color: #42658b;
+    background: #f1f7ff;
+    border: 1px solid #deebfc;
+    border-radius: 6px;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.finance-form-info i {
+    flex-shrink: 0;
+    margin-top: 1px;
+    color: #2878d8;
+    font-size: 14px;
+}
+
+/* File input */
+.finance-form .finance-form-file {
+    min-height: 46px;
+    padding: 8px 10px;
+    background: #fbfcfe;
+}
+
+.finance-form .finance-form-file::file-selector-button {
+    margin: -2px 12px -2px -4px;
+    padding: 7px 12px;
+    color: #215b9d;
+    background: #eaf3ff;
+    border: 0;
+    border-radius: 4px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* File yang sudah tersimpan */
+.finance-form-current-file {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+    padding: 14px;
+    background: #f6f9fd;
+    border: 1px solid #e2eaf4;
+    border-radius: 6px;
+}
+
+.finance-form-current-file__icon {
+    display: flex;
+    flex: 0 0 38px;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    color: #12805c;
+    background: #e5f7ef;
+    border-radius: 6px;
+    font-size: 18px;
+}
+
+.finance-form-current-file__details {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    gap: 3px;
+}
+
+.finance-form-current-file__label {
+    color: #77869a;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.finance-form-current-file__details strong {
+    overflow-wrap: anywhere;
+    color: #24364b;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.finance-form-current-file__hint {
+    color: #77869a;
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+/* Hapus bukti */
+.finance-form-remove-file {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 12px;
+    padding: 11px 13px;
+    color: #a13d3d;
+    background: #fff7f7;
+    border: 1px solid #f2dede;
+    border-radius: 6px;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.finance-form-remove-file .form-check-input {
+    flex-shrink: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.finance-form-remove-file .form-check-input:checked {
+    background-color: #c74646;
+    border-color: #c74646;
+}
+
+/* Pesan validasi */
+.finance-form-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 16px;
+    color: #842e35;
+    background: #fff5f5;
+    border: 1px solid #f2d4d7;
+    border-left: 4px solid #d9535d;
+    border-radius: 7px;
+}
+
+.finance-form-alert__icon {
+    flex-shrink: 0;
+    padding-top: 2px;
+    font-size: 18px;
+}
+
+.finance-form-alert__title {
+    margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.finance-form-alert__list {
+    margin: 0;
+    padding-left: 17px;
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+/* Responsif */
+@media (max-width: 767.98px) {
+    .finance-form {
+        gap: 15px;
+    }
+
+    .finance-form-section {
+        padding: 17px;
+    }
+
+    .finance-form-section__heading {
+        gap: 10px;
+        margin-bottom: 18px;
+        padding-bottom: 13px;
+    }
+
+    .finance-form-section__icon {
+        flex-basis: 38px;
+        width: 38px;
+        height: 38px;
+        font-size: 17px;
+    }
+
+    .finance-form-section__heading h6 {
+        font-size: 13px;
+    }
+
+    .finance-form-section__heading p {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 420px) {
+    .finance-form-section {
+        padding: 14px;
+    }
+
+    .finance-form-section__heading {
+        flex-wrap: wrap;
+    }
+
+    .finance-form-badge {
+        margin-left: auto;
+    }
+
+    .finance-form-current-file {
+        align-items: flex-start;
+        padding: 11px;
+    }
+}
