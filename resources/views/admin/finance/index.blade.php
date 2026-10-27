@@ -47,10 +47,10 @@
         @endif
     </section>
 
+    
     {{-- NAVIGASI --}}
-    <div class="finance-navigation">
-        @include('admin.finance._nav', ['active' => 'transaksi'])
-    </div>
+    @include('admin.finance._nav', ['active' => 'transaksi'])
+
 
     {{-- RINGKASAN --}}
     <section class="finance-summary">
