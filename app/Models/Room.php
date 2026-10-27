@@ -65,4 +65,9 @@ class Room extends Model
             default        => 'Ruang Kelas',
         };
     }
+
+    public function inventoryItems(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(InventoryItem::class);
+    }
 }

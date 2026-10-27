@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\BillingController as AdminBillingController;
 use App\Http\Controllers\Admin\ClassroomController;
 use App\Http\Controllers\Admin\FinanceCategoryController;
 use App\Http\Controllers\Admin\FinanceController;
+use App\Http\Controllers\Admin\InventoryController;
 use App\Http\Controllers\Admin\CorrespondenceController;
 use App\Http\Controllers\Admin\LeaveRequestController as AdminLeaveRequestController;
 use App\Http\Controllers\Admin\PpdbController as AdminPpdbController;
@@ -451,6 +452,18 @@ Route::middleware(['auth'])->prefix('admin/keuangan')->name('admin.finance.')->g
         Route::get('/transaksi/{transaction}/bukti', [FinanceController::class, 'proof'])->name('proof');
     });
 });
+
+// ================= INVENTARIS & SARPRAS (TU & SUPER ADMIN) =================
+Route::middleware(['auth', 'permission:inventaris.manage'])
+    ->prefix('admin/inventaris')->name('admin.inventory.')
+    ->group(function () {
+        Route::get('/', [InventoryController::class, 'index'])->name('index');
+        Route::post('/', [InventoryController::class, 'store'])->name('store');
+        Route::get('/{item}', [InventoryController::class, 'show'])->name('show');
+        Route::put('/{item}', [InventoryController::class, 'update'])->name('update');
+        Route::patch('/{item}/mutasi', [InventoryController::class, 'mutate'])->name('mutate');
+        Route::delete('/{item}', [InventoryController::class, 'destroy'])->name('destroy');
+    });
 
 // ================= RAPOR DIGITAL (TU) =================
 Route::middleware(['auth', 'permission:rapor.manage'])

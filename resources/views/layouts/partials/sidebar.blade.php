@@ -53,6 +53,7 @@
                 ['label' => 'Biodata Siswa', 'route' => 'admin.student-profiles.index', 'pattern' => 'admin.student-profiles.*', 'icon' => 'bi-person-vcard-fill', 'show' => $user->hasRole('super-admin') || $user->hasRole('tu') || $user->hasPermission('siswa.manage')],
                 ['label' => 'Tagihan Siswa', 'route' => 'admin.billing.index', 'pattern' => 'admin.billing.*', 'icon' => 'bi-credit-card-2-front-fill', 'show' => $user->hasRole('super-admin') || $user->hasRole('tu') || $user->hasPermission('billing.manage')],
                 ['label' => 'Keuangan Sekolah', 'route' => 'admin.finance.index', 'pattern' => 'admin.finance.*', 'icon' => 'bi-wallet2', 'show' => $user->hasRole('super-admin') || $user->hasRole('tu') || $user->hasPermission('keuangan.manage') || $user->hasPermission('keuangan.view')],
+                ['label' => 'Inventaris & Sarpras', 'route' => 'admin.inventory.index', 'pattern' => 'admin.inventory.*', 'icon' => 'bi-box-seam-fill', 'show' => $user->hasRole('super-admin') || $user->hasRole('tu') || $user->hasPermission('inventaris.manage')],
                 ['label' => 'Aktivitas Kesiswaan', 'route' => 'admin.student-activities.index', 'pattern' => 'admin.student-activities.*', 'icon' => 'bi-stars', 'show' => $user->hasRole('super-admin') || $user->hasRole('tu')],
             ],
         ],
