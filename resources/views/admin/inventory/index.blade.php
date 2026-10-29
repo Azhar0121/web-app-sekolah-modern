@@ -447,7 +447,9 @@
 
                     <div class="inventory-form-section">
                         <div class="inventory-form-section-title">
-                            <span class="inventory-form-section-number">01</span>
+                            <span class="inventory-form-section-number">
+                                <i class="bi bi-box-seam"></i>
+                            </span>
                             <div>
                                 <h6>Identitas Aset</h6>
                                 <p>Informasi utama barang inventaris.</p>
@@ -472,9 +474,21 @@
                             </div>
 
                             <div class="col-12 col-md-4">
-                                <label for="modal_category_id" class="form-label">
-                                    Kategori <span class="text-danger">*</span>
-                                </label>
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <label for="modal_category_id" class="form-label mb-0">
+                                        Kategori <span class="text-danger">*</span>
+                                    </label>
+                                    <button
+                                        type="button"
+                                        class="btn btn-link p-0 inventory-quick-add-link"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#quickAddCategoryCollapse"
+                                        aria-expanded="false"
+                                    >
+                                        <i class="bi bi-plus-circle"></i>
+                                        <span>Kategori Baru</span>
+                                    </button>
+                                </div>
 
                                 <select
                                     name="inventory_category_id"
@@ -487,10 +501,52 @@
                                         <option value="{{ $cat->id }}">{{ $cat->name }}</option>
                                     @endforeach
                                 </select>
+
+                                {{-- Inline Box Tambah Kategori Cepat --}}
+                                <div class="collapse mt-2" id="quickAddCategoryCollapse">
+                                    <div class="p-2.5 rounded border shadow-sm" style="background: #f8fafc; border-color: #cbd5e1 !important; padding: 10px;">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <span class="fw-bold" style="font-size: 11.5px; color: var(--inv-navy, #102a49);">
+                                                <i class="bi bi-tag-fill me-1 text-primary"></i> Buat Kategori Baru
+                                            </span>
+                                            <button type="button" class="btn-close" style="font-size: 9px;" data-bs-toggle="collapse" data-bs-target="#quickAddCategoryCollapse"></button>
+                                        </div>
+                                        <div class="mb-2">
+                                            <input
+                                                type="text"
+                                                id="quick_category_name"
+                                                class="form-control form-control-sm"
+                                                style="font-size: 12px;"
+                                                placeholder="Contoh: Alat Kebersihan, Sarana UKS"
+                                            >
+                                            <div class="invalid-feedback d-none" id="quick_category_error" style="font-size: 11px;"></div>
+                                        </div>
+                                        <div class="d-flex justify-content-end gap-1">
+                                            <button type="button" class="btn btn-sm btn-light border py-1 px-2" style="font-size: 11px;" data-bs-toggle="collapse" data-bs-target="#quickAddCategoryCollapse">
+                                                Batal
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-primary py-1 px-2 d-inline-flex align-items-center gap-1" style="font-size: 11px;" id="btnSubmitQuickCategory">
+                                                <i class="bi bi-check2"></i> Simpan
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="col-12 col-md-6">
-                                <label for="modal_room_id" class="form-label">Lokasi / Ruangan</label>
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <label for="modal_room_id" class="form-label mb-0">Lokasi / Ruangan</label>
+                                    <button
+                                        type="button"
+                                        class="btn btn-link p-0 inventory-quick-add-link"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#quickAddRoomCollapse"
+                                        aria-expanded="false"
+                                    >
+                                        <i class="bi bi-plus-circle"></i>
+                                        <span>Ruangan Baru</span>
+                                    </button>
+                                </div>
 
                                 <select name="room_id" id="modal_room_id" class="form-select">
                                     <option value="">Gudang / Belum Ditempatkan</option>
@@ -502,6 +558,47 @@
                                 </select>
 
                                 <div class="form-text">Pilih lokasi penyimpanan aset.</div>
+
+                                {{-- Inline Box Tambah Ruangan Cepat --}}
+                                <div class="collapse mt-2" id="quickAddRoomCollapse">
+                                    <div class="p-2.5 rounded border shadow-sm" style="background: #f8fafc; border-color: #cbd5e1 !important; padding: 10px;">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <span class="fw-bold" style="font-size: 11.5px; color: var(--inv-navy, #102a49);">
+                                                <i class="bi bi-door-open-fill me-1 text-primary"></i> Buat Ruangan Baru
+                                            </span>
+                                            <button type="button" class="btn-close" style="font-size: 9px;" data-bs-toggle="collapse" data-bs-target="#quickAddRoomCollapse"></button>
+                                        </div>
+                                        <div class="row g-2 mb-2">
+                                            <div class="col-12 col-sm-8">
+                                                <input
+                                                    type="text"
+                                                    id="quick_room_name"
+                                                    class="form-control form-control-sm"
+                                                    style="font-size: 12px;"
+                                                    placeholder="Nama ruangan (cth: Gudang B, Ruang Robotik)"
+                                                >
+                                                <div class="invalid-feedback d-none" id="quick_room_error" style="font-size: 11px;"></div>
+                                            </div>
+                                            <div class="col-12 col-sm-4">
+                                                <input
+                                                    type="text"
+                                                    id="quick_room_code"
+                                                    class="form-control form-control-sm text-uppercase"
+                                                    style="font-size: 12px;"
+                                                    placeholder="Kode (opsional)"
+                                                >
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end gap-1">
+                                            <button type="button" class="btn btn-sm btn-light border py-1 px-2" style="font-size: 11px;" data-bs-toggle="collapse" data-bs-target="#quickAddRoomCollapse">
+                                                Batal
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-primary py-1 px-2 d-inline-flex align-items-center gap-1" style="font-size: 11px;" id="btnSubmitQuickRoom">
+                                                <i class="bi bi-check2"></i> Simpan
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="col-12 col-md-6">
@@ -526,7 +623,9 @@
 
                     <div class="inventory-form-section">
                         <div class="inventory-form-section-title">
-                            <span class="inventory-form-section-number">02</span>
+                            <span class="inventory-form-section-number">
+                                <i class="bi bi-calculator"></i>
+                            </span>
                             <div>
                                 <h6>Jumlah &amp; Pengadaan</h6>
                                 <p>Kuantitas, nilai, dan sumber pengadaan aset.</p>
@@ -612,7 +711,9 @@
 
                     <div class="inventory-form-section inventory-form-section-last">
                         <div class="inventory-form-section-title">
-                            <span class="inventory-form-section-number">03</span>
+                            <span class="inventory-form-section-number">
+                                <i class="bi bi-card-text"></i>
+                            </span>
                             <div>
                                 <h6>Dokumentasi &amp; Catatan</h6>
                                 <p>Tambahkan foto dan spesifikasi jika tersedia.</p>
@@ -655,12 +756,13 @@
 
                 <div class="modal-footer inventory-modal-footer">
                     <button type="button" class="btn inventory-cancel-btn" data-bs-dismiss="modal">
-                        Batal
+                        <i class="bi bi-x-lg"></i>
+                        <span>Batal</span>
                     </button>
 
                     <button type="submit" class="btn inventory-save-btn">
                         <i class="bi bi-check-circle-fill"></i>
-                        Simpan Aset Baru
+                        <span>Simpan Aset Baru</span>
                     </button>
                 </div>
             </form>
@@ -669,3 +771,194 @@
 </div>
 
 @endsection
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const quickCategoryUrl = "{{ route('admin.inventory.categories.quick-store') }}";
+    const quickRoomUrl     = "{{ route('admin.inventory.rooms.quick-store') }}";
+    const csrfToken        = "{{ csrf_token() }}";
+
+    // Toast Alert Helper
+    function showQuickAlert(message, type = 'success') {
+        const alertBox = document.createElement('div');
+        alertBox.className = `alert alert-${type} alert-dismissible fade show position-fixed shadow`;
+        alertBox.style.cssText = 'top: 24px; right: 24px; z-index: 9999; min-width: 300px; max-width: 420px; font-size: 13px; font-weight: 500;';
+        alertBox.innerHTML = `
+            <div class="d-flex align-items-center gap-2">
+                <i class="bi ${type === 'success' ? 'bi-check-circle-fill text-success fs-5' : 'bi-exclamation-triangle-fill text-danger fs-5'}"></i>
+                <div class="flex-grow-1">${message}</div>
+                <button type="button" class="btn-close ms-2" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        `;
+        document.body.appendChild(alertBox);
+        setTimeout(() => {
+            alertBox.classList.remove('show');
+            setTimeout(() => alertBox.remove(), 300);
+        }, 3500);
+    }
+
+    // ==========================================
+    // 1. INLINE QUICK ADD KATEGORI
+    // ==========================================
+    const btnSubmitCategory = document.getElementById('btnSubmitQuickCategory');
+    const inputCategoryName = document.getElementById('quick_category_name');
+    const errorCategory     = document.getElementById('quick_category_error');
+    const categoryCollapse  = document.getElementById('quickAddCategoryCollapse');
+
+    if (btnSubmitCategory && inputCategoryName) {
+        btnSubmitCategory.addEventListener('click', async function () {
+            const name = inputCategoryName.value.trim();
+            if (!name) {
+                inputCategoryName.classList.add('is-invalid');
+                errorCategory.textContent = 'Nama kategori wajib diisi.';
+                errorCategory.classList.remove('d-none');
+                inputCategoryName.focus();
+                return;
+            }
+
+            inputCategoryName.classList.remove('is-invalid');
+            errorCategory.classList.add('d-none');
+            btnSubmitCategory.disabled = true;
+            btnSubmitCategory.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> Menyimpan...';
+
+            try {
+                const response = await fetch(quickCategoryUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+                    body: JSON.stringify({ name: name })
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    const errMsg = result.errors?.name?.[0] || result.message || 'Gagal menyimpan kategori.';
+                    inputCategoryName.classList.add('is-invalid');
+                    errorCategory.textContent = errMsg;
+                    errorCategory.classList.remove('d-none');
+                    return;
+                }
+
+                // Tambahkan opsi ke dropdown kategori dan pilih otomatis
+                const catSelect = document.getElementById('modal_category_id');
+                if (catSelect) {
+                    let existingOpt = Array.from(catSelect.options).find(opt => opt.value == result.data.id);
+                    if (!existingOpt) {
+                        existingOpt = new Option(result.data.name, result.data.id, true, true);
+                        catSelect.add(existingOpt);
+                    }
+                    catSelect.value = result.data.id;
+                }
+
+                inputCategoryName.value = '';
+                const bsCollapse = bootstrap.Collapse.getInstance(categoryCollapse) || new bootstrap.Collapse(categoryCollapse, { toggle: false });
+                bsCollapse.hide();
+
+                showQuickAlert(result.message, 'success');
+            } catch (err) {
+                inputCategoryName.classList.add('is-invalid');
+                errorCategory.textContent = 'Terjadi kesalahan saat memproses data.';
+                errorCategory.classList.remove('d-none');
+            } finally {
+                btnSubmitCategory.disabled = false;
+                btnSubmitCategory.innerHTML = '<i class="bi bi-check2"></i> Simpan';
+            }
+        });
+
+        inputCategoryName.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                btnSubmitCategory.click();
+            }
+        });
+    }
+
+    // ==========================================
+    // 2. INLINE QUICK ADD RUANGAN
+    // ==========================================
+    const btnSubmitRoom  = document.getElementById('btnSubmitQuickRoom');
+    const inputRoomName  = document.getElementById('quick_room_name');
+    const inputRoomCode  = document.getElementById('quick_room_code');
+    const errorRoom      = document.getElementById('quick_room_error');
+    const roomCollapse   = document.getElementById('quickAddRoomCollapse');
+
+    if (btnSubmitRoom && inputRoomName) {
+        btnSubmitRoom.addEventListener('click', async function () {
+            const name = inputRoomName.value.trim();
+            const code = inputRoomCode ? inputRoomCode.value.trim() : '';
+
+            if (!name) {
+                inputRoomName.classList.add('is-invalid');
+                errorRoom.textContent = 'Nama ruangan wajib diisi.';
+                errorRoom.classList.remove('d-none');
+                inputRoomName.focus();
+                return;
+            }
+
+            inputRoomName.classList.remove('is-invalid');
+            errorRoom.classList.add('d-none');
+            btnSubmitRoom.disabled = true;
+            btnSubmitRoom.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> Menyimpan...';
+
+            try {
+                const response = await fetch(quickRoomUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+                    body: JSON.stringify({ name: name, code: code })
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    const errMsg = result.errors?.name?.[0] || result.errors?.code?.[0] || result.message || 'Gagal menyimpan ruangan.';
+                    inputRoomName.classList.add('is-invalid');
+                    errorRoom.textContent = errMsg;
+                    errorRoom.classList.remove('d-none');
+                    return;
+                }
+
+                // Tambahkan opsi ke dropdown ruangan dan pilih otomatis
+                const roomSelect = document.getElementById('modal_room_id');
+                if (roomSelect) {
+                    let existingOpt = Array.from(roomSelect.options).find(opt => opt.value == result.data.id);
+                    if (!existingOpt) {
+                        existingOpt = new Option(result.data.label, result.data.id, true, true);
+                        roomSelect.add(existingOpt);
+                    }
+                    roomSelect.value = result.data.id;
+                }
+
+                inputRoomName.value = '';
+                if (inputRoomCode) inputRoomCode.value = '';
+                const bsCollapse = bootstrap.Collapse.getInstance(roomCollapse) || new bootstrap.Collapse(roomCollapse, { toggle: false });
+                bsCollapse.hide();
+
+                showQuickAlert(result.message, 'success');
+            } catch (err) {
+                inputRoomName.classList.add('is-invalid');
+                errorRoom.textContent = 'Terjadi kesalahan saat memproses data.';
+                errorRoom.classList.remove('d-none');
+            } finally {
+                btnSubmitRoom.disabled = false;
+                btnSubmitRoom.innerHTML = '<i class="bi bi-check2"></i> Simpan';
+            }
+        });
+
+        inputRoomName.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                btnSubmitRoom.click();
+            }
+        });
+    }
+});
+</script>
+@endpush

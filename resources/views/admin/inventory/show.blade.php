@@ -355,9 +355,21 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="mutate_room_id" class="form-label">
-                            Pindah ke Ruangan
-                        </label>
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <label for="mutate_room_id" class="form-label mb-0">
+                                Pindah ke Ruangan
+                            </label>
+                            <button
+                                type="button"
+                                class="btn btn-link p-0 inventory-quick-add-link"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#quickAddRoomCollapseMutate"
+                                aria-expanded="false"
+                            >
+                                <i class="bi bi-plus-circle"></i>
+                                <span>Ruangan Baru</span>
+                            </button>
+                        </div>
 
                         <select name="room_id" id="mutate_room_id" class="form-select">
                             <option value="" {{ is_null($item->room_id) ? 'selected' : '' }}>
@@ -372,6 +384,47 @@
                         </select>
 
                         <div class="form-text">Pilih lokasi penempatan aset yang baru.</div>
+
+                        {{-- Inline Box Tambah Ruangan Cepat (Mutasi) --}}
+                        <div class="collapse mt-2" id="quickAddRoomCollapseMutate">
+                            <div class="p-2.5 rounded border shadow-sm" style="background: #f8fafc; border-color: #cbd5e1 !important; padding: 10px;">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="fw-bold" style="font-size: 11.5px; color: #102a49;">
+                                        <i class="bi bi-door-open-fill me-1 text-primary"></i> Buat Ruangan Baru
+                                    </span>
+                                    <button type="button" class="btn-close" style="font-size: 9px;" data-bs-toggle="collapse" data-bs-target="#quickAddRoomCollapseMutate"></button>
+                                </div>
+                                <div class="row g-2 mb-2">
+                                    <div class="col-12 col-sm-8">
+                                        <input
+                                            type="text"
+                                            id="quick_mutate_room_name"
+                                            class="form-control form-control-sm"
+                                            style="font-size: 12px;"
+                                            placeholder="Nama ruangan (cth: Gudang B)"
+                                        >
+                                        <div class="invalid-feedback d-none" id="quick_mutate_room_error" style="font-size: 11px;"></div>
+                                    </div>
+                                    <div class="col-12 col-sm-4">
+                                        <input
+                                            type="text"
+                                            id="quick_mutate_room_code"
+                                            class="form-control form-control-sm text-uppercase"
+                                            style="font-size: 12px;"
+                                            placeholder="Kode (opsional)"
+                                        >
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-end gap-1">
+                                    <button type="button" class="btn btn-sm btn-light border py-1 px-2" style="font-size: 11px;" data-bs-toggle="collapse" data-bs-target="#quickAddRoomCollapseMutate">
+                                        Batal
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-primary py-1 px-2 d-inline-flex align-items-center gap-1" style="font-size: 11px;" id="btnSubmitQuickMutateRoom">
+                                        <i class="bi bi-check2"></i> Simpan
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="mb-3">
@@ -451,7 +504,19 @@
                             </div>
 
                             <div class="col-12 col-md-4">
-                                <label for="edit_inventory_category_id" class="form-label">Kategori <span class="text-danger">*</span></label>
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <label for="edit_inventory_category_id" class="form-label mb-0">Kategori <span class="text-danger">*</span></label>
+                                    <button
+                                        type="button"
+                                        class="btn btn-link p-0 inventory-quick-add-link"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#quickAddCategoryCollapseEdit"
+                                        aria-expanded="false"
+                                    >
+                                        <i class="bi bi-plus-circle"></i>
+                                        <span>Kategori Baru</span>
+                                    </button>
+                                </div>
                                 <select name="inventory_category_id" id="edit_inventory_category_id" class="form-select" required>
                                     <option value="">Pilih Kategori</option>
                                     @foreach ($categories as $cat)
@@ -460,10 +525,52 @@
                                         </option>
                                     @endforeach
                                 </select>
+
+                                {{-- Inline Box Tambah Kategori Cepat (Edit) --}}
+                                <div class="collapse mt-2" id="quickAddCategoryCollapseEdit">
+                                    <div class="p-2.5 rounded border shadow-sm" style="background: #f8fafc; border-color: #cbd5e1 !important; padding: 10px;">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <span class="fw-bold" style="font-size: 11.5px; color: #102a49;">
+                                                <i class="bi bi-tag-fill me-1 text-primary"></i> Buat Kategori Baru
+                                            </span>
+                                            <button type="button" class="btn-close" style="font-size: 9px;" data-bs-toggle="collapse" data-bs-target="#quickAddCategoryCollapseEdit"></button>
+                                        </div>
+                                        <div class="mb-2">
+                                            <input
+                                                type="text"
+                                                id="quick_edit_category_name"
+                                                class="form-control form-control-sm"
+                                                style="font-size: 12px;"
+                                                placeholder="Contoh: Alat Kebersihan, Sarana UKS"
+                                            >
+                                            <div class="invalid-feedback d-none" id="quick_edit_category_error" style="font-size: 11px;"></div>
+                                        </div>
+                                        <div class="d-flex justify-content-end gap-1">
+                                            <button type="button" class="btn btn-sm btn-light border py-1 px-2" style="font-size: 11px;" data-bs-toggle="collapse" data-bs-target="#quickAddCategoryCollapseEdit">
+                                                Batal
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-primary py-1 px-2 d-inline-flex align-items-center gap-1" style="font-size: 11px;" id="btnSubmitQuickEditCategory">
+                                                <i class="bi bi-check2"></i> Simpan
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="col-12 col-md-6">
-                                <label for="edit_room_id" class="form-label">Lokasi / Ruangan</label>
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <label for="edit_room_id" class="form-label mb-0">Lokasi / Ruangan</label>
+                                    <button
+                                        type="button"
+                                        class="btn btn-link p-0 inventory-quick-add-link"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#quickAddRoomCollapseEdit"
+                                        aria-expanded="false"
+                                    >
+                                        <i class="bi bi-plus-circle"></i>
+                                        <span>Ruangan Baru</span>
+                                    </button>
+                                </div>
                                 <select name="room_id" id="edit_room_id" class="form-select">
                                     <option value="" {{ is_null(old('room_id', $item->room_id)) ? 'selected' : '' }}>
                                         Gudang / Belum Ditempatkan
@@ -474,6 +581,47 @@
                                         </option>
                                     @endforeach
                                 </select>
+
+                                {{-- Inline Box Tambah Ruangan Cepat (Edit) --}}
+                                <div class="collapse mt-2" id="quickAddRoomCollapseEdit">
+                                    <div class="p-2.5 rounded border shadow-sm" style="background: #f8fafc; border-color: #cbd5e1 !important; padding: 10px;">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <span class="fw-bold" style="font-size: 11.5px; color: #102a49;">
+                                                <i class="bi bi-door-open-fill me-1 text-primary"></i> Buat Ruangan Baru
+                                            </span>
+                                            <button type="button" class="btn-close" style="font-size: 9px;" data-bs-toggle="collapse" data-bs-target="#quickAddRoomCollapseEdit"></button>
+                                        </div>
+                                        <div class="row g-2 mb-2">
+                                            <div class="col-12 col-sm-8">
+                                                <input
+                                                    type="text"
+                                                    id="quick_edit_room_name"
+                                                    class="form-control form-control-sm"
+                                                    style="font-size: 12px;"
+                                                    placeholder="Nama ruangan (cth: Gudang B)"
+                                                >
+                                                <div class="invalid-feedback d-none" id="quick_edit_room_error" style="font-size: 11px;"></div>
+                                            </div>
+                                            <div class="col-12 col-sm-4">
+                                                <input
+                                                    type="text"
+                                                    id="quick_edit_room_code"
+                                                    class="form-control form-control-sm text-uppercase"
+                                                    style="font-size: 12px;"
+                                                    placeholder="Kode (opsional)"
+                                                >
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end gap-1">
+                                            <button type="button" class="btn btn-sm btn-light border py-1 px-2" style="font-size: 11px;" data-bs-toggle="collapse" data-bs-target="#quickAddRoomCollapseEdit">
+                                                Batal
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-primary py-1 px-2 d-inline-flex align-items-center gap-1" style="font-size: 11px;" id="btnSubmitQuickEditRoom">
+                                                <i class="bi bi-check2"></i> Simpan
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="col-12 col-md-6">
@@ -625,3 +773,242 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const quickCategoryUrl = "{{ route('admin.inventory.categories.quick-store') }}";
+    const quickRoomUrl     = "{{ route('admin.inventory.rooms.quick-store') }}";
+    const csrfToken        = "{{ csrf_token() }}";
+
+    function showQuickAlert(message, type = 'success') {
+        const alertBox = document.createElement('div');
+        alertBox.className = `alert alert-${type} alert-dismissible fade show position-fixed shadow`;
+        alertBox.style.cssText = 'top: 24px; right: 24px; z-index: 9999; min-width: 300px; max-width: 420px; font-size: 13px; font-weight: 500;';
+        alertBox.innerHTML = `
+            <div class="d-flex align-items-center gap-2">
+                <i class="bi ${type === 'success' ? 'bi-check-circle-fill text-success fs-5' : 'bi-exclamation-triangle-fill text-danger fs-5'}"></i>
+                <div class="flex-grow-1">${message}</div>
+                <button type="button" class="btn-close ms-2" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        `;
+        document.body.appendChild(alertBox);
+        setTimeout(() => {
+            alertBox.classList.remove('show');
+            setTimeout(() => alertBox.remove(), 300);
+        }, 3500);
+    }
+
+    function addOptionToSelect(selectId, value, text) {
+        const sel = document.getElementById(selectId);
+        if (sel) {
+            let existingOpt = Array.from(sel.options).find(opt => opt.value == value);
+            if (!existingOpt) {
+                existingOpt = new Option(text, value, true, true);
+                sel.add(existingOpt);
+            }
+            sel.value = value;
+        }
+    }
+
+    // ==========================================
+    // 1. QUICK ADD RUANGAN DI MODAL MUTASI
+    // ==========================================
+    const btnMutateRoom = document.getElementById('btnSubmitQuickMutateRoom');
+    const inputMutateRoomName = document.getElementById('quick_mutate_room_name');
+    const inputMutateRoomCode = document.getElementById('quick_mutate_room_code');
+    const errorMutateRoom = document.getElementById('quick_mutate_room_error');
+    const collapseMutateRoom = document.getElementById('quickAddRoomCollapseMutate');
+
+    if (btnMutateRoom && inputMutateRoomName) {
+        btnMutateRoom.addEventListener('click', async function () {
+            const name = inputMutateRoomName.value.trim();
+            const code = inputMutateRoomCode ? inputMutateRoomCode.value.trim() : '';
+
+            if (!name) {
+                inputMutateRoomName.classList.add('is-invalid');
+                errorMutateRoom.textContent = 'Nama ruangan wajib diisi.';
+                errorMutateRoom.classList.remove('d-none');
+                inputMutateRoomName.focus();
+                return;
+            }
+
+            inputMutateRoomName.classList.remove('is-invalid');
+            errorMutateRoom.classList.add('d-none');
+            btnMutateRoom.disabled = true;
+            btnMutateRoom.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> Menyimpan...';
+
+            try {
+                const response = await fetch(quickRoomUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+                    body: JSON.stringify({ name: name, code: code })
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    const errMsg = result.errors?.name?.[0] || result.errors?.code?.[0] || result.message || 'Gagal menyimpan ruangan.';
+                    inputMutateRoomName.classList.add('is-invalid');
+                    errorMutateRoom.textContent = errMsg;
+                    errorMutateRoom.classList.remove('d-none');
+                    return;
+                }
+
+                addOptionToSelect('mutate_room_id', result.data.id, result.data.label);
+                addOptionToSelect('edit_room_id', result.data.id, result.data.label);
+
+                inputMutateRoomName.value = '';
+                if (inputMutateRoomCode) inputMutateRoomCode.value = '';
+                const bsCollapse = bootstrap.Collapse.getInstance(collapseMutateRoom) || new bootstrap.Collapse(collapseMutateRoom, { toggle: false });
+                bsCollapse.hide();
+
+                showQuickAlert(result.message, 'success');
+            } catch (err) {
+                inputMutateRoomName.classList.add('is-invalid');
+                errorMutateRoom.textContent = 'Terjadi kesalahan saat memproses data.';
+                errorMutateRoom.classList.remove('d-none');
+            } finally {
+                btnMutateRoom.disabled = false;
+                btnMutateRoom.innerHTML = '<i class="bi bi-check2"></i> Simpan';
+            }
+        });
+    }
+
+    // ==========================================
+    // 2. QUICK ADD KATEGORI DI MODAL EDIT
+    // ==========================================
+    const btnEditCategory = document.getElementById('btnSubmitQuickEditCategory');
+    const inputEditCatName = document.getElementById('quick_edit_category_name');
+    const errorEditCat = document.getElementById('quick_edit_category_error');
+    const collapseEditCat = document.getElementById('quickAddCategoryCollapseEdit');
+
+    if (btnEditCategory && inputEditCatName) {
+        btnEditCategory.addEventListener('click', async function () {
+            const name = inputEditCatName.value.trim();
+            if (!name) {
+                inputEditCatName.classList.add('is-invalid');
+                errorEditCat.textContent = 'Nama kategori wajib diisi.';
+                errorEditCat.classList.remove('d-none');
+                inputEditCatName.focus();
+                return;
+            }
+
+            inputEditCatName.classList.remove('is-invalid');
+            errorEditCat.classList.add('d-none');
+            btnEditCategory.disabled = true;
+            btnEditCategory.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> Menyimpan...';
+
+            try {
+                const response = await fetch(quickCategoryUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+                    body: JSON.stringify({ name: name })
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    const errMsg = result.errors?.name?.[0] || result.message || 'Gagal menyimpan kategori.';
+                    inputEditCatName.classList.add('is-invalid');
+                    errorEditCat.textContent = errMsg;
+                    errorEditCat.classList.remove('d-none');
+                    return;
+                }
+
+                addOptionToSelect('edit_inventory_category_id', result.data.id, result.data.name);
+
+                inputEditCatName.value = '';
+                const bsCollapse = bootstrap.Collapse.getInstance(collapseEditCat) || new bootstrap.Collapse(collapseEditCat, { toggle: false });
+                bsCollapse.hide();
+
+                showQuickAlert(result.message, 'success');
+            } catch (err) {
+                inputEditCatName.classList.add('is-invalid');
+                errorEditCat.textContent = 'Terjadi kesalahan saat memproses data.';
+                errorEditCat.classList.remove('d-none');
+            } finally {
+                btnEditCategory.disabled = false;
+                btnEditCategory.innerHTML = '<i class="bi bi-check2"></i> Simpan';
+            }
+        });
+    }
+
+    // ==========================================
+    // 3. QUICK ADD RUANGAN DI MODAL EDIT
+    // ==========================================
+    const btnEditRoom = document.getElementById('btnSubmitQuickEditRoom');
+    const inputEditRoomName = document.getElementById('quick_edit_room_name');
+    const inputEditRoomCode = document.getElementById('quick_edit_room_code');
+    const errorEditRoom = document.getElementById('quick_edit_room_error');
+    const collapseEditRoom = document.getElementById('quickAddRoomCollapseEdit');
+
+    if (btnEditRoom && inputEditRoomName) {
+        btnEditRoom.addEventListener('click', async function () {
+            const name = inputEditRoomName.value.trim();
+            const code = inputEditRoomCode ? inputEditRoomCode.value.trim() : '';
+
+            if (!name) {
+                inputEditRoomName.classList.add('is-invalid');
+                errorEditRoom.textContent = 'Nama ruangan wajib diisi.';
+                errorEditRoom.classList.remove('d-none');
+                inputEditRoomName.focus();
+                return;
+            }
+
+            inputEditRoomName.classList.remove('is-invalid');
+            errorEditRoom.classList.add('d-none');
+            btnEditRoom.disabled = true;
+            btnEditRoom.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> Menyimpan...';
+
+            try {
+                const response = await fetch(quickRoomUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+                    body: JSON.stringify({ name: name, code: code })
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    const errMsg = result.errors?.name?.[0] || result.errors?.code?.[0] || result.message || 'Gagal menyimpan ruangan.';
+                    inputEditRoomName.classList.add('is-invalid');
+                    errorEditRoom.textContent = errMsg;
+                    errorEditRoom.classList.remove('d-none');
+                    return;
+                }
+
+                addOptionToSelect('edit_room_id', result.data.id, result.data.label);
+                addOptionToSelect('mutate_room_id', result.data.id, result.data.label);
+
+                inputEditRoomName.value = '';
+                if (inputEditRoomCode) inputEditRoomCode.value = '';
+                const bsCollapse = bootstrap.Collapse.getInstance(collapseEditRoom) || new bootstrap.Collapse(collapseEditRoom, { toggle: false });
+                bsCollapse.hide();
+
+                showQuickAlert(result.message, 'success');
+            } catch (err) {
+                inputEditRoomName.classList.add('is-invalid');
+                errorEditRoom.textContent = 'Terjadi kesalahan saat memproses data.';
+                errorEditRoom.classList.remove('d-none');
+            } finally {
+                btnEditRoom.disabled = false;
+                btnEditRoom.innerHTML = '<i class="bi bi-check2"></i> Simpan';
+            }
+        });
+    }
+});
+</script>
+@endpush

@@ -129,7 +129,7 @@ class InventoryManagementTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee($item->name);
         $response->assertSee($item->code);
-        $response->assertSee('Mutasi / Pindah Ruangan');
+        $response->assertSee('Mutasi Ruangan');
         $response->assertSee('Ubah Data');
         $response->assertSee('Hapus');
     }
@@ -226,5 +226,89 @@ class InventoryManagementTest extends TestCase
         $this->assertDatabaseMissing('inventory_items', [
             'id' => $itemId,
         ]);
+    }
+
+    public function test_authorized_user_can_quick_store_category(): void
+    {
+        $uniqueName = 'Sarana Kebersihan ' . uniqid();
+        $response = $this->actingAs($this->admin)->postJson(route('admin.inventory.categories.quick-store'), [
+            'name' => $uniqueName,
+        ]);
+
+        $response->assertStatus(201);
+        $response->assertJson([
+            'success' => true,
+            'is_new'  => true,
+            'data'    => [
+                'name' => $uniqueName,
+            ],
+        ]);
+
+        $this->assertDatabaseHas('inventory_categories', [
+            'name' => $uniqueName,
+        ]);
+    }
+
+    public function test_quick_store_category_returns_existing_if_duplicate(): void
+    {
+        $response = $this->actingAs($this->admin)->postJson(route('admin.inventory.categories.quick-store'), [
+            'name' => 'Mebel & Kursi Meja',
+        ]);
+
+        $response->assertStatus(200);
+        $response->assertJson([
+            'success' => true,
+            'is_new'  => false,
+            'data'    => [
+                'id'   => $this->category->id,
+                'name' => $this->category->name,
+            ],
+        ]);
+    }
+
+    public function test_authorized_user_can_quick_store_room_with_custom_code(): void
+    {
+        $uniqueCode = 'R-TEST-' . rand(1000, 9999);
+        $uniqueName = 'Gudang Sarpras ' . rand(100, 999);
+
+        $response = $this->actingAs($this->admin)->postJson(route('admin.inventory.rooms.quick-store'), [
+            'name' => $uniqueName,
+            'code' => $uniqueCode,
+        ]);
+
+        $response->assertStatus(201);
+        $response->assertJson([
+            'success' => true,
+            'is_new'  => true,
+            'data'    => [
+                'name'  => $uniqueName,
+                'code'  => $uniqueCode,
+                'label' => "{$uniqueName} ({$uniqueCode})",
+            ],
+        ]);
+
+        $this->assertDatabaseHas('rooms', [
+            'name' => $uniqueName,
+            'code' => $uniqueCode,
+        ]);
+    }
+
+    public function test_authorized_user_can_quick_store_room_with_auto_generated_code(): void
+    {
+        $uniqueName = 'Ruang Robotika ' . rand(100, 999);
+
+        $response = $this->actingAs($this->admin)->postJson(route('admin.inventory.rooms.quick-store'), [
+            'name' => $uniqueName,
+        ]);
+
+        $response->assertStatus(201);
+        $response->assertJson([
+            'success' => true,
+            'is_new'  => true,
+        ]);
+
+        $room = Room::where('name', $uniqueName)->first();
+        $this->assertNotNull($room);
+        $this->assertStringStartsWith('R-', $room->code);
     }
 }

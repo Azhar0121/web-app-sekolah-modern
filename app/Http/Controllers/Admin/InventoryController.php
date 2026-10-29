@@ -7,9 +7,11 @@ use App\Models\AuditLog;
 use App\Models\InventoryCategory;
 use App\Models\InventoryItem;
 use App\Models\Room;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class InventoryController extends Controller
@@ -200,5 +202,103 @@ class InventoryController extends Controller
         AuditLog::log('delete', "Menghapus aset inventaris: {$name} ({$code})", null);
 
         return redirect()->route('admin.inventory.index')->with('success', "Aset inventaris {$name} ({$code}) berhasil dihapus.");
+    }
+
+    public function quickStoreCategory(Request $request): JsonResponse
+    {
+        $validated = $request->validate([
+            'name'        => ['required', 'string', 'max:100'],
+            'description' => ['nullable', 'string', 'max:255'],
+        ]);
+
+        $name = trim($validated['name']);
+        $slug = Str::slug($name);
+
+        $category = InventoryCategory::where('name', $name)
+            ->orWhere('slug', $slug)
+            ->first();
+
+        if ($category) {
+            if (! $category->is_active) {
+                $category->is_active = true;
+                $category->save();
+            }
+
+            return response()->json([
+                'success' => true,
+                'is_new'  => false,
+                'message' => "Kategori '{$category->name}' sudah ada dan otomatis dipilih.",
+                'data'    => [
+                    'id'   => $category->id,
+                    'name' => $category->name,
+                ],
+            ]);
+        }
+
+        $category = InventoryCategory::create([
+            'name'        => $name,
+            'slug'        => $slug,
+            'description' => $validated['description'] ?? null,
+            'is_active'   => true,
+        ]);
+
+        AuditLog::log('create', "Menambahkan kategori inventaris cepat: {$category->name}", $category);
+
+        return response()->json([
+            'success' => true,
+            'is_new'  => true,
+            'message' => "Kategori '{$category->name}' berhasil ditambahkan dan dipilih.",
+            'data'    => [
+                'id'   => $category->id,
+                'name' => $category->name,
+            ],
+        ], 201);
+    }
+
+    public function quickStoreRoom(Request $request): JsonResponse
+    {
+        $validated = $request->validate([
+            'name'     => ['required', 'string', 'max:255'],
+            'code'     => ['nullable', 'string', 'max:20', 'unique:rooms,code'],
+            'type'     => ['nullable', 'string', 'in:kelas,laboratorium,perpustakaan,aula,lapangan'],
+            'location' => ['nullable', 'string', 'max:255'],
+        ]);
+
+        $name = trim($validated['name']);
+
+        if (! empty($validated['code'])) {
+            $code = strtoupper(trim($validated['code']));
+        } else {
+            $cleanName = strtoupper(preg_replace('/[^A-Za-z0-9]/', '', Str::slug($name, '')));
+            $prefix = 'R-' . substr($cleanName ?: 'ROOM', 0, 8);
+            $code = $prefix;
+            $counter = 1;
+            while (Room::where('code', $code)->exists()) {
+                $code = substr($prefix, 0, 8) . '-' . $counter;
+                $counter++;
+            }
+        }
+
+        $room = Room::create([
+            'code'      => $code,
+            'name'      => $name,
+            'type'      => $validated['type'] ?? 'kelas',
+            'location'  => $validated['location'] ?? null,
+            'is_active' => true,
+        ]);
+
+        AuditLog::log('create', "Menambahkan ruangan inventaris cepat: {$room->name} ({$room->code})", $room);
+
+        return response()->json([
+            'success' => true,
+            'is_new'  => true,
+            'message' => "Ruangan '{$room->name}' ({$room->code}) berhasil ditambahkan dan dipilih.",
+            'data'    => [
+                'id'    => $room->id,
+                'name'  => $room->name,
+                'code'  => $room->code,
+                'label' => "{$room->name} ({$room->code})",
+            ],
+        ], 201);
     }
 }

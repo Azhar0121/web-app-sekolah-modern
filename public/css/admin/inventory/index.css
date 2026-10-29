@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
-.inventory-page {
+:root,
+.inventory-page,
+.inventory-modal {
     --inv-navy: #102a49;
     --inv-navy-dark: #091c32;
     --inv-blue: #2468a7;
@@ -1132,37 +1134,78 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    min-height: 39px;
-    padding: 9px 15px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 800;
+    min-height: 42px;
+    padding: 9px 18px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
 }
 
 .inventory-cancel-btn {
-    color: #5f6f80;
-    background: #fff;
-    border: 1px solid #d5dee7;
+    color: #475569;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
 }
 
 .inventory-cancel-btn:hover,
 .inventory-cancel-btn:focus {
-    color: #344960;
-    background: #edf1f5;
-    border-color: #c5d0dc;
+    color: #1e293b;
+    background: #f1f5f9;
+    border-color: #94a3b8;
 }
 
 .inventory-save-btn {
-    color: #fff;
-    background: var(--inv-navy);
-    border: 1px solid var(--inv-navy);
+    color: #ffffff !important;
+    background: #102a49 !important;
+    border: 1px solid #102a49 !important;
+    box-shadow: 0 2px 6px rgba(16, 42, 73, 0.2);
+}
+
+.inventory-save-btn i {
+    font-size: 14px;
+    color: #ffffff !important;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .inventory-save-btn:hover,
 .inventory-save-btn:focus {
-    color: #fff;
-    background: #1c456c;
-    border-color: #1c456c;
+    color: #ffffff !important;
+    background: #1d5287 !important;
+    border-color: #1d5287 !important;
+    box-shadow: 0 4px 14px rgba(16, 42, 73, 0.35);
+    transform: translateY(-1px);
+}
+
+.inventory-save-btn:active {
+    background: #0d223c !important;
+    border-color: #0d223c !important;
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(16, 42, 73, 0.2);
+}
+
+.inventory-quick-add-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #2468a7;
+    text-decoration: none;
+    transition: color 0.15s ease-in-out;
+}
+
+.inventory-quick-add-link:hover,
+.inventory-quick-add-link:focus {
+    color: #102a49;
+    text-decoration: underline;
+}
+
+.inventory-quick-add-link i {
+    font-size: 12px;
+    display: inline-block;
 }
 
 /* =========================================
