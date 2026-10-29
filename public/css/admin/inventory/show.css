@@ -1191,3 +1191,370 @@
     font-size: 12px;
     display: inline-block;
 }
+
+/* =====================================================
+   MUTASI ASET — PENYEMPURNAAN TAMPILAN
+   File: public/css/admin/inventory/show.css
+   ===================================================== */
+
+/* Modal mutasi */
+#mutateInventoryModal .modal-dialog {
+    width: calc(100% - 28px);
+    max-width: 560px;
+    margin: 1.25rem auto;
+}
+
+#mutateInventoryModal .modal-content {
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #dce5ef;
+    border-radius: 12px;
+    box-shadow: 0 18px 48px rgba(9, 28, 50, 0.18);
+}
+
+/* =========================================
+   HEADER NAVY
+   ========================================= */
+
+#mutateInventoryModal .modal-header {
+    position: relative;
+    overflow: hidden;
+    gap: 14px;
+    padding: 22px 24px;
+    background: #102a49;
+    color: #fff;
+   
+}
+
+#mutateInventoryModal .modal-header::before {
+    content: "";
+    position: absolute;
+    top: -70px;
+    right: 18%;
+    width: 160px;
+    height: 160px;
+    border: 22px solid rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+}
+
+#mutateInventoryModal .modal-header::after {
+    content: "";
+    position: absolute;
+    right: -35px;
+    bottom: -75px;
+    width: 170px;
+    height: 170px;
+    border: 24px solid rgba(40, 120, 232, 0.15);
+    border-radius: 50%;
+}
+
+#mutateInventoryModal .modal-header>* {
+    position: relative;
+    z-index: 2;
+}
+
+#mutateInventoryModal .inventory-modal-heading {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+#mutateInventoryModal .inventory-modal-icon,
+#mutateInventoryModal .inventory-modal-icon--blue {
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    font-size: 18px;
+    backdrop-filter: blur(6px);
+}
+
+#mutateInventoryModal .modal-title {
+    margin: 0;
+    color: #fff;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+#mutateInventoryModal .inventory-modal-heading p {
+    margin: 4px 0 0;
+    color: #d5e3f4;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+#mutateInventoryModal .btn-close {
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
+}
+
+#mutateInventoryModal .btn-close:hover {
+    opacity: 1;
+}
+
+/* =========================================
+   BODY MODAL
+   ========================================= */
+
+#mutateInventoryModal .modal-body {
+    padding: 22px;
+    background: #f5f8fc;
+}
+
+#mutateInventoryModal .mb-3 {
+    margin-bottom: 22px !important;
+}
+
+/* Kartu aset */
+
+#mutateInventoryModal .inventory-modal-asset {
+    padding: 17px 18px;
+    margin-bottom: 24px;
+    background: #fff;
+    border: 1px solid #d8e5f3;
+    border-left: 4px solid #245b91;
+    border-radius: 9px;
+    box-shadow: 0 4px 10px rgba(16, 42, 73, 0.04);
+}
+
+#mutateInventoryModal .inventory-modal-asset span {
+    display: block;
+    margin-bottom: 7px;
+    color: #5d7a99;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+#mutateInventoryModal .inventory-modal-asset strong {
+    display: block;
+    color: #102a49;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+#mutateInventoryModal .inventory-modal-asset small {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 4px 8px;
+    background: #e8f2fd;
+    color: #315b85;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+/* =========================================
+   FORM
+   ========================================= */
+
+#mutateInventoryModal .form-label {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: #263d56;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+#mutateInventoryModal .form-control,
+#mutateInventoryModal .form-select {
+    min-height: 43px;
+    padding: 10px 12px;
+    background: #fff;
+    color: #263b53;
+    border: 1px solid #d5dfeb;
+    border-radius: 7px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    box-shadow: none;
+    transition: all .2s ease;
+}
+
+#mutateInventoryModal textarea.form-control {
+    min-height: 100px;
+    resize: vertical;
+    line-height: 1.7;
+}
+
+#mutateInventoryModal .form-control::placeholder {
+    color: #9aa7b7;
+}
+
+#mutateInventoryModal .form-control:hover,
+#mutateInventoryModal .form-select:hover {
+    border-color: #aebfd2;
+}
+
+#mutateInventoryModal .form-control:focus,
+#mutateInventoryModal .form-select:focus {
+    border-color: #245b91;
+    box-shadow: 0 0 0 3px rgba(36, 91, 145, 0.12);
+}
+
+#mutateInventoryModal .form-text {
+    margin-top: 7px;
+    color: #7f8ea0;
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+/* =========================================
+   QUICK ADD RUANGAN
+   ========================================= */
+
+#mutateInventoryModal .inventory-quick-add-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #245b91;
+    font-size: 10px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: .2s;
+}
+
+#mutateInventoryModal .inventory-quick-add-link:hover {
+    color: #102a49;
+    text-decoration: underline;
+}
+
+#mutateInventoryModal .inventory-quick-add-link i {
+    font-size: 12px;
+}
+
+#mutateInventoryModal #quickAddRoomCollapseMutate>div {
+    padding: 14px !important;
+    background: #fff !important;
+    border: 1px solid #d8e5f3 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(16, 42, 73, 0.05);
+}
+
+#mutateInventoryModal #quickAddRoomCollapseMutate .fw-bold {
+    color: #102a49 !important;
+    font-size: 11px !important;
+}
+
+#mutateInventoryModal #quickAddRoomCollapseMutate .form-control {
+    min-height: 37px;
+    font-size: 11px !important;
+}
+
+#mutateInventoryModal #quickAddRoomCollapseMutate .btn {
+    min-height: 33px;
+    padding: 7px 12px !important;
+    border-radius: 6px;
+    font-size: 10px !important;
+    font-weight: 700;
+}
+
+#mutateInventoryModal #quickAddRoomCollapseMutate .btn-primary {
+    background: #102a49;
+    border-color: #102a49;
+}
+
+#mutateInventoryModal #quickAddRoomCollapseMutate .btn-primary:hover {
+    background: #245b91;
+    border-color: #245b91;
+}
+
+#mutateInventoryModal #quickAddRoomCollapseMutate .btn-light {
+    border-color: #d5dfeb !important;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+#mutateInventoryModal .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 9px;
+    padding: 15px 22px;
+    background: #fff;
+    border-top: 1px solid #e3eaf2;
+}
+
+#mutateInventoryModal .modal-footer .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: 40px;
+    padding: 9px 15px;
+    border-radius: 7px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    transition: all .2s ease;
+}
+
+#mutateInventoryModal .modal-footer .btn-light {
+    background: #fff;
+    color: #526276;
+    border: 1px solid #d7e0ea;
+}
+
+#mutateInventoryModal .modal-footer .btn-light:hover {
+    background: #edf2f7;
+    color: #102a49;
+}
+
+#mutateInventoryModal .modal-footer .btn-primary {
+    background: #102a49;
+    border-color: #102a49;
+    color: #fff;
+    box-shadow: 0 3px 10px rgba(16, 42, 73, 0.12);
+}
+
+#mutateInventoryModal .modal-footer .btn-primary:hover {
+    background: #245b91;
+    border-color: #245b91;
+    transform: translateY(-1px);
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 575.98px) {
+
+    #mutateInventoryModal .modal-dialog {
+        margin: 12px;
+        width: auto;
+    }
+
+    #mutateInventoryModal .modal-header {
+        padding: 18px;
+    }
+
+    #mutateInventoryModal .modal-body {
+        padding: 18px;
+    }
+
+    #mutateInventoryModal .modal-footer {
+        padding: 14px 18px;
+    }
+
+    #mutateInventoryModal .inventory-modal-icon,
+    #mutateInventoryModal .inventory-modal-icon--blue {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    #mutateInventoryModal .modal-title {
+        font-size: 14px;
+    }
+
+    #mutateInventoryModal .modal-footer .btn {
+        flex: 1;
+    }
+}
