@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
-:root,
-.inventory-detail,
-.inventory-modal {
+:root {
     --inv-navy: #102a49;
     --inv-navy-dark: #091c32;
     --inv-blue: #245b91;
@@ -13,7 +11,10 @@
     --inv-bg: #f5f7fa;
     --inv-green: #16845b;
     --inv-radius: 12px;
+}
 
+.inventory-detail,
+.inventory-modal {
     color: var(--inv-text);
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 13px;
