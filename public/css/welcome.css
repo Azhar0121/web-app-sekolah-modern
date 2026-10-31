@@ -2984,10 +2984,11 @@ option {
     overflow: hidden;
 }
 
-.brand-logo svg {
+.brand-logo svg,
+.brand-logo img {
     width: 34px;
     height: 34px;
-
+    object-fit: contain;
     display: block;
 }
 

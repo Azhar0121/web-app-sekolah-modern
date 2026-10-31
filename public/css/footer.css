@@ -108,9 +108,11 @@
     overflow: hidden;
 }
 
-.footer-logo svg {
+.footer-logo svg,
+.footer-logo img {
     width: 38px;
     height: 38px;
+    object-fit: contain;
     display: block;
 }
 
@@ -297,6 +299,7 @@
 
 .footer-contact-address {
     grid-column: 1 / -1;
+    align-items: flex-start;
 }
 
 
@@ -354,6 +357,23 @@
 
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.footer-contact-content strong a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s ease, text-decoration 0.2s ease;
+}
+
+.footer-contact-content strong a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+    opacity: 0.9;
+}
+
+.footer-contact-address .footer-contact-content strong {
+    white-space: normal;
+    line-height: 1.45;
 }
 
 

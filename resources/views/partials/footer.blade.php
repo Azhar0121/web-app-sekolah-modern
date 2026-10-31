@@ -1,5 +1,40 @@
 <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
 
+@php
+    $footerSettings = $settings ?? $schoolSettings ?? \App\Models\Setting::allKeyed();
+    $schoolName = $footerSettings['school_name'] ?? config('app.name', 'SEKOLAH MODERN');
+    $schoolAbbr = $footerSettings['school_abbreviation'] ?? 'Sistem Informasi Sekolah';
+    $address = $footerSettings['address'] ?? 'Alamat sekolah belum tersedia.';
+    $phone = $footerSettings['phone'] ?? null;
+    $email = $footerSettings['email'] ?? null;
+    $logoPath = $footerSettings['logo_path'] ?? null;
+
+    $embedVal = trim($footerSettings['google_maps_embed'] ?? '');
+    $mapUrl = 'https://www.google.com/maps';
+
+    if (!empty($embedVal)) {
+        if (preg_match('/https:\/\/(maps\.app\.goo\.gl|goo\.gl\/maps|www\.google\.com\/maps\/place)[^\s"\'<>]+/i', $embedVal, $m)) {
+            $mapUrl = $m[0];
+        } elseif (preg_match('/src=["\']([^"\']+)["\']/', $embedVal, $m)) {
+            $mapUrl = !empty($address) && $address !== 'Alamat sekolah belum tersedia.'
+                ? 'https://www.google.com/maps/search/?api=1&query=' . urlencode($address)
+                : $m[1];
+        } elseif (filter_var($embedVal, FILTER_VALIDATE_URL)) {
+            $mapUrl = $embedVal;
+        } elseif (!empty($address) && $address !== 'Alamat sekolah belum tersedia.') {
+            $mapUrl = 'https://www.google.com/maps/search/?api=1&query=' . urlencode($address);
+        }
+    } elseif (!empty($address) && $address !== 'Alamat sekolah belum tersedia.') {
+        $mapUrl = 'https://www.google.com/maps/search/?api=1&query=' . urlencode($address);
+    } elseif (!empty($schoolName)) {
+        $mapUrl = 'https://www.google.com/maps/search/?api=1&query=' . urlencode($schoolName);
+    }
+
+    $facebookUrl = $footerSettings['facebook_url'] ?? 'https://www.facebook.com/';
+    $instagramUrl = $footerSettings['instagram_url'] ?? 'https://www.instagram.com/';
+    $youtubeUrl = $footerSettings['youtube_url'] ?? 'https://www.youtube.com/';
+@endphp
+
 <footer class="school-footer" id="kontak">
 
     {{-- DECORATION --}}
@@ -19,73 +54,77 @@
                 {{-- LOGO SEKOLAH --}}
                 <div class="footer-logo">
 
-                    <svg
-                        viewBox="0 0 64 64"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-label="Logo Sekolah"
-                    >
+                    @if(!empty($logoPath) && \Illuminate\Support\Facades\Storage::disk('public')->exists($logoPath))
+                        <img src="{{ asset('storage/' . $logoPath) }}" alt="Logo {{ $schoolName }}">
+                    @else
+                        <svg
+                            viewBox="0 0 64 64"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-label="Logo Sekolah"
+                        >
 
-                        {{-- SHIELD --}}
-                        <path
-                            d="M32 4
-                               L55 12
-                               V29
-                               C55 44 45 54 32 60
-                               C19 54 9 44 9 29
-                               V12
-                               Z"
-                            fill="#ffffff"
-                        />
+                            {{-- SHIELD --}}
+                            <path
+                                d="M32 4
+                                   L55 12
+                                   V29
+                                   C55 44 45 54 32 60
+                                   C19 54 9 44 9 29
+                                   V12
+                                   Z"
+                                fill="#ffffff"
+                            />
 
-                        {{-- INNER SHIELD --}}
-                        <path
-                            d="M32 10
-                               L49 16
-                               V29
-                               C49 40 42 48 32 53
-                               C22 48 15 40 15 29
-                               V16
-                               Z"
-                            fill="#0f2747"
-                        />
+                            {{-- INNER SHIELD --}}
+                            <path
+                                d="M32 10
+                                   L49 16
+                                   V29
+                                   C49 40 42 48 32 53
+                                   C22 48 15 40 15 29
+                                   V16
+                                   Z"
+                                fill="#0f2747"
+                            />
 
-                        {{-- STAR --}}
-                        <path
-                            d="M32 15
-                               L34.5 21
-                               L41 21
-                               L36 25
-                               L38 31
-                               L32 27
-                               L26 31
-                               L28 25
-                               L23 21
-                               L29.5 21
-                               Z"
-                            fill="#ffffff"
-                        />
+                            {{-- STAR --}}
+                            <path
+                                d="M32 15
+                                   L34.5 21
+                                   L41 21
+                                   L36 25
+                                   L38 31
+                                   L32 27
+                                   L26 31
+                                   L28 25
+                                   L23 21
+                                   L29.5 21
+                                   Z"
+                                fill="#ffffff"
+                            />
 
-                        {{-- BOOK --}}
-                        <path
-                            d="M19 34
-                               C23 32 27 33 32 36
-                               C37 33 41 32 45 34
-                               V44
-                               C41 42 37 42 32 45
-                               C27 42 23 42 19 44
-                               Z"
-                            fill="#ffffff"
-                        />
+                            {{-- BOOK --}}
+                            <path
+                                d="M19 34
+                                   C23 32 27 33 32 36
+                                   C37 33 41 32 45 34
+                                   V44
+                                   C41 42 37 42 32 45
+                                   C27 42 23 42 19 44
+                                   Z"
+                                fill="#ffffff"
+                            />
 
-                        {{-- BOOK CENTER --}}
-                        <path
-                            d="M32 36 V45"
-                            stroke="#0f2747"
-                            stroke-width="1.8"
-                            stroke-linecap="round"
-                        />
+                            {{-- BOOK CENTER --}}
+                            <path
+                                d="M32 36 V45"
+                                stroke="#0f2747"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                            />
 
-                    </svg>
+                        </svg>
+                    @endif
 
                 </div>
 
@@ -93,10 +132,10 @@
                 {{-- NAMA SEKOLAH --}}
                 <div class="footer-brand-text">
 
-                    <strong>SEKOLAH MODERN</strong>
+                    <strong>{{ $schoolName }}</strong>
 
                     <span>
-                        Sistem Informasi Sekolah
+                        {{ $schoolAbbr }}
                     </span>
 
                 </div>
@@ -107,7 +146,7 @@
             {{-- DESCRIPTION --}}
             <p class="footer-description">
 
-                Portal resmi <strong>Sekolah Modern</strong> yang menyediakan
+                Portal resmi <strong>{{ $schoolName }}</strong> yang menyediakan
                 informasi, layanan pendidikan, kegiatan siswa, dan
                 berbagai layanan sekolah secara digital.
 
@@ -124,7 +163,7 @@
                 <div class="footer-social">
 
                     <a
-                        href="https://www.facebook.com/"
+                        href="{{ $facebookUrl }}"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Facebook"
@@ -134,7 +173,7 @@
 
 
                     <a
-                        href="https://www.instagram.com/"
+                        href="{{ $instagramUrl }}"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Instagram"
@@ -144,7 +183,7 @@
 
 
                     <a
-                        href="https://www.youtube.com/"
+                        href="{{ $youtubeUrl }}"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="YouTube"
@@ -199,7 +238,13 @@
                         </span>
 
                         <strong>
-                            08XX-XXXX-XXXX
+                            @if(!empty($phone))
+                                <a href="tel:{{ preg_replace('/[^0-9+]/', '', $phone) }}">
+                                    {{ $phone }}
+                                </a>
+                            @else
+                                Belum tersedia
+                            @endif
                         </strong>
 
                     </div>
@@ -221,7 +266,13 @@
                         </span>
 
                         <strong>
-                            info@sekolah.sch.id
+                            @if(!empty($email))
+                                <a href="mailto:{{ $email }}">
+                                    {{ $email }}
+                                </a>
+                            @else
+                                Belum tersedia
+                            @endif
                         </strong>
 
                     </div>
@@ -243,7 +294,7 @@
                         </span>
 
                         <strong>
-                            Alamat Sekolah
+                            {{ $address }}
                         </strong>
 
                     </div>
@@ -255,7 +306,7 @@
 
             {{-- GOOGLE MAP --}}
             <a
-                href="https://www.google.com/maps"
+                href="{{ $mapUrl }}"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="footer-map-button"
@@ -299,14 +350,14 @@
                 &copy; {{ date('Y') }}
 
                 <strong>
-                    SEKOLAH MODERN
+                    {{ $schoolName }}
                 </strong>.
 
                 Semua hak dilindungi.
             </p>
 
             <span>
-                Sistem Informasi Sekolah
+                {{ $schoolAbbr }}
             </span>
 
         </div>
