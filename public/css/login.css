@@ -303,6 +303,14 @@
   font-size: 12px;
   line-height: 1.5
 }
+.login-alert.login-alert-success {
+  border-color: #a7f3d0;
+  background: #ecfdf5;
+  color: #047857;
+}
+.login-alert.login-alert-success .alert-icon {
+  background: #10b981;
+}
 .alert-icon {
   width: 19px;
   height: 19px;
@@ -404,7 +412,23 @@
   line-height: 1.4
 }
 .login-options {
-  margin: 2px 0 13px
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 2px 0 16px;
+}
+.forgot-password-link {
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color .2s ease, text-decoration .2s ease;
+  white-space: nowrap;
+}
+.forgot-password-link:hover {
+  color: #1254ad;
+  text-decoration: underline;
 }
 .remember-me {
   display: inline-flex;

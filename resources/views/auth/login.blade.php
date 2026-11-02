@@ -69,6 +69,14 @@
                 </div>
 
 
+                {{-- Status Berhasil --}}
+                @if (session('status'))
+                    <div class="login-alert login-alert-success">
+                        <div class="alert-icon">✓</div>
+                        <div>{{ session('status') }}</div>
+                    </div>
+                @endif
+
                 {{-- Error --}}
                 @if ($errors->any())
 
@@ -244,7 +252,7 @@
                     </div>
 
 
-                    {{-- INGAT SAYA --}}
+                    {{-- INGAT SAYA & LUPA PASSWORD --}}
                     <div class="login-options">
 
                         <label class="remember-me">
@@ -260,6 +268,10 @@
                             <span>Ingat saya</span>
 
                         </label>
+
+                        <a href="{{ route('password.request') }}" class="forgot-password-link">
+                            Lupa Password?
+                        </a>
 
                     </div>
 

@@ -41,6 +41,11 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
+    public function sendPasswordResetNotification($token): void
+    {
+        $this->notify(new \App\Notifications\ResetPasswordNotification($token));
+    }
+
     public function hasRole(string ...$slugs): bool
     {
         return $this->role && in_array($this->role->slug, $slugs, true);
