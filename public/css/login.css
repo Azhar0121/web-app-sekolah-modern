@@ -81,9 +81,7 @@
 
   font-family: Inter, "Segoe UI", Arial, sans-serif;
 
-  overflow-x: hidden;
-  overflow-y: auto;
-
+  overflow: hidden;
   position: relative;
 }
 
@@ -360,7 +358,8 @@
   font-size: 13px;
   transition: border-color .2s ease,box-shadow .2s ease,background .2s ease
 }
-.input-wrapper input#password {
+.input-wrapper input#password,
+.input-wrapper input#password_confirmation {
   padding-right: 44px;
 }
 .password-toggle-btn {
@@ -595,160 +594,337 @@
   font-size: 9px;
   white-space: nowrap
 }
-@media (max-width:950px) {
+/* =========================================================
+   TABLET RESPONSIVE (769px - 950px)
+========================================================= */
+@media (max-width: 950px) and (min-width: 769px) {
   .login-page {
     padding: 20px;
-    align-items: flex-start;
-    overflow-y: auto
+    overflow: hidden;
   }
   .login-card {
-    width: min(700px,100%);
-    height: auto;
+    width: min(720px, 100%);
+    height: min(580px, calc(100vh - 40px));
     min-height: 0;
-    grid-template-columns: 1fr
+    grid-template-columns: 1fr 1fr;
   }
   .login-visual {
-    min-height: 300px;
-    height: 300px
+    min-height: 0;
+    height: 100%;
   }
   .login-panel {
-    padding: 35px 40px;
-    overflow: visible
+    padding: 28px 32px;
+    overflow-y: auto;
   }
 }
-@media (max-width:600px) {
+
+/* =========================================================
+   SMARTPHONE / MOBILE RESPONSIVE (<= 768px)
+========================================================= */
+@media (max-width: 768px) {
+  /* --- Page Wrapper --- */
   .login-page {
     width: 100%;
     min-height: 100vh;
-    margin-left: 0;
+    min-height: 100dvh;
+    margin: 0;
     padding: 0;
-    align-items: flex-start;
-    overflow-y: auto
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    background: #071b35;
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
   }
+  .login-page::before,
+  .login-page::after {
+    display: none !important;
+  }
+
+  /* --- Card Container --- */
   .login-card {
     width: 100%;
-    min-height: 100vh;
     height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: none;
     border-radius: 0;
-    box-shadow: none
+    border: none;
+    box-shadow: none;
+    background: #ffffff;
+    margin: 0;
   }
+
+  /* --- Visual Banner Atas (Gambar Sekolah & Badge Resmi) --- */
   .login-visual {
-    min-height: 260px;
-    height: 260px
+    display: flex !important;
+    position: relative;
+    width: 100%;
+    min-height: 195px;
+    height: 205px;
+    flex: 0 0 auto;
+    align-items: flex-end;
+    overflow: hidden;
+    background-image: url("https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1200&q=85");
+    background-size: cover;
+    background-position: center 30%;
+  }
+  .login-visual .visual-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(7, 27, 53, 0.35) 0%,
+      rgba(7, 27, 53, 0.68) 55%,
+      rgba(7, 27, 53, 0.94) 100%
+    );
+    z-index: 1;
+  }
+  .login-visual::before {
+    top: -60px;
+    right: -60px;
+    width: 200px;
+    height: 200px;
+    opacity: 0.35;
   }
   .visual-content {
-    padding: 25px
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 20px 22px 32px;
+    box-sizing: border-box;
   }
   .school-badge {
-    font-size: 10px
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    margin-bottom: 8px;
+  }
+  .badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #65c73a;
+    box-shadow: 0 0 0 3px rgba(101, 199, 58, 0.25);
   }
   .visual-content h1 {
-    font-size: 32px;
-    letter-spacing: -.8px
+    margin: 0;
+    color: #ffffff;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.4px;
+    max-width: 100%;
+  }
+  .visual-content h1 span {
+    display: inline;
+    color: #ffffff;
+    font-weight: 700;
+  }
+  .visual-line {
+    display: none !important;
   }
   .visual-content p {
-    font-size: 12px
+    display: none !important;
   }
+
+  /* --- Panel Form Bawah (Card Sheet Putih) --- */
   .login-panel {
-    padding: 30px 24px;
-    overflow: visible
+    width: 100%;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 26px 20px 32px;
+    background: #ffffff;
+    border-radius: 22px 22px 0 0;
+    margin-top: -18px;
+    position: relative;
+    z-index: 5;
+    box-shadow: 0 -8px 24px rgba(7, 27, 53, 0.10);
+    box-sizing: border-box;
+    overflow: visible;
   }
+
+  /* --- Content Wrapper di Dalam Panel --- */
   .login-content {
-    max-width: 380px
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    box-sizing: border-box;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  /* --- Sembunyikan Logo Duplikat (sudah ada visual banner di atas) --- */
+  .school-logo {
+    display: none !important;
+  }
+
+  /* --- Heading Form --- */
+  .login-heading {
+    margin-bottom: 20px;
+    text-align: left;
   }
   .login-heading h2 {
-    font-size: 23px
+    font-size: 20px;
+    font-weight: 700;
+    color: #071b35;
+    margin: 0 0 4px;
+    letter-spacing: -0.3px;
   }
   .login-heading p {
-    font-size: 12px
+    font-size: 13px;
+    color: #64748b;
+    max-width: 100%;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* --- Alert Pesan Error / Status --- */
+  .login-alert {
+    margin-bottom: 16px;
+    font-size: 13px;
+    padding: 11px 14px;
+    border-radius: 10px;
+  }
+
+  /* --- Form Inputs --- */
+  .form-group {
+    margin-bottom: 14px;
   }
   .form-group label {
-    font-size: 12px
+    font-size: 13px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #334155;
   }
   .input-wrapper input {
-    height: 45px;
-    font-size: 13px
+    height: 46px;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+  .input-wrapper input::placeholder {
+    font-size: 13px;
+  }
+
+  /* --- Options (Remember Me & Lupa Password) --- */
+  .login-options {
+    margin: 4px 0 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
   .remember-me {
-    font-size: 12px
+    font-size: 13px;
   }
+  .forgot-password-link {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* --- Tombol Submit & Kembali --- */
   .login-button {
-    height: 45px;
-    font-size: 13px
+    height: 48px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 10px;
   }
-  .demo-title {
-    font-size: 10px
+  .back-to-home-btn {
+    height: 44px;
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 10px;
   }
-  .demo-password {
-    font-size: 11px
-  }
-  .demo-password code {
-    font-size: 11px
-  }
-  .demo-accounts span {
-    font-size: 10px
+
+  /* --- Footer --- */
+  .login-footer {
+    margin-top: 22px;
+    padding-top: 12px;
   }
   .login-footer p {
-    font-size: 8px
+    font-size: 10px;
+    color: #94a3b8;
   }
 }
-@media (max-height:700px) and (min-width:951px) {
+
+/* =========================================================
+   LAYAR DESKTOP PENDEK (max-height: 650px)
+========================================================= */
+@media (max-height: 650px) and (min-width: 769px) {
   .login-page {
-    align-items: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    overflow-y: auto
+    height: auto;
+    min-height: 100vh;
+    padding: 16px;
+    overflow-y: auto;
+  }
+  .login-page::before,
+  .login-page::after {
+    display: none !important;
   }
   .login-card {
     height: auto;
     min-height: 0;
-    margin: auto
+    margin: auto;
   }
   .login-panel {
-    padding-top: 24px;
-    padding-bottom: 24px
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
   .school-logo {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 8px
+    width: 46px;
+    height: 46px;
+    margin-bottom: 8px;
   }
   .school-logo span {
-    width: 38px;
-    height: 38px;
-    font-size: 18px
+    width: 36px;
+    height: 36px;
+    font-size: 17px;
   }
   .login-heading {
-    margin-bottom: 14px
+    margin-bottom: 12px;
   }
   .login-heading h2 {
-    font-size: 22px
+    font-size: 21px;
   }
   .form-group {
-    margin-bottom: 9px
+    margin-bottom: 9px;
   }
   .input-wrapper input {
-    height: 40px
+    height: 40px;
   }
   .login-options {
-    margin-bottom: 9px
+    margin-bottom: 10px;
   }
   .login-button {
-    height: 40px
+    height: 40px;
   }
   .back-to-home-btn {
     height: 38px;
-    margin-top: 8px;
-    font-size: 12px
-  }
-  .demo-section {
-    margin-top: 11px;
-    padding-top: 10px
-  }
-  .demo-password {
-    margin: 6px 0
+    margin-top: 6px;
+    font-size: 12px;
   }
   .login-footer {
-    margin-top: 10px
+    margin-top: 10px;
   }
 }
