@@ -1,58 +1,94 @@
-<div class="card border-0 shadow-sm h-100">
-    <div class="card-header bg-white fw-semibold d-flex justify-content-between align-items-center">
-        <span>Daftar Siswa</span>
-        <span class="text-muted small">{{ $students->count() }} siswa</span>
-    </div>
-    <div class="table-responsive">
-        <table class="table table-hover align-middle mb-0">
-            <thead class="table-light">
-                <tr>
-                    <th>Nama Siswa</th>
-                    <th style="width: 130px;">Status</th>
-                    <th style="width: 170px;">Edit Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse ($students as $student)
-                    @php($attendance = $attendances->get($student->id))
-                    <tr data-student-name="{{ $student->name }}">
-                        <td>
-                            {{ $student->name }}
-                            <a href="{{ route('guru.student-profile.show', $student) }}" class="text-muted small ms-1" title="Lihat biodata">
-                                (biodata)
-                            </a>
-                        </td>
-                        <td class="status-cell">
+<div class="session-roster-wrapper">
+    <table class="session-roster-table">
+        <thead>
+            <tr>
+                <th class="roster-col-student">Nama Siswa</th>
+                <th class="roster-col-status">Status</th>
+                <th class="roster-col-action">Edit Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse ($students as $student)
+                @php($attendance = $attendances->get($student->id))
+                <tr data-student-name="{{ $student->name }}">
+                    <td class="roster-cell-student">
+                        <div class="session-student-info">
+                            <div class="session-student-avatar">
+                                {{ strtoupper(mb_substr($student->name, 0, 1)) }}
+                            </div>
+                            <div class="session-student-detail">
+                                <span class="session-student-name">{{ $student->name }}</span>
+                                <a href="{{ route('guru.student-profile.show', $student) }}"
+                                   class="session-student-profile-link"
+                                   title="Lihat biodata {{ $student->name }}">
+                                    <i class="bi bi-person-vcard"></i>
+                                    <span>Biodata</span>
+                                </a>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="roster-cell-status">
+                        <div class="session-status-badge-wrap">
                             @if ($attendance)
-                                <span class="badge {{ $attendance->statusBadgeClass() }}">{{ $attendance->statusLabel() }}</span>
+                                <span class="session-badge session-badge-{{ $attendance->status }}">
+                                    @if ($attendance->status === 'hadir')
+                                        <i class="bi bi-check-circle-fill"></i>
+                                    @elseif ($attendance->status === 'izin')
+                                        <i class="bi bi-info-circle-fill"></i>
+                                    @elseif ($attendance->status === 'sakit')
+                                        <i class="bi bi-heart-pulse-fill"></i>
+                                    @elseif ($attendance->status === 'alpha')
+                                        <i class="bi bi-x-circle-fill"></i>
+                                    @endif
+                                    <span>{{ $attendance->statusLabel() }}</span>
+                                </span>
                                 @if ($attendance->scanned_at)
-                                    <div class="text-muted small">{{ $attendance->scanned_at->format('H:i') }}</div>
+                                    <div class="session-scanned-time" title="Waktu Scan">
+                                        <i class="bi bi-clock"></i>
+                                        <span>{{ $attendance->scanned_at->format('H:i') }}</span>
+                                    </div>
                                 @endif
                             @else
-                                <span class="badge text-bg-light text-dark border">Belum Absen</span>
+                                <span class="session-badge session-badge-unrecorded">
+                                    <i class="bi bi-dash-circle"></i>
+                                    <span>Belum Absen</span>
+                                </span>
                             @endif
-                        </td>
-                        <td>
-                            <form method="POST"
-                                  action="{{ route('guru.attendance.update-status', [$attendanceSession, $student]) }}">
-                                @csrf
-                                @method('PUT')
-                                <select name="status" class="form-select form-select-sm" onchange="this.form.submit()">
+                        </div>
+                    </td>
+                    <td class="roster-cell-action">
+                        <form method="POST"
+                              action="{{ route('guru.attendance.update-status', [$attendanceSession, $student]) }}"
+                              class="session-status-form">
+                            @csrf
+                            @method('PUT')
+                            <span class="session-select-label-mobile">Edit Status:</span>
+                            <div class="session-select-wrapper">
+                                <select name="status"
+                                        class="session-status-select"
+                                        onchange="this.form.submit()"
+                                        aria-label="Ubah status kehadiran {{ $student->name }}">
                                     <option value="">-- Pilih --</option>
                                     <option value="hadir" @selected($attendance?->status === 'hadir')>Hadir</option>
                                     <option value="izin" @selected($attendance?->status === 'izin')>Izin</option>
                                     <option value="sakit" @selected($attendance?->status === 'sakit')>Sakit</option>
                                     <option value="alpha" @selected($attendance?->status === 'alpha')>Alpha</option>
                                 </select>
-                            </form>
-                        </td>
-                    </tr>
-                @empty
-                    <tr>
-                        <td colspan="3" class="text-center text-muted py-4">Belum ada siswa terdaftar di kelas ini.</td>
-                    </tr>
-                @endforelse
-            </tbody>
-        </table>
-    </div>
+                                <i class="bi bi-chevron-down session-select-arrow"></i>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="3" class="roster-cell-empty">
+                        <div class="session-roster-empty">
+                            <i class="bi bi-people"></i>
+                            <p>Belum ada siswa terdaftar di kelas ini.</p>
+                        </div>
+                    </td>
+                </tr>
+            @endforelse
+        </tbody>
+    </table>
 </div>

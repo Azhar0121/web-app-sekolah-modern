@@ -41,6 +41,7 @@ use App\Http\Controllers\Ortu\ReportCardController as OrtuReportCardController;
 use App\Http\Controllers\Ortu\ScheduleController as OrtuScheduleController;
 use App\Http\Controllers\PpdbController;
 use App\Http\Controllers\Siswa\AttendanceController as SiswaAttendanceController;
+use App\Http\Controllers\Siswa\DashboardController as SiswaDashboardController;
 use App\Http\Controllers\Siswa\GradeController as SiswaGradeController;
 use App\Http\Controllers\Siswa\MaterialController as SiswaMaterialController;
 use App\Http\Controllers\Siswa\ProfileController as SiswaProfileController;
@@ -325,7 +326,7 @@ Route::middleware(['auth', 'role:guru'])->prefix('guru')->name('guru.')->group(f
 
 // ================= PORTAL SISWA =================
 Route::middleware(['auth', 'role:siswa'])->prefix('siswa')->name('siswa.')->group(function () {
-    Route::view('/dashboard', 'siswa.dashboard')->name('dashboard');
+    Route::get('/dashboard', [SiswaDashboardController::class, 'index'])->name('dashboard');
 
     // Jadwal Pelajaran
     Route::get('/jadwal', [SiswaScheduleController::class, 'index'])->name('schedule.index');

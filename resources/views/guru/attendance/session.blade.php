@@ -181,7 +181,7 @@
                         <i class="bi bi-people-fill"></i>
                     </div>
 
-                    <div>
+                    <div class="session-roster-heading-text">
 
                         <div class="session-card-eyebrow">
                             KEHADIRAN SISWA
@@ -195,6 +195,11 @@
                             Pantau status kehadiran siswa pada sesi ini.
                         </p>
 
+                    </div>
+
+                    <div class="session-roster-total">
+                        <strong>{{ $students->count() }}</strong>
+                        <span>Siswa</span>
                     </div>
 
                 </div>
@@ -293,7 +298,7 @@
                     <i class="bi bi-clipboard-check-fill"></i>
                 </div>
 
-                <div>
+                <div class="session-roster-heading-text">
 
                     <div class="session-card-eyebrow">
                         REKAP KEHADIRAN
@@ -307,6 +312,11 @@
                         Periksa dan edit status kehadiran siswa secara manual.
                     </p>
 
+                </div>
+
+                <div class="session-roster-total">
+                    <strong>{{ $students->count() }}</strong>
+                    <span>Siswa</span>
                 </div>
 
             </div>

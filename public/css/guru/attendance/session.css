@@ -580,6 +580,11 @@
     font-size: 16px;
 }
 
+.session-roster-heading-text {
+    flex: 1;
+    min-width: 0;
+}
+
 .session-roster-heading h2 {
     margin: 0;
 
@@ -597,28 +602,305 @@
     font-size: 10px;
 }
 
+.session-roster-total {
+    margin-left: auto;
+    flex-shrink: 0;
+
+    min-width: 68px;
+
+    padding: 7px 12px;
+
+    border: 1px solid #cce6f8;
+    border-radius: 9px;
+
+    background: #eef7fd;
+
+    text-align: center;
+}
+
+.session-roster-total strong {
+    display: block;
+
+    color: var(--session-blue-dark);
+
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.session-roster-total span {
+    display: block;
+
+    color: var(--session-muted);
+
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+}
+
 .session-roster-content {
+    min-width: 0;
+    background: #fff;
+}
+
+.session-roster-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.session-roster-table {
+    width: 100%;
+    margin: 0;
+    border-collapse: collapse;
+}
+
+.session-roster-table thead th {
+    padding: 12px 18px;
+
+    background: #f4f8fc;
+    color: #4b6680;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .4px;
+    text-transform: uppercase;
+
+    border-bottom: 1px solid #dfe8f0;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.session-roster-table thead th.roster-col-status {
+    width: 140px;
+}
+
+.session-roster-table thead th.roster-col-action {
+    width: 165px;
+}
+
+.session-roster-table tbody tr {
+    border-bottom: 1px solid #eaf0f6;
+    transition: background .12s ease;
+}
+
+.session-roster-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.session-roster-table tbody tr:hover {
+    background: #f9fbfe;
+}
+
+.session-roster-table tbody td {
+    padding: 12px 18px;
+    vertical-align: middle;
+}
+
+/* Student info cell */
+.session-student-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     min-width: 0;
 }
 
+.session-student-avatar {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
 
-/*
-   Supaya partial roster tidak memiliki jarak
-   berlebihan ketika dimasukkan ke card.
-*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-.session-roster-content > .card {
-    margin: 0 !important;
+    border-radius: 8px;
+    background: #e8f4ff;
+    border: 1px solid #cce6f8;
 
-    border: 0 !important;
-
-    border-radius: 0 !important;
-
-    box-shadow: none !important;
+    color: var(--session-blue);
+    font-size: 13px;
+    font-weight: 800;
 }
 
-.session-roster-content > .card .card-header {
-    border-radius: 0 !important;
+.session-student-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.session-student-name {
+    color: var(--session-text);
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.3;
+    word-break: break-word;
+}
+
+.session-student-profile-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+
+    color: var(--session-blue);
+    font-size: 11px;
+    font-weight: 600;
+    text-decoration: none;
+
+    transition: color .15s ease;
+    width: fit-content;
+}
+
+.session-student-profile-link:hover {
+    color: var(--session-blue-dark);
+    text-decoration: underline;
+}
+
+/* Status cell */
+.session-status-badge-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.session-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    padding: 5px 10px;
+
+    border-radius: 6px;
+
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.session-badge i {
+    font-size: 11px;
+}
+
+.session-badge-hadir {
+    background: #eaf8ef;
+    color: #198754;
+    border: 1px solid #b7e4c7;
+}
+
+.session-badge-izin {
+    background: #e7f3ff;
+    color: #0b6bcb;
+    border: 1px solid #bde0fe;
+}
+
+.session-badge-sakit {
+    background: #fff8e6;
+    color: #b25e00;
+    border: 1px solid #fde293;
+}
+
+.session-badge-alpha {
+    background: #feeeee;
+    color: #dc3545;
+    border: 1px solid #f8c4c4;
+}
+
+.session-badge-unrecorded {
+    background: #f1f4f8;
+    color: #64748b;
+    border: 1px solid #dce4ed;
+}
+
+.session-scanned-time {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+
+    color: var(--session-muted);
+    font-size: 10px;
+    font-weight: 600;
+}
+
+/* Action select */
+.session-status-form {
+    margin: 0;
+}
+
+.session-select-label-mobile {
+    display: none;
+}
+
+.session-select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.session-status-select {
+    width: 100%;
+    height: 33px;
+
+    padding: 5px 28px 5px 10px;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    border: 1px solid #d0dee9;
+    border-radius: 7px;
+
+    background: #fff;
+    color: var(--session-text);
+
+    font-size: 11px;
+    font-weight: 600;
+    font-family: inherit;
+
+    cursor: pointer;
+    transition: all .15s ease;
+}
+
+.session-status-select:hover {
+    border-color: #a3c7e5;
+}
+
+.session-status-select:focus {
+    outline: none;
+    border-color: var(--session-blue);
+    box-shadow: 0 0 0 3px rgba(22, 119, 210, .14);
+}
+
+.session-select-arrow {
+    position: absolute;
+    right: 9px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    color: var(--session-muted);
+    font-size: 10px;
+    pointer-events: none;
+}
+
+/* Empty roster state */
+.session-roster-empty {
+    text-align: center;
+    padding: 36px 20px;
+    color: var(--session-muted);
+}
+
+.session-roster-empty i {
+    font-size: 32px;
+    color: #a8c1d8;
+    margin-bottom: 8px;
+    display: inline-block;
+}
+
+.session-roster-empty p {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 600;
 }
 
 
@@ -986,6 +1268,108 @@
         width: 100%;
     }
 
+    .session-roster-total {
+        padding: 5px 9px;
+        min-width: 58px;
+    }
+
+    .session-roster-total strong {
+        font-size: 13px;
+    }
+
+    .session-roster-total span {
+        font-size: 8px;
+    }
+
+    .session-roster-wrapper {
+        overflow-x: visible;
+    }
+
+    .session-roster-table,
+    .session-roster-table tbody {
+        display: block;
+        width: 100%;
+    }
+
+    .session-roster-table thead {
+        display: none;
+    }
+
+    .session-roster-table tbody tr {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+            "student status"
+            "action  action";
+        gap: 10px 12px;
+        align-items: center;
+        padding: 13px 16px;
+        border-bottom: 1px solid #e8eff6;
+    }
+
+    .session-roster-table tbody tr:nth-child(even) {
+        background: #fafcfe;
+    }
+
+    .session-roster-table tbody td {
+        padding: 0 !important;
+        border: none !important;
+    }
+
+    .roster-cell-student {
+        grid-area: student;
+        min-width: 0;
+    }
+
+    .roster-cell-status {
+        grid-area: status;
+        text-align: right;
+    }
+
+    .session-status-badge-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .roster-cell-action {
+        grid-area: action;
+        width: 100%;
+        padding-top: 2px !important;
+    }
+
+    .session-status-form {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .session-select-label-mobile {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--session-muted);
+        white-space: nowrap;
+        flex: 0 0 auto;
+    }
+
+    .session-select-wrapper {
+        flex: 1;
+    }
+
+    .session-status-select {
+        height: 35px;
+        font-size: 11px;
+        background-color: #f8fbfe;
+    }
+
+    .session-roster-table tbody tr td.roster-cell-empty {
+        grid-column: 1 / -1;
+        display: block;
+        padding: 24px 16px !important;
+    }
+
 }
 
 
@@ -1165,6 +1549,63 @@
 
     .session-back-area {
         padding-top: 15px;
+    }
+
+    .session-roster-heading {
+        padding: 12px 14px;
+        gap: 10px;
+    }
+
+    .session-roster-total {
+        padding: 4px 8px;
+        min-width: 52px;
+    }
+
+    .session-roster-total strong {
+        font-size: 12px;
+    }
+
+    .session-roster-total span {
+        font-size: 7.5px;
+    }
+
+    .session-roster-table tbody tr {
+        padding: 11px 13px;
+        gap: 8px 10px;
+    }
+
+    .session-student-avatar {
+        width: 32px;
+        height: 32px;
+        flex-basis: 32px;
+        font-size: 12px;
+        border-radius: 7px;
+    }
+
+    .session-student-name {
+        font-size: 12px;
+    }
+
+    .session-student-profile-link {
+        font-size: 10px;
+    }
+
+    .session-badge {
+        padding: 4px 7px;
+        font-size: 10px;
+    }
+
+    .session-scanned-time {
+        font-size: 9px;
+    }
+
+    .session-status-select {
+        height: 33px;
+        font-size: 11px;
+    }
+
+    .session-select-label-mobile {
+        font-size: 10px;
     }
 
 }

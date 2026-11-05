@@ -10,94 +10,18 @@
 @include('layouts.partials.announcements-banner')
 
 @php
-/*
-|--------------------------------------------------------------------------
-| DATA DASHBOARD
-|--------------------------------------------------------------------------
-| Karena dashboard tidak menggunakan controller khusus,
-| data diambil langsung dari model.
-*/
-
-
-$student = auth()->user();
-$classroom = $student->currentClassroom();
-
-$today = now()->locale('id');
-$dayName = ucfirst($today->translatedFormat('l'));
-
-/*
-| Jadwal hari ini
-*/
-$todaySchedules = collect();
-
-try {
-    if ($classroom && class_exists(\App\Models\Schedule::class)) {
-        $todaySchedules = \App\Models\Schedule::query()
-            ->where('classroom_id', $classroom->id)
-            ->where(function ($query) use ($dayName) {
-                $query->whereRaw('LOWER(day) = ?', [strtolower($dayName)])
-                      ->orWhereRaw('LOWER(day) = ?', [strtolower($dayName)]);
-            })
-            ->orderBy('start_time')
-            ->get();
-    }
-} catch (\Throwable $e) {
-    $todaySchedules = collect();
-}
-
-/*
-| Tugas
-*/
-$studentTasks = collect();
-
-try {
-    if (class_exists(\App\Models\Task::class)) {
-        $studentTasks = \App\Models\Task::query()
-            ->latest()
-            ->take(4)
-            ->get();
-    }
-} catch (\Throwable $e) {
-    $studentTasks = collect();
-}
-
-/*
-| Presensi
-*/
-$attendanceStats = [
+$student = $student ?? auth()->user();
+$classroom = $classroom ?? $student?->currentClassroom();
+$today = $today ?? now()->locale('id');
+$dayName = $dayName ?? ucfirst($today->translatedFormat('l'));
+$todaySchedules = $todaySchedules ?? collect();
+$studentTasks = $studentTasks ?? collect();
+$attendanceStats = $attendanceStats ?? [
     'hadir' => 0,
-    'izin' => 0,
+    'izin'  => 0,
     'sakit' => 0,
     'alpha' => 0,
 ];
-
-try {
-    if (class_exists(\App\Models\Attendance::class)) {
-
-        $attendances = \App\Models\Attendance::query()
-            ->where('user_id', $student->id)
-            ->get();
-
-        foreach ($attendances as $attendance) {
-
-            $status = strtolower($attendance->status ?? '');
-
-            if (in_array($status, ['hadir', 'present'])) {
-                $attendanceStats['hadir']++;
-            } elseif ($status === 'izin') {
-                $attendanceStats['izin']++;
-            } elseif ($status === 'sakit') {
-                $attendanceStats['sakit']++;
-            } elseif (in_array($status, ['alpha', 'alpa'])) {
-                $attendanceStats['alpha']++;
-            }
-        }
-    }
-} catch (\Throwable $e) {
-    //
-}
-
-
 @endphp
 
 <div class="student-dashboard">
@@ -277,14 +201,14 @@ try {
                         <div class="schedule-info">
 
                             <strong>
-                                {{ $schedule->subject->name ?? $schedule->subject_name ?? 'Mata Pelajaran' }}
+                                {{ $schedule->teachingAssignment?->subject?->name ?? 'Mata Pelajaran' }}
                             </strong>
 
                             <div class="schedule-meta">
 
                                 <span>
                                     <i class="bi bi-person"></i>
-                                    {{ $schedule->teacher->name ?? $schedule->teacher_name ?? 'Guru' }}
+                                    {{ $schedule->teachingAssignment?->teacher?->name ?? 'Guru' }}
                                 </span>
 
                                 @if (!empty($schedule->room))
@@ -296,11 +220,6 @@ try {
 
                             </div>
 
-                        </div>
-
-
-                        <div class="schedule-arrow">
-                            <i class="bi bi-chevron-right"></i>
                         </div>
 
                     </div>
@@ -366,7 +285,7 @@ try {
                             </strong>
 
                             <span>
-                                {{ $task->subject->name ?? $task->subject_name ?? 'Mata Pelajaran' }}
+                                {{ $task->teachingAssignment?->subject?->name ?? 'Mata Pelajaran' }}
                             </span>
 
                         </div>
