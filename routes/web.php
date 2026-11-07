@@ -140,6 +140,16 @@ Route::prefix('ppdb')->name('ppdb.')->group(function () {
 Route::middleware(['auth', 'role:super-admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::view('/dashboard', 'admin.dashboard')->name('dashboard');
 
+    // User Bulk Import (Guru & TU)
+    Route::get('users/import/template', [UserController::class, 'downloadImportTemplate'])
+        ->name('users.import.template');
+    Route::post('users/import', [UserController::class, 'import'])
+        ->name('users.import');
+    Route::get('users/import/export-rekap', [UserController::class, 'exportRekap'])
+        ->name('users.import.export-rekap');
+    Route::get('users/import/print-slips', [UserController::class, 'printSlips'])
+        ->name('users.import.print-slips');
+
     // User Management
     Route::resource('users', UserController::class)->except(['show']);
 
