@@ -6,10 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\Setting;
 use App\Models\User;
+use App\Models\UserImportBatch;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\StreamedResponse;
@@ -37,7 +40,11 @@ class UserController extends Controller
             ->paginate(10)
             ->withQueryString();
 
-        return view('admin.users.index', compact('users', 'roles', 'search', 'roleFilter'));
+        $latestBatch = UserImportBatch::latest('id')->first();
+        $totalBatches = UserImportBatch::count();
+        $latestImportCredentials = $latestBatch?->credentials ?? $this->getLatestImportCredentials();
+
+        return view('admin.users.index', compact('users', 'roles', 'search', 'roleFilter', 'latestImportCredentials', 'latestBatch', 'totalBatches'));
     }
 
     public function create(): View
@@ -110,17 +117,48 @@ class UserController extends Controller
             ->with('success', 'Data user berhasil diperbarui.');
     }
 
-    public function destroy(User $user): RedirectResponse
+    public function destroy(Request $request, string $user): RedirectResponse|JsonResponse
     {
-        if ($user->id === auth()->id()) {
+        $targetUser = User::find($user);
+
+        if (! $targetUser) {
+            if ($request->wantsJson()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Akun sudah tidak ditemukan atau telah dihapus sebelumnya.',
+                ]);
+            }
+
+            return redirect()
+                ->route('admin.users.index')
+                ->with('info', 'Akun sudah tidak ditemukan atau telah dihapus sebelumnya.');
+        }
+
+        if ($targetUser->id === auth()->id()) {
+            if ($request->wantsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Anda tidak bisa menghapus akun Anda sendiri.',
+                ], 403);
+            }
+
             return back()->with('error', 'Anda tidak bisa menghapus akun Anda sendiri.');
         }
 
-        if ($user->photo && Storage::disk('public')->exists($user->photo)) {
-            Storage::disk('public')->delete($user->photo);
+        $userName = $targetUser->name;
+
+        if ($targetUser->photo && Storage::disk('public')->exists($targetUser->photo)) {
+            Storage::disk('public')->delete($targetUser->photo);
         }
 
-        $user->delete();
+        $targetUser->delete();
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => "User {$userName} berhasil dihapus.",
+            ]);
+        }
 
         return redirect()
             ->route('admin.users.index')
@@ -302,7 +340,16 @@ class UserController extends Controller
                 ->with('import_errors', $errors);
         }
 
-        session(['latest_import_credentials' => $created]);
+        $batchCode = 'IMP-' . date('Ymd-His');
+        UserImportBatch::create([
+            'batch_code' => $batchCode,
+            'file_name' => $file->getClientOriginalName(),
+            'total_accounts' => count($created),
+            'credentials' => $created,
+            'created_by' => auth()->id(),
+        ]);
+
+        $this->saveLatestImportCredentials($created);
 
         return redirect()
             ->route('admin.users.index')
@@ -312,14 +359,37 @@ class UserController extends Controller
             ->with('import_errors', $errors);
     }
 
-    public function exportRekap(): StreamedResponse|RedirectResponse
+    public function importHistory(): View
     {
-        $credentials = session('latest_import_credentials');
-        if (empty($credentials) || ! is_array($credentials)) {
-            return redirect()->route('admin.users.index')->with('error', 'Data rekap akun import tidak ditemukan atau sesi telah berakhir.');
+        $batches = UserImportBatch::with('creator')->orderByDesc('created_at')->paginate(12);
+        $totalAccounts = UserImportBatch::sum('total_accounts');
+        $totalBatches = UserImportBatch::count();
+
+        return view('admin.users.import-history', compact('batches', 'totalAccounts', 'totalBatches'));
+    }
+
+    public function exportRekap(?UserImportBatch $batch = null): StreamedResponse|RedirectResponse
+    {
+        if ($batch && $batch->exists) {
+            $credentials = $batch->credentials;
+            $batchCode = $batch->batch_code;
+        } else {
+            $sessionCreds = session('latest_import_credentials');
+            if (!empty($sessionCreds)) {
+                $credentials = $sessionCreds;
+                $batchCode = date('Ymd-His');
+            } else {
+                $latestBatch = UserImportBatch::latest('id')->first();
+                $credentials = $latestBatch?->credentials ?? $this->getLatestImportCredentials();
+                $batchCode = $latestBatch?->batch_code ?? date('Ymd-His');
+            }
         }
 
-        $filename = 'rekap-akun-guru-tu-' . date('Ymd-His') . '.csv';
+        if (empty($credentials)) {
+            return redirect()->route('admin.users.index')->with('error', 'Belum ada riwayat akun yang di-import. Silakan lakukan Import Guru & TU terlebih dahulu.');
+        }
+
+        $filename = 'rekap-akun-guru-tu-' . Str::slug($batchCode) . '.csv';
 
         $headers = [
             'Content-Type' => 'text/csv; charset=UTF-8',
@@ -352,16 +422,111 @@ class UserController extends Controller
         }, 200, $headers);
     }
 
-    public function printSlips(): View|RedirectResponse
+    public function printSlips(?UserImportBatch $batch = null): View|RedirectResponse
     {
-        $credentials = session('latest_import_credentials');
-        if (empty($credentials) || ! is_array($credentials)) {
-            return redirect()->route('admin.users.index')->with('error', 'Data slip akun import tidak ditemukan atau sesi telah berakhir.');
+        if ($batch && $batch->exists) {
+            $credentials = $batch->credentials;
+            $batchLabel = $batch->batch_code . ' (' . $batch->created_at->format('d/m/Y H:i') . ')';
+        } else {
+            $sessionCreds = session('latest_import_credentials');
+            if (!empty($sessionCreds)) {
+                $credentials = $sessionCreds;
+                $batchLabel = 'Batch Terbaru (' . now()->format('d/m/Y H:i') . ')';
+            } else {
+                $latestBatch = UserImportBatch::latest('id')->first();
+                $credentials = $latestBatch?->credentials ?? $this->getLatestImportCredentials();
+                $batchLabel = $latestBatch ? $latestBatch->batch_code . ' (' . $latestBatch->created_at->format('d/m/Y H:i') . ')' : 'Batch Terbaru';
+            }
+        }
+
+        if (empty($credentials)) {
+            return redirect()->route('admin.users.index')->with('error', 'Belum ada riwayat akun yang di-import. Silakan lakukan Import Guru & TU terlebih dahulu.');
         }
 
         $schoolName = Setting::get('school_name', config('app.name', 'Sistem Informasi Sekolah'));
 
-        return view('admin.users.print-slips', compact('credentials', 'schoolName'));
+        return view('admin.users.print-slips', compact('credentials', 'schoolName', 'batchLabel'));
+    }
+
+    public function destroyImportBatch(UserImportBatch $batch): RedirectResponse
+    {
+        $batchCode = $batch->batch_code;
+        $batch->delete();
+
+        // Sinkronkan cache setting dengan batch paling baru yang masih tersisa
+        $latest = UserImportBatch::latest('id')->first();
+        if ($latest) {
+            $this->saveLatestImportCredentials($latest->credentials);
+        } else {
+            session()->forget('latest_import_credentials');
+            Setting::where('key', 'latest_import_credentials')->delete();
+            Setting::clearCache();
+            if (Storage::disk('local')->exists('imports/latest_credentials.json')) {
+                Storage::disk('local')->delete('imports/latest_credentials.json');
+            }
+        }
+
+        return redirect()->route('admin.users.import.history')
+            ->with('success', "Arsip import \"{$batchCode}\" berhasil dihapus dari riwayat.");
+    }
+
+    public function clearLatestImport(): RedirectResponse
+    {
+        session()->forget('latest_import_credentials');
+        Setting::where('key', 'latest_import_credentials')->delete();
+        Setting::clearCache();
+
+        if (Storage::disk('local')->exists('imports/latest_credentials.json')) {
+            Storage::disk('local')->delete('imports/latest_credentials.json');
+        }
+
+        return redirect()->route('admin.users.index')->with('success', 'Riwayat kredensial import telah dibersihkan.');
+    }
+
+    public function getLatestImportCredentials(): array
+    {
+        // 1. Cek session aktif
+        $credentials = session('latest_import_credentials');
+        if (! empty($credentials) && is_array($credentials)) {
+            return $credentials;
+        }
+
+        // 2. Cek database settings (persisten antar admin dan tahan logout)
+        $rawSetting = Setting::get('latest_import_credentials');
+        if (! empty($rawSetting)) {
+            $decoded = json_decode($rawSetting, true);
+            if (is_array($decoded) && ! empty($decoded)) {
+                return $decoded;
+            }
+        }
+
+        // 3. Cek file storage privat lokal
+        if (Storage::disk('local')->exists('imports/latest_credentials.json')) {
+            $decoded = json_decode(Storage::disk('local')->get('imports/latest_credentials.json'), true);
+            if (is_array($decoded) && ! empty($decoded)) {
+                return $decoded;
+            }
+        }
+
+        return [];
+    }
+
+    public function saveLatestImportCredentials(array $created): void
+    {
+        session(['latest_import_credentials' => $created]);
+
+        Setting::updateOrCreate(
+            ['key' => 'latest_import_credentials'],
+            [
+                'value' => json_encode($created),
+                'type' => 'json',
+                'group' => 'users',
+                'label' => 'Riwayat Kredensial Import Guru & TU Terakhir',
+            ]
+        );
+        Setting::clearCache();
+
+        Storage::disk('local')->put('imports/latest_credentials.json', json_encode($created, JSON_PRETTY_PRINT));
     }
 
     public function generateFriendlyPassword(string $name): string

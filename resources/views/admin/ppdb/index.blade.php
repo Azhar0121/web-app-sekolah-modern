@@ -62,7 +62,58 @@
 
     </div>
 
+    {{-- ALERT SUKSES --}}
+    @if (session('success'))
+        <div class="alert alert-success d-flex align-items-center gap-2 mb-4" style="background: #ecfdf5; border: 1px solid #a7f3d0; color: #065f46; border-radius: 8px; padding: 12px 18px; font-weight: 500;">
+            <i class="bi bi-check-circle-fill fs-5" style="color: #10b981;"></i>
+            <div>{{ session('success') }}</div>
+        </div>
+    @endif
 
+    {{-- KARTU STATUS & PENGATURAN PERIODE PPDB AKTIF --}}
+    <div class="ppdb-period-card">
+        <div class="ppdb-period-left">
+            <div class="ppdb-period-icon-wrap {{ $activePeriod && $activePeriod->isOpenForRegistration() ? 'is-open' : 'is-closed' }}">
+                <i class="bi {{ $activePeriod && $activePeriod->isOpenForRegistration() ? 'bi-calendar-check-fill' : 'bi-calendar-x-fill' }}"></i>
+            </div>
+            <div>
+                <div class="ppdb-period-title-group">
+                    <h2 class="ppdb-period-title">
+                        {{ $activePeriod ? $activePeriod->name : 'Belum Ada Periode PPDB' }}
+                    </h2>
+                    @if ($activePeriod && $activePeriod->isOpenForRegistration())
+                        <span class="badge-status-open">
+                            <span class="dot-pulse"></span> Pendaftaran Dibuka
+                        </span>
+                    @else
+                        <span class="badge-status-closed">
+                            <span class="dot-closed"></span> Pendaftaran Ditutup
+                        </span>
+                    @endif
+                </div>
+                <div class="ppdb-period-meta">
+                    @if ($activePeriod)
+                        <span><i class="bi bi-calendar3"></i> {{ $activePeriod->start_date?->format('d M Y') }} s/d {{ $activePeriod->end_date?->format('d M Y') }}</span>
+                        <span>•</span>
+                        <span><i class="bi bi-people-fill"></i> Kuota: <strong>{{ $activePeriod->registrations()->count() }} / {{ $activePeriod->quota ?? '∞' }}</strong> Pendaftar</span>
+                        <span>•</span>
+                        <span><i class="bi bi-clock-history"></i> Batas Daftar Ulang: <strong>{{ $activePeriod->re_registration_days ?? 7 }} Hari</strong></span>
+                    @else
+                        <span class="text-muted">Silakan atur periode baru agar pendaftaran publik dapat dibuka.</span>
+                    @endif
+                </div>
+            </div>
+        </div>
+
+        @if(auth()->user()->hasRole('super-admin') || auth()->user()->hasPermission('ppdb.manage'))
+        <div class="ppdb-period-actions">
+            <button type="button" class="btn-config-period" data-bs-toggle="modal" data-bs-target="#editPeriodModal">
+                <i class="bi bi-gear-fill"></i>
+                <span>Atur Periode PPDB</span>
+            </button>
+        </div>
+        @endif
+    </div>
 
     {{-- FILTER --}}
     <div class="ppdb-filter-card">
@@ -354,5 +405,73 @@
     </div>
 
 </div>
+
+{{-- MODAL PENGATURAN PERIODE PPDB --}}
+@if(auth()->user()->hasRole('super-admin') || auth()->user()->hasPermission('ppdb.manage'))
+<div class="modal fade" id="editPeriodModal" tabindex="-1" aria-labelledby="editPeriodModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border-radius: 12px; border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+            <div class="modal-header" style="background: #071b35; color: #fff; border-radius: 12px 12px 0 0; padding: 16px 22px;">
+                <h5 class="modal-title fw-bold fs-6" id="editPeriodModalLabel">
+                    <i class="bi bi-calendar-event me-2 text-warning"></i> Atur Periode &amp; Jadwal PPDB
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form action="{{ route('admin.ppdb.period.update') }}" method="POST">
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="period_id" value="{{ $activePeriod?->id }}">
+
+                <div class="modal-body p-4">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold text-dark small">Nama Gelombang / Periode <span class="text-danger">*</span></label>
+                        <input type="text" name="name" class="form-control" value="{{ old('name', $activePeriod?->name ?? 'Gelombang 1 Tahun Ajaran ' . date('Y') . '/' . (date('Y') + 1)) }}" required placeholder="Contoh: Gelombang 1 Tahun Ajaran 2026/2027">
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-sm-6">
+                            <label class="form-label fw-semibold text-dark small">Tanggal Mulai <span class="text-danger">*</span></label>
+                            <input type="date" name="start_date" class="form-control" value="{{ old('start_date', $activePeriod?->start_date?->format('Y-m-d') ?? date('Y-m-d')) }}" required>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="form-label fw-semibold text-dark small">Tanggal Selesai (Penutupan) <span class="text-danger">*</span></label>
+                            <input type="date" name="end_date" class="form-control" value="{{ old('end_date', $activePeriod?->end_date?->format('Y-m-d') ?? date('Y-12-31')) }}" required>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-sm-6">
+                            <label class="form-label fw-semibold text-dark small">Kuota Pendaftar</label>
+                            <input type="number" name="quota" min="1" class="form-control" value="{{ old('quota', $activePeriod?->quota ?? 100) }}" placeholder="Contoh: 100">
+                            <div class="form-text" style="font-size: 11px;">Kosongkan jika kuota tidak dibatasi.</div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="form-label fw-semibold text-dark small">Batas Waktu Daftar Ulang (Hari) <span class="text-danger">*</span></label>
+                            <input type="number" name="re_registration_days" min="1" max="60" class="form-control" value="{{ old('re_registration_days', $activePeriod?->re_registration_days ?? 7) }}" required>
+                            <div class="form-text" style="font-size: 11px;">Maksimal hari setelah siswa diterima.</div>
+                        </div>
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label fw-semibold text-dark small">Status Periode</label>
+                        <select name="is_active" class="form-select">
+                            <option value="1" @selected(old('is_active', $activePeriod?->is_active ?? true))>Aktif (Pendaftaran Buka Sesuai Jadwal)</option>
+                            <option value="0" @selected(!old('is_active', $activePeriod?->is_active ?? true))>Nonaktif (Tutup Pendaftaran Manual)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-footer bg-light" style="border-radius: 0 0 12px 12px; padding: 14px 22px;">
+                    <button type="button" class="btn btn-secondary btn-sm px-3" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary btn-sm px-4 fw-semibold" style="background: #1769d5; border-color: #1769d5;">
+                        <i class="bi bi-check2-circle me-1"></i> Simpan Pengaturan
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endif
 
 @endsection

@@ -145,10 +145,16 @@ Route::middleware(['auth', 'role:super-admin'])->prefix('admin')->name('admin.')
         ->name('users.import.template');
     Route::post('users/import', [UserController::class, 'import'])
         ->name('users.import');
-    Route::get('users/import/export-rekap', [UserController::class, 'exportRekap'])
+    Route::get('users/import/history', [UserController::class, 'importHistory'])
+        ->name('users.import.history');
+    Route::get('users/import/export-rekap/{batch?}', [UserController::class, 'exportRekap'])
         ->name('users.import.export-rekap');
-    Route::get('users/import/print-slips', [UserController::class, 'printSlips'])
+    Route::get('users/import/print-slips/{batch?}', [UserController::class, 'printSlips'])
         ->name('users.import.print-slips');
+    Route::delete('users/import/batches/{batch}', [UserController::class, 'destroyImportBatch'])
+        ->name('users.import.batches.destroy');
+    Route::post('users/import/clear-latest', [UserController::class, 'clearLatestImport'])
+        ->name('users.import.clear-latest');
 
     // User Management
     Route::resource('users', UserController::class)->except(['show']);
@@ -253,6 +259,7 @@ Route::prefix('admin/ppdb')->name('admin.ppdb.')->group(function () {
     });
 
     Route::middleware(['auth', 'permission:ppdb.manage'])->group(function () {
+        Route::put('/period', [AdminPpdbController::class, 'updatePeriod'])->name('period.update');
         Route::put('/{ppdbRegistration}/status', [AdminPpdbController::class, 'updateStatus'])->name('update-status');
         Route::put('/{ppdbRegistration}/re-registration', [AdminPpdbController::class, 'confirmReRegistration'])->name('confirm-re-registration');
     });

@@ -63,7 +63,7 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('ppdb.store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('ppdb.store') }}" enctype="multipart/form-data" id="ppdbRegistrationForm">
             @csrf
 
             {{-- =========================================================
@@ -390,10 +390,10 @@
                         <span>Pastikan data diri, nomor HP aktif, dan pilihan jurusan sudah diperiksa dengan teliti.</span>
                     </div>
 
-                    <button type="submit" class="submit-button">
-                        <span>Kirim Pendaftaran</span>
+                    <button type="submit" class="submit-button" id="ppdbSubmitBtn">
+                        <span class="btn-text">Kirim Pendaftaran</span>
 
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                             <polyline points="12 5 19 12 12 19"></polyline>
@@ -416,6 +416,123 @@
         </div>
 
     </div>
+
+    <div id="ppdbLoadingOverlay" class="ppdb-loading-overlay" aria-hidden="true">
+        <div class="ppdb-loading-card">
+            <div class="ppdb-spinner-wrap">
+                <div class="ppdb-loading-spinner"></div>
+            </div>
+            <h3>Mengirim Berkas Pendaftaran...</h3>
+            <p>
+                Mohon tunggu beberapa detik, berkas dokumen Anda sedang diunggah dan diverifikasi secara aman ke server.
+            </p>
+            <div class="ppdb-loading-tip">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <span>Mohon jangan menyegarkan (refresh), menutup, atau menekan tombol kembali pada halaman ini sampai proses selesai.</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('ppdbRegistrationForm');
+        const submitBtn = document.getElementById('ppdbSubmitBtn');
+        const overlay = document.getElementById('ppdbLoadingOverlay');
+        const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB dalam bytes
+        const ALLOWED_EXTS = ['pdf', 'jpg', 'jpeg', 'png'];
+        let isSubmitting = false;
+
+        const fileInputs = form.querySelectorAll('input[type="file"][name^="documents"]');
+
+        fileInputs.forEach(input => {
+            input.addEventListener('change', function () {
+                const fileField = this.closest('.file-field');
+                let existingPill = fileField.querySelector('.file-status-pill');
+                if (existingPill) existingPill.remove();
+                fileField.classList.remove('has-error');
+
+                const file = this.files[0];
+                if (!file) return;
+
+                const ext = file.name.split('.').pop().toLowerCase();
+                const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
+
+                // Cek ekstensi
+                if (!ALLOWED_EXTS.includes(ext)) {
+                    this.value = '';
+                    fileField.classList.add('has-error');
+                    const pill = document.createElement('div');
+                    pill.className = 'file-status-pill invalid';
+                    pill.innerHTML = `Format .${ext} tidak didukung. Harap pilih file PDF, JPG, atau PNG.`;
+                    fileField.appendChild(pill);
+                    return;
+                }
+
+                // Cek ukuran maksimal 2MB
+                if (file.size > MAX_FILE_SIZE) {
+                    this.value = '';
+                    fileField.classList.add('has-error');
+                    const pill = document.createElement('div');
+                    pill.className = 'file-status-pill invalid';
+                    pill.innerHTML = `Ukuran file (${fileSizeMB} MB) melebihi batas 2MB. Silakan kompres atau pilih file lain.`;
+                    fileField.appendChild(pill);
+                    return;
+                }
+
+                // File valid
+                const pill = document.createElement('div');
+                pill.className = 'file-status-pill valid';
+                pill.innerHTML = `&#10003; ${file.name} (${fileSizeMB} MB)`;
+                fileField.appendChild(pill);
+            });
+        });
+
+        form.addEventListener('submit', function (e) {
+            if (isSubmitting) {
+                e.preventDefault();
+                return false;
+            }
+
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            // Cek ulang apakah ada file yang melebihi ukuran
+            let hasOversized = false;
+            fileInputs.forEach(input => {
+                if (input.files && input.files[0] && input.files[0].size > MAX_FILE_SIZE) {
+                    hasOversized = true;
+                    input.closest('.file-field').classList.add('has-error');
+                }
+            });
+
+            if (hasOversized) {
+                e.preventDefault();
+                alert('Terdapat file yang melebihi ukuran maksimal 2MB. Harap periksa kembali berkas Anda.');
+                return;
+            }
+
+            // Kunci tombol & tampilkan layar proses
+            isSubmitting = true;
+            submitBtn.disabled = true;
+
+            const btnText = submitBtn.querySelector('.btn-text');
+            if (btnText) {
+                btnText.textContent = 'Sedang Mengirim...';
+            }
+
+            if (overlay) {
+                overlay.classList.add('is-active');
+                overlay.setAttribute('aria-hidden', 'false');
+            }
+        });
+    });
+    </script>
 
 </body>
 

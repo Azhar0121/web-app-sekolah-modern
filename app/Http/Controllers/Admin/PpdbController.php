@@ -9,6 +9,7 @@ use App\Mail\StudentAccountCreated;
 use App\Models\AcademicYear;
 use App\Models\Classroom;
 use App\Models\ClassroomStudent;
+use App\Models\PpdbPeriod;
 use App\Models\PpdbRegistration;
 use App\Models\Role;
 use App\Models\StudentProfile;
@@ -34,7 +35,55 @@ class PpdbController extends Controller
             ->paginate(20)
             ->withQueryString();
 
-        return view('admin.ppdb.index', compact('registrations', 'statusFilter'));
+        $activePeriod = PpdbPeriod::where('is_active', true)->orderByDesc('start_date')->first()
+            ?? PpdbPeriod::orderByDesc('start_date')->first();
+
+        return view('admin.ppdb.index', compact('registrations', 'statusFilter', 'activePeriod'));
+    }
+
+    public function updatePeriod(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'period_id'            => ['nullable', 'integer', 'exists:ppdb_periods,id'],
+            'name'                 => ['required', 'string', 'max:255'],
+            'start_date'           => ['required', 'date'],
+            'end_date'             => ['required', 'date', 'after_or_equal:start_date'],
+            'quota'                => ['nullable', 'integer', 'min:1'],
+            're_registration_days' => ['required', 'integer', 'min:1', 'max:60'],
+            'is_active'            => ['required', 'boolean'],
+        ], [
+            'name.required'                 => 'Nama gelombang / periode PPDB wajib diisi.',
+            'start_date.required'           => 'Tanggal mulai pendaftaran wajib diisi.',
+            'end_date.required'             => 'Tanggal selesai pendaftaran wajib diisi.',
+            'end_date.after_or_equal'       => 'Tanggal selesai pendaftaran harus sama atau setelah tanggal mulai.',
+            're_registration_days.required' => 'Batas waktu daftar ulang wajib diisi.',
+        ]);
+
+        $periodId = $validated['period_id'] ?? null;
+        unset($validated['period_id']);
+
+        $period = $periodId ? PpdbPeriod::find($periodId) : null;
+
+        if (! $period) {
+            $period = PpdbPeriod::where('is_active', true)->orderByDesc('start_date')->first()
+                ?? PpdbPeriod::orderByDesc('start_date')->first();
+        }
+
+        if (! $period) {
+            $period = PpdbPeriod::create($validated);
+        } else {
+            $period->update($validated);
+        }
+
+        if ($period->is_active) {
+            PpdbPeriod::where('id', '!=', $period->id)->update(['is_active' => false]);
+        }
+
+        $statusText = $period->isOpenForRegistration() ? 'DIBUKA' : 'DITUTUP';
+
+        return redirect()
+            ->route('admin.ppdb.index')
+            ->with('success', "Periode PPDB berhasil diperbarui. Status pendaftaran saat ini: {$statusText}.");
     }
 
     public function show(PpdbRegistration $ppdbRegistration): View

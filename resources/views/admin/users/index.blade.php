@@ -28,6 +28,29 @@
         </div>
 
         <div class="users-header-actions">
+            @php
+                $hasLatest = $latestBatch || !empty($latestImportCredentials);
+                $latestCount = $latestBatch ? $latestBatch->total_accounts : count($latestImportCredentials ?? []);
+            @endphp
+            @if ($hasLatest && $latestCount > 0)
+                <a href="{{ route('admin.users.import.print-slips') }}" target="_blank" class="btn-import-users" style="background: #047857; text-decoration: none;" title="Cetak slip kartu akun untuk import batch terbaru ({{ $latestCount }} akun)">
+                    <i class="bi bi-printer-fill"></i>
+                    <span>Cetak Slip Terbaru ({{ $latestCount }})</span>
+                </a>
+
+                <a href="{{ route('admin.users.import.export-rekap') }}" class="btn-import-users" style="background: #0284c7; text-decoration: none;" title="Unduh rekap master password acak import terbaru (CSV)">
+                    <i class="bi bi-file-earmark-excel-fill"></i>
+                    <span>Unduh Rekap CSV</span>
+                </a>
+            @endif
+
+            @if (($totalBatches ?? 0) > 0)
+                <a href="{{ route('admin.users.import.history') }}" class="btn-import-users" style="background: #334155; text-decoration: none;" title="Lihat riwayat dan arsip seluruh batch import sebelumnya">
+                    <i class="bi bi-clock-history"></i>
+                    <span>Riwayat Import ({{ $totalBatches }})</span>
+                </a>
+            @endif
+
             <button type="button" class="btn-import-users" data-bs-toggle="modal" data-bs-target="#importUserModal">
                 <i class="bi bi-file-earmark-arrow-up-fill"></i>
                 <span>Import Guru &amp; TU</span>
@@ -41,43 +64,17 @@
 
     </div>
 
-    {{-- HASIL IMPORT MASSAL (JIKA BARU SAJA IMPORT) --}}
-    @if (session('import_results'))
-        <div class="import-result-banner mb-4">
-            <div class="import-result-header">
-                <div class="d-flex align-items-center gap-3">
-                    <div class="import-result-icon">
-                        <i class="bi bi-check-circle-fill"></i>
-                    </div>
-                    <div>
-                        <h3 class="mb-0 fw-bold fs-6">Import Akun Massal Berhasil!</h3>
-                        <p class="mb-0 text-muted small">
-                            Berhasil membuat <strong>{{ count(session('import_results')) }}</strong> akun Guru &amp; Staf TU dengan kata sandi acak unik.
-                        </p>
-                    </div>
-                </div>
-                <div class="import-result-actions d-flex gap-2 flex-wrap">
-                    <a href="{{ route('admin.users.import.export-rekap') }}" class="btn btn-sm btn-success fw-semibold d-inline-flex align-items-center gap-2">
-                        <i class="bi bi-file-earmark-excel-fill"></i> Unduh Rekap Master (Excel/CSV)
-                    </a>
-                    <a href="{{ route('admin.users.import.print-slips') }}" target="_blank" class="btn btn-sm btn-primary fw-semibold d-inline-flex align-items-center gap-2">
-                        <i class="bi bi-printer-fill"></i> Cetak Slip Akun (PDF)
-                    </a>
-                </div>
+    {{-- ALERT ERROR IMPORT (JIKA ADA BARIS CSV YANG DILEWATI SAAT IMPORT) --}}
+    @if (!empty(session('import_errors')))
+        <div class="alert alert-warning mb-4" style="background: #fffbeb; border: 1px solid #fef3c7; border-radius: 8px; padding: 14px 18px;">
+            <div class="fw-semibold text-danger small mb-1">
+                <i class="bi bi-exclamation-triangle-fill me-1"></i> Catatan: {{ count(session('import_errors')) }} baris file CSV dilewati:
             </div>
-
-            @if (!empty(session('import_errors')))
-                <div class="mt-3 p-3 bg-light rounded border">
-                    <div class="fw-semibold text-danger small mb-1">
-                        <i class="bi bi-exclamation-triangle-fill me-1"></i> Catatan ({{ count(session('import_errors')) }} baris dilewati):
-                    </div>
-                    <ul class="mb-0 ps-3 small text-muted">
-                        @foreach (session('import_errors') as $err)
-                            <li>Baris {{ $err['row'] }} ({{ $err['email'] }}): {{ $err['reason'] }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+            <ul class="mb-0 ps-3 small text-muted">
+                @foreach (session('import_errors') as $err)
+                    <li>Baris {{ $err['row'] }} ({{ $err['email'] }}): {{ $err['reason'] }}</li>
+                @endforeach
+            </ul>
         </div>
     @endif
 
@@ -347,8 +344,8 @@
                                 <form
                                     method="POST"
                                     action="{{ route('admin.users.destroy', $user) }}"
-                                    class="d-inline"
-                                    onsubmit="return confirm('Yakin ingin menghapus user {{ $user->name }}?');"
+                                    class="d-inline user-delete-form"
+                                    data-user-name="{{ $user->name }}"
                                 >
 
                                     @csrf
@@ -474,5 +471,256 @@
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const SCROLL_KEY = 'admin_users_scroll_y';
+    let isFetchingUsers = false;
+
+    const savedY = sessionStorage.getItem(SCROLL_KEY);
+    if (savedY !== null) {
+        const targetY = parseInt(savedY, 10);
+        window.scrollTo({
+            top: targetY,
+            behavior: 'instant'
+        });
+        requestAnimationFrame(() => {
+            window.scrollTo({
+                top: targetY,
+                behavior: 'instant'
+            });
+        });
+        sessionStorage.removeItem(SCROLL_KEY);
+    }
+
+    document.querySelectorAll('.users-page form').forEach(form => {
+        if (!form.classList.contains('user-delete-form') && !form.classList.contains('users-filter-form')) {
+            form.addEventListener('submit', () => {
+                sessionStorage.setItem(SCROLL_KEY, window.scrollY);
+            });
+        }
+    });
+
+    function showToast(message, type = 'success') {
+        let container = document.getElementById('admin-toast-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'admin-toast-container';
+            container.style.cssText = 'position: fixed; bottom: 24px; right: 24px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; pointer-events: none;';
+            document.body.appendChild(container);
+        }
+
+        const toast = document.createElement('div');
+        toast.className = 'admin-toast-alert';
+        toast.style.cssText = 'background: #071b35; color: #ffffff; padding: 12px 18px; border-radius: 8px; font-size: 13px; font-weight: 600; box-shadow: 0 8px 24px rgba(0,0,0,0.22); display: flex; align-items: center; gap: 10px; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); transform: translateY(20px); opacity: 0; pointer-events: auto; border-left: 4px solid #10b981; font-family: "Plus Jakarta Sans", sans-serif;';
+        toast.innerHTML = `<i class="bi bi-check-circle-fill" style="color: #10b981; font-size: 16px;"></i> <span>${message}</span>`;
+
+        container.appendChild(toast);
+
+        requestAnimationFrame(() => {
+            toast.style.transform = 'translateY(0)';
+            toast.style.opacity = '1';
+        });
+
+        setTimeout(() => {
+            toast.style.transform = 'translateY(20px)';
+            toast.style.opacity = '0';
+            setTimeout(() => toast.remove(), 300);
+        }, 3500);
+    }
+
+    async function loadUsers(url, updateHistory = true) {
+        if (isFetchingUsers) return;
+        isFetchingUsers = true;
+
+        const tableCard = document.querySelector('.users-table-card');
+        const tabsContainer = document.querySelector('.user-role-tabs');
+        const filterForm = document.querySelector('.users-filter-form');
+
+        if (tableCard) {
+            tableCard.style.opacity = '0.55';
+            tableCard.style.pointerEvents = 'none';
+            tableCard.style.transition = 'opacity 0.15s ease';
+        }
+
+        try {
+            const response = await fetch(url, {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('Gagal memuat data pengguna');
+            }
+
+            const html = await response.text();
+            const doc = new DOMParser().parseFromString(html, 'text/html');
+
+            const newTabs = doc.querySelector('.user-role-tabs');
+            if (tabsContainer && newTabs) {
+                tabsContainer.innerHTML = newTabs.innerHTML;
+            }
+
+            const newTableCard = doc.querySelector('.users-table-card');
+            if (tableCard && newTableCard) {
+                tableCard.innerHTML = newTableCard.innerHTML;
+            }
+
+            const newRoleSelect = doc.querySelector('.users-filter-form select[name="role"]');
+            const currentRoleSelect = filterForm ? filterForm.querySelector('select[name="role"]') : null;
+            if (currentRoleSelect && newRoleSelect) {
+                currentRoleSelect.value = newRoleSelect.value;
+            }
+
+            const newSearchInput = doc.querySelector('.users-filter-form input[name="search"]');
+            const currentSearchInput = filterForm ? filterForm.querySelector('input[name="search"]') : null;
+            if (currentSearchInput && newSearchInput) {
+                currentSearchInput.value = newSearchInput.value;
+            }
+
+            if (updateHistory) {
+                window.history.pushState({ path: url }, '', url);
+            }
+
+            bindRoleTabs();
+            bindPaginationLinks();
+            bindDeleteForms();
+
+        } catch (error) {
+            window.location.href = url;
+        } finally {
+            if (tableCard) {
+                tableCard.style.opacity = '1';
+                tableCard.style.pointerEvents = '';
+            }
+            isFetchingUsers = false;
+        }
+    }
+
+    function bindRoleTabs() {
+        document.querySelectorAll('.user-role-tabs .role-tab-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (this.classList.contains('active') && !isFetchingUsers) return;
+                loadUsers(this.href);
+            });
+        });
+    }
+
+    function bindPaginationLinks() {
+        document.querySelectorAll('.users-pagination a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                loadUsers(this.href);
+            });
+        });
+    }
+
+    const filterForm = document.querySelector('.users-filter-form');
+    if (filterForm) {
+        filterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const params = new URLSearchParams(new FormData(this)).toString();
+            loadUsers(`${this.action}?${params}`);
+        });
+
+        const roleSelect = filterForm.querySelector('select[name="role"]');
+        if (roleSelect) {
+            roleSelect.addEventListener('change', function() {
+                const params = new URLSearchParams(new FormData(filterForm)).toString();
+                loadUsers(`${filterForm.action}?${params}`);
+            });
+        }
+    }
+
+    window.addEventListener('popstate', () => {
+        loadUsers(window.location.href, false);
+    });
+
+    function bindDeleteForms() {
+        document.querySelectorAll('.user-delete-form').forEach(form => {
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const userName = this.getAttribute('data-user-name') || 'user ini';
+                if (!confirm(`Yakin ingin menghapus user ${userName}?`)) {
+                    return;
+                }
+
+                sessionStorage.setItem(SCROLL_KEY, window.scrollY);
+
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const tr = this.closest('tr');
+                const originalText = submitBtn.innerHTML;
+
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="width: 11px; height: 11px; border-width: 2px;"></span>';
+
+                try {
+                    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content')
+                                      || this.querySelector('input[name="_token"]')?.value;
+
+                    const response = await fetch(this.action, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken,
+                            'Accept': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest'
+                        },
+                        body: new FormData(this)
+                    });
+
+                    if (!response.ok) {
+                        const errData = await response.json().catch(() => null);
+                        throw new Error(errData?.message || 'Gagal menghapus akun.');
+                    }
+
+                    const data = await response.json();
+
+                    sessionStorage.removeItem(SCROLL_KEY);
+
+                    if (tr) {
+                        tr.style.transition = 'all 0.32s ease';
+                        tr.style.backgroundColor = '#fee2e2';
+                        tr.style.opacity = '0';
+                        tr.style.transform = 'scale(0.98)';
+
+                        setTimeout(() => {
+                            tr.remove();
+
+                            // Update user-total badge
+                            const totalBadge = document.querySelector('.user-total');
+                            if (totalBadge) {
+                                const match = totalBadge.textContent.match(/\d+/);
+                                if (match) {
+                                    const newTotal = Math.max(0, parseInt(match[0], 10) - 1);
+                                    totalBadge.textContent = `${newTotal} User`;
+                                }
+                            }
+
+                            // Jika tabel menjadi kosong
+                            const tbody = document.querySelector('.users-table tbody');
+                            if (tbody && tbody.querySelectorAll('tr').length === 0) {
+                                tbody.innerHTML = '<tr><td colspan="5" class="users-empty">Tidak ada user yang cocok.</td></tr>';
+                            }
+                        }, 320);
+                    }
+
+                    showToast(data.message || `User ${userName} berhasil dihapus.`);
+
+                } catch (error) {
+                    alert(error.message || 'Terjadi kesalahan saat menghapus user.');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
+                }
+            });
+        });
+
+    bindRoleTabs();
+    bindPaginationLinks();
+    bindDeleteForms();
+});
+</script>
 
 @endsection

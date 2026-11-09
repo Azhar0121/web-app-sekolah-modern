@@ -8,6 +8,7 @@ use App\Models\PpdbPeriod;
 use App\Models\PpdbRegistration;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
@@ -127,32 +128,38 @@ class PpdbController extends Controller
             'documents.rapor_5.max' => 'Ukuran file Rapor Semester 5 maksimal 2MB.',
         ]);
 
-        $registration = PpdbRegistration::create([
-            ...$validated,
-            'ppdb_period_id' => $activePeriod->id,
-            'status' => 'submitted',
-        ]);
-
-        foreach ($request->file('documents', []) as $docType => $file) {
-            if (! $file || ! $file->isValid()) {
-                continue;
-            }
-
-            if ($file->getSize() > 2 * 1024 * 1024 || ! in_array(strtolower($file->getClientOriginalExtension()), ['pdf', 'jpg', 'jpeg', 'png'])) {
-                continue;
-            }
-
-            $path = $file->store('ppdb-documents', 'public');
-
-            PpdbDocument::create([
-                'ppdb_registration_id' => $registration->id,
-                'document_type' => $docType,
-                'original_name' => $file->getClientOriginalName(),
-                'file_path' => $path,
+        $registration = DB::transaction(function () use ($validated, $activePeriod, $request) {
+            $registration = PpdbRegistration::create([
+                ...$validated,
+                'ppdb_period_id' => $activePeriod->id,
+                'status' => 'submitted',
             ]);
-        }
 
-        $this->sendRegistrationEmail($registration);
+            foreach ($request->file('documents', []) as $docType => $file) {
+                if (! $file || ! $file->isValid()) {
+                    continue;
+                }
+
+                if ($file->getSize() > 2 * 1024 * 1024 || ! in_array(strtolower($file->getClientOriginalExtension()), ['pdf', 'jpg', 'jpeg', 'png'])) {
+                    continue;
+                }
+
+                $path = $file->store('ppdb-documents', 'public');
+
+                PpdbDocument::create([
+                    'ppdb_registration_id' => $registration->id,
+                    'document_type' => $docType,
+                    'original_name' => $file->getClientOriginalName(),
+                    'file_path' => $path,
+                ]);
+            }
+
+            return $registration;
+        });
+
+        defer(function () use ($registration) {
+            $this->sendRegistrationEmail($registration);
+        });
 
         return redirect()
             ->route('ppdb.sukses', $registration->registration_number)
