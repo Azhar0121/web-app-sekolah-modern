@@ -371,17 +371,40 @@
                             </button>
                         </div>
 
-                        <select name="room_id" id="mutate_room_id" class="form-select">
-                            <option value="" {{ is_null($item->room_id) ? 'selected' : '' }}>
-                                Gudang / Belum Ditempatkan
-                            </option>
-
-                            @foreach ($rooms as $r)
-                                <option value="{{ $r->id }}" {{ $item->room_id == $r->id ? 'selected' : '' }}>
-                                    {{ $r->name }} ({{ $r->code }})
-                                </option>
-                            @endforeach
-                        </select>
+                        <div class="custom-select-wrap dropdown position-relative" id="wrap_mutate_room">
+                            <input type="hidden" name="room_id" id="mutate_room_id" value="{{ old('room_id', $item->room_id) }}">
+                            <button
+                                type="button"
+                                class="custom-select-trigger"
+                                data-bs-toggle="dropdown"
+                                data-bs-auto-close="outside"
+                                aria-expanded="false"
+                                id="btn_mutate_room"
+                            >
+                                <span class="selected-text text-truncate flex-grow-1 {{ is_null(old('room_id', $item->room_id)) ? 'is-placeholder' : '' }}">
+                                    {{ $item->room ? $item->room->name . ' (' . $item->room->code . ')' : 'Gudang / Belum Ditempatkan' }}
+                                </span>
+                                <i class="bi bi-chevron-down chevron-icon"></i>
+                            </button>
+                            <div class="dropdown-menu custom-select-menu w-100 shadow border">
+                                <div class="custom-option-item {{ is_null(old('room_id', $item->room_id)) ? 'active' : '' }}" data-value="" data-label="Gudang / Belum Ditempatkan">
+                                    <span class="option-label text-muted"><i class="bi bi-dash-lg me-1"></i>Gudang / Belum Ditempatkan</span>
+                                </div>
+                                <div class="dropdown-divider my-1"></div>
+                                <div class="custom-options-list custom-options-list-room" id="list_mutate_room_options">
+                                    @foreach ($rooms as $r)
+                                        <div class="custom-option-item {{ old('room_id', $item->room_id) == $r->id ? 'active' : '' }}" data-value="{{ $r->id }}" data-label="{{ $r->name }} ({{ $r->code }})">
+                                            <span class="option-label flex-grow-1 text-truncate me-2">
+                                                <i class="bi bi-check2 option-check"></i>{{ $r->name }} <small class="text-muted">({{ $r->code }})</small>
+                                            </span>
+                                            <button type="button" class="btn-delete-opt" data-id="{{ $r->id }}" data-name="{{ $r->name }}" data-type="room" title="Hapus ruangan {{ $r->name }}">
+                                                <i class="bi bi-x-lg"></i>
+                                            </button>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="form-text">Pilih lokasi penempatan aset yang baru.</div>
 
@@ -392,7 +415,7 @@
                                     <span class="fw-bold" style="font-size: 11.5px; color: #102a49;">
                                         <i class="bi bi-door-open-fill me-1 text-primary"></i> Buat Ruangan Baru
                                     </span>
-                                    <button type="button" class="btn-close" style="font-size: 9px;" data-bs-toggle="collapse" data-bs-target="#quickAddRoomCollapseMutate"></button>
+                                    <button type="button" class="btn-close btn-close-mutate-room" style="font-size: 9px;" aria-label="Tutup"></button>
                                 </div>
                                 <div class="row g-2 mb-2">
                                     <div class="col-12 col-sm-8">
@@ -416,7 +439,7 @@
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-end gap-1">
-                                    <button type="button" class="btn btn-sm btn-light border py-1 px-2" style="font-size: 11px;" data-bs-toggle="collapse" data-bs-target="#quickAddRoomCollapseMutate">
+                                    <button type="button" class="btn btn-sm btn-light border py-1 px-2 btn-cancel-mutate-room" style="font-size: 11px;">
                                         Batal
                                     </button>
                                     <button type="button" class="btn btn-sm btn-primary py-1 px-2 d-inline-flex align-items-center gap-1" style="font-size: 11px;" id="btnSubmitQuickMutateRoom">
@@ -517,14 +540,40 @@
                                         <span>Kategori Baru</span>
                                     </button>
                                 </div>
-                                <select name="inventory_category_id" id="edit_inventory_category_id" class="form-select" required>
-                                    <option value="">Pilih Kategori</option>
-                                    @foreach ($categories as $cat)
-                                        <option value="{{ $cat->id }}" {{ old('inventory_category_id', $item->inventory_category_id) == $cat->id ? 'selected' : '' }}>
-                                            {{ $cat->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
+                                <div class="custom-select-wrap dropdown position-relative" id="wrap_edit_category">
+                                    <input type="hidden" name="inventory_category_id" id="edit_inventory_category_id" value="{{ old('inventory_category_id', $item->inventory_category_id) }}">
+                                    <button
+                                        type="button"
+                                        class="custom-select-trigger"
+                                        data-bs-toggle="dropdown"
+                                        data-bs-auto-close="outside"
+                                        aria-expanded="false"
+                                        id="btn_edit_category"
+                                    >
+                                        <span class="selected-text text-truncate flex-grow-1 {{ is_null(old('inventory_category_id', $item->inventory_category_id)) ? 'is-placeholder' : '' }}">
+                                            {{ $item->category ? $item->category->name : 'Pilih Kategori' }}
+                                        </span>
+                                        <i class="bi bi-chevron-down chevron-icon"></i>
+                                    </button>
+                                    <div class="dropdown-menu custom-select-menu w-100 shadow border">
+                                        <div class="custom-option-item {{ is_null(old('inventory_category_id', $item->inventory_category_id)) ? 'active' : '' }}" data-value="" data-label="Pilih Kategori">
+                                            <span class="option-label text-muted"><i class="bi bi-dash-lg me-1"></i>Pilih Kategori</span>
+                                        </div>
+                                        <div class="dropdown-divider my-1"></div>
+                                        <div class="custom-options-list custom-options-list-category" id="list_edit_category_options">
+                                            @foreach ($categories as $cat)
+                                                <div class="custom-option-item {{ old('inventory_category_id', $item->inventory_category_id) == $cat->id ? 'active' : '' }}" data-value="{{ $cat->id }}" data-label="{{ $cat->name }}">
+                                                    <span class="option-label flex-grow-1 text-truncate me-2">
+                                                        <i class="bi bi-check2 option-check"></i>{{ $cat->name }}
+                                                    </span>
+                                                    <button type="button" class="btn-delete-opt" data-id="{{ $cat->id }}" data-name="{{ $cat->name }}" data-type="category" title="Hapus kategori {{ $cat->name }}">
+                                                        <i class="bi bi-x-lg"></i>
+                                                    </button>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
 
                                 {{-- Inline Box Tambah Kategori Cepat (Edit) --}}
                                 <div class="collapse mt-2" id="quickAddCategoryCollapseEdit">
@@ -533,7 +582,7 @@
                                             <span class="fw-bold" style="font-size: 11.5px; color: #102a49;">
                                                 <i class="bi bi-tag-fill me-1 text-primary"></i> Buat Kategori Baru
                                             </span>
-                                            <button type="button" class="btn-close" style="font-size: 9px;" data-bs-toggle="collapse" data-bs-target="#quickAddCategoryCollapseEdit"></button>
+                                            <button type="button" class="btn-close btn-close-edit-cat" style="font-size: 9px;" aria-label="Tutup"></button>
                                         </div>
                                         <div class="mb-2">
                                             <input
@@ -546,7 +595,7 @@
                                             <div class="invalid-feedback d-none" id="quick_edit_category_error" style="font-size: 11px;"></div>
                                         </div>
                                         <div class="d-flex justify-content-end gap-1">
-                                            <button type="button" class="btn btn-sm btn-light border py-1 px-2" style="font-size: 11px;" data-bs-toggle="collapse" data-bs-target="#quickAddCategoryCollapseEdit">
+                                            <button type="button" class="btn btn-sm btn-light border py-1 px-2 btn-cancel-edit-cat" style="font-size: 11px;">
                                                 Batal
                                             </button>
                                             <button type="button" class="btn btn-sm btn-primary py-1 px-2 d-inline-flex align-items-center gap-1" style="font-size: 11px;" id="btnSubmitQuickEditCategory">
@@ -571,16 +620,40 @@
                                         <span>Ruangan Baru</span>
                                     </button>
                                 </div>
-                                <select name="room_id" id="edit_room_id" class="form-select">
-                                    <option value="" {{ is_null(old('room_id', $item->room_id)) ? 'selected' : '' }}>
-                                        Gudang / Belum Ditempatkan
-                                    </option>
-                                    @foreach ($rooms as $r)
-                                        <option value="{{ $r->id }}" {{ old('room_id', $item->room_id) == $r->id ? 'selected' : '' }}>
-                                            {{ $r->name }} ({{ $r->code }})
-                                        </option>
-                                    @endforeach
-                                </select>
+                                <div class="custom-select-wrap dropdown position-relative" id="wrap_edit_room">
+                                    <input type="hidden" name="room_id" id="edit_room_id" value="{{ old('room_id', $item->room_id) }}">
+                                    <button
+                                        type="button"
+                                        class="custom-select-trigger"
+                                        data-bs-toggle="dropdown"
+                                        data-bs-auto-close="outside"
+                                        aria-expanded="false"
+                                        id="btn_edit_room"
+                                    >
+                                        <span class="selected-text text-truncate flex-grow-1 {{ is_null(old('room_id', $item->room_id)) ? 'is-placeholder' : '' }}">
+                                            {{ $item->room ? $item->room->name . ' (' . $item->room->code . ')' : 'Gudang / Belum Ditempatkan' }}
+                                        </span>
+                                        <i class="bi bi-chevron-down chevron-icon"></i>
+                                    </button>
+                                    <div class="dropdown-menu custom-select-menu w-100 shadow border">
+                                        <div class="custom-option-item {{ is_null(old('room_id', $item->room_id)) ? 'active' : '' }}" data-value="" data-label="Gudang / Belum Ditempatkan">
+                                            <span class="option-label text-muted"><i class="bi bi-dash-lg me-1"></i>Gudang / Belum Ditempatkan</span>
+                                        </div>
+                                        <div class="dropdown-divider my-1"></div>
+                                        <div class="custom-options-list custom-options-list-room" id="list_edit_room_options">
+                                            @foreach ($rooms as $r)
+                                                <div class="custom-option-item {{ old('room_id', $item->room_id) == $r->id ? 'active' : '' }}" data-value="{{ $r->id }}" data-label="{{ $r->name }} ({{ $r->code }})">
+                                                    <span class="option-label flex-grow-1 text-truncate me-2">
+                                                        <i class="bi bi-check2 option-check"></i>{{ $r->name }} <small class="text-muted">({{ $r->code }})</small>
+                                                    </span>
+                                                    <button type="button" class="btn-delete-opt" data-id="{{ $r->id }}" data-name="{{ $r->name }}" data-type="room" title="Hapus ruangan {{ $r->name }}">
+                                                        <i class="bi bi-x-lg"></i>
+                                                    </button>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
 
                                 {{-- Inline Box Tambah Ruangan Cepat (Edit) --}}
                                 <div class="collapse mt-2" id="quickAddRoomCollapseEdit">
@@ -589,7 +662,7 @@
                                             <span class="fw-bold" style="font-size: 11.5px; color: #102a49;">
                                                 <i class="bi bi-door-open-fill me-1 text-primary"></i> Buat Ruangan Baru
                                             </span>
-                                            <button type="button" class="btn-close" style="font-size: 9px;" data-bs-toggle="collapse" data-bs-target="#quickAddRoomCollapseEdit"></button>
+                                            <button type="button" class="btn-close btn-close-edit-room" style="font-size: 9px;" aria-label="Tutup"></button>
                                         </div>
                                         <div class="row g-2 mb-2">
                                             <div class="col-12 col-sm-8">
@@ -613,7 +686,7 @@
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-end gap-1">
-                                            <button type="button" class="btn btn-sm btn-light border py-1 px-2" style="font-size: 11px;" data-bs-toggle="collapse" data-bs-target="#quickAddRoomCollapseEdit">
+                                            <button type="button" class="btn btn-sm btn-light border py-1 px-2 btn-cancel-edit-room" style="font-size: 11px;">
                                                 Batal
                                             </button>
                                             <button type="button" class="btn btn-sm btn-primary py-1 px-2 d-inline-flex align-items-center gap-1" style="font-size: 11px;" id="btnSubmitQuickEditRoom">
@@ -775,11 +848,153 @@
 @endsection
 
 @push('scripts')
+<style>
+/* Custom Modern Select Component */
+.custom-select-trigger {
+    width: 100% !important;
+    min-height: 41px !important;
+    padding: 9px 12px !important;
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    background-image: none !important;
+    border: 1px solid #d7e1eb !important;
+    border-radius: 6px !important;
+    color: #2c4056 !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    box-shadow: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    text-align: left !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease-in-out !important;
+}
+
+.custom-select-trigger:hover {
+    border-color: #93b5d6 !important;
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+}
+
+.custom-select-trigger:focus,
+.custom-select-trigger.show,
+.custom-select-wrap.dropdown.show .custom-select-trigger {
+    border-color: #4788bd !important;
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    box-shadow: 0 0 0 3px rgba(36, 104, 167, 0.10) !important;
+    outline: none !important;
+}
+
+.custom-select-trigger.is-invalid {
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12) !important;
+}
+
+.custom-select-trigger .chevron-icon {
+    font-size: 11px !important;
+    color: #8fa1b4 !important;
+    transition: transform 0.2s ease !important;
+    flex-shrink: 0 !important;
+    margin-left: 8px !important;
+}
+
+.custom-select-wrap.dropdown.show .chevron-icon {
+    transform: rotate(180deg) !important;
+}
+
+.custom-select-trigger .selected-text {
+    color: #2c4056 !important;
+    font-weight: 600 !important;
+}
+
+.custom-select-trigger .selected-text.is-placeholder {
+    color: #9aa7b6 !important;
+    font-weight: 400 !important;
+}
+
+.custom-select-menu {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.12), 0 4px 6px -2px rgba(15, 23, 42, 0.05) !important;
+    padding: 6px !important;
+    max-height: 250px !important;
+    overflow-y: auto !important;
+    z-index: 1060 !important;
+}
+
+.custom-option-item {
+    padding: 8px 10px !important;
+    border-radius: 6px !important;
+    font-size: 11.5px !important;
+    font-weight: 500 !important;
+    color: #334155 !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    transition: background-color 0.15s ease, color 0.15s ease !important;
+    margin-bottom: 2px !important;
+    user-select: none !important;
+}
+
+.custom-option-item:hover {
+    background-color: #f1f5f9 !important;
+    color: #0f172a !important;
+}
+
+.custom-option-item.active {
+    background-color: #eff6ff !important;
+    color: #0369a1 !important;
+    font-weight: 600 !important;
+}
+
+.custom-option-item.active .option-check {
+    display: inline-block !important;
+}
+
+.option-check {
+    display: none;
+    color: #0284c7;
+    margin-right: 5px;
+    font-size: 12px;
+}
+
+.btn-delete-opt {
+    width: 22px !important;
+    height: 22px !important;
+    border-radius: 4px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #94a3b8 !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin-left: 6px !important;
+    flex-shrink: 0 !important;
+    font-size: 11px !important;
+    line-height: 1 !important;
+    transition: all 0.15s ease-in-out !important;
+}
+
+.btn-delete-opt:hover {
+    color: #ef4444 !important;
+    background-color: #fee2e2 !important;
+    transform: scale(1.08) !important;
+}
+</style>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    const quickCategoryUrl = "{{ route('admin.inventory.categories.quick-store') }}";
-    const quickRoomUrl     = "{{ route('admin.inventory.rooms.quick-store') }}";
-    const csrfToken        = "{{ csrf_token() }}";
+    const quickCategoryUrl       = "{{ route('admin.inventory.categories.quick-store') }}";
+    const quickRoomUrl           = "{{ route('admin.inventory.rooms.quick-store') }}";
+    const destroyCategoryBaseUrl = "{{ url('admin/inventaris/kategori') }}";
+    const destroyRoomBaseUrl     = "{{ url('admin/inventaris/ruangan') }}";
+    const csrfToken              = "{{ csrf_token() }}";
 
     function showQuickAlert(message, type = 'success') {
         const alertBox = document.createElement('div');
@@ -799,16 +1014,78 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 3500);
     }
 
-    function addOptionToSelect(selectId, value, text) {
-        const sel = document.getElementById(selectId);
-        if (sel) {
-            let existingOpt = Array.from(sel.options).find(opt => opt.value == value);
-            if (!existingOpt) {
-                existingOpt = new Option(text, value, true, true);
-                sel.add(existingOpt);
+    function setCustomSelectValue(wrapId, value, label) {
+        const wrap = document.getElementById(wrapId);
+        if (!wrap) return;
+        const hiddenInput = wrap.querySelector('input[type="hidden"]');
+        const labelSpan = wrap.querySelector('.selected-text');
+        const triggerBtn = wrap.querySelector('.custom-select-trigger');
+
+        if (hiddenInput) hiddenInput.value = value;
+        if (labelSpan) {
+            labelSpan.textContent = label;
+            if (!value) {
+                labelSpan.classList.add('is-placeholder');
+            } else {
+                labelSpan.classList.remove('is-placeholder');
             }
-            sel.value = value;
         }
+
+        wrap.querySelectorAll('.custom-option-item').forEach(item => {
+            const itemVal = item.getAttribute('data-value') || '';
+            if (value !== '' && itemVal == value) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+        });
+
+        if (triggerBtn && value !== '') {
+            triggerBtn.classList.remove('is-invalid');
+            const err = wrap.querySelector('.invalid-feedback');
+            if (err) err.remove();
+        }
+    }
+
+    function addCustomOption(type, id, name, label) {
+        const selector = (type === 'category') ? '.custom-options-list-category' : '.custom-options-list-room';
+        document.querySelectorAll(selector).forEach(list => {
+            let existing = list.querySelector(`.custom-option-item[data-value="${id}"]`);
+            if (!existing) {
+                const row = document.createElement('div');
+                row.className = 'custom-option-item';
+                row.setAttribute('data-value', id);
+                row.setAttribute('data-label', label || name);
+
+                const displayTitle = (type === 'category') ? name : `${name} <small class="text-muted">(${label.replace(name, '').replace(/[()]/g, '').trim() || ''})</small>`;
+
+                row.innerHTML = `
+                    <span class="option-label flex-grow-1 text-truncate me-2"><i class="bi bi-check2 option-check"></i>${displayTitle}</span>
+                    <button type="button" class="btn-delete-opt" data-id="${id}" data-name="${name}" data-type="${type}" title="Hapus ${type === 'category' ? 'kategori' : 'ruangan'} ${name}">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                `;
+                list.appendChild(row);
+            }
+        });
+    }
+
+    function removeCustomOption(type, id) {
+        document.querySelectorAll(`.custom-option-item[data-value="${id}"]`).forEach(row => {
+            const wrap = row.closest('.custom-select-wrap');
+            if (wrap) {
+                const hiddenInput = wrap.querySelector('input[type="hidden"]');
+                const labelSpan = wrap.querySelector('.selected-text');
+                if (hiddenInput && hiddenInput.value == id) {
+                    hiddenInput.value = '';
+                    if (labelSpan) {
+                        labelSpan.textContent = (type === 'category') ? 'Pilih Kategori' : 'Gudang / Belum Ditempatkan';
+                        labelSpan.classList.add('is-placeholder');
+                    }
+                }
+            }
+            row.remove();
+        });
     }
 
     // ==========================================
@@ -859,18 +1136,23 @@ document.addEventListener('DOMContentLoaded', function () {
                     return;
                 }
 
-                addOptionToSelect('mutate_room_id', result.data.id, result.data.label);
-                addOptionToSelect('edit_room_id', result.data.id, result.data.label);
+                addCustomOption('room', result.data.id, result.data.name, result.data.label);
+                setCustomSelectValue('wrap_mutate_room', result.data.id, result.data.label);
 
                 inputMutateRoomName.value = '';
                 if (inputMutateRoomCode) inputMutateRoomCode.value = '';
-                const bsCollapse = bootstrap.Collapse.getInstance(collapseMutateRoom) || new bootstrap.Collapse(collapseMutateRoom, { toggle: false });
-                bsCollapse.hide();
+                if (typeof bootstrap !== 'undefined' && bootstrap.Collapse) {
+                    const bsCollapse = bootstrap.Collapse.getInstance(collapseMutateRoom) || new bootstrap.Collapse(collapseMutateRoom, { toggle: false });
+                    bsCollapse.hide();
+                } else if (collapseMutateRoom) {
+                    collapseMutateRoom.classList.remove('show');
+                }
 
                 showQuickAlert(result.message, 'success');
             } catch (err) {
+                console.error('Gagal simpan ruangan mutasi:', err);
                 inputMutateRoomName.classList.add('is-invalid');
-                errorMutateRoom.textContent = 'Terjadi kesalahan saat memproses data.';
+                errorMutateRoom.textContent = err.message || 'Terjadi kesalahan saat memproses data.';
                 errorMutateRoom.classList.remove('d-none');
             } finally {
                 btnMutateRoom.disabled = false;
@@ -924,16 +1206,22 @@ document.addEventListener('DOMContentLoaded', function () {
                     return;
                 }
 
-                addOptionToSelect('edit_inventory_category_id', result.data.id, result.data.name);
+                addCustomOption('category', result.data.id, result.data.name, result.data.name);
+                setCustomSelectValue('wrap_edit_category', result.data.id, result.data.name);
 
                 inputEditCatName.value = '';
-                const bsCollapse = bootstrap.Collapse.getInstance(collapseEditCat) || new bootstrap.Collapse(collapseEditCat, { toggle: false });
-                bsCollapse.hide();
+                if (typeof bootstrap !== 'undefined' && bootstrap.Collapse) {
+                    const bsCollapse = bootstrap.Collapse.getInstance(collapseEditCat) || new bootstrap.Collapse(collapseEditCat, { toggle: false });
+                    bsCollapse.hide();
+                } else if (collapseEditCat) {
+                    collapseEditCat.classList.remove('show');
+                }
 
                 showQuickAlert(result.message, 'success');
             } catch (err) {
+                console.error('Gagal simpan kategori edit:', err);
                 inputEditCatName.classList.add('is-invalid');
-                errorEditCat.textContent = 'Terjadi kesalahan saat memproses data.';
+                errorEditCat.textContent = err.message || 'Terjadi kesalahan saat memproses data.';
                 errorEditCat.classList.remove('d-none');
             } finally {
                 btnEditCategory.disabled = false;
@@ -990,22 +1278,175 @@ document.addEventListener('DOMContentLoaded', function () {
                     return;
                 }
 
-                addOptionToSelect('edit_room_id', result.data.id, result.data.label);
-                addOptionToSelect('mutate_room_id', result.data.id, result.data.label);
+                addCustomOption('room', result.data.id, result.data.name, result.data.label);
+                setCustomSelectValue('wrap_edit_room', result.data.id, result.data.label);
 
                 inputEditRoomName.value = '';
                 if (inputEditRoomCode) inputEditRoomCode.value = '';
-                const bsCollapse = bootstrap.Collapse.getInstance(collapseEditRoom) || new bootstrap.Collapse(collapseEditRoom, { toggle: false });
-                bsCollapse.hide();
+                if (typeof bootstrap !== 'undefined' && bootstrap.Collapse) {
+                    const bsCollapse = bootstrap.Collapse.getInstance(collapseEditRoom) || new bootstrap.Collapse(collapseEditRoom, { toggle: false });
+                    bsCollapse.hide();
+                } else if (collapseEditRoom) {
+                    collapseEditRoom.classList.remove('show');
+                }
 
                 showQuickAlert(result.message, 'success');
             } catch (err) {
+                console.error('Gagal simpan ruangan edit:', err);
                 inputEditRoomName.classList.add('is-invalid');
-                errorEditRoom.textContent = 'Terjadi kesalahan saat memproses data.';
+                errorEditRoom.textContent = err.message || 'Terjadi kesalahan saat memproses data.';
                 errorEditRoom.classList.remove('d-none');
             } finally {
                 btnEditRoom.disabled = false;
                 btnEditRoom.innerHTML = '<i class="bi bi-check2"></i> Simpan';
+            }
+        });
+    }
+
+    // Helper penutupan & reset form collapse cepat di halaman detail
+    function closeQuickCollapse(collapseEl, inputs, errorEl) {
+        if (!collapseEl) return;
+        if (inputs) {
+            inputs.forEach(inp => {
+                if (inp) {
+                    inp.value = '';
+                    inp.classList.remove('is-invalid');
+                }
+            });
+        }
+        if (errorEl) {
+            errorEl.textContent = '';
+            errorEl.classList.add('d-none');
+        }
+        if (typeof bootstrap !== 'undefined' && bootstrap.Collapse) {
+            const inst = bootstrap.Collapse.getInstance(collapseEl);
+            if (inst) {
+                inst.hide();
+            } else {
+                new bootstrap.Collapse(collapseEl, { toggle: false }).hide();
+            }
+        } else {
+            collapseEl.classList.remove('show');
+        }
+    }
+
+    document.querySelectorAll('.btn-close-mutate-room, .btn-cancel-mutate-room').forEach(btn => {
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeQuickCollapse(collapseMutateRoom, [inputMutateRoomName, inputMutateRoomCode], errorMutateRoom);
+        });
+    });
+
+    document.querySelectorAll('.btn-close-edit-cat, .btn-cancel-edit-cat').forEach(btn => {
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeQuickCollapse(collapseEditCat, [inputEditCatName], errorEditCat);
+        });
+    });
+
+    document.querySelectorAll('.btn-close-edit-room, .btn-cancel-edit-room').forEach(btn => {
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeQuickCollapse(collapseEditRoom, [inputEditRoomName, inputEditRoomCode], errorEditRoom);
+        });
+    });
+
+    async function handleDeleteOption(btn) {
+        const id = btn.getAttribute('data-id');
+        const name = btn.getAttribute('data-name');
+        const type = btn.getAttribute('data-type');
+        const labelType = (type === 'category') ? 'kategori' : 'ruangan';
+        const warning = (type === 'category')
+            ? `Aset terkait akan disetel menjadi tanpa kategori.`
+            : `Aset terkait akan dialihkan ke "Gudang / Belum Ditempatkan".`;
+
+        if (!confirm(`Yakin ingin menghapus ${labelType} "${name}"?\n\n${warning}`)) {
+            return;
+        }
+
+        const origHtml = btn.innerHTML;
+        btn.innerHTML = '<span class="spinner-border spinner-border-sm" style="width: 10px; height: 10px;"></span>';
+        btn.disabled = true;
+
+        try {
+            const url = (type === 'category')
+                ? `${destroyCategoryBaseUrl}/${id}`
+                : `${destroyRoomBaseUrl}/${id}`;
+
+            const response = await fetch(url, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken
+                }
+            });
+
+            const result = await response.json();
+            if (!response.ok) {
+                throw new Error(result.message || `Gagal menghapus ${labelType}.`);
+            }
+
+            removeCustomOption(type, id);
+            showQuickAlert(result.message || `${labelType.charAt(0).toUpperCase() + labelType.slice(1)} "${name}" berhasil dihapus.`, 'success');
+        } catch (err) {
+            console.error(`Gagal hapus ${labelType}:`, err);
+            alert(err.message || `Terjadi kesalahan saat menghapus ${labelType}.`);
+            btn.innerHTML = origHtml;
+            btn.disabled = false;
+        }
+    }
+
+    document.addEventListener('click', function (e) {
+        const deleteBtn = e.target.closest('.btn-delete-opt');
+        if (deleteBtn) {
+            e.preventDefault();
+            e.stopPropagation();
+            handleDeleteOption(deleteBtn);
+            return;
+        }
+
+        const optionItem = e.target.closest('.custom-option-item');
+        if (optionItem) {
+            const wrap = optionItem.closest('.custom-select-wrap');
+            if (!wrap) return;
+
+            const val = optionItem.getAttribute('data-value') || '';
+            const label = optionItem.getAttribute('data-label') || optionItem.textContent.trim();
+
+            setCustomSelectValue(wrap.id, val, label);
+
+            const triggerBtn = wrap.querySelector('.custom-select-trigger');
+            if (triggerBtn && typeof bootstrap !== 'undefined' && bootstrap.Dropdown) {
+                const bsDrop = bootstrap.Dropdown.getInstance(triggerBtn);
+                if (bsDrop) bsDrop.hide();
+            }
+        }
+    });
+
+    const editForm = document.querySelector('#editInventoryModal form');
+    if (editForm) {
+        editForm.addEventListener('submit', function (e) {
+            const catInput = document.getElementById('edit_inventory_category_id');
+            const catBtn = document.getElementById('btn_edit_category');
+            if (catInput && !catInput.value) {
+                e.preventDefault();
+                if (catBtn) {
+                    catBtn.classList.add('is-invalid');
+                    let err = catBtn.parentElement.querySelector('.invalid-feedback');
+                    if (!err) {
+                        err = document.createElement('div');
+                        err.className = 'invalid-feedback d-block';
+                        err.style.fontSize = '12px';
+                        err.textContent = 'Kategori aset wajib dipilih.';
+                        catBtn.parentElement.appendChild(err);
+                    }
+                    catBtn.focus();
+                }
+                return false;
             }
         });
     }

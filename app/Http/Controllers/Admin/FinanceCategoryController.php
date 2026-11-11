@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\AuditLog;
 use App\Models\FinanceCategory;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
@@ -48,15 +50,17 @@ class FinanceCategoryController extends Controller
 
     public function update(Request $request, FinanceCategory $category): RedirectResponse
     {
-        $validated = $request->validate([
-            'name'        => ['required', 'string', 'max:120'],
+        $rules = [
             'description' => ['nullable', 'string', 'max:255'],
-        ]);
+        ];
 
-        if ($category->isSystem()) {
-            // Nama kategori bawaan dikunci supaya laporan & integrasi tetap konsisten
-            unset($validated['name']);
-        } else {
+        if (! $category->isSystem()) {
+            $rules['name'] = ['required', 'string', 'max:120'];
+        }
+
+        $validated = $request->validate($rules);
+
+        if (! $category->isSystem()) {
             $duplicate = FinanceCategory::where('type', $category->type)
                 ->where('name', $validated['name'])
                 ->where('id', '!=', $category->id)
@@ -87,21 +91,72 @@ class FinanceCategoryController extends Controller
         return back()->with('success', $category->is_active ? 'Kategori diaktifkan.' : 'Kategori dinonaktifkan dan tidak muncul lagi di form.');
     }
 
-    public function destroy(FinanceCategory $category): RedirectResponse
+    public function destroy(Request $request, FinanceCategory $category): RedirectResponse|JsonResponse
     {
         if ($category->isSystem()) {
-            return back()->with('error', 'Kategori bawaan sistem tidak dapat dihapus.');
-        }
-
-        if ($category->transactions()->exists()) {
-            return back()->with('error', 'Kategori sudah dipakai transaksi. Nonaktifkan saja agar riwayat tetap utuh.');
+            $msg = 'Kategori bawaan sistem tidak dapat dihapus demi keutuhan data & integrasi.';
+            if ($request->expectsJson() || $request->ajax()) {
+                return response()->json(['success' => false, 'message' => $msg], 403);
+            }
+            return back()->with('error', $msg);
         }
 
         $name = $category->name;
-        $category->delete();
+        $id = $category->id;
+        $affectedCount = 0;
+        $fallbackName = null;
 
-        AuditLog::log('delete', "Menghapus kategori keuangan: {$name}");
+        DB::transaction(function () use ($category, &$affectedCount, &$fallbackName) {
+            if ($category->transactions()->exists()) {
+                $fallback = FinanceCategory::where('type', $category->type)
+                    ->where('id', '!=', $category->id)
+                    ->where(function ($q) {
+                        $q->where('name', 'like', '%Lainnya%')
+                          ->orWhere('name', 'like', '%Umum%');
+                    })
+                    ->first() ?? FinanceCategory::where('type', $category->type)->where('id', '!=', $category->id)->first();
 
-        return back()->with('success', 'Kategori berhasil dihapus.');
+                if (! $fallback) {
+                    $fallback = FinanceCategory::create([
+                        'name'        => $category->type === 'income' ? 'Pemasukan Lainnya' : 'Pengeluaran Lainnya',
+                        'type'        => $category->type,
+                        'description' => 'Kategori umum transaksi keuangan',
+                        'is_active'   => true,
+                    ]);
+                }
+
+                $fallbackName = $fallback->name;
+                $affectedCount = $category->transactions()->count();
+                $category->transactions()->update(['finance_category_id' => $fallback->id]);
+            }
+
+            $category->delete();
+        });
+
+        $logMsg = "Menghapus kategori keuangan: {$name}";
+        if ($affectedCount > 0 && $fallbackName) {
+            $logMsg .= " ({$affectedCount} transaksi dialihkan ke kategori '{$fallbackName}')";
+        }
+        AuditLog::log('delete', $logMsg);
+
+        $successMsg = "Kategori '{$name}' berhasil dihapus.";
+        if ($affectedCount > 0 && $fallbackName) {
+            $successMsg .= " Sebanyak {$affectedCount} transaksi terkait dialihkan ke kategori '{$fallbackName}'.";
+        }
+
+        if ($request->expectsJson() || $request->ajax()) {
+            return response()->json([
+                'success'           => true,
+                'message'           => $successMsg,
+                'data'              => [
+                    'id'                => $id,
+                    'name'              => $name,
+                    'reassigned_count'  => $affectedCount,
+                    'fallback_category' => $fallbackName,
+                ],
+            ]);
+        }
+
+        return back()->with('success', $successMsg);
     }
 }

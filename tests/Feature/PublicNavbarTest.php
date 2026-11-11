@@ -9,11 +9,6 @@ class PublicNavbarTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-
-        config([
-            'database.default' => 'mysql',
-            'database.connections.mysql.database' => 'sekolah_modern',
-        ]);
     }
     public function test_homepage_renders_navbar_with_mobile_toggle_and_menu(): void
     {

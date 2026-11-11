@@ -268,11 +268,11 @@
                                     </form>
                                 @endif
 
-                                @if (! $category->isSystem() && $category->transactions_count === 0)
+                                @if (! $category->isSystem())
                                     <form
                                         method="POST"
                                         action="{{ route('admin.finance.categories.destroy', $category) }}"
-                                        onsubmit="return confirm('Hapus kategori {{ $category->name }}?')"
+                                        onsubmit="return confirm('{{ $category->transactions_count > 0 ? "Kategori \"{$category->name}\" memiliki {$category->transactions_count} transaksi tercatat.\\n\\nMenghapus kategori ini akan mengalihkan seluruh transaksi tersebut ke kategori alternatif/lainnya agar pembukuan tetap seimbang.\\n\\nYakin ingin melanjutkan menghapus kategori ini?" : "Yakin ingin menghapus kategori \"{$category->name}\"?" }}')"
                                     >
                                         @csrf
                                         @method('DELETE')
@@ -286,6 +286,17 @@
                                             <i class="bi bi-trash3"></i>
                                         </button>
                                     </form>
+                                @else
+                                    <button
+                                        type="button"
+                                        class="fc-action-btn fc-action-delete is-disabled"
+                                        disabled
+                                        title="Kategori bawaan sistem tidak dapat dihapus"
+                                        aria-label="Kategori bawaan sistem tidak dapat dihapus"
+                                        style="opacity: 0.35; cursor: not-allowed;"
+                                    >
+                                        <i class="bi bi-trash3"></i>
+                                    </button>
                                 @endif
 
                             </div>
@@ -312,9 +323,18 @@
                                             class="form-control"
                                             maxlength="120"
                                             value="{{ $category->name }}"
-                                            @disabled($category->isSystem())
-                                            required
+                                            @if ($category->isSystem())
+                                                readonly
+                                                style="background-color: #f8fafc; cursor: not-allowed;"
+                                            @else
+                                                required
+                                            @endif
                                         >
+                                        @if ($category->isSystem())
+                                            <small class="text-muted d-block mt-1" style="font-size: 11px;">
+                                                <i class="bi bi-lock-fill me-1"></i>Nama kategori bawaan sistem dikunci demi keutuhan data &amp; integrasi.
+                                            </small>
+                                        @endif
                                     </div>
 
                                     <div class="fc-field">

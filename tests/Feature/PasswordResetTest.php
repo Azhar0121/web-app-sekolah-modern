@@ -22,11 +22,6 @@ class PasswordResetTest extends TestCase
     {
         parent::setUp();
 
-        config([
-            'database.default' => 'mysql',
-            'database.connections.mysql.database' => 'sekolah_modern',
-        ]);
-
         $role = Role::firstOrCreate(
             ['slug' => 'super-admin'],
             ['name' => 'Super Admin', 'description' => 'Super Administrator']

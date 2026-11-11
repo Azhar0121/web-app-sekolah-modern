@@ -23,11 +23,6 @@ class InventoryManagementTest extends TestCase
     {
         parent::setUp();
 
-        config([
-            'database.default' => 'mysql',
-            'database.connections.mysql.database' => 'sekolah_modern',
-        ]);
-
         $role = Role::firstOrCreate(
             ['slug' => 'super-admin'],
             ['name' => 'Super Admin', 'description' => 'Super Administrator']
@@ -310,5 +305,115 @@ class InventoryManagementTest extends TestCase
         $room = Room::where('name', $uniqueName)->first();
         $this->assertNotNull($room);
         $this->assertStringStartsWith('R-', $room->code);
+    }
+
+    public function test_authorized_user_can_bulk_destroy_inventory_items(): void
+    {
+        $item1 = InventoryItem::create([
+            'code'                  => InventoryItem::generateCode(),
+            'name'                  => 'Barang Bulk 1',
+            'inventory_category_id' => $this->category->id,
+            'room_id'               => $this->room1->id,
+            'quantity'              => 2,
+            'unit'                  => 'unit',
+            'condition'             => 'good',
+        ]);
+
+        $item2 = InventoryItem::create([
+            'code'                  => InventoryItem::generateCode(),
+            'name'                  => 'Barang Bulk 2',
+            'inventory_category_id' => $this->category->id,
+            'room_id'               => $this->room1->id,
+            'quantity'              => 3,
+            'unit'                  => 'unit',
+            'condition'             => 'good',
+        ]);
+
+        $response = $this->actingAs($this->admin)
+            ->post(route('admin.inventory.bulk-destroy'), [
+                'selected_ids' => "{$item1->id},{$item2->id}",
+            ]);
+
+        $response->assertRedirect(route('admin.inventory.index'));
+        $response->assertSessionHas('success');
+
+        $this->assertDatabaseMissing('inventory_items', ['id' => $item1->id]);
+        $this->assertDatabaseMissing('inventory_items', ['id' => $item2->id]);
+    }
+
+    public function test_bulk_destroy_validates_input(): void
+    {
+        $response = $this->actingAs($this->admin)
+            ->post(route('admin.inventory.bulk-destroy'), [
+                'selected_ids' => '',
+            ]);
+
+        $response->assertSessionHasErrors('selected_ids');
+    }
+
+    public function test_authorized_user_can_delete_inventory_category(): void
+    {
+        $category = InventoryCategory::create([
+            'name'      => 'Kategori Sementara ' . rand(1000, 9999),
+            'slug'      => 'kat-temp-' . rand(1000, 9999),
+            'is_active' => true,
+        ]);
+
+        $item = InventoryItem::create([
+            'code'                  => InventoryItem::generateCode(),
+            'name'                  => 'Barang Terkait Kategori',
+            'inventory_category_id' => $category->id,
+            'quantity'              => 1,
+            'unit'                  => 'unit',
+            'condition'             => 'good',
+        ]);
+
+        $response = $this->actingAs($this->admin)
+            ->deleteJson(route('admin.inventory.categories.destroy', $category->id));
+
+        $response->assertStatus(200);
+        $response->assertJson([
+            'success' => true,
+            'data'    => ['id' => $category->id],
+        ]);
+
+        $this->assertDatabaseMissing('inventory_categories', ['id' => $category->id]);
+
+        $item->refresh();
+        $this->assertNull($item->inventory_category_id);
+    }
+
+    public function test_authorized_user_can_delete_inventory_room_via_inventory_endpoint(): void
+    {
+        $room = Room::create([
+            'name'      => 'Ruangan Sementara ' . rand(1000, 9999),
+            'code'      => 'R-TEMP-' . rand(1000, 9999),
+            'type'      => 'kelas',
+            'is_active' => true,
+        ]);
+
+        $item = InventoryItem::create([
+            'code'                  => InventoryItem::generateCode(),
+            'name'                  => 'Barang Terkait Ruangan',
+            'room_id'               => $room->id,
+            'inventory_category_id' => $this->category->id,
+            'quantity'              => 1,
+            'unit'                  => 'unit',
+            'condition'             => 'good',
+        ]);
+
+        $response = $this->actingAs($this->admin)
+            ->deleteJson(route('admin.inventory.rooms.destroy', $room->id));
+
+        $response->assertStatus(200);
+        $response->assertJson([
+            'success' => true,
+            'data'    => ['id' => $room->id],
+        ]);
+
+        $this->assertDatabaseMissing('rooms', ['id' => $room->id]);
+
+        $item->refresh();
+        $this->assertNull($item->room_id);
     }
 }

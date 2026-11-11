@@ -486,7 +486,10 @@ Route::middleware(['auth', 'permission:inventaris.manage'])
         Route::get('/', [InventoryController::class, 'index'])->name('index');
         Route::post('/', [InventoryController::class, 'store'])->name('store');
         Route::post('/kategori-cepat', [InventoryController::class, 'quickStoreCategory'])->name('categories.quick-store');
+        Route::delete('/kategori/{category}', [InventoryController::class, 'destroyCategory'])->name('categories.destroy');
         Route::post('/ruangan-cepat', [InventoryController::class, 'quickStoreRoom'])->name('rooms.quick-store');
+        Route::delete('/ruangan/{room}', [InventoryController::class, 'destroyRoom'])->name('rooms.destroy');
+        Route::post('/hapus-massal', [InventoryController::class, 'bulkDestroy'])->name('bulk-destroy');
         Route::get('/{item}', [InventoryController::class, 'show'])->name('show');
         Route::put('/{item}', [InventoryController::class, 'update'])->name('update');
         Route::patch('/{item}/mutasi', [InventoryController::class, 'mutate'])->name('mutate');

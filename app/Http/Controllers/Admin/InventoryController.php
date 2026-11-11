@@ -204,6 +204,34 @@ class InventoryController extends Controller
         return redirect()->route('admin.inventory.index')->with('success', "Aset inventaris {$name} ({$code}) berhasil dihapus.");
     }
 
+    public function bulkDestroy(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'selected_ids' => ['required', 'string'],
+        ]);
+
+        $ids = array_filter(array_map('intval', explode(',', $validated['selected_ids'])));
+
+        if (empty($ids)) {
+            return back()->with('error', 'Tidak ada barang yang dipilih untuk dihapus.');
+        }
+
+        $items = InventoryItem::whereIn('id', $ids)->get();
+        $count = $items->count();
+
+        foreach ($items as $item) {
+            if ($item->photo_path && Storage::disk('public')->exists($item->photo_path)) {
+                Storage::disk('public')->delete($item->photo_path);
+            }
+            $item->delete();
+        }
+
+        AuditLog::log('delete', "Menghapus massal {$count} aset inventaris.", null);
+
+        return redirect()->route('admin.inventory.index')
+            ->with('success', "Sebanyak {$count} aset inventaris berhasil dihapus sekaligus.");
+    }
+
     public function quickStoreCategory(Request $request): JsonResponse
     {
         $validated = $request->validate([
@@ -300,5 +328,61 @@ class InventoryController extends Controller
                 'label' => "{$room->name} ({$room->code})",
             ],
         ], 201);
+    }
+
+    public function destroyCategory(Request $request, InventoryCategory $category)
+    {
+        $id = $category->id;
+        $name = $category->name;
+
+        $category->items()->update(['inventory_category_id' => null]);
+
+        $category->delete();
+
+        AuditLog::log('delete', "Menghapus kategori inventaris: {$name}", null);
+
+        if ($request->expectsJson() || $request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'message' => "Kategori '{$name}' berhasil dihapus.",
+                'data'    => ['id' => $id],
+            ]);
+        }
+
+        return back()->with('success', "Kategori '{$name}' berhasil dihapus.");
+    }
+
+    public function destroyRoom(Request $request, Room $room)
+    {
+        $id = $room->id;
+        $name = $room->name;
+        $code = $room->code;
+
+        $room->inventoryItems()->update(['room_id' => null]);
+
+        if ($room->photo && Storage::disk('public')->exists($room->photo)) {
+            Storage::disk('public')->delete($room->photo);
+        }
+        if (is_array($room->gallery)) {
+            foreach ($room->gallery as $pic) {
+                if ($pic && Storage::disk('public')->exists($pic)) {
+                    Storage::disk('public')->delete($pic);
+                }
+            }
+        }
+
+        $room->delete();
+
+        AuditLog::log('delete', "Menghapus ruangan: {$name} ({$code})", null);
+
+        if ($request->expectsJson() || $request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'message' => "Ruangan '{$name}' ({$code}) berhasil dihapus.",
+                'data'    => ['id' => $id],
+            ]);
+        }
+
+        return back()->with('success', "Ruangan '{$name}' ({$code}) berhasil dihapus.");
     }
 }

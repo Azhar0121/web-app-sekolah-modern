@@ -1,6 +1,3 @@
-{{-- Form bersama untuk create & edit transaksi keuangan --}}
-{{-- Variabel: $type, $transaction, $categories, $currentCategory, $rooms, $methods --}}
-
 <link rel="stylesheet" href="{{ asset('css/admin/finance/form.css') }}">
 
 @if ($errors->any())
@@ -23,7 +20,6 @@
 
 <div class="finance-form">
 
-    {{-- INFORMASI UTAMA --}}
     <section class="finance-form-section">
         <div class="finance-form-section__heading">
             <div class="finance-form-section__icon">
@@ -52,9 +48,14 @@
             </div>
 
             <div class="col-md-6">
-                <label for="finance_category_id" class="finance-form-label">
-                    Kategori <span class="required-mark">*</span>
-                </label>
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                    <label for="finance_category_id" class="finance-form-label mb-0">
+                        Kategori <span class="required-mark">*</span>
+                    </label>
+                    <a href="{{ route('admin.finance.categories.index') }}" class="text-decoration-none" style="font-size: 11px; font-weight: 600; color: #245b91;" title="Buka kelola kategori di tab baru" target="_blank">
+                        <i class="bi bi-gear-fill me-1"></i>Kelola Kategori
+                    </a>
+                </div>
                 <select
                     name="finance_category_id"
                     id="finance_category_id"
@@ -101,7 +102,6 @@
         </div>
     </section>
 
-    {{-- RINCIAN BARANG --}}
     @if ($type === 'expense')
         <section class="finance-form-section finance-form-section--items">
             <div class="finance-form-section__heading">
@@ -182,7 +182,6 @@
         </section>
     @endif
 
-    {{-- NOMINAL DAN PEMBAYARAN --}}
     <section class="finance-form-section">
         <div class="finance-form-section__heading">
             <div class="finance-form-section__icon finance-form-section__icon--amount">
@@ -269,7 +268,6 @@
         </div>
     </section>
 
-    {{-- CATATAN --}}
     <section class="finance-form-section">
         <div class="finance-form-section__heading">
             <div class="finance-form-section__icon finance-form-section__icon--notes">
@@ -292,7 +290,6 @@
         >{{ old('notes', $transaction->notes) }}</textarea>
     </section>
 
-    {{-- BUKTI TRANSAKSI --}}
     <section class="finance-form-section">
         <div class="finance-form-section__heading">
             <div class="finance-form-section__icon finance-form-section__icon--proof">
