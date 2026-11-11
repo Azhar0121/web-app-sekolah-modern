@@ -6,6 +6,8 @@
 
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}?v=4">
 
+    @include('layouts.partials.announcements-banner')
+
     <div class="dashboard-page">
 
         {{-- HERO SUPER ADMIN --}}

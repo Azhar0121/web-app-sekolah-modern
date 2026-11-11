@@ -4,7 +4,9 @@
 
 @section('content')
 
-<link rel="stylesheet" href="{{ asset('css/kepsek/dashboard.css') }}">
+<link rel="stylesheet" href="{{ asset('css/kepsek/dashboard.css') }}?v={{ filemtime(public_path('css/kepsek/dashboard.css')) }}">
+
+@include('layouts.partials.announcements-banner')
 
 <div class="kepsek-dashboard">
 
@@ -301,100 +303,116 @@
         if (tabName === 'akademik') {
 
             mkChart('subjectChart', {
-
                 type: 'bar',
-
                 data: {
-
-                    labels: subjectData.map(
-                        i => i.name
-                    ),
-
+                    labels: subjectData.map(i => i.name),
                     datasets: [{
                         label: 'Rata-Rata Nilai',
-
-                        data: subjectData.map(
-                            i => i.score
-                        ),
-
-                        backgroundColor: '#1769d5',
-
-                        borderRadius: BR
+                        data: subjectData.map(i => i.score),
+                        backgroundColor: '#2563eb',
+                        hoverBackgroundColor: '#1d4ed8',
+                        borderRadius: BR,
+                        maxBarThickness: 36
                     }]
                 },
-
                 options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#0f2747',
+                            padding: 10,
+                            cornerRadius: 6,
+                            callbacks: {
+                                label: function(ctx) {
+                                    return ' Rata-Rata: ' + ctx.raw + ' / 100';
+                                }
+                            }
+                        }
+                    },
                     scales: scaleY(100)
                 }
-
             });
 
 
             mkChart('gradeDistChart', {
-
                 type: 'doughnut',
-
                 data: {
-
-                    labels: [
-                        'A',
-                        'B',
-                        'C',
-                        'D'
-                    ],
-
+                    labels: ['Predikat A (≥85)', 'Predikat B (75-84)', 'Predikat C (65-74)', 'Predikat D (<65)'],
                     datasets: [{
-
                         data: [
-                            gradeDistData.A,
-                            gradeDistData.B,
-                            gradeDistData.C,
-                            gradeDistData.D
+                            gradeDistData.A || 0,
+                            gradeDistData.B || 0,
+                            gradeDistData.C || 0,
+                            gradeDistData.D || 0
                         ],
-
                         backgroundColor: [
-                            '#198754',
-                            '#1769d5',
-                            '#ffc107',
-                            '#dc3545'
+                            '#10b981',
+                            '#3b82f6',
+                            '#f59e0b',
+                            '#ef4444'
                         ],
-
-                        borderWidth: 3,
-                        borderColor: '#ffffff'
+                        borderWidth: 2,
+                        borderColor: '#ffffff',
+                        hoverOffset: 4
                     }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '72%',
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#0f2747',
+                            padding: 10,
+                            cornerRadius: 6,
+                            callbacks: {
+                                label: function(ctx) {
+                                    const val = ctx.raw || 0;
+                                    const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
+                                    const pct = total > 0 ? ((val / total) * 100).toFixed(1) : 0;
+                                    return ' ' + ctx.label + ': ' + val + ' nilai (' + pct + '%)';
+                                }
+                            }
+                        }
+                    }
                 }
-
             });
 
 
             mkChart('classAvgChart', {
-
                 type: 'bar',
-
                 data: {
-
-                    labels: classAvgData.map(
-                        i => i.name
-                    ),
-
+                    labels: classAvgData.map(i => i.name),
                     datasets: [{
-
-                        label: 'Rata-Rata',
-
-                        data: classAvgData.map(
-                            i => i.score
-                        ),
-
-                        backgroundColor: '#198754',
-
-                        borderRadius: BR
+                        label: 'Rata-Rata Kelas',
+                        data: classAvgData.map(i => i.score),
+                        backgroundColor: '#0d9488',
+                        hoverBackgroundColor: '#0f766e',
+                        borderRadius: BR,
+                        maxBarThickness: 38
                     }]
                 },
-
                 options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#0f2747',
+                            padding: 10,
+                            cornerRadius: 6,
+                            callbacks: {
+                                label: function(ctx) {
+                                    return ' Rata-Rata Kelas: ' + ctx.raw + ' / 100';
+                                }
+                            }
+                        }
+                    },
                     scales: scaleY(100)
                 }
-
             });
 
         }

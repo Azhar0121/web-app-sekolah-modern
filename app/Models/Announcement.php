@@ -65,4 +65,13 @@ class Announcement extends Model
             default   => 'Informasi',
         };
     }
+
+    public function priorityIcon(): string
+    {
+        return match ($this->priority) {
+            'penting' => 'bi-exclamation-triangle-fill',
+            'urgent'  => 'bi-exclamation-octagon-fill',
+            default   => 'bi-info-circle-fill',
+        };
+    }
 }
