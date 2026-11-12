@@ -3,15 +3,8 @@
    GURU / WALI KELAS DASHBOARD
    MODERN COLORFUL VERSION
    ========================================================= */
-/* =========================================================
-WEB SEKOLAH MODERN
-GURU / WALI KELAS DASHBOARD
-MODERN COLORFUL VERSION
-========================================================= */
 
-/* =========================================================
-FONT — PLUS JAKARTA SANS
-========================================================= */
+
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
@@ -781,8 +774,6 @@ VARIABLES
 }
 
 
-/* Isi kiri */
-
 .guru-section-heading > div:first-child {
     position: relative;
     z-index: 2;
@@ -803,8 +794,6 @@ VARIABLES
     letter-spacing: 1.5px;
 }
 
-
-/* Titik / garis kecil */
 
 .guru-section-label::before {
     content: "";
@@ -1087,9 +1076,6 @@ VARIABLES
     font-weight: 650;
 }
 
-
-/* Dot subject */
-
 .guru-subject-dot {
     position: relative;
     width: 9px;
@@ -1118,8 +1104,6 @@ VARIABLES
     gap: 8px;
 }
 
-
-/* Semua tombol */
 
 .guru-material-btn,
 .guru-task-btn,
@@ -1174,8 +1158,6 @@ VARIABLES
     background: #fdf7ec;
 }
 
-
-/* Icon / arrow */
 
 .guru-material-btn b,
 .guru-task-btn b,
