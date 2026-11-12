@@ -6,6 +6,25 @@
 <link rel="stylesheet" href="{{ asset('css/base.css') }}">
 <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 
+<style>
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    .login-spinner {
+        animation: spin 0.75s linear infinite;
+        display: inline-block;
+        flex-shrink: 0;
+    }
+    .login-button:disabled {
+        opacity: 0.75;
+        cursor: not-allowed;
+        pointer-events: none;
+        transform: none !important;
+        box-shadow: none !important;
+    }
+</style>
+
 <div class="login-page">
     <div class="login-card">
         {{-- Visual Kiri --}}
@@ -34,25 +53,28 @@
                     <p>Masukkan email akun Anda untuk menerima tautan pemulihan kata sandi.</p>
                 </div>
 
-                @if (session('status'))
-                    <div class="login-alert login-alert-success">
-                        <div class="alert-icon">✓</div>
-                        <div>{{ session('status') }}</div>
-                    </div>
-                @endif
-
-                @if ($errors->any())
-                    <div class="login-alert">
-                        <div class="alert-icon">!</div>
-                        <div>
-                            @foreach ($errors->all() as $error)
-                                <div>{{ $error }}</div>
-                            @endforeach
+                {{-- Alert Box Container --}}
+                <div id="alertContainer">
+                    @if (session('status'))
+                        <div class="login-alert login-alert-success">
+                            <div class="alert-icon">✓</div>
+                            <div>{{ session('status') }}</div>
                         </div>
-                    </div>
-                @endif
+                    @endif
 
-                <form method="POST" action="{{ route('password.email') }}">
+                    @if ($errors->any())
+                        <div class="login-alert">
+                            <div class="alert-icon">!</div>
+                            <div>
+                                @foreach ($errors->all() as $error)
+                                    <div>{{ $error }}</div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+                </div>
+
+                <form id="forgotPasswordForm" method="POST" action="{{ route('password.email') }}">
                     @csrf
 
                     <div class="form-group">
@@ -64,13 +86,13 @@
                             <input type="email" name="email" id="email" value="{{ old('email') }}" class="@error('email') input-error @enderror" placeholder="nama@email.com" required autofocus>
                         </div>
                         @error('email')
-                            <span class="field-error">{{ $message }}</span>
+                            <span class="field-error" id="emailFieldError">{{ $message }}</span>
                         @enderror
                     </div>
 
-                    <button type="submit" class="login-button">
-                        <span>Kirim Link Reset Password</span>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                    <button type="submit" id="submitBtn" class="login-button">
+                        <span id="btnText">Kirim Link Reset Password</span>
+                        <svg id="btnIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                     </button>
 
                     <a href="{{ route('login') }}" class="back-to-home-btn">
@@ -88,4 +110,95 @@
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('forgotPasswordForm');
+    const emailInput = document.getElementById('email');
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const btnIcon = document.getElementById('btnIcon');
+    const alertContainer = document.getElementById('alertContainer');
+    const fieldError = document.getElementById('emailFieldError');
+
+    if (!form || !submitBtn) return;
+
+    form.addEventListener('submit', async function (e) {
+        // Jika browser tidak mendukung fetch API, biarkan submit form standar
+        if (!window.fetch) return;
+
+        e.preventDefault();
+
+        const email = emailInput.value.trim();
+        if (!email) {
+            emailInput.focus();
+            return;
+        }
+
+        // 1. Tampilkan state loading responsif & nonaktifkan tombol untuk cegah spam/double-click
+        submitBtn.disabled = true;
+        btnText.textContent = 'Mengirim Tautan...';
+        btnIcon.outerHTML = `
+            <svg id="btnIcon" class="login-spinner" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle>
+                <path d="M12 2a10 10 0 0 1 10 10"></path>
+            </svg>
+        `;
+
+        if (fieldError) fieldError.style.display = 'none';
+
+        const token = form.querySelector('input[name="_token"]')?.value || '';
+
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': token,
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: JSON.stringify({ email: email })
+            });
+
+            const data = await response.json();
+
+            if (response.ok && data.success) {
+                alertContainer.innerHTML = `
+                    <div class="login-alert login-alert-success">
+                        <div class="alert-icon">✓</div>
+                        <div>${data.message || 'Tautan reset password telah dikirim ke email Anda! Silakan periksa kotak masuk atau spam.'}</div>
+                    </div>
+                `;
+                emailInput.value = '';
+                btnText.textContent = 'Kirim Ulang Tautan';
+            } else {
+                const msg = data.message || (data.errors && data.errors.email ? data.errors.email[0] : 'Email tidak terdaftar dalam sistem kami.');
+                alertContainer.innerHTML = `
+                    <div class="login-alert">
+                        <div class="alert-icon">!</div>
+                        <div>${msg}</div>
+                    </div>
+                `;
+                btnText.textContent = 'Kirim Link Reset Password';
+            }
+        } catch (err) {
+            // Jika terjadi kesalahan koneksi atau timeout, fallback submit normal
+            form.submit();
+            return;
+        } finally {
+            submitBtn.disabled = false;
+            const currentIcon = document.getElementById('btnIcon');
+            if (currentIcon) {
+                currentIcon.outerHTML = `
+                    <svg id="btnIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                `;
+            }
+        }
+    });
+});
+</script>
 @endsection

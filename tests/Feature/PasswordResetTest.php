@@ -128,4 +128,45 @@ class PasswordResetTest extends TestCase
         $this->user->refresh();
         $this->assertTrue(Hash::check('admin-baru-secret', $this->user->password));
     }
+
+    public function test_reset_password_notification_implements_should_queue(): void
+    {
+        $this->assertTrue(
+            is_subclass_of(ResetPasswordNotification::class, \Illuminate\Contracts\Queue\ShouldQueue::class),
+            'ResetPasswordNotification must implement ShouldQueue for asynchronous, non-blocking email delivery.'
+        );
+    }
+
+    public function test_reset_password_link_can_be_requested_via_json(): void
+    {
+        Notification::fake();
+
+        $response = $this->postJson(route('password.email'), [
+            'email' => $this->user->email,
+        ]);
+
+        $response->assertStatus(200)
+            ->assertJson([
+                'success' => true,
+            ])
+            ->assertJsonStructure(['success', 'message']);
+
+        Notification::assertSentTo(
+            $this->user,
+            ResetPasswordNotification::class
+        );
+    }
+
+    public function test_cannot_request_reset_link_with_invalid_email_via_json(): void
+    {
+        $response = $this->postJson(route('password.email'), [
+            'email' => 'invalid.user.' . uniqid() . '@sekolah.test',
+        ]);
+
+        $response->assertStatus(422)
+            ->assertJson([
+                'success' => false,
+            ])
+            ->assertJsonStructure(['success', 'message', 'errors']);
+    }
 }

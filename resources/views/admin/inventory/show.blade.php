@@ -2,6 +2,8 @@
 
 @section('title', 'Detail Inventaris — ' . $item->name)
 
+@section('no_layout_alerts', true)
+
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/admin/inventory/show.css') }}">
 

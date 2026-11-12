@@ -2,6 +2,8 @@
 
 @section('title', 'Inventaris & Sarana Prasarana')
 
+@section('no_layout_alerts', true)
+
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/admin/inventory/index.css') }}">
 

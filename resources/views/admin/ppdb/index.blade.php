@@ -2,6 +2,8 @@
 
 @section('title', 'Kelola PPDB')
 
+@section('no_layout_alerts', true)
+
 @section('content')
 
 <link rel="stylesheet" href="{{ asset('css/admin-ppdb.css') }}">
@@ -62,11 +64,25 @@
 
     </div>
 
-    {{-- ALERT SUKSES --}}
+    {{-- ALERT SUKSES / ERROR / WARNING --}}
     @if (session('success'))
         <div class="alert alert-success d-flex align-items-center gap-2 mb-4" style="background: #ecfdf5; border: 1px solid #a7f3d0; color: #065f46; border-radius: 8px; padding: 12px 18px; font-weight: 500;">
             <i class="bi bi-check-circle-fill fs-5" style="color: #10b981;"></i>
             <div>{{ session('success') }}</div>
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div class="alert alert-danger d-flex align-items-center gap-2 mb-4" style="background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; border-radius: 8px; padding: 12px 18px; font-weight: 500;">
+            <i class="bi bi-exclamation-triangle-fill fs-5" style="color: #ef4444;"></i>
+            <div>{{ session('error') }}</div>
+        </div>
+    @endif
+
+    @if (session('warning'))
+        <div class="alert alert-warning d-flex align-items-center gap-2 mb-4" style="background: #fffbeb; border: 1px solid #fde68a; color: #92400e; border-radius: 8px; padding: 12px 18px; font-weight: 500;">
+            <i class="bi bi-exclamation-circle-fill fs-5" style="color: #f59e0b;"></i>
+            <div>{{ session('warning') }}</div>
         </div>
     @endif
 

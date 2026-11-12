@@ -2,6 +2,8 @@
 
 @section('title', 'Detail Pendaftar PPDB')
 
+@section('no_layout_alerts', true)
+
 @section('content')
 
 <link rel="stylesheet" href="{{ asset('css/admin-ppdb-detail.css') }}">
