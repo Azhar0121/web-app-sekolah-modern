@@ -5,12 +5,13 @@ namespace App\Mail;
 use App\Models\Classroom;
 use App\Models\PpdbRegistration;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class StudentAccountCreated extends Mailable
+class StudentAccountCreated extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 

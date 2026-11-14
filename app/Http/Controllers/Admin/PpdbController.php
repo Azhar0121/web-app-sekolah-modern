@@ -16,12 +16,14 @@ use App\Models\StudentProfile;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
+use function Illuminate\Support\defer;
 
 class PpdbController extends Controller
 {
@@ -163,7 +165,7 @@ class PpdbController extends Controller
             're_registration_notes'     => ['nullable', 'string', 'max:1000'],
         ]);
 
-        DB::transaction(function () use ($ppdbRegistration, $validated) {
+        [$studentUser, $studentPassword, $parentUser, $parentPassword, $isNewParent, $classroom] = DB::transaction(function () use ($ppdbRegistration, $validated) {
             $ppdbRegistration->update([
                 'status'                        => 'registered_ulang',
                 're_registration_reference'     => $validated['re_registration_reference'],
@@ -176,7 +178,7 @@ class PpdbController extends Controller
             $siswaRole = Role::where('slug', 'siswa')->first();
             $email     = $this->resolveUniqueEmail($ppdbRegistration);
 
-            $user = User::create([
+            $studentUser = User::create([
                 'name'     => $ppdbRegistration->full_name,
                 'email'    => $email,
                 'password' => Hash::make($password),
@@ -184,10 +186,10 @@ class PpdbController extends Controller
             ]);
 
             // Link registrasi ke user
-            $ppdbRegistration->update(['user_id' => $user->id]);
+            $ppdbRegistration->update(['user_id' => $studentUser->id]);
 
             StudentProfile::create([
-                'user_id'         => $user->id,
+                'user_id'         => $studentUser->id,
                 'nisn'            => $ppdbRegistration->nisn,
                 'nik'             => $ppdbRegistration->nik,
                 'gender'          => $ppdbRegistration->gender,
@@ -208,22 +210,64 @@ class PpdbController extends Controller
                 ClassroomStudent::create([
                     'academic_year_id' => $activeYear->id,
                     'classroom_id'     => $classroom->id,
-                    'student_id'       => $user->id,
+                    'student_id'       => $studentUser->id,
                 ]);
             }
 
-            // Kirim email kredensial ke siswa
-            $this->sendAccountCreatedEmail($ppdbRegistration, $user->email, $password, $classroom);
+            // Buat atau tautkan akun orang tua jika ada data email orang tua
+            [$parentUser, $parentPassword, $isNewParent] = $this->createOrLinkParentAccount($ppdbRegistration, $studentUser);
 
-            // Jeda 1.5 detik agar tidak terkena rate limit Mailtrap Testing (max 1 email/detik)
-            usleep(1500000);
-
-            $this->createOrLinkParentAccount($ppdbRegistration, $user);
+            return [$studentUser, $password, $parentUser, $parentPassword, $isNewParent, $classroom];
         });
+
+        // Kirim email kredensial akun siswa dan orang tua di background phase (defer)
+        $this->dispatchAccountCredentialsEmails(
+            $ppdbRegistration,
+            $studentUser,
+            $studentPassword,
+            $classroom,
+            $parentUser,
+            $parentPassword,
+            $isNewParent
+        );
 
         return redirect()
             ->route('admin.ppdb.show', $ppdbRegistration)
-            ->with('success', 'Daftar ulang berhasil dikonfirmasi. Akun siswa telah dibuat dan email dikirim.');
+            ->with('success', 'Daftar ulang berhasil dikonfirmasi. Akun siswa dan orang tua telah dibuat/ditautkan dan email kredensial dikirim.');
+    }
+
+    public function resendCredentials(PpdbRegistration $ppdbRegistration): RedirectResponse
+    {
+        if ($ppdbRegistration->status !== 'registered_ulang' || ! $ppdbRegistration->user) {
+            return back()->with('error', 'Kredensial hanya dapat dikirim ulang untuk pendaftar yang sudah menyelesaikan daftar ulang.');
+        }
+
+        $studentUser = $ppdbRegistration->user;
+        $newStudentPassword = Str::random(10);
+        $studentUser->update(['password' => Hash::make($newStudentPassword)]);
+
+        $parentUser = $ppdbRegistration->parentUser;
+        $newParentPassword = null;
+        $isNewParent = false;
+
+        if ($parentUser) {
+            $newParentPassword = Str::random(10);
+            $parentUser->update(['password' => Hash::make($newParentPassword)]);
+        }
+
+        $classroom = $studentUser->currentClassroom();
+
+        $this->dispatchAccountCredentialsEmails(
+            $ppdbRegistration,
+            $studentUser,
+            $newStudentPassword,
+            $classroom,
+            $parentUser,
+            $newParentPassword,
+            $isNewParent
+        );
+
+        return back()->with('success', 'Password baru berhasil digenerate dan email kredensial telah dikirim ulang ke siswa' . ($parentUser ? ' dan orang tua.' : '.'));
     }
 
     private function resolveUniqueEmail(PpdbRegistration $registration): string
@@ -291,34 +335,61 @@ class PpdbController extends Controller
 
     private function sendAcceptedEmail(PpdbRegistration $registration): void
     {
-        try {
-            Mail::to($registration->email)->send(new PpdbAccepted($registration));
-        } catch (\Throwable $e) {
-            Log::warning('Gagal mengirim email penerimaan PPDB: ' . $e->getMessage(), [
-                'registration_id' => $registration->id,
-            ]);
-        }
+        defer(function () use ($registration) {
+            try {
+                @set_time_limit(60);
+                Mail::to($registration->email)->sendNow(new PpdbAccepted($registration));
+            } catch (\Throwable $e) {
+                Log::warning('Gagal mengirim email penerimaan PPDB: ' . $e->getMessage(), [
+                    'registration_id' => $registration->id,
+                ]);
+            }
+        });
     }
 
-    private function sendAccountCreatedEmail(
+    private function dispatchAccountCredentialsEmails(
         PpdbRegistration $registration,
-        string $email,
-        string $password,
+        User $studentUser,
+        string $studentPassword,
         ?Classroom $classroom,
+        ?User $parentUser = null,
+        ?string $parentPassword = null,
+        bool $isNewParent = false,
     ): void {
-        try {
-            Mail::to($email)->send(new StudentAccountCreated($registration, $email, $password, $classroom));
-        } catch (\Throwable $e) {
-            Log::warning('Gagal mengirim email akun siswa: ' . $e->getMessage(), [
-                'registration_id' => $registration->id,
-            ]);
-        }
+        defer(function () use ($registration, $studentUser, $studentPassword, $classroom, $parentUser, $parentPassword, $isNewParent) {
+            try {
+                @set_time_limit(120);
+
+                // 1. Kirim email kredensial akun siswa
+                Mail::to($studentUser->email)->sendNow(
+                    new StudentAccountCreated($registration, $studentUser->email, $studentPassword, $classroom)
+                );
+
+                // 2. Beri jeda 2 detik untuk mematuhi rate limit Mailtrap Testing (1 email per detik)
+                if ($parentUser) {
+                    sleep(2);
+
+                    Mail::to($parentUser->email)->sendNow(
+                        new ParentAccountLinked(
+                            registration: $registration,
+                            parentUser: $parentUser,
+                            password: $parentPassword,
+                            isNewAccount: $isNewParent,
+                        )
+                    );
+                }
+            } catch (\Throwable $e) {
+                Log::warning('Gagal mengirim email kredensial akun PPDB: ' . $e->getMessage(), [
+                    'registration_id' => $registration->id,
+                ]);
+            }
+        });
     }
 
-    private function createOrLinkParentAccount(PpdbRegistration $registration, User $student): void
+    private function createOrLinkParentAccount(PpdbRegistration $registration, User $student): array
     {
         if (! $registration->parent_email) {
-            return; // data lama sebelum kolom ini ada, lewati dengan aman
+            return [null, null, false];
         }
 
         $ortuRole = Role::where('slug', 'ortu')->first();
@@ -328,7 +399,7 @@ class PpdbController extends Controller
                 'registration_id' => $registration->id,
             ]);
 
-            return;
+            return [null, null, false];
         }
 
         $parentUser = User::where('email', $registration->parent_email)->first();
@@ -339,10 +410,10 @@ class PpdbController extends Controller
             $password = Str::random(10);
 
             $parentUser = User::create([
-                'name' => $registration->parent_name,
-                'email' => $registration->parent_email,
+                'name'     => $registration->parent_name,
+                'email'    => $registration->parent_email,
                 'password' => Hash::make($password),
-                'role_id' => $ortuRole->id,
+                'role_id'  => $ortuRole->id,
             ]);
         }
 
@@ -350,46 +421,6 @@ class PpdbController extends Controller
 
         $registration->update(['parent_user_id' => $parentUser->id]);
 
-        $this->sendParentAccountEmail($registration, $parentUser, $password, $isNewAccount);
-    }
-
-    private function sendParentAccountEmail(
-        PpdbRegistration $registration,
-        User $parentUser,
-        ?string $password,
-        bool $isNewAccount,
-    ): void {
-        try {
-            // Beri jeda 2 detik untuk menghindari rate limit Mailtrap Sandbox (max 1 email/detik)
-            sleep(2);
-
-            Mail::to($parentUser->email)->send(new ParentAccountLinked(
-                registration: $registration,
-                parentUser: $parentUser,
-                password: $password,
-                isNewAccount: $isNewAccount,
-            ));
-        } catch (\Throwable $e) {
-            // Jika gagal karena rate limit Mailtrap, coba 1x lagi setelah 3 detik
-            if (str_contains($e->getMessage(), '550') || str_contains($e->getMessage(), 'Too many emails')) {
-                try {
-                    sleep(3);
-                    Mail::to($parentUser->email)->send(new ParentAccountLinked(
-                        registration: $registration,
-                        parentUser: $parentUser,
-                        password: $password,
-                        isNewAccount: $isNewAccount,
-                    ));
-
-                    return;
-                } catch (\Throwable $retryException) {
-                    $e = $retryException;
-                }
-            }
-            
-            Log::warning('Gagal mengirim email akun orang tua: ' . $e->getMessage(), [
-                'registration_id' => $registration->id,
-            ]);
-        }
+        return [$parentUser, $password, $isNewAccount];
     }
 }

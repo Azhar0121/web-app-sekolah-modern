@@ -8,6 +8,7 @@ use App\Models\PpdbPeriod;
 use App\Models\PpdbRegistration;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -236,7 +237,18 @@ class PpdbController extends Controller
     private function sendRegistrationEmail(PpdbRegistration $registration): void
     {
         try {
-            Mail::to($registration->email)->send(new PpdbRegistrationSubmitted($registration));
+            // Antrekan pengiriman email secara asinkron agar tidak memblokir siklus HTTP
+            Mail::to($registration->email)->queue(new PpdbRegistrationSubmitted($registration));
+
+            // Jika antrean menggunakan driver database, proses 1 job secara aman pada background phase
+            if (config('queue.default') === 'database') {
+                @set_time_limit(120);
+                Artisan::call('queue:work', [
+                    '--stop-when-empty' => true,
+                    '--max-jobs'        => 1,
+                    '--tries'           => 1,
+                ]);
+            }
         } catch (\Throwable $e) {
             Log::warning('Gagal mengirim email nomor pendaftaran PPDB: ' . $e->getMessage(), [
                 'registration_id' => $registration->id,

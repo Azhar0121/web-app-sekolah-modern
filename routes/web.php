@@ -262,6 +262,7 @@ Route::prefix('admin/ppdb')->name('admin.ppdb.')->group(function () {
         Route::put('/period', [AdminPpdbController::class, 'updatePeriod'])->name('period.update');
         Route::put('/{ppdbRegistration}/status', [AdminPpdbController::class, 'updateStatus'])->name('update-status');
         Route::put('/{ppdbRegistration}/re-registration', [AdminPpdbController::class, 'confirmReRegistration'])->name('confirm-re-registration');
+        Route::post('/{ppdbRegistration}/resend-credentials', [AdminPpdbController::class, 'resendCredentials'])->name('resend-credentials');
     });
 });
 

@@ -5,12 +5,13 @@ namespace App\Mail;
 use App\Models\PpdbRegistration;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ParentAccountLinked extends Mailable
+class ParentAccountLinked extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
