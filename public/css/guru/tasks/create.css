@@ -1,7 +1,3 @@
-/* =========================================================
-BUAT TUGAS GURU
-Modern Institutional Blue
-========================================================= */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 .tasks-create-page {
@@ -21,7 +17,6 @@ min-height: calc(100vh - 80px);
 
 padding: 28px 30px 50px;
 
-/* Background paling belakang solid */
 background: #eef4fb;
 
 color: var(--text);

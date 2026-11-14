@@ -129,8 +129,6 @@
                     Permohonan sakit atau izin anak
                 </small>
             </div>
-
-            <i class="bi bi-arrow-up-right ortu-card-arrow"></i>
         </a>
 
 
@@ -150,8 +148,6 @@
                     Komunikasi dua arah dengan sekolah
                 </small>
             </div>
-
-            <i class="bi bi-arrow-up-right ortu-card-arrow"></i>
         </a>
 
 
@@ -171,8 +167,6 @@
                     Status verifikasi persetujuan guru
                 </small>
             </div>
-
-            <i class="bi bi-arrow-up-right ortu-card-arrow"></i>
         </a>
 
     </div>
